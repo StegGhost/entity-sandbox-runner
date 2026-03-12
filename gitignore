@@ -1,0 +1,3 @@
+# Ignore generated receipts and local output
+receipts.json
+__pycache__/
