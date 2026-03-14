@@ -1,0 +1,82 @@
+name: Safe Ingest All Bundles
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "incoming_bundles/*.zip"
+
+permissions:
+  contents: write
+  actions: write
+  workflows: write
+
+jobs:
+  safe-ingest-all:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Resolve all bundles
+        id: bundles
+        shell: bash
+        run: |
+          python ingestion/find_all_bundles.py > /tmp/bundles.txt
+          echo "Bundle queue:"
+          cat /tmp/bundles.txt || true
+          COUNT=$(wc -l < /tmp/bundles.txt | tr -d ' ')
+          echo "bundle_count=$COUNT" >> "$GITHUB_OUTPUT"
+
+      - name: Stop if no bundles found
+        if: steps.bundles.outputs.bundle_count == '0'
+        run: |
+          echo "No bundles found in incoming_bundles/"
+          exit 0
+
+      - name: Apply all bundles safely
+        shell: bash
+        run: |
+          while IFS= read -r BUNDLE; do
+            if [ -n "$BUNDLE" ] && [ -f "$BUNDLE" ]; then
+              echo "Safely applying $BUNDLE"
+              python ingestion/ingest_bundle_safe.py "$BUNDLE"
+            fi
+          done < /tmp/bundles.txt
+
+      - name: Commit and push non-workflow changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "No repository changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Safe ingest queued bundles from incoming_bundles"
+          git push
+
+      - name: Upload ingestion reports and backups
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: safe-ingestion-artifacts
+          path: |
+            ingestion_reports
+            ingestion_backups
+            workflow_review
+            installed_bundles
+            failed_bundles
+          if-no-files-found: warn
