@@ -1,92 +1,70 @@
 # Entity Sandbox Runner
 
-# Entity Sandbox Runner
+Entity Sandbox Runner is StegVerse's experimental sandbox foundation for GCAT / BCAT experiments.
 
-Entity Sandbox Runner is a scenario orchestration environment for testing
-GCAT / BCAT sandbox entities under controlled experimental conditions.
+It is structured so experiment execution, provenance, human-readable reports, and canonical machine-usable records remain clearly separated.
 
-The system executes isolated and multi‑entity scenarios, records local receipts,
-and prepares normalized outputs for downstream governance evaluation by the
-StegVerse ingest runtime.
+## Data lifecycle
 
-This repository is a **scenario generator and sandbox simulator**.
-Outputs are intended to be evaluated by the **demo_ingest_engine** governance runtime.
+### `results/`
+Run-local raw outputs. Useful for immediate inspection and reproducibility, but not the canonical long-term evidence layer.
 
-Pipeline:
+### `receipts/`
+The provenance reference layer. Receipts should indicate:
+- what happened
+- what data was captured
+- where it was stored
+- which downstream artifacts used it
 
-entity-sandbox-runner
-      ↓
-proposal manifest
-      ↓
-demo_ingest_engine
-      ↓
-governance evaluation
-      ↓
-verification + replay
+### `reports/`
+Human-readable artifacts derived from results and receipts.
 
-## Running
+### `data_records/`
+Canonical machine-usable evidence accumulated across experiments.
 
-Example:
+### `manifests/`
+Portable metadata for downstream ingest, export, and SDK packaging.
 
+## Repository structure
+
+```text
+entity-sandbox-runner/
+├─ experiments/
+├─ runner/
+├─ sandbox/
+├─ observatory/
+├─ interaction_graph/
+├─ adaptive_scanner/
+├─ statistics/
+├─ reproducibility/
+├─ visualization/
+├─ sdk/
+├─ entities/
+├─ results/
+├─ receipts/
+├─ reports/
+├─ data_records/
+└─ manifests/
+```
+
+## How data is derived, compiled, utilized, saved, and kept
+
+1. a scenario config is loaded from `experiments/.../config.yaml`
+2. the runner executes the scenario and writes local results into `results/`
+3. receipts are written into `receipts/`
+4. canonical observations are appended into `data_records/canonical/`
+5. aggregates are recomputed into `data_records/aggregates/`
+6. readable reports are written into `reports/`
+7. manifests are written into `manifests/`
+
+Canonical records should be appended and preserved. Aggregate files should be rebuilt from canonical records whenever possible.
+
+## Quick start
+
+```sh
+python -m pip install -r requirements.txt
 python runner/orchestrator.py --experiment experiments/admissibility/simple_test
-
-Outputs:
-
-results/simple_test_results.json
-manifests/simple_test_handoff.json
-
-This repository orchestrates the execution of StegVerse GCAT/BCAT sandbox experiments in a standalone environment.  It contains everything needed to run a single experiment, capture its output, and store results for later analysis.  The initial release includes the *simple admissibility test* from the `entity‑sandbox` project.
-
-## Purpose
-
-- **Automation** – run sandbox experiments without a graphical environment, using a GitHub workflow or local shell.
-- **Observability** – generate human‑readable summaries and audit trails of each experiment run.
-- **Isolation** – keep experimental code and outputs separate from production systems and secret tokens.
-
-## Structure
-
-- `run.py` – Python script implementing the simple admissibility experiment.  Reads `config.yaml`, simulates state transitions, enforces the GCAT admissibility inequality and prints a summary.
-- `config.yaml` – configuration for the experiment (initial state, constants, step count and artefact increment).
-- `.gitignore` – ignores generated receipts and local Python caches.
-- `.github/workflows/run-simple-test.yml` – GitHub Actions workflow that runs the experiment and uploads its output.
-- `results/example_results.txt` – sample results from a completed run.
-
-You can extend this runner by adding additional experiment scripts under subfolders and updating the workflow accordingly.
-
-## Running Locally
-
-Install Python 3 and PyYAML:
-
-```sh
-python -m pip install pyyaml
+python runner/build_all_artifacts.py --experiment simple_test
+python run_visualizations.py
+python run_repro_bundle.py --results results/simple_test_results.json
 ```
-
-Then run:
-
-```sh
-python run.py > results/example_results.txt
-```
-
-This reads `config.yaml`, runs the experiment and writes a summary.  It also writes a chain of receipts into `receipts.json` (ignored by version control).
-
-## Automated Execution
-
-The included workflow (`.github/workflows/run-simple-test.yml`) defines a job that checks out the repository, installs Python and PyYAML, runs `python run.py`, writes a results file in the `results` directory and uploads it as an artifact.  You can trigger the workflow from the GitHub Actions tab or schedule it to run periodically by adding a `schedule` trigger.
-
-# Experiment
-
-This folder defines a sandbox experiment scenario.
-
-Each experiment includes:
-
-- configuration parameters
-- transition rules
-- expected admissibility behavior
-
-The orchestrator loads the configuration and executes the
-scenario step‑by‑step while recording a receipt chain.
-
-Outputs are written to:
-
-results/
-manifests/
