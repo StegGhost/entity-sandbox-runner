@@ -1,5 +1,40 @@
 # Entity Sandbox Runner
 
+# Entity Sandbox Runner
+
+Entity Sandbox Runner is a scenario orchestration environment for testing
+GCAT / BCAT sandbox entities under controlled experimental conditions.
+
+The system executes isolated and multi‑entity scenarios, records local receipts,
+and prepares normalized outputs for downstream governance evaluation by the
+StegVerse ingest runtime.
+
+This repository is a **scenario generator and sandbox simulator**.
+Outputs are intended to be evaluated by the **demo_ingest_engine** governance runtime.
+
+Pipeline:
+
+entity-sandbox-runner
+      ↓
+proposal manifest
+      ↓
+demo_ingest_engine
+      ↓
+governance evaluation
+      ↓
+verification + replay
+
+## Running
+
+Example:
+
+python runner/orchestrator.py --experiment experiments/admissibility/simple_test
+
+Outputs:
+
+results/simple_test_results.json
+manifests/simple_test_handoff.json
+
 This repository orchestrates the execution of StegVerse GCAT/BCAT sandbox experiments in a standalone environment.  It contains everything needed to run a single experiment, capture its output, and store results for later analysis.  The initial release includes the *simple admissibility test* from the `entity‑sandbox` project.
 
 ## Purpose
