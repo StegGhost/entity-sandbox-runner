@@ -1,14 +1,10 @@
 import argparse
-import json
 from pathlib import Path
-
 from scenario_loader import load_scenario
 from result_writer import write_results
 from handoff import build_handoff_manifest
 
-
 ROOT = Path(__file__).resolve().parents[1]
-
 
 def run_experiment(exp_path):
 
@@ -47,30 +43,21 @@ def run_experiment(exp_path):
     }
 
     write_results(exp_path, result)
-
     manifest = build_handoff_manifest(exp_path, result)
 
     return manifest
 
-
 def main():
 
     parser = argparse.ArgumentParser()
-
-    parser.add_argument(
-        "--experiment",
-        required=True,
-        help="path to experiment folder",
-    )
+    parser.add_argument("--experiment", required=True)
 
     args = parser.parse_args()
 
     exp_path = ROOT / args.experiment
-
     manifest = run_experiment(exp_path)
 
-    print(json.dumps(manifest, indent=2))
-
+    print(manifest)
 
 if __name__ == "__main__":
     main()

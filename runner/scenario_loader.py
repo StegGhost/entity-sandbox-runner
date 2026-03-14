@@ -1,13 +1,8 @@
 import yaml
-from pathlib import Path
-
 
 def load_scenario(exp_path):
 
     config_file = exp_path / "config.yaml"
-
-    if not config_file.exists():
-        raise Exception("config.yaml missing")
 
     with open(config_file) as f:
         config = yaml.safe_load(f)

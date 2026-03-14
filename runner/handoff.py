@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-
 def build_handoff_manifest(exp_path, result):
 
     manifest = {

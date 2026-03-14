@@ -1,0 +1,5 @@
+Completed 5 steps: 2 accepted, 3 rejected.
+Proposed artefact increment: 0.1 per step.
+Governance and trust degraded each step (–0.05 and –0.03).
+Constraints remained constant.
+The experiment rejected proposals once the admissibility bound was exceeded.

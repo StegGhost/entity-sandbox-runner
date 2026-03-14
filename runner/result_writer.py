@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-
 def write_results(exp_path, result):
 
     results_dir = Path("results")
