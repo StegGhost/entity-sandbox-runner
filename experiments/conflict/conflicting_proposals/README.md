@@ -1,17 +1,14 @@
 # Experiment
 
-This folder defines a sandbox experiment scenario.
+This folder defines a sandbox scenario.
 
-Each experiment includes:
+## Data usage
 
-- configuration parameters
-- transition rules
-- expected admissibility behavior
+- `config.yaml` defines the scenario
+- the runner derives transitions from this config
+- local outputs are written into `results/`
+- provenance is written into `receipts/`
+- canonical observations may be appended into `data_records/`
+- reports are derived into `reports/`
 
-The orchestrator loads the configuration and executes the
-scenario step‑by‑step while recording a receipt chain.
-
-Outputs are written to:
-
-results/
-manifests/
+The experiment folder stores the definition, not the authoritative evidence products.

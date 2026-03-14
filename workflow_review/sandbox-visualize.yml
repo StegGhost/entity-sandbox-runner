@@ -1,0 +1,33 @@
+name: Sandbox Visualize
+
+on:
+  workflow_dispatch:
+
+jobs:
+  visualize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Generate sample outputs
+        run: |
+          python runner/orchestrator.py --experiment experiments/admissibility/simple_test
+          python runner/build_all_artifacts.py --experiment simple_test
+          python run_visualizations.py
+
+      - name: Upload visuals
+        uses: actions/upload-artifact@v4
+        with:
+          name: sandbox-visuals
+          path: |
+            reports
+          if-no-files-found: warn

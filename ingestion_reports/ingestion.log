@@ -1,0 +1,110 @@
+[2026-03-14T23:06:05.539112] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle-manifest-standard-bundle
+[2026-03-14T23:06:05.539661] classified files: normal=5 workflow=1
+[2026-03-14T23:06:05.540102] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-14T23:06:05.540326] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/validate_bundle_manifest.py
+[2026-03-14T23:06:05.540682] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/find_latest_bundle.py
+[2026-03-14T23:06:05.541069] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/ingest_bundle.py
+[2026-03-14T23:06:05.541321] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_examples/example_bundle_manifest.json
+[2026-03-14T23:06:05.541558] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/auto-ingest-bundle.yml
+[2026-03-14T23:06:05.542052] install report written: ingestion_reports/bundle_manifest_standard_bundle_install_report.json
+[2026-03-14T23:06:05.542092] safe ingestion complete status=installed_with_manual_review
+[2026-03-14T23:06:05.582074] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/workflow-repair-bundle
+[2026-03-14T23:06:05.582455] classified files: normal=1 workflow=3
+[2026-03-14T23:06:05.582879] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-14T23:06:05.583124] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/sandbox-smoke-test.yml
+[2026-03-14T23:06:05.583318] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/observatory-smoke.yml
+[2026-03-14T23:06:05.583508] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/sandbox-visualize.yml
+[2026-03-14T23:06:05.583897] install report written: ingestion_reports/workflow_repair_bundle_install_report.json
+[2026-03-14T23:06:05.583937] safe ingestion complete status=installed_with_manual_review
+[2026-03-14T23:06:05.618902] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/observatory-upgrade
+[2026-03-14T23:06:05.619278] classified files: normal=6 workflow=0
+[2026-03-14T23:06:05.619695] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-14T23:06:05.619944] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/replay_engine.py
+[2026-03-14T23:06:05.620309] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/state_stream.py
+[2026-03-14T23:06:05.620521] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/timeline_recorder.py
+[2026-03-14T23:06:05.620717] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/phase_animation.py
+[2026-03-14T23:06:05.620927] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/live_dashboard.py
+[2026-03-14T23:06:05.621279] install report written: ingestion_reports/stegverse_observatory_upgrade_bundle_install_report.json
+[2026-03-14T23:06:05.621318] safe ingestion complete status=installed
+[2026-03-14T23:06:05.656460] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/multi-entity-sim
+[2026-03-14T23:06:05.656868] classified files: normal=6 workflow=0
+[2026-03-14T23:06:05.657296] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-14T23:06:05.657528] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/simulation_engine.py
+[2026-03-14T23:06:05.657748] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/coalition_engine.py
+[2026-03-14T23:06:05.657957] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/adversary_agents.py
+[2026-03-14T23:06:05.658148] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/governance_failure_detector.py
+[2026-03-14T23:06:05.658330] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/trust_propagation.py
+[2026-03-14T23:06:05.658694] install report written: ingestion_reports/stegverse_multi_entity_sim_bundle_install_report.json
+[2026-03-14T23:06:05.658737] safe ingestion complete status=installed
+[2026-03-14T23:06:05.700416] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/entity-sandbox-runner
+[2026-03-14T23:06:05.702906] classified files: normal=52 workflow=1
+[2026-03-14T23:06:05.703128] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/UPGRADE_INSTRUCTIONS.md
+[2026-03-14T23:06:05.703545] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-14T23:06:05.703946] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/requirements.txt
+[2026-03-14T23:06:05.704320] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/run_visualizations.py
+[2026-03-14T23:06:05.704539] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/.gitignore
+[2026-03-14T23:06:05.704905] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/run_repro_bundle.py
+[2026-03-14T23:06:05.705309] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/data_records/README.md
+[2026-03-14T23:06:05.705677] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/interaction_graph/graph_metrics.py
+[2026-03-14T23:06:05.706063] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/interaction_graph/graph_builder.py
+[2026-03-14T23:06:05.706359] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/interaction_graph/__init__.py
+[2026-03-14T23:06:05.706745] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/results/README.md
+[2026-03-14T23:06:05.707125] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/adaptive_scanner/refinement_grid.py
+[2026-03-14T23:06:05.707429] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/adaptive_scanner/__init__.py
+[2026-03-14T23:06:05.707745] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/adaptive_scanner/boundary_locator.py
+[2026-03-14T23:06:05.708188] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/conflict/conflicting_proposals/README.md
+[2026-03-14T23:06:05.708610] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/interaction/two_entity_exchange/README.md
+[2026-03-14T23:06:05.709068] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/admissibility/simple_test/README.md
+[2026-03-14T23:06:05.709425] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/admissibility/simple_test/config.yaml
+[2026-03-14T23:06:05.709891] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/admissibility/pressure_ramp/README.md
+[2026-03-14T23:06:05.710255] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/admissibility/pressure_ramp/config.yaml
+[2026-03-14T23:06:05.710605] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/statistics/collapse_probability_estimator.py
+[2026-03-14T23:06:05.710930] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/statistics/__init__.py
+[2026-03-14T23:06:05.711255] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/statistics/multi_trial_runner.py
+[2026-03-14T23:06:05.711574] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/__init__.py
+[2026-03-14T23:06:05.711907] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/event_stream.py
+[2026-03-14T23:06:05.712255] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/timeline_replay.py
+[2026-03-14T23:06:05.712578] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/reproducibility/__init__.py
+[2026-03-14T23:06:05.712929] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/reproducibility/bundle_builder.py
+[2026-03-14T23:06:05.713286] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/scenario_loader.py
+[2026-03-14T23:06:05.713626] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/handoff.py
+[2026-03-14T23:06:05.713989] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/receipts.py
+[2026-03-14T23:06:05.714342] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/aggregate_builder.py
+[2026-03-14T23:06:05.714687] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/orchestrator.py
+[2026-03-14T23:06:05.715047] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/__init__.py
+[2026-03-14T23:06:05.715367] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/result_writer.py
+[2026-03-14T23:06:05.715732] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/report_index.py
+[2026-03-14T23:06:05.716095] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/report_writer.py
+[2026-03-14T23:06:05.716435] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/build_all_artifacts.py
+[2026-03-14T23:06:05.716802] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/visualize_run.py
+[2026-03-14T23:06:05.717143] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/runner/data_collector.py
+[2026-03-14T23:06:05.717579] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/receipts/README.md
+[2026-03-14T23:06:05.718062] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/reports/README.md
+[2026-03-14T23:06:05.718531] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/sdk/README.md
+[2026-03-14T23:06:05.718899] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/sdk/__init__.py
+[2026-03-14T23:06:05.719223] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/sdk/DEFINITIONS_REVIEW.json
+[2026-03-14T23:06:05.719565] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/sandbox/phase_space.py
+[2026-03-14T23:06:05.719934] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/sandbox/__init__.py
+[2026-03-14T23:06:05.720390] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/manifests/README.md
+[2026-03-14T23:06:05.720745] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/entities/sandbox_B.yaml
+[2026-03-14T23:06:05.721107] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/entities/sandbox_A.yaml
+[2026-03-14T23:06:05.721487] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/visualization/__init__.py
+[2026-03-14T23:06:05.721819] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/visualization/phase_map_builder.py
+[2026-03-14T23:06:05.722075] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/sandbox-smoke-test.yml
+[2026-03-14T23:06:05.723287] install report written: ingestion_reports/entity_sandbox_runner_github_bundle_install_report.json
+[2026-03-14T23:06:05.723328] safe ingestion complete status=installed_with_manual_review
+[2026-03-14T23:06:05.763678] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/safe-ingestion-upgrade-bundle
+[2026-03-14T23:06:05.764489] classified files: normal=10 workflow=1
+[2026-03-14T23:06:05.765051] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-14T23:06:05.765313] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/.gitkeep
+[2026-03-14T23:06:05.765662] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/ingest_bundle_safe.py
+[2026-03-14T23:06:05.766034] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/classify_bundle_contents.py
+[2026-03-14T23:06:05.766389] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/write_install_report.py
+[2026-03-14T23:06:05.766740] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/find_all_bundles.py
+[2026-03-14T23:06:05.767232] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/move_processed_bundle.py
+[2026-03-14T23:06:05.767628] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/verify_installation.py
+[2026-03-14T23:06:05.767865] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/.gitkeep
+[2026-03-14T23:06:05.768043] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/.gitkeep
+[2026-03-14T23:06:05.768234] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/safe-ingest-all-bundles.yml
+[2026-03-14T23:06:05.768689] install report written: ingestion_reports/safe_ingestion_upgrade_bundle_install_report.json
+[2026-03-14T23:06:05.768729] safe ingestion complete status=installed_with_manual_review

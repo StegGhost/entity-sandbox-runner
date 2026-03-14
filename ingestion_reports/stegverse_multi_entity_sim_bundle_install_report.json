@@ -1,0 +1,24 @@
+{
+  "bundle_name": "stegverse_multi_entity_sim_bundle.zip",
+  "generated_at_utc": "2026-03-14T23:06:05.658570+00:00",
+  "status": "installed",
+  "installed_files_count": 6,
+  "workflow_files_staged_count": 0,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/simulation_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/coalition_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/adversary_agents.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/governance_failure_detector.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/multi_entity_sim/trust_propagation.py"
+  ],
+  "workflow_review_files": [],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "moved_bundle_to": "installed_bundles/stegverse_multi_entity_sim_bundle.zip"
+}

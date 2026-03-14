@@ -1,0 +1,23 @@
+{
+  "bundle_name": "workflow_repair_bundle.zip",
+  "generated_at_utc": "2026-03-14T23:06:05.583755+00:00",
+  "status": "installed_with_manual_review",
+  "installed_files_count": 1,
+  "workflow_files_staged_count": 3,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md"
+  ],
+  "workflow_review_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/sandbox-smoke-test.yml",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/observatory-smoke.yml",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/sandbox-visualize.yml"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "moved_bundle_to": "installed_bundles/workflow_repair_bundle.zip"
+}

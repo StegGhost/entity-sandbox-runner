@@ -1,0 +1,25 @@
+{
+  "bundle_name": "bundle_manifest_standard_bundle.zip",
+  "generated_at_utc": "2026-03-14T23:06:05.541927+00:00",
+  "status": "installed_with_manual_review",
+  "installed_files_count": 5,
+  "workflow_files_staged_count": 1,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/validate_bundle_manifest.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/find_latest_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/ingest_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_examples/example_bundle_manifest.json"
+  ],
+  "workflow_review_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/auto-ingest-bundle.yml"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "moved_bundle_to": "installed_bundles/bundle_manifest_standard_bundle.zip"
+}

@@ -1,0 +1,6 @@
+entity: sandbox_B
+initial_state:
+  a: 0.8
+  g: 0.9
+  c: 1.0
+  t: 0.95

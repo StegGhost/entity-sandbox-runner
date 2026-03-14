@@ -6,7 +6,6 @@ STREAM_FILE = Path("observatory/live_stream.jsonl")
 STREAM_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 def emit_state(event):
-
     payload = {
         "timestamp": datetime.utcnow().isoformat(),
         **event

@@ -1,14 +1,9 @@
-import json
 from pathlib import Path
+import json
 
-def write_results(exp_path, result):
-
+def write_results(exp_name: str, result: dict) -> Path:
     results_dir = Path("results")
-    results_dir.mkdir(exist_ok=True)
-
-    output = results_dir / f"{exp_path.name}_results.json"
-
-    with open(output, "w") as f:
-        json.dump(result, f, indent=2)
-
-    return output
+    results_dir.mkdir(parents=True, exist_ok=True)
+    out = results_dir / f"{exp_name}_results.json"
+    out.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    return out

@@ -1,0 +1,30 @@
+{
+  "bundle_name": "safe_ingestion_upgrade_bundle.zip",
+  "generated_at_utc": "2026-03-14T23:06:05.768564+00:00",
+  "status": "installed_with_manual_review",
+  "installed_files_count": 10,
+  "workflow_files_staged_count": 1,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/.gitkeep",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/ingest_bundle_safe.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/classify_bundle_contents.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/write_install_report.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/find_all_bundles.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/move_processed_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/verify_installation.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/.gitkeep",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/.gitkeep"
+  ],
+  "workflow_review_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/safe-ingest-all-bundles.yml"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "moved_bundle_to": "installed_bundles/safe_ingestion_upgrade_bundle.zip"
+}

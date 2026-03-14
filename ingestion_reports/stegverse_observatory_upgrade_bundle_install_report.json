@@ -1,0 +1,24 @@
+{
+  "bundle_name": "stegverse_observatory_upgrade_bundle.zip",
+  "generated_at_utc": "2026-03-14T23:06:05.621159+00:00",
+  "status": "installed",
+  "installed_files_count": 6,
+  "workflow_files_staged_count": 0,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/replay_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/state_stream.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/timeline_recorder.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/phase_animation.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/live_dashboard.py"
+  ],
+  "workflow_review_files": [],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "moved_bundle_to": "installed_bundles/stegverse_observatory_upgrade_bundle.zip"
+}

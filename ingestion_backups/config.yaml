@@ -1,0 +1,16 @@
+# Configuration for simple admissibility experiment
+
+# Initial state vector [g, c, a, t]
+initial_state: [0.8, 0.5, 0.3, 0.9]
+
+# Viability inequality constants
+K: 1.0
+alpha: 0.5
+beta: 0.5
+gamma: 0.5
+
+# Number of simulation steps
+steps: 5
+
+# Proposed artefact increase per step
+delta_a: 0.1
