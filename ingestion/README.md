@@ -68,3 +68,57 @@ If no path is provided, it automatically discovers the newest bundle in `incomin
 ## Important note
 
 This workflow assumes the repository root is the target repo where files should be merged.
+
+# Self-Applying Ingestion Workflow Bundle
+
+This bundle upgrades the ingestion pipeline so that bundle installation is no longer temporary.
+
+After ingestion runs in GitHub Actions, the workflow:
+
+1. detects changed files
+2. commits them
+3. pushes them back to the current branch
+
+## What this fixes
+
+Previous ingestion runs only modified the GitHub Actions runner workspace and uploaded artifacts.
+They did **not** write changes back into the repository history.
+
+This bundle adds the missing commit-and-push step.
+
+## Included files
+
+```text
+.github/workflows/auto-ingest-and-commit.yml
+ingestion/ingest_bundle.py
+ingestion/find_latest_bundle.py
+README.md
+```
+
+## How it works
+
+Drop a bundle zip into:
+
+```text
+incoming_bundles/
+```
+
+Then push.
+
+The workflow will:
+
+- resolve the newest bundle
+- run the ingestion tool
+- detect file changes
+- commit them automatically
+- push them back to the repo
+- upload ingestion logs and backups as artifacts
+
+## Notes
+
+This workflow uses the default `GITHUB_TOKEN` and standard checkout credentials.
+It is intended for repository-internal automation on branches where GitHub Actions is allowed to push.
+
+## Expected result
+
+After a successful run, files installed from the bundle will actually appear in the repository tree and commit history.
