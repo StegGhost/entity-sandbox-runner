@@ -11,7 +11,8 @@ def classify_files(extracted_root: Path):
         rel = item.relative_to(extracted_root)
         rel_str = str(rel).replace("\\", "/")
 
-        if "/.github/workflows/" in f"/{rel_str}" or rel_str.startswith(".github/workflows/"):
+        # STRICT protection
+        if rel_str.startswith(".github/workflows/"):
             workflow_files.append(rel)
         else:
             normal_files.append(rel)
