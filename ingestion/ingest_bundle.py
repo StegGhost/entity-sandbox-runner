@@ -22,7 +22,7 @@ TARGET_MAP = {
     "experiments": "experiments",
     "entities": "entities",
     "ingestion": "ingestion",
-    ".github": ".github"
+    ".github": ".github",
 }
 
 def log(msg):
@@ -49,10 +49,14 @@ def extract_if_zip(path):
 def backup_file(dest):
     if not dest.exists():
         return
-    backup_dir = ROOT / "ingestion_backup"
+    backup_dir = ROOT / "ingestion_backups"
     backup_dir.mkdir(exist_ok=True)
-    backup_target = backup_dir / dest.name
-    shutil.copy2(dest, backup_target)
+    target = backup_dir / dest.name
+    counter = 1
+    while target.exists():
+        target = backup_dir / f"{dest.stem}_{counter}{dest.suffix}"
+        counter += 1
+    shutil.copy2(dest, target)
 
 def merge_tree(src, dest):
     for item in src.rglob("*"):
@@ -78,25 +82,23 @@ def ingest(path):
             matched += 1
 
     if matched == 0:
-        # fallback: merge entire extracted tree into repo root except the top folder itself
         top_entries = [p for p in src.iterdir()]
         for entry in top_entries:
             if entry.is_file():
                 target = ROOT / entry.name
+                target.parent.mkdir(parents=True, exist_ok=True)
                 backup_file(target)
                 shutil.copy2(entry, target)
                 log(f"installed {target}")
             else:
                 merge_tree(entry, ROOT / entry.name)
-                matched += 1
 
     log(f"ingestion complete; matched modules={matched}")
 
 def main():
     if len(sys.argv) < 2:
         print("usage: python ingestion/ingest_bundle.py <bundle_or_directory>")
-        sys.exit(1)
-
+        raise SystemExit(1)
     ingest(sys.argv[1])
 
 if __name__ == "__main__":
