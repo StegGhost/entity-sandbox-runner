@@ -1,5 +1,4 @@
 from pathlib import Path
-import sys
 
 def main():
     bundles_dir = Path("incoming_bundles")
