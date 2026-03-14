@@ -122,3 +122,37 @@ It is intended for repository-internal automation on branches where GitHub Actio
 ## Expected result
 
 After a successful run, files installed from the bundle will actually appear in the repository tree and commit history.
+
+# Auto Ingest All Bundles Bundle
+
+This bundle upgrades the ingestion pipeline so `incoming_bundles/` behaves like an upgrade queue.
+
+## What it does
+
+Instead of ingesting only the newest zip, the workflow:
+
+1. finds **all** `.zip` files in `incoming_bundles/`
+2. sorts them by modified time, oldest first
+3. applies them sequentially
+4. commits all resulting repo changes in one commit
+5. pushes the result back to the branch
+
+## Included files
+
+```text
+.github/workflows/auto-ingest-all-bundles.yml
+ingestion/find_all_bundles.py
+README.md
+```
+
+## Important
+
+This workflow expects the repo already contains:
+
+```text
+ingestion/ingest_bundle.py
+```
+
+## Result
+
+Your repo will finally treat `incoming_bundles/` as a real staged upgrade queue.
