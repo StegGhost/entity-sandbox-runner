@@ -31,7 +31,6 @@ jobs:
           python ingestion/find_all_bundles.py > /tmp/bundles.txt
           echo "Bundle queue:"
           cat /tmp/bundles.txt || true
-
           COUNT=$(wc -l < /tmp/bundles.txt | tr -d ' ')
           echo "bundle_count=$COUNT" >> "$GITHUB_OUTPUT"
 
@@ -51,7 +50,7 @@ jobs:
             fi
           done < /tmp/bundles.txt
 
-      - name: Commit and push applied bundle changes
+      - name: Commit and push non-workflow changes
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
@@ -65,11 +64,9 @@ jobs:
           fi
 
           git commit -m "Safe ingest queued bundles from incoming_bundles"
-
-          git push || echo "Push blocked by GitHub workflow protection"
+          git push
 
       - name: Upload ingestion reports and backups
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: safe-ingestion-artifacts
