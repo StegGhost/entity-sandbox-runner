@@ -1,0 +1,17 @@
+initial_state:
+  a: 0.5
+  g: 1.0
+  c: 1.0
+  t: 1.0
+
+steps: 30
+
+delta_a: 0.1
+
+g_decay: 0.02
+t_decay: 0.02
+
+K: 1.0
+alpha: 1.0
+beta: 1.0
+gamma: 1.0
