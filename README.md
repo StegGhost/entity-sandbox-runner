@@ -37,3 +37,21 @@ This reads `config.yaml`, runs the experiment and writes a summary.  It also wri
 ## Automated Execution
 
 The included workflow (`.github/workflows/run-simple-test.yml`) defines a job that checks out the repository, installs Python and PyYAML, runs `python run.py`, writes a results file in the `results` directory and uploads it as an artifact.  You can trigger the workflow from the GitHub Actions tab or schedule it to run periodically by adding a `schedule` trigger.
+
+# Experiment
+
+This folder defines a sandbox experiment scenario.
+
+Each experiment includes:
+
+- configuration parameters
+- transition rules
+- expected admissibility behavior
+
+The orchestrator loads the configuration and executes the
+scenario step‑by‑step while recording a receipt chain.
+
+Outputs are written to:
+
+results/
+manifests/
