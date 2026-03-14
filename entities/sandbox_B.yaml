@@ -1,5 +1,4 @@
 entity: sandbox_B
-
 initial_state:
   a: 0.8
   g: 0.9
