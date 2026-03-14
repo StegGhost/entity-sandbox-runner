@@ -108,3 +108,7 @@
 [2026-03-14T23:06:05.768234] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/safe-ingest-all-bundles.yml
 [2026-03-14T23:06:05.768689] install report written: ingestion_reports/safe_ingestion_upgrade_bundle_install_report.json
 [2026-03-14T23:06:05.768729] safe ingestion complete status=installed_with_manual_review
+[2026-03-14T23:50:08.040826] no valid manifest found; using fallback folder matching
+[2026-03-14T23:50:08.042819] fallback merge /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/workflow-review-classifier-bundle/ingestion -> /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion
+[2026-03-14T23:50:08.043387] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/compare_workflows.py
+[2026-03-14T23:50:08.043598] fallback ingestion complete; matched modules=1
