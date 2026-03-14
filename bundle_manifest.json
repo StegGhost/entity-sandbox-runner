@@ -1,0 +1,17 @@
+{
+  "bundle_name": "safe_ingestion_upgrade",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "signature": "bundle.sig",
+
+  "files": [
+    {
+      "path": "ingestion/ingest_bundle_safe.py",
+      "sha256": "AUTO"
+    },
+    {
+      "path": ".github/workflows/safe-ingest-all-bundles.yml",
+      "sha256": "AUTO"
+    }
+  ]
+}
