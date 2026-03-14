@@ -1,0 +1,33 @@
+name: Sandbox Runner
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
+
+jobs:
+
+  run:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run sandbox experiments
+        run: python runner/auto_runner.py
+
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: sandbox-results
+          path: results
