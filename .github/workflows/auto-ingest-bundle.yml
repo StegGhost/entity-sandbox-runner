@@ -1,0 +1,39 @@
+name: Auto Ingest Bundle
+
+on:
+  push:
+    paths:
+      - "incoming_bundles/*.zip"
+
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Find newest bundle
+        id: bundle
+        run: |
+          BUNDLE=$(python ingestion/find_latest_bundle.py)
+          echo "bundle=$BUNDLE" >> $GITHUB_OUTPUT
+
+      - name: Run ingestion tool
+        run: |
+          python ingestion/ingest_bundle.py "${{ steps.bundle.outputs.bundle }}"
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: ingestion-report
+          path: |
+            ingestion_reports
+            ingestion_backup
