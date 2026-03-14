@@ -1,4 +1,4 @@
-#StegVerse Ingestion Tool
+# StegVerse Ingestion Tool
 
 Accepts either a ZIP bundle or an unzipped directory and installs
 the contents into the correct locations of the StegVerse sandbox repo.
