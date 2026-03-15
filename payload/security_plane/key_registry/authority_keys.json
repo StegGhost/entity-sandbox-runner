@@ -1,0 +1,9 @@
+{
+  "authorities": [
+    {
+      "name": "StegVerse Root",
+      "algorithm": "pq_placeholder",
+      "public_key": "root-key-placeholder"
+    }
+  ]
+}

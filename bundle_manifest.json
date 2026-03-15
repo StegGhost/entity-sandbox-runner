@@ -1,17 +1,25 @@
 {
-  "bundle_name": "safe_ingestion_upgrade",
-  "version": "1.0.0",
+  "bundle_name": "sandbox_platform_bundle",
+  "version": "1.2.0",
   "author": "StegVerse",
-  "signature": "bundle.sig",
-
+  "description": "Sandbox-native installer bundle for control_plane, security_plane, evidence_plane, and observatory",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json",
+    "bundle_readme.md"
+  ],
   "files": [
-    {
-      "path": "ingestion/ingest_bundle_safe.py",
-      "sha256": "AUTO"
-    },
-    {
-      "path": ".github/workflows/safe-ingest-all-bundles.yml",
-      "sha256": "AUTO"
-    }
+    "install/install_platform.py",
+    "payload/control_plane/tc/bundle_install.tc.json",
+    "payload/control_plane/tvc/verify_bundle_install.py",
+    "payload/security_plane/crypto/pq_hash.py",
+    "payload/security_plane/crypto/pq_signatures.py",
+    "payload/security_plane/crypto/provider.py",
+    "payload/security_plane/key_registry/authority_keys.json",
+    "payload/evidence_plane/receipt.py",
+    "payload/observatory/state_log/record_state.py",
+    "bundle_readme.md"
   ]
 }

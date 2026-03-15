@@ -1,0 +1,6 @@
+{
+  "bundle": "sandbox_platform_bundle",
+  "policy": "control_plane_install",
+  "required_verification": "tvc_verify_bundle_install",
+  "signature_required": false
+}

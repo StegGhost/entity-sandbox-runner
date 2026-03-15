@@ -1,0 +1,78 @@
+{
+  "bundle_name": "sandbox_platform_bundle",
+  "bundle_version": "1.2.0",
+  "status": "installed",
+  "staged_files_count": 11,
+  "installed_files_count": 11,
+  "workflow_files_staged_count": 0,
+  "staged_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_platform.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/state_log/record_state.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/control_plane/tc/bundle_install.tc.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/control_plane/tvc/verify_bundle_install.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/key_registry/authority_keys.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/crypto/pq_signatures.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/crypto/provider.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/crypto/pq_hash.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/receipt.py"
+  ],
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_platform.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/state_log/record_state.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/control_plane/tc/bundle_install.tc.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/control_plane/tvc/verify_bundle_install.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/key_registry/authority_keys.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/crypto/pq_signatures.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/crypto/provider.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/crypto/pq_hash.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/receipt.py"
+  ],
+  "workflow_review_files": [],
+  "preserved_bundle_readme": null,
+  "staged_verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_platform_bundle_v1_2/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_platform_bundle_v1_2/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_platform.py",
+      "payload/observatory/state_log/record_state.py",
+      "payload/control_plane/tc/bundle_install.tc.json",
+      "payload/control_plane/tvc/verify_bundle_install.py",
+      "payload/security_plane/key_registry/authority_keys.json",
+      "payload/security_plane/crypto/pq_signatures.py",
+      "payload/security_plane/crypto/provider.py",
+      "payload/security_plane/crypto/pq_hash.py",
+      "payload/evidence_plane/receipt.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_platform_bundle_v1_2.zip"
+}
