@@ -1,21 +1,20 @@
 import sys
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
 import zipfile
 import shutil
 import json
-from pathlib import Path
 from datetime import datetime
 
-# Allow local sibling imports when run as:
-# python ingestion/ingest_bundle_safe.py <bundle>
-sys.path.append(str(Path(__file__).resolve().parent))
-
-from classify_bundle_contents import classify_files
-from verify_installation import verify_against_manifest
-from write_install_report import write_install_report
-from move_processed_bundle import move_bundle
-from enforce_manifest import enforce_manifest
-from module_registry import record_install
-
+from ingestion.classify_bundle_contents import classify_files
+from ingestion.verify_installation import verify_against_manifest
+from ingestion.write_install_report import write_install_report
+from ingestion.move_processed_bundle import move_bundle
+from ingestion.enforce_manifest import enforce_manifest
+from ingestion.module_registry import record_install
 
 ROOT = Path.cwd()
 REPORT_DIR = ROOT / "ingestion_reports"
