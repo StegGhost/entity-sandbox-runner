@@ -1,0 +1,23 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "generated_at_utc": "2026-03-15T02:41:59.462422+00:00",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 3,
+  "workflow_files_staged_count": 0,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/path-safety-upgrade-bundle/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/path-safety-upgrade-bundle/ingestion/ingest_bundle_safe.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/path-safety-upgrade-bundle/ingestion/path_safety.py"
+  ],
+  "workflow_review_files": [],
+  "preserved_bundle_readme": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/bundle_docs/ingestion_tmp_README.md",
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "moved_bundle_to": "installed_bundles/path_safety_upgrade_bundle.zip"
+}

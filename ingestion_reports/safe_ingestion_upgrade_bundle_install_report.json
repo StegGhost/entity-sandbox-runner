@@ -1,24 +1,26 @@
 {
-  "bundle_name": "safe_ingestion_upgrade_bundle.zip",
-  "generated_at_utc": "2026-03-14T23:06:05.768564+00:00",
+  "bundle_name": "ingestion_tmp",
+  "generated_at_utc": "2026-03-15T02:41:59.424800+00:00",
+  "bundle_version": "dev",
   "status": "installed_with_manual_review",
   "installed_files_count": 10,
   "workflow_files_staged_count": 1,
   "installed_files": [
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/.gitkeep",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/ingest_bundle_safe.py",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/classify_bundle_contents.py",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/write_install_report.py",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/find_all_bundles.py",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/move_processed_bundle.py",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/verify_installation.py",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/.gitkeep",
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/.gitkeep"
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/failed_bundles/.gitkeep",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/ingest_bundle_safe.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/classify_bundle_contents.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/write_install_report.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/find_all_bundles.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/move_processed_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/verify_installation.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/workflow_review/.gitkeep",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/installed_bundles/.gitkeep"
   ],
   "workflow_review_files": [
-    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/safe-ingest-all-bundles.yml"
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/safe-ingestion-upgrade-bundle/.github/workflows/safe-ingest-all-bundles.yml"
   ],
+  "preserved_bundle_readme": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/bundle_docs/ingestion_tmp_README.md",
   "verification": {
     "manifest_found": false,
     "expected_files": [],

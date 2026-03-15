@@ -112,3 +112,43 @@
 [2026-03-14T23:50:08.042819] fallback merge /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/workflow-review-classifier-bundle/ingestion -> /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion
 [2026-03-14T23:50:08.043387] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion/compare_workflows.py
 [2026-03-14T23:50:08.043598] fallback ingestion complete; matched modules=1
+[2026-03-15T02:41:59.379954] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-15T02:41:59.380848] classified files: normal=5 workflow=0
+[2026-03-15T02:41:59.380893] no runtime-affecting files detected; skipping runtime snapshot
+[2026-03-15T02:41:59.381143] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow-review-classifier-bundle/README.md
+[2026-03-15T02:41:59.381344] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow-review-classifier-bundle/integration_notes.md
+[2026-03-15T02:41:59.381569] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow-review-classifier-bundle/workflow_replace/.gitkeep
+[2026-03-15T02:41:59.381825] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow-review-classifier-bundle/workflow_deprecated/.gitkeep
+[2026-03-15T02:41:59.382053] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow-review-classifier-bundle/ingestion/compare_workflows.py
+[2026-03-15T02:41:59.382432] preserved bundle readme /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/bundle_docs/ingestion_tmp_README.md
+[2026-03-15T02:41:59.382943] install report written: ingestion_reports/workflow_review_classifier_bundle_install_report.json
+[2026-03-15T02:41:59.382982] safe ingestion complete status=installed
+[2026-03-15T02:41:59.383406] cleaned ingestion_tmp
+[2026-03-15T02:41:59.420170] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-15T02:41:59.421448] classified files: normal=10 workflow=1
+[2026-03-15T02:41:59.421495] no runtime-affecting files detected; skipping runtime snapshot
+[2026-03-15T02:41:59.421776] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/README.md
+[2026-03-15T02:41:59.422014] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/failed_bundles/.gitkeep
+[2026-03-15T02:41:59.422243] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/ingest_bundle_safe.py
+[2026-03-15T02:41:59.422439] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/classify_bundle_contents.py
+[2026-03-15T02:41:59.422628] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/write_install_report.py
+[2026-03-15T02:41:59.422840] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/find_all_bundles.py
+[2026-03-15T02:41:59.423028] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/move_processed_bundle.py
+[2026-03-15T02:41:59.423221] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/ingestion/verify_installation.py
+[2026-03-15T02:41:59.423427] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/workflow_review/.gitkeep
+[2026-03-15T02:41:59.423631] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/safe-ingestion-upgrade-bundle/installed_bundles/.gitkeep
+[2026-03-15T02:41:59.423940] staged workflow for manual review /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/safe-ingestion-upgrade-bundle/.github/workflows/safe-ingest-all-bundles.yml
+[2026-03-15T02:41:59.424372] preserved bundle readme /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/bundle_docs/ingestion_tmp_README.md
+[2026-03-15T02:41:59.425085] install report written: ingestion_reports/safe_ingestion_upgrade_bundle_install_report.json
+[2026-03-15T02:41:59.425133] safe ingestion complete status=installed_with_manual_review
+[2026-03-15T02:41:59.425835] cleaned ingestion_tmp
+[2026-03-15T02:41:59.460465] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-15T02:41:59.461078] classified files: normal=3 workflow=0
+[2026-03-15T02:41:59.461123] no runtime-affecting files detected; skipping runtime snapshot
+[2026-03-15T02:41:59.461362] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/path-safety-upgrade-bundle/README.md
+[2026-03-15T02:41:59.461591] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/path-safety-upgrade-bundle/ingestion/ingest_bundle_safe.py
+[2026-03-15T02:41:59.461833] installed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/path-safety-upgrade-bundle/ingestion/path_safety.py
+[2026-03-15T02:41:59.462168] preserved bundle readme /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/bundle_docs/ingestion_tmp_README.md
+[2026-03-15T02:41:59.462705] install report written: ingestion_reports/path_safety_upgrade_bundle_install_report.json
+[2026-03-15T02:41:59.462751] safe ingestion complete status=installed
+[2026-03-15T02:41:59.463034] cleaned ingestion_tmp
