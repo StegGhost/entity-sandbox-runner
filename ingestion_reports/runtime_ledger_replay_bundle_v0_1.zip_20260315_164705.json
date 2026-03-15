@@ -1,0 +1,69 @@
+{
+  "bundle_name": "runtime_ledger_replay_bundle",
+  "bundle_version": "0.1.0",
+  "status": "installed",
+  "staged_files_count": 8,
+  "installed_files_count": 8,
+  "workflow_files_staged_count": 0,
+  "staged_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_runtime_ledger.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/state_log/record_runtime_event.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/integrity/hash_chain.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/ledger/append_ledger.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/ledger/merkle_root.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/replay/replay_receipt.py"
+  ],
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_runtime_ledger.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/state_log/record_runtime_event.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/integrity/hash_chain.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/ledger/append_ledger.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/ledger/merkle_root.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/replay/replay_receipt.py"
+  ],
+  "workflow_review_files": [],
+  "preserved_bundle_readme": null,
+  "staged_verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/runtime_ledger_replay_bundle_v0_1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/runtime_ledger_replay_bundle_v0_1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_runtime_ledger.py",
+      "payload/observatory/state_log/record_runtime_event.py",
+      "payload/security_plane/integrity/hash_chain.py",
+      "payload/evidence_plane/ledger/append_ledger.py",
+      "payload/evidence_plane/ledger/merkle_root.py",
+      "payload/evidence_plane/replay/replay_receipt.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/runtime_ledger_replay_bundle_v0_1.zip"
+}

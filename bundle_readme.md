@@ -1,17 +1,16 @@
-Sandbox Platform Bundle v1.2
+Runtime Ledger + Replay Bundle v0.1
 
-This is a sandbox-native installer bundle for entity-sandbox-runner.
+For entity-sandbox-runner.
 
-It installs staged content only into:
+Stages into:
 - install/
 - payload/
 
-Then you can promote the payload into:
-- control_plane/
-- security_plane/
-- evidence_plane/
-- observatory/
+After bundle installation, run:
+python install/install_runtime_ledger.py
 
-This version fixes capability enforcement by explicitly allowing:
-- bundle_manifest.json
-- bundle_readme.md
+This promotes:
+- evidence_plane/ledger
+- evidence_plane/replay
+- observatory/state_log
+- security_plane/integrity

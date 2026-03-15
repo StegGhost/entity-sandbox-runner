@@ -1,8 +1,8 @@
 {
-  "bundle_name": "sandbox_platform_bundle",
-  "version": "1.2.0",
+  "bundle_name": "runtime_ledger_replay_bundle",
+  "version": "0.1.0",
   "author": "StegVerse",
-  "description": "Sandbox-native installer bundle for control_plane, security_plane, evidence_plane, and observatory",
+  "description": "Runtime integrity ledger, receipt replay, and hash-chain support for entity-sandbox-runner",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",
@@ -11,15 +11,12 @@
     "bundle_readme.md"
   ],
   "files": [
-    "install/install_platform.py",
-    "payload/control_plane/tc/bundle_install.tc.json",
-    "payload/control_plane/tvc/verify_bundle_install.py",
-    "payload/security_plane/crypto/pq_hash.py",
-    "payload/security_plane/crypto/pq_signatures.py",
-    "payload/security_plane/crypto/provider.py",
-    "payload/security_plane/key_registry/authority_keys.json",
-    "payload/evidence_plane/receipt.py",
-    "payload/observatory/state_log/record_state.py",
+    "install/install_runtime_ledger.py",
+    "payload/evidence_plane/ledger/append_ledger.py",
+    "payload/evidence_plane/ledger/merkle_root.py",
+    "payload/evidence_plane/replay/replay_receipt.py",
+    "payload/observatory/state_log/record_runtime_event.py",
+    "payload/security_plane/integrity/hash_chain.py",
     "bundle_readme.md"
   ]
 }

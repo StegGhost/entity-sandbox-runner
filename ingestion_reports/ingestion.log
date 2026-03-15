@@ -201,3 +201,28 @@
 [2026-03-15T15:55:18.905594] install report written: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/sandbox_platform_bundle_v1_2.zip_20260315_155518.json
 [2026-03-15T15:55:18.905644] safe ingestion complete status=installed
 [2026-03-15T15:55:18.906473] cleaned ingestion_tmp
+[2026-03-15T16:47:05.197801] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/runtime_ledger_replay_bundle_v0_1
+[2026-03-15T16:47:05.198666] classified files: normal=8 workflow=0
+[2026-03-15T16:47:05.198830] no runtime-affecting files detected; skipping runtime snapshot
+[2026-03-15T16:47:05.199021] transaction started for runtime_ledger_replay_bundle_v0_1.zip
+[2026-03-15T16:47:05.199233] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-15T16:47:05.199446] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-15T16:47:05.199673] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_runtime_ledger.py
+[2026-03-15T16:47:05.199973] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/state_log/record_runtime_event.py
+[2026-03-15T16:47:05.200236] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/integrity/hash_chain.py
+[2026-03-15T16:47:05.200562] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/ledger/append_ledger.py
+[2026-03-15T16:47:05.200761] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/ledger/merkle_root.py
+[2026-03-15T16:47:05.200991] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/replay/replay_receipt.py
+[2026-03-15T16:47:05.201753] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-15T16:47:05.202157] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-15T16:47:05.202452] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_runtime_ledger.py
+[2026-03-15T16:47:05.202806] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/state_log/record_runtime_event.py
+[2026-03-15T16:47:05.203101] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/integrity/hash_chain.py
+[2026-03-15T16:47:05.203425] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/ledger/append_ledger.py
+[2026-03-15T16:47:05.203626] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/ledger/merkle_root.py
+[2026-03-15T16:47:05.203878] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/replay/replay_receipt.py
+[2026-03-15T16:47:05.204605] transaction staging removed
+[2026-03-15T16:47:05.204689] transaction completed successfully
+[2026-03-15T16:47:05.205691] install report written: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/runtime_ledger_replay_bundle_v0_1.zip_20260315_164705.json
+[2026-03-15T16:47:05.205735] safe ingestion complete status=installed
+[2026-03-15T16:47:05.206447] cleaned ingestion_tmp
