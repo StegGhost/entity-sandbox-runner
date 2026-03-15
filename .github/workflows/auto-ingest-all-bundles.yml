@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ingestion-auto
+  cancel-in-progress: false
+
 jobs:
   ingest-all:
     runs-on: ubuntu-latest
@@ -29,10 +33,8 @@ jobs:
         shell: bash
         run: |
           python ingestion/find_all_bundles.py > /tmp/bundles.txt
-
           echo "Bundle queue:"
           cat /tmp/bundles.txt || true
-
           COUNT=$(wc -l < /tmp/bundles.txt | tr -d ' ')
           echo "bundle_count=$COUNT" >> "$GITHUB_OUTPUT"
 
@@ -42,13 +44,13 @@ jobs:
           echo "No bundles found in incoming_bundles/"
           exit 0
 
-      - name: Apply all bundles sequentially
+      - name: Apply all bundles
         shell: bash
         run: |
           while IFS= read -r BUNDLE; do
             if [ -n "$BUNDLE" ] && [ -f "$BUNDLE" ]; then
               echo "Applying $BUNDLE"
-              python ingestion/ingest_bundle.py "$BUNDLE"
+              python runtime_guardian.py "$BUNDLE"
             fi
           done < /tmp/bundles.txt
 
@@ -66,13 +68,20 @@ jobs:
           fi
 
           git commit -m "Apply all queued bundles from incoming_bundles"
+
+          git pull --rebase origin main || true
           git push
 
       - name: Upload ingestion logs and backups
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ingestion-artifacts
           path: |
             ingestion_reports
             ingestion_backups
+            workflow_review
+            installed_bundles
+            failed_bundles
+            runtime_backups
           if-no-files-found: warn
