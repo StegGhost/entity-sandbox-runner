@@ -2,7 +2,7 @@ import sys
 import json
 import zipfile
 import shutil
-import importlib
+import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -63,6 +63,27 @@ def recover_transaction():
         print("Removed stale transaction_state.json")
 
 
+def load_bootstrap():
+    bootstrap_file = ROOT / "bootstrap_installer.py"
+
+    if not bootstrap_file.exists():
+        raise RuntimeError(f"Bootstrap installer missing: {bootstrap_file}")
+
+    spec = importlib.util.spec_from_file_location(
+        "bootstrap_installer",
+        bootstrap_file
+    )
+
+    module = importlib.util.module_from_spec(spec)
+
+    if spec.loader is None:
+        raise RuntimeError("Failed to load bootstrap installer")
+
+    spec.loader.exec_module(module)
+
+    return module
+
+
 def main(bundle):
     if transaction_incomplete():
         print("Incomplete transaction detected — cleaning up before continuing")
@@ -72,7 +93,7 @@ def main(bundle):
         print("Runtime corrupted — restoring")
         restore_runtime()
 
-    bootstrap = importlib.import_module("bootstrap_installer")
+    bootstrap = load_bootstrap()
     bootstrap.main(bundle)
 
 
