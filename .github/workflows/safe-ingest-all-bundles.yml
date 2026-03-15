@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ingestion-safe
+  cancel-in-progress: false
+
 jobs:
   safe-ingest-all:
     runs-on: ubuntu-latest
@@ -64,9 +68,12 @@ jobs:
           fi
 
           git commit -m "Safe ingest queued bundles from incoming_bundles"
+
+          git pull --rebase origin main || true
           git push
 
       - name: Upload ingestion reports and backups
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: safe-ingestion-artifacts
@@ -74,6 +81,9 @@ jobs:
             ingestion_reports
             ingestion_backups
             workflow_review
+            workflow_replace
+            workflow_deprecated
             installed_bundles
             failed_bundles
+            runtime_backups
           if-no-files-found: warn
