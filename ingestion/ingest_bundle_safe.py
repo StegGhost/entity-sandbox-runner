@@ -1,8 +1,10 @@
 import sys
 from pathlib import Path
 
+# Ensure repo root is importable when run via GitHub Actions
 REPO_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(REPO_ROOT))
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 import zipfile
 import shutil
@@ -15,6 +17,9 @@ from ingestion.write_install_report import write_install_report
 from ingestion.move_processed_bundle import move_bundle
 from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
+from ingestion.path_safety import validate_relative_path
+from ingestion.secure_extract import secure_extract_zip
+
 
 ROOT = Path.cwd()
 REPORT_DIR = ROOT / "ingestion_reports"
@@ -28,26 +33,35 @@ def log(msg: str):
     print(msg)
 
 
+def snapshot_runtime():
+    backup_dir = ROOT / "runtime_backups"
+    backup_dir.mkdir(exist_ok=True)
+
+    name = datetime.utcnow().strftime("runtime_%Y%m%d_%H%M%S.zip")
+
+    with zipfile.ZipFile(backup_dir / name, "w") as z:
+        for p in (ROOT / "ingestion").rglob("*"):
+            if p.is_file():
+                z.write(p, p.relative_to(ROOT))
+
+    log(f"runtime snapshot created: {backup_dir / name}")
+
+
 def extract_if_zip(path: str) -> Path:
     p = Path(path)
-
     if p.suffix != ".zip":
         return p
 
     tmp = ROOT / "ingestion_tmp"
+    extracted = secure_extract_zip(p, tmp)
+    return extracted
+
+
+def cleanup_tmp():
+    tmp = ROOT / "ingestion_tmp"
     if tmp.exists():
         shutil.rmtree(tmp)
-    tmp.mkdir(parents=True, exist_ok=True)
-
-    with zipfile.ZipFile(p) as z:
-        z.extractall(tmp)
-
-    # If the zip expands into exactly one top-level directory, use it.
-    entries = [x for x in tmp.iterdir()]
-    if len(entries) == 1 and entries[0].is_dir():
-        return entries[0]
-
-    return tmp
+        log("cleaned ingestion_tmp")
 
 
 def backup_file(dest: Path):
@@ -77,6 +91,7 @@ def install_normal_files(extracted_root: Path, normal_files):
     installed = []
 
     for rel in normal_files:
+        rel = validate_relative_path(rel)
         src = extracted_root / rel
         dest = ROOT / rel
 
@@ -93,7 +108,6 @@ def install_normal_files(extracted_root: Path, normal_files):
 def stage_workflow_files(extracted_root: Path, workflow_files):
     review_root = ROOT / "workflow_review"
     review_root.mkdir(parents=True, exist_ok=True)
-
     staged = []
 
     for rel in workflow_files:
@@ -108,6 +122,9 @@ def stage_workflow_files(extracted_root: Path, workflow_files):
         else:
             safe_rel = rel
 
+        if ".." in safe_rel.parts or safe_rel.is_absolute():
+            raise ValueError(f"unsafe workflow staging path: {safe_rel}")
+
         dest = review_root / safe_rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
@@ -118,10 +135,6 @@ def stage_workflow_files(extracted_root: Path, workflow_files):
 
 
 def install_bundle_readme(extracted_root: Path):
-    """
-    Optionally preserve bundle README at repo root only if it is named distinctly.
-    Avoid overwriting the repo root README.md by default.
-    """
     candidates = list(extracted_root.rglob("README.md"))
     if not candidates:
         return None
@@ -136,13 +149,20 @@ def install_bundle_readme(extracted_root: Path):
     return str(dest)
 
 
+def should_snapshot_runtime(normal_files):
+    for rel in normal_files:
+        rel_str = str(rel).replace("\\", "/")
+        if rel_str.startswith("ingestion/"):
+            return True
+    return False
+
+
 def ingest_safe(bundle_path: str):
     print("Running safe ingestion from:", Path.cwd())
 
     extracted = extract_if_zip(bundle_path)
     log(f"extracted bundle root: {extracted}")
 
-    # Enforce manifest before installation.
     manifest_result = enforce_manifest(extracted)
     if not manifest_result.get("verified", False):
         report = {
@@ -156,6 +176,7 @@ def ingest_safe(bundle_path: str):
         }
         report_path = write_install_report(Path(bundle_path).name, report)
         log(f"manifest enforcement failed; report written: {report_path}")
+        cleanup_tmp()
         raise Exception(f"Manifest verification failed: {manifest_result}")
 
     manifest = manifest_result.get("manifest", {})
@@ -165,11 +186,16 @@ def ingest_safe(bundle_path: str):
     normal_files, workflow_files = classify_files(extracted)
     log(f"classified files: normal={len(normal_files)} workflow={len(workflow_files)}")
 
+    if should_snapshot_runtime(normal_files):
+        log("runtime-affecting bundle detected; creating runtime snapshot")
+        snapshot_runtime()
+    else:
+        log("no runtime-affecting files detected; skipping runtime snapshot")
+
     installed_files = install_normal_files(extracted, normal_files)
     staged_workflows = stage_workflow_files(extracted, workflow_files)
     preserved_readme = install_bundle_readme(extracted)
 
-    # Repo-side verification after installation.
     verification = verify_against_manifest(ROOT, extracted)
 
     if not verification.get("verified", False):
@@ -195,13 +221,11 @@ def ingest_safe(bundle_path: str):
     }
 
     report_path = write_install_report(Path(bundle_path).name, report)
-
-    # Record module install only after successful manifest enforcement.
     record_install(bundle_name, bundle_version)
 
     log(f"install report written: {report_path}")
     log(f"safe ingestion complete status={status}")
-
+    cleanup_tmp()
     return report
 
 
@@ -215,6 +239,7 @@ def main():
         print(json.dumps(result, indent=2))
     except Exception as e:
         log(f"safe ingestion failed: {repr(e)}")
+        cleanup_tmp()
         raise
 
 
