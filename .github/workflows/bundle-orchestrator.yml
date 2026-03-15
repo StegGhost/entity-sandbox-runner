@@ -1,77 +1,74 @@
-import subprocess
-from pathlib import Path
+name: Bundle Orchestrator
 
-ROOT = Path.cwd()
-INCOMING = ROOT / "incoming_bundles"
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "incoming_bundles/*.zip"
 
+permissions:
+  contents: write
 
-def log(msg):
-    print(f"[orchestrator] {msg}")
+concurrency:
+  group: bundle-orchestrator
+  cancel-in-progress: false
 
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
 
-def find_bundles():
-    return sorted(INCOMING.glob("*.zip"))
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-def run_safe_ingest(bundle):
+      - name: Install requirements
+        shell: bash
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
 
-    log(f"processing bundle {bundle}")
+      - name: Run bundle orchestrator
+        shell: bash
+        run: |
+          python ingestion/orchestrator.py
 
-    cmd = [
-        "python",
-        "runtime_guardian.py",
-        str(bundle)
-    ]
+      - name: Commit repository changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-    result = subprocess.run(cmd)
+          git add .
 
-    if result.returncode != 0:
-        log(f"bundle failed: {bundle}")
-        return False
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
 
-    log(f"bundle completed: {bundle}")
-    return True
+          git commit -m "Bundle orchestrator applied updates"
+          git pull --rebase origin main || true
+          git push
 
-
-def run_workflow_review():
-
-    review_dir = ROOT / "workflow_review"
-
-    if not review_dir.exists():
-        return
-
-    for wf in review_dir.glob("*.yml"):
-        log(f"workflow staged for review: {wf}")
-
-
-def main():
-
-    bundles = find_bundles()
-
-    if not bundles:
-        log("no bundles found")
-        return
-
-    log(f"{len(bundles)} bundle(s) detected")
-
-    success = 0
-    failed = 0
-
-    for bundle in bundles:
-
-        ok = run_safe_ingest(bundle)
-
-        if ok:
-            success += 1
-        else:
-            failed += 1
-
-    run_workflow_review()
-
-    log(f"orchestrator finished")
-    log(f"successful: {success}")
-    log(f"failed: {failed}")
-
-
-if __name__ == "__main__":
-    main()
+      - name: Upload ingestion artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sandbox-artifacts
+          path: |
+            ingestion_reports
+            ingestion_backups
+            workflow_review
+            workflow_replace
+            workflow_deprecated
+            installed_bundles
+            failed_bundles
+            runtime_backups
+          if-no-files-found: warn
