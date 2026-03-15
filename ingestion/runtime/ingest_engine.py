@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 # Ensure repo root is importable when run via GitHub Actions
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
@@ -275,6 +275,33 @@ def ingest_safe(bundle_path: str):
     normal_files, workflow_files = classify_files(extracted)
     log(f"classified files: normal={len(normal_files)} workflow={len(workflow_files)}")
 
+    capability_result = enforce_capabilities(
+        manifest,
+        normal_files,
+        workflow_files
+    )
+
+    if not capability_result.get("verified", False):
+        report = {
+            "bundle_name": bundle_name,
+            "bundle_version": bundle_version,
+            "status": "failed",
+            "installed_files_count": 0,
+            "workflow_files_staged_count": 0,
+            "installed_files": [],
+            "workflow_review_files": [],
+            "verification": manifest_result,
+            "capabilities": capability_result,
+            "moved_bundle_to": move_bundle(bundle_path, "failed"),
+        }
+        report_path = write_install_report(Path(bundle_path).name, report)
+        log(f"capability enforcement failed; report written: {report_path}")
+        cleanup_tmp()
+        raise Exception(f"Capability enforcement failed: {capability_result}")
+
+    normal_files = capability_result["filtered_normal_files"]
+    workflow_files = capability_result["filtered_workflow_files"]
+
     if should_snapshot_runtime(normal_files):
         log("runtime-affecting bundle detected; creating runtime snapshot")
         snapshot_runtime()
@@ -338,6 +365,7 @@ def ingest_safe(bundle_path: str):
         "preserved_bundle_readme": preserved_readme,
         "staged_verification": staged_verification,
         "verification": verification,
+        "capabilities": capability_result,
         "moved_bundle_to": moved_to,
     }
 
@@ -352,7 +380,7 @@ def ingest_safe(bundle_path: str):
 
 def main():
     if len(sys.argv) < 2:
-        print("usage: python ingestion/ingest_bundle_safe.py <bundle_or_directory>")
+        print("usage: python ingestion/runtime/ingest_engine.py <bundle_or_directory>")
         raise SystemExit(1)
 
     try:
