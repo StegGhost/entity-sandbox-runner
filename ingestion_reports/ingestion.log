@@ -156,3 +156,7 @@
 [2026-03-15T12:51:13.266495] manifest-driven ingestion complete
 [2026-03-15T13:20:46.706221] using bundle manifest: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/tc_tvc_scaffolding_v0_1/bundle_manifest.json
 [2026-03-15T13:20:46.706278] manifest-driven ingestion complete
+[2026-03-15T13:52:48.889705] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/tc_tvc_scaffolding_v0_1
+[2026-03-15T13:52:48.890502] classified files: normal=9 workflow=0
+[2026-03-15T13:52:48.890914] capability enforcement failed; report written: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/tc_tvc_scaffolding_v0_1.zip_20260315_135248.json
+[2026-03-15T13:52:48.891588] cleaned ingestion_tmp
