@@ -20,8 +20,6 @@ from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
 
 # Bootstrap-safe secure_extract import
-
-# Bootstrap-safe secure_extract import
 try:
     from ingestion.secure_extract import secure_extract_zip
 except Exception:
@@ -34,7 +32,6 @@ except Exception:
             for member in z.infolist():
                 member_name = member.filename
 
-                # skip directory entries explicitly
                 if member_name.endswith("/"):
                     continue
 
@@ -133,13 +130,6 @@ def backup_file(dest: Path):
     shutil.copy2(dest, target)
 
 
-def copy_one(src: Path, dest: Path):
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    backup_file(dest)
-    shutil.copy2(src, dest)
-    log(f"installed {dest}")
-
-
 def begin_transaction(bundle_path: str) -> Path:
     tx_dir = ROOT / "transaction_staging"
     if tx_dir.exists():
@@ -199,7 +189,11 @@ def rollback_transaction(tx_dir: Path):
         log("transaction state cleared")
 
 
-def finalize_transaction_success():
+def finalize_transaction_success(tx_dir: Path):
+    if tx_dir.exists():
+        shutil.rmtree(tx_dir)
+        log("transaction staging removed")
+
     tx_state = ROOT / "transaction_state.json"
     if tx_state.exists():
         tx_state.unlink()
@@ -335,15 +329,13 @@ def ingest_safe(bundle_path: str):
             staged = stage_one(src, rel, tx_dir)
             staged_files.append(str(staged))
 
-        # Verify the staged result before touching repo root
         staged_verification = verify_against_manifest(tx_dir, extracted)
 
         if not staged_verification.get("verified", False):
             raise Exception(f"staged verification failed: {staged_verification}")
 
         installed_files = commit_transaction(tx_dir)
-        finalize_transaction_success()
-        rollback_transaction(tx_dir)
+        finalize_transaction_success(tx_dir)
 
     except Exception:
         rollback_transaction(tx_dir)
@@ -397,7 +389,7 @@ def main():
 
     try:
         result = ingest_safe(sys.argv[1])
-        print(json.dumps(result, indent=2))
+        print(json.dumps(result, indent=2, default=str))
     except Exception as e:
         log(f"safe ingestion failed: {repr(e)}")
         cleanup_tmp()
