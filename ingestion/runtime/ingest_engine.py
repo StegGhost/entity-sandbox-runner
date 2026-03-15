@@ -11,6 +11,7 @@ import shutil
 import json
 from datetime import datetime
 
+from ingestion.enforce_capabilities import enforce_capabilities
 from ingestion.classify_bundle_contents import classify_files
 from ingestion.verify_installation import verify_against_manifest
 from ingestion.write_install_report import write_install_report
