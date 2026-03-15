@@ -46,7 +46,7 @@ jobs:
           while IFS= read -r BUNDLE; do
             if [ -n "$BUNDLE" ] && [ -f "$BUNDLE" ]; then
               echo "Safely applying $BUNDLE"
-              python ingestion/ingest_bundle_safe.py "$BUNDLE"
+              python runtime_guardian.py "$BUNDLE"
             fi
           done < /tmp/bundles.txt
 
