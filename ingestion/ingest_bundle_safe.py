@@ -17,7 +17,6 @@ from ingestion.write_install_report import write_install_report
 from ingestion.move_processed_bundle import move_bundle
 from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
-from ingestion.secure_extract import secure_extract_zip
 
 try:
     from ingestion.path_safety import validate_relative_path
@@ -34,6 +33,34 @@ except Exception:
             raise ValueError("path traversal not allowed")
 
         return p
+
+try:
+    from ingestion.secure_extract import secure_extract_zip
+except Exception:
+    import zipfile
+    from pathlib import Path
+
+    def secure_extract_zip(zip_path, dest):
+        """
+        Bootstrap fallback extractor.
+        Prevents path traversal until secure_extract module is installed.
+        """
+        zip_path = Path(zip_path)
+        dest = Path(dest)
+
+        with zipfile.ZipFile(zip_path) as z:
+            for member in z.infolist():
+                p = Path(member.filename)
+
+                if p.is_absolute():
+                    raise ValueError("absolute path in zip")
+
+                if ".." in p.parts:
+                    raise ValueError("zip path traversal detected")
+
+                z.extract(member, dest)
+
+        return dest
 
 ROOT = Path.cwd()
 REPORT_DIR = ROOT / "ingestion_reports"
