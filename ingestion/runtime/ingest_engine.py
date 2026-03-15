@@ -20,6 +20,8 @@ from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
 
 # Bootstrap-safe secure_extract import
+
+# Bootstrap-safe secure_extract import
 try:
     from ingestion.secure_extract import secure_extract_zip
 except Exception:
@@ -30,7 +32,13 @@ except Exception:
 
         with zipfile.ZipFile(zip_path) as z:
             for member in z.infolist():
-                p = Path(member.filename)
+                member_name = member.filename
+
+                # skip directory entries explicitly
+                if member_name.endswith("/"):
+                    continue
+
+                p = Path(member_name)
 
                 if p.is_absolute():
                     raise ValueError("absolute path in zip")
@@ -38,7 +46,11 @@ except Exception:
                 if ".." in p.parts:
                     raise ValueError("zip path traversal detected")
 
-                z.extract(member, dest)
+                target = dest / p
+                target.parent.mkdir(parents=True, exist_ok=True)
+
+                with z.open(member, "r") as src, open(target, "wb") as dst:
+                    shutil.copyfileobj(src, dst)
 
         entries = [x for x in dest.iterdir()]
         if len(entries) == 1 and entries[0].is_dir():
