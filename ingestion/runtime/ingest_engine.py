@@ -18,35 +18,14 @@ from ingestion.move_processed_bundle import move_bundle
 from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
 
-try:
-    from ingestion.path_safety import validate_relative_path
-except Exception:
-    # bootstrap fallback until module installed
-    def validate_relative_path(p):
-        from pathlib import Path
-        p = Path(p)
-
-        if p.is_absolute():
-            raise ValueError("absolute paths not allowed")
-
-        if ".." in p.parts:
-            raise ValueError("path traversal not allowed")
-
-        return p
-
+# Bootstrap-safe secure_extract import
 try:
     from ingestion.secure_extract import secure_extract_zip
 except Exception:
-    import zipfile
-    from pathlib import Path
-
     def secure_extract_zip(zip_path, dest):
-        """
-        Bootstrap fallback extractor.
-        Prevents path traversal until secure_extract module is installed.
-        """
         zip_path = Path(zip_path)
         dest = Path(dest)
+        dest.mkdir(parents=True, exist_ok=True)
 
         with zipfile.ZipFile(zip_path) as z:
             for member in z.infolist():
@@ -60,7 +39,27 @@ except Exception:
 
                 z.extract(member, dest)
 
+        entries = [x for x in dest.iterdir()]
+        if len(entries) == 1 and entries[0].is_dir():
+            return entries[0]
+
         return dest
+
+# Bootstrap-safe path_safety import
+try:
+    from ingestion.path_safety import validate_relative_path
+except Exception:
+    def validate_relative_path(p):
+        p = Path(p)
+
+        if p.is_absolute():
+            raise ValueError("absolute paths not allowed")
+
+        if ".." in p.parts:
+            raise ValueError("path traversal not allowed")
+
+        return p
+
 
 ROOT = Path.cwd()
 REPORT_DIR = ROOT / "ingestion_reports"
@@ -128,22 +127,70 @@ def copy_one(src: Path, dest: Path):
     log(f"installed {dest}")
 
 
-def install_normal_files(extracted_root: Path, normal_files):
-    installed = []
+def begin_transaction(bundle_path: str) -> Path:
+    tx_dir = ROOT / "transaction_staging"
+    if tx_dir.exists():
+        shutil.rmtree(tx_dir)
+    tx_dir.mkdir(parents=True, exist_ok=True)
 
-    for rel in normal_files:
-        rel = validate_relative_path(rel)
-        src = extracted_root / rel
-        dest = ROOT / rel
+    state = {
+        "active": True,
+        "bundle": Path(bundle_path).name,
+        "started_at": datetime.utcnow().isoformat()
+    }
 
-        if not src.exists():
-            log(f"missing source during normal install: {src}")
+    (ROOT / "transaction_state.json").write_text(
+        json.dumps(state, indent=2),
+        encoding="utf-8"
+    )
+
+    log(f"transaction started for {Path(bundle_path).name}")
+    return tx_dir
+
+
+def stage_one(src: Path, rel: Path, tx_dir: Path):
+    rel = validate_relative_path(rel)
+    dest = tx_dir / rel
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dest)
+    log(f"staged {dest}")
+    return dest
+
+
+def commit_transaction(tx_dir: Path):
+    committed = []
+
+    for p in tx_dir.rglob("*"):
+        if not p.is_file():
             continue
 
-        copy_one(src, dest)
-        installed.append(str(dest))
+        rel = p.relative_to(tx_dir)
+        final_dest = ROOT / rel
+        final_dest.parent.mkdir(parents=True, exist_ok=True)
+        backup_file(final_dest)
+        shutil.copy2(p, final_dest)
+        committed.append(str(final_dest))
+        log(f"committed {final_dest}")
 
-    return installed
+    return committed
+
+
+def rollback_transaction(tx_dir: Path):
+    if tx_dir.exists():
+        shutil.rmtree(tx_dir)
+        log("transaction staging removed")
+
+    tx_state = ROOT / "transaction_state.json"
+    if tx_state.exists():
+        tx_state.unlink()
+        log("transaction state cleared")
+
+
+def finalize_transaction_success():
+    tx_state = ROOT / "transaction_state.json"
+    if tx_state.exists():
+        tx_state.unlink()
+        log("transaction completed successfully")
 
 
 def stage_workflow_files(extracted_root: Path, workflow_files):
@@ -233,7 +280,36 @@ def ingest_safe(bundle_path: str):
     else:
         log("no runtime-affecting files detected; skipping runtime snapshot")
 
-    installed_files = install_normal_files(extracted, normal_files)
+    tx_dir = begin_transaction(bundle_path)
+
+    try:
+        staged_files = []
+
+        for rel in normal_files:
+            rel = validate_relative_path(rel)
+            src = extracted / rel
+
+            if not src.exists():
+                raise FileNotFoundError(f"missing source during staging: {src}")
+
+            staged = stage_one(src, rel, tx_dir)
+            staged_files.append(str(staged))
+
+        # Verify the staged result before touching repo root
+        staged_verification = verify_against_manifest(tx_dir, extracted)
+
+        if not staged_verification.get("verified", False):
+            raise Exception(f"staged verification failed: {staged_verification}")
+
+        installed_files = commit_transaction(tx_dir)
+        finalize_transaction_success()
+        rollback_transaction(tx_dir)
+
+    except Exception:
+        rollback_transaction(tx_dir)
+        cleanup_tmp()
+        raise
+
     staged_workflows = stage_workflow_files(extracted, workflow_files)
     preserved_readme = install_bundle_readme(extracted)
 
@@ -252,11 +328,14 @@ def ingest_safe(bundle_path: str):
         "bundle_name": bundle_name,
         "bundle_version": bundle_version,
         "status": status,
+        "staged_files_count": len(staged_files),
         "installed_files_count": len(installed_files),
         "workflow_files_staged_count": len(staged_workflows),
+        "staged_files": staged_files,
         "installed_files": installed_files,
         "workflow_review_files": staged_workflows,
         "preserved_bundle_readme": preserved_readme,
+        "staged_verification": staged_verification,
         "verification": verification,
         "moved_bundle_to": moved_to,
     }
