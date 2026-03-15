@@ -166,3 +166,7 @@
 [2026-03-15T15:17:57.472333] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/tc_tvc_platform_v0_2
 [2026-03-15T15:17:57.472713] manifest enforcement failed; report written: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/tc_tvc_platform_v0_2.zip_20260315_151757.json
 [2026-03-15T15:17:57.473499] cleaned ingestion_tmp
+[2026-03-15T15:28:14.281803] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_platform_bundle_v1_1
+[2026-03-15T15:28:14.282996] classified files: normal=11 workflow=0
+[2026-03-15T15:28:14.283474] capability enforcement failed; report written: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/sandbox_platform_bundle_v1_1.zip_20260315_152814.json
+[2026-03-15T15:28:14.284417] cleaned ingestion_tmp

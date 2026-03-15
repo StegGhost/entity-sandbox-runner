@@ -1,0 +1,63 @@
+{
+  "bundle_name": "sandbox_platform_bundle",
+  "bundle_version": "1.1.0",
+  "status": "failed",
+  "installed_files_count": 0,
+  "workflow_files_staged_count": 0,
+  "installed_files": [],
+  "workflow_review_files": [],
+  "verification": {
+    "manifest_found": true,
+    "verified": true,
+    "reason": "manifest_valid",
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_platform_bundle_v1_1/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "sandbox_platform_bundle",
+      "version": "1.1.0",
+      "author": "StegVerse",
+      "description": "Sandbox-native installer bundle for control_plane, security_plane, evidence_plane, and observatory",
+      "install_mode": "folder_map",
+      "allowed_paths": [
+        "install/",
+        "payload/"
+      ],
+      "files": [
+        "install/install_platform.py",
+        "payload/control_plane/tc/bundle_install.tc.json",
+        "payload/control_plane/tvc/verify_bundle_install.py",
+        "payload/security_plane/crypto/pq_hash.py",
+        "payload/security_plane/crypto/pq_signatures.py",
+        "payload/security_plane/crypto/provider.py",
+        "payload/security_plane/key_registry/authority_keys.json",
+        "payload/evidence_plane/receipt.py",
+        "payload/observatory/state_log/record_state.py",
+        "bundle_readme.md"
+      ]
+    }
+  },
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/",
+      "payload/"
+    ],
+    "violations": [
+      "bundle_readme.md",
+      "bundle_manifest.json"
+    ],
+    "filtered_normal_files": [
+      "install/install_platform.py",
+      "payload/observatory/state_log/record_state.py",
+      "payload/control_plane/tc/bundle_install.tc.json",
+      "payload/control_plane/tvc/verify_bundle_install.py",
+      "payload/security_plane/key_registry/authority_keys.json",
+      "payload/security_plane/crypto/pq_signatures.py",
+      "payload/security_plane/crypto/provider.py",
+      "payload/security_plane/crypto/pq_hash.py",
+      "payload/evidence_plane/receipt.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/sandbox_platform_bundle_v1_1.zip"
+}
