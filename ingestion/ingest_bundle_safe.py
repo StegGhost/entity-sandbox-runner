@@ -17,9 +17,23 @@ from ingestion.write_install_report import write_install_report
 from ingestion.move_processed_bundle import move_bundle
 from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
-from ingestion.path_safety import validate_relative_path
 from ingestion.secure_extract import secure_extract_zip
 
+try:
+    from ingestion.path_safety import validate_relative_path
+except Exception:
+    # bootstrap fallback until module installed
+    def validate_relative_path(p):
+        from pathlib import Path
+        p = Path(p)
+
+        if p.is_absolute():
+            raise ValueError("absolute paths not allowed")
+
+        if ".." in p.parts:
+            raise ValueError("path traversal not allowed")
+
+        return p
 
 ROOT = Path.cwd()
 REPORT_DIR = ROOT / "ingestion_reports"
