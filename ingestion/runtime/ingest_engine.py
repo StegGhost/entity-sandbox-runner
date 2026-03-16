@@ -9,6 +9,7 @@ if str(REPO_ROOT) not in sys.path:
 import zipfile
 import shutil
 import json
+import subprocess
 from datetime import datetime
 
 from ingestion.enforce_capabilities import enforce_capabilities
@@ -18,6 +19,12 @@ from ingestion.write_install_report import write_install_report
 from ingestion.move_processed_bundle import move_bundle
 from ingestion.enforce_manifest import enforce_manifest
 from ingestion.module_registry import record_install
+
+# NEW: runtime capability validator
+try:
+    from ingestion.capability_validator import validate_capabilities
+except Exception:
+    validate_capabilities = None
 
 # Bootstrap-safe secure_extract import
 try:
@@ -30,12 +37,12 @@ except Exception:
 
         with zipfile.ZipFile(zip_path) as z:
             for member in z.infolist():
-                member_name = member.filename
+                name = member.filename
 
-                if member_name.endswith("/"):
+                if name.endswith("/"):
                     continue
 
-                p = Path(member_name)
+                p = Path(name)
 
                 if p.is_absolute():
                     raise ValueError("absolute path in zip")
@@ -99,11 +106,13 @@ def snapshot_runtime():
 
 def extract_if_zip(path: str) -> Path:
     p = Path(path)
+
     if p.suffix != ".zip":
         return p
 
     tmp = ROOT / "ingestion_tmp"
     extracted = secure_extract_zip(p, tmp)
+
     return extracted
 
 
@@ -115,6 +124,7 @@ def cleanup_tmp():
 
 
 def backup_file(dest: Path):
+
     if not dest.exists():
         return
 
@@ -123,6 +133,7 @@ def backup_file(dest: Path):
 
     target = backup_dir / dest.name
     counter = 1
+
     while target.exists():
         target = backup_dir / f"{dest.stem}_{counter}{dest.suffix}"
         counter += 1
@@ -130,10 +141,13 @@ def backup_file(dest: Path):
     shutil.copy2(dest, target)
 
 
-def begin_transaction(bundle_path: str) -> Path:
+def begin_transaction(bundle_path: str):
+
     tx_dir = ROOT / "transaction_staging"
+
     if tx_dir.exists():
         shutil.rmtree(tx_dir)
+
     tx_dir.mkdir(parents=True, exist_ok=True)
 
     state = {
@@ -148,130 +162,127 @@ def begin_transaction(bundle_path: str) -> Path:
     )
 
     log(f"transaction started for {Path(bundle_path).name}")
+
     return tx_dir
 
 
 def stage_one(src: Path, rel: Path, tx_dir: Path):
+
     rel = validate_relative_path(rel)
+
     dest = tx_dir / rel
     dest.parent.mkdir(parents=True, exist_ok=True)
+
     shutil.copy2(src, dest)
+
     log(f"staged {dest}")
+
     return dest
 
 
 def commit_transaction(tx_dir: Path):
+
     committed = []
 
     for p in tx_dir.rglob("*"):
+
         if not p.is_file():
             continue
 
         rel = p.relative_to(tx_dir)
         final_dest = ROOT / rel
+
         final_dest.parent.mkdir(parents=True, exist_ok=True)
+
         backup_file(final_dest)
         shutil.copy2(p, final_dest)
+
         committed.append(str(final_dest))
+
         log(f"committed {final_dest}")
 
     return committed
 
 
 def rollback_transaction(tx_dir: Path):
+
     if tx_dir.exists():
         shutil.rmtree(tx_dir)
         log("transaction staging removed")
 
     tx_state = ROOT / "transaction_state.json"
+
     if tx_state.exists():
         tx_state.unlink()
         log("transaction state cleared")
 
 
 def finalize_transaction_success(tx_dir: Path):
+
     if tx_dir.exists():
         shutil.rmtree(tx_dir)
-        log("transaction staging removed")
 
     tx_state = ROOT / "transaction_state.json"
+
     if tx_state.exists():
         tx_state.unlink()
-        log("transaction completed successfully")
+
+    log("transaction completed successfully")
 
 
-def stage_workflow_files(extracted_root: Path, workflow_files):
-    review_root = ROOT / "workflow_review"
-    review_root.mkdir(parents=True, exist_ok=True)
-    staged = []
+# NEW: run bundle installer if present
+def run_bundle_installer(extracted_root: Path):
 
-    for rel in workflow_files:
-        src = extracted_root / rel
-        if not src.exists():
-            log(f"missing source during workflow staging: {src}")
-            continue
+    installer_dir = extracted_root / "install"
 
-        rel_parts = rel.parts
-        if len(rel_parts) >= 3 and rel_parts[0] == ".github" and rel_parts[1] == "workflows":
-            safe_rel = Path(*rel_parts[2:])
-        else:
-            safe_rel = rel
+    if not installer_dir.exists():
+        return
 
-        if ".." in safe_rel.parts or safe_rel.is_absolute():
-            raise ValueError(f"unsafe workflow staging path: {safe_rel}")
+    for installer in installer_dir.glob("*.py"):
 
-        dest = review_root / safe_rel
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, dest)
-        staged.append(str(dest))
-        log(f"staged workflow for manual review {dest}")
+        log(f"running bundle installer {installer}")
 
-    return staged
-
-
-def install_bundle_readme(extracted_root: Path):
-    candidates = list(extracted_root.rglob("README.md"))
-    if not candidates:
-        return None
-
-    bundle_docs = ROOT / "ingestion_reports" / "bundle_docs"
-    bundle_docs.mkdir(parents=True, exist_ok=True)
-
-    src = candidates[0]
-    dest = bundle_docs / f"{extracted_root.name}_README.md"
-    shutil.copy2(src, dest)
-    log(f"preserved bundle readme {dest}")
-    return str(dest)
+        subprocess.run(
+            [sys.executable, str(installer)],
+            cwd=ROOT,
+            check=True
+        )
 
 
 def should_snapshot_runtime(normal_files):
+
     for rel in normal_files:
+
         rel_str = str(rel).replace("\\", "/")
+
         if rel_str.startswith("ingestion/"):
             return True
+
     return False
 
 
 def ingest_safe(bundle_path: str):
+
     print("Running safe ingestion from:", Path.cwd())
 
     extracted = extract_if_zip(bundle_path)
+
     log(f"extracted bundle root: {extracted}")
 
     manifest_result = enforce_manifest(extracted)
+
     if not manifest_result.get("verified", False):
+
         report = {
             "status": "failed",
-            "installed_files_count": 0,
-            "workflow_files_staged_count": 0,
-            "installed_files": [],
-            "workflow_review_files": [],
             "verification": manifest_result,
             "moved_bundle_to": move_bundle(bundle_path, "failed"),
         }
-        report_path = write_install_report(Path(bundle_path).name, report)
-        log(f"manifest enforcement failed; report written: {report_path}")
+
+        write_install_report(Path(bundle_path).name, report)
+
         cleanup_tmp()
+
         raise Exception(f"Manifest verification failed: {manifest_result}")
 
     manifest = manifest_result.get("manifest", {})
@@ -279,6 +290,7 @@ def ingest_safe(bundle_path: str):
     bundle_version = manifest.get("version", "unknown")
 
     normal_files, workflow_files = classify_files(extracted)
+
     log(f"classified files: normal={len(normal_files)} workflow={len(workflow_files)}")
 
     capability_result = enforce_capabilities(
@@ -288,53 +300,63 @@ def ingest_safe(bundle_path: str):
     )
 
     if not capability_result.get("verified", False):
+
         report = {
             "bundle_name": bundle_name,
             "bundle_version": bundle_version,
             "status": "failed",
-            "installed_files_count": 0,
-            "workflow_files_staged_count": 0,
-            "installed_files": [],
-            "workflow_review_files": [],
-            "verification": manifest_result,
             "capabilities": capability_result,
             "moved_bundle_to": move_bundle(bundle_path, "failed"),
         }
-        report_path = write_install_report(Path(bundle_path).name, report)
-        log(f"capability enforcement failed; report written: {report_path}")
+
+        write_install_report(Path(bundle_path).name, report)
+
         cleanup_tmp()
+
         raise Exception(f"Capability enforcement failed: {capability_result}")
 
     normal_files = capability_result["filtered_normal_files"]
     workflow_files = capability_result["filtered_workflow_files"]
 
+    # NEW: optional deep capability validator
+    if validate_capabilities:
+        validator = validate_capabilities(extracted, manifest)
+
+        if not validator.get("verified", False):
+            raise RuntimeError(
+                f"Capability validator rejected bundle: {validator['violations']}"
+            )
+
     if should_snapshot_runtime(normal_files):
         log("runtime-affecting bundle detected; creating runtime snapshot")
         snapshot_runtime()
-    else:
-        log("no runtime-affecting files detected; skipping runtime snapshot")
 
     tx_dir = begin_transaction(bundle_path)
 
     try:
+
         staged_files = []
 
         for rel in normal_files:
+
             rel = validate_relative_path(rel)
+
             src = extracted / rel
 
             if not src.exists():
                 raise FileNotFoundError(f"missing source during staging: {src}")
 
             staged = stage_one(src, rel, tx_dir)
+
             staged_files.append(str(staged))
 
         staged_verification = verify_against_manifest(tx_dir, extracted)
 
         if not staged_verification.get("verified", False):
-            raise Exception(f"staged verification failed: {staged_verification}")
+            raise Exception(f"staged verification failed")
 
         installed_files = commit_transaction(tx_dir)
+
         finalize_transaction_success(tx_dir)
 
     except Exception:
@@ -342,17 +364,12 @@ def ingest_safe(bundle_path: str):
         cleanup_tmp()
         raise
 
-    staged_workflows = stage_workflow_files(extracted, workflow_files)
-    preserved_readme = install_bundle_readme(extracted)
+    # NEW: run smart installer
+    run_bundle_installer(extracted)
 
     verification = verify_against_manifest(ROOT, extracted)
 
-    if not verification.get("verified", False):
-        status = "failed"
-    elif staged_workflows:
-        status = "installed_with_manual_review"
-    else:
-        status = "installed"
+    status = "installed" if verification.get("verified", False) else "failed"
 
     moved_to = move_bundle(bundle_path, status)
 
@@ -360,39 +377,42 @@ def ingest_safe(bundle_path: str):
         "bundle_name": bundle_name,
         "bundle_version": bundle_version,
         "status": status,
-        "staged_files_count": len(staged_files),
         "installed_files_count": len(installed_files),
-        "workflow_files_staged_count": len(staged_workflows),
-        "staged_files": staged_files,
         "installed_files": installed_files,
-        "workflow_review_files": staged_workflows,
-        "preserved_bundle_readme": preserved_readme,
-        "staged_verification": staged_verification,
         "verification": verification,
         "capabilities": capability_result,
         "moved_bundle_to": moved_to,
     }
 
-    report_path = write_install_report(Path(bundle_path).name, report)
+    write_install_report(Path(bundle_path).name, report)
+
     record_install(bundle_name, bundle_version)
 
-    log(f"install report written: {report_path}")
     log(f"safe ingestion complete status={status}")
+
     cleanup_tmp()
+
     return report
 
 
 def main():
+
     if len(sys.argv) < 2:
         print("usage: python ingestion/runtime/ingest_engine.py <bundle_or_directory>")
         raise SystemExit(1)
 
     try:
+
         result = ingest_safe(sys.argv[1])
+
         print(json.dumps(result, indent=2, default=str))
+
     except Exception as e:
+
         log(f"safe ingestion failed: {repr(e)}")
+
         cleanup_tmp()
+
         raise
 
 
