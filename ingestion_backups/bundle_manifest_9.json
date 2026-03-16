@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Research upgrades 181\u2013195 for autonomous theory publication, atlas finalization, and cross-scale convergence analysis",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

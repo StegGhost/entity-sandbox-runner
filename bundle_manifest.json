@@ -1,8 +1,6 @@
 {
   "bundle_name": "sandbox_research_upgrades",
   "version": "1.0.0",
-  "author": "StegVerse",
-  "description": "Research upgrades 136-150 for autonomous discovery, cross-scale testing, and research-sandbox federation",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

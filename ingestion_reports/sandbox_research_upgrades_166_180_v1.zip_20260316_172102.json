@@ -1,0 +1,67 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 18,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_signal_filter.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/rg_fixed_point_visualizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/global_experiment_index.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/meta_theory_builder.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/anomaly_root_cause_analyzer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_compute_balancer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_sandbox_replication_runner.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_convergence_tracker.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/research_graph_optimizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/stability_atlas_expander.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theorem_proof_attempt_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_confidence_aggregator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/automated_null_hypothesis_tester.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/federated_experiment_router.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_counterexample_finder.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_166_180_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/discovery_signal_filter.py",
+      "payload/observatory/rg_fixed_point_visualizer.py",
+      "payload/observatory/global_experiment_index.py",
+      "payload/observatory/meta_theory_builder.py",
+      "payload/observatory/anomaly_root_cause_analyzer.py",
+      "payload/observatory/sandbox_compute_balancer.py",
+      "payload/observatory/cross_sandbox_replication_runner.py",
+      "payload/observatory/discovery_convergence_tracker.py",
+      "payload/observatory/research_graph_optimizer.py",
+      "payload/observatory/stability_atlas_expander.py",
+      "payload/observatory/theorem_proof_attempt_engine.py",
+      "payload/observatory/discovery_confidence_aggregator.py",
+      "payload/observatory/automated_null_hypothesis_tester.py",
+      "payload/observatory/federated_experiment_router.py",
+      "payload/observatory/invariant_counterexample_finder.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_166_180_v1.zip"
+}

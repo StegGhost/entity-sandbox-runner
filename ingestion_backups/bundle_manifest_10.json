@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Research upgrades 196\u2013210 extending autonomous discovery, verification, and federated research coordination",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

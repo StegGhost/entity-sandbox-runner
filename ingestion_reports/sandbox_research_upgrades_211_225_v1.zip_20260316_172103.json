@@ -1,0 +1,67 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 18,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_network_topology_mapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_atlas_expander.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theory_lineage_visualizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_signal_ranker.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/multi_sandbox_consistency_checker.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_domain_mapping_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/federated_result_validator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theory_convergence_monitor.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/universal_structure_detector.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/adaptive_model_refitter.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/research_resource_allocator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_pressure_analyzer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_cycle_forecaster.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/autonomous_dataset_refiner.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_uncertainty_tracker.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_211_225_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/sandbox_network_topology_mapper.py",
+      "payload/observatory/invariant_atlas_expander.py",
+      "payload/observatory/theory_lineage_visualizer.py",
+      "payload/observatory/discovery_signal_ranker.py",
+      "payload/observatory/multi_sandbox_consistency_checker.py",
+      "payload/observatory/cross_domain_mapping_engine.py",
+      "payload/observatory/federated_result_validator.py",
+      "payload/observatory/theory_convergence_monitor.py",
+      "payload/observatory/universal_structure_detector.py",
+      "payload/observatory/adaptive_model_refitter.py",
+      "payload/observatory/research_resource_allocator.py",
+      "payload/observatory/invariant_pressure_analyzer.py",
+      "payload/observatory/discovery_cycle_forecaster.py",
+      "payload/observatory/autonomous_dataset_refiner.py",
+      "payload/observatory/discovery_uncertainty_tracker.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_211_225_v1.zip"
+}

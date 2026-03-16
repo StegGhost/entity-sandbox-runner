@@ -1,0 +1,67 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 18,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_feedback_controller.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/multi_scale_phase_mapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_energy_optimizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theorem_counterexample_hunter.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_explanation_generator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_generalization_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/universal_theory_tracker.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/global_invariant_registry.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/hypothesis_mutation_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/federated_result_merger.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theory_complexity_scorer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/experiment_space_mapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_topology_analyzer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_autoscaling_controller.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/research_integrity_checker.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_196_210_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/discovery_feedback_controller.py",
+      "payload/observatory/multi_scale_phase_mapper.py",
+      "payload/observatory/discovery_energy_optimizer.py",
+      "payload/observatory/theorem_counterexample_hunter.py",
+      "payload/observatory/discovery_explanation_generator.py",
+      "payload/observatory/invariant_generalization_engine.py",
+      "payload/observatory/universal_theory_tracker.py",
+      "payload/observatory/global_invariant_registry.py",
+      "payload/observatory/hypothesis_mutation_engine.py",
+      "payload/observatory/federated_result_merger.py",
+      "payload/observatory/theory_complexity_scorer.py",
+      "payload/observatory/experiment_space_mapper.py",
+      "payload/observatory/sandbox_topology_analyzer.py",
+      "payload/observatory/sandbox_autoscaling_controller.py",
+      "payload/observatory/research_integrity_checker.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_196_210_v1.zip"
+}

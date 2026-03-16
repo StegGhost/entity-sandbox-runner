@@ -1,0 +1,63 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 15,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/execution_plane/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/execution_plane/sandbox_runner/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/control_plane/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/control_plane/tc/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/control_plane/tvc/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/security_plane/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/security_plane/integrity/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/security_plane/crypto/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/evidence_plane/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/evidence_plane/ledger/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/evidence_plane/replay/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observation_plane/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observation_plane/phase_space/README.md"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "control_plane/",
+      "evidence_plane/",
+      "execution_plane/",
+      "install/",
+      "observation_plane/",
+      "observatory/",
+      "security_plane/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "execution_plane/README.md",
+      "execution_plane/sandbox_runner/README.md",
+      "observatory/README.md",
+      "control_plane/README.md",
+      "control_plane/tc/README.md",
+      "control_plane/tvc/README.md",
+      "install/README.md",
+      "security_plane/README.md",
+      "security_plane/integrity/README.md",
+      "security_plane/crypto/README.md",
+      "evidence_plane/README.md",
+      "evidence_plane/ledger/README.md",
+      "evidence_plane/replay/README.md",
+      "observation_plane/README.md",
+      "observation_plane/phase_space/README.md"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_readme_updates_v1.zip"
+}
