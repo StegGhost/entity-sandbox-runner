@@ -1,0 +1,11 @@
+{
+  "experiments": [
+    {
+      "id": "critical_ratio_campaign",
+      "runner": "experiments/critical_ratio_campaign/run_experiment.py",
+      "description": "Monte Carlo exploration of collapse boundary invariant",
+      "default_runs": 50000,
+      "parallel_supported": true
+    }
+  ]
+}

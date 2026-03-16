@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_service_and_validation_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Combined upgrades 503-542 adding result delivery, reproducibility, dataset publishing, SaaS orchestration, federation, and adaptive boundary discovery.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

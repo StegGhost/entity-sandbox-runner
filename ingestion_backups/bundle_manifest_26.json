@@ -1,0 +1,13 @@
+{
+  "bundle_name": "stegverse_result_delivery_bundle",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Result delivery, raw export, and expanded critical ratio experiment bundle",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

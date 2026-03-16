@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "experiment",
+    "runs",
+    "parallel"
+  ],
+  "properties": {
+    "experiment": {
+      "type": "string"
+    },
+    "runs": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "parallel": {
+      "type": "boolean"
+    },
+    "shards": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}
