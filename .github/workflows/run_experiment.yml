@@ -70,6 +70,6 @@ jobs:
 
           git add experiments/${{ github.event.inputs.experiment }}/results
 
-          git commit -m "Experiment results for ${{ github.event.inputs.experiment }}" || echo "No changes"
-
+          git commit -m "Experiment results for ${{ github.event.inputs.experiment }}" || echo "Nothing to commit"
+          
           git push
