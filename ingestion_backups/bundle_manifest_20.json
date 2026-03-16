@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_service_upgrades",
+  "version": "1.0.0",
+  "description": "Sandbox-as-a-Service architecture including job scheduler, API gateway, workspace manager and experiment publishing",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

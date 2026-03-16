@@ -1,1 +1,1 @@
-Sandbox-as-a-Service upgrades 451–482
+Architecture manifest, README updates, and demo-protocol starter files for StegVerse Sandbox.

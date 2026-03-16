@@ -1340,3 +1340,70 @@
 [2026-03-16T19:53:59.394794] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_upgrades_451_482_v1/install/install_bundle_autoregister.py
 [2026-03-16T19:53:59.420722] safe ingestion complete status=installed
 [2026-03-16T19:53:59.421237] cleaned ingestion_tmp
+[2026-03-16T21:17:36.304008] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_docs_manifest_bundle_v1
+[2026-03-16T21:17:36.306017] classified files: normal=30 workflow=0
+[2026-03-16T21:17:36.306606] transaction started for sandbox_docs_manifest_bundle_v1.zip
+[2026-03-16T21:17:36.306841] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-16T21:17:36.307032] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-16T21:17:36.307264] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-16T21:17:36.307507] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/README.md
+[2026-03-16T21:17:36.307710] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/system_manifest.json
+[2026-03-16T21:17:36.307928] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/execution_plane/README.md
+[2026-03-16T21:17:36.308141] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/execution_plane/sandbox_runner/README.md
+[2026-03-16T21:17:36.308362] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/README.md
+[2026-03-16T21:17:36.308606] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/control_plane/README.md
+[2026-03-16T21:17:36.308821] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/control_plane/tc/README.md
+[2026-03-16T21:17:36.309034] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/control_plane/tvc/README.md
+[2026-03-16T21:17:36.309284] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/docs/research/RUNTIME_THEORY.md
+[2026-03-16T21:17:36.309523] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/docs/architecture/PROPOSED_BUILD.md
+[2026-03-16T21:17:36.309723] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/docs/architecture/ARCHITECTURE_DIAGRAM.md
+[2026-03-16T21:17:36.309987] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/docs/demo_suite_suggestions/critical_ratio_campaign/README.md
+[2026-03-16T21:17:36.310176] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/docs/demo_suite_suggestions/critical_ratio_campaign/experiment_config.json
+[2026-03-16T21:17:36.310360] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/docs/demo_suite_suggestions/critical_ratio_campaign/protocol.md
+[2026-03-16T21:17:36.310594] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/install/README.md
+[2026-03-16T21:17:36.310802] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/README.md
+[2026-03-16T21:17:36.311024] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/integrity/README.md
+[2026-03-16T21:17:36.311234] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/security_plane/crypto/README.md
+[2026-03-16T21:17:36.311436] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/README.md
+[2026-03-16T21:17:36.311673] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/ledger/README.md
+[2026-03-16T21:17:36.311877] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/evidence_plane/replay/README.md
+[2026-03-16T21:17:36.312081] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/README.md
+[2026-03-16T21:17:36.312284] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/jobs/README.md
+[2026-03-16T21:17:36.312517] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/auth/README.md
+[2026-03-16T21:17:36.312730] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/api/README.md
+[2026-03-16T21:17:36.312935] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observation_plane/README.md
+[2026-03-16T21:17:36.313141] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observation_plane/phase_space/README.md
+[2026-03-16T21:17:36.314504] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-16T21:17:36.315041] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-16T21:17:36.315631] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-16T21:17:36.315923] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/README.md
+[2026-03-16T21:17:36.316176] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/system_manifest.json
+[2026-03-16T21:17:36.317345] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/execution_plane/README.md
+[2026-03-16T21:17:36.317655] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/execution_plane/sandbox_runner/README.md
+[2026-03-16T21:17:36.317895] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/README.md
+[2026-03-16T21:17:36.318124] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/control_plane/README.md
+[2026-03-16T21:17:36.318365] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/control_plane/tc/README.md
+[2026-03-16T21:17:36.318615] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/control_plane/tvc/README.md
+[2026-03-16T21:17:36.318960] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/docs/research/RUNTIME_THEORY.md
+[2026-03-16T21:17:36.319208] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/docs/architecture/PROPOSED_BUILD.md
+[2026-03-16T21:17:36.319398] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/docs/architecture/ARCHITECTURE_DIAGRAM.md
+[2026-03-16T21:17:36.319752] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/docs/demo_suite_suggestions/critical_ratio_campaign/README.md
+[2026-03-16T21:17:36.319950] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/docs/demo_suite_suggestions/critical_ratio_campaign/experiment_config.json
+[2026-03-16T21:17:36.320137] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/docs/demo_suite_suggestions/critical_ratio_campaign/protocol.md
+[2026-03-16T21:17:36.320385] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/install/README.md
+[2026-03-16T21:17:36.320639] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/README.md
+[2026-03-16T21:17:36.320878] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/integrity/README.md
+[2026-03-16T21:17:36.321107] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/security_plane/crypto/README.md
+[2026-03-16T21:17:36.321325] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/README.md
+[2026-03-16T21:17:36.321589] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/ledger/README.md
+[2026-03-16T21:17:36.321807] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/evidence_plane/replay/README.md
+[2026-03-16T21:17:36.322047] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/README.md
+[2026-03-16T21:17:36.322312] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/jobs/README.md
+[2026-03-16T21:17:36.322578] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/auth/README.md
+[2026-03-16T21:17:36.322824] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/api/README.md
+[2026-03-16T21:17:36.323066] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observation_plane/README.md
+[2026-03-16T21:17:36.323323] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observation_plane/phase_space/README.md
+[2026-03-16T21:17:36.325185] transaction completed successfully
+[2026-03-16T21:17:36.325381] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_docs_manifest_bundle_v1/install/install_bundle_autoregister.py
+[2026-03-16T21:17:36.358929] safe ingestion complete status=installed
+[2026-03-16T21:17:36.360772] cleaned ingestion_tmp

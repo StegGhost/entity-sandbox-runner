@@ -1,7 +1,8 @@
 {
-  "bundle_name": "sandbox_service_upgrades",
+  "bundle_name": "sandbox_docs_manifest_bundle",
   "version": "1.0.0",
-  "description": "Sandbox-as-a-Service architecture including job scheduler, API gateway, workspace manager and experiment publishing",
+  "author": "StegVerse",
+  "description": "Architecture manifest, core READMEs, and demo protocol starter files for stegverse_sandbox",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

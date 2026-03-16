@@ -1,0 +1,125 @@
+{
+  "ecosystem": "StegVerse",
+  "architecture_version": "0.1",
+  "system_name": "StegVerse Research Sandbox",
+  "repository_role": "research_environment",
+  "organization_map": {
+    "StegVerse-org": [
+      {
+        "name": "StegVerse-SDK",
+        "role": "client_interface",
+        "description": "Developer SDK and external interface to sandbox and governance runtime"
+      },
+      {
+        "name": "trust-kernel",
+        "role": "governance_kernel",
+        "description": "Intent evaluation, policy enforcement, receipt generation"
+      },
+      {
+        "name": "demo_ingest_engine",
+        "role": "artifact_ingestion",
+        "description": "Deterministic bundle ingestion, validation, staging, reporting"
+      },
+      {
+        "name": "demo_suite_runner",
+        "role": "validation_harness",
+        "description": "External-facing demo and validation harness"
+      },
+      {
+        "name": "StegVerse-demo-suite",
+        "role": "experiment_protocols_and_demos",
+        "description": "Reviewer-facing experiment protocols, demo campaigns, reproducible walkthroughs"
+      }
+    ],
+    "StegGhost": [
+      {
+        "name": "entity-sandbox-runner",
+        "role": "operational_sandbox_runtime",
+        "description": "Operational bundle ingestion, transaction staging, workflow review, governed installs"
+      },
+      {
+        "name": "stegverse_sandbox",
+        "role": "research_environment",
+        "description": "Plane-based architecture sandbox and autonomous discovery environment"
+      },
+      {
+        "name": "ghost-pat-lab",
+        "role": "credential_research",
+        "description": "Credential, token, and authentication experimentation"
+      }
+    ]
+  },
+  "planes": [
+    {
+      "name": "control_plane",
+      "purpose": "Coordinates governance decisions"
+    },
+    {
+      "name": "execution_plane",
+      "purpose": "Runs experiments and workloads"
+    },
+    {
+      "name": "evidence_plane",
+      "purpose": "Records receipts and proof chains"
+    },
+    {
+      "name": "observation_plane",
+      "purpose": "Telemetry, metrics, phase-space analysis"
+    },
+    {
+      "name": "security_plane",
+      "purpose": "Authority validation, cryptographic integrity, sandbox controls"
+    },
+    {
+      "name": "service_plane",
+      "purpose": "APIs and service adapters"
+    },
+    {
+      "name": "simulation_plane",
+      "purpose": "Experiment environments and multi-entity simulation"
+    },
+    {
+      "name": "cluster_plane",
+      "purpose": "Distributed compute orchestration"
+    },
+    {
+      "name": "federation_plane",
+      "purpose": "Cross-cluster and cross-sandbox coordination"
+    }
+  ],
+  "runtime_properties": {
+    "intent_before_execution": true,
+    "policy_enforcement": true,
+    "authority_rederivation_at_commit": true,
+    "receipt_generation": true,
+    "manifest_driven_ingestion": true,
+    "reproducible_sandbox_experimentation": true
+  },
+  "core_variables": [
+    "governance_capacity",
+    "artifact_pressure",
+    "constraints",
+    "trust_continuity"
+  ],
+  "candidate_invariant": {
+    "name": "U",
+    "formula": "(capacity * continuity) / (pressure * constraints)",
+    "purpose": "Candidate reduced invariant for stability transitions"
+  },
+  "research_pipeline": [
+    "experiment_execution",
+    "phase_space_analysis",
+    "invariant_detection",
+    "counterexample_search",
+    "theorem_candidate_generation",
+    "falsification_loop",
+    "theory_compression",
+    "invariant_atlas_building",
+    "universal_law_extraction"
+  ],
+  "recommended_demo_repo_placement": {
+    "repository": "StegVerse-org/StegVerse-demo-suite",
+    "path": "experiments/critical_ratio_campaign/",
+    "reason": "Best place for reviewer-facing experiment protocols and reproducible demos"
+  }
+}

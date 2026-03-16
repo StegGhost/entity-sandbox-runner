@@ -1,0 +1,40 @@
+{
+  "experiment_name": "critical_ratio_campaign",
+  "parameters": {
+    "governance_capacity": [
+      0.1,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "artifact_pressure": [
+      0.1,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "constraints": [
+      0.1,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "trust_continuity": [
+      0.1,
+      0.5,
+      1.0,
+      2.0
+    ]
+  },
+  "runs": 50000,
+  "analysis": [
+    "collapse_boundary_detection",
+    "critical_threshold_estimation",
+    "scaling_exponent_fit"
+  ],
+  "output_artifacts": [
+    "phase_space_map",
+    "collapse_boundary_surface",
+    "scaling_exponent_estimate"
+  ]
+}
