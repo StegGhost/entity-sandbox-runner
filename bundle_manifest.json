@@ -1,23 +1,26 @@
 {
   "bundle_name": "sandbox_research_upgrades",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "StegVerse",
-  "description": "Research upgrades 91-105 including symbolic regression, anomaly discovery, invariant testing, discovery graphing, and autonomous research supervision",
+  "description": "Research rigor and platform upgrades 106-115 including RG flow solver, bootstrap validation, symbolic regression search, manifold explorer, federation auth, signed bundle verification, control-law synthesis, adaptive intervention planning, universality comparison, and novelty search.",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",
     "payload/",
-    "bundle_manifest.json",
-    "bundle_readme.md"
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
   ],
   "files": [
     "install/install_bundle_autoregister.py",
-    "payload/observatory/symbolic_regression_engine.py",
-    "payload/observatory/discovery_graph_engine.py",
-    "payload/observatory/invariant_stability_tester.py",
-    "payload/observatory/anomaly_discovery_engine.py",
-    "payload/observatory/autonomous_research_supervisor.py",
-    "bundle_readme.md",
-    "bundle_manifest.json"
+    "payload/observatory/rg_flow_solver.py",
+    "payload/observatory/bootstrap_validation_engine.py",
+    "payload/observatory/symbolic_regression_search.py",
+    "payload/observatory/stability_manifold_explorer.py",
+    "payload/observatory/federated_node_auth_registry.py",
+    "payload/observatory/signed_bundle_verifier.py",
+    "payload/observatory/control_law_synthesizer.py",
+    "payload/observatory/adaptive_intervention_planner.py",
+    "payload/observatory/universality_class_comparator.py",
+    "payload/observatory/discovery_novelty_engine.py"
   ]
 }

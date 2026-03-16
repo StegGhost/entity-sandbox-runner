@@ -1,0 +1,57 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "bundle_version": "1.1.0",
+  "status": "installed",
+  "installed_files_count": 13,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/universality_class_comparator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/symbolic_regression_search.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/control_law_synthesizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/stability_manifold_explorer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/rg_flow_solver.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/bootstrap_validation_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/federated_node_auth_registry.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/signed_bundle_verifier.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_novelty_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/adaptive_intervention_planner.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_106_115_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/universality_class_comparator.py",
+      "payload/observatory/symbolic_regression_search.py",
+      "payload/observatory/control_law_synthesizer.py",
+      "payload/observatory/stability_manifold_explorer.py",
+      "payload/observatory/rg_flow_solver.py",
+      "payload/observatory/bootstrap_validation_engine.py",
+      "payload/observatory/federated_node_auth_registry.py",
+      "payload/observatory/signed_bundle_verifier.py",
+      "payload/observatory/discovery_novelty_engine.py",
+      "payload/observatory/adaptive_intervention_planner.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_106_115_v1.zip"
+}

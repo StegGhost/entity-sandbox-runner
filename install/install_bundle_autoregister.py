@@ -1,71 +1,77 @@
 import json
 import shutil
-import subprocess
-import sys
 from pathlib import Path
+from datetime import datetime
 
 ROOT = Path.cwd()
 BUNDLE_ROOT = Path(__file__).resolve().parents[1]
 PAYLOAD = BUNDLE_ROOT / "payload"
 RECEIPTS = ROOT / "evidence_plane" / "install_receipts"
+PIPELINE_REGISTRY = ROOT / "observatory" / "pipeline_registry.json"
+
+
+def discover_modules():
+    modules = []
+    if not PAYLOAD.exists():
+        return modules
+    for py in PAYLOAD.rglob("*.py"):
+        rel = py.relative_to(PAYLOAD)
+        module = ".".join(rel.with_suffix("").parts)
+        modules.append({"file": str(rel), "module": module})
+    return modules
 
 
 def install_payload():
     installed = []
-
     for p in PAYLOAD.rglob("*"):
         if not p.is_file():
             continue
-
         rel = p.relative_to(PAYLOAD)
         dest = ROOT / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(p, dest)
         installed.append(str(dest))
         print(f"installed: {dest}")
-
     return installed
 
 
-def try_run(script_rel: str):
-    script = ROOT / script_rel
-    if not script.exists():
-        return {"script": script_rel, "ran": False, "reason": "missing"}
-
+def update_registry(modules):
+    if not PIPELINE_REGISTRY.exists():
+        return
     try:
-        subprocess.run([sys.executable, str(script)], cwd=ROOT, check=False)
-        return {"script": script_rel, "ran": True, "reason": "ok"}
-    except Exception as e:
-        return {"script": script_rel, "ran": False, "reason": repr(e)}
+        data = json.loads(PIPELINE_REGISTRY.read_text(encoding="utf-8"))
+    except Exception:
+        return
+
+    if isinstance(data, dict) and "modules" in data and isinstance(data["modules"], list):
+        existing = {m.get("module") if isinstance(m, dict) else m for m in data["modules"]}
+        for module in modules:
+            if module["module"] not in existing:
+                data["modules"].append(module)
+        PIPELINE_REGISTRY.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 
-def refresh_pipeline():
-    actions = []
-    actions.append(try_run("observatory/discover_pipeline_plugins.py"))
-    actions.append(try_run("observatory/build_pipeline_registry.py"))
-    actions.append(try_run("observatory/build_pipeline_dag.py"))
-    return actions
-
-
-def write_receipt(installed, refresh_actions):
+def write_receipt(installed, modules):
     RECEIPTS.mkdir(parents=True, exist_ok=True)
     receipt = {
+        "timestamp": datetime.utcnow().isoformat(),
         "bundle": BUNDLE_ROOT.name,
         "installed_files": installed,
-        "refresh_actions": refresh_actions,
+        "modules_registered": modules,
     }
-    receipt_path = RECEIPTS / "bundle_install_receipt.json"
-    receipt_path.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
-    print(f"receipt: {receipt_path}")
+    (RECEIPTS / f"{BUNDLE_ROOT.name}_install_receipt.json").write_text(
+        json.dumps(receipt, indent=2), encoding="utf-8"
+    )
 
 
 def main():
+    modules = discover_modules()
     installed = install_payload()
-    refresh_actions = refresh_pipeline()
-    write_receipt(installed, refresh_actions)
+    update_registry(modules)
+    write_receipt(installed, modules)
     print(json.dumps({
         "installed_files": len(installed),
-        "refresh_actions": refresh_actions,
+        "modules_registered": len(modules)
     }, indent=2))
 
 

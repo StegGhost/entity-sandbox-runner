@@ -1,0 +1,23 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Research upgrades 91-105 including symbolic regression, anomaly discovery, invariant testing, discovery graphing, and autonomous research supervision",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json",
+    "bundle_readme.md"
+  ],
+  "files": [
+    "install/install_bundle_autoregister.py",
+    "payload/observatory/symbolic_regression_engine.py",
+    "payload/observatory/discovery_graph_engine.py",
+    "payload/observatory/invariant_stability_tester.py",
+    "payload/observatory/anomaly_discovery_engine.py",
+    "payload/observatory/autonomous_research_supervisor.py",
+    "bundle_readme.md",
+    "bundle_manifest.json"
+  ]
+}

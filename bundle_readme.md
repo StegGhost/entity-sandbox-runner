@@ -1,23 +1,19 @@
-# Sandbox Research Upgrades 91–105
+Sandbox Research Upgrades 106-115
 
-This ingestion-ready bundle adds:
+Adds the following auto-ingest research modules:
 
-- Symbolic Regression Engine
-- Invariant Stability Tester
-- Discovery Graph Engine
-- Anomaly Discovery Engine
-- Autonomous Research Supervisor
+106. rg_flow_solver.py
+107. bootstrap_validation_engine.py
+108. symbolic_regression_search.py
+109. stability_manifold_explorer.py
+110. federated_node_auth_registry.py
+111. signed_bundle_verifier.py
+112. control_law_synthesizer.py
+113. adaptive_intervention_planner.py
+114. universality_class_comparator.py
+115. discovery_novelty_engine.py
 
-## Installation behavior
-
-When processed by the entity sandbox runner, the smart installer will:
-
-1. Copy files from `payload/` into the repository root.
-2. Attempt to refresh pipeline discovery and registry files if the corresponding utilities exist.
-3. Write an install receipt to `evidence_plane/install_receipts/`.
-
-## Notes
-
-- Modules are written to be lightweight and safe to ingest.
-- They use `observatory.pipeline_contract` when available.
-- If pipeline discovery utilities are present, they are invoked automatically after install.
+Installation model:
+- Files are copied from payload/ into the repo root by install/install_bundle_autoregister.py
+- Install receipts are written to evidence_plane/install_receipts/
+- Modules use observatory.pipeline_contract decorators so the existing discovery / registry flow can pick them up

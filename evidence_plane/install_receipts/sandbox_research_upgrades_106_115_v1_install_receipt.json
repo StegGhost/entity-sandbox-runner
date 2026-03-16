@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-03-16T16:12:08.049440",
+  "bundle": "sandbox_research_upgrades_106_115_v1",
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/universality_class_comparator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/symbolic_regression_search.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/control_law_synthesizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/stability_manifold_explorer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/rg_flow_solver.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/bootstrap_validation_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/federated_node_auth_registry.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/signed_bundle_verifier.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/discovery_novelty_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/adaptive_intervention_planner.py"
+  ],
+  "modules_registered": [
+    {
+      "file": "observatory/universality_class_comparator.py",
+      "module": "observatory.universality_class_comparator"
+    },
+    {
+      "file": "observatory/symbolic_regression_search.py",
+      "module": "observatory.symbolic_regression_search"
+    },
+    {
+      "file": "observatory/control_law_synthesizer.py",
+      "module": "observatory.control_law_synthesizer"
+    },
+    {
+      "file": "observatory/stability_manifold_explorer.py",
+      "module": "observatory.stability_manifold_explorer"
+    },
+    {
+      "file": "observatory/rg_flow_solver.py",
+      "module": "observatory.rg_flow_solver"
+    },
+    {
+      "file": "observatory/bootstrap_validation_engine.py",
+      "module": "observatory.bootstrap_validation_engine"
+    },
+    {
+      "file": "observatory/federated_node_auth_registry.py",
+      "module": "observatory.federated_node_auth_registry"
+    },
+    {
+      "file": "observatory/signed_bundle_verifier.py",
+      "module": "observatory.signed_bundle_verifier"
+    },
+    {
+      "file": "observatory/discovery_novelty_engine.py",
+      "module": "observatory.discovery_novelty_engine"
+    },
+    {
+      "file": "observatory/adaptive_intervention_planner.py",
+      "module": "observatory.adaptive_intervention_planner"
+    }
+  ]
+}
