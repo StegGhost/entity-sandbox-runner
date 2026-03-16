@@ -1,0 +1,6 @@
+{
+  "trial_count": 5000,
+  "boundary_count": 39,
+  "mean_boundary_U_star": 1.003593322612838,
+  "note": "Explores whether a drift-corrected invariant fits better under perturbation."
+}
