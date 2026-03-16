@@ -30,5 +30,9 @@
   "sandbox_docs_manifest_bundle": {
     "version": "1.0.0",
     "installed": "2026-03-16T21:17:36.358804"
+  },
+  "sandbox_service_and_validation_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-16T21:47:23.632140"
   }
 }

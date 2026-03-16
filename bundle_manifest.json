@@ -1,8 +1,8 @@
 {
-  "bundle_name": "sandbox_docs_manifest_bundle",
+  "bundle_name": "sandbox_service_and_validation_upgrades",
   "version": "1.0.0",
   "author": "StegVerse",
-  "description": "Architecture manifest, core READMEs, and demo protocol starter files for stegverse_sandbox",
+  "description": "Upgrades 483-502 adding demo validation, falsification, SaaS service hardening, and research verification utilities.",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",
