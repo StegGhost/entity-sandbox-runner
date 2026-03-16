@@ -1,0 +1,16 @@
+{
+  "bundle_name": "stegverse_sandbox_combined_bundle_v1",
+  "created_utc": "2026-03-16T21:15:15.399062Z",
+  "includes": [
+    "sandbox_service_upgrades_451_482_v1.zip contents",
+    "sandbox_readme_updates_v2.zip contents",
+    "observation_plane/u_signal_monitor.py",
+    "control_plane/stability_governor.py",
+    "integrations/U_SIGNAL_INTEGRATION_NOTES.md",
+    "PROPOSED_BUILD.md"
+  ],
+  "suggested_paths": {
+    "u_signal_monitor": "observation_plane/u_signal_monitor.py",
+    "stability_governor": "control_plane/stability_governor.py"
+  }
+}

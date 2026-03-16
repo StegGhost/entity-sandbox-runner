@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/critical_ratio_campaign_bundle_v1/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "critical_ratio_campaign_bundle",
+      "version": "1.0.0",
+      "description": "Adds the first research experiment campaign to stegverse-demo-suite",
+      "allowed_paths": [
+        "payload/",
+        "install/"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/critical_ratio_campaign_bundle_v1.zip"
+}
