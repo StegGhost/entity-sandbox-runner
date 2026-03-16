@@ -682,3 +682,46 @@
 [2026-03-16T17:21:03.222171] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_226_260_v1/install/install_bundle_autoregister.py
 [2026-03-16T17:21:03.254386] safe ingestion complete status=installed
 [2026-03-16T17:21:03.255365] cleaned ingestion_tmp
+[2026-03-16T17:22:48.367407] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_151_165_v1
+[2026-03-16T17:22:48.368220] classified files: normal=18 workflow=0
+[2026-03-16T17:22:48.368672] transaction started for sandbox_research_upgrades_151_165_v1.zip
+[2026-03-16T17:22:48.368898] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-16T17:22:48.369096] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-16T17:22:48.369320] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-16T17:22:48.369608] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/federation_latency_tracker.py
+[2026-03-16T17:22:48.369801] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_conflict_detector.py
+[2026-03-16T17:22:48.369992] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/multi_domain_scaling_analyzer.py
+[2026-03-16T17:22:48.370178] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/research_lineage_tracker.py
+[2026-03-16T17:22:48.370375] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/discovery_entropy_analyzer.py
+[2026-03-16T17:22:48.370584] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/large_scale_monte_carlo_engine.py
+[2026-03-16T17:22:48.370766] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/automated_dataset_curator.py
+[2026-03-16T17:22:48.370964] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/meta_experiment_planner.py
+[2026-03-16T17:22:48.371146] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/theory_consistency_validator.py
+[2026-03-16T17:22:48.371327] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_stress_tester.py
+[2026-03-16T17:22:48.371537] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/anomaly_cluster_detector.py
+[2026-03-16T17:22:48.371723] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/adaptive_rg_refinement.py
+[2026-03-16T17:22:48.371904] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/discovery_timeline_builder.py
+[2026-03-16T17:22:48.372084] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/sandbox_node_health_monitor.py
+[2026-03-16T17:22:48.372261] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/theory_prediction_tester.py
+[2026-03-16T17:22:48.372996] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-16T17:22:48.373493] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-16T17:22:48.374007] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-16T17:22:48.374330] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/federation_latency_tracker.py
+[2026-03-16T17:22:48.374550] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_conflict_detector.py
+[2026-03-16T17:22:48.374743] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/multi_domain_scaling_analyzer.py
+[2026-03-16T17:22:48.374932] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/research_lineage_tracker.py
+[2026-03-16T17:22:48.375121] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_entropy_analyzer.py
+[2026-03-16T17:22:48.375315] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/large_scale_monte_carlo_engine.py
+[2026-03-16T17:22:48.375531] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/automated_dataset_curator.py
+[2026-03-16T17:22:48.375718] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/meta_experiment_planner.py
+[2026-03-16T17:22:48.375905] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theory_consistency_validator.py
+[2026-03-16T17:22:48.376116] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_stress_tester.py
+[2026-03-16T17:22:48.376347] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/anomaly_cluster_detector.py
+[2026-03-16T17:22:48.376573] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/adaptive_rg_refinement.py
+[2026-03-16T17:22:48.376801] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_timeline_builder.py
+[2026-03-16T17:22:48.376993] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_node_health_monitor.py
+[2026-03-16T17:22:48.377179] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theory_prediction_tester.py
+[2026-03-16T17:22:48.377824] transaction completed successfully
+[2026-03-16T17:22:48.377990] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_151_165_v1/install/install_bundle_autoregister.py
+[2026-03-16T17:22:48.406313] safe ingestion complete status=installed
+[2026-03-16T17:22:48.406941] cleaned ingestion_tmp
