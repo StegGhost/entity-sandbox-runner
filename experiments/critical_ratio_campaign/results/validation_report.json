@@ -1,6 +1,6 @@
 {
   "sample_count": 50000,
-  "critical_Uc": 1.0082480030406975,
+  "critical_Uc": 0.9995360749887826,
   "sample_count_ok": true,
   "critical_Uc_ok": true
 }
