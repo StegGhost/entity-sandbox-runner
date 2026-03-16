@@ -1,2 +1,1 @@
-Sandbox Service + Validation Upgrades 483-502
-Adds validation artifacts for the critical ratio campaign and extends Sandbox-as-a-Service infrastructure.
+Result delivery + raw export bundle with expanded critical ratio experiment.

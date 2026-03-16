@@ -1,0 +1,15 @@
+{
+  "experiment_name": "critical_ratio_campaign_expanded",
+  "runs": 200000,
+  "dimensions": [
+    "capacity",
+    "pressure",
+    "constraints",
+    "continuity"
+  ],
+  "output_resolution": "high",
+  "outputs": [
+    "results/phase_space_map.json",
+    "results/collapse_boundary_surface.json"
+  ]
+}

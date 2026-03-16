@@ -11,7 +11,7 @@ def main():
             dest = ROOT / p.relative_to(PAYLOAD)
             dest.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, dest)
-            print("installed", dest)
+            print("installed:", dest)
 
 if __name__ == "__main__":
     main()

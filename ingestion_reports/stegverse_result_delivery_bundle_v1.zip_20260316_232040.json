@@ -1,0 +1,53 @@
+{
+  "bundle_name": "stegverse_result_delivery_bundle",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 11,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/expanded_experiment_config.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/run_expanded_experiment.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/result_delivery/build_raw_data_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/result_delivery/request_raw_export.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/result_delivery/build_standard_artifact_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/result_delivery/result_publication_profiles.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/result_delivery/publish_demo_summary.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/result_delivery/build_run_manifest.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/stegverse_result_delivery_bundle_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/experiments/critical_ratio_campaign/expanded_experiment_config.json",
+      "payload/experiments/critical_ratio_campaign/run_expanded_experiment.py",
+      "payload/result_delivery/build_raw_data_bundle.py",
+      "payload/result_delivery/request_raw_export.py",
+      "payload/result_delivery/build_standard_artifact_bundle.py",
+      "payload/result_delivery/result_publication_profiles.json",
+      "payload/result_delivery/publish_demo_summary.py",
+      "payload/result_delivery/build_run_manifest.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/stegverse_result_delivery_bundle_v1.zip"
+}

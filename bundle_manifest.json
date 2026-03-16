@@ -1,8 +1,8 @@
 {
-  "bundle_name": "sandbox_service_and_validation_upgrades",
+  "bundle_name": "stegverse_result_delivery_bundle",
   "version": "1.0.0",
   "author": "StegVerse",
-  "description": "Upgrades 483-502 adding demo validation, falsification, SaaS service hardening, and research verification utilities.",
+  "description": "Result delivery, raw export, and expanded critical ratio experiment bundle",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

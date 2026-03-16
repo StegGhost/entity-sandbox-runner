@@ -1,0 +1,18 @@
+{
+  "seed": 42,
+  "expected": {
+    "sample_count": 5000,
+    "stable_count_range": [
+      2000,
+      3000
+    ],
+    "unstable_count_range": [
+      2000,
+      3000
+    ],
+    "critical_Uc_range": [
+      0.8,
+      1.2
+    ]
+  }
+}

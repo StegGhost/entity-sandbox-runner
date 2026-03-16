@@ -1,0 +1,67 @@
+{
+  "bundle_name": "sandbox_service_and_validation_upgrades",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 18,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/research_summary_builder.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/uncertainty_estimator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_baseline_comparator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/boundary_refinement_sampler.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/experiment_replay_runner.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/phase_space_heatmap_generator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_significance_test.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/experiment_hash_verifier.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/experiment_run_registry.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/deterministic_seed_controller.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/stability_cluster_detector.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/collapse_surface_mapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/collapse_surface_visualizer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/raw_export_retention_policy.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_download_index.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_and_validation_upgrades_503_517_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/research_summary_builder.py",
+      "payload/observatory/uncertainty_estimator.py",
+      "payload/observatory/cross_baseline_comparator.py",
+      "payload/observatory/boundary_refinement_sampler.py",
+      "payload/observatory/experiment_replay_runner.py",
+      "payload/observatory/phase_space_heatmap_generator.py",
+      "payload/observatory/invariant_significance_test.py",
+      "payload/observatory/experiment_hash_verifier.py",
+      "payload/observatory/experiment_run_registry.py",
+      "payload/observatory/deterministic_seed_controller.py",
+      "payload/observatory/stability_cluster_detector.py",
+      "payload/observatory/collapse_surface_mapper.py",
+      "payload/observatory/collapse_surface_visualizer.py",
+      "payload/sandbox_service/raw_export_retention_policy.py",
+      "payload/sandbox_service/artifact_download_index.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_service_and_validation_upgrades_503_517_v1.zip"
+}

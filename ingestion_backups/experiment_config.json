@@ -1,0 +1,44 @@
+{
+  "experiment_name": "critical_ratio_campaign",
+  "parameters": {
+    "governance_capacity": [
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      4
+    ],
+    "artifact_pressure": [
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      4
+    ],
+    "constraints": [
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      4
+    ],
+    "trust_continuity": [
+      0.1,
+      0.25,
+      0.5,
+      1,
+      2,
+      4
+    ]
+  },
+  "runs": 50000,
+  "outputs": [
+    "results/phase_space_map.json",
+    "results/validation_report.json",
+    "results/baseline_comparison.json",
+    "results/falsification_report.json"
+  ]
+}
