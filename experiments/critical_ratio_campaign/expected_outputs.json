@@ -1,0 +1,9 @@
+{
+  "expected": {
+    "minimum_sample_count": 50000,
+    "critical_Uc_range": [
+      0.7,
+      1.3
+    ]
+  }
+}

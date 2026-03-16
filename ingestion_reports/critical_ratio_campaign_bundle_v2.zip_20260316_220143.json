@@ -1,0 +1,52 @@
+{
+  "bundle_name": "critical_ratio_campaign_bundle_v2",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 12,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/run_experiment.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/visualize_phase_space.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/experiment_config.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/protocol.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/CLAIMS.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/expected_outputs.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/falsification_tests.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/validate_results.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/baselines.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/experiments/critical_ratio_campaign/results/README.md"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "install/install_bundle_autoregister.py",
+      "payload/experiments/critical_ratio_campaign/README.md",
+      "payload/experiments/critical_ratio_campaign/run_experiment.py",
+      "payload/experiments/critical_ratio_campaign/visualize_phase_space.py",
+      "payload/experiments/critical_ratio_campaign/experiment_config.json",
+      "payload/experiments/critical_ratio_campaign/protocol.md",
+      "payload/experiments/critical_ratio_campaign/CLAIMS.md",
+      "payload/experiments/critical_ratio_campaign/expected_outputs.json",
+      "payload/experiments/critical_ratio_campaign/falsification_tests.py",
+      "payload/experiments/critical_ratio_campaign/validate_results.py",
+      "payload/experiments/critical_ratio_campaign/baselines.py",
+      "payload/experiments/critical_ratio_campaign/results/README.md"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/critical_ratio_campaign_bundle_v2.zip"
+}
