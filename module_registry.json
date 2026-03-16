@@ -10,5 +10,9 @@
   "runtime_ledger_replay_bundle": {
     "version": "0.1.0",
     "installed": "2026-03-15T16:47:05.205588"
+  },
+  "sandbox_research_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-16T15:48:24.047539"
   }
 }

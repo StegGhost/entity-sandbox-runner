@@ -1,0 +1,22 @@
+{
+  "bundle_name": "runtime_ledger_replay_bundle",
+  "version": "0.1.0",
+  "author": "StegVerse",
+  "description": "Runtime integrity ledger, receipt replay, and hash-chain support for entity-sandbox-runner",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json",
+    "bundle_readme.md"
+  ],
+  "files": [
+    "install/install_runtime_ledger.py",
+    "payload/evidence_plane/ledger/append_ledger.py",
+    "payload/evidence_plane/ledger/merkle_root.py",
+    "payload/evidence_plane/replay/replay_receipt.py",
+    "payload/observatory/state_log/record_runtime_event.py",
+    "payload/security_plane/integrity/hash_chain.py",
+    "bundle_readme.md"
+  ]
+}

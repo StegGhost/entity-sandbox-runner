@@ -226,3 +226,26 @@
 [2026-03-15T16:47:05.205691] install report written: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports/runtime_ledger_replay_bundle_v0_1.zip_20260315_164705.json
 [2026-03-15T16:47:05.205735] safe ingestion complete status=installed
 [2026-03-15T16:47:05.206447] cleaned ingestion_tmp
+[2026-03-16T15:48:24.008356] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_91_105_v1
+[2026-03-16T15:48:24.008944] classified files: normal=8 workflow=0
+[2026-03-16T15:48:24.009284] transaction started for sandbox_research_upgrades_91_105_v1.zip
+[2026-03-16T15:48:24.009503] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-16T15:48:24.009698] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-16T15:48:24.009940] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-16T15:48:24.010216] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/discovery_graph_engine.py
+[2026-03-16T15:48:24.010431] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_stability_tester.py
+[2026-03-16T15:48:24.010620] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/autonomous_research_supervisor.py
+[2026-03-16T15:48:24.010804] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/symbolic_regression_engine.py
+[2026-03-16T15:48:24.010997] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/anomaly_discovery_engine.py
+[2026-03-16T15:48:24.011608] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-16T15:48:24.011990] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-16T15:48:24.012265] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-16T15:48:24.012535] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_graph_engine.py
+[2026-03-16T15:48:24.012723] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_stability_tester.py
+[2026-03-16T15:48:24.012915] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/autonomous_research_supervisor.py
+[2026-03-16T15:48:24.013098] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/symbolic_regression_engine.py
+[2026-03-16T15:48:24.013300] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/anomaly_discovery_engine.py
+[2026-03-16T15:48:24.013748] transaction completed successfully
+[2026-03-16T15:48:24.013910] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_91_105_v1/install/install_bundle_autoregister.py
+[2026-03-16T15:48:24.047651] safe ingestion complete status=installed
+[2026-03-16T15:48:24.048100] cleaned ingestion_tmp

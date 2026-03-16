@@ -1,0 +1,47 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 8,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/discovery_graph_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_stability_tester.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/autonomous_research_supervisor.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/symbolic_regression_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/anomaly_discovery_engine.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_91_105_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/discovery_graph_engine.py",
+      "payload/observatory/invariant_stability_tester.py",
+      "payload/observatory/autonomous_research_supervisor.py",
+      "payload/observatory/symbolic_regression_engine.py",
+      "payload/observatory/anomaly_discovery_engine.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_91_105_v1.zip"
+}

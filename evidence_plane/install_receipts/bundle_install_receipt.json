@@ -1,0 +1,27 @@
+{
+  "bundle": "sandbox_research_upgrades_91_105_v1",
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/discovery_graph_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/invariant_stability_tester.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/autonomous_research_supervisor.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/symbolic_regression_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/observatory/anomaly_discovery_engine.py"
+  ],
+  "refresh_actions": [
+    {
+      "script": "observatory/discover_pipeline_plugins.py",
+      "ran": false,
+      "reason": "missing"
+    },
+    {
+      "script": "observatory/build_pipeline_registry.py",
+      "ran": false,
+      "reason": "missing"
+    },
+    {
+      "script": "observatory/build_pipeline_dag.py",
+      "ran": false,
+      "reason": "missing"
+    }
+  ]
+}

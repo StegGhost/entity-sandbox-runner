@@ -1,16 +1,23 @@
-Runtime Ledger + Replay Bundle v0.1
+# Sandbox Research Upgrades 91–105
 
-For entity-sandbox-runner.
+This ingestion-ready bundle adds:
 
-Stages into:
-- install/
-- payload/
+- Symbolic Regression Engine
+- Invariant Stability Tester
+- Discovery Graph Engine
+- Anomaly Discovery Engine
+- Autonomous Research Supervisor
 
-After bundle installation, run:
-python install/install_runtime_ledger.py
+## Installation behavior
 
-This promotes:
-- evidence_plane/ledger
-- evidence_plane/replay
-- observatory/state_log
-- security_plane/integrity
+When processed by the entity sandbox runner, the smart installer will:
+
+1. Copy files from `payload/` into the repository root.
+2. Attempt to refresh pipeline discovery and registry files if the corresponding utilities exist.
+3. Write an install receipt to `evidence_plane/install_receipts/`.
+
+## Notes
+
+- Modules are written to be lightweight and safe to ingest.
+- They use `observatory.pipeline_contract` when available.
+- If pipeline discovery utilities are present, they are invoked automatically after install.

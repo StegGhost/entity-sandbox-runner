@@ -1,8 +1,8 @@
 {
-  "bundle_name": "runtime_ledger_replay_bundle",
-  "version": "0.1.0",
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
   "author": "StegVerse",
-  "description": "Runtime integrity ledger, receipt replay, and hash-chain support for entity-sandbox-runner",
+  "description": "Research upgrades 91-105 including symbolic regression, anomaly discovery, invariant testing, discovery graphing, and autonomous research supervision",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",
@@ -11,12 +11,13 @@
     "bundle_readme.md"
   ],
   "files": [
-    "install/install_runtime_ledger.py",
-    "payload/evidence_plane/ledger/append_ledger.py",
-    "payload/evidence_plane/ledger/merkle_root.py",
-    "payload/evidence_plane/replay/replay_receipt.py",
-    "payload/observatory/state_log/record_runtime_event.py",
-    "payload/security_plane/integrity/hash_chain.py",
-    "bundle_readme.md"
+    "install/install_bundle_autoregister.py",
+    "payload/observatory/symbolic_regression_engine.py",
+    "payload/observatory/discovery_graph_engine.py",
+    "payload/observatory/invariant_stability_tester.py",
+    "payload/observatory/anomaly_discovery_engine.py",
+    "payload/observatory/autonomous_research_supervisor.py",
+    "bundle_readme.md",
+    "bundle_manifest.json"
   ]
 }
