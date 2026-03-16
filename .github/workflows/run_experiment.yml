@@ -15,8 +15,10 @@ on:
         required: false
         default: "50000"
 
-jobs:
+permissions:
+  contents: write
 
+jobs:
   run-experiment:
 
     runs-on: ubuntu-latest
