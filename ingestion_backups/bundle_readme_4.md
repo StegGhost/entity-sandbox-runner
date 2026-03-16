@@ -1,0 +1,3 @@
+sandbox_research_upgrades_116_125_v1
+
+Automatic research upgrade bundle.

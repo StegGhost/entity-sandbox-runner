@@ -12,7 +12,15 @@
     "installed": "2026-03-15T16:47:05.205588"
   },
   "sandbox_research_upgrades": {
-    "version": "1.1.0",
-    "installed": "2026-03-16T16:12:08.054430"
+    "version": "1.0.0",
+    "installed": "2026-03-16T16:41:42.155187"
+  },
+  "sandbox_research_upgrades_116_125_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-16T16:41:42.002131"
+  },
+  "sandbox_research_upgrades_126_135_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-16T16:41:42.077503"
   }
 }

@@ -1,0 +1,57 @@
+{
+  "bundle_name": "sandbox_research_upgrades_126_135_v1",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 13,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/collapse_phase_transition_mapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/rg_universality_tester.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_trust_registry.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theorem_candidate_generator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/research_autopilot.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/hypothesis_ranking_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theorem_verification_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/distributed_sandbox_router.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/universality_classifier.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/global_stability_atlas_builder.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_126_135_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/collapse_phase_transition_mapper.py",
+      "payload/observatory/rg_universality_tester.py",
+      "payload/observatory/sandbox_trust_registry.py",
+      "payload/observatory/theorem_candidate_generator.py",
+      "payload/observatory/research_autopilot.py",
+      "payload/observatory/hypothesis_ranking_engine.py",
+      "payload/observatory/theorem_verification_engine.py",
+      "payload/observatory/distributed_sandbox_router.py",
+      "payload/observatory/universality_classifier.py",
+      "payload/observatory/global_stability_atlas_builder.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_126_135_v1.zip"
+}

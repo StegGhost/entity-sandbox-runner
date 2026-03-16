@@ -1,0 +1,57 @@
+{
+  "bundle_name": "sandbox_research_upgrades_116_125_v1",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 13,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/causal_graph_discovery.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/autonomous_experiment_generator.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/experiment_scheduler_cluster.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/renormalization_group_scaler.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/fixed_point_detector.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/parameter_sensitivity_analyzer.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_domain_invariant_tester.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/critical_surface_mapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sandbox_federation_index.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/confidence_interval_engine.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_research_upgrades_116_125_v1/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py",
+      "payload/observatory/causal_graph_discovery.py",
+      "payload/observatory/autonomous_experiment_generator.py",
+      "payload/observatory/experiment_scheduler_cluster.py",
+      "payload/observatory/renormalization_group_scaler.py",
+      "payload/observatory/fixed_point_detector.py",
+      "payload/observatory/parameter_sensitivity_analyzer.py",
+      "payload/observatory/cross_domain_invariant_tester.py",
+      "payload/observatory/critical_surface_mapper.py",
+      "payload/observatory/sandbox_federation_index.py",
+      "payload/observatory/confidence_interval_engine.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_research_upgrades_116_125_v1.zip"
+}
