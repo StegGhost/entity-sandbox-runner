@@ -1,0 +1,73 @@
+name: Run Experiment
+
+on:
+  workflow_dispatch:
+    inputs:
+      experiment:
+        description: "Experiment to run"
+        required: true
+        default: "critical_ratio_campaign"
+        type: choice
+        options:
+          - critical_ratio_campaign
+      runs:
+        description: "Number of simulation runs"
+        required: false
+        default: "50000"
+
+jobs:
+
+  run-experiment:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Show experiment configuration
+        run: |
+          echo "Selected experiment: ${{ github.event.inputs.experiment }}"
+          echo "Runs: ${{ github.event.inputs.runs }}"
+
+      - name: Run experiment
+        run: |
+          cd experiments/${{ github.event.inputs.experiment }}
+          python run_experiment.py
+
+      - name: Run validation
+        run: |
+          cd experiments/${{ github.event.inputs.experiment }}
+          python validate_results.py
+
+      - name: Run baseline comparison
+        run: |
+          cd experiments/${{ github.event.inputs.experiment }}
+          python baselines.py
+
+      - name: Run falsification tests
+        run: |
+          cd experiments/${{ github.event.inputs.experiment }}
+          python falsification_tests.py
+
+      - name: Summarize phase space
+        run: |
+          cd experiments/${{ github.event.inputs.experiment }}
+          python visualize_phase_space.py
+
+      - name: Commit results
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
+          git add experiments/${{ github.event.inputs.experiment }}/results
+
+          git commit -m "Experiment results for ${{ github.event.inputs.experiment }}" || echo "No changes"
+
+          git push
