@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
+  "description": "Research upgrades 361\u2013390 introducing invariant atlas compilers, law compression engines, and cross-domain theory unification modules",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

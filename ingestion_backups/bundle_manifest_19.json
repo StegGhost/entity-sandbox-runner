@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
+  "description": "Research upgrades 421\u2013450 introducing universal invariant verification, theory compression engines, and final invariant atlas export",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

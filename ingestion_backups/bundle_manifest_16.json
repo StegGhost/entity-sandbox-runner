@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_research_upgrades",
+  "version": "1.0.0",
+  "description": "Research upgrades 331\u2013360 introducing distributed sandbox federation, experiment replication, and invariant atlas builders",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

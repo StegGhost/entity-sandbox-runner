@@ -1,8 +1,7 @@
 {
-  "bundle_name": "sandbox_research_upgrades",
+  "bundle_name": "sandbox_service_upgrades",
   "version": "1.0.0",
-  "author": "StegVerse",
-  "description": "Research upgrades 151\u2013165 for advanced discovery orchestration and multi-sandbox research federation",
+  "description": "Sandbox-as-a-Service architecture including job scheduler, API gateway, workspace manager and experiment publishing",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

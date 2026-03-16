@@ -1,28 +1,35 @@
 
 # observatory
 
-## Purpose
-This directory is part of the StegVerse Research Sandbox architecture.
+## Role
 
-## Role in the Sandbox
+This directory is part of the **StegVerse Research Sandbox Architecture**.
 
-This component participates in the layered research pipeline:
+It contributes to the layered system that enables:
 
-1. Execution Plane — experiment execution
-2. Observation Plane — state-space analysis
-3. Observatory — research synthesis and discovery tools
-4. Evidence Plane — reproducibility and ledger receipts
-5. Security Plane — cryptographic integrity
-6. Control Plane — governance and policy validation
+- reproducible experiments
+- autonomous discovery
+- invariant detection
+- research federation
+- sandbox-as-a-service
 
-## Design Principles
+## Layer Context
 
-• Deterministic research pipelines  
-• Reproducible experiments  
-• Contract-based module registration  
-• Autonomous discovery loops  
+Typical pipeline layers include:
 
-## Notes
+1. Execution Plane – run experiments
+2. Observation Plane – analyze phase space
+3. Observatory – discovery & research tooling
+4. Evidence Plane – reproducibility ledger
+5. Security Plane – integrity & signatures
+6. Control Plane – governance validation
+7. Service Layer – remote experiment execution
 
-Files in this directory should follow the **pipeline_contract decorator pattern**
-so the master research pipeline can automatically discover and execute modules.
+## Conventions
+
+Modules here should:
+
+- use `pipeline_contract`
+- produce structured JSON outputs
+- remain deterministic and reproducible
+- integrate with the Master Research Pipeline
