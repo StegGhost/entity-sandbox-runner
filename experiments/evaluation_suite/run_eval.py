@@ -1,35 +1,46 @@
+import json, os, random, time
 
-import json, os, random
+from install.deterministic_enforcer import enforce_policy
+from install.receipt_logger import write_receipt
+from install.economic_weighting import weighted_score, weighted_mode
+from install.external_signal_adapter import external_signal
+from install.coordination import select_worker, reassign_if_failed, initialize_workers
 
 STATE_FILE = "logs/state.json"
-AVAILABLE_WORKERS = ["w1","w2","w3"]
+RECEIPT_DIR = "payload/receipts"
 
 def load_state():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r") as f:
-            return json.load(f)
-    return {"history": [], "workers": {}, "mode": "normal", "failures": [], "anomalies": []}
+            state = json.load(f)
+    else:
+        state = {
+            "history": [],
+            "workers": {},
+            "mode": "normal",
+            "failures": [],
+            "anomalies": [],
+            "last_u": None,
+            "last_action": None,
+            "cycles": 0,
+        }
+    initialize_workers(state)
+    return state
 
 def save_state(state):
     os.makedirs("logs", exist_ok=True)
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=2)
 
-def compute_u(history):
-    if not history:
-        return 0.5
-    recent = history[-10:]
-    return sum(h["confidence"] for h in recent) / len(recent)
-
-def score_worker(state, worker, confidence):
-    w = state["workers"].setdefault(worker, {"score": 0.5, "count": 0})
-    w["score"] = (w["score"] * w["count"] + confidence) / (w["count"] + 1)
-    w["count"] += 1
+def prune_state(state):
+    state["history"] = state.get("history", [])[-100:]
+    state["failures"] = state.get("failures", [])[-50:]
+    state["anomalies"] = state.get("anomalies", [])[-50:]
 
 def classify(u):
-    if u > 0.75:
+    if u >= 0.80:
         return "stable", "allow"
-    elif u > 0.6:
+    if u >= 0.62:
         return "warning", "monitor"
     return "critical", "restrict"
 
@@ -38,100 +49,109 @@ def detect_anomaly(state, u):
     state["last_u"] = u
     if prev is None:
         return False
-    if abs(u - prev) > 0.2:
-        state.setdefault("anomalies", []).append({"prev": prev, "current": u})
+    if abs(u - prev) > 0.20:
+        state.setdefault("anomalies", []).append({"prev": prev, "current": u, "ts": time.time()})
         return True
     return False
 
-def prune_state(state):
-    state["history"] = state["history"][-50:]
-    state["failures"] = state.get("failures", [])[-20:]
-    state["anomalies"] = state.get("anomalies", [])[-20:]
-
-def select_worker(state):
-    workers = state.get("workers", {})
-    for w in AVAILABLE_WORKERS:
-        workers.setdefault(w, {"score": 0.5, "count": 0})
-    if random.random() < 0.2:
-        return random.choice(AVAILABLE_WORKERS)
-    return max(workers.items(), key=lambda x: x[1]["score"])[0]
-
-def external_signal():
-    return random.uniform(0.0, 1.0)
-
-def enforce_policy(state, action):
-    if state.get("mode") == "conservative" and action == "allow":
-        return "monitor"
-    if len(state.get("failures", [])) > 10:
-        return "restrict"
-    return action
-
-def control_response(u, state):
-    if u < 0.6:
-        state["mode"] = "conservative"
-    elif u > 0.8:
-        state["mode"] = "aggressive"
-    else:
-        state["mode"] = "normal"
-
-def reassign_if_failed(state, result):
-    if result["decision"] == "fail":
-        state.setdefault("failures", []).append({
-            "shard": result["shard"],
-            "confidence": result["confidence"]
-        })
-        return "w_fallback"
-    return result["worker"]
+def score_worker(state, worker, confidence, decision):
+    workers = state.setdefault("workers", {})
+    w = workers.setdefault(worker, {"score": 0.5, "count": 0, "failures": 0})
+    # confidence contributes positively; failures reduce score
+    base = confidence if decision == "ok" else max(0.0, confidence - 0.25)
+    w["score"] = ((w["score"] * w["count"]) + base) / (w["count"] + 1)
+    w["count"] += 1
+    if decision != "ok":
+        w["failures"] += 1
 
 def run_cycle(state):
-    shards = ["shard1","shard2","shard3"]
-    if state.get("mode") == "conservative":
+    shards = ["shard1", "shard2", "shard3"]
+    mode = state.get("mode", "normal")
+    if mode == "conservative":
         shards = shards[:2]
-    elif state.get("mode") == "aggressive":
-        shards = shards + ["shard4","shard5"]
+    elif mode == "aggressive":
+        shards = shards + ["shard4", "shard5"]
 
-    out = []
-    for s in shards:
+    results = []
+    for shard in shards:
         worker = select_worker(state)
-        c = random.uniform(0.5, 0.9)
-        d = "ok" if c > 0.6 else "fail"
-        out.append({"worker":worker,"shard":s,"confidence":c,"decision":d})
-    return out
+        confidence = random.uniform(0.5, 0.92)
+        ext = external_signal()
+        final_conf = round((confidence * 0.75) + (ext * 0.25), 6)
+        decision = "ok" if final_conf > 0.6 else "fail"
+        result = {
+            "worker": worker,
+            "shard": shard,
+            "confidence": final_conf,
+            "decision": decision,
+            "external_signal": ext,
+        }
+        result["worker"] = reassign_if_failed(state, result)
+        results.append(result)
+    return results
 
 def main():
     state = load_state()
+    state["cycles"] = state.get("cycles", 0) + 1
+
     results = run_cycle(state)
 
     for r in results:
-        r["worker"] = reassign_if_failed(state, r)
-        state["history"].append({"confidence": r["confidence"], "decision": r["decision"]})
-        score_worker(state, r["worker"], r["confidence"])
+        state["history"].append({
+            "confidence": r["confidence"],
+            "decision": r["decision"],
+            "worker": r["worker"],
+            "shard": r["shard"],
+        })
+        score_worker(state, r["worker"], r["confidence"], r["decision"])
 
-    u = compute_u(state["history"])
-    ext = external_signal()
-    u = (u * 0.7) + (ext * 0.3)
+    u = weighted_score(state)
+    proposed_state, proposed_action = classify(u)
+
+    enforced_action, policy_reason = enforce_policy(
+        state=state,
+        proposed_action=proposed_action,
+        proposed_state=proposed_state,
+        u_signal=u,
+    )
 
     anomaly = detect_anomaly(state, u)
+    state["mode"] = weighted_mode(state, u, enforced_action)
+    state["last_action"] = enforced_action
 
-    system_state, action = classify(u)
-    action = enforce_policy(state, action)
-
-    control_response(u, state)
     prune_state(state)
+    save_state(state)
+
+    receipt = write_receipt(
+        receipt_dir=RECEIPT_DIR,
+        state=state,
+        results=results,
+        summary={
+            "u_signal": u,
+            "state": proposed_state,
+            "action": enforced_action,
+            "mode": state["mode"],
+            "anomaly": anomaly,
+            "policy_reason": policy_reason,
+            "cycle": state["cycles"],
+        },
+    )
 
     summary = {
         "u_signal": u,
-        "state": system_state,
-        "action": action,
-        "mode": state.get("mode"),
+        "state": proposed_state,
+        "action": enforced_action,
+        "mode": state["mode"],
         "anomaly": anomaly,
-        "workers": state.get("workers")
+        "policy_reason": policy_reason,
+        "cycle": state["cycles"],
+        "workers": state["workers"],
+        "receipt": receipt,
     }
 
     print("RESULTS:", results)
     print("SUMMARY:", summary)
-
-    save_state(state)
+    return summary
 
 if __name__ == "__main__":
     main()

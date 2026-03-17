@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_v7_autonomous_loop_bundle",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "True autonomous loop using existing workflows",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ]
+}
