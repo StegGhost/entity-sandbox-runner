@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_run_workflow_upgrade",
+  "version": "2.0.0",
+  "description": "Adds dynamic run_experiment workflow through staged installer compatible with ingestion policy.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

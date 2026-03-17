@@ -1,0 +1,11 @@
+{
+  "network_name": "StegVerse Research Federation",
+  "node_roles": [
+    "primary",
+    "peer_validator",
+    "dataset_mirror",
+    "campaign_worker"
+  ],
+  "default_sync_mode": "pull_push",
+  "peer_validation_required": true
+}

@@ -1,7 +1,7 @@
 {
-  "bundle_name": "sandbox_invariant_discovery_upgrades",
+  "bundle_name": "sandbox_global_invariant_network_upgrades",
   "version": "1.0.0",
-  "description": "Upgrades 603-642 introducing invariant discovery engines, symbolic fitting, falsification tournaments, and multi-candidate invariant evaluation.",
+  "description": "Upgrades 683-732 introducing global invariant registry, replication network, distributed publication, and theorem validation layers.",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

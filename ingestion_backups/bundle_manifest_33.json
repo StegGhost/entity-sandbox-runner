@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_invariant_discovery_upgrades",
+  "version": "1.0.0",
+  "description": "Upgrades 603-642 introducing invariant discovery engines, symbolic fitting, falsification tournaments, and multi-candidate invariant evaluation.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

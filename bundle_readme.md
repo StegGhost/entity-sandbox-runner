@@ -1,8 +1,2 @@
-Invariant Discovery Engine Upgrades (603–642)
-
-These upgrades introduce:
-• symbolic invariant fitting
-• invariant candidate generation
-• falsification tournaments
-• cross-domain invariant comparison
-• invariant confidence scoring
+Global Invariant Network Upgrades 683-732
+Adds invariant registry, replication protocols, distributed publication, and theorem candidate validation layers.

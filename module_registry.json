@@ -50,5 +50,17 @@
   "sandbox_invariant_discovery_upgrades": {
     "version": "1.0.0",
     "installed": "2026-03-17T00:45:03.160371"
+  },
+  "sandbox_distributed_research_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-17T03:16:45.365838"
+  },
+  "sandbox_run_workflow_upgrade": {
+    "version": "2.0.0",
+    "installed": "2026-03-17T03:16:45.427602"
+  },
+  "sandbox_global_invariant_network_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-17T03:16:45.521081"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_distributed_research_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Upgrades 643-682 introducing distributed research network capabilities, peer validation, federation controls, and cross-node invariant verification.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

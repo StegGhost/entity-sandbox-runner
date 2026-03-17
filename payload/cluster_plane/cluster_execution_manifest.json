@@ -1,0 +1,13 @@
+{
+  "execution_modes": [
+    "local",
+    "parallel",
+    "distributed"
+  ],
+  "max_parallel_shards": 32,
+  "distributed_targets": [
+    "cluster_plane",
+    "federation_plane",
+    "sandbox_service"
+  ]
+}
