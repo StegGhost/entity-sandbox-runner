@@ -53,12 +53,25 @@
       "decision": "fail",
       "worker": "w2",
       "shard": "shard3"
+    },
+    {
+      "confidence": 0.705263,
+      "decision": "ok",
+      "worker": "w1",
+      "shard": "shard1"
+    },
+    {
+      "confidence": 0.751529,
+      "decision": "ok",
+      "worker": "w1",
+      "shard": "shard2"
     }
   ],
   "workers": {
     "w1": {
-      "score": 0.6808140655789656,
-      "count": 8
+      "score": 0.6903304524631725,
+      "count": 10,
+      "failures": 0
     },
     "w2": {
       "score": 0.233948,
@@ -96,7 +109,7 @@
       "worker": "w_fallback"
     }
   ],
-  "last_u": 0.486846,
+  "last_u": 0.549179,
   "mode": "conservative",
   "anomalies": [
     {
@@ -105,6 +118,6 @@
       "ts": 1773786599.2312524
     }
   ],
-  "cycles": 1,
+  "cycles": 2,
   "last_action": "restrict"
 }
