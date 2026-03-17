@@ -47,6 +47,7 @@ jobs:
     steps:
       - name: Resolve mode
         id: out
+        shell: bash
         run: |
           EXPERIMENT="${{ github.event.inputs.experiment }}"
           RUN_MODE="${{ github.event.inputs.run_mode }}"
@@ -81,17 +82,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - run: |
+      - name: Run experiment
+        shell: bash
+        run: |
           cd experiments/${{ needs.preflight.outputs.experiment }}
-          python run_experiment.py
+          python run_experiment.py \
+            --runs "${{ needs.preflight.outputs.runs_per_shard }}" \
+            --shard 0 \
+            --total-shards 1 \
+            --seed 1000
 
-      - run: |
+      - name: Validate and analyze
+        shell: bash
+        run: |
           cd experiments/${{ needs.preflight.outputs.experiment }}
           python validate_results.py || true
           python baselines.py || true
@@ -105,24 +116,53 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
     steps:
       - name: Skip unused shards
         if: ${{ matrix.shard >= fromJson(needs.preflight.outputs.shard_count) }}
+        shell: bash
         run: exit 0
 
-      - uses: actions/checkout@v4
+      - name: Checkout
         if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
         if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - run: |
+      - name: Run shard
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        shell: bash
+        run: |
           cd experiments/${{ needs.preflight.outputs.experiment }}
-          python run_experiment.py             --runs ${{ needs.preflight.outputs.runs_per_shard }}             --shard ${{ matrix.shard }}             --total-shards ${{ needs.preflight.outputs.shard_count }}             --seed $((1000 + ${{ matrix.shard }}))             ${{ needs.preflight.outputs.is_adaptive == 'true' && '--adaptive' || '' }}
+          mkdir -p results/shards
+
+          if [ "${{ needs.preflight.outputs.is_adaptive }}" = "true" ]; then
+            python run_experiment.py \
+              --runs "${{ needs.preflight.outputs.runs_per_shard }}" \
+              --shard "${{ matrix.shard }}" \
+              --total-shards "${{ needs.preflight.outputs.shard_count }}" \
+              --seed "$((1000 + ${{ matrix.shard }}))" \
+              --adaptive
+          else
+            python run_experiment.py \
+              --runs "${{ needs.preflight.outputs.runs_per_shard }}" \
+              --shard "${{ matrix.shard }}" \
+              --total-shards "${{ needs.preflight.outputs.shard_count }}" \
+              --seed "$((1000 + ${{ matrix.shard }}))"
+          fi
+
+      - name: Upload shard artifact
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.shard }}
+          path: experiments/${{ needs.preflight.outputs.experiment }}/results/shards/
+          if-no-files-found: error
 
   merge_results:
     needs: [preflight, parallel_run]
@@ -130,20 +170,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      - name: Download shard artifacts
+        uses: actions/download-artifact@v4
         with:
           path: shard_results
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - run: |
+      - name: Restore shards
+        shell: bash
+        run: |
           mkdir -p experiments/${{ needs.preflight.outputs.experiment }}/results/shards
+
+          if [ ! -d shard_results ]; then
+            echo "No shard_results directory found"
+            exit 1
+          fi
+
           find shard_results -type f -name "*.json" -exec cp {} experiments/${{ needs.preflight.outputs.experiment }}/results/shards/ \;
 
-      - run: |
+      - name: Merge shard outputs
+        shell: bash
+        run: |
           cd experiments/${{ needs.preflight.outputs.experiment }}
-          python merge_shards.py || true
+          python merge_shards.py
