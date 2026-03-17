@@ -1,10 +1,12 @@
 # BUILD_NOTES
 
-Purpose:
-- Add automated evaluation workflow staging
-- Preserve ingestion-safe structure
-- Avoid root files and direct workflow injection during ingestion
+This bundle is designed for a no-CLI workflow.
 
-Expected result after promotion:
-- Repo gains `.github/workflows/run_evaluation.yml`
-- Evaluation can run automatically on qualifying pushes
+It stages two GitHub workflows:
+1. Promote staged workflows into `.github/workflows/`
+2. Run evaluation automatically through Actions
+
+It also includes:
+- `install/unified_promotion_patch.py`
+
+No root files are included.

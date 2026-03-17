@@ -4,13 +4,10 @@ on:
   push:
     paths:
       - "install/**"
-      - "experiments/evaluation_suite/**"
-      - "payload/config/**"
-      - ".github/workflows/run_evaluation.yml"
-  workflow_dispatch:
+      - "experiments/**"
+      - "payload/**"
 
-permissions:
-  contents: read
+  workflow_dispatch:
 
 jobs:
   evaluate:
@@ -25,7 +22,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Verify entrypoint exists
+      - name: Verify evaluation entrypoint exists
         run: |
           test -f experiments/evaluation_suite/run_eval.py
 

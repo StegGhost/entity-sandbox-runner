@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
-
 import os
 import shutil
+from pathlib import Path
 
 def promote_workflows():
-    src_dir = "payload/workflows"
-    dst_dir = ".github/workflows"
+    src_dir = Path("payload/workflows")
+    dst_dir = Path(".github/workflows")
 
-    if not os.path.exists(src_dir):
-        print("No workflow payload found")
-        return
+    if not src_dir.exists():
+        print("No workflow payload directory found")
+        return 0
 
-    os.makedirs(dst_dir, exist_ok=True)
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    promoted = 0
 
-    for file in os.listdir(src_dir):
-        if file.endswith(".yml") or file.endswith(".yaml"):
-            src = os.path.join(src_dir, file)
-            dst = os.path.join(dst_dir, file)
-            shutil.copy2(src, dst)
-            print(f"Promoted workflow: {file}")
+    for item in src_dir.iterdir():
+        if item.is_file() and item.suffix in {".yml", ".yaml"}:
+            dst = dst_dir / item.name
+            shutil.copy2(item, dst)
+            print(f"Promoted workflow: {item} -> {dst}")
+            promoted += 1
+
+    if promoted == 0:
+        print("No staged workflow files found to promote")
+    return promoted
 
 def main():
     print("=== Unified Promotion Layer ===")
