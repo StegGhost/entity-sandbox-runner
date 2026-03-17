@@ -1,0 +1,38 @@
+{
+  "ts": 1773786599.231572,
+  "cycle": 1,
+  "results": [
+    {
+      "worker": "w2",
+      "shard": "shard1",
+      "confidence": 0.51269,
+      "decision": "fail",
+      "external_signal": 0.419987
+    },
+    {
+      "worker": "w3",
+      "shard": "shard2",
+      "confidence": 0.58629,
+      "decision": "fail",
+      "external_signal": 0.167553
+    },
+    {
+      "worker": "w2",
+      "shard": "shard3",
+      "confidence": 0.455206,
+      "decision": "fail",
+      "external_signal": 0.112062
+    }
+  ],
+  "summary": {
+    "u_signal": 0.486846,
+    "state": "critical",
+    "action": "restrict",
+    "mode": "conservative",
+    "anomaly": true,
+    "policy_reason": "hard_boundary_low_u",
+    "cycle": 1
+  },
+  "last_action": "restrict",
+  "receipt_hash": "31d403a0cf9b4e72225e26a8935733b3e21287203a80634b2a80ed61bf9a2e47"
+}
