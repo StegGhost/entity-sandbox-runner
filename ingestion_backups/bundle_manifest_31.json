@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_service_and_validation_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Upgrades 563-582 adding workflow execution wiring, adaptive campaign control, publication hardening, and cross-domain validation scaffolding.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

@@ -1,8 +1,7 @@
 {
-  "bundle_name": "sandbox_service_and_validation_upgrades",
+  "bundle_name": "sandbox_autonomous_research_upgrades",
   "version": "1.0.0",
-  "author": "StegVerse",
-  "description": "Upgrades 563-582 adding workflow execution wiring, adaptive campaign control, publication hardening, and cross-domain validation scaffolding.",
+  "description": "Upgrades 583-602 introducing autonomous research campaigns, uncertainty-driven experiment scheduling, and automated invariant discovery loops.",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

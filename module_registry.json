@@ -42,5 +42,9 @@
   "stegverse_result_delivery_bundle": {
     "version": "1.0.0",
     "installed": "2026-03-16T23:56:30.300788"
+  },
+  "sandbox_autonomous_research_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-17T00:42:52.147684"
   }
 }
