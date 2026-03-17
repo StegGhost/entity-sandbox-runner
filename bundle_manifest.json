@@ -1,13 +1,12 @@
 {
-  "bundle_name": "sandbox_future_upgrades",
-  "version": "1.0.0",
-  "author": "StegVerse",
-  "description": "Batch roadmap bundle covering upgrades 783-900: self-optimizing discovery, research marketplace, identity/trust, publication cloud, and autonomous science services.",
+  "bundle_name": "decentralized_worker_self_healing_1041_1090_v2",
+  "version": "2.0.0",
   "install_mode": "folder_map",
+  "description": "Decentralized worker system + self-healing ingestion + verification",
   "allowed_paths": [
     "install/",
     "payload/",
-    "bundle_manifest.json/",
-    "bundle_readme.md/"
+    "experiments/",
+    "workflow_review/"
   ]
 }
