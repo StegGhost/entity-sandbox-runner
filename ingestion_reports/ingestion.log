@@ -3252,3 +3252,53 @@
 [2026-03-17T14:31:10.950406] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-17T14:31:10.951218] classified files: normal=13 workflow=0
 [2026-03-17T14:31:10.952282] cleaned ingestion_tmp
+[2026-03-17T14:45:23.399120] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T14:45:23.400351] classified files: normal=7 workflow=0
+[2026-03-17T14:45:23.400635] transaction started for sandbox_v4_fixed.zip
+[2026-03-17T14:45:23.400879] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/saas_enforcement.py
+[2026-03-17T14:45:23.401077] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/precision_engine.py
+[2026-03-17T14:45:23.401316] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/decentralized_worker_runtime.py
+[2026-03-17T14:45:23.401516] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/trust_consensus.py
+[2026-03-17T14:45:23.401703] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/self_healing_ingestion.py
+[2026-03-17T14:45:23.401919] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/NOTES.md
+[2026-03-17T14:45:23.402174] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/upgrades/README.md
+[2026-03-17T14:45:23.402644] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/saas_enforcement.py
+[2026-03-17T14:45:23.402841] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/precision_engine.py
+[2026-03-17T14:45:23.403030] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/decentralized_worker_runtime.py
+[2026-03-17T14:45:23.403215] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/trust_consensus.py
+[2026-03-17T14:45:23.403424] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/self_healing_ingestion.py
+[2026-03-17T14:45:23.403650] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/NOTES.md
+[2026-03-17T14:45:23.403950] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/upgrades/README.md
+[2026-03-17T14:45:23.404471] transaction completed successfully
+[2026-03-17T14:45:23.404641] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/saas_enforcement.py
+[2026-03-17T14:45:23.415751] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/precision_engine.py
+[2026-03-17T14:45:23.426489] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/decentralized_worker_runtime.py
+[2026-03-17T14:45:23.436904] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/trust_consensus.py
+[2026-03-17T14:45:23.447363] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/self_healing_ingestion.py
+[2026-03-17T14:45:23.458849] safe ingestion complete status=installed
+[2026-03-17T14:45:23.459308] cleaned ingestion_tmp
+[2026-03-17T14:45:23.500794] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T14:45:23.502021] classified files: normal=7 workflow=0
+[2026-03-17T14:45:23.502326] transaction started for sandbox_v5_fixed.zip
+[2026-03-17T14:45:23.502581] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/observability.py
+[2026-03-17T14:45:23.502780] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator.py
+[2026-03-17T14:45:23.502988] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/shard_scheduler.py
+[2026-03-17T14:45:23.503182] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/worker_registry.py
+[2026-03-17T14:45:23.503400] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/recovery_loop.py
+[2026-03-17T14:45:23.503634] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/NOTES.md
+[2026-03-17T14:45:23.503905] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/upgrades/README.md
+[2026-03-17T14:45:23.504435] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/observability.py
+[2026-03-17T14:45:23.504629] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator.py
+[2026-03-17T14:45:23.504816] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/shard_scheduler.py
+[2026-03-17T14:45:23.505000] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/worker_registry.py
+[2026-03-17T14:45:23.505187] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/recovery_loop.py
+[2026-03-17T14:45:23.505616] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/NOTES.md
+[2026-03-17T14:45:23.506646] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/upgrades/README.md
+[2026-03-17T14:45:23.507165] transaction completed successfully
+[2026-03-17T14:45:23.507379] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/observability.py
+[2026-03-17T14:45:23.518822] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/orchestrator.py
+[2026-03-17T14:45:23.529685] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/shard_scheduler.py
+[2026-03-17T14:45:23.540112] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/worker_registry.py
+[2026-03-17T14:45:23.550848] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/recovery_loop.py
+[2026-03-17T14:45:23.562018] safe ingestion complete status=installed
+[2026-03-17T14:45:23.562491] cleaned ingestion_tmp

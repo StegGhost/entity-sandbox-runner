@@ -1,0 +1,43 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 7,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/saas_enforcement.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/precision_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/decentralized_worker_runtime.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/trust_consensus.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/self_healing_ingestion.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/NOTES.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/upgrades/README.md"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "workflow_review/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "install/saas_enforcement.py",
+      "install/precision_engine.py",
+      "install/decentralized_worker_runtime.py",
+      "install/trust_consensus.py",
+      "install/self_healing_ingestion.py",
+      "workflow_review/NOTES.md",
+      "payload/upgrades/README.md"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_v4_fixed.zip"
+}
