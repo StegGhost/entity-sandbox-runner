@@ -8,23 +8,24 @@ from install.coordination import select_worker, reassign_if_failed, initialize_w
 
 STATE_FILE = "logs/state.json"
 RECEIPT_DIR = "payload/receipts"
+STATE_VERSION = 2
 
 def load_state():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r") as f:
             state = json.load(f)
     else:
-        state = {
-            "history": [],
-            "workers": {},
-            "mode": "normal",
-            "failures": [],
-            "anomalies": [],
-            "last_u": None,
-            "last_action": None,
-            "cycles": 0,
-        }
+        state = {"version": 1, "history": [], "workers": {}, "mode": "normal", "failures": [], "anomalies": [], "last_u": None, "last_action": None, "cycles": 0}
+    state = migrate_state(state)
     initialize_workers(state)
+    return state
+
+def migrate_state(state):
+    version = state.get("version", 1)
+    if version < 2:
+        for w in state.get("workers", {}).values():
+            w.setdefault("failures", 0)
+        state["version"] = 2
     return state
 
 def save_state(state):
@@ -57,20 +58,21 @@ def detect_anomaly(state, u):
 def score_worker(state, worker, confidence, decision):
     workers = state.setdefault("workers", {})
     w = workers.setdefault(worker, {"score": 0.5, "count": 0, "failures": 0})
-    # confidence contributes positively; failures reduce score
+    w.setdefault("failures", 0)
+
     base = confidence if decision == "ok" else max(0.0, confidence - 0.25)
     w["score"] = ((w["score"] * w["count"]) + base) / (w["count"] + 1)
     w["count"] += 1
+
     if decision != "ok":
         w["failures"] += 1
 
 def run_cycle(state):
     shards = ["shard1", "shard2", "shard3"]
-    mode = state.get("mode", "normal")
-    if mode == "conservative":
+    if state.get("mode") == "conservative":
         shards = shards[:2]
-    elif mode == "aggressive":
-        shards = shards + ["shard4", "shard5"]
+    elif state.get("mode") == "aggressive":
+        shards = shards + ["shard4","shard5"]
 
     results = []
     for shard in shards:
@@ -79,15 +81,11 @@ def run_cycle(state):
         ext = external_signal()
         final_conf = round((confidence * 0.75) + (ext * 0.25), 6)
         decision = "ok" if final_conf > 0.6 else "fail"
-        result = {
-            "worker": worker,
-            "shard": shard,
-            "confidence": final_conf,
-            "decision": decision,
-            "external_signal": ext,
-        }
+
+        result = {"worker": worker, "shard": shard, "confidence": final_conf, "decision": decision}
         result["worker"] = reassign_if_failed(state, result)
         results.append(result)
+
     return results
 
 def main():
@@ -97,61 +95,25 @@ def main():
     results = run_cycle(state)
 
     for r in results:
-        state["history"].append({
-            "confidence": r["confidence"],
-            "decision": r["decision"],
-            "worker": r["worker"],
-            "shard": r["shard"],
-        })
+        state["history"].append(r)
         score_worker(state, r["worker"], r["confidence"], r["decision"])
 
     u = weighted_score(state)
-    proposed_state, proposed_action = classify(u)
-
-    enforced_action, policy_reason = enforce_policy(
-        state=state,
-        proposed_action=proposed_action,
-        proposed_state=proposed_state,
-        u_signal=u,
-    )
-
     anomaly = detect_anomaly(state, u)
+
+    proposed_state, proposed_action = classify(u)
+    enforced_action, policy_reason = enforce_policy(state, proposed_action, proposed_state, u)
+
     state["mode"] = weighted_mode(state, u, enforced_action)
     state["last_action"] = enforced_action
 
     prune_state(state)
     save_state(state)
 
-    receipt = write_receipt(
-        receipt_dir=RECEIPT_DIR,
-        state=state,
-        results=results,
-        summary={
-            "u_signal": u,
-            "state": proposed_state,
-            "action": enforced_action,
-            "mode": state["mode"],
-            "anomaly": anomaly,
-            "policy_reason": policy_reason,
-            "cycle": state["cycles"],
-        },
-    )
-
-    summary = {
-        "u_signal": u,
-        "state": proposed_state,
-        "action": enforced_action,
-        "mode": state["mode"],
-        "anomaly": anomaly,
-        "policy_reason": policy_reason,
-        "cycle": state["cycles"],
-        "workers": state["workers"],
-        "receipt": receipt,
-    }
+    receipt = write_receipt(RECEIPT_DIR, state, results, {"u_signal": u, "action": enforced_action})
 
     print("RESULTS:", results)
-    print("SUMMARY:", summary)
-    return summary
+    print("SUMMARY:", {"u_signal": u, "action": enforced_action, "mode": state["mode"], "receipt": receipt})
 
 if __name__ == "__main__":
     main()

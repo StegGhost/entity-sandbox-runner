@@ -57,13 +57,18 @@ def detect_anomaly(state, u):
 def score_worker(state, worker, confidence, decision):
     workers = state.setdefault("workers", {})
     w = workers.setdefault(worker, {"score": 0.5, "count": 0, "failures": 0})
-    # confidence contributes positively; failures reduce score
+
+    # 🔑 HARDEN EXISTING STATE (this fixes your bug)
+    w.setdefault("failures", 0)
+
     base = confidence if decision == "ok" else max(0.0, confidence - 0.25)
+
     w["score"] = ((w["score"] * w["count"]) + base) / (w["count"] + 1)
     w["count"] += 1
+
     if decision != "ok":
         w["failures"] += 1
-
+        
 def run_cycle(state):
     shards = ["shard1", "shard2", "shard3"]
     mode = state.get("mode", "normal")
