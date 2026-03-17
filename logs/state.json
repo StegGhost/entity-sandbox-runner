@@ -89,6 +89,18 @@
       "decision": "ok",
       "worker": "w1",
       "shard": "shard2"
+    },
+    {
+      "confidence": 0.571337,
+      "decision": "fail",
+      "worker": "w3",
+      "shard": "shard1"
+    },
+    {
+      "confidence": 0.510072,
+      "decision": "fail",
+      "worker": "w2",
+      "shard": "shard2"
     }
   ],
   "workers": {
@@ -98,14 +110,14 @@
       "failures": 0
     },
     "w2": {
-      "score": 0.233948,
-      "count": 2,
-      "failures": 2
+      "score": 0.24265599999999998,
+      "count": 3,
+      "failures": 3
     },
     "w3": {
-      "score": 0.33629,
-      "count": 1,
-      "failures": 1
+      "score": 0.3288135,
+      "count": 2,
+      "failures": 2
     },
     "w_fallback": {
       "score": 0.5454683742824293,
@@ -131,9 +143,19 @@
       "shard": "shard3",
       "confidence": 0.455206,
       "worker": "w_fallback"
+    },
+    {
+      "shard": "shard1",
+      "confidence": 0.571337,
+      "worker": "w1"
+    },
+    {
+      "shard": "shard2",
+      "confidence": 0.510072,
+      "worker": "w1"
     }
   ],
-  "last_u": 0.598721,
+  "last_u": 0.542679,
   "mode": "conservative",
   "anomalies": [
     {
@@ -142,6 +164,6 @@
       "ts": 1773786599.2312524
     }
   ],
-  "cycles": 4,
+  "cycles": 5,
   "last_action": "restrict"
 }

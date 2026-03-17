@@ -1,0 +1,31 @@
+{
+  "ts": 1773788938.3893986,
+  "cycle": 5,
+  "results": [
+    {
+      "worker": "w3",
+      "shard": "shard1",
+      "confidence": 0.571337,
+      "decision": "fail",
+      "external_signal": 0.032219
+    },
+    {
+      "worker": "w2",
+      "shard": "shard2",
+      "confidence": 0.510072,
+      "decision": "fail",
+      "external_signal": 0.444501
+    }
+  ],
+  "summary": {
+    "u_signal": 0.542679,
+    "state": "critical",
+    "action": "restrict",
+    "mode": "conservative",
+    "anomaly": false,
+    "policy_reason": "as_proposed",
+    "cycle": 5
+  },
+  "last_action": "restrict",
+  "receipt_hash": "1820eea110e94e3c1375be1f9cc7edf3ab673f346856d18262269f09a566f4d4"
+}
