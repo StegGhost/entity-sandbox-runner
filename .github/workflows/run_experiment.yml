@@ -231,27 +231,28 @@ jobs:
             python merge_shards.py
           else
             python - <<'PY'
-            from pathlib import Path
-            import json
+from pathlib import Path
+import json
 
-            root = Path("results/shards")
-            merged = []
-        for file in sorted(root.glob("*.json")):
-          try
-          merged.extend(json.loads(file.read_text(encoding="utf-8")))
-        except Exception as e:
+root = Path("results/shards")
+merged = []
+
+for file in sorted(root.glob("*.json")):
+    try:
+        merged.extend(json.loads(file.read_text(encoding="utf-8")))
+    except Exception as e:
         print(f"Skipping {file}: {e}")
-        
-      out = Path("results/phase_space_map.json")
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(merged, indent=2), encoding="utf-8")
-      print(f"Merged samples: {len(merged)}")
+
+out = Path("results/phase_space_map.json")
+out.parent.mkdir(parents=True, exist_ok=True)
+out.write_text(json.dumps(merged, indent=2), encoding="utf-8")
+print(f"Merged samples: {len(merged)}")
 PY
           fi
 
-        - name: Validate and analyze merged results
-          shell: bash
-          run: |
+      - name: Validate and analyze merged results
+        shell: bash
+        run: |
           cd experiments/${{ needs.preflight.outputs.experiment }}
           python validate_results.py || true
           python baselines.py || true
