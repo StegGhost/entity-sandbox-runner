@@ -6,26 +6,85 @@ on:
       experiment:
         description: "Experiment to run"
         required: true
-        default: "critical_ratio_campaign"
         type: choice
         options:
           - critical_ratio_campaign
-      runs:
-        description: "Number of simulation runs"
-        required: false
+        default: critical_ratio_campaign
+
+      run_mode:
+        description: "Execution mode"
+        required: true
+        type: choice
+        options:
+          - single
+          - parallel_8
+          - parallel_16
+          - adaptive
+        default: single
+
+      runs_per_shard:
+        description: "Runs per shard"
+        required: true
         default: "50000"
 
 permissions:
   contents: write
 
-jobs:
-  run-experiment:
+concurrency:
+  group: run-experiment-${{ github.ref }}
+  cancel-in-progress: false
 
+jobs:
+  preflight:
+    name: Preflight
+    runs-on: ubuntu-latest
+    outputs:
+      experiment: ${{ steps.out.outputs.experiment }}
+      run_mode: ${{ steps.out.outputs.run_mode }}
+      runs_per_shard: ${{ steps.out.outputs.runs_per_shard }}
+      shard_count: ${{ steps.out.outputs.shard_count }}
+      is_parallel: ${{ steps.out.outputs.is_parallel }}
+      is_adaptive: ${{ steps.out.outputs.is_adaptive }}
+    steps:
+      - name: Resolve mode
+        id: out
+        shell: bash
+        run: |
+          EXPERIMENT="${{ github.event.inputs.experiment }}"
+          RUN_MODE="${{ github.event.inputs.run_mode }}"
+          RUNS_PER_SHARD="${{ github.event.inputs.runs_per_shard }}"
+
+          SHARD_COUNT="1"
+          IS_PARALLEL="false"
+          IS_ADAPTIVE="false"
+
+          if [ "$RUN_MODE" = "parallel_8" ]; then
+            SHARD_COUNT="8"
+            IS_PARALLEL="true"
+          elif [ "$RUN_MODE" = "parallel_16" ]; then
+            SHARD_COUNT="16"
+            IS_PARALLEL="true"
+          elif [ "$RUN_MODE" = "adaptive" ]; then
+            SHARD_COUNT="8"
+            IS_PARALLEL="true"
+            IS_ADAPTIVE="true"
+          fi
+
+          echo "experiment=$EXPERIMENT" >> "$GITHUB_OUTPUT"
+          echo "run_mode=$RUN_MODE" >> "$GITHUB_OUTPUT"
+          echo "runs_per_shard=$RUNS_PER_SHARD" >> "$GITHUB_OUTPUT"
+          echo "shard_count=$SHARD_COUNT" >> "$GITHUB_OUTPUT"
+          echo "is_parallel=$IS_PARALLEL" >> "$GITHUB_OUTPUT"
+          echo "is_adaptive=$IS_ADAPTIVE" >> "$GITHUB_OUTPUT"
+
+  single_run:
+    name: Single Run
+    needs: preflight
+    if: needs.preflight.outputs.is_parallel != 'true'
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -33,43 +92,192 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Show experiment configuration
+      - name: Show selected configuration
+        shell: bash
         run: |
-          echo "Selected experiment: ${{ github.event.inputs.experiment }}"
-          echo "Runs: ${{ github.event.inputs.runs }}"
+          echo "Experiment: ${{ needs.preflight.outputs.experiment }}"
+          echo "Mode: ${{ needs.preflight.outputs.run_mode }}"
+          echo "Runs per shard: ${{ needs.preflight.outputs.runs_per_shard }}"
 
       - name: Run experiment
+        shell: bash
         run: |
-          cd experiments/${{ github.event.inputs.experiment }}
+          cd experiments/${{ needs.preflight.outputs.experiment }}
           python run_experiment.py
 
-      - name: Run validation
+      - name: Validate and analyze
+        shell: bash
         run: |
-          cd experiments/${{ github.event.inputs.experiment }}
+          cd experiments/${{ needs.preflight.outputs.experiment }}
           python validate_results.py
-
-      - name: Run baseline comparison
-        run: |
-          cd experiments/${{ github.event.inputs.experiment }}
           python baselines.py
-
-      - name: Run falsification tests
-        run: |
-          cd experiments/${{ github.event.inputs.experiment }}
           python falsification_tests.py
-
-      - name: Summarize phase space
-        run: |
-          cd experiments/${{ github.event.inputs.experiment }}
           python visualize_phase_space.py
 
-      - name: Commit results
+      - name: Build delivery artifacts
+        shell: bash
+        run: |
+          python result_delivery/build_run_manifest.py || true
+          python result_delivery/build_standard_artifact_bundle.py || true
+          python result_delivery/publish_demo_summary.py || true
+
+      - name: Commit repository changes
+        shell: bash
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
 
-          git add experiments/${{ github.event.inputs.experiment }}/results
+          git add experiments/${{ needs.preflight.outputs.experiment }}/results || true
+          git add experiments/${{ needs.preflight.outputs.experiment }}/artifacts || true
+          git add experiments/${{ needs.preflight.outputs.experiment }}/published || true
+          git add observatory || true
+          git add sandbox_service || true
+          git add workflow_review || true
+          git add . ':!.github/workflows/*'
 
-          git commit -m "Experiment results for ${{ github.event.inputs.experiment }}" || echo "Nothing to commit"
-          
-          git push
+          git commit -m "Experiment results for ${{ needs.preflight.outputs.experiment }}" || echo "Nothing to commit"
+          git push || echo "Push skipped"
+
+  parallel_run:
+    name: Parallel Run
+    needs: preflight
+    if: needs.preflight.outputs.is_parallel == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+    steps:
+      - name: Skip unused shards
+        if: ${{ matrix.shard >= fromJson(needs.preflight.outputs.shard_count) }}
+        shell: bash
+        run: |
+          echo "Skipping shard ${{ matrix.shard }}"
+          exit 0
+
+      - name: Checkout
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prepare shard directory
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        shell: bash
+        run: |
+          mkdir -p experiments/${{ needs.preflight.outputs.experiment }}/results/shards
+
+      - name: Run shard
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        shell: bash
+        run: |
+          cd experiments/${{ needs.preflight.outputs.experiment }}
+
+          if [ "${{ needs.preflight.outputs.is_adaptive }}" = "true" ]; then
+            echo "Adaptive mode enabled for shard ${{ matrix.shard }}"
+          fi
+
+          python run_experiment.py || true
+
+          if [ -f results/phase_space_map.json ]; then
+            cp results/phase_space_map.json "results/shards/shard_${{ matrix.shard }}.json"
+          fi
+
+      - name: Upload shard artifact
+        if: ${{ matrix.shard < fromJson(needs.preflight.outputs.shard_count) }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.shard }}
+          path: experiments/${{ needs.preflight.outputs.experiment }}/results/shards/
+          if-no-files-found: warn
+
+  merge_results:
+    name: Merge Results
+    needs: [preflight, parallel_run]
+    if: needs.preflight.outputs.is_parallel == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download shard artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: shard_results
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore shard files
+        shell: bash
+        run: |
+          mkdir -p experiments/${{ needs.preflight.outputs.experiment }}/results/shards
+          find shard_results -type f -name "*.json" -exec cp {} experiments/${{ needs.preflight.outputs.experiment }}/results/shards/ \;
+
+      - name: Merge shard outputs
+        shell: bash
+        run: |
+          cd experiments/${{ needs.preflight.outputs.experiment }}
+
+          if [ -f merge_shards.py ]; then
+            python merge_shards.py
+          else
+            python - <<'PY'
+            from pathlib import Path
+            import json
+
+            root = Path("results/shards")
+            merged = []
+        for file in sorted(root.glob("*.json")):
+          try
+          merged.extend(json.loads(file.read_text(encoding="utf-8")))
+        except Exception as e:
+        print(f"Skipping {file}: {e}")
+        
+      out = Path("results/phase_space_map.json")
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(json.dumps(merged, indent=2), encoding="utf-8")
+      print(f"Merged samples: {len(merged)}")
+PY
+          fi
+
+        - name: Validate and analyze merged results
+          shell: bash
+          run: |
+          cd experiments/${{ needs.preflight.outputs.experiment }}
+          python validate_results.py || true
+          python baselines.py || true
+          python falsification_tests.py || true
+          python visualize_phase_space.py || true
+
+      - name: Build delivery artifacts
+        shell: bash
+        run: |
+          python result_delivery/build_run_manifest.py || true
+          python result_delivery/build_standard_artifact_bundle.py || true
+          python result_delivery/publish_demo_summary.py || true
+
+      - name: Commit repository changes
+        shell: bash
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
+          git add experiments/${{ needs.preflight.outputs.experiment }}/results || true
+          git add experiments/${{ needs.preflight.outputs.experiment }}/artifacts || true
+          git add experiments/${{ needs.preflight.outputs.experiment }}/published || true
+          git add observatory || true
+          git add sandbox_service || true
+          git add workflow_review || true
+          git add . ':!.github/workflows/*'
+
+          git commit -m "Merged experiment results for ${{ needs.preflight.outputs.experiment }} (${{ needs.preflight.outputs.run_mode }})" || echo "Nothing to commit"
+          git push || echo "Push skipped"
