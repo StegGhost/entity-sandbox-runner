@@ -1,0 +1,11 @@
+{
+  "quorum_threshold": 0.6,
+  "heartbeat_timeout": 10,
+  "stability_thresholds": {
+    "healthy": 1,
+    "caution": 0,
+    "critical": -1
+  },
+  "seed_shards": ["shard1", "shard2", "shard3"],
+  "cycles": 3
+}

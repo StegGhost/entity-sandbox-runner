@@ -1,1 +1,1 @@
-v7.2: autonomous persistence + cron loop + worker scoring
+v7.6–7.9 bundle

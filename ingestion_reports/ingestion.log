@@ -5286,3 +5286,553 @@
 [2026-03-17T19:44:48.848871] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
 [2026-03-17T19:44:48.860168] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
 [2026-03-17T19:44:48.871060] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.105865] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.108736] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.109368] transaction started for sandbox_eval_ready_bundle.zip
+[2026-03-17T20:59:36.109677] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.109952] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.110174] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.110392] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.110661] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.110857] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.111037] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.111235] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.111413] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.111624] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.111801] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.111973] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.112187] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.112367] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.112568] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.112748] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.112922] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.113094] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.113266] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.113440] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.113671] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.113874] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.114051] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.114253] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.115705] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.116589] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.117135] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.117885] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.118653] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.119390] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.119942] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.120585] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.121247] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.122019] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.122991] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.123704] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.124362] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.125052] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.125624] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.126353] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.127077] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.127592] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.128241] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.128902] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.129443] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.130079] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.130740] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.131540] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.132525] transaction completed successfully
+[2026-03-17T20:59:36.132718] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.144923] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.157098] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.242226] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.245028] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.245699] transaction started for sandbox_eval_wiring_patch_v6_1.zip
+[2026-03-17T20:59:36.245914] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.246184] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.246407] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.246647] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.246835] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.247018] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.247195] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.247381] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.247576] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.247756] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.247941] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.248111] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.248312] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.248484] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.248684] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.248858] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.249033] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.249205] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.249376] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.249586] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.249789] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.250000] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.250184] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.250384] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.251795] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.252693] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.253239] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.253988] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.254737] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.255467] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.255979] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.256619] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.257268] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.258036] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.258983] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.259678] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.260335] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.261024] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.261599] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.262333] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.263055] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.263564] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.264214] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.264870] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.265416] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.266074] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.266761] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.267569] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.268553] transaction completed successfully
+[2026-03-17T20:59:36.268732] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.280486] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.291431] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.344749] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.347595] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.348245] transaction started for sandbox_v6_2_shared_state_patch.zip
+[2026-03-17T20:59:36.348461] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.348747] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.348966] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.349183] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.349366] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.349580] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.349763] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.349951] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.350125] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.350300] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.350477] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.350703] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.350906] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.351082] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.351260] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.351430] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.351649] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.351824] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.351994] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.352164] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.352364] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.352598] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.352778] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.352979] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.354387] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.355313] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.355924] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.356675] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.357419] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.358202] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.358727] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.359349] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.360053] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.360836] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.361809] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.362531] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.363199] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.364031] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.364655] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.365426] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.366213] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.366764] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.367461] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.368256] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.368854] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.369535] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.370220] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.371044] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.372072] transaction completed successfully
+[2026-03-17T20:59:36.372271] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.384097] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.395445] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.450695] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.453546] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.454208] transaction started for sandbox_v6_3_workflow_bundle.zip
+[2026-03-17T20:59:36.454427] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.454721] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.454947] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.455166] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.455352] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.455554] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.455738] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.455929] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.456108] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.456285] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.456461] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.456657] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.456862] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.457038] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.457210] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.457384] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.457577] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.457753] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.457934] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.458109] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.458311] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.458539] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.458723] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.458930] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.460373] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.461307] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.461968] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.462760] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.463554] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.464337] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.464899] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.465580] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.466266] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.467068] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.468071] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.468815] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.469525] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.470245] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.470864] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.471652] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.472409] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.472965] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.473682] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.474368] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.474971] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.475654] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.476329] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.477155] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.478144] transaction completed successfully
+[2026-03-17T20:59:36.478341] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.490202] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.501180] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.557013] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.559902] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.560568] transaction started for sandbox_v6_4_unified_promotion_bundle.zip
+[2026-03-17T20:59:36.560796] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.561151] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.561382] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.561619] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.561806] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.561995] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.562172] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.562395] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.562629] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.562808] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.562983] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.563156] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.563361] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.563561] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.563737] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.563909] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.564081] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.564252] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.564422] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.564631] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.564836] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.565048] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.565225] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.565425] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.566856] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.567753] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.568308] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.569071] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.569824] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.570576] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.571080] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.571710] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.572369] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.573123] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.574072] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.574781] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.575436] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.576131] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.576701] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.577432] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.578164] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.578688] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.579348] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.580008] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.580574] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.581184] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.581842] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.582625] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.583570] transaction completed successfully
+[2026-03-17T20:59:36.583741] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.595495] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.606986] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.661323] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.664167] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.664838] transaction started for sandbox_v6_5_no_cli_automation_bundle.zip
+[2026-03-17T20:59:36.665049] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.665318] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.665571] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.665792] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.665976] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.666164] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.666342] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.666550] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.666730] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.666906] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.667078] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.667250] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.667451] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.667644] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.667817] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.667989] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.668160] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.668337] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.668528] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.668706] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.668905] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.669116] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.669294] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.669494] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.670987] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.671951] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.672597] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.673386] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.674185] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.675004] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.675601] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.676280] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.677011] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.677815] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.678843] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.679609] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.680331] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.681082] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.681698] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.682471] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.683296] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.683851] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.684579] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.685254] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.685850] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.686489] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.687188] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.688007] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.688977] transaction completed successfully
+[2026-03-17T20:59:36.689152] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.701777] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.713033] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.765478] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.768278] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.768939] transaction started for sandbox_v7_1_stabilization_bundle.zip
+[2026-03-17T20:59:36.769150] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.769421] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.769672] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.769894] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.770081] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.770262] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.770439] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.770647] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.770823] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.770996] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.771167] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.771337] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.771556] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.771734] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.771904] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.772074] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.772245] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.772413] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.772603] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.772774] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.772973] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.773178] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.773354] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.773581] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.775011] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.775933] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.776538] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.777297] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.778097] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.778889] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.779428] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.780097] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.780809] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.781609] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.782631] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.783409] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.784139] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.784869] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.785457] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.786235] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.787002] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.787552] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.788245] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.788950] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.789559] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.790206] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.790900] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.791711] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.792670] transaction completed successfully
+[2026-03-17T20:59:36.792841] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.804521] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.816189] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.871090] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.873924] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.874601] transaction started for sandbox_v7_2_autonomous_persistence_bundle.zip
+[2026-03-17T20:59:36.874819] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.875088] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.875311] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.875546] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.875741] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.875931] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.876109] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.876298] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.876476] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.876672] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.876846] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.877019] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.877222] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.877396] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.877588] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.877761] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.877935] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.878111] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.878281] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.878452] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.878698] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.878914] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.879091] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.879289] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.880767] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.881689] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.882269] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.883071] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.883860] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.884640] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.885165] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.885829] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.886519] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.887284] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.888276] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.889035] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.889732] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.890427] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.891020] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.891802] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.892572] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.893104] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:36.893801] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.894463] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.895054] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:36.895713] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.896376] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.897187] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:36.898143] transaction completed successfully
+[2026-03-17T20:59:36.898314] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:36.910480] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:36.921745] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:36.977465] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:36.980346] classified files: normal=24 workflow=1
+[2026-03-17T20:59:36.981020] transaction started for sandbox_v7_6_to_7_9_bundle.zip
+[2026-03-17T20:59:36.981243] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:36.981531] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.981761] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.981980] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:36.982166] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:36.982352] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:36.982558] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:36.982756] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.982936] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:36.983120] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:36.983300] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:36.983475] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.983702] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.983882] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.984058] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.984244] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.984419] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:36.984613] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:36.984788] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:36.984961] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:36.985164] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:36.985371] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:36.985568] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:36.985779] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:36.987248] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:36.988209] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:36.988836] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:36.989653] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:36.990458] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:36.991274] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:36.991862] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:36.992581] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:36.993297] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:36.994144] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:36.995178] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:36.995946] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:36.996675] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:36.997414] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:36.998094] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:36.998907] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:36.999693] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:37.000249] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:37.000973] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:37.001690] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:37.002290] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:37.002966] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:37.003691] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:37.004555] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:37.005542] transaction completed successfully
+[2026-03-17T20:59:37.005742] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:37.018689] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:37.030114] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-17T20:59:37.084650] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T20:59:37.087477] classified files: normal=24 workflow=1
+[2026-03-17T20:59:37.088162] transaction started for sandbox_v7_autonomous_loop_bundle.zip
+[2026-03-17T20:59:37.088383] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/README.md
+[2026-03-17T20:59:37.088671] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:37.088899] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:37.089117] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/system_state.py
+[2026-03-17T20:59:37.089302] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/stability_governor.py
+[2026-03-17T20:59:37.089485] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_orchestrator.py
+[2026-03-17T20:59:37.089684] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/orchestrator_hook.py
+[2026-03-17T20:59:37.089873] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/unified_promotion_patch.py
+[2026-03-17T20:59:37.090048] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/promote_workflow.py
+[2026-03-17T20:59:37.090223] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/eval_metrics.py
+[2026-03-17T20:59:37.090396] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_manifest.json
+[2026-03-17T20:59:37.090611] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T20:59:37.090820] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:37.091001] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:37.091175] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:37.091347] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:37.091543] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:37.091722] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V7_README.md
+[2026-03-17T20:59:37.091896] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:37.092068] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:37.092270] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/loop_state.json
+[2026-03-17T20:59:37.092481] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:37.092682] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:37.092881] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/config/eval_config.json
+[2026-03-17T20:59:37.094342] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/README.md
+[2026-03-17T20:59:37.095326] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/evaluation_suite/run_eval.py
+[2026-03-17T20:59:37.095958] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/autonomous/autonomous_controller.py
+[2026-03-17T20:59:37.096761] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/system_state.py
+[2026-03-17T20:59:37.097584] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/stability_governor.py
+[2026-03-17T20:59:37.098386] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_orchestrator.py
+[2026-03-17T20:59:37.098996] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/orchestrator_hook.py
+[2026-03-17T20:59:37.099703] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/unified_promotion_patch.py
+[2026-03-17T20:59:37.100414] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/promote_workflow.py
+[2026-03-17T20:59:37.101230] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/eval_metrics.py
+[2026-03-17T20:59:37.102246] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_manifest.json
+[2026-03-17T20:59:37.103014] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T20:59:37.103746] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_4_REVIEW.md
+[2026-03-17T20:59:37.104473] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_2_SHARED_STATE_PATCH.md
+[2026-03-17T20:59:37.105113] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_5_NO_CLI_AUTOMATION.md
+[2026-03-17T20:59:37.105920] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_NOTES.md
+[2026-03-17T20:59:37.106710] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/EVAL_WIRING_PATCH.md
+[2026-03-17T20:59:37.107271] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V7_README.md
+[2026-03-17T20:59:37.108007] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T20:59:37.108730] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/V6_3_WORKFLOW_REVIEW.md
+[2026-03-17T20:59:37.109333] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/loop_state.json
+[2026-03-17T20:59:37.110016] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/promote_staged_workflows.yml
+[2026-03-17T20:59:37.110737] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/workflows/run_evaluation.yml
+[2026-03-17T20:59:37.111587] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/config/eval_config.json
+[2026-03-17T20:59:37.112590] transaction completed successfully
+[2026-03-17T20:59:37.112804] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/system_state.py
+[2026-03-17T20:59:37.125907] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
+[2026-03-17T20:59:37.137670] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
