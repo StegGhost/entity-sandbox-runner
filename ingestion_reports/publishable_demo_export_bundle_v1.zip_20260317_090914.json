@@ -1,0 +1,19 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "allowed_paths"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "publishable_demo_export_bundle_v1",
+      "version": "1.0.0",
+      "install_mode": "folder_map",
+      "description": "Publishable layer + demo repo export"
+    }
+  },
+  "moved_bundle_to": "failed_bundles/publishable_demo_export_bundle_v1.zip"
+}
