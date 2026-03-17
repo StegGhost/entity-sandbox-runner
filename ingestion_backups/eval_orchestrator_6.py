@@ -1,4 +1,5 @@
-# eval_orchestrator.py (patched for shared state)
+# eval_orchestrator.py
+# Wires scheduler + consensus + U-signal + governor
 
 from install.adaptive_scheduler import add_shard, next_assignment
 from install.quorum_consensus import quorum
@@ -17,12 +18,12 @@ def run_cycle(workers):
     worker_id = assignment.get("worker")
     shard = assignment.get("shard")
 
-    # Simulated multi-worker results
+    # Simulate multi-worker results (can be replaced with real execution fan-out)
     results = ["ok", "ok", "fail"]
 
     decision = quorum(results)
 
-    # Replace with real telemetry later
+    # Example signal inputs (replace with real telemetry when available)
     U = compute_U(1, 1, 1, 1)
     state = classify(U)
 
