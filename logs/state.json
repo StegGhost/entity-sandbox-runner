@@ -137,6 +137,14 @@
       "prev_hash": "a03b0dc927de0d171e52be86725d231113d743e40daed2b6badbfd4de96e819a",
       "hash": "18c4da3c294dc9b74cd71d569bc95e1ee42ac5c1e3f4fe03fbdaf49e945455bf",
       "signature": "506f097c1e117f18cb84d62627f7af71500e0f21e8860e82d7dee5dc479a4739"
+    },
+    {
+      "cycle": 10,
+      "u": 0.8309539664286612,
+      "action": "allow",
+      "prev_hash": "18c4da3c294dc9b74cd71d569bc95e1ee42ac5c1e3f4fe03fbdaf49e945455bf",
+      "hash": "d2923601b23100dd5208ca6fe1fdd24163e64e8c78410bf6fcd2eef3d8cf8a1b",
+      "signature": "f6f0c3012fd05fb3cb603cc4d547404c0a60eb27f910fcd9b6e62b0665558a4e"
     }
   ],
   "workers": {
@@ -200,7 +208,7 @@
       "ts": 1773786599.2312524
     }
   ],
-  "cycles": 9,
+  "cycles": 10,
   "last_action": "restrict",
-  "last_receipt": "18c4da3c294dc9b74cd71d569bc95e1ee42ac5c1e3f4fe03fbdaf49e945455bf"
+  "last_receipt": "d2923601b23100dd5208ca6fe1fdd24163e64e8c78410bf6fcd2eef3d8cf8a1b"
 }
