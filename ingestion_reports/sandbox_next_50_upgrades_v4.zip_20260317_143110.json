@@ -1,0 +1,29 @@
+{
+  "bundle_name": "sandbox_next_50_upgrades_v4",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "experiments/",
+      "workflow_review/"
+    ],
+    "violations": [
+      "bundle_manifest.json"
+    ],
+    "filtered_normal_files": [
+      "install/saas_enforcement.py",
+      "install/precision_engine.py",
+      "install/decentralized_worker_runtime.py",
+      "install/trust_consensus.py",
+      "install/self_healing_ingestion.py",
+      "workflow_review/BUILD_NOTES.md",
+      "payload/upgrades/UPGRADE_LIST.md"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/sandbox_next_50_upgrades_v4.zip"
+}
