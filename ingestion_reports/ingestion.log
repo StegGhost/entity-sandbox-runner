@@ -2123,3 +2123,6 @@
 [2026-03-17T00:38:57.997971] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_and_validation_upgrades_563_582_v1/install/install_bundle_autoregister.py
 [2026-03-17T00:38:58.023146] safe ingestion complete status=installed
 [2026-03-17T00:38:58.023588] cleaned ingestion_tmp
+[2026-03-17T00:41:09.259312] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_run_workflow_upgrade_bundle_v1
+[2026-03-17T00:41:09.259876] classified files: normal=3 workflow=1
+[2026-03-17T00:41:09.260664] cleaned ingestion_tmp

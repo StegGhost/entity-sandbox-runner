@@ -1,0 +1,25 @@
+{
+  "bundle_name": "sandbox_run_workflow_upgrade",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "bundle_manifest.json/",
+      "bundle_readme.md/"
+    ],
+    "violations": [
+      "payload/.github/workflows/run_experiment.yml"
+    ],
+    "filtered_normal_files": [
+      "bundle_readme.md",
+      "bundle_manifest.json",
+      "install/install_bundle_autoregister.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/sandbox_run_workflow_upgrade_bundle_v1.zip"
+}
