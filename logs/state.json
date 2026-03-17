@@ -113,6 +113,14 @@
       "decision": "ok",
       "worker": "w1",
       "shard": "shard2"
+    },
+    {
+      "cycle": 7,
+      "u": 0.803051432491834,
+      "action": "allow",
+      "prev_hash": null,
+      "hash": "11098f4bac85a4f36009d7271c39bd04a1af81846410ef53b445c934ec88cd1a",
+      "signature": "7a0e8c3fad3525eb0db005815dee108c21ce6040069a5589a03b5f663f34c4ad"
     }
   ],
   "workers": {
@@ -176,6 +184,7 @@
       "ts": 1773786599.2312524
     }
   ],
-  "cycles": 6,
-  "last_action": "restrict"
+  "cycles": 7,
+  "last_action": "restrict",
+  "last_receipt": "11098f4bac85a4f36009d7271c39bd04a1af81846410ef53b445c934ec88cd1a"
 }
