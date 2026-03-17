@@ -1987,3 +1987,139 @@
 [2026-03-16T23:56:30.274168] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/stegverse_result_delivery_bundle_v1/install/install_bundle_autoregister.py
 [2026-03-16T23:56:30.300954] safe ingestion complete status=installed
 [2026-03-16T23:56:30.301631] cleaned ingestion_tmp
+[2026-03-17T00:38:57.914716] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_and_validation_upgrades_543_562_v1
+[2026-03-17T00:38:57.915505] classified files: normal=33 workflow=0
+[2026-03-17T00:38:57.915983] transaction started for sandbox_service_and_validation_upgrades_543_562_v1.zip
+[2026-03-17T00:38:57.916129] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-17T00:38:57.916249] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-17T00:38:57.916374] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-17T00:38:57.916520] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/beta_tracking_engine.py
+[2026-03-17T00:38:57.916631] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/review_bundle_notary.py
+[2026-03-17T00:38:57.916752] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/campaign_seed_bookkeeper.py
+[2026-03-17T00:38:57.916855] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/campaign_claim_linter.py
+[2026-03-17T00:38:57.916966] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/domain_adaptation_queue_builder.py
+[2026-03-17T00:38:57.917068] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/cross_campaign_comparator.py
+[2026-03-17T00:38:57.917168] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/campaign_readiness_reporter.py
+[2026-03-17T00:38:57.917265] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/boundary_resampling_controller.py
+[2026-03-17T00:38:57.917363] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/campaign_merge_validator.py
+[2026-03-17T00:38:57.917461] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/shard_consistency_auditor.py
+[2026-03-17T00:38:57.917560] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/parallel_shard_metadata_writer.py
+[2026-03-17T00:38:57.917658] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/multi_run_uc_aggregator.py
+[2026-03-17T00:38:57.917769] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/adaptive_uc_refiner.py
+[2026-03-17T00:38:57.917883] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/researcher_delivery_preferences.py
+[2026-03-17T00:38:57.917984] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/parallel_result_merger.py
+[2026-03-17T00:38:57.918081] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/run_status_api_stub.py
+[2026-03-17T00:38:57.918182] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/raw_export_request_handler.py
+[2026-03-17T00:38:57.918279] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/workflow_mode_selector.py
+[2026-03-17T00:38:57.918376] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/parallel_artifact_uploader.py
+[2026-03-17T00:38:57.918473] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/artifact_retention_scheduler.py
+[2026-03-17T00:38:57.918569] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/experiment_mode_preflight_checker.py
+[2026-03-17T00:38:57.918665] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/campaign_publication_manifest.py
+[2026-03-17T00:38:57.918794] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/workflow_dispatch_profile_manager.py
+[2026-03-17T00:38:57.918892] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/demo_repo_push_coordinator.py
+[2026-03-17T00:38:57.918989] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/run_mode_schema.json
+[2026-03-17T00:38:57.919089] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/result_manifest_api_stub.py
+[2026-03-17T00:38:57.919186] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/parallel_merge_manifest_builder.py
+[2026-03-17T00:38:57.919284] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/user_result_delivery_profile.py
+[2026-03-17T00:38:57.919382] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/shard_capacity_estimator.py
+[2026-03-17T00:38:57.919478] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/parallel_artifact_downloader.py
+[2026-03-17T00:38:57.920085] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-17T00:38:57.920507] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-17T00:38:57.920954] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-17T00:38:57.921163] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/beta_tracking_engine.py
+[2026-03-17T00:38:57.921283] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/review_bundle_notary.py
+[2026-03-17T00:38:57.921395] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/campaign_seed_bookkeeper.py
+[2026-03-17T00:38:57.921500] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/campaign_claim_linter.py
+[2026-03-17T00:38:57.921609] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/domain_adaptation_queue_builder.py
+[2026-03-17T00:38:57.921727] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_campaign_comparator.py
+[2026-03-17T00:38:57.921835] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/campaign_readiness_reporter.py
+[2026-03-17T00:38:57.921939] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/boundary_resampling_controller.py
+[2026-03-17T00:38:57.922042] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/campaign_merge_validator.py
+[2026-03-17T00:38:57.922147] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/shard_consistency_auditor.py
+[2026-03-17T00:38:57.922252] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/parallel_shard_metadata_writer.py
+[2026-03-17T00:38:57.922357] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/multi_run_uc_aggregator.py
+[2026-03-17T00:38:57.922463] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/adaptive_uc_refiner.py
+[2026-03-17T00:38:57.922607] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/researcher_delivery_preferences.py
+[2026-03-17T00:38:57.922737] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/parallel_result_merger.py
+[2026-03-17T00:38:57.922847] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/run_status_api_stub.py
+[2026-03-17T00:38:57.922957] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/raw_export_request_handler.py
+[2026-03-17T00:38:57.923069] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/workflow_mode_selector.py
+[2026-03-17T00:38:57.923174] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/parallel_artifact_uploader.py
+[2026-03-17T00:38:57.923283] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_retention_scheduler.py
+[2026-03-17T00:38:57.923388] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/experiment_mode_preflight_checker.py
+[2026-03-17T00:38:57.923494] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/campaign_publication_manifest.py
+[2026-03-17T00:38:57.923597] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/workflow_dispatch_profile_manager.py
+[2026-03-17T00:38:57.923716] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/demo_repo_push_coordinator.py
+[2026-03-17T00:38:57.923820] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/run_mode_schema.json
+[2026-03-17T00:38:57.923959] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/result_manifest_api_stub.py
+[2026-03-17T00:38:57.924132] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/parallel_merge_manifest_builder.py
+[2026-03-17T00:38:57.924310] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/user_result_delivery_profile.py
+[2026-03-17T00:38:57.924433] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/shard_capacity_estimator.py
+[2026-03-17T00:38:57.924538] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/parallel_artifact_downloader.py
+[2026-03-17T00:38:57.925036] transaction completed successfully
+[2026-03-17T00:38:57.925180] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_and_validation_upgrades_543_562_v1/install/install_bundle_autoregister.py
+[2026-03-17T00:38:57.951823] safe ingestion complete status=installed
+[2026-03-17T00:38:57.952326] cleaned ingestion_tmp
+[2026-03-17T00:38:57.988799] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_and_validation_upgrades_563_582_v1
+[2026-03-17T00:38:57.989533] classified files: normal=28 workflow=0
+[2026-03-17T00:38:57.989971] transaction started for sandbox_service_and_validation_upgrades_563_582_v1.zip
+[2026-03-17T00:38:57.990114] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-17T00:38:57.990222] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-17T00:38:57.990350] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-17T00:38:57.990497] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/uc_drift_monitor.py
+[2026-03-17T00:38:57.990603] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/boundary_gain_estimator.py
+[2026-03-17T00:38:57.990725] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/claim_traceability_builder.py
+[2026-03-17T00:38:57.990829] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/reproducibility_scorecard.py
+[2026-03-17T00:38:57.990941] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/cross_domain_disagreement_detector.py
+[2026-03-17T00:38:57.991044] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/campaign_outcome_classifier.py
+[2026-03-17T00:38:57.991150] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/cross_domain_validation_manifest.py
+[2026-03-17T00:38:57.991253] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/adaptive_sampling_scorecard.py
+[2026-03-17T00:38:57.991350] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/publication_readiness_gate.py
+[2026-03-17T00:38:57.991472] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/researcher_request_auditor.py
+[2026-03-17T00:38:57.991575] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/adaptive_parallel_policy.json
+[2026-03-17T00:38:57.991685] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/delivery_profile_resolver.py
+[2026-03-17T00:38:57.991787] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/workflow_execution_plan.json
+[2026-03-17T00:38:57.991886] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/artifact_access_auditor.py
+[2026-03-17T00:38:57.991984] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/merge_job_trigger_stub.py
+[2026-03-17T00:38:57.992084] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/research_delivery_contract.json
+[2026-03-17T00:38:57.992183] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/service_result_catalog.py
+[2026-03-17T00:38:57.992280] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/adaptive_parallel_executor_stub.py
+[2026-03-17T00:38:57.992378] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/workflow_runner_bridge.py
+[2026-03-17T00:38:57.992474] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/artifact_publication_router.py
+[2026-03-17T00:38:57.992570] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/single_run_executor_stub.py
+[2026-03-17T00:38:57.992691] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/shard_seed_allocator.py
+[2026-03-17T00:38:57.992797] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/workflow_execution_plan_builder.py
+[2026-03-17T00:38:57.992895] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/parallel_run_executor_stub.py
+[2026-03-17T00:38:57.992993] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/cross_repo_publish_stub.py
+[2026-03-17T00:38:57.993590] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-17T00:38:57.994070] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-17T00:38:57.994542] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-17T00:38:57.994769] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/uc_drift_monitor.py
+[2026-03-17T00:38:57.994882] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/boundary_gain_estimator.py
+[2026-03-17T00:38:57.994989] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/claim_traceability_builder.py
+[2026-03-17T00:38:57.995095] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/reproducibility_scorecard.py
+[2026-03-17T00:38:57.995206] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_domain_disagreement_detector.py
+[2026-03-17T00:38:57.995314] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/campaign_outcome_classifier.py
+[2026-03-17T00:38:57.995422] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_domain_validation_manifest.py
+[2026-03-17T00:38:57.995529] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/adaptive_sampling_scorecard.py
+[2026-03-17T00:38:57.995634] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/publication_readiness_gate.py
+[2026-03-17T00:38:57.995802] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/researcher_request_auditor.py
+[2026-03-17T00:38:57.995911] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/adaptive_parallel_policy.json
+[2026-03-17T00:38:57.996015] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/delivery_profile_resolver.py
+[2026-03-17T00:38:57.996118] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/workflow_execution_plan.json
+[2026-03-17T00:38:57.996223] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_access_auditor.py
+[2026-03-17T00:38:57.996325] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/merge_job_trigger_stub.py
+[2026-03-17T00:38:57.996433] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/research_delivery_contract.json
+[2026-03-17T00:38:57.996536] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/service_result_catalog.py
+[2026-03-17T00:38:57.996637] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/adaptive_parallel_executor_stub.py
+[2026-03-17T00:38:57.996768] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/workflow_runner_bridge.py
+[2026-03-17T00:38:57.996874] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_publication_router.py
+[2026-03-17T00:38:57.996979] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/single_run_executor_stub.py
+[2026-03-17T00:38:57.997083] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/shard_seed_allocator.py
+[2026-03-17T00:38:57.997186] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/workflow_execution_plan_builder.py
+[2026-03-17T00:38:57.997291] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/parallel_run_executor_stub.py
+[2026-03-17T00:38:57.997394] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/cross_repo_publish_stub.py
+[2026-03-17T00:38:57.997830] transaction completed successfully
+[2026-03-17T00:38:57.997971] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_service_and_validation_upgrades_563_582_v1/install/install_bundle_autoregister.py
+[2026-03-17T00:38:58.023146] safe ingestion complete status=installed
+[2026-03-17T00:38:58.023588] cleaned ingestion_tmp

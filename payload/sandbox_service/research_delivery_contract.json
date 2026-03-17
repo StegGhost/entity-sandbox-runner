@@ -1,0 +1,15 @@
+{
+  "profiles": [
+    "summary",
+    "standard",
+    "raw"
+  ],
+  "required_fields": [
+    "run_id",
+    "experiment",
+    "sample_count",
+    "estimated_Uc",
+    "validation_passed"
+  ],
+  "raw_requires_explicit_request": true
+}

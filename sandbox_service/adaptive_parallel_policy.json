@@ -1,0 +1,10 @@
+{
+  "default_mode": "adaptive_parallel",
+  "max_shards": 32,
+  "minimum_boundary_gain_threshold": 0.05,
+  "priority_regions": [
+    "boundary",
+    "high_uncertainty",
+    "cross_domain_disagreement"
+  ]
+}

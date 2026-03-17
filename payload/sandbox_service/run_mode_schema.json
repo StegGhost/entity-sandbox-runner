@@ -1,0 +1,10 @@
+{
+  "modes": [
+    "single",
+    "parallel",
+    "adaptive_parallel"
+  ],
+  "default_mode": "single",
+  "max_shards": 32,
+  "default_runs_per_shard": 50000
+}

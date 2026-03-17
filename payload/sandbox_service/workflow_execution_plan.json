@@ -1,0 +1,13 @@
+{
+  "stages": [
+    "resolve_experiment",
+    "resolve_run_mode",
+    "launch_single_or_parallel",
+    "merge_results_if_needed",
+    "validate_outputs",
+    "build_run_manifest",
+    "build_standard_artifacts",
+    "optional_raw_export",
+    "publish_demo_summary"
+  ]
+}
