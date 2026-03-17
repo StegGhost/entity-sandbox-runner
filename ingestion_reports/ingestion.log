@@ -2507,3 +2507,13 @@
 [2026-03-17T04:14:43.144655] transaction completed successfully
 [2026-03-17T04:14:43.145242] safe ingestion complete status=installed
 [2026-03-17T04:14:43.145507] cleaned ingestion_tmp
+[2026-03-17T04:34:39.327128] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T04:34:39.328128] classified files: normal=2 workflow=1
+[2026-03-17T04:34:39.328376] transaction started for stegverse_experiment_fix_bundle_v1.zip
+[2026-03-17T04:34:39.328663] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/critical_ratio_campaign/merge_shards.py
+[2026-03-17T04:34:39.328885] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/critical_ratio_campaign/run_experiment.py
+[2026-03-17T04:34:39.329546] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/critical_ratio_campaign/merge_shards.py
+[2026-03-17T04:34:39.329997] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/critical_ratio_campaign/run_experiment.py
+[2026-03-17T04:34:39.330326] transaction completed successfully
+[2026-03-17T04:34:39.331033] safe ingestion complete status=installed
+[2026-03-17T04:34:39.331411] cleaned ingestion_tmp
