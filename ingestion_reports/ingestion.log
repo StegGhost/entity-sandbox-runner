@@ -2778,3 +2778,84 @@
 [2026-03-17T05:19:27.579965] transaction completed successfully
 [2026-03-17T05:19:27.580611] safe ingestion complete status=installed
 [2026-03-17T05:19:27.581005] cleaned ingestion_tmp
+[2026-03-17T05:30:54.995676] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_next_30_upgrades_901_930_v1
+[2026-03-17T05:30:54.997058] classified files: normal=37 workflow=0
+[2026-03-17T05:30:54.997690] transaction started for sandbox_901_930_v1.zip
+[2026-03-17T05:30:54.997927] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-17T05:30:54.998116] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-17T05:30:54.998338] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-17T05:30:54.998599] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/merge_diagnostics_reporter.py
+[2026-03-17T05:30:54.998809] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/result_consistency_guard.py
+[2026-03-17T05:30:54.999007] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/phase_boundary_density_map.py
+[2026-03-17T05:30:54.999200] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/shard_reliability_scoreboard.py
+[2026-03-17T05:30:54.999392] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/sampling_gap_detector.py
+[2026-03-17T05:30:54.999580] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/boundary_hotspot_tracker.py
+[2026-03-17T05:30:54.999785] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/uc_confidence_band_builder.py
+[2026-03-17T05:30:55.000009] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/discovery_engine/transition_regime_labeler.py
+[2026-03-17T05:30:55.000194] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/discovery_engine/critical_ratio_competitor_search.py
+[2026-03-17T05:30:55.000374] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/discovery_engine/boundary_shape_classifier.py
+[2026-03-17T05:30:55.000577] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/autonomy_plane/convergence_stop_recommender.py
+[2026-03-17T05:30:55.000778] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/autonomy_plane/followup_run_recommender.py
+[2026-03-17T05:30:55.000961] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/autonomy_plane/experiment_retry_policy_builder.py
+[2026-03-17T05:30:55.001142] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/autonomy_plane/adaptive_shard_reweighting_engine.py
+[2026-03-17T05:30:55.001318] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/autonomy_plane/adaptive_boundary_targeter.py
+[2026-03-17T05:30:55.001529] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/global_registry/export_bundle_registry.py
+[2026-03-17T05:30:55.001725] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/global_registry/run_receipt_registry.py
+[2026-03-17T05:30:55.001930] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/demo_latest_pointer_builder.py
+[2026-03-17T05:30:55.002108] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/result_snapshot_builder.py
+[2026-03-17T05:30:55.002283] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/export_demo_pipeline.py
+[2026-03-17T05:30:55.002463] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/demo_surface_sync_agent.py
+[2026-03-17T05:30:55.002638] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/user_facing_result_packet_builder.py
+[2026-03-17T05:30:55.002833] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/results_readme_refresher.py
+[2026-03-17T05:30:55.003015] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/publish_demo_surface.py
+[2026-03-17T05:30:55.003191] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/summary_card_builder.py
+[2026-03-17T05:30:55.003367] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/publication_plane/merge_summary_publisher.py
+[2026-03-17T05:30:55.003569] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/experiment_export_api_stub.py
+[2026-03-17T05:30:55.003771] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/result_bundle_download_index.py
+[2026-03-17T05:30:55.003950] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/result_delivery_profiles_901.json
+[2026-03-17T05:30:55.004132] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/compressed_raw_export_builder.py
+[2026-03-17T05:30:55.004306] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/artifact_manifest_exporter.py
+[2026-03-17T05:30:55.004489] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/artifact_retention_manifest.py
+[2026-03-17T05:30:55.004662] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/build_export_bundle.py
+[2026-03-17T05:30:55.004927] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/final_results_zip_builder.py
+[2026-03-17T05:30:55.005986] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-17T05:30:55.006670] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-17T05:30:55.007381] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-17T05:30:55.007753] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/merge_diagnostics_reporter.py
+[2026-03-17T05:30:55.007948] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/result_consistency_guard.py
+[2026-03-17T05:30:55.008136] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/phase_boundary_density_map.py
+[2026-03-17T05:30:55.008368] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/shard_reliability_scoreboard.py
+[2026-03-17T05:30:55.008563] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/sampling_gap_detector.py
+[2026-03-17T05:30:55.008770] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/boundary_hotspot_tracker.py
+[2026-03-17T05:30:55.008972] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/uc_confidence_band_builder.py
+[2026-03-17T05:30:55.009937] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/discovery_engine/transition_regime_labeler.py
+[2026-03-17T05:30:55.010133] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/discovery_engine/critical_ratio_competitor_search.py
+[2026-03-17T05:30:55.010318] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/discovery_engine/boundary_shape_classifier.py
+[2026-03-17T05:30:55.010547] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/autonomy_plane/convergence_stop_recommender.py
+[2026-03-17T05:30:55.010752] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/autonomy_plane/followup_run_recommender.py
+[2026-03-17T05:30:55.010940] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/autonomy_plane/experiment_retry_policy_builder.py
+[2026-03-17T05:30:55.011131] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/autonomy_plane/adaptive_shard_reweighting_engine.py
+[2026-03-17T05:30:55.011325] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/autonomy_plane/adaptive_boundary_targeter.py
+[2026-03-17T05:30:55.011561] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/global_registry/export_bundle_registry.py
+[2026-03-17T05:30:55.011767] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/global_registry/run_receipt_registry.py
+[2026-03-17T05:30:55.012003] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/demo_latest_pointer_builder.py
+[2026-03-17T05:30:55.012192] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/result_snapshot_builder.py
+[2026-03-17T05:30:55.012374] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/export_demo_pipeline.py
+[2026-03-17T05:30:55.012658] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/demo_surface_sync_agent.py
+[2026-03-17T05:30:55.012905] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/user_facing_result_packet_builder.py
+[2026-03-17T05:30:55.013105] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/results_readme_refresher.py
+[2026-03-17T05:30:55.013289] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/publish_demo_surface.py
+[2026-03-17T05:30:55.013474] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/summary_card_builder.py
+[2026-03-17T05:30:55.013658] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/publication_plane/merge_summary_publisher.py
+[2026-03-17T05:30:55.013931] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/experiment_export_api_stub.py
+[2026-03-17T05:30:55.014130] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/result_bundle_download_index.py
+[2026-03-17T05:30:55.014320] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/result_delivery_profiles_901.json
+[2026-03-17T05:30:55.014507] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/compressed_raw_export_builder.py
+[2026-03-17T05:30:55.014717] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_manifest_exporter.py
+[2026-03-17T05:30:55.014912] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_retention_manifest.py
+[2026-03-17T05:30:55.015109] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/build_export_bundle.py
+[2026-03-17T05:30:55.015301] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/final_results_zip_builder.py
+[2026-03-17T05:30:55.016465] transaction completed successfully
+[2026-03-17T05:30:55.016641] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_next_30_upgrades_901_930_v1/install/install_bundle_autoregister.py
+[2026-03-17T05:30:55.048637] safe ingestion complete status=installed
+[2026-03-17T05:30:55.049844] cleaned ingestion_tmp

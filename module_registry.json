@@ -70,5 +70,9 @@
   "sandbox_future_upgrades": {
     "version": "1.0.0",
     "installed": "2026-03-17T05:10:44.776391"
+  },
+  "sandbox_next_30_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-17T05:30:55.048476"
   }
 }
