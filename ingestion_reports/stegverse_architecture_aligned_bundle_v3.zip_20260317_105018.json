@@ -1,0 +1,34 @@
+{
+  "bundle_name": "stegverse_architecture_aligned_bundle_v3",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "experiments/",
+      "workflow_review/"
+    ],
+    "violations": [
+      "bundle_manifest.json"
+    ],
+    "filtered_normal_files": [
+      "install/bundle_guard.py",
+      "workflow_review/FORWARD_BUILD_NOTES.md",
+      "workflow_review/INGESTION_POLICY_PATCH.md",
+      "workflow_review/INSTALLATION_NOTES.md",
+      "workflow_review/PROPOSED_BUILD.md",
+      "workflow_review/ARCHITECTURE_MAP.md",
+      "payload/canonical_manifest_template.json",
+      "payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json",
+      "payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stegverse_architecture_aligned_bundle_v3.zip"
+}
