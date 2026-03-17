@@ -1,157 +1,61 @@
-import json, os, random, time
 
-from install.deterministic_enforcer import enforce_policy
-from install.receipt_logger import write_receipt
-from install.economic_weighting import weighted_score, weighted_mode
-from install.external_signal_adapter import external_signal
-from install.coordination import select_worker, reassign_if_failed, initialize_workers
+import json, os, time, hashlib, random
+from install.policy_engine import load_policy, enforce_policy
+from install.crypto import sign_payload, hash_payload
+from install.replay import record_cycle
 
 STATE_FILE = "logs/state.json"
-RECEIPT_DIR = "payload/receipts"
 
 def load_state():
     if os.path.exists(STATE_FILE):
-        with open(STATE_FILE, "r") as f:
-            state = json.load(f)
-    else:
-        state = {
-            "history": [],
-            "workers": {},
-            "mode": "normal",
-            "failures": [],
-            "anomalies": [],
-            "last_u": None,
-            "last_action": None,
-            "cycles": 0,
-        }
-    initialize_workers(state)
-    return state
+        return json.load(open(STATE_FILE))
+    return {"cycles":0,"last_receipt":None,"history":[]}
 
 def save_state(state):
-    os.makedirs("logs", exist_ok=True)
-    with open(STATE_FILE, "w") as f:
-        json.dump(state, f, indent=2)
+    json.dump(state, open(STATE_FILE,"w"), indent=2)
 
-def prune_state(state):
-    state["history"] = state.get("history", [])[-100:]
-    state["failures"] = state.get("failures", [])[-50:]
-    state["anomalies"] = state.get("anomalies", [])[-50:]
-
-def classify(u):
-    if u >= 0.80:
-        return "stable", "allow"
-    if u >= 0.62:
-        return "warning", "monitor"
-    return "critical", "restrict"
-
-def detect_anomaly(state, u):
-    prev = state.get("last_u")
-    state["last_u"] = u
-    if prev is None:
-        return False
-    if abs(u - prev) > 0.20:
-        state.setdefault("anomalies", []).append({"prev": prev, "current": u, "ts": time.time()})
-        return True
-    return False
-
-def score_worker(state, worker, confidence, decision):
-    workers = state.setdefault("workers", {})
-    w = workers.setdefault(worker, {"score": 0.5, "count": 0, "failures": 0})
-    # confidence contributes positively; failures reduce score
-    base = confidence if decision == "ok" else max(0.0, confidence - 0.25)
-    w["score"] = ((w["score"] * w["count"]) + base) / (w["count"] + 1)
-    w["count"] += 1
-    if decision != "ok":
-        w["failures"] += 1
-
-def run_cycle(state):
-    shards = ["shard1", "shard2", "shard3"]
-    mode = state.get("mode", "normal")
-    if mode == "conservative":
-        shards = shards[:2]
-    elif mode == "aggressive":
-        shards = shards + ["shard4", "shard5"]
-
-    results = []
-    for shard in shards:
-        worker = select_worker(state)
-        confidence = random.uniform(0.5, 0.92)
-        ext = external_signal()
-        final_conf = round((confidence * 0.75) + (ext * 0.25), 6)
-        decision = "ok" if final_conf > 0.6 else "fail"
-        result = {
-            "worker": worker,
-            "shard": shard,
-            "confidence": final_conf,
-            "decision": decision,
-            "external_signal": ext,
-        }
-        result["worker"] = reassign_if_failed(state, result)
-        results.append(result)
+def run_cycle():
+    results=[]
+    for s in ["s1","s2","s3"]:
+        c=random.uniform(0.5,0.9)
+        d="ok" if c>0.6 else "fail"
+        results.append({"shard":s,"confidence":c,"decision":d})
     return results
 
+def compute_u(results):
+    return sum(r["confidence"] for r in results)/len(results)
+
 def main():
-    state = load_state()
-    state["cycles"] = state.get("cycles", 0) + 1
+    state=load_state()
+    state["cycles"]+=1
 
-    results = run_cycle(state)
+    results=run_cycle()
+    u=compute_u(results)
 
-    for r in results:
-        state["history"].append({
-            "confidence": r["confidence"],
-            "decision": r["decision"],
-            "worker": r["worker"],
-            "shard": r["shard"],
-        })
-        score_worker(state, r["worker"], r["confidence"], r["decision"])
+    policy=load_policy()
+    action,reason=enforce_policy(policy,state,u)
 
-    u = weighted_score(state)
-    proposed_state, proposed_action = classify(u)
-
-    enforced_action, policy_reason = enforce_policy(
-        state=state,
-        proposed_action=proposed_action,
-        proposed_state=proposed_state,
-        u_signal=u,
-    )
-
-    anomaly = detect_anomaly(state, u)
-    state["mode"] = weighted_mode(state, u, enforced_action)
-    state["last_action"] = enforced_action
-
-    prune_state(state)
-    save_state(state)
-
-    receipt = write_receipt(
-        receipt_dir=RECEIPT_DIR,
-        state=state,
-        results=results,
-        summary={
-            "u_signal": u,
-            "state": proposed_state,
-            "action": enforced_action,
-            "mode": state["mode"],
-            "anomaly": anomaly,
-            "policy_reason": policy_reason,
-            "cycle": state["cycles"],
-        },
-    )
-
-    summary = {
-        "u_signal": u,
-        "state": proposed_state,
-        "action": enforced_action,
-        "mode": state["mode"],
-        "anomaly": anomaly,
-        "policy_reason": policy_reason,
-        "cycle": state["cycles"],
-        "workers": state["workers"],
-        "receipt": receipt,
+    receipt={
+        "cycle":state["cycles"],
+        "u":u,
+        "action":action,
+        "prev_hash":state.get("last_receipt")
     }
 
-    print("RESULTS:", results)
-    print("SUMMARY:", summary)
-    return summary
+    receipt["hash"]=hash_payload(receipt)
+    receipt["signature"]=sign_payload(receipt)
 
-if __name__ == "__main__":
+    os.makedirs("payload/receipts",exist_ok=True)
+    path=f"payload/receipts/r_{state['cycles']:04d}.json"
+    json.dump(receipt, open(path,"w"), indent=2)
+
+    state["last_receipt"]=receipt["hash"]
+    state["history"].append(receipt)
+    save_state(state)
+
+    record_cycle(state,results,action,u)
+
+    print("SUMMARY:", receipt)
+
+if __name__=="__main__":
     main()
