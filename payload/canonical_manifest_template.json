@@ -1,0 +1,12 @@
+{
+  "bundle_name": "<REQUIRED>",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "<CLEAR DESCRIPTION>",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ]
+}

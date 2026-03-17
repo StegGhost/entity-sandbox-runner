@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_next_50_upgrades_981_1030_v1",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Upgrades 981-1030: closed-loop autonomy + decision engine",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ]
+}

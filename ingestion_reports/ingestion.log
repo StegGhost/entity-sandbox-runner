@@ -3214,3 +3214,28 @@
 [2026-03-17T10:38:50.494761] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/stegverse_ingestion_safe_recovery_bundle_v1
 [2026-03-17T10:38:50.495517] classified files: normal=11 workflow=0
 [2026-03-17T10:38:50.496478] cleaned ingestion_tmp
+[2026-03-17T10:44:44.835191] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T10:44:44.836590] classified files: normal=9 workflow=0
+[2026-03-17T10:44:44.836934] transaction started for stegverse_ingestion_safe_recovery_bundle_v2.zip
+[2026-03-17T10:44:44.837201] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_guard.py
+[2026-03-17T10:44:44.837427] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/forward_build_notes.md
+[2026-03-17T10:44:44.837643] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/installation_notes.md
+[2026-03-17T10:44:44.837869] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/canonical_manifest_template.json
+[2026-03-17T10:44:44.838092] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json
+[2026-03-17T10:44:44.838284] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json
+[2026-03-17T10:44:44.838472] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json
+[2026-03-17T10:44:44.838691] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json
+[2026-03-17T10:44:44.838877] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json
+[2026-03-17T10:44:44.839331] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_guard.py
+[2026-03-17T10:44:44.839602] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/forward_build_notes.md
+[2026-03-17T10:44:44.839826] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/installation_notes.md
+[2026-03-17T10:44:44.840060] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/canonical_manifest_template.json
+[2026-03-17T10:44:44.840334] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json
+[2026-03-17T10:44:44.840525] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json
+[2026-03-17T10:44:44.840743] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json
+[2026-03-17T10:44:44.840932] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json
+[2026-03-17T10:44:44.841124] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json
+[2026-03-17T10:44:44.841686] transaction completed successfully
+[2026-03-17T10:44:44.841870] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/bundle_guard.py
+[2026-03-17T10:44:44.862399] safe ingestion complete status=installed
+[2026-03-17T10:44:44.862936] cleaned ingestion_tmp

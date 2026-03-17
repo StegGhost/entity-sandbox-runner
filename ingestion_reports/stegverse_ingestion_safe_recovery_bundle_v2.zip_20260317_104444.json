@@ -1,0 +1,47 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 9,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_guard.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/forward_build_notes.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/installation_notes.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/canonical_manifest_template.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "workflow_review/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "install/bundle_guard.py",
+      "workflow_review/forward_build_notes.md",
+      "workflow_review/installation_notes.md",
+      "payload/canonical_manifest_template.json",
+      "payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json",
+      "payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/stegverse_ingestion_safe_recovery_bundle_v2.zip"
+}

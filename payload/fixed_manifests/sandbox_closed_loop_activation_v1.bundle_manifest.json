@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_closed_loop_activation_v1",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Activates closed-loop autonomous experiment execution",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ]
+}

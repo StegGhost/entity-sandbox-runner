@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_research_grade_upgrades_1031_1040_v1",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Research-grade upgrades: figures, CI, theorem scaffold",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ]
+}
