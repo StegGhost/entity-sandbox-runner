@@ -1,10 +1,7 @@
-# stability_governor.py
 
-def decide(state):
-    if state == "healthy":
-        return "run"
-    if state == "caution":
-        return "throttle"
-    if state == "critical":
-        return "restrict"
-    return "halt"
+def classify(u):
+    if u > 0.75:
+        return "stable", "allow"
+    elif u > 0.6:
+        return "warning", "monitor"
+    return "critical", "restrict"
