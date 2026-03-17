@@ -1,0 +1,22 @@
+{
+  "history": [
+    {
+      "confidence": 0.6752850851816609,
+      "decision": "ok"
+    },
+    {
+      "confidence": 0.5082823644683006,
+      "decision": "fail"
+    },
+    {
+      "confidence": 0.6424610004512421,
+      "decision": "ok"
+    }
+  ],
+  "workers": {
+    "w1": {
+      "score": 0.6086761500337344,
+      "count": 3
+    }
+  }
+}
