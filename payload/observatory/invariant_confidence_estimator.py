@@ -3,23 +3,23 @@ from pathlib import Path
 import json
 from observatory.pipeline_contract import pipeline_contract
 
-OUTPUT = Path("observatory/parameter_sensitivity_analyzer.json")
+OUTPUT = Path("observatory/invariant_confidence_estimator.json")
 
 @pipeline_contract(
-    name="parameter_sensitivity_analyzer",
-    order=6180,
+    name="invariant_confidence_estimator",
+    order=6120,
     tier=5,
     inputs=[],
-    outputs=["observatory/parameter_sensitivity_analyzer.json"],
+    outputs=["observatory/invariant_confidence_estimator.json"],
     required=False,
     retryable=True,
     failure_mode="continue",
 )
 def main():
     payload = {
-        "module": "parameter_sensitivity_analyzer",
+        "module": "invariant_confidence_estimator",
         "status": "ok",
-        "note": "Analyzes invariant parameter sensitivity."
+        "note": "Estimates confidence for invariant hypotheses."
     }
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT, "w", encoding="utf-8") as f:

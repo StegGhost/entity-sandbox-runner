@@ -2179,3 +2179,96 @@
 [2026-03-17T00:42:52.118383] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_autonomous_research_upgrades_583_602_v1/install/install_bundle_autoregister.py
 [2026-03-17T00:42:52.147830] safe ingestion complete status=installed
 [2026-03-17T00:42:52.149447] cleaned ingestion_tmp
+[2026-03-17T00:45:03.105232] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_invariant_discovery_upgrades_603_642_v1
+[2026-03-17T00:45:03.106462] classified files: normal=43 workflow=0
+[2026-03-17T00:45:03.107130] transaction started for sandbox_invariant_discovery_upgrades_603_642_v1.zip
+[2026-03-17T00:45:03.107375] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_readme.md
+[2026-03-17T00:45:03.107565] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-17T00:45:03.107785] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/install_bundle_autoregister.py
+[2026-03-17T00:45:03.108046] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_candidate_registry.py
+[2026-03-17T00:45:03.108258] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/symbolic_invariant_candidate_generator.py
+[2026-03-17T00:45:03.108449] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_confidence_estimator.py
+[2026-03-17T00:45:03.108632] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/automated_research_report_builder.py
+[2026-03-17T00:45:03.108825] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_stability_analyzer.py
+[2026-03-17T00:45:03.109008] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/theorem_candidate_generator.py
+[2026-03-17T00:45:03.109202] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/symbolic_invariant_fitter.py
+[2026-03-17T00:45:03.109385] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/parameter_sensitivity_analyzer.py
+[2026-03-17T00:45:03.109565] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/symbolic_expression_mutator.py
+[2026-03-17T00:45:03.109744] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/candidate_pruning_engine.py
+[2026-03-17T00:45:03.109922] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_competition_engine.py
+[2026-03-17T00:45:03.110097] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/cross_scale_invariant_checker.py
+[2026-03-17T00:45:03.110301] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/falsification_tournament_engine.py
+[2026-03-17T00:45:03.110480] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/cross_domain_invariant_comparator.py
+[2026-03-17T00:45:03.110657] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_candidate_ranker.py
+[2026-03-17T00:45:03.110839] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/evolutionary_invariant_search.py
+[2026-03-17T00:45:03.111017] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/multi_dataset_invariant_validator.py
+[2026-03-17T00:45:03.111215] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/invariant_result_summary_builder.py
+[2026-03-17T00:45:03.111402] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/dimensionless_ratio_detector.py
+[2026-03-17T00:45:03.111582] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/observatory/scaling_law_detector.py
+[2026-03-17T00:45:03.111786] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/cross_domain_dataset_router.py
+[2026-03-17T00:45:03.111961] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/dataset_lineage_tracker.py
+[2026-03-17T00:45:03.112142] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/dataset_verification_notary.py
+[2026-03-17T00:45:03.112338] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/result_replication_controller.py
+[2026-03-17T00:45:03.112513] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/distributed_peer_validation_stub.py
+[2026-03-17T00:45:03.112688] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/claim_evidence_linker.py
+[2026-03-17T00:45:03.112860] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/artifact_signature_generator.py
+[2026-03-17T00:45:03.113035] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/invariant_result_catalog.py
+[2026-03-17T00:45:03.113229] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/distributed_validation_dispatcher.py
+[2026-03-17T00:45:03.113405] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/falsification_report_publisher.py
+[2026-03-17T00:45:03.113580] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/invariant_publication_router.py
+[2026-03-17T00:45:03.113754] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/symbolic_result_exporter.py
+[2026-03-17T00:45:03.113932] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/invariant_model_registry.py
+[2026-03-17T00:45:03.114108] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/result_integrity_checker.py
+[2026-03-17T00:45:03.114330] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/researcher_invariant_query_api.py
+[2026-03-17T00:45:03.114509] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/autonomous_paper_drafter.py
+[2026-03-17T00:45:03.114683] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/research_provenance_engine.py
+[2026-03-17T00:45:03.114856] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/peer_review_bundle_builder.py
+[2026-03-17T00:45:03.115067] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/research_claim_registry.py
+[2026-03-17T00:45:03.115316] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/sandbox_service/research_publication_pipeline.py
+[2026-03-17T00:45:03.116287] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_readme.md
+[2026-03-17T00:45:03.116956] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-17T00:45:03.117693] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/install_bundle_autoregister.py
+[2026-03-17T00:45:03.118694] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_candidate_registry.py
+[2026-03-17T00:45:03.118934] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/symbolic_invariant_candidate_generator.py
+[2026-03-17T00:45:03.119143] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_confidence_estimator.py
+[2026-03-17T00:45:03.119368] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/automated_research_report_builder.py
+[2026-03-17T00:45:03.119565] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_stability_analyzer.py
+[2026-03-17T00:45:03.119909] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/theorem_candidate_generator.py
+[2026-03-17T00:45:03.120150] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/symbolic_invariant_fitter.py
+[2026-03-17T00:45:03.120509] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/parameter_sensitivity_analyzer.py
+[2026-03-17T00:45:03.120749] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/symbolic_expression_mutator.py
+[2026-03-17T00:45:03.120945] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/candidate_pruning_engine.py
+[2026-03-17T00:45:03.121138] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_competition_engine.py
+[2026-03-17T00:45:03.121356] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_scale_invariant_checker.py
+[2026-03-17T00:45:03.121643] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/falsification_tournament_engine.py
+[2026-03-17T00:45:03.121929] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/cross_domain_invariant_comparator.py
+[2026-03-17T00:45:03.122226] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_candidate_ranker.py
+[2026-03-17T00:45:03.122440] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/evolutionary_invariant_search.py
+[2026-03-17T00:45:03.122633] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/multi_dataset_invariant_validator.py
+[2026-03-17T00:45:03.122826] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/invariant_result_summary_builder.py
+[2026-03-17T00:45:03.123017] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/dimensionless_ratio_detector.py
+[2026-03-17T00:45:03.123238] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/observatory/scaling_law_detector.py
+[2026-03-17T00:45:03.123499] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/cross_domain_dataset_router.py
+[2026-03-17T00:45:03.123694] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/dataset_lineage_tracker.py
+[2026-03-17T00:45:03.123882] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/dataset_verification_notary.py
+[2026-03-17T00:45:03.124069] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/result_replication_controller.py
+[2026-03-17T00:45:03.124286] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/distributed_peer_validation_stub.py
+[2026-03-17T00:45:03.124475] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/claim_evidence_linker.py
+[2026-03-17T00:45:03.124661] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/artifact_signature_generator.py
+[2026-03-17T00:45:03.124853] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/invariant_result_catalog.py
+[2026-03-17T00:45:03.125040] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/distributed_validation_dispatcher.py
+[2026-03-17T00:45:03.125255] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/falsification_report_publisher.py
+[2026-03-17T00:45:03.125453] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/invariant_publication_router.py
+[2026-03-17T00:45:03.125638] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/symbolic_result_exporter.py
+[2026-03-17T00:45:03.125880] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/invariant_model_registry.py
+[2026-03-17T00:45:03.126076] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/result_integrity_checker.py
+[2026-03-17T00:45:03.126289] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/researcher_invariant_query_api.py
+[2026-03-17T00:45:03.126475] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/autonomous_paper_drafter.py
+[2026-03-17T00:45:03.126659] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/research_provenance_engine.py
+[2026-03-17T00:45:03.126848] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/peer_review_bundle_builder.py
+[2026-03-17T00:45:03.127033] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/research_claim_registry.py
+[2026-03-17T00:45:03.127248] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/sandbox_service/research_publication_pipeline.py
+[2026-03-17T00:45:03.128329] transaction completed successfully
+[2026-03-17T00:45:03.128504] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_invariant_discovery_upgrades_603_642_v1/install/install_bundle_autoregister.py
+[2026-03-17T00:45:03.160513] safe ingestion complete status=installed
+[2026-03-17T00:45:03.161605] cleaned ingestion_tmp

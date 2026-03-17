@@ -46,5 +46,9 @@
   "sandbox_autonomous_research_upgrades": {
     "version": "1.0.0",
     "installed": "2026-03-17T00:42:52.147684"
+  },
+  "sandbox_invariant_discovery_upgrades": {
+    "version": "1.0.0",
+    "installed": "2026-03-17T00:45:03.160371"
   }
 }
