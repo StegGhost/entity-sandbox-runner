@@ -2768,3 +2768,13 @@
 [2026-03-17T05:10:44.732625] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_future_upgrades_783_900_v1/install/install_bundle_autoregister.py
 [2026-03-17T05:10:44.776555] safe ingestion complete status=installed
 [2026-03-17T05:10:44.779053] cleaned ingestion_tmp
+[2026-03-17T05:19:27.576673] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T05:19:27.577684] classified files: normal=2 workflow=1
+[2026-03-17T05:19:27.577958] transaction started for shard_reliability_lock_bundle_v1.zip
+[2026-03-17T05:19:27.578260] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/critical_ratio_campaign/merge_shards.py
+[2026-03-17T05:19:27.578462] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/experiments/critical_ratio_campaign/run_experiment.py
+[2026-03-17T05:19:27.579201] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/critical_ratio_campaign/merge_shards.py
+[2026-03-17T05:19:27.579597] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/experiments/critical_ratio_campaign/run_experiment.py
+[2026-03-17T05:19:27.579965] transaction completed successfully
+[2026-03-17T05:19:27.580611] safe ingestion complete status=installed
+[2026-03-17T05:19:27.581005] cleaned ingestion_tmp
