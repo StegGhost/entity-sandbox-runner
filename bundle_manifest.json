@@ -1,7 +1,8 @@
 {
-  "bundle_name": "sandbox_global_invariant_network_upgrades",
+  "bundle_name": "sandbox_future_upgrades",
   "version": "1.0.0",
-  "description": "Upgrades 683-732 introducing global invariant registry, replication network, distributed publication, and theorem validation layers.",
+  "author": "StegVerse",
+  "description": "Batch roadmap bundle covering upgrades 783-900: self-optimizing discovery, research marketplace, identity/trust, publication cloud, and autonomous science services.",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",

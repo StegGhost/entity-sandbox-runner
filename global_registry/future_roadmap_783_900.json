@@ -1,0 +1,18 @@
+{
+  "range": "783-900",
+  "phases": [
+    {
+      "range": "783-820",
+      "theme": "self-optimizing discovery"
+    },
+    {
+      "range": "821-860",
+      "theme": "marketplace + identity/trust"
+    },
+    {
+      "range": "861-900",
+      "theme": "publication cloud + autonomous services"
+    }
+  ],
+  "count": 118
+}

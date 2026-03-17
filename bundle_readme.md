@@ -1,2 +1,2 @@
-Global Invariant Network Upgrades 683-732
-Adds invariant registry, replication protocols, distributed publication, and theorem candidate validation layers.
+Future roadmap bundle 783-900.
+Includes scaffolding for self-optimizing discovery, marketplace, trust/identity, publication cloud, and autonomous science services.
