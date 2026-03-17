@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_next_30_upgrades",
+  "version": "1.0.0",
+  "author": "StegVerse",
+  "description": "Upgrades 901-930 adding export/demo pipeline, adaptive boundary targeting, and autonomous publication scaffolding.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "bundle_manifest.json/",
+    "bundle_readme.md/"
+  ]
+}

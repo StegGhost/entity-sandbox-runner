@@ -1,2 +1,2 @@
-Next 30 upgrades (901-930)
-Focus: export + demo pipeline, adaptive boundary targeting, automated publication scaffolding.
+Future roadmap bundle 783-900.
+Includes scaffolding for self-optimizing discovery, marketplace, trust/identity, publication cloud, and autonomous science services.

@@ -1,0 +1,27 @@
+{
+  "profiles": {
+    "summary": [
+      "results/merge_summary.json",
+      "results/validation_report.json"
+    ],
+    "standard": [
+      "README.md",
+      "CLAIMS.md",
+      "protocol.md",
+      "experiment_config.json",
+      "results/merge_summary.json",
+      "results/validation_report.json",
+      "results/baselines.json"
+    ],
+    "raw": [
+      "results/phase_space_map.json",
+      "results/shards/",
+      "results/logs/",
+      "results/merge_summary.json"
+    ]
+  },
+  "demo_target": {
+    "repo": "StegVerse-org/stegverse-demo-suite",
+    "path": "experiments/critical_ratio_campaign/latest"
+  }
+}

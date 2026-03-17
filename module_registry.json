@@ -1,7 +1,7 @@
 {
   "ingestion_tmp": {
     "version": "dev",
-    "installed": "2026-03-17T05:19:27.580457"
+    "installed": "2026-03-17T09:07:45.708088"
   },
   "sandbox_platform_bundle": {
     "version": "1.2.0",
@@ -69,10 +69,10 @@
   },
   "sandbox_future_upgrades": {
     "version": "1.0.0",
-    "installed": "2026-03-17T05:10:44.776391"
+    "installed": "2026-03-17T09:07:45.656712"
   },
   "sandbox_next_30_upgrades": {
     "version": "1.0.0",
-    "installed": "2026-03-17T05:30:55.048476"
+    "installed": "2026-03-17T09:07:45.333715"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "bundle_name": "sandbox_next_30_upgrades",
+  "bundle_name": "sandbox_future_upgrades",
   "version": "1.0.0",
   "author": "StegVerse",
-  "description": "Upgrades 901-930 adding export/demo pipeline, adaptive boundary targeting, and autonomous publication scaffolding.",
+  "description": "Batch roadmap bundle covering upgrades 783-900: self-optimizing discovery, research marketplace, identity/trust, publication cloud, and autonomous science services.",
   "install_mode": "folder_map",
   "allowed_paths": [
     "install/",
