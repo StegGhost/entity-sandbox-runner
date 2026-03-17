@@ -3302,3 +3302,31 @@
 [2026-03-17T14:45:23.550848] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/recovery_loop.py
 [2026-03-17T14:45:23.562018] safe ingestion complete status=installed
 [2026-03-17T14:45:23.562491] cleaned ingestion_tmp
+[2026-03-17T14:46:52.989999] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T14:46:52.990887] classified files: normal=8 workflow=0
+[2026-03-17T14:46:52.991114] transaction started for sandbox_v6_fixed.zip
+[2026-03-17T14:46:52.991323] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/u_signal_integration.py
+[2026-03-17T14:46:52.991436] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/distributed_worker_network.py
+[2026-03-17T14:46:52.991547] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/evidence_chain.py
+[2026-03-17T14:46:52.991653] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/worker_scoring.py
+[2026-03-17T14:46:52.991756] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/quorum_consensus.py
+[2026-03-17T14:46:52.991856] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_scheduler.py
+[2026-03-17T14:46:52.991972] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/BUILD_NOTES.md
+[2026-03-17T14:46:52.992120] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/upgrades/UPGRADE_LIST.md
+[2026-03-17T14:46:52.992417] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/u_signal_integration.py
+[2026-03-17T14:46:52.992525] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/distributed_worker_network.py
+[2026-03-17T14:46:52.992628] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/evidence_chain.py
+[2026-03-17T14:46:52.992734] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/worker_scoring.py
+[2026-03-17T14:46:52.992840] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/quorum_consensus.py
+[2026-03-17T14:46:52.992943] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py
+[2026-03-17T14:46:52.993070] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md
+[2026-03-17T14:46:52.993232] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/upgrades/UPGRADE_LIST.md
+[2026-03-17T14:46:52.993500] transaction completed successfully
+[2026-03-17T14:46:52.993648] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/u_signal_integration.py
+[2026-03-17T14:46:53.004138] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/distributed_worker_network.py
+[2026-03-17T14:46:53.014020] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/evidence_chain.py
+[2026-03-17T14:46:53.026283] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/worker_scoring.py
+[2026-03-17T14:46:53.036304] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/quorum_consensus.py
+[2026-03-17T14:46:53.046292] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/adaptive_scheduler.py
+[2026-03-17T14:46:53.056913] safe ingestion complete status=installed
+[2026-03-17T14:46:53.057236] cleaned ingestion_tmp

@@ -1,0 +1,45 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 8,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/u_signal_integration.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/distributed_worker_network.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/evidence_chain.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/worker_scoring.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/quorum_consensus.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_scheduler.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/BUILD_NOTES.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/upgrades/UPGRADE_LIST.md"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "workflow_review/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "install/u_signal_integration.py",
+      "install/distributed_worker_network.py",
+      "install/evidence_chain.py",
+      "install/worker_scoring.py",
+      "install/quorum_consensus.py",
+      "install/adaptive_scheduler.py",
+      "workflow_review/BUILD_NOTES.md",
+      "payload/upgrades/UPGRADE_LIST.md"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/sandbox_v6_fixed.zip"
+}
