@@ -31,4 +31,5 @@ jobs:
 
       - name: Run evaluation
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           python experiments/evaluation_suite/run_eval.py
