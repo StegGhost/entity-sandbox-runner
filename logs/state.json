@@ -11,12 +11,24 @@
     {
       "confidence": 0.6424610004512421,
       "decision": "ok"
+    },
+    {
+      "confidence": 0.5009946231176745,
+      "decision": "fail"
+    },
+    {
+      "confidence": 0.6444011703136954,
+      "decision": "ok"
+    },
+    {
+      "confidence": 0.8368886333595567,
+      "decision": "ok"
     }
   ],
   "workers": {
     "w1": {
-      "score": 0.6086761500337344,
-      "count": 3
+      "score": 0.634718812815355,
+      "count": 6
     }
   }
 }
