@@ -43,10 +43,14 @@ jobs:
       - name: Commit repository changes
         shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
 
-          git add .
+          # EXCLUDE protected workflow files
+          git add . ':!.github/workflows/*'
+
+          git commit -m "Apply bundle installation" || echo "Nothing to commit"
+          git push || echo "Push skipped (likely protected path)"
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
