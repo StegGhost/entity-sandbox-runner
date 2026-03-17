@@ -3211,3 +3211,6 @@
 [2026-03-17T09:09:14.597178] cleaned ingestion_tmp
 [2026-03-17T09:35:18.030496] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-17T09:35:18.031325] cleaned ingestion_tmp
+[2026-03-17T10:38:50.494761] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/stegverse_ingestion_safe_recovery_bundle_v1
+[2026-03-17T10:38:50.495517] classified files: normal=11 workflow=0
+[2026-03-17T10:38:50.496478] cleaned ingestion_tmp
