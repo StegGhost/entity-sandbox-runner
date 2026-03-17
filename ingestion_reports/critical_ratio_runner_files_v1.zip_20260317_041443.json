@@ -1,0 +1,31 @@
+{
+  "bundle_name": "experiments",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 2,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/critical_ratio_campaign/merge_shards.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/critical_ratio_campaign/run_experiment.py"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "critical_ratio_campaign/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "critical_ratio_campaign/merge_shards.py",
+      "critical_ratio_campaign/run_experiment.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/critical_ratio_runner_files_v1.zip"
+}

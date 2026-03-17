@@ -2497,3 +2497,13 @@
 [2026-03-17T03:16:45.487047] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/sandbox_global_invariant_network_upgrades_683_732_v1/install/install_bundle.py
 [2026-03-17T03:16:45.521216] safe ingestion complete status=installed
 [2026-03-17T03:16:45.521974] cleaned ingestion_tmp
+[2026-03-17T04:14:43.142377] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/experiments
+[2026-03-17T04:14:43.143013] classified files: normal=2 workflow=0
+[2026-03-17T04:14:43.143252] transaction started for critical_ratio_runner_files_v1.zip
+[2026-03-17T04:14:43.143539] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/critical_ratio_campaign/merge_shards.py
+[2026-03-17T04:14:43.143750] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/critical_ratio_campaign/run_experiment.py
+[2026-03-17T04:14:43.144143] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/critical_ratio_campaign/merge_shards.py
+[2026-03-17T04:14:43.144380] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/critical_ratio_campaign/run_experiment.py
+[2026-03-17T04:14:43.144655] transaction completed successfully
+[2026-03-17T04:14:43.145242] safe ingestion complete status=installed
+[2026-03-17T04:14:43.145507] cleaned ingestion_tmp
