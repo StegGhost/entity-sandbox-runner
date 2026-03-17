@@ -3239,3 +3239,7 @@
 [2026-03-17T10:44:44.841870] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/bundle_guard.py
 [2026-03-17T10:44:44.862399] safe ingestion complete status=installed
 [2026-03-17T10:44:44.862936] cleaned ingestion_tmp
+[2026-03-17T10:46:42.662516] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T10:46:42.663446] cleaned ingestion_tmp
+[2026-03-17T10:46:42.705411] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-17T10:46:42.706259] cleaned ingestion_tmp
