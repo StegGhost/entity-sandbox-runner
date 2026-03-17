@@ -1,8 +1,8 @@
 {
-  "bundle_name": "sandbox_v6_4_unified_promotion_bundle",
+  "bundle_name": "sandbox_v7_autonomous_loop_bundle",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Unifies platform + workflow promotion into single execution path",
+  "description": "True autonomous loop using existing workflows",
   "allowed_paths": [
     "install/",
     "payload/",
