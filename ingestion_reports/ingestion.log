@@ -16032,3 +16032,5 @@
 [2026-03-18T19:23:04.858149] cleaned ingestion_tmp
 [2026-03-18T21:09:59.756637] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-18T21:09:59.757216] cleaned ingestion_tmp
+[2026-03-18T21:20:50.325390] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T21:20:50.326012] cleaned ingestion_tmp
