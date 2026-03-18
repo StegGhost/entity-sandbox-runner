@@ -1,9 +1,6 @@
 name: Ingestion Pipeline
 
 on:
-  push:
-    paths:
-      - 'incoming_bundles/**'
   workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
@@ -27,10 +24,13 @@ jobs:
           export PYTHONPATH=$PYTHONPATH:$(pwd)
           python install/ingestion_v2.py
 
-      - name: Commit results
+      - name: Commit ingestion changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
+
           git add .
-          git commit -m "ingestion update" || echo "no changes"
+
+          git diff --cached --quiet || git commit -m "ingestion: applied bundle updates"
+
           git push
