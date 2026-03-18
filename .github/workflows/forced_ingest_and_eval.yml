@@ -1,0 +1,33 @@
+name: Forced Ingest and Evaluate
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run forced ingestion and evaluation
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          python experiments/evaluation_suite/run_eval.py
+
+      - name: Commit governed artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "bot@github.com"
+          git add logs payload incoming_bundles installed_bundles failed_bundles || true
+          git commit -m "forced ingestion + evaluation update" || echo "no change"
+          git push
