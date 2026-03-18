@@ -1,0 +1,12 @@
+{
+  "cycle": 5,
+  "u": 0.6505125495780457,
+  "local_action": "monitor",
+  "consensus_action": "monitor",
+  "reason": "mid_band",
+  "external_signal": 0.5869626843922484,
+  "peers_seen": 0,
+  "prev_hash": "56c75803f3a85a4f794748d37452b0214f1a1fd4fd43a58023082fb11dbd7a71",
+  "hash": "027f727e4c6b6db94f56e53d3de2863ab7fd7853ef8ae95ef2b9c2dfb56fa126",
+  "signature": "f4e38879220e7e9331c9434f83054b75a837f5a844d53ecb05416aefc2039e5c"
+}
