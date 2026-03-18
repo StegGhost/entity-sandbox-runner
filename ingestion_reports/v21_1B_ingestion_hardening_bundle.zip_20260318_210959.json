@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "v21_1B_ingestion_hardening_bundle",
+      "bundle_version": "1.0.0",
+      "install_mode": "folder_map",
+      "description": "Minimal backward-compatible ingestion hardening bundle that ignores common zip noise like __MACOSX and .DS_Store while preserving docs-aware payload/repo_root mapping.",
+      "allowed_paths": [
+        "install/",
+        "payload/",
+        "experiments/",
+        "workflow_review/",
+        "config/"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/v21_1B_ingestion_hardening_bundle.zip"
+}
