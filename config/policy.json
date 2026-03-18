@@ -1,5 +1,3 @@
 {
-  "hard_stop_u": 0.3,
-  "restrict_u": 0.6,
-  "allow_u": 0.85
+  "hard_min_u": 0.6
 }

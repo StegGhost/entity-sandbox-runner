@@ -1,0 +1,5 @@
+{
+  "hard_stop_u": 0.3,
+  "restrict_u": 0.6,
+  "allow_u": 0.85
+}
