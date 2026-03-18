@@ -16022,3 +16022,5 @@
 [2026-03-18T16:55:47.757624] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/stability_governor.py
 [2026-03-18T16:55:47.768815] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/crypto.py
 [2026-03-18T16:55:47.790295] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/eval_orchestrator.py
+[2026-03-18T18:52:16.494967] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T18:52:16.498238] cleaned ingestion_tmp
