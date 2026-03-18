@@ -1,4 +1,5 @@
 import os, zipfile, shutil, json, hashlib, time
+from install.compat_adapter import adapt_bundle
 
 INCOMING = "incoming_bundles"
 INSTALLED = "installed_bundles"
@@ -56,8 +57,11 @@ def process_bundle(bundle_path):
     os.makedirs(tmp_dir, exist_ok=True)
 
     try:
-        with zipfile.ZipFile(bundle_path, 'r') as zip_ref:
-            zip_ref.extractall(tmp_dir)
+        # attempt compatibility adaptation first
+      adapt_ok, _ = adapt_bundle(bundle_path)
+
+      with zipfile.ZipFile(bundle_path, 'r') as zip_ref:
+        zip_ref.extractall(tmp_dir)
 
         manifest_path = None
         for root, _, files in os.walk(tmp_dir):
