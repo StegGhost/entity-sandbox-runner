@@ -1,0 +1,9 @@
+{
+  "quorum_threshold": 0.6,
+  "heartbeat_timeout": 10,
+  "stability_thresholds": {
+    "healthy": 1,
+    "caution": 0,
+    "critical": -1
+  }
+}
