@@ -1,4 +1,6 @@
 import json, os, random
+import sys, os
+sys.path.append(os.getcwd())
 from install.policy_engine import load_policy
 from install.bcat_engine import enforce_bcat
 from install.crypto_keys import sign_with_keypair, verify_chain
