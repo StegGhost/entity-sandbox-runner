@@ -28,5 +28,11 @@
     "ok": false,
     "error": "manifest_missing_fields:['bundle_version']",
     "ts": 1773856371.4223425
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1773859654.4843702
   }
 ]

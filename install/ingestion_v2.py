@@ -19,13 +19,19 @@ ALLOWED_PREFIXES = (
 
 REPO_ROOT_PREFIX = "payload/repo_root/"
 
+IGNORE_PREFIXES = (
+    "__MACOSX/",
+)
+
+IGNORE_NAMES = (
+    ".DS_Store",
+)
 
 def _ensure():
     os.makedirs(INCOMING, exist_ok=True)
     os.makedirs(INSTALLED, exist_ok=True)
     os.makedirs(FAILED, exist_ok=True)
     os.makedirs("logs", exist_ok=True)
-
 
 def _load_log():
     if os.path.exists(LOG) and os.path.getsize(LOG) > 0:
@@ -37,11 +43,9 @@ def _load_log():
             return []
     return []
 
-
 def _save_log(log):
     with open(LOG, "w") as f:
         json.dump(log, f, indent=2)
-
 
 def _safe_json_load(path):
     try:
@@ -53,12 +57,18 @@ def _safe_json_load(path):
     except Exception:
         return {}
 
+def _is_ignored_member(name):
+    if any(name.startswith(prefix) for prefix in IGNORE_PREFIXES):
+        return True
+    base = os.path.basename(name.rstrip("/"))
+    if base in IGNORE_NAMES:
+        return True
+    return False
 
 def _is_allowed_member(name):
     if name == "bundle_manifest.json":
         return True
     return any(name.startswith(prefix) for prefix in ALLOWED_PREFIXES)
-
 
 def _validate_manifest(manifest):
     required = ["bundle_name", "bundle_version", "install_mode"]
@@ -69,7 +79,6 @@ def _validate_manifest(manifest):
     if manifest.get("install_mode") != "folder_map":
         raise Exception("unsupported_install_mode")
 
-
 def _repo_destination(rel_path):
     if rel_path.startswith(REPO_ROOT_PREFIX):
         repo_rel = rel_path[len(REPO_ROOT_PREFIX):]
@@ -77,7 +86,6 @@ def _repo_destination(rel_path):
             raise Exception("empty_repo_root_mapping")
         return repo_rel
     return rel_path
-
 
 def _install_zip(path):
     tmp = f"_tmp_ingest_{int(time.time() * 1000)}"
@@ -93,13 +101,18 @@ def _install_zip(path):
             manifest = _safe_json_load(manifest_file)
             _validate_manifest(manifest)
 
+            filtered_names = []
             for n in names:
                 if n.endswith("/"):
                     continue
+                if _is_ignored_member(n):
+                    continue
                 if not _is_allowed_member(n):
                     raise Exception(f"path_not_allowed:{n}")
+                filtered_names.append(n)
 
-            z.extractall(tmp)
+            for n in filtered_names:
+                z.extract(n, tmp)
 
         for root, _, files in os.walk(tmp):
             for file in files:
@@ -107,6 +120,8 @@ def _install_zip(path):
                 rel = os.path.relpath(src, tmp)
 
                 if rel == "bundle_manifest.json":
+                    continue
+                if _is_ignored_member(rel):
                     continue
 
                 dst = _repo_destination(rel)
@@ -126,7 +141,6 @@ def _install_zip(path):
     except Exception as e:
         shutil.rmtree(tmp, ignore_errors=True)
         return False, str(e)
-
 
 def process():
     _ensure()
@@ -152,7 +166,6 @@ def process():
             shutil.move(src, os.path.join(FAILED, f))
 
     _save_log(log)
-
 
 if __name__ == "__main__":
     process()
