@@ -14,7 +14,15 @@ def verify_chain(path):
     files=sorted(os.listdir(path))
     prev=None
     for f in files:
-        p=json.load(open(os.path.join(path,f)))
-        if prev and p["prev_hash"]!=prev:
-            raise Exception("CHAIN INVALID")
-        prev=p["hash"]
+        full_path = os.path.join(path, f)
+
+try:
+    if os.path.getsize(full_path) == 0:
+        continue
+    with open(full_path) as fh:
+        p = json.load(fh)
+    except Exception:
+        continue
+          if prev and p["prev_hash"]!=prev:
+              raise Exception("CHAIN INVALID")
+          prev=p["hash"]
