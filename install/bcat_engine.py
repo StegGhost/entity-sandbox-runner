@@ -3,9 +3,9 @@ def enforce_bcat(policy, u):
         raise Exception("BCAT HARD STOP")
 
     if u < policy["restrict_u"]:
-        return "restrict", "boundary_enforced"
+        return "restrict","boundary_enforced"
 
     if u > policy["allow_u"]:
-        return "allow", "boundary_enforced"
+        return "allow","boundary_enforced"
 
-    return "monitor", "mid_band"
+    return "monitor","mid_band"
