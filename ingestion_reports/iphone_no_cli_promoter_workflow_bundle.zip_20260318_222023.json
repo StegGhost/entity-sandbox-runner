@@ -1,0 +1,31 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 1,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/IPHONE_NO_CLI_PROMOTER_WORKFLOW_NOTES.md"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "workflow_review/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "workflow_review/IPHONE_NO_CLI_PROMOTER_WORKFLOW_NOTES.md"
+    ],
+    "filtered_workflow_files": [
+      ".github/workflows/ingestion_pipeline.yml"
+    ]
+  },
+  "moved_bundle_to": "installed_bundles/iphone_no_cli_promoter_workflow_bundle.zip"
+}

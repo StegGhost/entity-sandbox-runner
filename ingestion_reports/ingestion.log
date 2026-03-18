@@ -16078,3 +16078,11 @@
 [2026-03-18T22:13:43.442418] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/repo_root_promoter.py
 [2026-03-18T22:13:43.468369] safe ingestion complete status=installed
 [2026-03-18T22:13:43.468799] cleaned ingestion_tmp
+[2026-03-18T22:20:23.788778] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T22:20:23.789597] classified files: normal=1 workflow=1
+[2026-03-18T22:20:23.789830] transaction started for iphone_no_cli_promoter_workflow_bundle.zip
+[2026-03-18T22:20:23.790070] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/IPHONE_NO_CLI_PROMOTER_WORKFLOW_NOTES.md
+[2026-03-18T22:20:23.790494] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/IPHONE_NO_CLI_PROMOTER_WORKFLOW_NOTES.md
+[2026-03-18T22:20:23.790732] transaction completed successfully
+[2026-03-18T22:20:23.791371] safe ingestion complete status=installed
+[2026-03-18T22:20:23.791690] cleaned ingestion_tmp
