@@ -1,0 +1,9 @@
+{
+  "cycle": 24,
+  "u": 0.6540493087440832,
+  "action": "allow",
+  "reason": "ok",
+  "prev_hash": "b10b669b4b984996815fd1b9ee2a2728c3acb5e3fc4f951c650a0f674f250df7",
+  "hash": "4f9ffa20cfe2fce734e28aa89af437b0b62dd4f88e90d3f3560bdaa382c46a5c",
+  "signature": "f4200f96b2eb817a4431d4ef301c7b3da7003c4b193923e5b6204b99cde0c2aa"
+}
