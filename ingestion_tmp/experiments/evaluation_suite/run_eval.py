@@ -1,17 +1,23 @@
 
-import json, os, time, hashlib, random
-from install.policy_engine import load_policy, enforce_policy
-from install.crypto import sign_payload, hash_payload
+import json, os, random
+from install.policy_engine import load_policy
+from install.bcat_engine import enforce_bcat
+from install.crypto_keys import sign_with_keypair, verify_chain
 from install.replay import record_cycle
+from install.remote_policy import fetch_remote_policy
+from install.finco import apply_finco
 
 STATE_FILE = "logs/state.json"
 
+REMOTE_POLICY_URL = None  # set later if needed
+
 def load_state():
-    if os.path.exists(STATE_FILE):
+    if os.path.exists(STATE_FILE) and os.path.getsize(STATE_FILE) > 0:
         return json.load(open(STATE_FILE))
-    return {"cycles":0,"last_receipt":None,"history":[]}
+    return {"cycles":0,"last_hash":None}
 
 def save_state(state):
+    os.makedirs("logs", exist_ok=True)
     json.dump(state, open(STATE_FILE,"w"), indent=2)
 
 def run_cycle():
@@ -32,25 +38,37 @@ def main():
     results=run_cycle()
     u=compute_u(results)
 
+    # 🌐 remote policy override
     policy=load_policy()
-    action,reason=enforce_policy(policy,state,u)
+    if REMOTE_POLICY_URL:
+        remote = fetch_remote_policy(REMOTE_POLICY_URL)
+        if remote:
+            policy = remote
+
+    # 💰 FinCo signal (simulated)
+    external_signal = random.uniform(0.4,0.8)
+    u = apply_finco(u, external_signal)
+
+    action,reason=enforce_bcat(policy,u)
 
     receipt={
         "cycle":state["cycles"],
         "u":u,
         "action":action,
-        "prev_hash":state.get("last_receipt")
+        "reason":reason,
+        "external_signal":external_signal,
+        "prev_hash":state.get("last_hash")
     }
 
-    receipt["hash"]=hash_payload(receipt)
-    receipt["signature"]=sign_payload(receipt)
+    receipt["hash"],receipt["signature"]=sign_with_keypair(receipt)
 
     os.makedirs("payload/receipts",exist_ok=True)
     path=f"payload/receipts/r_{state['cycles']:04d}.json"
     json.dump(receipt, open(path,"w"), indent=2)
 
-    state["last_receipt"]=receipt["hash"]
-    state["history"].append(receipt)
+    verify_chain("payload/receipts")
+
+    state["last_hash"]=receipt["hash"]
     save_state(state)
 
     record_cycle(state,results,action,u)
