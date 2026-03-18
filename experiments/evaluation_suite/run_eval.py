@@ -22,13 +22,35 @@ RECEIPT_DIR = "payload/receipts"
 
 
 def load():
+    default = {
+        "cycles": 0,
+        "u": [],
+        "trust": {}
+    }
+
     if os.path.exists(STATE) and os.path.getsize(STATE) > 0:
         try:
             with open(STATE, "r") as f:
-                return json.load(f)
+                data = json.load(f)
+
+            if not isinstance(data, dict):
+                return default
+
+            for k, v in default.items():
+                if k not in data:
+                    data[k] = v
+
+            if not isinstance(data.get("u"), list):
+                data["u"] = []
+
+            if not isinstance(data.get("trust"), dict):
+                data["trust"] = {}
+
+            return data
         except Exception:
             pass
-    return {"cycles": 0, "u": [], "trust": {}}
+
+    return default
 
 
 def save(state):
