@@ -1,12 +1,11 @@
 {
-  "bundle_name": "decentralized_worker_self_healing_1041_1090_v2",
-  "version": "2.0.0",
+  "bundle_name": "v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle",
+  "version": "1.0.0",
+  "bundle_version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Decentralized worker system + self-healing ingestion + verification",
+  "description": "Dual-version ultra-compatible backward bootstrap bundle for mixed legacy validators. Upgrades install/ingestion_v2.py to ignore common zip noise and preserve payload/repo_root mapping.",
   "allowed_paths": [
-    "install/",
-    "payload/",
-    "experiments/",
-    "workflow_review/"
+    "bundle_manifest.json",
+    "install/"
   ]
 }

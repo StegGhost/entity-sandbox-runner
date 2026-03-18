@@ -71,13 +71,10 @@ def _is_allowed_member(name):
     return any(name.startswith(prefix) for prefix in ALLOWED_PREFIXES)
 
 def _validate_manifest(manifest):
-    # Support mixed legacy validators by accepting either field, while bundle ships both.
-    if "bundle_name" not in manifest:
-        raise Exception("manifest_missing_fields:['bundle_name']")
-
-    version = manifest.get("version") or manifest.get("bundle_version")
-    if not version:
-        raise Exception("manifest_missing_fields:['version_or_bundle_version']")
+    required = ["bundle_name", "bundle_version", "install_mode"]
+    missing = [k for k in required if k not in manifest]
+    if missing:
+        raise Exception(f"manifest_missing_fields:{missing}")
 
     if manifest.get("install_mode") != "folder_map":
         raise Exception("unsupported_install_mode")

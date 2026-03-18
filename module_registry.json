@@ -74,5 +74,9 @@
   "sandbox_next_30_upgrades": {
     "version": "1.0.0",
     "installed": "2026-03-17T09:07:45.333715"
+  },
+  "v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle": {
+    "version": "1.0.0",
+    "installed": "2026-03-18T21:40:06.603066"
   }
 }

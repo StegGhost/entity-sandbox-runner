@@ -16039,3 +16039,14 @@
 [2026-03-18T21:26:29.572325] cleaned ingestion_tmp
 [2026-03-18T21:36:57.777007] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-18T21:36:57.777629] cleaned ingestion_tmp
+[2026-03-18T21:40:06.569655] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T21:40:06.569988] classified files: normal=2 workflow=0
+[2026-03-18T21:40:06.570159] transaction started for v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip
+[2026-03-18T21:40:06.570307] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-18T21:40:06.570439] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/ingestion_v2.py
+[2026-03-18T21:40:06.571979] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-18T21:40:06.572279] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/ingestion_v2.py
+[2026-03-18T21:40:06.572473] transaction completed successfully
+[2026-03-18T21:40:06.572614] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/ingestion_v2.py
+[2026-03-18T21:40:06.603196] safe ingestion complete status=installed
+[2026-03-18T21:40:06.603376] cleaned ingestion_tmp

@@ -34,5 +34,11 @@
     "ok": true,
     "error": null,
     "ts": 1773859654.4843702
+  },
+  {
+    "bundle": "v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1773870006.5980132
   }
 ]
