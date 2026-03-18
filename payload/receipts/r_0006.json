@@ -1,0 +1,12 @@
+{
+  "cycle": 6,
+  "u": 0.5998865746075568,
+  "local_action": "restrict",
+  "consensus_action": "restrict",
+  "reason": "boundary_enforced",
+  "external_signal": 0.6609539271697269,
+  "peers_seen": 0,
+  "prev_hash": "027f727e4c6b6db94f56e53d3de2863ab7fd7853ef8ae95ef2b9c2dfb56fa126",
+  "hash": "46ae0853c1fc79097bd81d90367929961acd962ae8f0b74d2c3110ed6b542671",
+  "signature": "3e928777c7e7c21cd4e95b39d199cf65ba6932555045832012e22ee68fc38e80"
+}
