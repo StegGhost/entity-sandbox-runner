@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": ["core", "signature", "chain"],
+  "properties": {
+    "core": {
+      "type": "object",
+      "required": [
+        "delta",
+        "state_hash",
+        "authority",
+        "policy_hash",
+        "validation",
+        "timestamp"
+      ]
+    },
+    "signature": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "object",
+      "required": ["prev_hash", "hash"]
+    }
+  }
+}
