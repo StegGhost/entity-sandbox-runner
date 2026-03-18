@@ -1,9 +1,15 @@
 name: Ingestion Pipeline
 
 on:
+  push:
+    paths:
+      - 'incoming_bundles/**'
   workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
 
 jobs:
   ingest:
