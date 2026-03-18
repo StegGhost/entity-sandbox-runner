@@ -1,5 +1,12 @@
 {
-  "cycles": 2,
-  "last_hash": "7812a16b86104e5791de64cc120640ded0ca26e0d0da4129d7b7e758dd860194",
-  "history": []
+  "cycles": 3,
+  "last_hash": "796bdd84b280d3f8dcde7ba52f85d278e9827d9f4f21b41dc638e80d0fa321c4",
+  "history": [],
+  "node_events": [
+    {
+      "cycle": 3,
+      "node_decision": "node_restrict"
+    }
+  ],
+  "policy_events": []
 }

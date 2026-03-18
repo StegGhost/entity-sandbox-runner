@@ -1,0 +1,14 @@
+{
+  "cycle": 3,
+  "u": 0.5465300353791537,
+  "action": "restrict",
+  "reason": "boundary_enforced",
+  "external_signal": 0.40726384964391066,
+  "policy_source": "local",
+  "policy_validation": "local_only",
+  "override_applied": false,
+  "node_decision": "node_restrict",
+  "prev_hash": "7812a16b86104e5791de64cc120640ded0ca26e0d0da4129d7b7e758dd860194",
+  "hash": "796bdd84b280d3f8dcde7ba52f85d278e9827d9f4f21b41dc638e80d0fa321c4",
+  "signature": "619b9dd3c6ded995ad3f188fbf7b592fc642b9d211fef0b04d7a4807e7383079"
+}
