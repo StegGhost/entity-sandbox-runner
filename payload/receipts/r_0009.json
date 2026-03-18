@@ -1,0 +1,11 @@
+{
+  "node": "bcda27f0493409af7bbe321fe2dfbeb4737df255dc747340c46665bd481680cf",
+  "cycle": 9,
+  "u": 0.7613135525095339,
+  "local": "monitor",
+  "consensus": "monitor",
+  "final": "monitor",
+  "reason": "local",
+  "hash": "3581b218cf78051d7a533566a1039afb8f61e6375de3c4d6ce828f438c251b68",
+  "signature": "c0bc28a9fd9b0882726fafb9f396a11b9aebecf5cc923dc5621fde53f5983f57"
+}

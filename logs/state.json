@@ -1,5 +1,5 @@
 {
-  "cycles": 8,
+  "cycles": 9,
   "last_hash": "c521fc3e772bed63d023f9d7741f4553557cc1e9b29235966cd0d47d3306553b",
   "history": [],
   "node_events": [
@@ -8,5 +8,9 @@
       "node_decision": "node_restrict"
     }
   ],
-  "policy_events": []
+  "policy_events": [],
+  "u": [
+    0.7613135525095339
+  ],
+  "trust": {}
 }
