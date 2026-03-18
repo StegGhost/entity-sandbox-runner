@@ -1,0 +1,46 @@
+{
+  "version": "v1.1",
+  "files": [
+    {
+      "path": "experiments/evaluation_suite/run_eval.py",
+      "mode": "replace",
+      "canonical_path": "run_eval.py"
+    },
+    {
+      "path": "install/bcat_engine.py",
+      "mode": "contains",
+      "required_strings": [
+        "policy.get(\"hard_stop_u\"",
+        "return \"halt\""
+      ],
+      "canonical_path": "bcat_engine.py"
+    },
+    {
+      "path": "install/crypto_keys.py",
+      "mode": "contains",
+      "required_strings": [
+        "json.load",
+        "continue"
+      ],
+      "canonical_path": "crypto_keys.py"
+    },
+    {
+      "path": "config/policy.json",
+      "mode": "json_schema",
+      "defaults": {
+        "hard_stop_u": 0.6,
+        "hard_min_u": 0.6,
+        "soft_min_u": 0.65
+      }
+    },
+    {
+      "path": "logs/state.json",
+      "mode": "json_schema",
+      "defaults": {
+        "cycles": 0,
+        "u": [],
+        "trust": {}
+      }
+    }
+  ]
+}
