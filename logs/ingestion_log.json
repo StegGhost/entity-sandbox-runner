@@ -1,0 +1,14 @@
+[
+  {
+    "bundle": "docs_aware_ingestion_bundle_v1.zip",
+    "ok": false,
+    "error": "path not allowed: config/bundle_manifest_rules.json",
+    "ts": 1773855636.6221132
+  },
+  {
+    "bundle": "v21_1_gatekeeper_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1773855636.6243875
+  }
+]
