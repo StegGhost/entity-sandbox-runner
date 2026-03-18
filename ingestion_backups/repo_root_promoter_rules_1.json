@@ -1,0 +1,11 @@
+{
+  "exact_files": [
+    "README.md",
+    "architecture_map.md"
+  ],
+  "prefixes": [
+    "docs/"
+  ],
+  "allow_workflows": false,
+  "max_diff_lines": 200
+}

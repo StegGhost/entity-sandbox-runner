@@ -1,7 +1,7 @@
 {
   "ingestion_tmp": {
     "version": "dev",
-    "installed": "2026-03-18T22:20:23.791184"
+    "installed": "2026-03-18T23:16:02.322755"
   },
   "sandbox_platform_bundle": {
     "version": "1.2.0",
@@ -89,6 +89,6 @@
   },
   "promotion_receipts_diff_visibility_bundle_v1": {
     "version": "1.0.0",
-    "installed": "2026-03-18T22:58:28.485168"
+    "installed": "2026-03-18T23:16:02.257432"
   }
 }

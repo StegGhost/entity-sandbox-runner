@@ -16101,3 +16101,29 @@
 [2026-03-18T22:58:28.448056] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/repo_root_promoter.py
 [2026-03-18T22:58:28.485342] safe ingestion complete status=installed
 [2026-03-18T22:58:28.485734] cleaned ingestion_tmp
+[2026-03-18T23:16:02.213482] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T23:16:02.214016] classified files: normal=4 workflow=0
+[2026-03-18T23:16:02.214289] transaction started for promotion_receipts_diff_visibility_bundle_v1.zip
+[2026-03-18T23:16:02.214505] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-18T23:16:02.214767] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/repo_root_promoter_rules.json
+[2026-03-18T23:16:02.214995] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/repo_root_promoter.py
+[2026-03-18T23:16:02.215215] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/PROMOTION_RECEIPTS_DIFF_VISIBILITY_V1.md
+[2026-03-18T23:16:02.217401] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-18T23:16:02.217857] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/repo_root_promoter_rules.json
+[2026-03-18T23:16:02.218287] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/repo_root_promoter.py
+[2026-03-18T23:16:02.218718] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/PROMOTION_RECEIPTS_DIFF_VISIBILITY_V1.md
+[2026-03-18T23:16:02.219147] transaction completed successfully
+[2026-03-18T23:16:02.219312] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/repo_root_promoter.py
+[2026-03-18T23:16:02.257667] safe ingestion complete status=installed
+[2026-03-18T23:16:02.258047] cleaned ingestion_tmp
+[2026-03-18T23:16:02.297472] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T23:16:02.298185] classified files: normal=2 workflow=0
+[2026-03-18T23:16:02.298417] transaction started for state_delta_uncertainty_bundle_v1.zip
+[2026-03-18T23:16:02.298689] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/formal_model.md
+[2026-03-18T23:16:02.298914] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/state_delta_engine.py
+[2026-03-18T23:16:02.299304] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/formal_model.md
+[2026-03-18T23:16:02.299551] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/state_delta_engine.py
+[2026-03-18T23:16:02.299897] transaction completed successfully
+[2026-03-18T23:16:02.300061] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/state_delta_engine.py
+[2026-03-18T23:16:02.322945] safe ingestion complete status=installed
+[2026-03-18T23:16:02.323237] cleaned ingestion_tmp

@@ -13,5 +13,13 @@
     "missing_staging_root": true,
     "receipt_path": null,
     "ts": 1773874708.4803886
+  },
+  {
+    "status": "pass",
+    "promoted": [],
+    "skipped": [],
+    "missing_staging_root": true,
+    "receipt_path": null,
+    "ts": 1773875762.2523952
   }
 ]
