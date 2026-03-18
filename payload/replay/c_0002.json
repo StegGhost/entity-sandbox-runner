@@ -1,0 +1,26 @@
+{
+  "state": {
+    "cycles": 2,
+    "last_hash": "7812a16b86104e5791de64cc120640ded0ca26e0d0da4129d7b7e758dd860194",
+    "history": []
+  },
+  "results": [
+    {
+      "shard": "s1",
+      "confidence": 0.8222921291948722,
+      "decision": "ok"
+    },
+    {
+      "shard": "s2",
+      "confidence": 0.7120701519357763,
+      "decision": "ok"
+    },
+    {
+      "shard": "s3",
+      "confidence": 0.7360489650520564,
+      "decision": "ok"
+    }
+  ],
+  "action": "monitor",
+  "u": 0.7568037487275682
+}
