@@ -1,87 +1,71 @@
 
 import json, os, random
 
+from install.node_identity import get_node_id
 from install.policy_engine import load_policy
 from install.bcat_engine import enforce_bcat
-from install.crypto_keys import sign_with_keypair, verify_chain
-from install.replay import record_cycle
+from install.crypto_keys import sign_with_keypair
 from install.network_registry import get_peer_receipts
-from install.consensus_engine import weighted_consensus
-from install.trust_engine import update_trust_scores
-from install.adversarial_filter import filter_adversarial
-from install.stability import compute_stability
-from install.escalation import escalation_layer
+from install.peer_verification import verify_peer_receipt
+from install.reputation_decay import decay
+from install.anomaly import detect_anomaly
+from install.policy_voting import vote
+from install.audit import record
+from install.drift import drift
+from install.quorum import quorum
+from install.arbitration import arbitrate
 
-STATE_FILE = "logs/state.json"
+STATE="logs/state.json"
 
-def load_state():
-    if os.path.exists(STATE_FILE) and os.path.getsize(STATE_FILE) > 0:
-        return json.load(open(STATE_FILE))
-    return {"cycles":0,"last_hash":None,"u_history":[]}
+def load():
+    if os.path.exists(STATE):
+        return json.load(open(STATE))
+    return {"cycles":0,"u":[],"trust":{}}
 
-def save_state(state):
-    os.makedirs("logs", exist_ok=True)
-    json.dump(state, open(STATE_FILE,"w"), indent=2)
-
-def run_cycle():
-    return [{"confidence": random.uniform(0.5,0.9)} for _ in range(3)]
-
-def compute_u(results):
-    return sum(r["confidence"] for r in results)/len(results)
+def save(s):
+    os.makedirs("logs",exist_ok=True)
+    json.dump(s,open(STATE,"w"),indent=2)
 
 def main():
-    state = load_state()
-    state["cycles"] += 1
+    s=load()
+    s["cycles"]+=1
 
-    results = run_cycle()
-    u = compute_u(results)
+    u=random.uniform(0.5,0.9)
+    s["u"].append(u)
+    s["u"]=s["u"][-20:]
 
-    state["u_history"].append(u)
-    state["u_history"] = state["u_history"][-20:]
+    policy=load_policy()
+    local,reason=enforce_bcat(policy,u)
 
-    policy = load_policy()
+    peers=[r for r in get_peer_receipts() if verify_peer_receipt(r)]
 
-    local_action, reason = enforce_bcat(policy, u)
+    s["trust"]=decay(s.get("trust",{}))
 
-    peers = get_peer_receipts()
+    actions=[local]+[p.get("consensus_action","monitor") for p in peers]
+    consensus=vote(actions) if quorum(peers) else local
 
-    trust_scores = update_trust_scores(state, peers)
-    filtered_peers = filter_adversarial(peers, trust_scores)
+    anomaly=detect_anomaly(s["u"])
+    final,why=arbitrate(local,consensus,anomaly)
 
-    consensus_action = weighted_consensus(local_action, filtered_peers)
-
-    stability = compute_stability(state["u_history"])
-
-    escalated_action, esc_reason = escalation_layer(u, stability)
-    if escalated_action:
-        consensus_action = escalated_action
-        reason = esc_reason
-
-    receipt = {
-        "cycle": state["cycles"],
-        "u": u,
-        "local_action": local_action,
-        "consensus_action": consensus_action,
-        "stability": stability,
-        "peers_seen": len(peers),
-        "peers_used": len(filtered_peers),
-        "prev_hash": state.get("last_hash")
+    receipt={
+        "node":get_node_id(),
+        "cycle":s["cycles"],
+        "u":u,
+        "local":local,
+        "consensus":consensus,
+        "final":final,
+        "reason":why
     }
 
-    receipt["hash"], receipt["signature"] = sign_with_keypair(receipt)
+    receipt["hash"],receipt["signature"]=sign_with_keypair(receipt)
 
-    os.makedirs("payload/receipts", exist_ok=True)
-    path = f"payload/receipts/r_{state['cycles']:04d}.json"
-    json.dump(receipt, open(path,"w"), indent=2)
+    os.makedirs("payload/receipts",exist_ok=True)
+    json.dump(receipt,open(f"payload/receipts/r_{s['cycles']:04d}.json","w"),indent=2)
 
-    verify_chain("payload/receipts")
+    record(receipt)
+    save(s)
 
-    state["last_hash"] = receipt["hash"]
-    save_state(state)
+    print("SUMMARY:",receipt)
 
-    record_cycle(state, results, consensus_action, u)
-
-    print("SUMMARY:", receipt)
-
-if __name__ == "__main__":
+if __name__=="__main__":
     main()

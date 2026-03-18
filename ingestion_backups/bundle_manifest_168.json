@@ -1,0 +1,12 @@
+{
+  "bundle_name": "sandbox_v6_4_unified_promotion_bundle",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Unifies platform + workflow promotion into single execution path",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ]
+}
