@@ -1,0 +1,24 @@
+{
+  "bundle_name": "v21_1B_ingestion_hardening_bundle",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "experiments/",
+      "workflow_review/",
+      "config/"
+    ],
+    "violations": [
+      "bundle_manifest.json"
+    ],
+    "filtered_normal_files": [
+      "install/ingestion_v2.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip"
+}
