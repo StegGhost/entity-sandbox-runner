@@ -1,0 +1,23 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle",
+      "bundle_version": "1.0.0",
+      "install_mode": "folder_map",
+      "description": "Ultra-compatible backward bootstrap bundle for legacy capability validators. Upgrades install/ingestion_v2.py to ignore common zip noise and preserve payload/repo_root mapping.",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip"
+}
