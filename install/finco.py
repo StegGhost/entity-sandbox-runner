@@ -1,4 +1,3 @@
-
 def apply_finco(u, external_signal=None):
     if external_signal is None:
         return u

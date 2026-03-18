@@ -1,9 +1,9 @@
-
-import json, urllib.request
+import json
+import urllib.request
 
 def fetch_remote_policy(url):
     try:
-        with urllib.request.urlopen(url, timeout=2) as r:
-            return json.loads(r.read().decode())
-    except:
+        with urllib.request.urlopen(url, timeout=2) as response:
+            return json.loads(response.read().decode())
+    except Exception:
         return None
