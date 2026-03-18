@@ -1,9 +1,0 @@
-{
-  "cycle": 2,
-  "u": 0.7568037487275682,
-  "action": "monitor",
-  "reason": "mid_band",
-  "prev_hash": "c30d78f7cb1f3f0d529cc8b8bd6d29f0a575975dd5febfcad486f1425d9a78ec",
-  "hash": "7812a16b86104e5791de64cc120640ded0ca26e0d0da4129d7b7e758dd860194",
-  "signature": "e49c76508ba01037cbe72593d265575f0d28cb152bc28f10a27ee4bb13e00ba3"
-}
