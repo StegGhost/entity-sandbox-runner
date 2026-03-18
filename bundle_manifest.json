@@ -1,9 +1,9 @@
 {
-  "bundle_name": "repo_root_promoter_bundle_v1",
+  "bundle_name": "promotion_receipts_diff_visibility_bundle_v1",
   "version": "1.0.0",
   "bundle_version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Adds a strict repo_root promotion layer that promotes approved staged files from payload/repo_root/ into repo root and docs targets, with logging.",
+  "description": "Adds promotion receipts and before/after diff visibility for repo_root promotions.",
   "allowed_paths": [
     "bundle_manifest.json",
     "install/",

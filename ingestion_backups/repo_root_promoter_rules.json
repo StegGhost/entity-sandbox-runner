@@ -6,6 +6,5 @@
   "prefixes": [
     "docs/"
   ],
-  "allow_workflows": false,
-  "max_diff_lines": 200
+  "allow_workflows": false
 }
