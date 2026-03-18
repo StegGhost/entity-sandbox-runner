@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "*/5 * * * *"
 
+permissions:
+  contents: write
+
 jobs:
   ingest:
     runs-on: ubuntu-latest
@@ -26,18 +29,31 @@ jobs:
         run: |
           echo "PWD:"
           pwd
-          echo "Incoming:"
-          ls -la incoming_bundles || echo "missing dir"
+          echo "ROOT:"
+          ls -la
+          echo "INCOMING_BUNDLES:"
+          ls -la incoming_bundles || echo "incoming_bundles missing"
 
       - name: Run ingestion
         run: |
           export PYTHONPATH=$PYTHONPATH:$(pwd)
           python install/ingestion_v2.py
 
-      - name: Commit results
+      - name: Show post-ingestion state
+        run: |
+          echo "INCOMING_BUNDLES AFTER:"
+          ls -la incoming_bundles || true
+          echo "INSTALLED_BUNDLES AFTER:"
+          ls -la installed_bundles || true
+          echo "FAILED_BUNDLES AFTER:"
+          ls -la failed_bundles || true
+          echo "INGESTION LOG:"
+          cat logs/ingestion_log.json || echo "no ingestion log"
+
+      - name: Commit ingestion changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "ingestion update" || echo "no changes"
+          git diff --cached --quiet || git commit -m "ingestion: applied bundle updates"
           git push
