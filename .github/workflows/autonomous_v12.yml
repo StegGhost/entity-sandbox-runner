@@ -17,9 +17,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: python experiments/evaluation_suite/run_eval.py
+      - name: Run evaluation
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          python experiments/evaluation_suite/run_eval.py
 
-      - run: |
+      - name: Commit governed artifacts
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "bot@github.com"
           git add logs payload || true
