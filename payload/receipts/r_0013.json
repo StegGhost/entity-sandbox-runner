@@ -1,0 +1,9 @@
+{
+  "cycle": 13,
+  "u": 0.5913654123297709,
+  "action": "restrict",
+  "reason": "mid",
+  "prev_hash": "0c5c8e2c10a183eea54788e4716f7289452324f3580e51cf4d78a1561b508d61",
+  "hash": "4ed70b079396dfa1f1360779b4ca14a99c1e3f6aba3bc7993360c50399429e2f",
+  "signature": "a6851739ebc3f0af3c6a64adc1a7b1fd07b097f3b103d022938dcc6fc634811b"
+}
