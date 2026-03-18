@@ -1,6 +1,6 @@
-
 import json, os, random
 
+from install.receipt_guard import validate_and_repair
 from install.node_identity import get_node_id
 from install.policy_engine import load_policy
 from install.bcat_engine import enforce_bcat
