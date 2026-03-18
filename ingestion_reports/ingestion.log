@@ -16053,3 +16053,13 @@
 [2026-03-18T21:43:17.686831] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-18T21:43:17.687683] classified files: normal=7 workflow=0
 [2026-03-18T21:43:17.688809] cleaned ingestion_tmp
+[2026-03-18T21:51:36.928215] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T21:51:36.928654] classified files: normal=2 workflow=0
+[2026-03-18T21:51:36.928905] transaction started for repo_readme_update_bundle_v2.zip
+[2026-03-18T21:51:36.929131] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-18T21:51:36.929387] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/payload/repo_root/README.md
+[2026-03-18T21:51:36.931553] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-18T21:51:36.931903] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/repo_root/README.md
+[2026-03-18T21:51:36.932216] transaction completed successfully
+[2026-03-18T21:51:36.932927] safe ingestion complete status=installed
+[2026-03-18T21:51:36.933187] cleaned ingestion_tmp

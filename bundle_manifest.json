@@ -1,11 +1,11 @@
 {
-  "bundle_name": "v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle",
+  "bundle_name": "repo_readme_update_bundle_v2",
   "version": "1.0.0",
   "bundle_version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Dual-version ultra-compatible backward bootstrap bundle for mixed legacy validators. Upgrades install/ingestion_v2.py to ignore common zip noise and preserve payload/repo_root mapping.",
+  "description": "Minimal README update bundle using payload/repo_root mapping.",
   "allowed_paths": [
     "bundle_manifest.json",
-    "install/"
+    "payload/"
   ]
 }
