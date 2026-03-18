@@ -1,0 +1,13 @@
+{
+  "bundle_name": "sandbox_v21_1_gatekeeper_bundle",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Execution Gatekeeper: force ingestion, verify repo, then run evaluation",
+  "allowed_paths": [
+    "install/",
+    "payload/",
+    "experiments/",
+    "workflow_review/"
+  ],
+  "bundle_version": "0.0.0"
+}
