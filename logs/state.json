@@ -1,5 +1,5 @@
 {
-  "cycles": 22,
+  "cycles": 23,
   "last_hash": "c521fc3e772bed63d023f9d7741f4553557cc1e9b29235966cd0d47d3306553b",
   "history": [
     {
@@ -100,6 +100,15 @@
       "prev_hash": "1549dd1311b999b2467a0e48ba4108282386d12bc1c795d27b8626b4189de308",
       "hash": "8ab9658eec2a6e47baef73b3b7fbfde3d01d6d51361b2a7d16a3a4e8dbe3406b",
       "signature": "fef2bbde8675c0aaca5c024dfebbf926da1a9f0cb5751e8f62513ca23dc35650"
+    },
+    {
+      "cycle": 23,
+      "u": 0.7848290982291043,
+      "action": "allow",
+      "reason": "ok",
+      "prev_hash": "8ab9658eec2a6e47baef73b3b7fbfde3d01d6d51361b2a7d16a3a4e8dbe3406b",
+      "hash": "b10b669b4b984996815fd1b9ee2a2728c3acb5e3fc4f951c650a0f674f250df7",
+      "signature": "96e3bbcd969c62b1f5bc0b9cfa1c3851b08f2aa231883da2f835ef107bafeb97"
     }
   ],
   "node_events": [
@@ -115,5 +124,5 @@
     0.7736560767379952
   ],
   "trust": {},
-  "last_receipt": "8ab9658eec2a6e47baef73b3b7fbfde3d01d6d51361b2a7d16a3a4e8dbe3406b"
+  "last_receipt": "b10b669b4b984996815fd1b9ee2a2728c3acb5e3fc4f951c650a0f674f250df7"
 }
