@@ -1,0 +1,33 @@
+{
+  "state": {
+    "cycles": 4,
+    "last_hash": "56c75803f3a85a4f794748d37452b0214f1a1fd4fd43a58023082fb11dbd7a71",
+    "history": [],
+    "node_events": [
+      {
+        "cycle": 3,
+        "node_decision": "node_restrict"
+      }
+    ],
+    "policy_events": []
+  },
+  "results": [
+    {
+      "shard": "s1",
+      "confidence": 0.5076324677668824,
+      "decision": "fail"
+    },
+    {
+      "shard": "s2",
+      "confidence": 0.7498004733689289,
+      "decision": "ok"
+    },
+    {
+      "shard": "s3",
+      "confidence": 0.8573618560848799,
+      "decision": "ok"
+    }
+  ],
+  "action": "monitor",
+  "u": 0.654489615162666
+}
