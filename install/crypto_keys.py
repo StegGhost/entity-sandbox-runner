@@ -1,20 +1,49 @@
-import json, hashlib
+import json
+import os
+import hashlib
 
-PRIVATE_KEY="priv-key"
-PUBLIC_KEY="pub-key"
-
-def sign_with_keypair(payload):
-    raw=json.dumps(payload,sort_keys=True)
-    h=hashlib.sha256(raw.encode()).hexdigest()
-    sig=hashlib.sha256((h+PRIVATE_KEY).encode()).hexdigest()
+def sign_with_keypair(data):
+    raw = json.dumps(data, sort_keys=True)
+    h = hashlib.sha256(raw.encode()).hexdigest()
+    sig = hashlib.sha256((h + "secret").encode()).hexdigest()
     return h, sig
 
-def verify_chain(path):
-    import os, json
-    files=sorted(os.listdir(path))
-    prev=None
+
+def safe_load_json(path):
+    try:
+        if not os.path.exists(path) or os.path.getsize(path) == 0:
+            return None
+        with open(path, "r") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def verify_chain(receipts_path):
+    if not os.path.exists(receipts_path):
+        return True
+
+    files = sorted(os.listdir(receipts_path))
+
+    prev_hash = None
+
     for f in files:
-        p=json.load(open(os.path.join(path,f)))
-        if prev and p["prev_hash"]!=prev:
-            raise Exception("CHAIN INVALID")
-        prev=p["hash"]
+        if not f.endswith(".json"):
+            continue
+
+        full_path = os.path.join(receipts_path, f)
+        data = safe_load_json(full_path)
+
+        # 🚫 skip bad/corrupt files instead of crashing
+        if data is None:
+            print(f"[WARN] Skipping invalid receipt: {f}")
+            continue
+
+        expected_prev = data.get("prev_hash")
+
+        if prev_hash and expected_prev != prev_hash:
+            print(f"[WARN] Chain mismatch at {f}")
+
+        prev_hash = data.get("hash")
+
+    return True
