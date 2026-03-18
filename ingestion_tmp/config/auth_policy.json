@@ -1,0 +1,9 @@
+{
+  "levels": {
+    "chain_maintenance": 0,
+    "experiment_metadata": 1,
+    "experiment_content": 2,
+    "replay_restricted": 3,
+    "governance_control": 4
+  }
+}

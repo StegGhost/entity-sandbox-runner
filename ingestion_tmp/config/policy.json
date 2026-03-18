@@ -1,3 +1,5 @@
 {
-  "hard_min_u": 0.6
+  "hard_stop_u": 0.4,
+  "hard_min_u": 0.6,
+  "soft_min_u": 0.65
 }

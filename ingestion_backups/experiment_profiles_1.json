@@ -1,0 +1,20 @@
+{
+  "default_run_type": "adaptive_v20",
+  "profiles": {
+    "adaptive_v20": {
+      "description": "Baseline adaptive governance run with canonical preflight.",
+      "expected_profile_hash": null,
+      "required_files": [
+        "experiments/evaluation_suite/run_eval.py",
+        "install/policy_engine.py",
+        "install/bcat_engine.py",
+        "install/crypto_keys.py",
+        "install/receipt_guard.py",
+        "install/network_registry.py",
+        "install/consensus_engine.py",
+        "config/policy.json",
+        ".github/workflows/forced_ingest_and_eval.yml"
+      ]
+    }
+  }
+}
