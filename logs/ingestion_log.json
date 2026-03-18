@@ -16,5 +16,17 @@
     "ok": true,
     "error": null,
     "ts": 1773856127.369902
+  },
+  {
+    "bundle": "docs_aware_ingestion_bundle_v1.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1773856371.4218123
+  },
+  {
+    "bundle": "v21_1_gatekeeper_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1773856371.4223425
   }
 ]
