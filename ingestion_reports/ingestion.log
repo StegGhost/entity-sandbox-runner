@@ -16063,3 +16063,18 @@
 [2026-03-18T21:51:36.932216] transaction completed successfully
 [2026-03-18T21:51:36.932927] safe ingestion complete status=installed
 [2026-03-18T21:51:36.933187] cleaned ingestion_tmp
+[2026-03-18T22:13:43.437236] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T22:13:43.437731] classified files: normal=4 workflow=0
+[2026-03-18T22:13:43.438003] transaction started for repo_root_promoter_bundle_v1.zip
+[2026-03-18T22:13:43.438238] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-18T22:13:43.438464] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/repo_root_promoter_rules.json
+[2026-03-18T22:13:43.438688] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/repo_root_promoter.py
+[2026-03-18T22:13:43.438910] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/REPO_ROOT_PROMOTER_V1.md
+[2026-03-18T22:13:43.441088] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-18T22:13:43.441359] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/repo_root_promoter_rules.json
+[2026-03-18T22:13:43.441605] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/repo_root_promoter.py
+[2026-03-18T22:13:43.441837] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/REPO_ROOT_PROMOTER_V1.md
+[2026-03-18T22:13:43.442256] transaction completed successfully
+[2026-03-18T22:13:43.442418] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/repo_root_promoter.py
+[2026-03-18T22:13:43.468369] safe ingestion complete status=installed
+[2026-03-18T22:13:43.468799] cleaned ingestion_tmp

@@ -1,0 +1,11 @@
+{
+  "bundle_name": "repo_readme_update_bundle_v2",
+  "version": "1.0.0",
+  "bundle_version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Minimal README update bundle using payload/repo_root mapping.",
+  "allowed_paths": [
+    "bundle_manifest.json",
+    "payload/"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "exact_files": [
+    "README.md",
+    "architecture_map.md"
+  ],
+  "prefixes": [
+    "docs/"
+  ],
+  "allow_workflows": false
+}

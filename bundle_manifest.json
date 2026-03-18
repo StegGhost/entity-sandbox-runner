@@ -1,11 +1,13 @@
 {
-  "bundle_name": "repo_readme_update_bundle_v2",
+  "bundle_name": "repo_root_promoter_bundle_v1",
   "version": "1.0.0",
   "bundle_version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Minimal README update bundle using payload/repo_root mapping.",
+  "description": "Adds a strict repo_root promotion layer that promotes approved staged files from payload/repo_root/ into repo root and docs targets, with logging.",
   "allowed_paths": [
     "bundle_manifest.json",
-    "payload/"
+    "install/",
+    "config/",
+    "workflow_review/"
   ]
 }

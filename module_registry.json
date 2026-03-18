@@ -82,5 +82,9 @@
   "repo_readme_update_bundle_v2": {
     "version": "1.0.0",
     "installed": "2026-03-18T21:51:36.932700"
+  },
+  "repo_root_promoter_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-18T22:13:43.468166"
   }
 }
