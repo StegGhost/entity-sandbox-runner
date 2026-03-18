@@ -16050,3 +16050,6 @@
 [2026-03-18T21:40:06.572614] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/ingestion_v2.py
 [2026-03-18T21:40:06.603196] safe ingestion complete status=installed
 [2026-03-18T21:40:06.603376] cleaned ingestion_tmp
+[2026-03-18T21:43:17.686831] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-18T21:43:17.687683] classified files: normal=7 workflow=0
+[2026-03-18T21:43:17.688809] cleaned ingestion_tmp

@@ -1,0 +1,29 @@
+{
+  "bundle_name": "docs_aware_ingestion_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/",
+      "payload/",
+      "experiments/",
+      "workflow_review/",
+      "config/"
+    ],
+    "violations": [
+      "bundle_manifest.json"
+    ],
+    "filtered_normal_files": [
+      "config/bundle_manifest_rules.json",
+      "install/ingestion_v2.py",
+      "workflow_review/DOCS_BUNDLE_LAYOUT.md",
+      "payload/examples/docs_bundle_template/bundle_manifest.json",
+      "payload/examples/docs_bundle_template/payload/repo_root/README.md",
+      "payload/examples/docs_bundle_template/payload/repo_root/docs/overview.md"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/docs_aware_ingestion_bundle_v1.zip"
+}
