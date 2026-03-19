@@ -27,12 +27,14 @@ def execute_proposal(
     proposal: Dict[str, Any],
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
-    chain_ok, chain_message = verify_chain()
-    if not chain_ok:
+    # 🔷 Only verify existing chain (ignore new write)
+    chain_check = verify_chain(receipt_dir)
+
+    if not chain_check["valid"]:
         return {
             "status": "rejected",
             "stage": "chain_integrity",
-            "reason": chain_message,
+            "reason": chain_check["reason"]
         }
 
     auth_result = resolver.resolve(proposal)
