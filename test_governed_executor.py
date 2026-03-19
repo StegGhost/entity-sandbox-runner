@@ -2,12 +2,14 @@ import os
 import shutil
 
 from governed_executor import execute_proposal, resolver
-
+from receipt_chain_verifier import clear_chain_lock
 
 RECEIPT_DIR = "receipts"
 
 
 def reset():
+    clear_chain_lock()
+
     if os.path.isdir(RECEIPT_DIR):
         shutil.rmtree(RECEIPT_DIR)
 
