@@ -1,0 +1,12 @@
+{
+  "type": "knowledge_delta",
+  "timestamp": 1773903124.6407442,
+  "delta_hash": "8f61638d0207100cde5786e13b0e0f5641bf3115a49088b842f3c9c950f7c8e4",
+  "previous_summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
+  "current_summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
+  "output_files": [
+    "payload/knowledge_delta/knowledge_delta.json",
+    "payload/knowledge_delta/knowledge_delta.md"
+  ],
+  "hash": "7916f43fcf59c355ceeb4087f872e3d4014add19322490cf6fdc03ff950cfbca"
+}

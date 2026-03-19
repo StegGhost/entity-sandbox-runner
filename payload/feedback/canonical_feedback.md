@@ -4,7 +4,7 @@
 - claims_count: 12
 - definitions_count: 8
 - findings_count: 12
-- feedback_hash: 73c9072d50ada3eb5a3c092a3648640622e4abdd1df1de11c4a636ec179848f3
+- feedback_hash: 1b4ba750b5958a8fc8f7f8659376f07f00b031fe914e905bdc9e1fb4a5459935
 
 ## Priority Items
 - { "bundle_version": "1.0", "review_purpose": "SDK review and external packaging surface", "namespaces": { "results": { "description": "run-local raw outputs", "authoritative": false }, "receipts": { "description": "provenance reference layer", "authoritative": true }, "reports": { "description": "readable derived artifacts for inspection and download", "authoritative": false }, "data_records": { "description": "canonical machine-usable evidence used across experiments", "authoritative": true }, "manifests": { "description": "portable metadata for downstream ingest/export/sdk packaging", "authoritative": true } }, "sdk_download_surfaces": [ "reports/latest", "reports/visuals", "reports/validation", "data_records/aggregates", "manifests" ], "canonical_record_sets": [ "data_records/canonical/admissibility_observations.jsonl" ] }
