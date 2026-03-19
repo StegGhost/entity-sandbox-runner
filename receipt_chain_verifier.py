@@ -30,18 +30,16 @@ def _load_receipts():
 
     return receipts
 
-
 def verify_chain():
     receipts = _load_receipts()
 
-    # 🔷 GENESIS MODE (allow bootstrap)
-    if len(receipts) <= 1:
-        return True, "genesis_bootstrap"
+    if not receipts:
+        return True, "empty_chain"
 
     for i in range(len(receipts)):
         r = receipts[i]
 
-        # verify internal hash
+        # 🔷 ALWAYS verify internal hash (even genesis)
         expected_hash = r.get("receipt_hash")
         recalculated = _hash({
             k: v for k, v in r.items() if k != "receipt_hash"
@@ -50,7 +48,7 @@ def verify_chain():
         if expected_hash != recalculated:
             return False, f"hash mismatch at index {i}"
 
-        # verify chain linkage
+        # 🔷 Only enforce linkage if multiple receipts exist
         if i > 0:
             prev = receipts[i - 1]
             if r.get("previous_receipt_hash") != prev.get("receipt_hash"):
