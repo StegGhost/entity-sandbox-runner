@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "allowed_paths"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "execution_policy_engine_bundle_v1",
+      "install_mode": "folder_map"
+    }
+  },
+  "moved_bundle_to": "failed_bundles/execution_policy_engine_bundle_v1.zip"
+}
