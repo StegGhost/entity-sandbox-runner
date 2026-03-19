@@ -1,0 +1,4 @@
+{
+  "target": ".github/workflows/marketing_system.yml",
+  "script": "install/marketing_system.py"
+}

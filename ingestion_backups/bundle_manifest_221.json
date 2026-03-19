@@ -1,13 +1,14 @@
 {
-  "bundle_name": "marketing_workflow_bundle_v1",
+  "bundle_name": "state_scoring_workflow_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Stages a GitHub workflow for the marketing system.",
+  "description": "Stages a GitHub workflow for state scoring.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",
     "config/",
-    "docs/"
+    "docs/",
+    "marketing/"
   ]
 }

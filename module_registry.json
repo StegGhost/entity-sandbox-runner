@@ -190,5 +190,9 @@
   "state_scoring_workflow_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T15:18:23.094009"
+  },
+  "marketing_workflow_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T15:29:54.947596"
   }
 }

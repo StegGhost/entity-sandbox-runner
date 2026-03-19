@@ -16593,3 +16593,17 @@
 [2026-03-19T15:18:23.093339] transaction completed successfully
 [2026-03-19T15:18:23.094248] safe ingestion complete status=installed
 [2026-03-19T15:18:23.094604] cleaned ingestion_tmp
+[2026-03-19T15:29:54.941410] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T15:29:54.941950] classified files: normal=4 workflow=0
+[2026-03-19T15:29:54.942241] transaction started for marketing_workflow_bundle_v1.zip
+[2026-03-19T15:29:54.942496] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T15:29:54.942739] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/MARKETING_WORKFLOW_V1.md
+[2026-03-19T15:29:54.943007] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/marketing_workflow_config.json
+[2026-03-19T15:29:54.943240] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/marketing_system_workflow.yml.txt
+[2026-03-19T15:29:54.945757] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T15:29:54.946047] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/MARKETING_WORKFLOW_V1.md
+[2026-03-19T15:29:54.946293] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/marketing_workflow_config.json
+[2026-03-19T15:29:54.946537] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/marketing_system_workflow.yml.txt
+[2026-03-19T15:29:54.946953] transaction completed successfully
+[2026-03-19T15:29:54.947834] safe ingestion complete status=installed
+[2026-03-19T15:29:54.948207] cleaned ingestion_tmp
