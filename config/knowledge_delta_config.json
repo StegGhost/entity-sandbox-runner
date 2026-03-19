@@ -1,0 +1,6 @@
+{
+  "canonical_root": "docs/canonical",
+  "output_root": "payload/knowledge_delta",
+  "receipts_root": "payload/receipts/knowledge_delta",
+  "index_path": "docs/canonical/index.json"
+}

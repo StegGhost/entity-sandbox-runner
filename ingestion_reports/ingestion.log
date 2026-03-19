@@ -16279,3 +16279,18 @@
 [2026-03-19T03:29:43.852451] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/run_canonical_loop.py
 [2026-03-19T03:29:44.111386] safe ingestion complete status=installed
 [2026-03-19T03:29:44.111820] cleaned ingestion_tmp
+[2026-03-19T03:30:22.438345] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T03:30:22.438910] classified files: normal=4 workflow=0
+[2026-03-19T03:30:22.439191] transaction started for knowledge_delta_bundle_v1.zip
+[2026-03-19T03:30:22.439422] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T03:30:22.439686] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/KNOWLEDGE_DELTA_V1.md
+[2026-03-19T03:30:22.439923] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/knowledge_delta_config.json
+[2026-03-19T03:30:22.440154] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/knowledge_delta.py
+[2026-03-19T03:30:22.442430] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T03:30:22.442766] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/KNOWLEDGE_DELTA_V1.md
+[2026-03-19T03:30:22.443008] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/knowledge_delta_config.json
+[2026-03-19T03:30:22.443250] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/knowledge_delta.py
+[2026-03-19T03:30:22.443694] transaction completed successfully
+[2026-03-19T03:30:22.443874] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/knowledge_delta.py
+[2026-03-19T03:30:22.477706] safe ingestion complete status=installed
+[2026-03-19T03:30:22.478118] cleaned ingestion_tmp

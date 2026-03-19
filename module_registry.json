@@ -106,5 +106,9 @@
   "canonical_feedback_runner_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T03:29:44.111181"
+  },
+  "knowledge_delta_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T03:30:22.477442"
   }
 }

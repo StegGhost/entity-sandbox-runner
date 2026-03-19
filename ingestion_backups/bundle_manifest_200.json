@@ -1,0 +1,13 @@
+{
+  "bundle_name": "canonical_feedback_runner_bundle_v1",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Adds a canonical loop runner and workflow to run document compaction plus canonical feedback automatically.",
+  "allowed_paths": [
+    "bundle_manifest.json/",
+    "install/",
+    "config/",
+    "workflow_review/"
+  ]
+}
