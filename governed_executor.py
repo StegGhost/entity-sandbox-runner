@@ -1,4 +1,5 @@
 from typing import Dict, Any, Optional, Callable
+import os
 
 from authority_resolver import AuthorityResolver
 from predictive_engine import simulate_future_u, is_future_stable
@@ -23,26 +24,31 @@ def _normalize_result(result: Any) -> Dict[str, Any]:
     return {"raw_result": result}
 
 
+def _count_receipts(receipt_dir: str) -> int:
+    if not os.path.isdir(receipt_dir):
+        return 0
+    return len([f for f in os.listdir(receipt_dir) if f.endswith(".json")])
+
+
 def execute_proposal(
     proposal: Dict[str, Any],
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
 
-    # 🔷 SAFE chain verification (prefix-valid)
+    # 🔷 STRICT + SAFE chain verification
     chain_check = verify_chain(receipt_dir)
+    receipt_count = _count_receipts(receipt_dir)
 
     if not chain_check.get("valid", True):
-        reason = chain_check.get("reason", "")
-
-        # Allow early-chain edge cases
-        if "index 0" not in reason and "index 1" not in reason:
+        # Only allow true bootstrap (0 or 1 receipts)
+        if receipt_count > 1:
             return {
                 "status": "rejected",
                 "stage": "chain_integrity",
-                "reason": reason,
+                "reason": chain_check.get("reason", "chain_invalid"),
             }
 
-    # 🔷 Authority
+    # 🔷 Authority resolution
     auth_result = resolver.resolve(proposal)
 
     if not auth_result.get("valid", False):
@@ -53,7 +59,7 @@ def execute_proposal(
             "authority": auth_result,
         }
 
-    # 🔷 Predictive check
+    # 🔷 Predictive simulation
     future_u = simulate_future_u(proposal)
 
     if not is_future_stable(future_u):
@@ -77,7 +83,7 @@ def execute_proposal(
             "decision": decision,
         }
 
-    # 🔷 Execute
+    # 🔷 Execute proposal
     execute_fn: Optional[Callable[..., Any]] = proposal.get("execute")
 
     if not callable(execute_fn):
@@ -110,6 +116,7 @@ def execute_proposal(
         receipt_dir=receipt_dir,
     )
 
+    # 🔷 Optional hash chain extension
     if append_hash is not None:
         append_hash(receipt)
 
