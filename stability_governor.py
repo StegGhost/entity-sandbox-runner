@@ -1,17 +1,33 @@
+def evaluate_stability(u_value):
+    """
+    Determines system stability class and action based on U
+    """
 
-from decision_state_recorder import DecisionStateRecorder
+    if u_value > 0.85:
+        return {
+            "action": "allow",
+            "class": "stable",
+            "threshold": 0.85
+        }
 
-class StabilityGovernor:
-    def __init__(self, receipts_dir="receipts"):
-        self.rec = DecisionStateRecorder(receipts_dir)
+    elif u_value > 0.65:
+        return {
+            "action": "allow",
+            "class": "elastic",
+            "threshold": 0.65
+        }
 
-    def validate(self, delta, state):
-        # placeholder for U-signal / BCAT
-        return {"allowed": True, "reason": "pass"}
+    elif u_value > 0.45:
+        return {
+            "action": "allow",
+            "class": "degrading",
+            "threshold": 0.45
+        }
 
-    def evaluate_and_commit(self, delta, state, authority, policy):
-        v = self.validate(delta, state)
-        if not v["allowed"]:
-            raise Exception("BLOCKED")
-
-        return self.rec.record(delta, state, authority, policy, v)
+    else:
+        return {
+            "action": "reject",
+            "class": "unstable",
+            "threshold": 0.45,
+            "reason": "u_below_minimum_threshold"
+        }
