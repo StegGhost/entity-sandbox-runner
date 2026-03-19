@@ -1,5 +1,6 @@
 from typing import Dict, Any, Optional, Callable
 
+from receipt_chain_verifier import verify_chain
 from authority_resolver import AuthorityResolver
 from predictive_engine import simulate_future_u, is_future_stable
 from decision_state_recorder import record_decision
@@ -20,7 +21,16 @@ def _normalize_result(result: Any) -> Dict[str, Any]:
         return result
     return {"raw_result": result}
 
+# 🔷 0. Verify chain integrity before doing anything
+chain_ok, message = verify_chain()
 
+if not chain_ok:
+    return {
+        "status": "rejected",
+        "stage": "chain_integrity",
+        "reason": message
+    }
+    
 def execute_proposal(
     proposal: Dict[str, Any],
     previous_receipt_hash: Optional[str] = None,
