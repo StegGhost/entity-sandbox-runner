@@ -25,38 +25,35 @@ def _load_receipts(receipt_dir=RECEIPT_DIR) -> List[Dict[str, Any]]:
     return receipts
 
 
-def reconstruct_state(receipt_dir=RECEIPT_DIR) -> Dict[str, Any]:
-    receipts = _load_receipts(receipt_dir)
+def reconstruct_state(receipt_dir):
+    receipts = load_receipts(receipt_dir)
 
-    state = {
-        "total_executions": 0,
-        "last_u": None,
-        "last_decision": None,
-        "authority_map": {},
-        "history": [],
-    }
+    total_executions = 0
+    last_u = None
+    last_decision = None
+    authorities = set()
 
     for r in receipts:
-        state["total_executions"] += 1
+        total_executions += 1
 
-        state["last_u"] = r.get("u_value")
-        state["last_decision"] = r.get("decision")
+        receipt = r.get("receipt", {})
 
-        authority = r.get("authority", {})
-        authority_id = authority.get("authority_id")
+        last_u = receipt.get("u_value", last_u)
+        last_decision = receipt.get("decision", last_decision)
+
+        # 🔷 NEW: extract authority
+        auth = receipt.get("authority", {})
+        authority_id = receipt.get("authority_id")
 
         if authority_id:
-            state["authority_map"][authority_id] = authority
+            authorities.add(authority_id)
 
-        state["history"].append({
-            "proposal": r.get("proposal"),
-            "u": r.get("u_value"),
-            "decision": r.get("decision"),
-            "timestamp": r.get("timestamp"),
-        })
-
-    return state
-
+    return {
+        "total_executions": total_executions,
+        "last_u": last_u,
+        "last_decision": last_decision,
+        "authorities": sorted(list(authorities)),  # 🔷 FIX
+    }
 
 def print_state_summary(state: Dict[str, Any]):
     print("\n=== RECONSTRUCTED SYSTEM STATE ===")
