@@ -1,0 +1,33 @@
+name: Pattern Memory
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run pattern memory
+        run: |
+          python install/pattern_memory.py
+
+      - name: Show outputs
+        run: |
+          ls -R payload/runtime || true
+
+      - name: Commit outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add payload/runtime || true
+          git commit -m "pattern memory update" || echo "no changes"
+          git push
