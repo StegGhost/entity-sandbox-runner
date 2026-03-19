@@ -1,9 +1,9 @@
 {
-  "bundle_name": "rollback_engine_bundle_v1",
+  "bundle_name": "preflight_guard_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Rollback snapshot system",
+  "description": "Preflight validation gate",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",

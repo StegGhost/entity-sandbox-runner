@@ -16503,3 +16503,18 @@
 [2026-03-19T08:13:36.444395] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/preflight_guard.py
 [2026-03-19T08:13:36.456003] safe ingestion complete status=installed
 [2026-03-19T08:13:36.456331] cleaned ingestion_tmp
+[2026-03-19T08:17:56.112796] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T08:17:56.113312] classified files: normal=4 workflow=0
+[2026-03-19T08:17:56.113570] transaction started for rollback_engine_bundle_v1.zip
+[2026-03-19T08:17:56.113787] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T08:17:56.113994] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/ROLLBACK_ENGINE_V1.md
+[2026-03-19T08:17:56.114234] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/rollback_engine_config.json
+[2026-03-19T08:17:56.114429] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/rollback_engine.py
+[2026-03-19T08:17:56.116825] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T08:17:56.117089] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/ROLLBACK_ENGINE_V1.md
+[2026-03-19T08:17:56.117318] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/rollback_engine_config.json
+[2026-03-19T08:17:56.117539] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/rollback_engine.py
+[2026-03-19T08:17:56.117912] transaction completed successfully
+[2026-03-19T08:17:56.118090] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/rollback_engine.py
+[2026-03-19T08:17:56.130834] safe ingestion complete status=installed
+[2026-03-19T08:17:56.131194] cleaned ingestion_tmp

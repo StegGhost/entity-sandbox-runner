@@ -166,5 +166,9 @@
   "preflight_guard_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T08:13:36.455776"
+  },
+  "rollback_engine_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T08:17:56.130595"
   }
 }
