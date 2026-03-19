@@ -1,9 +1,9 @@
 {
-  "bundle_name": "pattern_memory_bundle_v1A",
+  "bundle_name": "execution_policy_engine_bundle_v1A",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Corrected pattern memory bundle with required manifest fields.",
+  "description": "Corrected execution policy engine bundle with required manifest fields.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",

@@ -1,0 +1,4 @@
+{
+  "input": "payload/runtime/priority_weights.json",
+  "output": "payload/runtime/pattern_memory.json"
+}
