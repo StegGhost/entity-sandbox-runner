@@ -1,26 +1,30 @@
+import os
+import json
 
-import os, json, hashlib
 
-def _sha256(x): return hashlib.sha256(x.encode()).hexdigest()
-def _canon(x): return json.dumps(x, sort_keys=True, separators=(",", ":"))
+RECEIPT_DIR = "receipts"
 
-def verify(path="receipts"):
-    files = sorted(os.listdir(path))
-    prev = "GENESIS"
 
-    for f in files:
-        with open(os.path.join(path,f)) as fh:
-            r = json.load(fh)
+def _get_receipt_files(receipt_dir=RECEIPT_DIR):
+    if not os.path.isdir(receipt_dir):
+        return []
 
-        core = r["core"]
-        h = _sha256(_canon(core))
+    return sorted([
+        f for f in os.listdir(receipt_dir)
+        if f.endswith(".json")
+    ])
 
-        if h != r["chain"]["hash"]:
-            raise Exception("HASH MISMATCH")
 
-        if r["chain"]["prev_hash"] != prev:
-            raise Exception("CHAIN BROKEN")
+def get_latest_receipt_hash(receipt_dir=RECEIPT_DIR):
+    files = _get_receipt_files(receipt_dir)
 
-        prev = h
+    if not files:
+        return None
 
-    return True
+    latest_file = files[-1]
+    path = os.path.join(receipt_dir, latest_file)
+
+    with open(path, "r", encoding="utf-8") as f:
+        receipt = json.load(f)
+
+    return receipt.get("receipt_hash")
