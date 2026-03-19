@@ -8,10 +8,14 @@ on:
       - "authority_resolver.py"
       - "predictive_engine.py"
       - "decision_state_recorder.py"
+      - "receipt_chain.py"
+      - "receipt_chain_verifier.py"
       - "governed_executor.py"
       - "u_signal_monitor.py"
       - "stability_governor.py"
       - "test_governed_executor.py"
+      - "test_tamper_block.py"
+      - ".github/workflows/validate_governed_executor.yml"
 
 jobs:
   validate:
@@ -31,3 +35,6 @@ jobs:
 
       - name: Run governed executor test
         run: python test_governed_executor.py
+
+      - name: Run tamper block test
+        run: python test_tamper_block.py
