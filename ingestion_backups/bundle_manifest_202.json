@@ -1,0 +1,13 @@
+{
+  "bundle_name": "canonical_receipt_binder_bundle_v1",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Binds repo/canonical/feedback/delta receipts into a higher-order canonical state receipt and updates canonical index.",
+  "allowed_paths": [
+    "bundle_manifest.json/",
+    "install/",
+    "config/",
+    "docs/"
+  ]
+}

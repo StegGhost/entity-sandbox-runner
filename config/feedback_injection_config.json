@@ -1,0 +1,8 @@
+{
+  "feedback_path": "payload/feedback/canonical_feedback.json",
+  "injection_root": "payload/injection",
+  "receipts_root": "payload/receipts/feedback_injection",
+  "max_invariant_candidates": 10,
+  "max_priority_items": 10,
+  "max_contradictions": 10
+}
