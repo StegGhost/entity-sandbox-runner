@@ -34,8 +34,9 @@ def _load_receipts():
 def verify_chain():
     receipts = _load_receipts()
 
-    if not receipts:
-        return True, "no receipts found"
+    # 🔷 GENESIS MODE (allow bootstrap)
+    if len(receipts) <= 1:
+        return True, "genesis_bootstrap"
 
     for i in range(len(receipts)):
         r = receipts[i]
