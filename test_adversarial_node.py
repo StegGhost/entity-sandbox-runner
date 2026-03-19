@@ -3,99 +3,75 @@ import shutil
 import json
 
 from governed_executor import execute_proposal, resolver
-from multi_node_verifier import verify_multi_node_state
+from multi_node_verifier import verify_nodes
+
+NODE_A = "receipts_node_a"
+NODE_B = "receipts_node_b"
 
 
-RECEIPT_DIR = "receipts"
-NODE_A_DIR = "receipts_node_a"
-NODE_B_DIR = "receipts_node_b"
+def reset():
+    shutil.rmtree(NODE_A, ignore_errors=True)
+    shutil.rmtree(NODE_B, ignore_errors=True)
+    os.makedirs(NODE_A, exist_ok=True)
+    os.makedirs(NODE_B, exist_ok=True)
 
 
-def demo_execute():
-    return {"ok": True}
-
-
-def make_proposal(name):
+def proposal(name):
     return {
         "name": name,
         "authority_id": "local_admin",
-        "execute": demo_execute,
-        "coherence": 1.0,
-        "authority_validity": 1.0,
-        "integrity": 1.0,
-        "drift": 0.1,
-        "resource_strain": 0.1,
-        "entropy": 0.1,
+        "execute": lambda: {"ok": True}
     }
 
 
-def reset_dir(path):
-    if os.path.isdir(path):
-        shutil.rmtree(path)
+def run_node(node_dir):
+    return [
+        execute_proposal(proposal("test1"), receipt_dir=node_dir),
+        execute_proposal(proposal("test2"), receipt_dir=node_dir),
+        execute_proposal(proposal("test3"), receipt_dir=node_dir),
+    ]
 
 
-def tamper_node(node_dir):
-    files = sorted([
-        f for f in os.listdir(node_dir)
-        if f.endswith(".json")
-    ])
-
+def tamper(node_dir):
+    files = sorted(os.listdir(node_dir))
     if not files:
-        raise SystemExit("No receipts to tamper")
+        raise RuntimeError("No receipts to tamper with")
 
-    latest_path = os.path.join(node_dir, files[-1])
+    path = os.path.join(node_dir, files[0])
 
-    with open(latest_path, "r", encoding="utf-8") as f:
-        receipt = json.load(f)
+    with open(path, "r") as f:
+        data = json.load(f)
 
-    # 🔴 Tamper without updating hash
-    receipt["u_value"] = 9999
+    # 🔥 corrupt the receipt
+    data["result"] = {"tampered": True}
 
-    with open(latest_path, "w", encoding="utf-8") as f:
-        json.dump(receipt, f, indent=2)
-
-    return latest_path
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2)
 
 
 def main():
-    # 🔷 Clean all state
-    reset_dir(RECEIPT_DIR)
-    reset_dir(NODE_A_DIR)
-    reset_dir(NODE_B_DIR)
+    reset()
 
-    resolver.register_authority(
-        authority_id="local_admin",
-        role="admin",
-        trust_score=1.0,
-    )
+    resolver.register_authority("local_admin", "admin")
 
-    # 🔷 Build canonical chain
-    for i in range(3):
-        result = execute_proposal(make_proposal(f"adv_test_{i+1}"))
+    # run both nodes
+    results_a = run_node(NODE_A)
+    results_b = run_node(NODE_B)
 
-        if result.get("status") != "committed":
-            raise SystemExit(f"Execution {i+1} failed: {result}")
+    for r in results_a + results_b:
+        if r["status"] != "committed":
+            raise SystemExit(f"Execution failed: {r}")
 
-    # 🔷 Copy to both nodes
-    shutil.copytree(RECEIPT_DIR, NODE_A_DIR)
-    shutil.copytree(RECEIPT_DIR, NODE_B_DIR)
+    # 🔥 introduce adversarial tampering
+    tamper(NODE_B)
 
-    # 🔴 Tamper ONLY node B
-    tampered_file = tamper_node(NODE_B_DIR)
-    print("TAMPERED NODE B FILE:", tampered_file)
+    verification = verify_nodes([NODE_A, NODE_B])
 
-    # 🔷 Verify divergence
-    verification = verify_multi_node_state(
-        receipt_dir_a=NODE_A_DIR,
-        receipt_dir_b=NODE_B_DIR,
-    )
+    print("VERIFICATION:", verification)
 
-    print("ADVERSARIAL VERIFICATION:", verification)
+    assert not verification["consensus"], "Tampered node was not detected"
 
-    if verification["match"]:
-        raise SystemExit("Adversarial test failed: tampering not detected")
-
-    print("Adversarial node correctly detected divergence.")
+    print("Adversarial node detection successful.")
 
 
 if __name__ == "__main__":
