@@ -1,0 +1,14 @@
+{
+  "canonical_summary_path": "docs/canonical/system_summary.md",
+  "feedback_path": "payload/feedback/canonical_feedback.json",
+  "state_score_path": "payload/state_scoring/state_score.json",
+  "marketing_root": "marketing",
+  "receipts_root": "payload/receipts/marketing_system",
+  "max_priority_items": 8,
+  "platforms": [
+    "linkedin",
+    "x",
+    "substack",
+    "github"
+  ]
+}

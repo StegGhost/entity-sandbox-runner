@@ -1,14 +1,13 @@
 {
-  "bundle_name": "state_scoring_workflow_bundle_v1",
+  "bundle_name": "state_scoring_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Stages a GitHub workflow for state scoring.",
+  "description": "Scores current governed state from anomaly, preflight, priority, and execution signals.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",
     "config/",
-    "docs/",
-    "marketing/"
+    "docs/"
   ]
 }

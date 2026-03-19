@@ -1,0 +1,9 @@
+{
+  "type": "marketing_system",
+  "timestamp": 1773933503.0452647,
+  "marketing_root": "marketing",
+  "strategy_path": "marketing/strategy.md",
+  "content_log_path": "marketing/content_log.json",
+  "scheduled_posts_path": "marketing/scheduled_posts/next_posts.md",
+  "hash": "a3e6e8206a16eaa699bebc1c14cb056c06bfe49d1537ab535144405624c5d3be"
+}
