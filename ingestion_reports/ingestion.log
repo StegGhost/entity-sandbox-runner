@@ -16413,3 +16413,18 @@
 [2026-03-19T04:30:09.368383] cleaned ingestion_tmp
 [2026-03-19T04:38:48.804308] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-19T04:38:48.804849] cleaned ingestion_tmp
+[2026-03-19T04:43:40.100746] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:43:40.101274] classified files: normal=4 workflow=0
+[2026-03-19T04:43:40.101545] transaction started for execution_policy_engine_bundle_v1A.zip
+[2026-03-19T04:43:40.101765] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:43:40.101993] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/EXECUTION_POLICY_ENGINE_V1A.md
+[2026-03-19T04:43:40.102242] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/execution_policy_engine_config.json
+[2026-03-19T04:43:40.102476] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/execution_policy_engine.py
+[2026-03-19T04:43:40.104822] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:43:40.105099] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/EXECUTION_POLICY_ENGINE_V1A.md
+[2026-03-19T04:43:40.105359] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/execution_policy_engine_config.json
+[2026-03-19T04:43:40.105599] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/execution_policy_engine.py
+[2026-03-19T04:43:40.105988] transaction completed successfully
+[2026-03-19T04:43:40.106151] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/execution_policy_engine.py
+[2026-03-19T04:43:40.126681] safe ingestion complete status=installed
+[2026-03-19T04:43:40.127047] cleaned ingestion_tmp
