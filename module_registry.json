@@ -98,5 +98,9 @@
   "document_compression_bundle_v1A_minimal": {
     "version": "1.0.0",
     "installed": "2026-03-19T03:08:08.959228"
+  },
+  "canonical_feedback_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T03:21:02.417209"
   }
 }

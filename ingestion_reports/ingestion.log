@@ -16247,3 +16247,18 @@
 [2026-03-19T03:08:08.765587] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/document_compactor.py
 [2026-03-19T03:08:08.959427] safe ingestion complete status=installed
 [2026-03-19T03:08:08.959791] cleaned ingestion_tmp
+[2026-03-19T03:21:02.379539] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T03:21:02.380079] classified files: normal=4 workflow=0
+[2026-03-19T03:21:02.380353] transaction started for canonical_feedback_bundle_v1.zip
+[2026-03-19T03:21:02.380565] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T03:21:02.380789] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/CANONICAL_FEEDBACK_V1.md
+[2026-03-19T03:21:02.381044] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/canonical_feedback_rules.json
+[2026-03-19T03:21:02.381281] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/canonical_feedback.py
+[2026-03-19T03:21:02.383479] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T03:21:02.383760] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/CANONICAL_FEEDBACK_V1.md
+[2026-03-19T03:21:02.384045] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/canonical_feedback_rules.json
+[2026-03-19T03:21:02.384294] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/canonical_feedback.py
+[2026-03-19T03:21:02.384681] transaction completed successfully
+[2026-03-19T03:21:02.384840] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/canonical_feedback.py
+[2026-03-19T03:21:02.417414] safe ingestion complete status=installed
+[2026-03-19T03:21:02.417770] cleaned ingestion_tmp

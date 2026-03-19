@@ -1,0 +1,13 @@
+{
+  "bundle_name": "document_compression_bundle_v1A_minimal",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Minimal ultra-compatible document compactor bundle.",
+  "allowed_paths": [
+    "bundle_manifest.json/",
+    "install/",
+    "config/",
+    "docs/"
+  ]
+}

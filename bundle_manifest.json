@@ -1,9 +1,9 @@
 {
-  "bundle_name": "document_compression_bundle_v1A_minimal",
+  "bundle_name": "canonical_feedback_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Minimal ultra-compatible document compactor bundle.",
+  "description": "Reads canonical compaction outputs and produces structured feedback artifacts and receipts for reuse by execution and document systems.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",

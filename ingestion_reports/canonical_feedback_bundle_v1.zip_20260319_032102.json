@@ -1,0 +1,39 @@
+{
+  "bundle_name": "canonical_feedback_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 4,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/CANONICAL_FEEDBACK_V1.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/canonical_feedback_rules.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/canonical_feedback.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/",
+      "config/",
+      "docs/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/CANONICAL_FEEDBACK_V1.md",
+      "config/canonical_feedback_rules.json",
+      "install/canonical_feedback.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/canonical_feedback_bundle_v1.zip"
+}

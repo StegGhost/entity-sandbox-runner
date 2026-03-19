@@ -1,0 +1,29 @@
+{
+  "max_priority_items": 15,
+  "priority_keywords": [
+    "invariant",
+    "deterministic",
+    "receipt",
+    "policy",
+    "execution",
+    "feedback",
+    "canonical",
+    "proof",
+    "replay",
+    "uncertainty",
+    "trust",
+    "constraint"
+  ],
+  "contradiction_markers": [
+    "however",
+    "but",
+    "conflict",
+    "contradiction",
+    "inconsistent",
+    "failed",
+    "failure",
+    "broke",
+    "restrict",
+    "halt"
+  ]
+}
