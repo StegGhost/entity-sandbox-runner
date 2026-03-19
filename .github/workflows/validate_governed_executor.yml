@@ -49,3 +49,6 @@ jobs:
 
       - name: Run multi-node verification test
         run: python test_multi_node_verification.py
+
+      - name: Run adversarial node test
+        run: python test_adversarial_node.py
