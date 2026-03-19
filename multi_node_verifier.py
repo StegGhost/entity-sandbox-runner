@@ -1,18 +1,25 @@
+import os
 from state_reconstructor import reconstruct_state
 from state_hash import compute_state_hash
 
 
-def verify_multi_node_state(receipt_dir_a="receipts", receipt_dir_b="receipts"):
-    state_a = reconstruct_state(receipt_dir=receipt_dir_a)
-    state_b = reconstruct_state(receipt_dir=receipt_dir_b)
+def verify_nodes(node_dirs):
+    results = []
 
-    hash_a = compute_state_hash(state_a)
-    hash_b = compute_state_hash(state_b)
+    for node_dir in node_dirs:
+        state = reconstruct_state(node_dir)
+        state_hash = compute_state_hash(state)
+
+        results.append({
+            "node": node_dir,
+            "state": state,
+            "hash": state_hash
+        })
+
+    hashes = [r["hash"] for r in results]
+    consensus = len(set(hashes)) == 1
 
     return {
-        "match": hash_a == hash_b,
-        "hash_a": hash_a,
-        "hash_b": hash_b,
-        "state_a": state_a,
-        "state_b": state_b,
+        "consensus": consensus,
+        "results": results
     }
