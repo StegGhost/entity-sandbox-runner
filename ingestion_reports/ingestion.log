@@ -16173,3 +16173,26 @@
 [2026-03-19T02:03:17.464629] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-19T02:03:17.465217] classified files: normal=4 workflow=1
 [2026-03-19T02:03:17.465958] cleaned ingestion_tmp
+[2026-03-19T02:10:03.362561] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T02:10:03.363159] classified files: normal=8 workflow=0
+[2026-03-19T02:10:03.363488] transaction started for v21_2A_formal_document_engine_bootstrap_bundle.zip
+[2026-03-19T02:10:03.363734] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T02:10:03.363968] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/document_engine_config.json
+[2026-03-19T02:10:03.364191] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/document_engine.py
+[2026-03-19T02:10:03.364383] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/bundle_builder.py
+[2026-03-19T02:10:03.364570] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/document_pipeline.py
+[2026-03-19T02:10:03.364785] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/latex_renderer.py
+[2026-03-19T02:10:03.364998] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/DOCUMENT_ENGINE_WORKFLOW_V21_2A.yml.txt
+[2026-03-19T02:10:03.365193] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/DOCUMENT_ENGINE_INSTALL_NOTES_V21_2A.md
+[2026-03-19T02:10:03.367396] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T02:10:03.367672] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/document_engine_config.json
+[2026-03-19T02:10:03.368058] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/document_engine.py
+[2026-03-19T02:10:03.368449] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/bundle_builder.py
+[2026-03-19T02:10:03.368842] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/document_pipeline.py
+[2026-03-19T02:10:03.369214] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/latex_renderer.py
+[2026-03-19T02:10:03.369466] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/DOCUMENT_ENGINE_WORKFLOW_V21_2A.yml.txt
+[2026-03-19T02:10:03.369652] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/DOCUMENT_ENGINE_INSTALL_NOTES_V21_2A.md
+[2026-03-19T02:10:03.370126] transaction completed successfully
+[2026-03-19T02:10:03.370295] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/document_engine.py
+[2026-03-19T02:10:03.389245] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/bundle_builder.py
+[2026-03-19T02:10:03.418540] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/document_pipeline.py

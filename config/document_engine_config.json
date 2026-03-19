@@ -1,0 +1,17 @@
+{
+  "doc_types": [
+    "preprint",
+    "whitepaper",
+    "technical_spec",
+    "governance_model"
+  ],
+  "output_formats": [
+    "md",
+    "md+tex",
+    "full_bundle"
+  ],
+  "bundle_targets": [
+    "ingestion",
+    "download_only"
+  ]
+}
