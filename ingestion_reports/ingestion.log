@@ -16324,3 +16324,18 @@
 [2026-03-19T03:54:08.553329] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/feedback_injection.py
 [2026-03-19T03:54:08.583691] safe ingestion complete status=installed
 [2026-03-19T03:54:08.584065] cleaned ingestion_tmp
+[2026-03-19T04:04:04.083704] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:04:04.084082] classified files: normal=4 workflow=0
+[2026-03-19T04:04:04.084277] transaction started for feedback_execution_bridge_bundle_v1.zip
+[2026-03-19T04:04:04.084432] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:04:04.084561] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/FEEDBACK_EXECUTION_BRIDGE_V1.md
+[2026-03-19T04:04:04.084683] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/feedback_execution_bridge_config.json
+[2026-03-19T04:04:04.084801] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/feedback_execution_bridge.py
+[2026-03-19T04:04:04.086419] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:04:04.086571] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/FEEDBACK_EXECUTION_BRIDGE_V1.md
+[2026-03-19T04:04:04.086708] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/feedback_execution_bridge_config.json
+[2026-03-19T04:04:04.086862] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/feedback_execution_bridge.py
+[2026-03-19T04:04:04.087072] transaction completed successfully
+[2026-03-19T04:04:04.087201] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/feedback_execution_bridge.py
+[2026-03-19T04:04:04.108198] safe ingestion complete status=installed
+[2026-03-19T04:04:04.108416] cleaned ingestion_tmp

@@ -118,5 +118,9 @@
   "feedback_injection_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T03:54:08.583463"
+  },
+  "feedback_execution_bridge_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T04:04:04.108039"
   }
 }

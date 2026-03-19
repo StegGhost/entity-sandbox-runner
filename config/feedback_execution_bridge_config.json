@@ -1,0 +1,6 @@
+{
+  "feedback_input": "payload/injection/feedback_prompt_inputs.json",
+  "output_root": "payload/runtime",
+  "engine_input_path": "payload/runtime/active_feedback.json",
+  "receipts_root": "payload/receipts/feedback_execution_bridge"
+}
