@@ -23,7 +23,7 @@ def _load_receipts(receipt_dir: str) -> List[Dict[str, Any]]:
 def verify_chain(receipt_dir: str = "receipts") -> Dict[str, Any]:
     receipts = _load_receipts(receipt_dir)
 
-    # 🔷 Allow bootstrap states
+    # ✅ Bootstrap: empty or single receipt is always valid
     if len(receipts) <= 1:
         return {"valid": True}
 
