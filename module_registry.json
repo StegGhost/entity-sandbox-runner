@@ -150,5 +150,9 @@
   "pattern_memory_bundle_v1A": {
     "version": "1.0.0",
     "installed": "2026-03-19T04:44:40.905258"
+  },
+  "self_modifying_loop_bundle_v1A": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T04:45:32.706573"
   }
 }

@@ -16443,3 +16443,18 @@
 [2026-03-19T04:44:40.884974] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/pattern_memory.py
 [2026-03-19T04:44:40.905473] safe ingestion complete status=installed
 [2026-03-19T04:44:40.905826] cleaned ingestion_tmp
+[2026-03-19T04:45:32.680579] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:45:32.681094] classified files: normal=4 workflow=0
+[2026-03-19T04:45:32.681373] transaction started for self_modifying_loop_bundle_v1A.zip
+[2026-03-19T04:45:32.681615] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:45:32.681857] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/SELF_MODIFYING_LOOP_V1A.md
+[2026-03-19T04:45:32.682083] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/self_modifying_loop_config.json
+[2026-03-19T04:45:32.682306] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/self_modifying_loop.py
+[2026-03-19T04:45:32.684723] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:45:32.685019] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/SELF_MODIFYING_LOOP_V1A.md
+[2026-03-19T04:45:32.685262] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/self_modifying_loop_config.json
+[2026-03-19T04:45:32.685519] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/self_modifying_loop.py
+[2026-03-19T04:45:32.685915] transaction completed successfully
+[2026-03-19T04:45:32.686084] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/self_modifying_loop.py
+[2026-03-19T04:45:32.706818] safe ingestion complete status=installed
+[2026-03-19T04:45:32.707276] cleaned ingestion_tmp
