@@ -1,0 +1,131 @@
+name: Governed System Master Modes
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_mode:
+        description: "Execution mode"
+        required: true
+        type: choice
+        options:
+          - full_run
+          - safe_run
+          - analysis_only
+          - actuation_only
+      commit_changes:
+        description: "Commit and push outputs"
+        required: true
+        type: choice
+        options:
+          - "true"
+          - "false"
+      run_failure_recovery:
+        description: "Run failure recovery layer"
+        required: true
+        type: choice
+        options:
+          - "true"
+          - "false"
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  governed-master:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Resolve defaults for scheduled runs
+        id: defaults
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "run_mode=full_run" >> $GITHUB_OUTPUT
+            echo "commit_changes=true" >> $GITHUB_OUTPUT
+            echo "run_failure_recovery=true" >> $GITHUB_OUTPUT
+          else
+            echo "run_mode=${{ inputs.run_mode }}" >> $GITHUB_OUTPUT
+            echo "commit_changes=${{ inputs.commit_changes }}" >> $GITHUB_OUTPUT
+            echo "run_failure_recovery=${{ inputs.run_failure_recovery }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Show repo structure
+        run: |
+          echo "==== ROOT ===="
+          ls -R
+
+      - name: Show selected mode
+        run: |
+          echo "run_mode=${{ steps.defaults.outputs.run_mode }}"
+          echo "commit_changes=${{ steps.defaults.outputs.commit_changes }}"
+          echo "run_failure_recovery=${{ steps.defaults.outputs.run_failure_recovery }}"
+
+      - name: Run failure recovery layer
+        if: ${{ steps.defaults.outputs.run_failure_recovery == 'true' && (steps.defaults.outputs.run_mode == 'full_run' || steps.defaults.outputs.run_mode == 'safe_run') }}
+        run: |
+          python install/failure_recovery_runner.py || true
+
+      - name: Run autonomous loop
+        if: ${{ steps.defaults.outputs.run_mode == 'full_run' || steps.defaults.outputs.run_mode == 'safe_run' || steps.defaults.outputs.run_mode == 'analysis_only' }}
+        run: |
+          python install/autonomous_loop_orchestrator.py
+
+      - name: Run execution policy engine
+        if: ${{ steps.defaults.outputs.run_mode == 'full_run' || steps.defaults.outputs.run_mode == 'safe_run' || steps.defaults.outputs.run_mode == 'analysis_only' || steps.defaults.outputs.run_mode == 'actuation_only' }}
+        run: |
+          python install/execution_policy_engine.py
+
+      - name: Run pattern memory
+        if: ${{ steps.defaults.outputs.run_mode == 'full_run' || steps.defaults.outputs.run_mode == 'analysis_only' }}
+        run: |
+          python install/pattern_memory.py
+
+      - name: Run self modifying loop
+        if: ${{ steps.defaults.outputs.run_mode == 'full_run' }}
+        run: |
+          python install/self_modifying_loop.py
+
+      - name: Run goal directed execution
+        if: ${{ steps.defaults.outputs.run_mode == 'full_run' || steps.defaults.outputs.run_mode == 'safe_run' || steps.defaults.outputs.run_mode == 'actuation_only' }}
+        run: |
+          python install/goal_directed_execution.py
+
+      - name: Run actuator bridge
+        if: ${{ steps.defaults.outputs.run_mode == 'full_run' || steps.defaults.outputs.run_mode == 'safe_run' || steps.defaults.outputs.run_mode == 'actuation_only' }}
+        run: |
+          python install/actuator_bridge.py
+
+      - name: Show final outputs
+        run: |
+          echo "==== payload/runtime ===="
+          ls -R payload/runtime || true
+          echo "==== payload/feedback ===="
+          ls -R payload/feedback || true
+          echo "==== payload/knowledge_delta ===="
+          ls -R payload/knowledge_delta || true
+          echo "==== payload/injection ===="
+          ls -R payload/injection || true
+          echo "==== payload/actuation ===="
+          ls -R payload/actuation || true
+          echo "==== payload/receipts ===="
+          ls -R payload/receipts || true
+          echo "==== docs/canonical ===="
+          ls -R docs/canonical || true
+          echo "==== config ===="
+          ls -R config || true
+
+      - name: Commit all governed outputs
+        if: ${{ steps.defaults.outputs.commit_changes == 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add payload docs/canonical config || true
+          git commit -m "governed system master modes run" || echo "no changes"
+          git push
