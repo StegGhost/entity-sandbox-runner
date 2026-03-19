@@ -12,18 +12,20 @@ on:
           - whitepaper
           - technical_spec
           - governance_model
+
       topic:
         description: "Topic"
         required: true
-        type: string
+
       output_format:
-        description: "Output format"
+        description: "Format"
         required: true
         type: choice
         options:
           - md
           - md+tex
           - full_bundle
+
       bundle_target:
         description: "Target"
         required: true
@@ -33,33 +35,52 @@ on:
           - download_only
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run Document Engine
+      - name: Debug Repo State (IMPORTANT)
         run: |
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
-          python - <<'PY'
-          from install.document_pipeline import run
-          run(
-              doc_type="${{ inputs.doc_type }}",
-              topic="${{ inputs.topic }}",
-              output_format="${{ inputs.output_format }}",
-              target="incoming_bundles" if "${{ inputs.bundle_target }}" == "ingestion" else "."
-          )
-          PY
+          echo "ROOT CONTENTS:"
+          ls -R
 
-      - name: Commit output
+      - name: Run Document Engine (SAFE MODE)
         run: |
-          git config user.name "github-actions[bot]"
+          python - <<'EOF'
+import sys, os
+
+# Ensure install/ is importable
+sys.path.append(os.getcwd())
+
+try:
+    from install.document_pipeline import run
+
+    result = run(
+        "${{ inputs.doc_type }}",
+        "${{ inputs.topic }}",
+        "${{ inputs.output_format }}",
+        "incoming_bundles" if "${{ inputs.bundle_target }}" == "ingestion" else "."
+    )
+
+    print("SUCCESS:", result)
+
+except Exception as e:
+    print("ERROR:", str(e))
+    raise
+EOF
+
+      - name: Commit Output
+        run: |
+          git config user.name "actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "document bundle generated" || echo "no changes"
+          git commit -m "Document engine output" || echo "no changes"
           git push
