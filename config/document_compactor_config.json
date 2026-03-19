@@ -1,0 +1,25 @@
+{
+  "scan_roots": [
+    "."
+  ],
+  "include_filename_patterns": [
+    "BUILD_NOTES_.*\\.md$",
+    "EVAL_NOTES_.*\\.md$",
+    "CLAIMS.*\\.md$",
+    ".*DEFINITIONS.*\\.(md|json)$"
+  ],
+  "exclude_prefixes": [
+    ".git/",
+    "incoming_bundles/",
+    "installed_bundles/",
+    "failed_bundles/",
+    "_tmp_bundle_",
+    "docs/canonical/",
+    "payload/receipts/document_compaction/"
+  ],
+  "max_files": 500,
+  "max_excerpt_chars_per_file": 4000,
+  "top_claims_limit": 25,
+  "top_definitions_limit": 25,
+  "top_findings_limit": 25
+}

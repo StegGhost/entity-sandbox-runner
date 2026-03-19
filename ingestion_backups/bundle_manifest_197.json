@@ -1,0 +1,13 @@
+{
+  "bundle_name": "v21_3A_publication_engine_bootstrap",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Ultra-compatible publication engine bootstrap with PDF and citation helpers plus workflow staging notes.",
+  "allowed_paths": [
+    "bundle_manifest.json/",
+    "install/",
+    "config/",
+    "workflow_review/"
+  ]
+}
