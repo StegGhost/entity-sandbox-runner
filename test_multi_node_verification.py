@@ -33,13 +33,8 @@ def reset_dir(path):
         shutil.rmtree(path)
 
 
-def copy_receipts(src, dst):
-    if os.path.isdir(dst):
-        shutil.rmtree(dst)
-    shutil.copytree(src, dst)
-
-
 def main():
+    # 🔷 HARD RESET ALL STATE
     reset_dir(RECEIPT_DIR)
     reset_dir(NODE_A_DIR)
     reset_dir(NODE_B_DIR)
@@ -50,20 +45,18 @@ def main():
         trust_score=1.0,
     )
 
-    result_1 = execute_proposal(make_proposal("node_test_1"))
-    result_2 = execute_proposal(make_proposal("node_test_2"))
-    result_3 = execute_proposal(make_proposal("node_test_3"))
+    # 🔷 Build clean canonical chain
+    for i in range(3):
+        result = execute_proposal(make_proposal(f"node_test_{i+1}"))
 
-    if result_1.get("status") != "committed":
-        raise SystemExit(f"Execution 1 failed: {result_1}")
-    if result_2.get("status") != "committed":
-        raise SystemExit(f"Execution 2 failed: {result_2}")
-    if result_3.get("status") != "committed":
-        raise SystemExit(f"Execution 3 failed: {result_3}")
+        if result.get("status") != "committed":
+            raise SystemExit(f"Execution {i+1} failed: {result}")
 
-    copy_receipts(RECEIPT_DIR, NODE_A_DIR)
-    copy_receipts(RECEIPT_DIR, NODE_B_DIR)
+    # 🔷 Copy clean state to two nodes
+    shutil.copytree(RECEIPT_DIR, NODE_A_DIR)
+    shutil.copytree(RECEIPT_DIR, NODE_B_DIR)
 
+    # 🔷 Verify independent reconstruction
     verification = verify_multi_node_state(
         receipt_dir_a=NODE_A_DIR,
         receipt_dir_b=NODE_B_DIR,
