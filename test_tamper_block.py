@@ -10,6 +10,9 @@ RECEIPT_DIR = "receipts"
 def sample_proposal():
     return {
         "proposal": "baseline_proposal",
+        "authority": {
+            "role": "admin"   # ✅ REQUIRED
+        },
         "execute": lambda: {
             "message": "hello from governed execution",
             "ok": True
@@ -34,7 +37,7 @@ def tamper_receipt():
     with open(path, "r") as f:
         data = json.load(f)
 
-    # 🔴 Tamper WITHOUT recomputing hash
+    # 🔴 Tamper without updating hash
     data["tampered"] = True
 
     with open(path, "w") as f:
@@ -46,25 +49,27 @@ def tamper_receipt():
 def main():
     clear_chain_lock()
 
-    # Clean start
     os.system("rm -rf receipts && mkdir receipts")
 
-    # ✅ STEP 1 — create receipt
+    # ✅ STEP 1 — valid execution
     first = execute_proposal(sample_proposal())
     print("FIRST RESULT:", first)
 
     assert first["status"] == "committed", "Initial execution failed"
 
-    # ✅ Ensure receipt exists
+    # ✅ ensure receipt exists
     files = os.listdir(RECEIPT_DIR)
     assert len(files) > 0, "No receipt created"
 
     # ✅ STEP 2 — tamper
     tamper_receipt()
 
-    # ✅ STEP 3 — attempt execution (must fail)
+    # ✅ STEP 3 — must be blocked
     second = execute_proposal({
         "proposal": "post_tamper_proposal",
+        "authority": {
+            "role": "admin"
+        },
         "execute": lambda: {"message": "should not execute"}
     })
 
