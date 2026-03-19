@@ -1,0 +1,11 @@
+{
+  "hard_stop_u": 0.3,
+  "restrict_u": 0.6,
+  "epsilon_uncertainty": 0.25,
+  "weights": {
+    "stability": 0.25,
+    "trust": 0.25,
+    "constraint_pressure": 0.25,
+    "history": 0.25
+  }
+}
