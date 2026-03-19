@@ -34,7 +34,7 @@ def reset_dir(path):
 
 
 def main():
-    # 🔷 HARD RESET ALL STATE
+    # 🔷 FULL RESET
     reset_dir(RECEIPT_DIR)
     reset_dir(NODE_A_DIR)
     reset_dir(NODE_B_DIR)
@@ -45,18 +45,22 @@ def main():
         trust_score=1.0,
     )
 
-    # 🔷 Build clean canonical chain
+    # 🔷 Build chain ONE STEP AT A TIME with validation
     for i in range(3):
         result = execute_proposal(make_proposal(f"node_test_{i+1}"))
 
         if result.get("status") != "committed":
             raise SystemExit(f"Execution {i+1} failed: {result}")
 
-    # 🔷 Copy clean state to two nodes
+    # 🔷 Ensure filesystem is fully consistent before copying
+    if not os.path.isdir(RECEIPT_DIR):
+        raise SystemExit("Receipts directory missing after execution")
+
+    # 🔷 Copy AFTER chain is fully stable
     shutil.copytree(RECEIPT_DIR, NODE_A_DIR)
     shutil.copytree(RECEIPT_DIR, NODE_B_DIR)
 
-    # 🔷 Verify independent reconstruction
+    # 🔷 Verify
     verification = verify_multi_node_state(
         receipt_dir_a=NODE_A_DIR,
         receipt_dir_b=NODE_B_DIR,
