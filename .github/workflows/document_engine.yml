@@ -1,0 +1,58 @@
+name: Document Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      doc_type:
+        type: choice
+        options:
+          - preprint
+          - whitepaper
+          - technical_spec
+          - governance_model
+      topic:
+        required: true
+      output_format:
+        type: choice
+        options:
+          - md
+          - md+tex
+          - full_bundle
+      bundle_target:
+        type: choice
+        options:
+          - ingestion
+          - download_only
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Document Engine
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          python - <<EOF
+from install.document_pipeline import run
+
+run(
+    "${{ inputs.doc_type }}",
+    "${{ inputs.topic }}",
+    "${{ inputs.output_format }}",
+    "incoming_bundles" if "${{ inputs.bundle_target }}" == "ingestion" else "."
+)
+EOF
+
+      - name: Commit Output
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@github.com"
+          git add .
+          git commit -m "document bundle generated" || echo "no changes"
+          git push
