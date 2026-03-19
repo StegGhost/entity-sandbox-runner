@@ -45,23 +45,38 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Debug Repo State
+      - name: Show file structure
         run: |
-          echo "ROOT CONTENTS:"
+          echo "==== ROOT ===="
           ls -R
+
+      - name: Verify install exists
+        run: |
+          if [ ! -d "install" ]; then
+            echo "ERROR: install/ folder missing"
+            exit 1
+          fi
 
       - name: Run Document Engine
         shell: bash
         run: |
-          python - <<'EOF'
+          cat > /tmp/run_document_engine.py <<'PYEOF'
           import os
           import sys
+          import traceback
+
+          print("=== PYTHON START ===")
+          print("CWD:", os.getcwd())
+          print("ROOT FILES:", os.listdir())
 
           sys.path.append(os.getcwd())
 
           try:
+              print("Importing install.document_pipeline ...")
               from install.document_pipeline import run
+              print("Import success")
 
+              print("Running pipeline ...")
               result = run(
                   "${{ inputs.doc_type }}",
                   "${{ inputs.topic }}",
@@ -69,20 +84,30 @@ jobs:
                   "incoming_bundles" if "${{ inputs.bundle_target }}" == "ingestion" else "."
               )
 
-              print("SUCCESS:", result)
+              print("SUCCESS RESULT:", result)
 
           except Exception as e:
+              print("=== ERROR OCCURRED ===")
               print("ERROR:", str(e))
+              traceback.print_exc()
               raise
-          EOF
 
-      - name: Show output locations
+          print("=== PYTHON END ===")
+          PYEOF
+
+          python /tmp/run_document_engine.py
+
+      - name: Show outputs
         run: |
-          echo "POST-RUN CONTENTS:"
+          echo "==== AFTER RUN ===="
+          echo "-- incoming_bundles --"
           ls -R incoming_bundles || true
+          echo "-- docs --"
+          ls -R docs || true
+          echo "-- repo root --"
           ls -R . || true
 
-      - name: Commit Output
+      - name: Commit output
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
