@@ -1,0 +1,4 @@
+{
+  "policy_path": "payload/runtime/execution_policy.json",
+  "output": "payload/runtime/goal_execution_log.json"
+}

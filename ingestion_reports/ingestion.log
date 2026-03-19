@@ -16458,3 +16458,18 @@
 [2026-03-19T04:45:32.686084] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/self_modifying_loop.py
 [2026-03-19T04:45:32.706818] safe ingestion complete status=installed
 [2026-03-19T04:45:32.707276] cleaned ingestion_tmp
+[2026-03-19T04:46:18.606286] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:46:18.606793] classified files: normal=4 workflow=0
+[2026-03-19T04:46:18.607097] transaction started for goal_directed_execution_bundle_v1A.zip
+[2026-03-19T04:46:18.607312] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:46:18.607541] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/GOAL_DIRECTED_EXECUTION_V1A.md
+[2026-03-19T04:46:18.607764] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/goal_directed_execution_config.json
+[2026-03-19T04:46:18.608006] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/goal_directed_execution.py
+[2026-03-19T04:46:18.610349] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:46:18.610602] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/GOAL_DIRECTED_EXECUTION_V1A.md
+[2026-03-19T04:46:18.610840] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/goal_directed_execution_config.json
+[2026-03-19T04:46:18.611116] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/goal_directed_execution.py
+[2026-03-19T04:46:18.611506] transaction completed successfully
+[2026-03-19T04:46:18.611669] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/goal_directed_execution.py
+[2026-03-19T04:46:18.632359] safe ingestion complete status=installed
+[2026-03-19T04:46:18.632723] cleaned ingestion_tmp
