@@ -38,3 +38,6 @@ jobs:
 
       - name: Run tamper block test
         run: python test_tamper_block.py
+
+      - name: Run state reconstruction test
+        run: python test_state_reconstruction.py
