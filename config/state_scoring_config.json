@@ -1,0 +1,10 @@
+{
+  "sources": {
+    "anomaly_report": "payload/anomaly_detection/anomaly_report.json",
+    "preflight_report": "payload/preflight/preflight_guard_report.json",
+    "priority_weights": "payload/runtime/priority_weights.json",
+    "goal_execution_log": "payload/runtime/goal_execution_log.json"
+  },
+  "output_root": "payload/state_scoring",
+  "receipts_root": "payload/receipts/state_scoring"
+}

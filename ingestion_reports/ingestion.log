@@ -16518,3 +16518,33 @@
 [2026-03-19T08:17:56.118090] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/rollback_engine.py
 [2026-03-19T08:17:56.130834] safe ingestion complete status=installed
 [2026-03-19T08:17:56.131194] cleaned ingestion_tmp
+[2026-03-19T15:12:27.252815] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T15:12:27.253379] classified files: normal=4 workflow=0
+[2026-03-19T15:12:27.253641] transaction started for anomaly_detection_bundle_v1.zip
+[2026-03-19T15:12:27.253859] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T15:12:27.254067] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/ANOMALY_DETECTION_V1.md
+[2026-03-19T15:12:27.254289] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/anomaly_detection_config.json
+[2026-03-19T15:12:27.254497] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/anomaly_detection.py
+[2026-03-19T15:12:27.257022] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T15:12:27.257335] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/ANOMALY_DETECTION_V1.md
+[2026-03-19T15:12:27.257573] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/anomaly_detection_config.json
+[2026-03-19T15:12:27.257797] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/anomaly_detection.py
+[2026-03-19T15:12:27.258186] transaction completed successfully
+[2026-03-19T15:12:27.258371] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/anomaly_detection.py
+[2026-03-19T15:12:27.285732] safe ingestion complete status=installed
+[2026-03-19T15:12:27.286111] cleaned ingestion_tmp
+[2026-03-19T15:12:27.328958] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T15:12:27.329483] classified files: normal=4 workflow=0
+[2026-03-19T15:12:27.329755] transaction started for state_scoring_bundle_v1.zip
+[2026-03-19T15:12:27.329969] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T15:12:27.330177] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/STATE_SCORING_V1.md
+[2026-03-19T15:12:27.330413] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/state_scoring_config.json
+[2026-03-19T15:12:27.330615] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/state_scoring.py
+[2026-03-19T15:12:27.333070] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T15:12:27.333373] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/STATE_SCORING_V1.md
+[2026-03-19T15:12:27.333619] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/state_scoring_config.json
+[2026-03-19T15:12:27.333842] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/state_scoring.py
+[2026-03-19T15:12:27.334262] transaction completed successfully
+[2026-03-19T15:12:27.334446] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/state_scoring.py
+[2026-03-19T15:12:27.360914] safe ingestion complete status=installed
+[2026-03-19T15:12:27.361312] cleaned ingestion_tmp

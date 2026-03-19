@@ -1,0 +1,8 @@
+{
+  "type": "anomaly_detection",
+  "timestamp": 1773933147.2806807,
+  "status": "ok",
+  "report_hash": "c0e77003575347cabea57d4a5e44d1c7beaa8fabddba2e1ab461a767164d09f5",
+  "report_path": "payload/anomaly_detection/anomaly_report.json",
+  "hash": "7b540facd74bb82cd154cb41198a84405800478dd417878721c3f136e2b942b7"
+}

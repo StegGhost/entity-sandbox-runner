@@ -1,0 +1,13 @@
+{
+  "timestamp": 1773933147.3560605,
+  "score": 100,
+  "band": "excellent",
+  "components": {
+    "anomaly_count": 0,
+    "preflight_ok": 0,
+    "priority_items": 20,
+    "executed_count": 9,
+    "skipped_count": 1
+  },
+  "hash": "2e5712626ddd9c4f27ee07622873b18510daad05d44428ae670a973601d4eb72"
+}

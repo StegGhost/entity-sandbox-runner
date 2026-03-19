@@ -1,0 +1,65 @@
+{
+  "timestamp": 1773933147.2806807,
+  "status": "ok",
+  "anomaly_count": 0,
+  "anomalies": [],
+  "details": [
+    {
+      "root": "payload/receipts/document_compaction",
+      "exists": true,
+      "file_count": 15,
+      "latest_path": "payload/receipts/document_compaction/document_compaction_0015.json",
+      "latest_type": "document_compaction",
+      "latest_status": null
+    },
+    {
+      "root": "payload/receipts/canonical_feedback",
+      "exists": true,
+      "file_count": 15,
+      "latest_path": "payload/receipts/canonical_feedback/canonical_feedback_0015.json",
+      "latest_type": "canonical_feedback",
+      "latest_status": null
+    },
+    {
+      "root": "payload/receipts/knowledge_delta",
+      "exists": true,
+      "file_count": 14,
+      "latest_path": "payload/receipts/knowledge_delta/knowledge_delta_0014.json",
+      "latest_type": "knowledge_delta",
+      "latest_status": null
+    },
+    {
+      "root": "payload/receipts/canonical_state",
+      "exists": true,
+      "file_count": 13,
+      "latest_path": "payload/receipts/canonical_state/canonical_state_0013.json",
+      "latest_type": "canonical_state",
+      "latest_status": null
+    },
+    {
+      "root": "payload/receipts/feedback_injection",
+      "exists": true,
+      "file_count": 13,
+      "latest_path": "payload/receipts/feedback_injection/feedback_injection_0013.json",
+      "latest_type": "feedback_injection",
+      "latest_status": null
+    },
+    {
+      "root": "payload/receipts/feedback_execution_bridge",
+      "exists": true,
+      "file_count": 13,
+      "latest_path": "payload/receipts/feedback_execution_bridge/feedback_execution_bridge_0013.json",
+      "latest_type": "feedback_execution_bridge",
+      "latest_status": null
+    },
+    {
+      "root": "payload/receipts/actuator_bridge",
+      "exists": true,
+      "file_count": 5,
+      "latest_path": "payload/receipts/actuator_bridge/actuator_bridge_0005.json",
+      "latest_type": "actuator_bridge",
+      "latest_status": null
+    }
+  ],
+  "hash": "c0e77003575347cabea57d4a5e44d1c7beaa8fabddba2e1ab461a767164d09f5"
+}

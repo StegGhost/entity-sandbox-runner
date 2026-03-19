@@ -1,0 +1,9 @@
+{
+  "type": "state_scoring",
+  "timestamp": 1773933147.3560605,
+  "score": 100,
+  "band": "excellent",
+  "report_hash": "2e5712626ddd9c4f27ee07622873b18510daad05d44428ae670a973601d4eb72",
+  "report_path": "payload/state_scoring/state_score.json",
+  "hash": "4b3b463b7c87d81f7346f278305a0734066b48d253f5df0dba89985cb61f39bb"
+}

@@ -170,5 +170,13 @@
   "rollback_engine_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T08:17:56.130595"
+  },
+  "anomaly_detection_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T15:12:27.285466"
+  },
+  "state_scoring_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T15:12:27.360645"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "receipts_roots": [
+    "payload/receipts/document_compaction",
+    "payload/receipts/canonical_feedback",
+    "payload/receipts/knowledge_delta",
+    "payload/receipts/canonical_state",
+    "payload/receipts/feedback_injection",
+    "payload/receipts/feedback_execution_bridge",
+    "payload/receipts/actuator_bridge"
+  ],
+  "output_root": "payload/anomaly_detection",
+  "receipts_root": "payload/receipts/anomaly_detection",
+  "warn_if_missing_root": false
+}
