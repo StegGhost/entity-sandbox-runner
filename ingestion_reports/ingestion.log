@@ -16473,3 +16473,18 @@
 [2026-03-19T04:46:18.611669] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/goal_directed_execution.py
 [2026-03-19T04:46:18.632359] safe ingestion complete status=installed
 [2026-03-19T04:46:18.632723] cleaned ingestion_tmp
+[2026-03-19T04:47:02.175914] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:47:02.176357] classified files: normal=4 workflow=0
+[2026-03-19T04:47:02.176562] transaction started for actuator_bridge_bundle_v1A.zip
+[2026-03-19T04:47:02.176723] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:47:02.176851] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/ACTUATOR_BRIDGE_V1A.md
+[2026-03-19T04:47:02.176974] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/actuator_bridge_config.json
+[2026-03-19T04:47:02.177093] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/actuator_bridge.py
+[2026-03-19T04:47:02.178784] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:47:02.178938] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/ACTUATOR_BRIDGE_V1A.md
+[2026-03-19T04:47:02.179097] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/actuator_bridge_config.json
+[2026-03-19T04:47:02.179234] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/actuator_bridge.py
+[2026-03-19T04:47:02.179446] transaction completed successfully
+[2026-03-19T04:47:02.179579] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/actuator_bridge.py
+[2026-03-19T04:47:02.201184] safe ingestion complete status=installed
+[2026-03-19T04:47:02.201432] cleaned ingestion_tmp

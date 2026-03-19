@@ -158,5 +158,9 @@
   "goal_directed_execution_bundle_v1A": {
     "version": "1.0.0",
     "installed": "2026-03-19T04:46:18.632074"
+  },
+  "actuator_bridge_bundle_v1A": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T04:47:02.200963"
   }
 }

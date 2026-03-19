@@ -1,0 +1,6 @@
+{
+  "goal_execution_log": "payload/runtime/goal_execution_log.json",
+  "actuator_root": "payload/actuation",
+  "receipts_root": "payload/receipts/actuator_bridge",
+  "max_actions": 25
+}

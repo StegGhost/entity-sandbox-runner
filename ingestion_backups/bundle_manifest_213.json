@@ -1,9 +1,9 @@
 {
-  "bundle_name": "actuator_bridge_bundle_v1A",
+  "bundle_name": "goal_directed_execution_bundle_v1A",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Corrected actuator bridge bundle with required manifest fields.",
+  "description": "Corrected goal directed execution bundle with required manifest fields.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",
