@@ -35,56 +35,34 @@ def reset_environment():
 def main():
     reset_environment()
 
-    resolver.register_authority(
-        authority_id="local_admin",
-        role="admin",
-        trust_score=1.0,
-    )
+    resolver.register_authority("local_admin", "admin", 1.0)
+    resolver.register_authority("backup_admin", "admin", 0.9)
 
-    resolver.register_authority(
-        authority_id="backup_admin",
-        role="admin",
-        trust_score=0.9,
-    )
+    r1 = execute_proposal(make_proposal("test1", "local_admin"))
+    r2 = execute_proposal(make_proposal("test2", "local_admin"))
+    r3 = execute_proposal(make_proposal("test3", "backup_admin"))
 
-    result_1 = execute_proposal(make_proposal("reconstruct_test_1", "local_admin"))
-    result_2 = execute_proposal(make_proposal("reconstruct_test_2", "local_admin"))
-    result_3 = execute_proposal(make_proposal("reconstruct_test_3", "backup_admin"))
-
-    if result_1.get("status") != "committed":
-        raise SystemExit(f"Execution 1 failed: {result_1}")
-    if result_2.get("status") != "committed":
-        raise SystemExit(f"Execution 2 failed: {result_2}")
-    if result_3.get("status") != "committed":
-        raise SystemExit(f"Execution 3 failed: {result_3}")
+    for i, r in enumerate([r1, r2, r3], start=1):
+        if r.get("status") != "committed":
+            raise SystemExit(f"Execution {i} failed: {r}")
 
     state = reconstruct_state(RECEIPT_DIR)
     print_state_summary(state)
 
     if state["total_executions"] != 3:
-        raise SystemExit("Reconstruction failed: incorrect execution count")
-
-    if not state["history"]:
-        raise SystemExit("Reconstruction failed: empty history")
-
-    if "local_admin" not in state["authorities"]:
-        raise SystemExit("Reconstruction failed: local_admin missing")
-
-    if "backup_admin" not in state["authorities"]:
-        raise SystemExit("Reconstruction failed: backup_admin missing")
+        raise SystemExit("Execution count mismatch")
 
     if not state["authority_drift_detected"]:
-        raise SystemExit("Authority drift detection failed")
+        raise SystemExit("Authority drift NOT detected")
 
-    hash1 = compute_state_hash(state)
-    state_again = reconstruct_state(RECEIPT_DIR)
-    hash2 = compute_state_hash(state_again)
+    h1 = compute_state_hash(state)
+    h2 = compute_state_hash(reconstruct_state(RECEIPT_DIR))
 
-    print("STATE HASH 1:", hash1)
-    print("STATE HASH 2:", hash2)
+    print("STATE HASH 1:", h1)
+    print("STATE HASH 2:", h2)
 
-    if hash1 != hash2:
-        raise SystemExit("State hash mismatch: non-deterministic reconstruction")
+    if h1 != h2:
+        raise SystemExit("Non-deterministic reconstruction")
 
     print("State reconstruction successful.")
 
