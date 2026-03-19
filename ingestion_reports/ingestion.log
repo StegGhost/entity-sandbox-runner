@@ -16155,3 +16155,18 @@
 [2026-03-19T01:06:41.140786] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/state_delta_engine.py
 [2026-03-19T01:06:41.165087] safe ingestion complete status=installed
 [2026-03-19T01:06:41.165376] cleaned ingestion_tmp
+[2026-03-19T01:09:58.934312] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T01:09:58.934806] classified files: normal=4 workflow=0
+[2026-03-19T01:09:58.935109] transaction started for coherent_experience_model_v1_fixed.zip
+[2026-03-19T01:09:58.935325] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T01:09:58.935550] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/CEM_spec.md
+[2026-03-19T01:09:58.935778] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/experience_policy.json
+[2026-03-19T01:09:58.936024] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/experience_engine.py
+[2026-03-19T01:09:58.938242] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T01:09:58.938509] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/CEM_spec.md
+[2026-03-19T01:09:58.938762] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/experience_policy.json
+[2026-03-19T01:09:58.939021] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/experience_engine.py
+[2026-03-19T01:09:58.939409] transaction completed successfully
+[2026-03-19T01:09:58.939570] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/experience_engine.py
+[2026-03-19T01:09:58.961741] safe ingestion complete status=installed
+[2026-03-19T01:09:58.962112] cleaned ingestion_tmp

@@ -90,5 +90,9 @@
   "promotion_receipts_diff_visibility_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T01:06:41.095808"
+  },
+  "coherent_experience_model_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T01:09:58.961537"
   }
 }

@@ -1,13 +1,13 @@
 {
-  "bundle_name": "promotion_receipts_diff_visibility_bundle_v1",
+  "bundle_name": "coherent_experience_model_v1",
   "version": "1.0.0",
   "bundle_version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Adds promotion receipts and before/after diff visibility for repo_root promotions.",
+  "description": "Adds the initial Coherent Experience Model engine, policy thresholds, and spec doc.",
   "allowed_paths": [
     "bundle_manifest.json",
     "install/",
     "config/",
-    "workflow_review/"
+    "docs/"
   ]
 }
