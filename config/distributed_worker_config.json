@@ -1,0 +1,19 @@
+{
+  "workers": 3,
+  "steps": [
+    [
+      "python",
+      "install/document_compactor.py"
+    ],
+    [
+      "python",
+      "install/canonical_feedback.py"
+    ],
+    [
+      "python",
+      "install/knowledge_delta.py"
+    ]
+  ],
+  "receipts_root": "payload/receipts/distributed_worker",
+  "report_path": "payload/runtime/distributed_worker_report.json"
+}

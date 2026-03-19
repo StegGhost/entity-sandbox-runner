@@ -1,0 +1,35 @@
+{
+  "timestamp": 1773894609.3607,
+  "results": [
+    {
+      "cmd": [
+        "python",
+        "install/knowledge_delta.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"delta_hash\": \"2d95529e1be6bf4a2b94e5a8b7b30a1d8b52af335274ec16072118576fa3082f\",\n  \"output_json\": \"payload/knowledge_delta/knowledge_delta.json\",\n  \"output_md\": \"payload/knowledge_delta/knowledge_delta.md\",\n  \"receipt_path\": \"payload/receipts/knowledge_delta/knowledge_delta_0005.json\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
+      "stderr": "",
+      "duration": 0.03204226493835449
+    },
+    {
+      "cmd": [
+        "python",
+        "install/canonical_feedback.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"feedback_hash\": \"73c9072d50ada3eb5a3c092a3648640622e4abdd1df1de11c4a636ec179848f3\",\n  \"feedback_path\": \"payload/feedback/canonical_feedback.json\",\n  \"receipt_path\": \"payload/receipts/canonical_feedback/canonical_feedback_0006.json\"\n}\n",
+      "stderr": "",
+      "duration": 0.04653644561767578
+    },
+    {
+      "cmd": [
+        "python",
+        "install/document_compactor.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"receipt_path\": \"payload/receipts/document_compaction/document_compaction_0006.json\",\n  \"output_root\": \"docs/canonical\"\n}\n",
+      "stderr": "",
+      "duration": 0.20910096168518066
+    }
+  ]
+}

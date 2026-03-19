@@ -138,5 +138,9 @@
   "adaptive_priority_engine_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-19T04:28:55.912795"
+  },
+  "distributed_worker_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-19T04:30:09.367796"
   }
 }

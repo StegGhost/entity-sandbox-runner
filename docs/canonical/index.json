@@ -16,8 +16,8 @@
       "sources: docs/demo_suite_suggestions/critical_ratio_campaign/CLAIMS.md, ingestion_backups/CLAIMS.md, ingestion_backups/CLAIMS_2.md, payload/docs/demo_suite_suggestions/critical_ratio_campaign/CLAIMS.md"
     ]
   },
-  "latest_knowledge_delta_hash": "832f9d926f5bfa03b639ef6f2b46b4a443c49fc7166265068096ec46c4c93b1b",
-  "latest_knowledge_receipt": "payload/receipts/knowledge_delta/knowledge_delta_0004.json",
+  "latest_knowledge_delta_hash": "2d95529e1be6bf4a2b94e5a8b7b30a1d8b52af335274ec16072118576fa3082f",
+  "latest_knowledge_receipt": "payload/receipts/knowledge_delta/knowledge_delta_0005.json",
   "latest_repo_state_hash": "322fc796b493b6d233ac774ad508cd2feed2b3466ac1aa2897a4e8ff2ca800ea",
   "latest_summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
   "latest_canonical_feedback_hash": "97652674144a834b6fac142e88106e5d913646e01e0dff65a70c15f8e975d0f0",
