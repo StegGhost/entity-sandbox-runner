@@ -1,0 +1,77 @@
+name: Governed System Master
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  governed-master:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Show repo structure
+        run: |
+          echo "==== ROOT ===="
+          ls -R
+
+      - name: Run autonomous loop
+        run: |
+          python install/autonomous_loop_orchestrator.py
+
+      - name: Run failure recovery report
+        run: |
+          python install/failure_recovery_runner.py || true
+
+      - name: Run execution policy engine
+        run: |
+          python install/execution_policy_engine.py
+
+      - name: Run pattern memory
+        run: |
+          python install/pattern_memory.py
+
+      - name: Run self modifying loop
+        run: |
+          python install/self_modifying_loop.py
+
+      - name: Run goal directed execution
+        run: |
+          python install/goal_directed_execution.py
+
+      - name: Run actuator bridge
+        run: |
+          python install/actuator_bridge.py
+
+      - name: Show final outputs
+        run: |
+          echo "==== payload/runtime ===="
+          ls -R payload/runtime || true
+          echo "==== payload/feedback ===="
+          ls -R payload/feedback || true
+          echo "==== payload/knowledge_delta ===="
+          ls -R payload/knowledge_delta || true
+          echo "==== payload/injection ===="
+          ls -R payload/injection || true
+          echo "==== payload/actuation ===="
+          ls -R payload/actuation || true
+          echo "==== payload/receipts ===="
+          ls -R payload/receipts || true
+          echo "==== docs/canonical ===="
+          ls -R docs/canonical || true
+
+      - name: Commit all governed outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add payload docs/canonical config || true
+          git commit -m "governed system master run" || echo "no changes"
+          git push
