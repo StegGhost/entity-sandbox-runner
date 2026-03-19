@@ -16229,3 +16229,6 @@
 [2026-03-19T02:11:39.826371] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/pdf_renderer.py
 [2026-03-19T02:11:39.851847] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/bundle_builder.py
 [2026-03-19T02:11:39.881623] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/document_pipeline.py
+[2026-03-19T02:59:16.770679] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T02:59:16.771459] classified files: normal=15 workflow=0
+[2026-03-19T02:59:16.772641] cleaned ingestion_tmp

@@ -1,0 +1,36 @@
+{
+  "bundle_name": "document_compression_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/",
+      "config/",
+      "docs/"
+    ],
+    "violations": [
+      "workflow_review/DOCUMENT_ENGINE_WORKFLOW_V21_2A.yml.txt",
+      "workflow_review/PUBLICATION_ENGINE_NOTES_V21_3A.md",
+      "workflow_review/DOCUMENT_ENGINE_INSTALL_NOTES_V21_2A.md"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/DOCUMENT_COMPRESSION_V1.md",
+      "config/document_engine_config.json",
+      "config/publication_engine_config.json",
+      "config/document_compactor_config.json",
+      "install/document_compactor.py",
+      "install/citation_engine.py",
+      "install/document_engine.py",
+      "install/pdf_renderer.py",
+      "install/bundle_builder.py",
+      "install/document_pipeline.py",
+      "install/latex_renderer.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/document_compression_bundle_v1.zip"
+}
