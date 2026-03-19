@@ -16,10 +16,10 @@
       "sources: docs/demo_suite_suggestions/critical_ratio_campaign/CLAIMS.md, ingestion_backups/CLAIMS.md, ingestion_backups/CLAIMS_2.md, payload/docs/demo_suite_suggestions/critical_ratio_campaign/CLAIMS.md"
     ]
   },
-  "latest_knowledge_delta_hash": "2d95529e1be6bf4a2b94e5a8b7b30a1d8b52af335274ec16072118576fa3082f",
-  "latest_knowledge_receipt": "payload/receipts/knowledge_delta/knowledge_delta_0005.json",
-  "latest_repo_state_hash": "322fc796b493b6d233ac774ad508cd2feed2b3466ac1aa2897a4e8ff2ca800ea",
+  "latest_knowledge_delta_hash": "6e8e9391f237b91b8b6b898240afdbbb38990e1c02ed1097fc26d57ddd0630c8",
+  "latest_knowledge_receipt": "payload/receipts/knowledge_delta/knowledge_delta_0008.json",
+  "latest_repo_state_hash": "f382c21c1ef6aa9d9a40336a7588bcb33e64ee9f5075fdb15d0124437a91ba01",
   "latest_summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
-  "latest_canonical_feedback_hash": "97652674144a834b6fac142e88106e5d913646e01e0dff65a70c15f8e975d0f0",
-  "latest_canonical_state_receipt": "payload/receipts/canonical_state/canonical_state_0004.json"
+  "latest_canonical_feedback_hash": "cda458c2fbd2dd61682a35844e6ccef60b4564dbc5a2a7829acbd482c92bf0f4",
+  "latest_canonical_state_receipt": "payload/receipts/canonical_state/canonical_state_0007.json"
 }
