@@ -1,0 +1,13 @@
+{
+  "run_compactor": true,
+  "run_feedback": true,
+  "python_executable": "python",
+  "compactor_script": "install/document_compactor.py",
+  "feedback_script": "install/canonical_feedback.py",
+  "commit_targets": [
+    "docs/canonical",
+    "payload/feedback",
+    "payload/receipts/document_compaction",
+    "payload/receipts/canonical_feedback"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "timestamp": 1773890462.4121938,
+  "timestamp": 1773890984.1002004,
   "canonical_root": "docs/canonical",
   "claims_count": 12,
   "definitions_count": 8,
@@ -40,5 +40,5 @@
     "Track delta between previous and current canonical summaries.",
     "Review contradictions before auto-promotion into policy."
   ],
-  "hash": "028c079568a432e7cefc490b9948845ba87b44ecec0bb8b243e83ce45ae5c2f3"
+  "hash": "ebc83d7e9a8e29b7129306e7a1f69d1210c3b646065d30d5c5c263dead2ad541"
 }

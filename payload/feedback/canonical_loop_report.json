@@ -1,0 +1,24 @@
+{
+  "timestamp": 1773890983.8748083,
+  "steps": [
+    {
+      "cmd": [
+        "python",
+        "install/document_compactor.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"receipt_path\": \"payload/receipts/document_compaction/document_compaction_0002.json\",\n  \"output_root\": \"docs/canonical\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "cmd": [
+        "python",
+        "install/canonical_feedback.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"feedback_hash\": \"ebc83d7e9a8e29b7129306e7a1f69d1210c3b646065d30d5c5c263dead2ad541\",\n  \"feedback_path\": \"payload/feedback/canonical_feedback.json\",\n  \"receipt_path\": \"payload/receipts/canonical_feedback/canonical_feedback_0002.json\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "status": "ok"
+}

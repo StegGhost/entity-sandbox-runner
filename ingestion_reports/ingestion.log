@@ -16262,3 +16262,20 @@
 [2026-03-19T03:21:02.384840] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/canonical_feedback.py
 [2026-03-19T03:21:02.417414] safe ingestion complete status=installed
 [2026-03-19T03:21:02.417770] cleaned ingestion_tmp
+[2026-03-19T03:29:43.846388] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T03:29:43.847011] classified files: normal=5 workflow=0
+[2026-03-19T03:29:43.847314] transaction started for canonical_feedback_runner_bundle_v1.zip
+[2026-03-19T03:29:43.847544] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T03:29:43.847807] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/canonical_loop_config.json
+[2026-03-19T03:29:43.848032] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/run_canonical_loop.py
+[2026-03-19T03:29:43.848312] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/CANONICAL_LOOP_WORKFLOW_V1.yml.txt
+[2026-03-19T03:29:43.848504] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/workflow_review/CANONICAL_LOOP_NOTES_V1.md
+[2026-03-19T03:29:43.850830] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T03:29:43.851124] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/canonical_loop_config.json
+[2026-03-19T03:29:43.851372] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/run_canonical_loop.py
+[2026-03-19T03:29:43.851634] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/CANONICAL_LOOP_WORKFLOW_V1.yml.txt
+[2026-03-19T03:29:43.851832] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/workflow_review/CANONICAL_LOOP_NOTES_V1.md
+[2026-03-19T03:29:43.852258] transaction completed successfully
+[2026-03-19T03:29:43.852451] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/run_canonical_loop.py
+[2026-03-19T03:29:44.111386] safe ingestion complete status=installed
+[2026-03-19T03:29:44.111820] cleaned ingestion_tmp
