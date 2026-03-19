@@ -10,11 +10,16 @@ on:
       - "decision_state_recorder.py"
       - "receipt_chain.py"
       - "receipt_chain_verifier.py"
+      - "state_reconstructor.py"
+      - "state_hash.py"
+      - "multi_node_verifier.py"
       - "governed_executor.py"
       - "u_signal_monitor.py"
       - "stability_governor.py"
       - "test_governed_executor.py"
       - "test_tamper_block.py"
+      - "test_state_reconstruction.py"
+      - "test_multi_node_verification.py"
       - ".github/workflows/validate_governed_executor.yml"
 
 jobs:
@@ -41,3 +46,6 @@ jobs:
 
       - name: Run state reconstruction test
         run: python test_state_reconstruction.py
+
+      - name: Run multi-node verification test
+        run: python test_multi_node_verification.py
