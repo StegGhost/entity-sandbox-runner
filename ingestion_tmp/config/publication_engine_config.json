@@ -1,0 +1,11 @@
+{
+  "formats": [
+    "md",
+    "tex",
+    "pdf"
+  ],
+  "citation_modes": [
+    "none",
+    "append_references"
+  ]
+}
