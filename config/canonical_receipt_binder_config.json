@@ -1,0 +1,15 @@
+{
+  "repo_state_paths": [
+    "install",
+    "config",
+    "docs/canonical",
+    "payload/feedback",
+    "payload/knowledge_delta"
+  ],
+  "execution_receipts_root": "payload/receipts",
+  "compaction_receipts_root": "payload/receipts/document_compaction",
+  "feedback_receipts_root": "payload/receipts/canonical_feedback",
+  "knowledge_delta_receipts_root": "payload/receipts/knowledge_delta",
+  "canonical_index_path": "docs/canonical/index.json",
+  "output_root": "payload/receipts/canonical_state"
+}

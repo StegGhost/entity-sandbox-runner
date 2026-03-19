@@ -16294,3 +16294,18 @@
 [2026-03-19T03:30:22.443874] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/knowledge_delta.py
 [2026-03-19T03:30:22.477706] safe ingestion complete status=installed
 [2026-03-19T03:30:22.478118] cleaned ingestion_tmp
+[2026-03-19T03:50:44.243059] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T03:50:44.243439] classified files: normal=4 workflow=0
+[2026-03-19T03:50:44.243631] transaction started for canonical_receipt_binder_bundle_v1.zip
+[2026-03-19T03:50:44.243773] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T03:50:44.243902] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/CANONICAL_RECEIPT_BINDER_V1.md
+[2026-03-19T03:50:44.244039] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/canonical_receipt_binder_config.json
+[2026-03-19T03:50:44.244166] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/canonical_receipt_binder.py
+[2026-03-19T03:50:44.245789] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T03:50:44.245989] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/CANONICAL_RECEIPT_BINDER_V1.md
+[2026-03-19T03:50:44.246138] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/canonical_receipt_binder_config.json
+[2026-03-19T03:50:44.246276] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/canonical_receipt_binder.py
+[2026-03-19T03:50:44.246492] transaction completed successfully
+[2026-03-19T03:50:44.246621] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/canonical_receipt_binder.py
+[2026-03-19T03:50:44.276891] safe ingestion complete status=installed
+[2026-03-19T03:50:44.277141] cleaned ingestion_tmp
