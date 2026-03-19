@@ -1,9 +1,9 @@
 {
-  "bundle_name": "adaptive_priority_engine_bundle_v1",
+  "bundle_name": "failure_recovery_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Scores and ranks feedback items to produce weighted execution priorities.",
+  "description": "Adds retry logic, step isolation, failure classification, and recovery receipts for the autonomous loop.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",

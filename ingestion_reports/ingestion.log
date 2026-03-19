@@ -16381,3 +16381,18 @@
 [2026-03-19T04:24:44.049984] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/failure_recovery_runner.py
 [2026-03-19T04:24:44.432226] safe ingestion complete status=installed
 [2026-03-19T04:24:44.432641] cleaned ingestion_tmp
+[2026-03-19T04:28:55.883964] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:28:55.884467] classified files: normal=4 workflow=0
+[2026-03-19T04:28:55.884761] transaction started for adaptive_priority_engine_bundle_v1.zip
+[2026-03-19T04:28:55.884980] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:28:55.885210] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/ADAPTIVE_PRIORITY_ENGINE_V1.md
+[2026-03-19T04:28:55.885434] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/adaptive_priority_config.json
+[2026-03-19T04:28:55.885679] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/adaptive_priority_engine.py
+[2026-03-19T04:28:55.888038] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:28:55.888289] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/ADAPTIVE_PRIORITY_ENGINE_V1.md
+[2026-03-19T04:28:55.888562] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/adaptive_priority_config.json
+[2026-03-19T04:28:55.888825] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/adaptive_priority_engine.py
+[2026-03-19T04:28:55.889216] transaction completed successfully
+[2026-03-19T04:28:55.889378] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/adaptive_priority_engine.py
+[2026-03-19T04:28:55.913042] safe ingestion complete status=installed
+[2026-03-19T04:28:55.913422] cleaned ingestion_tmp

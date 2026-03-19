@@ -1,0 +1,12 @@
+{
+  "input_path": "payload/runtime/active_feedback.json",
+  "output_path": "payload/runtime/priority_weights.json",
+  "receipts_root": "payload/receipts/adaptive_priority",
+  "weights": {
+    "contradictions": 3.0,
+    "invariant_candidates": 2.0,
+    "priority_items": 1.5,
+    "recommended_next_actions": 1.0
+  },
+  "top_k": 20
+}
