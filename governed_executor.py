@@ -3,19 +3,15 @@ from typing import Dict, Any, Optional, Callable
 from authority_resolver import AuthorityResolver
 from predictive_engine import simulate_future_u, is_future_stable
 from decision_state_recorder import record_decision
-
-# Required existing modules
 from u_signal_monitor import compute_u
 from stability_governor import evaluate_stability
 
-# Optional hash chain (safe if missing)
 try:
     from hash_chain import append_hash
 except ImportError:
     append_hash = None
 
 
-# Initialize authority resolver (in-memory for now)
 resolver = AuthorityResolver()
 
 
@@ -30,17 +26,6 @@ def execute_proposal(
     previous_receipt_hash: Optional[str] = None,
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
-    """
-    Expected proposal format:
-    {
-        "name": "example_proposal",
-        "authority_id": "local_admin",
-        "execute": callable,
-        ... optional fields for U-signal ...
-    }
-    """
-
-    # 🔷 0. Authority resolution
     auth_result = resolver.resolve(proposal)
 
     if not auth_result.get("valid", False):
@@ -51,7 +36,6 @@ def execute_proposal(
             "authority": auth_result,
         }
 
-    # 🔷 1. Predictive stability (future check)
     future_u = simulate_future_u(proposal)
 
     if not is_future_stable(future_u):
@@ -62,10 +46,7 @@ def execute_proposal(
             "forecast": future_u,
         }
 
-    # 🔷 2. Current U evaluation
     u_value = compute_u(proposal)
-
-    # 🔷 3. Stability decision
     decision = evaluate_stability(u_value)
 
     if decision.get("action") == "reject":
@@ -77,9 +58,7 @@ def execute_proposal(
             "decision": decision,
         }
 
-    # 🔷 4. Execute proposal
     execute_fn: Optional[Callable[..., Any]] = proposal.get("execute")
-
     if not callable(execute_fn):
         return {
             "status": "rejected",
@@ -97,7 +76,6 @@ def execute_proposal(
             "error": str(e),
         }
 
-    # 🔷 5. Record decision (receipt)
     receipt = record_decision(
         proposal=proposal,
         result=result,
@@ -108,11 +86,9 @@ def execute_proposal(
         receipt_dir=receipt_dir,
     )
 
-    # 🔷 6. Append to hash chain (if available)
     if append_hash is not None:
         append_hash(receipt)
 
-    # 🔷 7. Return final result
     return {
         "status": "committed",
         "u": u_value,
