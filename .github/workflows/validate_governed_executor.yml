@@ -20,6 +20,7 @@ on:
       - "test_tamper_block.py"
       - "test_state_reconstruction.py"
       - "test_multi_node_verification.py"
+      - "test_adversarial_node.py"
       - ".github/workflows/validate_governed_executor.yml"
 
 jobs:
@@ -38,32 +39,32 @@ jobs:
       - name: Show Python version
         run: python --version
 
-      - name: Clean receipts
+      - name: Clean receipts before governed executor test
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
       - name: Run governed executor test
         run: python test_governed_executor.py
 
-      - name: Clean receipts
+      - name: Clean receipts before tamper block test
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
       - name: Run tamper block test
         run: python test_tamper_block.py
 
-      - name: Clean receipts
+      - name: Clean receipts before state reconstruction test
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
       - name: Run state reconstruction test
         run: python test_state_reconstruction.py
 
-      - name: Clean receipts
+      - name: Clean receipts before multi-node verification test
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
       - name: Run multi-node verification test
         run: python test_multi_node_verification.py
 
-      - name: Clean receipts
+      - name: Clean receipts before adversarial node test
         run: rm -rf receipts receipts_node_a receipts_node_b || true
- 
+
       - name: Run adversarial node test
         run: python test_adversarial_node.py
