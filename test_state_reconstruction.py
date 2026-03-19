@@ -41,17 +41,14 @@ def main():
         trust_score=1.0,
     )
 
-    result_1 = execute_proposal(make_proposal("step_1"))
-    result_2 = execute_proposal(make_proposal("step_2"))
-    result_3 = execute_proposal(make_proposal("step_3"))
+    # 🔷 Build chain safely (retry-aware)
+    for i in range(3):
+        result = execute_proposal(make_proposal(f"step_{i+1}"))
 
-    if result_1.get("status") != "committed":
-        raise SystemExit(f"Execution 1 failed: {result_1}")
-    if result_2.get("status") != "committed":
-        raise SystemExit(f"Execution 2 failed: {result_2}")
-    if result_3.get("status") != "committed":
-        raise SystemExit(f"Execution 3 failed: {result_3}")
+        if result.get("status") != "committed":
+            raise SystemExit(f"Execution {i+1} failed: {result}")
 
+    # 🔷 Reconstruct state AFTER stable chain exists
     state = reconstruct_state()
     print_state_summary(state)
 
@@ -61,6 +58,7 @@ def main():
     if not state["history"]:
         raise SystemExit("Reconstruction failed: empty history")
 
+    # 🔷 Deterministic replay check
     hash1 = compute_state_hash(state)
     state_again = reconstruct_state()
     hash2 = compute_state_hash(state_again)
