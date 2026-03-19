@@ -1,0 +1,33 @@
+name: Validate Governed Executor
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "authority_resolver.py"
+      - "predictive_engine.py"
+      - "decision_state_recorder.py"
+      - "governed_executor.py"
+      - "u_signal_monitor.py"
+      - "stability_governor.py"
+      - "test_governed_executor.py"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Show Python version
+        run: python --version
+
+      - name: Run governed executor test
+        run: python test_governed_executor.py
