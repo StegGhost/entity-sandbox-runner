@@ -5,7 +5,7 @@ from authority_resolver import AuthorityResolver
 from predictive_engine import simulate_future_u, is_future_stable
 from decision_state_recorder import record_decision
 from receipt_chain import get_latest_receipt_hash
-from receipt_chain_verifier import verify_chain
+from receipt_chain_verifier import verify_chain, is_chain_locked
 from u_signal_monitor import compute_u
 from stability_governor import evaluate_stability
 
@@ -24,33 +24,31 @@ def _normalize_result(result: Any) -> Dict[str, Any]:
     return {"raw_result": result}
 
 
-def _count_receipts(receipt_dir: str) -> int:
-    if not os.path.isdir(receipt_dir):
-        return 0
-    return len([f for f in os.listdir(receipt_dir) if f.endswith(".json")])
-
-
 def execute_proposal(
     proposal: Dict[str, Any],
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
 
-    # 🔷 STRICT + SAFE chain verification
+    # 🔒 HARD STOP if chain already compromised
+    if is_chain_locked():
+        return {
+            "status": "rejected",
+            "stage": "chain_locked",
+            "reason": "chain previously compromised"
+        }
+
+    # 🔍 FULL chain verification
     chain_check = verify_chain(receipt_dir)
-    receipt_count = _count_receipts(receipt_dir)
 
-    if not chain_check.get("valid", True):
-        # Only allow true bootstrap (0 or 1 receipts)
-        if receipt_count > 1:
-            return {
-                "status": "rejected",
-                "stage": "chain_integrity",
-                "reason": chain_check.get("reason", "chain_invalid"),
-            }
+    if not chain_check["valid"]:
+        return {
+            "status": "rejected",
+            "stage": "chain_integrity",
+            "reason": chain_check["reason"]
+        }
 
-    # 🔷 Authority resolution
+    # 🔐 Authority
     auth_result = resolver.resolve(proposal)
-
     if not auth_result.get("valid", False):
         return {
             "status": "rejected",
@@ -59,9 +57,8 @@ def execute_proposal(
             "authority": auth_result,
         }
 
-    # 🔷 Predictive simulation
+    # 🔮 Predictive stability
     future_u = simulate_future_u(proposal)
-
     if not is_future_stable(future_u):
         return {
             "status": "rejected",
@@ -70,7 +67,7 @@ def execute_proposal(
             "forecast": future_u,
         }
 
-    # 🔷 Stability evaluation
+    # 📊 Current stability
     u_value = compute_u(proposal)
     decision = evaluate_stability(u_value)
 
@@ -83,9 +80,8 @@ def execute_proposal(
             "decision": decision,
         }
 
-    # 🔷 Execute proposal
+    # ⚙️ Execute
     execute_fn: Optional[Callable[..., Any]] = proposal.get("execute")
-
     if not callable(execute_fn):
         return {
             "status": "rejected",
@@ -103,7 +99,7 @@ def execute_proposal(
             "error": str(e),
         }
 
-    # 🔷 Chain linkage
+    # 🔗 Chain continuation ONLY if safe
     previous_receipt_hash = get_latest_receipt_hash(receipt_dir=receipt_dir)
 
     receipt = record_decision(
@@ -116,7 +112,6 @@ def execute_proposal(
         receipt_dir=receipt_dir,
     )
 
-    # 🔷 Optional hash chain extension
     if append_hash is not None:
         append_hash(receipt)
 
