@@ -3,17 +3,13 @@ import json
 from typing import List, Dict, Any
 
 
-RECEIPT_DIR = "receipts"
-
-
-def _load_receipts(receipt_dir=RECEIPT_DIR) -> List[Dict[str, Any]]:
+def _load_receipts(receipt_dir: str) -> List[Dict[str, Any]]:
     if not os.path.isdir(receipt_dir):
         return []
 
-    files = sorted([
-        f for f in os.listdir(receipt_dir)
-        if f.endswith(".json")
-    ])
+    files = sorted(
+        [f for f in os.listdir(receipt_dir) if f.endswith(".json")]
+    )
 
     receipts = []
 
@@ -25,7 +21,7 @@ def _load_receipts(receipt_dir=RECEIPT_DIR) -> List[Dict[str, Any]]:
     return receipts
 
 
-def reconstruct_state(receipt_dir=RECEIPT_DIR) -> Dict[str, Any]:
+def reconstruct_state(receipt_dir: str = "receipts") -> Dict[str, Any]:
     receipts = _load_receipts(receipt_dir)
 
     state = {
