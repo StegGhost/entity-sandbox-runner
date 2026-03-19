@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "coherent_experience_model_v1",
+      "bundle_version": "1.0.0",
+      "install_mode": "folder_map",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/",
+        "config/",
+        "docs/"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/coherent_experience_model_v1.zip"
+}
