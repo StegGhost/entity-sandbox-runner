@@ -1,7 +1,7 @@
 {
   "ingestion_tmp": {
     "version": "dev",
-    "installed": "2026-03-19T01:06:41.164889"
+    "installed": "2026-03-19T23:45:36.065673"
   },
   "sandbox_platform_bundle": {
     "version": "1.2.0",
@@ -193,6 +193,6 @@
   },
   "marketing_workflow_bundle_v1": {
     "version": "1.0.0",
-    "installed": "2026-03-19T15:29:54.947596"
+    "installed": "2026-03-19T23:45:36.110499"
   }
 }

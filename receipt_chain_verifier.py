@@ -1,76 +1,38 @@
-import os
-import json
-import hashlib
-from typing import List, Dict, Any
+import os, json, hashlib
 
-CHAIN_LOCK_FILE = ".chain_lock"
+LOCK_FILE = ".chain_lock"
 
+def _hash(data):
+    data = dict(data)
+    data.pop("receipt_hash", None)
+    return hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
 
-def _canonical_json(data: Dict[str, Any]) -> str:
-    return json.dumps(data, sort_keys=True, separators=(",", ":"))
-
-
-def compute_receipt_hash(receipt: Dict[str, Any]) -> str:
-    receipt_copy = dict(receipt)
-    receipt_copy.pop("receipt_hash", None)
-    return hashlib.sha256(_canonical_json(receipt_copy).encode()).hexdigest()
-
-
-def _load_receipts(receipt_dir: str) -> List[Dict[str, Any]]:
+def verify_chain(receipt_dir):
     if not os.path.exists(receipt_dir):
-        return []
-
-    files = sorted([
-        f for f in os.listdir(receipt_dir)
-        if f.endswith(".json")
-    ])
-
-    receipts = []
-    for f in files:
-        path = os.path.join(receipt_dir, f)
-        with open(path, "r") as fp:
-            receipts.append(json.load(fp))
-
-    return receipts
-
-
-def verify_chain(receipt_dir: str) -> Dict[str, Any]:
-    receipts = _load_receipts(receipt_dir)
-
-    if not receipts:
         return {"valid": True}
 
-    for i, receipt in enumerate(receipts):
-        expected_hash = compute_receipt_hash(receipt)
+    files = sorted([f for f in os.listdir(receipt_dir) if f.endswith(".json")])
+    prev = None
 
-        if receipt.get("receipt_hash") != expected_hash:
-            _lock_chain()
-            return {
-                "valid": False,
-                "reason": f"hash mismatch at index {i}"
-            }
+    for i, f in enumerate(files):
+        with open(os.path.join(receipt_dir, f)) as fp:
+            r = json.load(fp)
 
-        if i > 0:
-            prev = receipts[i - 1]
-            if receipt.get("previous_receipt_hash") != prev.get("receipt_hash"):
-                _lock_chain()
-                return {
-                    "valid": False,
-                    "reason": f"chain break at index {i}"
-                }
+        if r.get("receipt_hash") != _hash(r):
+            open(LOCK_FILE, "w").write("LOCKED")
+            return {"valid": False, "reason": f"hash mismatch at index {i}"}
+
+        if i > 0 and r.get("previous_receipt_hash") != prev:
+            open(LOCK_FILE, "w").write("LOCKED")
+            return {"valid": False, "reason": f"chain break at index {i}"}
+
+        prev = r.get("receipt_hash")
 
     return {"valid": True}
 
-
-def _lock_chain():
-    with open(CHAIN_LOCK_FILE, "w") as f:
-        f.write("CHAIN_COMPROMISED")
-
-
-def is_chain_locked() -> bool:
-    return os.path.exists(CHAIN_LOCK_FILE)
-
+def is_chain_locked():
+    return os.path.exists(LOCK_FILE)
 
 def clear_chain_lock():
-    if os.path.exists(CHAIN_LOCK_FILE):
-        os.remove(CHAIN_LOCK_FILE)
+    if os.path.exists(LOCK_FILE):
+        os.remove(LOCK_FILE)

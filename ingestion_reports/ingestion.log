@@ -16607,3 +16607,37 @@
 [2026-03-19T15:29:54.946953] transaction completed successfully
 [2026-03-19T15:29:54.947834] safe ingestion complete status=installed
 [2026-03-19T15:29:54.948207] cleaned ingestion_tmp
+[2026-03-19T23:45:36.059540] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T23:45:36.060302] classified files: normal=7 workflow=0
+[2026-03-19T23:45:36.060645] transaction started for canonical_core_reset_bundle_v2.zip
+[2026-03-19T23:45:36.060858] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/test_tamper_block.py
+[2026-03-19T23:45:36.061068] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/decision_state_recorder.py
+[2026-03-19T23:45:36.061259] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/test_state_reconstruction.py
+[2026-03-19T23:45:36.061445] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/authority_resolver.py
+[2026-03-19T23:45:36.061624] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/governed_executor.py
+[2026-03-19T23:45:36.061804] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/state_reconstructor.py
+[2026-03-19T23:45:36.061978] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/receipt_chain_verifier.py
+[2026-03-19T23:45:36.062456] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/test_tamper_block.py
+[2026-03-19T23:45:36.062969] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/decision_state_recorder.py
+[2026-03-19T23:45:36.063377] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/test_state_reconstruction.py
+[2026-03-19T23:45:36.063748] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/authority_resolver.py
+[2026-03-19T23:45:36.064159] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/governed_executor.py
+[2026-03-19T23:45:36.064530] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/state_reconstructor.py
+[2026-03-19T23:45:36.064903] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/receipt_chain_verifier.py
+[2026-03-19T23:45:36.065243] transaction completed successfully
+[2026-03-19T23:45:36.065916] safe ingestion complete status=installed
+[2026-03-19T23:45:36.066170] cleaned ingestion_tmp
+[2026-03-19T23:45:36.103971] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T23:45:36.104505] classified files: normal=4 workflow=0
+[2026-03-19T23:45:36.104783] transaction started for marketing_workflow_bundle_v1.zip
+[2026-03-19T23:45:36.105010] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T23:45:36.105239] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/MARKETING_WORKFLOW_V1.md
+[2026-03-19T23:45:36.105459] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/marketing_workflow_config.json
+[2026-03-19T23:45:36.105676] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/marketing_system_workflow.yml.txt
+[2026-03-19T23:45:36.108117] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T23:45:36.108550] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/MARKETING_WORKFLOW_V1.md
+[2026-03-19T23:45:36.108959] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/marketing_workflow_config.json
+[2026-03-19T23:45:36.109386] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/marketing_system_workflow.yml.txt
+[2026-03-19T23:45:36.109798] transaction completed successfully
+[2026-03-19T23:45:36.110743] safe ingestion complete status=installed
+[2026-03-19T23:45:36.111126] cleaned ingestion_tmp

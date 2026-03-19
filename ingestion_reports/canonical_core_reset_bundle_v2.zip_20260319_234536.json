@@ -1,0 +1,47 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 7,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/test_tamper_block.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/decision_state_recorder.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/test_state_reconstruction.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/authority_resolver.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/governed_executor.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/state_reconstructor.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/receipt_chain_verifier.py"
+  ],
+  "verification": {
+    "manifest_found": false,
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "no_manifest_fallback_mode"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "authority_resolver.py/",
+      "decision_state_recorder.py/",
+      "governed_executor.py/",
+      "receipt_chain_verifier.py/",
+      "state_reconstructor.py/",
+      "test_state_reconstruction.py/",
+      "test_tamper_block.py/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "test_tamper_block.py",
+      "decision_state_recorder.py",
+      "test_state_reconstruction.py",
+      "authority_resolver.py",
+      "governed_executor.py",
+      "state_reconstructor.py",
+      "receipt_chain_verifier.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/canonical_core_reset_bundle_v2.zip"
+}
