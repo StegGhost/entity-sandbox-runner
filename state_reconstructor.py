@@ -25,40 +25,62 @@ def _load_receipts(receipt_dir=RECEIPT_DIR) -> List[Dict[str, Any]]:
     return receipts
 
 
-def reconstruct_state(receipt_dir):
-    receipts = load_receipts(receipt_dir)
+def reconstruct_state(receipt_dir=RECEIPT_DIR) -> Dict[str, Any]:
+    receipts = _load_receipts(receipt_dir)
 
-    total_executions = 0
-    last_u = None
-    last_decision = None
-    authorities = set()
+    state = {
+        "total_executions": 0,
+        "last_u": None,
+        "last_decision": None,
+        "authorities": [],
+        "authority_history": [],
+        "authority_drift_detected": False,
+        "history": [],
+    }
+
+    seen_authorities = []
+    last_authority_id = None
 
     for r in receipts:
-        total_executions += 1
+        state["total_executions"] += 1
 
-        receipt = r.get("receipt", {})
+        state["last_u"] = r.get("u_value")
+        state["last_decision"] = r.get("decision")
 
-        last_u = receipt.get("u_value", last_u)
-        last_decision = receipt.get("decision", last_decision)
+        authority = r.get("authority", {})
+        authority_id = authority.get("authority_id")
 
-        # 🔷 NEW: extract authority
-        auth = receipt.get("authority", {})
-        authority_id = receipt.get("authority_id")
+        if authority_id and authority_id not in seen_authorities:
+            seen_authorities.append(authority_id)
 
-        if authority_id:
-            authorities.add(authority_id)
+        state["authority_history"].append({
+            "timestamp": r.get("timestamp"),
+            "proposal": r.get("proposal"),
+            "authority_id": authority_id,
+        })
 
-    return {
-        "total_executions": total_executions,
-        "last_u": last_u,
-        "last_decision": last_decision,
-        "authorities": sorted(list(authorities)),  # 🔷 FIX
-    }
+        if last_authority_id is not None and authority_id != last_authority_id:
+            state["authority_drift_detected"] = True
+
+        last_authority_id = authority_id
+
+        state["history"].append({
+            "proposal": r.get("proposal"),
+            "u": r.get("u_value"),
+            "decision": r.get("decision"),
+            "timestamp": r.get("timestamp"),
+            "authority_id": authority_id,
+        })
+
+    state["authorities"] = seen_authorities
+    return state
+
 
 def print_state_summary(state: Dict[str, Any]):
     print("\n=== RECONSTRUCTED SYSTEM STATE ===")
     print(f"Total Executions: {state['total_executions']}")
     print(f"Last U: {state['last_u']}")
     print(f"Last Decision: {state['last_decision']}")
-    print(f"Authorities: {list(state['authority_map'].keys())}")
+    print(f"Authorities: {state['authorities']}")
+    print(f"Authority Drift Detected: {state['authority_drift_detected']}")
     print("=================================\n")
