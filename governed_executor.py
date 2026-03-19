@@ -1,9 +1,10 @@
 from typing import Dict, Any, Optional, Callable
 
-from receipt_chain_verifier import verify_chain
 from authority_resolver import AuthorityResolver
 from predictive_engine import simulate_future_u, is_future_stable
 from decision_state_recorder import record_decision
+from receipt_chain import get_latest_receipt_hash
+from receipt_chain_verifier import verify_chain
 from u_signal_monitor import compute_u
 from stability_governor import evaluate_stability
 
@@ -21,21 +22,19 @@ def _normalize_result(result: Any) -> Dict[str, Any]:
         return result
     return {"raw_result": result}
 
-# 🔷 0. Verify chain integrity before doing anything
-chain_ok, message = verify_chain()
 
-if not chain_ok:
-    return {
-        "status": "rejected",
-        "stage": "chain_integrity",
-        "reason": message
-    }
-    
 def execute_proposal(
     proposal: Dict[str, Any],
-    previous_receipt_hash: Optional[str] = None,
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
+    chain_ok, chain_message = verify_chain()
+    if not chain_ok:
+        return {
+            "status": "rejected",
+            "stage": "chain_integrity",
+            "reason": chain_message,
+        }
+
     auth_result = resolver.resolve(proposal)
 
     if not auth_result.get("valid", False):
@@ -86,6 +85,8 @@ def execute_proposal(
             "error": str(e),
         }
 
+    previous_receipt_hash = get_latest_receipt_hash(receipt_dir=receipt_dir)
+
     receipt = record_decision(
         proposal=proposal,
         result=result,
@@ -104,5 +105,6 @@ def execute_proposal(
         "u": u_value,
         "decision": decision,
         "forecast": future_u,
+        "previous_receipt_hash": previous_receipt_hash,
         "receipt": receipt,
     }
