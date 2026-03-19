@@ -16354,3 +16354,15 @@
 [2026-03-19T04:08:44.459632] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/autonomous_loop_orchestrator.py
 [2026-03-19T04:08:44.836473] safe ingestion complete status=installed
 [2026-03-19T04:08:44.836873] cleaned ingestion_tmp
+[2026-03-19T04:12:25.604109] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:12:25.604612] classified files: normal=3 workflow=0
+[2026-03-19T04:12:25.604876] transaction started for autonomous_loop_workflow_bundle_v1.zip
+[2026-03-19T04:12:25.605096] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:12:25.605320] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/AUTONOMOUS_LOOP_WORKFLOW_V1.md
+[2026-03-19T04:12:25.605562] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/autonomous_loop.yml.txt
+[2026-03-19T04:12:25.607820] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:12:25.608091] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/AUTONOMOUS_LOOP_WORKFLOW_V1.md
+[2026-03-19T04:12:25.608332] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/autonomous_loop.yml.txt
+[2026-03-19T04:12:25.608695] transaction completed successfully
+[2026-03-19T04:12:25.609491] safe ingestion complete status=installed
+[2026-03-19T04:12:25.609805] cleaned ingestion_tmp

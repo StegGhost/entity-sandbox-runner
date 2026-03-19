@@ -1,0 +1,31 @@
+name: Autonomous Loop
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+jobs:
+  run-loop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Autonomous Loop
+        run: |
+          python install/autonomous_loop_orchestrator.py
+
+      - name: Commit outputs
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+          git add payload/ || true
+          git commit -m "autonomous loop run" || echo "no changes"
+          git push

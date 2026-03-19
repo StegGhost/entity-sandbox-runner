@@ -1,9 +1,9 @@
 {
-  "bundle_name": "autonomous_loop_orchestrator_bundle_v1",
+  "bundle_name": "autonomous_loop_workflow_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Runs the full governed loop autonomously: compaction \u2192 feedback \u2192 delta \u2192 binder \u2192 injection \u2192 execution bridge.",
+  "description": "GitHub Actions workflow to run the autonomous loop orchestrator on demand or schedule.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",
