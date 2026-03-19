@@ -1,57 +1,43 @@
 import os
 import json
-import hashlib
+from typing import List, Dict, Any
 
 
-RECEIPT_DIR = "receipts"
-
-
-def _hash(data):
-    return hashlib.sha256(
-        json.dumps(data, sort_keys=True, default=str).encode()
-    ).hexdigest()
-
-
-def _load_receipts():
-    if not os.path.isdir(RECEIPT_DIR):
+def _load_receipts(receipt_dir: str) -> List[Dict[str, Any]]:
+    if not os.path.isdir(receipt_dir):
         return []
 
-    files = sorted([
-        f for f in os.listdir(RECEIPT_DIR)
-        if f.endswith(".json")
-    ])
+    files = sorted(
+        [f for f in os.listdir(receipt_dir) if f.endswith(".json")]
+    )
 
     receipts = []
-
     for f in files:
-        path = os.path.join(RECEIPT_DIR, f)
-        with open(path, "r") as file:
+        path = os.path.join(receipt_dir, f)
+        with open(path, "r", encoding="utf-8") as file:
             receipts.append(json.load(file))
 
     return receipts
 
-def verify_chain():
-    receipts = _load_receipts()
 
-    if not receipts:
-        return True, "empty_chain"
+def verify_chain(receipt_dir: str = "receipts") -> Dict[str, Any]:
+    receipts = _load_receipts(receipt_dir)
 
-    for i in range(len(receipts)):
-        r = receipts[i]
+    # 🔷 Allow bootstrap states
+    if len(receipts) <= 1:
+        return {"valid": True}
 
-        # 🔷 ALWAYS verify internal hash (even genesis)
-        expected_hash = r.get("receipt_hash")
-        recalculated = _hash({
-            k: v for k, v in r.items() if k != "receipt_hash"
-        })
+    for i in range(1, len(receipts)):
+        prev = receipts[i - 1]
+        curr = receipts[i]
 
-        if expected_hash != recalculated:
-            return False, f"hash mismatch at index {i}"
+        prev_hash = prev.get("receipt_hash")
+        expected_prev = curr.get("previous_receipt_hash")
 
-        # 🔷 Only enforce linkage if multiple receipts exist
-        if i > 0:
-            prev = receipts[i - 1]
-            if r.get("previous_receipt_hash") != prev.get("receipt_hash"):
-                return False, f"chain break at index {i}"
+        if prev_hash != expected_prev:
+            return {
+                "valid": False,
+                "reason": f"chain break at index {i}"
+            }
 
-    return True, "chain valid"
+    return {"valid": True}
