@@ -1,0 +1,4 @@
+{
+  "auto_run": true,
+  "report_path": "payload/runtime/autonomous_loop_report.json"
+}

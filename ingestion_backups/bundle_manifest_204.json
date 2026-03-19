@@ -1,0 +1,13 @@
+{
+  "bundle_name": "feedback_execution_bridge_bundle_v1",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "description": "Bridges feedback injection into active execution inputs for downstream engines.",
+  "allowed_paths": [
+    "bundle_manifest.json/",
+    "install/",
+    "config/",
+    "docs/"
+  ]
+}
