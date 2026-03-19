@@ -2,17 +2,16 @@ import os
 import json
 import time
 import hashlib
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 
 
-def _hash(data: Dict[str, Any]) -> str:
-    return hashlib.sha256(
-        json.dumps(data, sort_keys=True, default=str).encode()
-    ).hexdigest()
+def _compute_hash(receipt: Dict[str, Any]) -> str:
+    # Remove hash before computing
+    r = dict(receipt)
+    r.pop("receipt_hash", None)
 
-
-def _ensure_dir(path: str):
-    os.makedirs(path, exist_ok=True)
+    serialized = json.dumps(r, sort_keys=True)
+    return hashlib.sha256(serialized.encode()).hexdigest()
 
 
 def record_decision(
@@ -21,17 +20,13 @@ def record_decision(
     u_value: float,
     decision: Dict[str, Any],
     authority: Dict[str, Any],
-    previous_receipt_hash: Optional[str] = None,
+    previous_receipt_hash: str,
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
 
-    timestamp = time.time()
+    os.makedirs(receipt_dir, exist_ok=True)
 
-    state_snapshot = {
-        "proposal": proposal.get("name"),
-        "u": u_value,
-        "decision": decision.get("action"),
-    }
+    timestamp = time.time()
 
     receipt = {
         "schema_version": "2.0.0",
@@ -41,19 +36,18 @@ def record_decision(
         "u_value": u_value,
         "decision": decision,
         "authority": authority,
-        "state_snapshot_hash": _hash(state_snapshot),
         "previous_receipt_hash": previous_receipt_hash,
     }
 
-    receipt["receipt_hash"] = _hash(receipt)
+    # 🔷 Compute hash AFTER full structure is set
+    receipt_hash = _compute_hash(receipt)
+    receipt["receipt_hash"] = receipt_hash
 
-    _ensure_dir(receipt_dir)
-
-    filename = f"{int(timestamp)}_{receipt['receipt_hash'][:12]}.json"
+    filename = f"{int(timestamp)}_{receipt_hash[:10]}.json"
     path = os.path.join(receipt_dir, filename)
 
-    with open(path, "w") as f:
-        json.dump(receipt, f, indent=2)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(receipt, f, indent=2, sort_keys=True)
 
     receipt["receipt_path"] = path
 
