@@ -16488,3 +16488,18 @@
 [2026-03-19T04:47:02.179579] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/actuator_bridge.py
 [2026-03-19T04:47:02.201184] safe ingestion complete status=installed
 [2026-03-19T04:47:02.201432] cleaned ingestion_tmp
+[2026-03-19T08:13:36.438949] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T08:13:36.439449] classified files: normal=4 workflow=0
+[2026-03-19T08:13:36.439741] transaction started for preflight_guard_bundle_v1.zip
+[2026-03-19T08:13:36.439953] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T08:13:36.440177] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/PREFLIGHT_GUARD_V1.md
+[2026-03-19T08:13:36.440402] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/preflight_guard_config.json
+[2026-03-19T08:13:36.440684] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/preflight_guard.py
+[2026-03-19T08:13:36.443069] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T08:13:36.443313] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/PREFLIGHT_GUARD_V1.md
+[2026-03-19T08:13:36.443607] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/preflight_guard_config.json
+[2026-03-19T08:13:36.443849] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/preflight_guard.py
+[2026-03-19T08:13:36.444235] transaction completed successfully
+[2026-03-19T08:13:36.444395] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/preflight_guard.py
+[2026-03-19T08:13:36.456003] safe ingestion complete status=installed
+[2026-03-19T08:13:36.456331] cleaned ingestion_tmp

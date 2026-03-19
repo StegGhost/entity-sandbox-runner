@@ -1,9 +1,9 @@
 {
-  "bundle_name": "preflight_guard_bundle_v1",
+  "bundle_name": "actuator_bridge_bundle_v1A",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Preflight validation gate",
+  "description": "Corrected actuator bridge bundle with required manifest fields.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",
