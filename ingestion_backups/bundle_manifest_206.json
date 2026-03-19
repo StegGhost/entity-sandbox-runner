@@ -1,9 +1,9 @@
 {
-  "bundle_name": "failure_recovery_bundle_v1",
+  "bundle_name": "autonomous_loop_workflow_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
-  "description": "Adds retry logic, step isolation, failure classification, and recovery receipts for the autonomous loop.",
+  "description": "GitHub Actions workflow to run the autonomous loop orchestrator on demand or schedule.",
   "allowed_paths": [
     "bundle_manifest.json/",
     "install/",

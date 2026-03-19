@@ -16366,3 +16366,18 @@
 [2026-03-19T04:12:25.608695] transaction completed successfully
 [2026-03-19T04:12:25.609491] safe ingestion complete status=installed
 [2026-03-19T04:12:25.609805] cleaned ingestion_tmp
+[2026-03-19T04:24:44.044642] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-19T04:24:44.045153] classified files: normal=4 workflow=0
+[2026-03-19T04:24:44.045426] transaction started for failure_recovery_bundle_v1.zip
+[2026-03-19T04:24:44.045675] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-19T04:24:44.045908] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/FAILURE_RECOVERY_V1.md
+[2026-03-19T04:24:44.046130] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/config/failure_recovery_config.json
+[2026-03-19T04:24:44.046356] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/failure_recovery_runner.py
+[2026-03-19T04:24:44.048657] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-19T04:24:44.048904] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/FAILURE_RECOVERY_V1.md
+[2026-03-19T04:24:44.049147] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/config/failure_recovery_config.json
+[2026-03-19T04:24:44.049388] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/failure_recovery_runner.py
+[2026-03-19T04:24:44.049820] transaction completed successfully
+[2026-03-19T04:24:44.049984] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/failure_recovery_runner.py
+[2026-03-19T04:24:44.432226] safe ingestion complete status=installed
+[2026-03-19T04:24:44.432641] cleaned ingestion_tmp

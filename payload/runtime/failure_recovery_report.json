@@ -1,0 +1,121 @@
+{
+  "timestamp": 1773894284.0747845,
+  "config": {
+    "max_retries": 2,
+    "retry_backoff_seconds": 2,
+    "continue_on_failure": false,
+    "receipts_root": "payload/receipts/failure_recovery",
+    "report_path": "payload/runtime/failure_recovery_report.json"
+  },
+  "steps": [
+    {
+      "step": "document_compactor",
+      "status": "ok",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cmd": [
+            "python",
+            "install/document_compactor.py"
+          ],
+          "returncode": 0,
+          "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"receipt_path\": \"payload/receipts/document_compaction/document_compaction_0005.json\",\n  \"output_root\": \"docs/canonical\"\n}\n",
+          "stderr": "",
+          "duration_seconds": 0.19818687438964844,
+          "classification": "none"
+        }
+      ]
+    },
+    {
+      "step": "canonical_feedback",
+      "status": "ok",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cmd": [
+            "python",
+            "install/canonical_feedback.py"
+          ],
+          "returncode": 0,
+          "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"feedback_hash\": \"e2072286b9d8fe3a58b06bee6531e74dab963ef9c414d04e66e422b042ceab12\",\n  \"feedback_path\": \"payload/feedback/canonical_feedback.json\",\n  \"receipt_path\": \"payload/receipts/canonical_feedback/canonical_feedback_0005.json\"\n}\n",
+          "stderr": "",
+          "duration_seconds": 0.0329132080078125,
+          "classification": "none"
+        }
+      ]
+    },
+    {
+      "step": "knowledge_delta",
+      "status": "ok",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cmd": [
+            "python",
+            "install/knowledge_delta.py"
+          ],
+          "returncode": 0,
+          "stdout": "{\n  \"status\": \"ok\",\n  \"delta_hash\": \"35cdf6aff8f36025a98725af61cc188152df2d33f291639559153ba77f2a6c6b\",\n  \"output_json\": \"payload/knowledge_delta/knowledge_delta.json\",\n  \"output_md\": \"payload/knowledge_delta/knowledge_delta.md\",\n  \"receipt_path\": \"payload/receipts/knowledge_delta/knowledge_delta_0004.json\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
+          "stderr": "",
+          "duration_seconds": 0.03156423568725586,
+          "classification": "none"
+        }
+      ]
+    },
+    {
+      "step": "canonical_receipt_binder",
+      "status": "ok",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cmd": [
+            "python",
+            "install/canonical_receipt_binder.py"
+          ],
+          "returncode": 0,
+          "stdout": "{\n  \"status\": \"ok\",\n  \"receipt_path\": \"payload/receipts/canonical_state/canonical_state_0004.json\",\n  \"repo_state_hash\": \"322fc796b493b6d233ac774ad508cd2feed2b3466ac1aa2897a4e8ff2ca800ea\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"canonical_feedback_hash\": \"97652674144a834b6fac142e88106e5d913646e01e0dff65a70c15f8e975d0f0\",\n  \"knowledge_delta_hash\": \"832f9d926f5bfa03b639ef6f2b46b4a443c49fc7166265068096ec46c4c93b1b\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
+          "stderr": "",
+          "duration_seconds": 0.03419184684753418,
+          "classification": "none"
+        }
+      ]
+    },
+    {
+      "step": "feedback_injection",
+      "status": "ok",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cmd": [
+            "python",
+            "install/feedback_injection.py"
+          ],
+          "returncode": 0,
+          "stdout": "{\n  \"status\": \"ok\",\n  \"feedback_hash\": \"e2072286b9d8fe3a58b06bee6531e74dab963ef9c414d04e66e422b042ceab12\",\n  \"receipt_path\": \"payload/receipts/feedback_injection/feedback_injection_0004.json\",\n  \"prompt_inputs\": \"payload/injection/feedback_prompt_inputs.json\",\n  \"policy_inputs\": \"payload/injection/feedback_policy_inputs.json\"\n}\n",
+          "stderr": "",
+          "duration_seconds": 0.029059648513793945,
+          "classification": "none"
+        }
+      ]
+    },
+    {
+      "step": "feedback_execution_bridge",
+      "status": "ok",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cmd": [
+            "python",
+            "install/feedback_execution_bridge.py"
+          ],
+          "returncode": 0,
+          "stdout": "{\n  \"status\": \"ok\",\n  \"engine_input_path\": \"payload/runtime/active_feedback.json\",\n  \"receipt_path\": \"payload/receipts/feedback_execution_bridge/feedback_execution_bridge_0004.json\"\n}\n",
+          "stderr": "",
+          "duration_seconds": 0.02272510528564453,
+          "classification": "none"
+        }
+      ]
+    }
+  ],
+  "status": "ok"
+}

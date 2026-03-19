@@ -1,0 +1,7 @@
+{
+  "max_retries": 2,
+  "retry_backoff_seconds": 2,
+  "continue_on_failure": false,
+  "receipts_root": "payload/receipts/failure_recovery",
+  "report_path": "payload/runtime/failure_recovery_report.json"
+}
