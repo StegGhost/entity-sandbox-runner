@@ -1,0 +1,9 @@
+{
+  "bundle_name": "rigel_number_bundle",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "payload/"
+  ]
+}
