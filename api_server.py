@@ -5,19 +5,11 @@ from typing import Dict, Any, Optional
 from decision_engine import decide, execute_if_allowed
 from governed_executor import resolver
 from llm_gateway import route_proposal
-from proposal_adapter import normalize_proposal
 from receipt_stream import get_receipts
 
-@app.get("/receipts")
-def receipts():
-    return get_receipts()
-    
-@app.post("/propose")
-def propose_endpoint(raw_input: dict):
-    result = route_proposal(raw_input)
-    return result
-    
+
 app = FastAPI(title="StegVerse Decision Engine")
+
 
 # ---- Models ----
 
@@ -46,6 +38,17 @@ def resolve_authority(authority_id: str):
 
 # ---- Routes ----
 
+@app.get("/receipts")
+def receipts():
+    return get_receipts()
+
+
+@app.post("/propose")
+def propose_endpoint(raw_input: dict):
+    result = route_proposal(raw_input)
+    return result
+
+
 @app.post("/register_authority")
 def register_authority(authority_id: str, role: str):
     resolver.register_authority(authority_id, role)
@@ -57,7 +60,10 @@ def decide_endpoint(req: ProposalRequest):
     proposal = build_proposal(req)
     authority = resolve_authority(req.authority_id)
 
-    decision = decide(proposal, authority)
+    decision = decide(
+        proposal=proposal,
+        authority=authority,
+    )
 
     return {"decision": decision}
 
@@ -67,6 +73,9 @@ def execute_endpoint(req: ProposalRequest):
     proposal = build_proposal(req)
     authority = resolve_authority(req.authority_id)
 
-    result = execute_if_allowed(proposal, authority)
+    result = execute_if_allowed(
+        proposal=proposal,
+        authority=authority,
+    )
 
     return {"result": result}
