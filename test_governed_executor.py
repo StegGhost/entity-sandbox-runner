@@ -8,45 +8,38 @@ RECEIPT_DIR = "receipts"
 
 
 def reset():
-    clear_chain_lock()
+    shutil.rmtree(RECEIPT_DIR, ignore_errors=True)
+    os.makedirs(RECEIPT_DIR, exist_ok=True)
 
-    if os.path.isdir(RECEIPT_DIR):
-        shutil.rmtree(RECEIPT_DIR)
+    # ✅ FIX: pass directory explicitly
+    clear_chain_lock(RECEIPT_DIR)
 
 
-def demo_execute():
+def proposal(name):
     return {
-        "message": "hello from governed execution",
-        "ok": True,
+        "name": name,
+        "authority_id": "local_admin",
+        "execute": lambda: {"ok": True}
     }
 
 
 def main():
     reset()
 
-    resolver.register_authority(
-        authority_id="local_admin",
-        role="admin",
-        trust_score=1.0,
-    )
+    resolver.register_authority("local_admin", "admin")
 
-    proposal = {
-        "name": "demo_proposal",
-        "authority_id": "local_admin",
-        "execute": demo_execute,
-        "coherence": 1.0,
-        "authority_validity": 1.0,
-        "integrity": 1.0,
-        "drift": 0.10,
-        "resource_strain": 0.10,
-        "entropy": 0.10,
-    }
+    results = [
+        execute_proposal(proposal("test1"), receipt_dir=RECEIPT_DIR),
+        execute_proposal(proposal("test2"), receipt_dir=RECEIPT_DIR),
+        execute_proposal(proposal("test3"), receipt_dir=RECEIPT_DIR),
+    ]
 
-    result = execute_proposal(proposal)
-    print(result)
+    for r in results:
+        print(r)
+        if r["status"] != "committed":
+            raise SystemExit(f"Execution failed: {r}")
 
-    if result.get("status") != "committed":
-        raise SystemExit(f"Validation failed: {result}")
+    print("Governed executor test successful.")
 
 
 if __name__ == "__main__":
