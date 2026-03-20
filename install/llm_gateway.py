@@ -82,7 +82,7 @@ def route_multi_proposal(proposals: List[Dict[str, Any]], mode: str = "parallel"
 
     mode:
       - parallel: evaluate all independently
-      - first_allowed: return first allowed result
+      - first_allowed: return first allowed result, or deterministic fallback
       - majority: report majority-approval summary
     """
     if not proposals:
@@ -100,24 +100,43 @@ def route_multi_proposal(proposals: List[Dict[str, Any]], mode: str = "parallel"
             for future in as_completed(futures):
                 results.append(future.result())
 
-    else:
-        # deterministic sequential path
+        return {
+            "mode": mode,
+            "count": len(proposals),
+            "results": results,
+        }
+
+    elif mode == "first_allowed":
+        selected_index = None
+        selected = None
+
+        for i, proposal in enumerate(proposals):
+            result = _evaluate_single(proposal)
+            results.append(result)
+
+            decision = result.get("decision", {})
+            if decision.get("allowed", False) and selected is None:
+                selected_index = i
+                selected = result
+                break
+
+        # deterministic fallback if none were allowed
+        if selected is None and results:
+            selected_index = 0
+            selected = results[0]
+
+        return {
+            "mode": mode,
+            "count": len(proposals),
+            "selected_index": selected_index,
+            "selected": selected,
+            "results": results,
+        }
+
+    elif mode == "majority":
         for proposal in proposals:
             results.append(_evaluate_single(proposal))
 
-            if mode == "first_allowed":
-                current = results[-1]
-                decision = current.get("decision", {})
-                if decision.get("allowed", False):
-                    return {
-                        "mode": mode,
-                        "count": len(proposals),
-                        "selected_index": len(results) - 1,
-                        "selected": current,
-                        "results": results,
-                    }
-
-    if mode == "majority":
         approvals = 0
         for item in results:
             decision = item.get("decision", {})
@@ -131,6 +150,10 @@ def route_multi_proposal(proposals: List[Dict[str, Any]], mode: str = "parallel"
             "majority_allowed": approvals > (len(proposals) / 2),
             "results": results,
         }
+
+    # deterministic fallback for unknown mode
+    for proposal in proposals:
+        results.append(_evaluate_single(proposal))
 
     return {
         "mode": mode,
