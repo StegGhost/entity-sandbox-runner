@@ -4,12 +4,15 @@ import hashlib
 from typing import Any, Dict, List, Optional
 
 
+# -------------------------------
+# Core hashing
+# -------------------------------
 def compute_hash(data: Any) -> str:
     encoded = json.dumps(data, sort_keys=True).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
 
 
-def compute_receipt_hash(receipt):
+def compute_receipt_hash(receipt: Dict[str, Any]) -> str:
     payload = {
         k: v
         for k, v in receipt.items()
@@ -18,16 +21,21 @@ def compute_receipt_hash(receipt):
     return compute_hash(payload)
 
 
+# -------------------------------
+# Load receipts (deterministic)
+# -------------------------------
 def load_receipts(receipt_dir: str) -> List[Dict[str, Any]]:
     if not os.path.exists(receipt_dir):
         return []
 
+    files = sorted([
+        f for f in os.listdir(receipt_dir)
+        if f.endswith(".json")
+    ])
+
     receipts: List[Dict[str, Any]] = []
 
-    for fname in os.listdir(receipt_dir):
-        if not fname.endswith(".json"):
-            continue
-
+    for fname in files:
         path = os.path.join(receipt_dir, fname)
         if not os.path.isfile(path):
             continue
@@ -38,6 +46,9 @@ def load_receipts(receipt_dir: str) -> List[Dict[str, Any]]:
     return receipts
 
 
+# -------------------------------
+# Build canonical chain
+# -------------------------------
 def build_chain(receipts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     if not receipts:
         return []
@@ -58,6 +69,7 @@ def build_chain(receipts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
     while current is not None:
         current_hash = current.get("receipt_hash")
+
         if current_hash in seen_hashes:
             raise ValueError("cycle detected in receipt chain")
 
@@ -65,31 +77,36 @@ def build_chain(receipts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         ordered.append(current)
 
         children = by_prev.get(current_hash, [])
+
         if len(children) > 1:
-            raise ValueError("multiple children found for a receipt hash")
+            raise ValueError("multiple children found (fork detected)")
 
         current = children[0] if children else None
 
     if len(ordered) != len(receipts):
-        raise ValueError("disconnected receipts found in chain")
+        raise ValueError("disconnected receipts found")
 
     return ordered
 
 
+# -------------------------------
+# Verify full chain
+# -------------------------------
 def verify_chain(receipt_dir: str = "receipts") -> Dict[str, Any]:
     if not os.path.exists(receipt_dir):
-        return {"status": "ok", "reason": "no receipts"}
+        return {"valid": True, "reason": "no_receipts"}
 
     receipts = load_receipts(receipt_dir)
+
     if not receipts:
-        return {"status": "ok", "reason": "empty chain"}
+        return {"valid": True, "reason": "empty_chain"}
 
     try:
         ordered = build_chain(receipts)
     except ValueError as e:
         return {
-            "status": "rejected",
-            "stage": "chain_integrity",
+            "valid": False,
+            "stage": "chain_structure",
             "reason": str(e),
         }
 
@@ -97,41 +114,46 @@ def verify_chain(receipt_dir: str = "receipts") -> Dict[str, Any]:
     prev_process_hash = None
 
     for idx, receipt in enumerate(ordered):
+
+        # ---- receipt hash integrity ----
         expected_receipt_hash = compute_receipt_hash(receipt)
         stored_receipt_hash = receipt.get("receipt_hash")
 
         if expected_receipt_hash != stored_receipt_hash:
             return {
-                "status": "rejected",
+                "valid": False,
                 "stage": "receipt_integrity",
                 "reason": f"tampered receipt at index {idx}",
             }
 
+        # ---- chain linkage ----
         if idx == 0:
             if receipt.get("previous_receipt_hash") is not None:
                 return {
-                    "status": "rejected",
+                    "valid": False,
                     "stage": "chain_integrity",
-                    "reason": "genesis receipt must have no previous hash",
+                    "reason": "invalid genesis receipt",
                 }
         else:
             if receipt.get("previous_receipt_hash") != prev_receipt_hash:
                 return {
-                    "status": "rejected",
+                    "valid": False,
                     "stage": "chain_integrity",
                     "reason": f"chain break at index {idx}",
                 }
 
+        # ---- process hash integrity ----
         process_material = {
             "previous_process_hash": prev_process_hash,
             "receipt_hash": stored_receipt_hash,
             "execution_fingerprint": receipt.get("execution_fingerprint"),
         }
+
         expected_process_hash = compute_hash(process_material)
 
         if receipt.get("process_hash") != expected_process_hash:
             return {
-                "status": "rejected",
+                "valid": False,
                 "stage": "process_integrity",
                 "reason": f"process hash mismatch at index {idx}",
             }
@@ -139,14 +161,17 @@ def verify_chain(receipt_dir: str = "receipts") -> Dict[str, Any]:
         prev_receipt_hash = stored_receipt_hash
         prev_process_hash = receipt.get("process_hash")
 
-    return {"status": "ok"}
+    return {"valid": True}
 
 
+# -------------------------------
+# Compatibility helpers
+# -------------------------------
 def is_chain_locked(receipt_dir: str = "receipts") -> bool:
     result = verify_chain(receipt_dir)
-    return result.get("status") != "ok"
+    return not result.get("valid", False)
 
 
 def clear_chain_lock(receipt_dir: str = "receipts") -> bool:
-    # Compatibility no-op. Current architecture uses verification rather than lock files.
+    # no-op (verification-based locking)
     return True
