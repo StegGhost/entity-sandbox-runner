@@ -4,7 +4,14 @@ from typing import Dict, Any, Optional
 
 from decision_engine import decide, execute_if_allowed
 from governed_executor import resolver
+from llm_gateway import route_proposal
+from proposal_adapter import normalize_proposal
 
+@app.post("/propose")
+def propose_endpoint(raw_input: dict):
+    result = route_proposal(raw_input)
+    return result
+    
 app = FastAPI(title="StegVerse Decision Engine")
 
 # ---- Models ----
