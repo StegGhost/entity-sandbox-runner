@@ -15,14 +15,6 @@ class ProposalRequest(BaseModel):
     payload: Optional[Dict[str, Any]] = None
 
 
-class DecisionResponse(BaseModel):
-    decision: Dict[str, Any]
-
-
-class ExecutionResponse(BaseModel):
-    result: Dict[str, Any]
-
-
 # ---- Helpers ----
 
 def build_proposal(req: ProposalRequest):
@@ -36,6 +28,10 @@ def build_proposal(req: ProposalRequest):
     }
 
 
+def resolve_authority(authority_id: str):
+    return resolver.resolve(authority_id)
+
+
 # ---- Routes ----
 
 @app.post("/register_authority")
@@ -44,15 +40,20 @@ def register_authority(authority_id: str, role: str):
     return {"status": "registered"}
 
 
-@app.post("/decide", response_model=DecisionResponse)
+@app.post("/decide")
 def decide_endpoint(req: ProposalRequest):
     proposal = build_proposal(req)
-    decision = decide(proposal)
+    authority = resolve_authority(req.authority_id)
+
+    decision = decide(proposal, authority)
+
     return {"decision": decision}
 
 
-@app.post("/execute", response_model=ExecutionResponse)
+@app.post("/execute")
 def execute_endpoint(req: ProposalRequest):
     proposal = build_proposal(req)
+
     result = execute_if_allowed(proposal)
+
     return {"result": result}
