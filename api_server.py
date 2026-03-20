@@ -6,7 +6,12 @@ from decision_engine import decide, execute_if_allowed
 from governed_executor import resolver
 from llm_gateway import route_proposal
 from proposal_adapter import normalize_proposal
+from receipt_stream import get_receipts
 
+@app.get("/receipts")
+def receipts():
+    return get_receipts()
+    
 @app.post("/propose")
 def propose_endpoint(raw_input: dict):
     result = route_proposal(raw_input)
