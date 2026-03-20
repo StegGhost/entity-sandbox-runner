@@ -2,6 +2,7 @@ import os
 import json
 import time
 import hashlib
+import uuid
 
 from state_reconstructor import reconstruct_state
 from receipt_chain_verifier import verify_chain
@@ -40,7 +41,6 @@ def compute_hash(data):
 def execute_proposal(proposal, receipt_dir="receipts"):
     os.makedirs(receipt_dir, exist_ok=True)
 
-    # 🔴 CRITICAL FIX: enforce chain BEFORE anything else
     chain_result = verify_chain(receipt_dir)
     if chain_result["status"] != "ok":
         return {
@@ -58,7 +58,6 @@ def execute_proposal(proposal, receipt_dir="receipts"):
             "reason": "invalid authority"
         }
 
-    # reconstruct valid state
     state_before = reconstruct_state(receipt_dir, strict=True)
 
     result = proposal["execute"]()
@@ -68,12 +67,31 @@ def execute_proposal(proposal, receipt_dir="receipts"):
         state_after.update(result)
 
     previous_hash = None
-    files = sorted(os.listdir(receipt_dir))
-    if files:
-        last_file = files[-1]
-        with open(os.path.join(receipt_dir, last_file), "r") as f:
-            previous_receipt = json.load(f)
-            previous_hash = previous_receipt.get("receipt_hash")
+    if os.path.exists(receipt_dir):
+        receipts = []
+        for fname in os.listdir(receipt_dir):
+            if not fname.endswith(".json"):
+                continue
+            with open(os.path.join(receipt_dir, fname), "r") as f:
+                receipts.append(json.load(f))
+
+        if receipts:
+            # find the current chain tip: receipt_hash not referenced by any previous_receipt_hash
+            all_hashes = {r.get("receipt_hash") for r in receipts}
+            referenced = {
+                r.get("previous_receipt_hash")
+                for r in receipts
+                if r.get("previous_receipt_hash") is not None
+            }
+            tips = list(all_hashes - referenced)
+            if len(tips) == 1:
+                previous_hash = tips[0]
+            elif len(tips) > 1:
+                return {
+                    "status": "rejected",
+                    "stage": "chain_integrity",
+                    "reason": "multiple chain tips found"
+                }
 
     receipt = {
         "schema_version": "3.0.0",
@@ -90,15 +108,15 @@ def execute_proposal(proposal, receipt_dir="receipts"):
     receipt_hash = compute_hash(receipt)
     receipt["receipt_hash"] = receipt_hash
 
-    filename = f"{int(receipt['timestamp'])}_{receipt_hash[:8]}.json"
+    # use high-resolution + uuid so filenames never collide
+    filename = f"{time.time_ns()}_{receipt_hash[:8]}_{uuid.uuid4().hex[:8]}.json"
     path = os.path.join(receipt_dir, filename)
-
     tmp_path = path + ".tmp"
 
     with open(tmp_path, "w") as f:
-        json.dump(receipt, f, indent=2)
+        json.dump(receipt, f, indent=2, sort_keys=True)
 
-    os.replace(tmp_path, path)  # atomic move
+    os.replace(tmp_path, path)
 
     return {
         "status": "committed",
