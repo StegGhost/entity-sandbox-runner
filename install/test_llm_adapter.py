@@ -45,3 +45,29 @@ def test_policy_blocks_low_trust():
 def test_receipts_exist():
     r = client.get("/receipts")
     assert r.status_code == 200
+
+def test_signature_rejection():
+    r = client.post("/propose", json={
+        "proposal_name": "api_test",
+        "authority_id": "admin",
+        "payload": {"x": 1},
+        "signature": "bad_signature"
+    })
+
+    assert r.status_code == 200
+    assert r.json()["allowed"] is False
+
+
+def test_u_signal_effect():
+    r = client.post("/propose", json={
+        "model_id": "test_model",
+        "proposal_name": "api_test",
+        "authority_id": "admin",
+        "payload": {"x": 1},
+        "context": {
+            "disagreement": 1.0,
+            "error_rate": 1.0
+        }
+    })
+
+    assert r.status_code == 200
