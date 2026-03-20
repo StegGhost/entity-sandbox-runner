@@ -13,39 +13,32 @@ def reconstruct_state(receipt_dir, strict=False):
         try:
             with open(path, "r") as fp:
                 data = json.load(fp)
-
             receipts.append(data)
-
-        except Exception as e:
+        except Exception:
             if strict:
                 raise
-            else:
-                continue
+            continue
 
-    # 🔥 attempt chain verification
     chain_result = verify_chain(receipts)
 
     if not chain_result["valid"]:
         if strict:
             raise RuntimeError(chain_result["reason"])
         else:
-            # 🔥 filter valid prefix only
-            valid_receipts = []
+            valid = []
             for i, r in enumerate(receipts):
                 if i == 0:
-                    valid_receipts.append(r)
+                    valid.append(r)
                     continue
 
-                if r.get("previous_receipt_hash") == valid_receipts[-1].get("receipt_hash"):
-                    valid_receipts.append(r)
+                if r.get("previous_receipt_hash") == valid[-1].get("receipt_hash"):
+                    valid.append(r)
                 else:
                     break
 
-            receipts = valid_receipts
+            receipts = valid
 
-    # 🔥 build final state
     state = {}
-
     for r in receipts:
         state[r["proposal"]] = r["result"]
 
