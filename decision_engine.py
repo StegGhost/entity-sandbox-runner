@@ -5,6 +5,8 @@ import copy
 from receipt_chain_verifier import verify_chain
 from multi_node_verifier import verify_nodes
 from governed_executor import governed_execute
+from state_reconstructor import reconstruct_state
+from decision_state_recorder import build_decision_record
 
 
 DEFAULT_NODE_DIR = "receipts"
@@ -46,7 +48,6 @@ def decide(
 ) -> Dict[str, Any]:
     timestamp = time.time()
 
-    # 1. Authority check
     if not authority.get("valid", False):
         return {
             "allowed": False,
@@ -55,7 +56,6 @@ def decide(
             "timestamp": timestamp,
         }
 
-    # 2. Local chain integrity
     chain_result = verify_chain(receipt_dir)
     if not chain_result.get("valid", False):
         return {
@@ -66,7 +66,6 @@ def decide(
             "timestamp": timestamp,
         }
 
-    # 3. Multi-node consensus
     node_dirs = node_dirs or DEFAULT_MULTI_NODES
     consensus_result = verify_nodes(node_dirs)
 
@@ -90,7 +89,6 @@ def decide(
                 "timestamp": timestamp,
             }
 
-    # 4. Policy check
     if policy and policy.get("deny_all"):
         return {
             "allowed": False,
@@ -128,10 +126,34 @@ def execute_if_allowed(
         receipt_dir=receipt_dir,
     )
 
+    try:
+        reconstructed = reconstruct_state(receipt_dir, strict=True)
+    except Exception:
+        reconstructed = {
+            "materialized_state": {},
+            "receipt_count": 0,
+            "last_receipt_hash": None,
+            "last_process_hash": None,
+            "authority_history": [],
+            "execution_fingerprints": [],
+            "timeline": [],
+        }
+
+    state_snapshot = reconstructed.get("materialized_state", {})
+
+    decision_record = build_decision_record(
+        proposal=executable_proposal,
+        authority=authority,
+        decision=decision,
+        state_snapshot=state_snapshot,
+        u_value=decision.get("confidence", 1.0),
+    )
+
     if not decision.get("allowed", False):
         return {
             "status": "rejected",
             "decision": decision,
+            "decision_record": decision_record,
         }
 
     execution = governed_execute(
@@ -144,11 +166,13 @@ def execute_if_allowed(
         return {
             "status": "rejected",
             "decision": decision,
+            "decision_record": decision_record,
             "execution": execution,
         }
 
     return {
         "status": "committed",
         "decision": decision,
+        "decision_record": decision_record,
         "execution": execution,
     }
