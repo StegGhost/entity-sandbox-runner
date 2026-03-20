@@ -1,38 +1,42 @@
-import os, json, hashlib
+import os
+import json
 
-LOCK_FILE = ".chain_lock"
 
-def _hash(data):
-    data = dict(data)
-    data.pop("receipt_hash", None)
-    return hashlib.sha256(json.dumps(data, sort_keys=True).encode()).hexdigest()
+def verify_chain(input_data):
+    """
+    Supports:
+    - directory path (str)
+    - list of receipt dicts
+    """
 
-def verify_chain(receipt_dir):
-    if not os.path.exists(receipt_dir):
-        return {"valid": True}
+    # 🔥 normalize input
+    if isinstance(input_data, str):
+        if not os.path.exists(input_data):
+            return {"valid": False, "reason": "receipt_dir_not_found"}
 
-    files = sorted([f for f in os.listdir(receipt_dir) if f.endswith(".json")])
-    prev = None
+        files = sorted(os.listdir(input_data))
+        receipts = []
 
-    for i, f in enumerate(files):
-        with open(os.path.join(receipt_dir, f)) as fp:
-            r = json.load(fp)
+        for f in files:
+            path = os.path.join(input_data, f)
+            with open(path, "r") as fp:
+                receipts.append(json.load(fp))
 
-        if r.get("receipt_hash") != _hash(r):
-            open(LOCK_FILE, "w").write("LOCKED")
-            return {"valid": False, "reason": f"hash mismatch at index {i}"}
+    elif isinstance(input_data, list):
+        receipts = input_data
 
-        if i > 0 and r.get("previous_receipt_hash") != prev:
-            open(LOCK_FILE, "w").write("LOCKED")
-            return {"valid": False, "reason": f"chain break at index {i}"}
+    else:
+        return {"valid": False, "reason": "invalid_input_type"}
 
-        prev = r.get("receipt_hash")
+    # 🔥 verify chain
+    for i in range(1, len(receipts)):
+        prev = receipts[i - 1]
+        curr = receipts[i]
+
+        if curr.get("previous_receipt_hash") != prev.get("receipt_hash"):
+            return {
+                "valid": False,
+                "reason": f"chain break at index {i}"
+            }
 
     return {"valid": True}
-
-def is_chain_locked():
-    return os.path.exists(LOCK_FILE)
-
-def clear_chain_lock():
-    if os.path.exists(LOCK_FILE):
-        os.remove(LOCK_FILE)
