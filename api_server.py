@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 
 from decision_engine import decide, execute_if_allowed
 from governed_executor import resolver
-from llm_gateway import route_proposal
+from llm_gateway import route_proposal, route_multi_proposal
 from receipt_stream import get_receipts
 
 
@@ -19,6 +19,11 @@ class ProposalRequest(BaseModel):
     payload: Optional[Dict[str, Any]] = None
 
 
+class MultiProposalRequest(BaseModel):
+    proposals: List[Dict[str, Any]]
+    mode: str = "parallel"
+
+
 # ---- Helpers ----
 
 def build_proposal(req: ProposalRequest):
@@ -28,6 +33,7 @@ def build_proposal(req: ProposalRequest):
     return {
         "name": req.name,
         "authority_id": req.authority_id,
+        "payload": req.payload or {},
         "execute": execute,
     }
 
@@ -41,12 +47,6 @@ def resolve_authority(authority_id: str):
 @app.get("/receipts")
 def receipts():
     return get_receipts()
-
-
-@app.post("/propose")
-def propose_endpoint(raw_input: dict):
-    result = route_proposal(raw_input)
-    return result
 
 
 @app.post("/register_authority")
@@ -79,3 +79,22 @@ def execute_endpoint(req: ProposalRequest):
     )
 
     return {"result": result}
+
+
+@app.post("/propose")
+def propose_endpoint(raw_input: Dict[str, Any]):
+    """
+    Canonical LLM entry point.
+    Accepts a raw machine-generated proposal, normalizes it, resolves authority,
+    decides, and executes if allowed.
+    """
+    return route_proposal(raw_input)
+
+
+@app.post("/propose_multi")
+def propose_multi_endpoint(req: MultiProposalRequest):
+    """
+    Multi-LLM / multi-agent orchestration entry point.
+    Accepts multiple proposals and evaluates them in parallel.
+    """
+    return route_multi_proposal(req.proposals, mode=req.mode)
