@@ -11,7 +11,8 @@ def verify_nodes(node_dirs):
 
         results.append({
             "node": node_dir,
-            "state_hash": state_hash
+            "state_hash": state_hash,
+            "state": state
         })
 
     hashes = [r["state_hash"] for r in results]
