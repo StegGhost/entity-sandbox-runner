@@ -16641,3 +16641,6 @@
 [2026-03-19T23:45:36.109798] transaction completed successfully
 [2026-03-19T23:45:36.110743] safe ingestion complete status=installed
 [2026-03-19T23:45:36.111126] cleaned ingestion_tmp
+[2026-03-20T04:29:40.804502] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle
+[2026-03-20T04:29:40.805197] classified files: normal=9 workflow=1
+[2026-03-20T04:29:40.806126] cleaned ingestion_tmp

@@ -1,0 +1,30 @@
+{
+  "bundle_name": "llm_adapter_readme_bundle",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/",
+      "docs/"
+    ],
+    "violations": [
+      "install/.github/workflows/llm_adapter_validation.yml"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/README_bundle_notes.md",
+      "install/tool_contracts.py",
+      "install/llm_gateway.py",
+      "install/README.md",
+      "install/llm_adapter.py",
+      "install/proposal_adapter.py",
+      "install/agent_registry.py",
+      "install/test_llm_adapter.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/llm_adapter_readme_bundle_v1.zip"
+}
