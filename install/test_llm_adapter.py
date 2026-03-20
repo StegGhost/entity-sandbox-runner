@@ -1,40 +1,33 @@
-from llm_adapter import LLMAdapter
+from fastapi.testclient import TestClient
+from api_server import app
 
+client = TestClient(app)
 
-def main() -> None:
-    adapter = LLMAdapter()
+def test_propose_basic():
+    r = client.post("/propose", json={
+        "model_id": "gpt-test",
+        "proposal_name": "api_test",
+        "authority_id": "admin",
+        "payload": {"x": 1}
+    })
 
-    adapter.register_agent(
-        agent_id="agent_ops",
-        model_id="gpt-5.x",
-        role="ops",
-        authority_id="local_admin",
-        allowed_tools=["records.update"],
-        trust_score=1.0,
-    )
+    assert r.status_code == 200
+    assert "decision" in r.json()
 
-    raw_input = {
-        "model_id": "gpt-5.x",
-        "agent_id": "agent_ops",
-        "session_id": "session-123",
-        "proposal_name": "update_customer_record",
-        "authority_id": "local_admin",
-        "tool_target": "records.update",
-        "payload": {"customer_id": "123", "status": "active"},
-        "justification": "Authorized status correction.",
-        "confidence": 0.92,
-        "state_claims": {"expected_record_exists": True},
-    }
+def test_multi_llm_path():
+    r = client.post("/propose", json={
+        "variants": [
+            {
+                "proposal_name": "api_test",
+                "authority_id": "admin",
+                "payload": {"x": 1}
+            },
+            {
+                "proposal_name": "api_test",
+                "authority_id": "admin",
+                "payload": {"x": 2}
+            }
+        ]
+    })
 
-    proposal = adapter.adapt(raw_input)
-
-    assert proposal["name"] == "update_customer_record"
-    assert proposal["authority_id"] == "local_admin"
-    assert proposal["payload"]["status"] == "active"
-    assert proposal["metadata"]["agent_id"] == "agent_ops"
-
-    print("LLM adapter test successful.")
-
-
-if __name__ == "__main__":
-    main()
+    assert r.status_code == 200
