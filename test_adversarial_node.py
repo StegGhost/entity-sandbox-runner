@@ -20,7 +20,7 @@ def proposal(name):
     return {
         "name": name,
         "authority_id": "local_admin",
-        "execute": lambda: {"ok": True}
+        "execute": lambda: {"ok": True},
     }
 
 
@@ -33,20 +33,19 @@ def run_node(node_dir):
 
 
 def tamper(node_dir):
-    files = sorted(os.listdir(node_dir))
+    files = [f for f in os.listdir(node_dir) if f.endswith(".json")]
     if not files:
         raise RuntimeError("No receipts to tamper")
 
     path = os.path.join(node_dir, files[0])
 
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # 🔥 break state deterministically
-    data["result"] = {"tampered": True}
+    data["result"] = {"tampered": True, "ok": True}
 
-    with open(path, "w") as f:
-        json.dump(data, f, indent=2)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, sort_keys=True)
 
 
 def main():
@@ -57,15 +56,13 @@ def main():
     results_a = run_node(NODE_A)
     results_b = run_node(NODE_B)
 
-    for r in results_a + results_b:
-        if r["status"] != "committed":
-            raise SystemExit(f"Execution failed: {r}")
+    for result in results_a + results_b:
+        if result["status"] != "committed":
+            raise SystemExit(f"Execution failed: {result}")
 
-    # 🔥 introduce divergence
     tamper(NODE_B)
 
     verification = verify_nodes([NODE_A, NODE_B])
-
     print("VERIFICATION:", verification)
 
     assert not verification["consensus"], "Tampered node was not detected"
