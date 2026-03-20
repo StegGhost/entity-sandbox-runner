@@ -1,30 +1,34 @@
 import os
 import json
+from typing import Any, Dict
 
-from receipt_chain_verifier import verify_chain
+from receipt_chain_verifier import verify_chain, load_receipts, build_chain
 
 
-def reconstruct_state(receipt_dir, strict=True):
-    # 🔴 FIX: verify using directory, not list
+def reconstruct_state(receipt_dir: str = "receipts", strict: bool = True) -> Dict[str, Any]:
     chain_result = verify_chain(receipt_dir)
 
-    if strict and chain_result["status"] != "ok":
-        raise Exception(f"Chain verification failed: {chain_result}")
+    if strict and chain_result.get("status") != "ok":
+        raise RuntimeError(f"Chain verification failed: {chain_result}")
 
     if not os.path.exists(receipt_dir):
         return {}
 
-    files = sorted(os.listdir(receipt_dir))
+    receipts = load_receipts(receipt_dir)
+    if not receipts:
+        return {}
 
-    state = {}
+    if strict:
+        ordered = build_chain(receipts)
+    else:
+        try:
+            ordered = build_chain(receipts)
+        except Exception:
+            ordered = []
 
-    for fname in files:
-        path = os.path.join(receipt_dir, fname)
+    state: Dict[str, Any] = {}
 
-        with open(path, "r") as f:
-            receipt = json.load(f)
-
-        # apply state transition
+    for receipt in ordered:
         result = receipt.get("result", {})
         if isinstance(result, dict):
             state.update(result)
