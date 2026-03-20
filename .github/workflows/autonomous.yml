@@ -1,0 +1,20 @@
+name: Autonomous Runtime
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  run-autonomous:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+
+      - name: Run autonomous runtime
+        run: python autonomous_runtime.py
