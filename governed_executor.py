@@ -125,7 +125,7 @@ def validate_execution_context(
     receipt_dir: str = "receipts",
 ) -> Dict[str, Any]:
     chain_result = verify_chain(receipt_dir)
-    if chain_result.get("status") != "ok":
+    if not chain_result.get("valid", False):
         return {
             "ok": False,
             "stage": "chain_integrity",
@@ -191,7 +191,8 @@ def governed_execute(
 
     resolved_authority = validation["authority"]
 
-    state_before = reconstruct_state(receipt_dir, strict=True)
+    reconstructed = reconstruct_state(receipt_dir, strict=True)
+    state_before_materialized = reconstructed.get("materialized_state", {})
 
     try:
         result = proposal["execute"]()
@@ -203,9 +204,9 @@ def governed_execute(
             "authority": resolved_authority,
         }
 
-    state_after = dict(state_before)
+    state_after_materialized = dict(state_before_materialized)
     if isinstance(result, dict):
-        state_after.update(result)
+        state_after_materialized.update(result)
 
     previous_receipt_hash, previous_process_hash = _get_chain_tip(receipt_dir)
 
@@ -213,8 +214,8 @@ def governed_execute(
         proposal=proposal,
         result=result,
         authority=resolved_authority,
-        state_before=state_before,
-        state_after=state_after,
+        state_before=state_before_materialized,
+        state_after=state_after_materialized,
         previous_receipt_hash=previous_receipt_hash,
         previous_process_hash=previous_process_hash,
     )
