@@ -20,6 +20,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
 
+      - name: Install API deps
+        run: pip install fastapi uvicorn pytest
+
+      - name: Run API tests
+        run: python -m pytest test_api.py
+
       - name: Clean receipts
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
