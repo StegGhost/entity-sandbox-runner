@@ -19,7 +19,7 @@ def proposal(name):
     return {
         "name": name,
         "authority_id": "local_admin",
-        "execute": lambda: {"ok": True}
+        "execute": lambda: {"ok": True},
     }
 
 
@@ -39,12 +39,11 @@ def main():
     results_a = run_node(NODE_A)
     results_b = run_node(NODE_B)
 
-    for r in results_a + results_b:
-        if r["status"] != "committed":
-            raise SystemExit(f"Execution failed: {r}")
+    for result in results_a + results_b:
+        if result["status"] != "committed":
+            raise SystemExit(f"Execution failed: {result}")
 
     verification = verify_nodes([NODE_A, NODE_B])
-
     print("VERIFICATION:", verification)
 
     assert verification["consensus"], "Nodes do not agree on state"
