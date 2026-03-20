@@ -39,13 +39,7 @@ jobs:
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
       # ---- Core system validation ----
-      - name: Run decision engine tests
-        run: python test_decision_engine.py
-
       # ---- API validation ----
-      - name: Run API tests
-        run: python -m pytest -q test_api.py
-
-      # ---- LLM adapter validation ----
-      - name: Run LLM adapter tests
-        run: python -m pytest -q test_llm_adapter.py
+      # ---- LLM adapter validation ---- 
+      - name: Run all tests
+        run: python -m pytest -q
