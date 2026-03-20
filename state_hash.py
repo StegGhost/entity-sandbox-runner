@@ -1,8 +1,7 @@
-import hashlib
 import json
+import hashlib
 
 
 def compute_state_hash(state):
-    return hashlib.sha256(
-        json.dumps(state, sort_keys=True, default=str).encode()
-    ).hexdigest()
+    encoded = json.dumps(state, sort_keys=True).encode()
+    return hashlib.sha256(encoded).hexdigest()
