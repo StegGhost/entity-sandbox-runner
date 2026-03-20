@@ -12,10 +12,10 @@ class AuthorityResolver:
     def __init__(self):
         self.authorities = {}
 
-    def register_authority(self, authority_id, role):
+    def register_authority(self, authority_id, role, trust_score=1.0):
         self.authorities[authority_id] = {
             "role": role,
-            "trust_score": 1.0,
+            "trust_score": trust_score,
             "created_at": time.time()
         }
 
@@ -38,9 +38,41 @@ def compute_hash(data):
     return hashlib.sha256(encoded).hexdigest()
 
 
+def _get_chain_tip(receipt_dir):
+    receipts = []
+
+    for fname in os.listdir(receipt_dir):
+        if not fname.endswith(".json"):
+            continue
+        with open(os.path.join(receipt_dir, fname), "r") as f:
+            receipts.append(json.load(f))
+
+    if not receipts:
+        return None, None
+
+    all_hashes = {r["receipt_hash"] for r in receipts}
+    referenced = {
+        r["previous_receipt_hash"]
+        for r in receipts
+        if r["previous_receipt_hash"] is not None
+    }
+
+    tips = list(all_hashes - referenced)
+
+    if len(tips) != 1:
+        raise Exception("Invalid chain: multiple or zero tips")
+
+    tip_hash = tips[0]
+
+    tip_receipt = next(r for r in receipts if r["receipt_hash"] == tip_hash)
+
+    return tip_hash, tip_receipt.get("process_hash")
+
+
 def execute_proposal(proposal, receipt_dir="receipts"):
     os.makedirs(receipt_dir, exist_ok=True)
 
+    # HARD BLOCK: chain must be valid
     chain_result = verify_chain(receipt_dir)
     if chain_result["status"] != "ok":
         return {
@@ -50,7 +82,6 @@ def execute_proposal(proposal, receipt_dir="receipts"):
         }
 
     authority = resolver.resolve(proposal["authority_id"])
-
     if not authority["valid"]:
         return {
             "status": "rejected",
@@ -66,35 +97,10 @@ def execute_proposal(proposal, receipt_dir="receipts"):
     if isinstance(result, dict):
         state_after.update(result)
 
-    previous_hash = None
-    if os.path.exists(receipt_dir):
-        receipts = []
-        for fname in os.listdir(receipt_dir):
-            if not fname.endswith(".json"):
-                continue
-            with open(os.path.join(receipt_dir, fname), "r") as f:
-                receipts.append(json.load(f))
-
-        if receipts:
-            # find the current chain tip: receipt_hash not referenced by any previous_receipt_hash
-            all_hashes = {r.get("receipt_hash") for r in receipts}
-            referenced = {
-                r.get("previous_receipt_hash")
-                for r in receipts
-                if r.get("previous_receipt_hash") is not None
-            }
-            tips = list(all_hashes - referenced)
-            if len(tips) == 1:
-                previous_hash = tips[0]
-            elif len(tips) > 1:
-                return {
-                    "status": "rejected",
-                    "stage": "chain_integrity",
-                    "reason": "multiple chain tips found"
-                }
+    previous_hash, previous_process_hash = _get_chain_tip(receipt_dir)
 
     receipt = {
-        "schema_version": "3.0.0",
+        "schema_version": "4.0.0",
         "timestamp": time.time(),
         "proposal": proposal["name"],
         "result": result,
@@ -108,15 +114,20 @@ def execute_proposal(proposal, receipt_dir="receipts"):
     receipt_hash = compute_hash(receipt)
     receipt["receipt_hash"] = receipt_hash
 
-    # use high-resolution + uuid so filenames never collide
-    filename = f"{time.time_ns()}_{receipt_hash[:8]}_{uuid.uuid4().hex[:8]}.json"
+    # 🔥 NEW: process hash chain
+    process_material = {
+        "previous_process_hash": previous_process_hash,
+        "receipt_hash": receipt_hash,
+        "execution_fingerprint": receipt["execution_fingerprint"]
+    }
+
+    receipt["process_hash"] = compute_hash(process_material)
+
+    filename = f"{time.time_ns()}_{receipt_hash[:8]}_{uuid.uuid4().hex[:6]}.json"
     path = os.path.join(receipt_dir, filename)
-    tmp_path = path + ".tmp"
 
-    with open(tmp_path, "w") as f:
+    with open(path, "w") as f:
         json.dump(receipt, f, indent=2, sort_keys=True)
-
-    os.replace(tmp_path, path)
 
     return {
         "status": "committed",
