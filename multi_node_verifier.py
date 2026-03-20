@@ -6,19 +6,17 @@ def verify_nodes(node_dirs):
     results = []
 
     for node_dir in node_dirs:
-        state = reconstruct_state(node_dir, strict=False)  # 🔥 key change
+        state = reconstruct_state(node_dir, strict=False)
         state_hash = compute_state_hash(state)
 
         results.append({
             "node": node_dir,
-            "state": state,
-            "hash": state_hash
+            "state_hash": state_hash
         })
 
-    hashes = [r["hash"] for r in results]
-    consensus = len(set(hashes)) == 1
+    hashes = [r["state_hash"] for r in results]
 
     return {
-        "consensus": consensus,
+        "consensus": len(set(hashes)) == 1,
         "results": results
     }
