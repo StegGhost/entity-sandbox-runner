@@ -10,8 +10,6 @@ RECEIPT_DIR = "receipts"
 def reset():
     shutil.rmtree(RECEIPT_DIR, ignore_errors=True)
     os.makedirs(RECEIPT_DIR, exist_ok=True)
-
-    # ✅ FIX: pass directory explicitly
     clear_chain_lock(RECEIPT_DIR)
 
 
@@ -19,7 +17,7 @@ def proposal(name):
     return {
         "name": name,
         "authority_id": "local_admin",
-        "execute": lambda: {"ok": True}
+        "execute": lambda: {"ok": True},
     }
 
 
@@ -34,10 +32,10 @@ def main():
         execute_proposal(proposal("test3"), receipt_dir=RECEIPT_DIR),
     ]
 
-    for r in results:
-        print(r)
-        if r["status"] != "committed":
-            raise SystemExit(f"Execution failed: {r}")
+    for result in results:
+        print(result)
+        if result["status"] != "committed":
+            raise SystemExit(f"Execution failed: {result}")
 
     print("Governed executor test successful.")
 
