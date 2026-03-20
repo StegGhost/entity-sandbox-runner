@@ -11,7 +11,15 @@ def weighted_consensus(results: List[Dict]) -> Dict:
 
     for node in valid_nodes:
         h = node["state_hash"]
-        weight = node.get("trust_score", 1.0)
+
+        trust = node.get("trust_score", 1.0)
+        energy = node.get("energy_cost", 1.0)
+        compute = node.get("compute_cost", 1.0)
+
+        # Lower cost = higher weight
+        cost_factor = 1.0 / (energy * compute)
+
+        weight = trust * cost_factor
 
         if h not in buckets:
             buckets[h] = 0.0
