@@ -10,10 +10,12 @@ on:
       - "llm_adapter.py"
       - "proposal_adapter.py"
       - "agent_registry.py"
-      - "test_llm_adapter.py"
       - "decision_engine.py"
       - "governed_executor.py"
       - "api_server.py"
+      - "test_decision_engine.py"
+      - "test_api.py"
+      - "install/test_llm_adapter.py"
       - ".github/workflows/llm_adapter_validation.yml"
 
 jobs:
@@ -34,12 +36,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install fastapi uvicorn pytest httpx
 
-      # ---- Clean state ----
       - name: Clean receipts
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
-      # ---- Core system validation ----
-      # ---- API validation ----
-      # ---- LLM adapter validation ---- 
       - name: Run all tests
-        run: python -m pytest -q
+        run: python -m pytest -q test_decision_engine.py test_api.py install/test_llm_adapter.py
