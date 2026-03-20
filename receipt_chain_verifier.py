@@ -9,8 +9,12 @@ def compute_hash(data: Any) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
-def compute_receipt_hash(receipt: Dict[str, Any]) -> str:
-    payload = {k: v for k, v in receipt.items() if k != "receipt_hash"}
+def compute_receipt_hash(receipt):
+    payload = {
+        k: v
+        for k, v in receipt.items()
+        if k not in ["receipt_hash", "process_hash"]
+    }
     return compute_hash(payload)
 
 
