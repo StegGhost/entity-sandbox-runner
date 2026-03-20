@@ -16644,3 +16644,33 @@
 [2026-03-20T04:29:40.804502] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle
 [2026-03-20T04:29:40.805197] classified files: normal=9 workflow=1
 [2026-03-20T04:29:40.806126] cleaned ingestion_tmp
+[2026-03-20T04:33:16.598943] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle
+[2026-03-20T04:33:16.599434] classified files: normal=9 workflow=0
+[2026-03-20T04:33:16.599711] transaction started for llm_adapter_readme_bundle_v2.zip
+[2026-03-20T04:33:16.599879] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-20T04:33:16.600017] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/docs/README_bundle_notes.md
+[2026-03-20T04:33:16.600147] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/tool_contracts.py
+[2026-03-20T04:33:16.600259] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/llm_gateway.py
+[2026-03-20T04:33:16.600368] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/README.md
+[2026-03-20T04:33:16.600481] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/llm_adapter.py
+[2026-03-20T04:33:16.600586] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/proposal_adapter.py
+[2026-03-20T04:33:16.600730] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/agent_registry.py
+[2026-03-20T04:33:16.600839] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/test_llm_adapter.py
+[2026-03-20T04:33:16.602950] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-20T04:33:16.603159] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/docs/README_bundle_notes.md
+[2026-03-20T04:33:16.603313] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tool_contracts.py
+[2026-03-20T04:33:16.603427] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/llm_gateway.py
+[2026-03-20T04:33:16.605004] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/README.md
+[2026-03-20T04:33:16.605135] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/llm_adapter.py
+[2026-03-20T04:33:16.605288] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/proposal_adapter.py
+[2026-03-20T04:33:16.605403] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/agent_registry.py
+[2026-03-20T04:33:16.605512] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/test_llm_adapter.py
+[2026-03-20T04:33:16.605814] transaction completed successfully
+[2026-03-20T04:33:16.605982] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/tool_contracts.py
+[2026-03-20T04:33:16.627965] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/llm_gateway.py
+[2026-03-20T04:33:16.652233] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/llm_adapter.py
+[2026-03-20T04:33:16.676665] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/proposal_adapter.py
+[2026-03-20T04:33:16.697821] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/agent_registry.py
+[2026-03-20T04:33:16.718728] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/test_llm_adapter.py
+[2026-03-20T04:33:16.743768] safe ingestion complete status=installed
+[2026-03-20T04:33:16.744380] cleaned ingestion_tmp
