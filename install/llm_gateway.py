@@ -1,64 +1,83 @@
 from proposal_adapter import normalize_proposal
 from decision_engine import decide
 from governed_executor import execute_if_allowed
-from policy_engine import get_policy
+
+from policy_engine import evaluate_policy
 from llm_weighting import get_score, update_score
+from signature_verifier import verify_signature
+from u_signal_engine import compute_u_signal
+from consensus_engine import reach_consensus
 from receipt_stream import emit_receipt
 from external_connectors import execute_external
-from policy_engine import evaluate_policy
-from llm_weighting import get_score
+
+ENABLE_CONSENSUS = True
+CONSENSUS_THRESHOLD = 2
+
 
 def route_proposal(raw_input: dict):
     proposal = normalize_proposal(raw_input)
 
+    # -------------------------
+    # 🔐 Signature verification
+    # -------------------------
+    if "signature" in raw_input:
+        if not verify_signature(proposal):
+            return {"allowed": False, "reason": "invalid_signature"}
+
+    # -------------------------
+    # 🧠 Compute U signal
+    # -------------------------
+    context = raw_input.get("context", {})
+    u_signal = compute_u_signal(proposal, context)
+
+    # -------------------------
+    # 📊 Trust score
+    # -------------------------
     model_id = proposal.get("model_id", "unknown")
     score = get_score(model_id)
 
-    # ---- U signal (placeholder for now) ----
-    u_signal = raw_input.get("u_signal", 1.0)
-
+    # -------------------------
+    # 🧾 Policy evaluation
+    # -------------------------
     policy_result = evaluate_policy(proposal, u_signal, score)
 
     if not policy_result["allowed"]:
+        update_score(model_id, False)
         return policy_result
 
-    decision = decide(proposal)
-
-    if not decision["allowed"]:
-        return decision
-ENABLE_CONSENSUS = False
-
-def route_proposal(raw_input: dict):
-    proposal = normalize_proposal(raw_input)
-
-    model_id = proposal.get("model_id", "unknown")
-    score = get_score(model_id)
-
-    policy = get_policy(proposal)
-
-    # ---- Trust check ----
-    if score < policy["min_trust"]:
-        return {"allowed": False, "reason": "low_trust_model"}
-
+    # -------------------------
+    # ⚖️ Decision engine
+    # -------------------------
     decision = decide(proposal)
 
     if not decision["allowed"]:
         update_score(model_id, False)
         return decision
 
-    # ---- Execution ----
+    # -------------------------
+    # 🌐 Consensus (optional)
+    # -------------------------
+    if policy_result.get("require_consensus") and ENABLE_CONSENSUS:
+        simulated_nodes = [decision, decision]  # replace with real nodes later
+        consensus = reach_consensus(simulated_nodes, CONSENSUS_THRESHOLD)
+
+        if not consensus["allowed"]:
+            return consensus
+
+    # -------------------------
+    # ⚙️ Execution
+    # -------------------------
     result = execute_if_allowed(proposal, proposal.get("authority_id"))
 
-    # ---- External routing ----
     external = execute_external(proposal)
 
-    # ---- Update trust ----
     update_score(model_id, True)
 
-    # ---- Emit receipt ----
     emit_receipt({
         "proposal": proposal,
         "decision": decision,
+        "u_signal": u_signal,
+        "model_score": score,
         "result": result,
         "external": external
     })
@@ -66,6 +85,7 @@ def route_proposal(raw_input: dict):
     return {
         "decision": decision,
         "result": result,
-        "external": external,
-        "model_score": get_score(model_id)
+        "u_signal": u_signal,
+        "model_score": score,
+        "external": external
     }
