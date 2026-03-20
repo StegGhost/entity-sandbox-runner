@@ -43,4 +43,9 @@ jobs:
         run: rm -rf receipts receipts_node_a receipts_node_b || true
 
       - name: Run all tests
-        run: python -m pytest -q test_decision_engine.py test_api.py install/test_llm_adapter.py
+        run: |
+          python -m pytest -q \
+            test_decision_engine.py \
+            test_api.py \
+            install/test_llm_adapter.py \
+            test_replay_system.py
