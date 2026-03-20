@@ -1,46 +1,29 @@
-import os
-import json
-from receipt_chain_verifier import verify_chain
+from typing import Any, Dict, List
+
 from state_reconstructor import reconstruct_state
+from state_hash import compute_state_hash
 
 
-def verify_nodes_weighted(nodes):
+def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
     results = []
-    total_weight = 0
-    agreement_weight = {}
 
-    for node in nodes:
-        result = verify_chain(node["path"])
-
-        if result["status"] != "ok":
-            continue
-
-        state = reconstruct_state(node["path"], strict=True)
-        state_hash = json.dumps(state, sort_keys=True)
-
-        weight = node.get("trust_score", 1.0)
-
-        total_weight += weight
-
-        agreement_weight[state_hash] = agreement_weight.get(state_hash, 0) + weight
+    for node_dir in node_dirs:
+        state = reconstruct_state(node_dir, strict=True)
+        state_hash = compute_state_hash(state)
 
         results.append({
-            "node": node["name"],
+            "node": node_dir,
             "state_hash": state_hash,
-            "weight": weight,
-            "state": state
+            "state": state,
         })
 
-    if not agreement_weight:
-        return {"consensus": False, "results": results}
-
-    best_state = max(agreement_weight, key=agreement_weight.get)
-    best_weight = agreement_weight[best_state]
-
-    consensus = best_weight / total_weight >= 0.67
+    consensus = len({r["state_hash"] for r in results}) == 1
 
     return {
         "consensus": consensus,
-        "confidence": best_weight / total_weight,
-        "results": results
+        "results": results,
     }
+
+
+def verify_multi_node_state(receipt_dir_a: str = "receipts_node_a", receipt_dir_b: str = "receipts_node_b") -> Dict[str, Any]:
+    return verify_nodes([receipt_dir_a, receipt_dir_b])
