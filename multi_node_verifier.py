@@ -12,7 +12,7 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
     for node_dir in node_dirs:
         chain_result = verify_chain(node_dir)
 
-        if chain_result.get("status") != "ok":
+        if not chain_result.get("valid", False):
             results.append({
                 "node": node_dir,
                 "valid": False,
@@ -52,14 +52,12 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "compute_cost": 2.0,
             })
 
-    # 🚨 CRITICAL FIX: detect invalid nodes
     any_invalid = any(not r["valid"] for r in results)
 
     consensus_result = weighted_consensus(results)
 
-    # 🚨 OVERRIDE CONSENSUS IF ANY NODE IS INVALID
     final_consensus = (
-        consensus_result["consensus"] and not any_invalid
+        consensus_result.get("consensus", False) and not any_invalid
     )
 
     return {
