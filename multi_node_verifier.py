@@ -20,6 +20,8 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "state_hash": None,
                 "state": None,
                 "trust_score": 0.1,
+                "energy_cost": 2.0,
+                "compute_cost": 2.0,
             })
             continue
 
@@ -34,6 +36,8 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "state_hash": state_hash,
                 "state": state,
                 "trust_score": 1.0,
+                "energy_cost": 0.8,
+                "compute_cost": 1.0,
             })
 
         except Exception as e:
@@ -44,6 +48,8 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "state_hash": None,
                 "state": None,
                 "trust_score": 0.2,
+                "energy_cost": 2.0,
+                "compute_cost": 2.0,
             })
 
     consensus_result = weighted_consensus(results)
