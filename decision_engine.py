@@ -1,5 +1,6 @@
 from typing import Dict, Any, Optional, List
 import time
+import copy
 
 from receipt_chain_verifier import verify_chain
 from multi_node_verifier import verify_nodes
@@ -8,6 +9,31 @@ from governed_executor import governed_execute
 
 DEFAULT_NODE_DIR = "receipts"
 DEFAULT_MULTI_NODES = ["receipts_node_a", "receipts_node_b"]
+
+
+def _ensure_executable_proposal(proposal: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Backward-compatible adapter:
+    - if 'name' is missing, derive it from 'action'
+    - if 'execute' is missing, synthesize a deterministic callable
+    """
+    normalized = copy.copy(proposal)
+
+    if "name" not in normalized or normalized.get("name") is None:
+        normalized["name"] = normalized.get("action", "unnamed_proposal")
+
+    if not callable(normalized.get("execute")):
+        payload = normalized.get("payload")
+        action = normalized.get("action", normalized.get("name"))
+
+        def _default_execute():
+            if isinstance(payload, dict):
+                return payload
+            return {"ok": True, "action": action}
+
+        normalized["execute"] = _default_execute
+
+    return normalized
 
 
 def decide(
@@ -91,8 +117,10 @@ def execute_if_allowed(
     node_dirs: Optional[List[str]] = None,
     receipt_dir: str = DEFAULT_NODE_DIR,
 ) -> Dict[str, Any]:
+    executable_proposal = _ensure_executable_proposal(proposal)
+
     decision = decide(
-        proposal=proposal,
+        proposal=executable_proposal,
         authority=authority,
         policy=policy,
         mode=mode,
@@ -107,7 +135,7 @@ def execute_if_allowed(
         }
 
     execution = governed_execute(
-        proposal=proposal,
+        proposal=executable_proposal,
         authority=authority,
         receipt_dir=receipt_dir,
     )
