@@ -11,8 +11,6 @@ RECEIPT_DIR = "receipts"
 def reset():
     shutil.rmtree(RECEIPT_DIR, ignore_errors=True)
     os.makedirs(RECEIPT_DIR, exist_ok=True)
-
-    # ✅ FIX: pass directory
     clear_chain_lock(RECEIPT_DIR)
 
 
@@ -20,7 +18,7 @@ def proposal(name, value):
     return {
         "name": name,
         "authority_id": "local_admin",
-        "execute": lambda: value
+        "execute": lambda: value,
     }
 
 
@@ -33,8 +31,7 @@ def main():
     execute_proposal(proposal("test2", {"b": 2}), receipt_dir=RECEIPT_DIR)
     execute_proposal(proposal("test3", {"c": 3}), receipt_dir=RECEIPT_DIR)
 
-    state = reconstruct_state(RECEIPT_DIR)
-
+    state = reconstruct_state(RECEIPT_DIR, strict=True)
     print("RECONSTRUCTED STATE:", state)
 
     assert state == {"a": 1, "b": 2, "c": 3}, "State reconstruction failed"
