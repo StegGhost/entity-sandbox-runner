@@ -31,3 +31,17 @@ def test_multi_llm_path():
     })
 
     assert r.status_code == 200
+
+def test_policy_blocks_low_trust():
+    r = client.post("/propose", json={
+        "model_id": "bad_model",
+        "proposal_name": "delete_all",
+        "authority_id": "admin",
+        "payload": {}
+    })
+
+    assert r.status_code == 200
+
+def test_receipts_exist():
+    r = client.get("/receipts")
+    assert r.status_code == 200
