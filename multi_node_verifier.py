@@ -3,6 +3,7 @@ from typing import Any, Dict, List
 from receipt_chain_verifier import verify_chain
 from state_reconstructor import reconstruct_state
 from state_hash import compute_state_hash
+from weighted_consensus import weighted_consensus
 
 
 def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
@@ -18,6 +19,7 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "reason": chain_result.get("reason"),
                 "state_hash": None,
                 "state": None,
+                "trust_score": 0.1,
             })
             continue
 
@@ -31,7 +33,9 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "reason": None,
                 "state_hash": state_hash,
                 "state": state,
+                "trust_score": 1.0,
             })
+
         except Exception as e:
             results.append({
                 "node": node_dir,
@@ -39,20 +43,15 @@ def verify_nodes(node_dirs: List[str]) -> Dict[str, Any]:
                 "reason": str(e),
                 "state_hash": None,
                 "state": None,
+                "trust_score": 0.2,
             })
 
-    valid_results = [r for r in results if r["valid"]]
-
-    if len(valid_results) < 2:
-        return {
-            "consensus": False,
-            "results": results,
-        }
-
-    consensus = len({r["state_hash"] for r in valid_results}) == 1
+    consensus_result = weighted_consensus(results)
 
     return {
-        "consensus": consensus,
+        "consensus": consensus_result["consensus"],
+        "consensus_hash": consensus_result.get("state_hash"),
+        "confidence": consensus_result.get("confidence"),
         "results": results,
     }
 
