@@ -93,8 +93,12 @@ def execute_proposal(proposal, receipt_dir="receipts"):
     filename = f"{int(receipt['timestamp'])}_{receipt_hash[:8]}.json"
     path = os.path.join(receipt_dir, filename)
 
-    with open(path, "w") as f:
+    tmp_path = path + ".tmp"
+
+    with open(tmp_path, "w") as f:
         json.dump(receipt, f, indent=2)
+
+    os.replace(tmp_path, path)  # atomic move
 
     return {
         "status": "committed",
