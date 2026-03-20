@@ -1,41 +1,56 @@
 import os
 import json
+import hashlib
 
 
-def verify_chain(input_data):
-    if isinstance(input_data, str):
-        if not os.path.exists(input_data):
-            return {"valid": False, "reason": "receipt_dir_not_found"}
+def compute_receipt_hash(receipt):
+    # exclude receipt_hash itself
+    data = {k: v for k, v in receipt.items() if k != "receipt_hash"}
+    encoded = json.dumps(data, sort_keys=True).encode()
+    return hashlib.sha256(encoded).hexdigest()
 
-        files = sorted(os.listdir(input_data))
-        receipts = []
 
-        for f in files:
-            path = os.path.join(input_data, f)
-            with open(path, "r") as fp:
-                receipts.append(json.load(fp))
+def verify_chain(receipt_dir):
+    if not os.path.exists(receipt_dir):
+        return {"status": "ok", "reason": "no receipts"}
 
-    elif isinstance(input_data, list):
-        receipts = input_data
-    else:
-        return {"valid": False, "reason": "invalid_input_type"}
+    files = sorted(os.listdir(receipt_dir))
 
-    for i in range(1, len(receipts)):
-        prev = receipts[i - 1]
-        curr = receipts[i]
+    previous_hash = None
 
-        if curr.get("previous_receipt_hash") != prev.get("receipt_hash"):
+    for idx, fname in enumerate(files):
+        path = os.path.join(receipt_dir, fname)
+
+        with open(path, "r") as f:
+            receipt = json.load(f)
+
+        # 🔴 NEW: verify receipt integrity
+        computed_hash = compute_receipt_hash(receipt)
+        if computed_hash != receipt.get("receipt_hash"):
             return {
-                "valid": False,
-                "reason": f"chain break at index {i}"
+                "status": "rejected",
+                "stage": "receipt_integrity",
+                "reason": f"tampered receipt at index {idx}"
             }
 
-    return {"valid": True}
+        # 🔴 existing chain linkage check
+        if receipt.get("previous_receipt_hash") != previous_hash:
+            return {
+                "status": "rejected",
+                "stage": "chain_integrity",
+                "reason": f"chain break at index {idx}"
+            }
+
+        previous_hash = receipt.get("receipt_hash")
+
+    return {"status": "ok"}
 
 
 def is_chain_locked(receipt_dir):
-    return os.path.exists(receipt_dir) and len(os.listdir(receipt_dir)) > 0
+    result = verify_chain(receipt_dir)
+    return result["status"] != "ok"
 
 
 def clear_chain_lock(receipt_dir):
+    # no-op for now (kept for interface consistency)
     return True
