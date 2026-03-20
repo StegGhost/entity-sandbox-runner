@@ -35,14 +35,14 @@ def run_node(node_dir):
 def tamper(node_dir):
     files = sorted(os.listdir(node_dir))
     if not files:
-        raise RuntimeError("No receipts to tamper with")
+        raise RuntimeError("No receipts to tamper")
 
     path = os.path.join(node_dir, files[0])
 
     with open(path, "r") as f:
         data = json.load(f)
 
-    # 🔥 corrupt the receipt
+    # 🔥 break state deterministically
     data["result"] = {"tampered": True}
 
     with open(path, "w") as f:
@@ -54,7 +54,6 @@ def main():
 
     resolver.register_authority("local_admin", "admin")
 
-    # run both nodes
     results_a = run_node(NODE_A)
     results_b = run_node(NODE_B)
 
@@ -62,7 +61,7 @@ def main():
         if r["status"] != "committed":
             raise SystemExit(f"Execution failed: {r}")
 
-    # 🔥 introduce adversarial tampering
+    # 🔥 introduce divergence
     tamper(NODE_B)
 
     verification = verify_nodes([NODE_A, NODE_B])
