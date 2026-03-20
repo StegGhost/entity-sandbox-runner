@@ -1,0 +1,51 @@
+name: LLM Adapter Validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "tool_contracts.py"
+      - "llm_gateway.py"
+      - "llm_adapter.py"
+      - "proposal_adapter.py"
+      - "agent_registry.py"
+      - "test_llm_adapter.py"
+      - "decision_engine.py"
+      - "governed_executor.py"
+      - "api_server.py"
+      - ".github/workflows/llm_adapter_validation.yml"
+
+jobs:
+  validate-llm-adapter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn pytest httpx
+
+      # ---- Clean state ----
+      - name: Clean receipts
+        run: rm -rf receipts receipts_node_a receipts_node_b || true
+
+      # ---- Core system validation ----
+      - name: Run decision engine tests
+        run: python test_decision_engine.py
+
+      # ---- API validation ----
+      - name: Run API tests
+        run: python -m pytest -q test_api.py
+
+      # ---- LLM adapter validation ----
+      - name: Run LLM adapter tests
+        run: python -m pytest -q test_llm_adapter.py
