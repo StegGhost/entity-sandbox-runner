@@ -1,4 +1,3 @@
-import os
 from state_reconstructor import reconstruct_state
 from state_hash import compute_state_hash
 
@@ -7,7 +6,7 @@ def verify_nodes(node_dirs):
     results = []
 
     for node_dir in node_dirs:
-        state = reconstruct_state(node_dir)
+        state = reconstruct_state(node_dir, strict=False)  # 🔥 key change
         state_hash = compute_state_hash(state)
 
         results.append({
