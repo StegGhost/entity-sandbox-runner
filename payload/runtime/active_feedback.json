@@ -1,7 +1,7 @@
 {
-  "timestamp": 1774032018.8300414,
+  "timestamp": 1774033004.9890041,
   "summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
-  "feedback_hash": "49042e4368f83190a072ff16bf320c580554f20e36d763f2ca4c37b47769a9e9",
+  "feedback_hash": "0cd138a6ab010d2072ec2341360f48e69e7cf46ee9bba60025538e043d5913fe",
   "priority_items": [
     "{ \"bundle_version\": \"1.0\", \"review_purpose\": \"SDK review and external packaging surface\", \"namespaces\": { \"results\": { \"description\": \"run-local raw outputs\", \"authoritative\": false }, \"receipts\": { \"description\": \"provenance reference layer\", \"authoritative\": true }, \"reports\": { \"description\": \"readable derived artifacts for inspection and download\", \"authoritative\": false }, \"data_records\": { \"description\": \"canonical machine-usable evidence used across experiments\", \"authoritative\": true }, \"manifests\": { \"description\": \"portable metadata for downstream ingest/export/sdk packaging\", \"authoritative\": true } }, \"sdk_download_surfaces\": [ \"reports/latest\", \"reports/visuals\", \"reports/validation\", \"data_records/aggregates\", \"manifests\" ], \"canonical_record_sets\": [ \"data_records/canonical/admissibility_observations.jsonl\" ] }",
     "# Claims ## Proven by demo - The critical ratio campaign computes the candidate invariant `U` as specified.",
