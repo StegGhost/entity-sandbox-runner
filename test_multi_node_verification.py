@@ -39,9 +39,9 @@ def main():
     results_a = run_node(NODE_A)
     results_b = run_node(NODE_B)
 
-    for i, r in enumerate(results_a + results_b, start=1):
+    for r in results_a + results_b:
         if r["status"] != "committed":
-            raise SystemExit(f"Execution {i} failed: {r}")
+            raise SystemExit(f"Execution failed: {r}")
 
     verification = verify_nodes([NODE_A, NODE_B])
 
