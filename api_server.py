@@ -53,7 +53,8 @@ def decide_endpoint(req: ProposalRequest):
 @app.post("/execute")
 def execute_endpoint(req: ProposalRequest):
     proposal = build_proposal(req)
+    authority = resolve_authority(req.authority_id)
 
-    result = execute_if_allowed(proposal)
+    result = execute_if_allowed(proposal, authority)
 
     return {"result": result}
