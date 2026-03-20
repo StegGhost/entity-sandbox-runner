@@ -1,6 +1,6 @@
 {
-  "cycles": 79,
-  "last_hash": "db5b33f4ec325758c531ab5b44d6909b21341fe4954b7bf2cfc2cd3e3ded983f",
+  "cycles": 80,
+  "last_hash": "0f734e543d4d5b1bdecfcbe38ae9bbab67f16310c5e256190092f235413526d4",
   "history": [
     {
       "cycle": 12,
@@ -225,9 +225,9 @@
   "trust": {},
   "last_receipt": "9628cbd96e2479b4b7065c59dfeed1aff0c964af20a19bf8b70ff60aeb0ff271",
   "state": {
-    "stability": 0.9392867460123961,
-    "trust": 0.8737387238978124,
-    "constraint_pressure": 0.26271260285924825,
+    "stability": 0.7035347390896576,
+    "trust": 0.6466269257277651,
+    "constraint_pressure": 0.4366464633621272,
     "history": 1.0
   }
 }
