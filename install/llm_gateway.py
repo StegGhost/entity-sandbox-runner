@@ -1,41 +1,51 @@
-import random
 from proposal_adapter import normalize_proposal
-from agent_registry import get_agent
 from decision_engine import decide
 from governed_executor import execute_if_allowed
+from policy_engine import get_policy
+from llm_weighting import get_score, update_score
+from receipt_stream import emit_receipt
+from external_connectors import execute_external
 
-ENABLE_MULTI_LLM = True
-ENABLE_CONSENSUS = False  # toggle Path B
-CONSENSUS_THRESHOLD = 2
+ENABLE_CONSENSUS = False
 
 def route_proposal(raw_input: dict):
     proposal = normalize_proposal(raw_input)
 
-    # ---- Path A: Multi-LLM simulation ----
-    if ENABLE_MULTI_LLM and "variants" in raw_input:
-        results = []
-        for variant in raw_input["variants"]:
-            p = normalize_proposal(variant)
-            decision = decide(p)
-            results.append(decision)
+    model_id = proposal.get("model_id", "unknown")
+    score = get_score(model_id)
 
-        if ENABLE_CONSENSUS:
-            approvals = sum(1 for r in results if r["allowed"])
-            if approvals < CONSENSUS_THRESHOLD:
-                return {"allowed": False, "reason": "consensus_failed"}
+    policy = get_policy(proposal)
 
-        return results[0]
+    # ---- Trust check ----
+    if score < policy["min_trust"]:
+        return {"allowed": False, "reason": "low_trust_model"}
 
-    # ---- Single proposal path ----
     decision = decide(proposal)
 
     if not decision["allowed"]:
+        update_score(model_id, False)
         return decision
 
-    # ---- Path D: Execute ----
+    # ---- Execution ----
     result = execute_if_allowed(proposal, proposal.get("authority_id"))
+
+    # ---- External routing ----
+    external = execute_external(proposal)
+
+    # ---- Update trust ----
+    update_score(model_id, True)
+
+    # ---- Emit receipt ----
+    emit_receipt({
+        "proposal": proposal,
+        "decision": decision,
+        "result": result,
+        "external": external
+    })
 
     return {
         "decision": decision,
-        "result": result
+        "result": result,
+        "external": external,
+        "model_score": get_score(model_id)
     }
