@@ -1,0 +1,12 @@
+{
+  "type": "feedback_injection",
+  "timestamp": 1774118526.5125206,
+  "summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
+  "feedback_hash": "2760bd0b881436dec9d01c7beb62bfdb5804400c8ba849cbba31432120207af8",
+  "output_files": [
+    "payload/injection/feedback_prompt_inputs.json",
+    "payload/injection/feedback_prompt_inputs.md",
+    "payload/injection/feedback_policy_inputs.json"
+  ],
+  "hash": "18288c4d194231b37cb66af5bb951ab80a60af2fcfef19efa4ee1d5df57bcc95"
+}
