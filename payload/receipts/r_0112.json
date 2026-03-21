@@ -1,0 +1,9 @@
+{
+  "cycle": 112,
+  "U": 0.7322141265193434,
+  "action": "restrict",
+  "reason": "uncertainty too high (1.8151015594678839)",
+  "delta_uncertainty": 1.8151015594678839,
+  "prev_hash": "e640a30c2f3d427517085040544083e6b8cc126268ece95fb595df9161371714",
+  "hash": "0a64ec72ed2e85c2fd955b766eae5d4d4bbf645b97b8661c45014c96f21cf105"
+}
