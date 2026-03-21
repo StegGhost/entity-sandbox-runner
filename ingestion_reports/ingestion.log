@@ -16674,3 +16674,5 @@
 [2026-03-20T04:33:16.718728] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/llm_adapter_readme_bundle/install/test_llm_adapter.py
 [2026-03-20T04:33:16.743768] safe ingestion complete status=installed
 [2026-03-20T04:33:16.744380] cleaned ingestion_tmp
+[2026-03-21T22:56:47.042140] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-21T22:56:47.042951] cleaned ingestion_tmp

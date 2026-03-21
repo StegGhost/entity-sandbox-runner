@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode",
+      "allowed_paths"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "stegcge_closure_modules_v1",
+      "bundle_version": "1.0.0",
+      "source_repo": "automated_buildout",
+      "target_repos": [
+        "stegcge"
+      ],
+      "conflict_mode": "fail",
+      "apply_mode": "install",
+      "notes": "Adds dependency closure awareness to StegCGE and upgrades verification + accepted change receipts."
+    }
+  },
+  "moved_bundle_to": "failed_bundles/stegcge_closure_modules_v1_bundle.zip"
+}
