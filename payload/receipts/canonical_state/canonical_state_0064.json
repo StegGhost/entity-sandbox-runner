@@ -1,0 +1,16 @@
+{
+  "type": "canonical_state",
+  "timestamp": 1774161337.06394,
+  "repo_state_hash": "3725302a00ba5c2e3a73bdaee6aba9b4857f352b3f57589332b54ca80a88ec60",
+  "repo_state_file_count": 193,
+  "latest_execution_receipt": "payload/receipts/r_0145.json",
+  "document_compaction_receipt": "payload/receipts/document_compaction/document_compaction_0066.json",
+  "document_compaction_hash": "ef9a71c7a30b3f478cfc6074b4f8adb2e59f219b5b9c452de74195afdbcbf40e",
+  "canonical_feedback_receipt": "payload/receipts/canonical_feedback/canonical_feedback_0066.json",
+  "canonical_feedback_hash": "a12daab0fde0df7faecc71cbeaf823fc2714f7975199f0bdc681c1c34a9e5be1",
+  "knowledge_delta_receipt": "payload/receipts/knowledge_delta/knowledge_delta_0065.json",
+  "knowledge_delta_hash": "bbebbdb3c057c882e74582e348dbaf43d4b8e5a093747f997292607017bc19d1",
+  "summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
+  "previous_canonical_state_receipt": "payload/receipts/canonical_state/canonical_state_0063.json",
+  "hash": "9d59fa6938e8186eeab5093c1c91f6d2e5cbfc300a3ad8b963c00c8bda65dd0b"
+}
