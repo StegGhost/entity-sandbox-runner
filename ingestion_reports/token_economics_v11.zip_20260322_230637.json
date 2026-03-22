@@ -1,0 +1,38 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "token_economics_v11",
+      "bundle_version": "11.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/meta_governance.json",
+        "config/zk_compiled.json",
+        "config/cross_chain.json",
+        "install/engine/meta_governance_engine.py",
+        "install/engine/zk_compiled_pipeline.py",
+        "install/engine/circom_compile.sh",
+        "install/engine/cross_chain_bridge.py",
+        "install/engine/state_relay_engine.py",
+        "install/tests/test_meta_governance.py",
+        "install/tests/test_cross_chain.py",
+        "install/tests/test_zk_compiled.py"
+      ],
+      "entrypoints": [
+        "install/engine/meta_governance_engine.py",
+        "install/engine/zk_compiled_pipeline.py",
+        "install/engine/cross_chain_bridge.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/token_economics_v11.zip"
+}

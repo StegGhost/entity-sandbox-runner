@@ -16981,3 +16981,64 @@
 [2026-03-22T22:01:31.103554] cleaned ingestion_tmp
 [2026-03-22T22:01:31.137416] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-22T22:01:31.137997] classified files: normal=2 workflow=1
+[2026-03-22T23:06:37.388536] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.389168] classified files: normal=4 workflow=1
+[2026-03-22T23:06:37.390033] cleaned ingestion_tmp
+[2026-03-22T23:06:37.429356] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.430212] cleaned ingestion_tmp
+[2026-03-22T23:06:37.468853] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.469529] cleaned ingestion_tmp
+[2026-03-22T23:06:37.507832] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.508557] cleaned ingestion_tmp
+[2026-03-22T23:06:37.547403] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.548150] cleaned ingestion_tmp
+[2026-03-22T23:06:37.587152] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.587990] cleaned ingestion_tmp
+[2026-03-22T23:06:37.628166] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.629054] classified files: normal=19 workflow=0
+[2026-03-22T23:06:37.669235] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.670221] classified files: normal=25 workflow=0
+[2026-03-22T23:06:37.671805] cleaned ingestion_tmp
+[2026-03-22T23:06:37.710350] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.711012] classified files: normal=8 workflow=0
+[2026-03-22T23:06:37.751727] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.752467] classified files: normal=13 workflow=0
+[2026-03-22T23:06:37.791697] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.792598] cleaned ingestion_tmp
+[2026-03-22T23:06:37.832252] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.833174] cleaned ingestion_tmp
+[2026-03-22T23:06:37.872949] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.873838] cleaned ingestion_tmp
+[2026-03-22T23:06:37.912952] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.913842] cleaned ingestion_tmp
+[2026-03-22T23:06:37.953458] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.954383] cleaned ingestion_tmp
+[2026-03-22T23:06:37.993902] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:37.994785] cleaned ingestion_tmp
+[2026-03-22T23:06:38.034295] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.035194] cleaned ingestion_tmp
+[2026-03-22T23:06:38.073852] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.074458] cleaned ingestion_tmp
+[2026-03-22T23:06:38.112569] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.113266] cleaned ingestion_tmp
+[2026-03-22T23:06:38.152535] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.153301] cleaned ingestion_tmp
+[2026-03-22T23:06:38.195048] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.195817] cleaned ingestion_tmp
+[2026-03-22T23:06:38.235732] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.236553] cleaned ingestion_tmp
+[2026-03-22T23:06:38.277471] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.278255] cleaned ingestion_tmp
+[2026-03-22T23:06:38.317586] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.318515] cleaned ingestion_tmp
+[2026-03-22T23:06:38.358994] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.359968] cleaned ingestion_tmp
+[2026-03-22T23:06:38.399442] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.400030] classified files: normal=7 workflow=0
+[2026-03-22T23:06:38.440935] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.441715] classified files: normal=9 workflow=1
+[2026-03-22T23:06:38.442795] cleaned ingestion_tmp
+[2026-03-22T23:06:38.481832] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.482601] cleaned ingestion_tmp
+[2026-03-22T23:06:38.521175] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T23:06:38.521987] cleaned ingestion_tmp

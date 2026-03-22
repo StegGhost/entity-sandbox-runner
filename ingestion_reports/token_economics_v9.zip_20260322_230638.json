@@ -1,0 +1,42 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "token_economics_v9",
+      "bundle_version": "9.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/zk_backend.json",
+        "config/rl_multi_agent.json",
+        "config/did_config.json",
+        "install/engine/zk_backend_interface.py",
+        "install/engine/zk_circom_adapter.py",
+        "install/engine/zk_halo2_adapter.py",
+        "install/engine/multi_agent_env.py",
+        "install/engine/multi_agent_trainer.py",
+        "install/engine/policy_registry.py",
+        "install/engine/did_identity_engine.py",
+        "install/engine/vc_credential_engine.py",
+        "install/engine/sybil_resistance_engine.py",
+        "install/tests/test_zk_backend.py",
+        "install/tests/test_multi_agent.py",
+        "install/tests/test_did_identity.py"
+      ],
+      "entrypoints": [
+        "install/engine/zk_backend_interface.py",
+        "install/engine/multi_agent_trainer.py",
+        "install/engine/did_identity_engine.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/token_economics_v9.zip"
+}

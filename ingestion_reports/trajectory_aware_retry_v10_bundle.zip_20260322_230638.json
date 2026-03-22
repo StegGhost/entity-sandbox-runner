@@ -1,0 +1,31 @@
+{
+  "bundle_name": "tokenized_governance_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "README.md",
+      "engine/trajectory_retry_selector_v10.py",
+      ".github/workflows/self_improving_governed_loop.yml"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_token.py",
+      "install/engine/token_incentives.py",
+      "install/engine/token_staking.py",
+      "install/engine/token_consensus.py",
+      "install/engine/token_ledger.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/trajectory_aware_retry_v10_bundle.zip"
+}

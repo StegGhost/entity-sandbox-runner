@@ -1,0 +1,25 @@
+{
+  "bundle_name": "auto_generated_feedback_bundle",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/tests/",
+      "install/engine/"
+    ],
+    "violations": [
+      "README.md",
+      "engine/trajectory_retry_selector_v10.py",
+      ".github/workflows/self_improving_governed_loop.yml"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_fix_missing_cge_root.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/auto_bundle_feedback.zip"
+}

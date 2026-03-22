@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "control_plane_observability_v16",
+      "bundle_version": "16.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/observability.json",
+        "install/engine/control_plane_engine.py",
+        "install/engine/metrics_engine.py",
+        "install/engine/event_stream_engine.py",
+        "install/engine/alerting_engine.py",
+        "install/engine/dashboard_state_engine.py",
+        "install/tests/test_metrics.py",
+        "install/tests/test_alerting.py"
+      ],
+      "entrypoints": [
+        "install/engine/control_plane_engine.py",
+        "install/engine/metrics_engine.py",
+        "install/engine/event_stream_engine.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/control_plane_observability_v16.zip"
+}

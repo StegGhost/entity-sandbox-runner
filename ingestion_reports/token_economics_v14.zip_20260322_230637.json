@@ -1,0 +1,38 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "token_economics_v14",
+      "bundle_version": "14.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/recursive_goals.json",
+        "config/zk_aggregation_real.json",
+        "config/dynamic_topology.json",
+        "install/engine/recursive_goal_engine.py",
+        "install/engine/goal_tree_engine.py",
+        "install/engine/zk_aggregation_real_engine.py",
+        "install/engine/topology_optimizer.py",
+        "install/engine/network_rewire_engine.py",
+        "install/tests/test_recursive_goals.py",
+        "install/tests/test_zk_real.py",
+        "install/tests/test_topology_dynamic.py"
+      ],
+      "entrypoints": [
+        "install/engine/recursive_goal_engine.py",
+        "install/engine/zk_aggregation_real_engine.py",
+        "install/engine/topology_optimizer.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/token_economics_v14.zip"
+}

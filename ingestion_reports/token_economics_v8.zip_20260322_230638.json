@@ -1,0 +1,41 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "token_economics_v8",
+      "bundle_version": "8.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/zk_config.json",
+        "config/rl_config.json",
+        "config/identity_config.json",
+        "install/engine/zk_circuit_engine.py",
+        "install/engine/zk_prover_engine.py",
+        "install/engine/zk_verifier_engine.py",
+        "install/engine/identity_staking_engine.py",
+        "install/engine/rl_agent_engine.py",
+        "install/engine/rl_environment.py",
+        "install/engine/replay_buffer.py",
+        "install/tests/test_zk_pipeline.py",
+        "install/tests/test_identity_staking.py",
+        "install/tests/test_rl_agent.py"
+      ],
+      "entrypoints": [
+        "install/engine/zk_prover_engine.py",
+        "install/engine/zk_verifier_engine.py",
+        "install/engine/identity_staking_engine.py",
+        "install/engine/rl_agent_engine.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/token_economics_v8.zip"
+}

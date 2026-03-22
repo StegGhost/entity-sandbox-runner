@@ -1,0 +1,32 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "token_economics_v5",
+      "bundle_version": "5.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "install/engine/federation_engine.py",
+        "install/engine/cross_runner_validation.py",
+        "install/engine/onchain_anchor_engine.py",
+        "install/engine/settlement_engine.py",
+        "install/tests/test_federation.py",
+        "install/tests/test_anchor.py"
+      ],
+      "entrypoints": [
+        "install/engine/federation_engine.py",
+        "install/engine/onchain_anchor_engine.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/token_economics_v5.zip"
+}

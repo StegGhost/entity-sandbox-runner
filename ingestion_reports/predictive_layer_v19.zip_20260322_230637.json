@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "predictive_layer_v19",
+      "bundle_version": "19.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/predictive_config.json",
+        "install/engine/forecast_engine.py",
+        "install/engine/recommendation_engine.py",
+        "install/engine/auto_tuning_engine.py",
+        "install/engine/trajectory_engine.py",
+        "install/tests/test_forecast.py",
+        "install/tests/test_recommendations.py",
+        "install/tests/test_autotune.py"
+      ],
+      "entrypoints": [
+        "install/engine/forecast_engine.py",
+        "install/engine/recommendation_engine.py",
+        "install/engine/auto_tuning_engine.py"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/predictive_layer_v19.zip"
+}
