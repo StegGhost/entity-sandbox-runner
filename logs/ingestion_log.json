@@ -400,5 +400,11 @@
     "ok": false,
     "error": "path_not_allowed:docs/v8.md",
     "ts": 1774213403.3278184
+  },
+  {
+    "bundle": "stability_gate_v8.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v8.md",
+    "ts": 1774215425.8122108
   }
 ]
