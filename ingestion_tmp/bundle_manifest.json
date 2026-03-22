@@ -1,0 +1,13 @@
+{
+  "bundle_name": "stability_gate",
+  "bundle_version": "v8",
+  "version": "v8",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "bundle_manifest.json",
+    "install/apply.py",
+    "install/engine/",
+    "install/tests/",
+    "docs/"
+  ]
+}
