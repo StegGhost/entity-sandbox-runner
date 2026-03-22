@@ -214,5 +214,9 @@
   "failure_feedback_loop_bundle_v1": {
     "version": "1.0.0",
     "installed": "2026-03-22T05:13:11.871046"
+  },
+  "priority_router_bundle_v1": {
+    "version": "1.0.0",
+    "installed": "2026-03-22T05:52:14.669316"
   }
 }
