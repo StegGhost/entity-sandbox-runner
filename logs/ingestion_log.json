@@ -184,5 +184,11 @@
     "ok": true,
     "error": null,
     "ts": 1774200922.3625445
+  },
+  {
+    "bundle": "governed_agent_passport_v1_ingestion_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774204267.7109451
   }
 ]
