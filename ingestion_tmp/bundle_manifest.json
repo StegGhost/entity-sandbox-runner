@@ -1,5 +1,5 @@
 {
-  "bundle_name": "plan_memory_bundle_v1",
+  "bundle_name": "step_completion_bundle_v1",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
