@@ -16820,3 +16820,10 @@
 [2026-03-22T19:46:15.654238] classified files: normal=13 workflow=0
 [2026-03-22T19:46:15.693136] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-22T19:46:15.693884] classified files: normal=15 workflow=0
+[2026-03-22T19:51:07.526015] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T19:51:07.526824] classified files: normal=16 workflow=0
+[2026-03-22T19:51:07.569010] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T19:51:07.570086] classified files: normal=24 workflow=0
+[2026-03-22T19:51:07.571709] cleaned ingestion_tmp
+[2026-03-22T19:51:07.613262] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/gap_bundle_src
+[2026-03-22T19:51:07.613910] classified files: normal=8 workflow=0

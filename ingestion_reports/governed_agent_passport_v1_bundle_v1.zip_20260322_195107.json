@@ -1,0 +1,45 @@
+{
+  "bundle_name": "step_completion_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "gap_bundle_src/README.md",
+      "gap_bundle_src/bundle_manifest.json",
+      "gap_bundle_src/docs/GAP_SPEC.md",
+      "gap_bundle_src/config/authority_policy.json",
+      "gap_bundle_src/install/admission_engine.py",
+      "gap_bundle_src/install/governed_passport.py",
+      "gap_bundle_src/install/execution_wrapper.py",
+      "gap_bundle_src/install/receipt_chain.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_self_audit.py",
+      "install/tests/test_plan_memory.py",
+      "install/tests/test_step_completion.py",
+      "install/tests/test_failure_feedback.py",
+      "install/tests/test_multi_step_planner.py",
+      "install/tests/test_priority_router.py",
+      "install/engine/proposal_to_bundle.py",
+      "install/engine/llm_self_improve.py",
+      "install/engine/multi_step_planner.py",
+      "install/engine/failure_feedback.py",
+      "install/engine/priority_router.py",
+      "install/engine/self_improve_runner.py",
+      "install/engine/step_completion.py",
+      "install/engine/plan_memory.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/governed_agent_passport_v1_bundle_v1.zip"
+}
