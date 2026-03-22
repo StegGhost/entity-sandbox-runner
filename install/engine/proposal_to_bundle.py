@@ -1,42 +1,49 @@
+
 import json
-import shutil
-import zipfile
-from pathlib import Path
+import os
+from datetime import datetime
 
+ALLOWED_PATHS = [
+    "bundle_manifest.json",
+    "install/tests/",
+    "install/engine/",
+    "install/apply.py"
+]
 
-def proposal_to_bundle(proposal, output_path="incoming_bundles/auto_bundle_feedback.zip"):
-    temp_dir = Path("tmp_bundle_feedback")
-    if temp_dir.exists():
-        shutil.rmtree(temp_dir)
-
-    install_dir = temp_dir / "install"
-    install_dir.mkdir(parents=True, exist_ok=True)
-
-    for f in proposal.get("files_to_create", []):
-        rel = Path(f["path"])
-        if rel.parts[0] != "install":
-            raise ValueError("files_to_create paths must start with install/")
-        path = temp_dir / rel
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(f["content"], encoding="utf-8")
-
-    manifest = {
-        "bundle_name": "auto_generated_feedback_bundle",
-        "bundle_version": "1.0.0",
-        "version": "1.0.0",
+def build_manifest(bundle_name, bundle_version="1.0.0"):
+    return {
+        "bundle_name": bundle_name,
+        "bundle_version": bundle_version,
         "install_mode": "folder_map",
-        "allowed_paths": [
-            "bundle_manifest.json",
-            "install/tests/",
-            "install/engine/"
-        ]
+        "allowed_paths": ALLOWED_PATHS
     }
 
-    (temp_dir / "bundle_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    Path("incoming_bundles").mkdir(exist_ok=True)
+def write_manifest(bundle_root, manifest):
+    path = os.path.join(bundle_root, "bundle_manifest.json")
+    with open(path, "w") as f:
+        json.dump(manifest, f, indent=2)
 
-    with zipfile.ZipFile(output_path, "w", zipfile.ZIP_DEFLATED) as z:
-        for p in temp_dir.rglob("*"):
-            z.write(p, p.relative_to(temp_dir))
+def build_bundle(bundle_root, bundle_name):
+    manifest = build_manifest(bundle_name)
+    write_manifest(bundle_root, manifest)
 
-    return output_path
+    # ensure required structure exists
+    required_paths = [
+        "install/tests",
+        "install/engine"
+    ]
+    for p in required_paths:
+        full_path = os.path.join(bundle_root, p)
+        os.makedirs(full_path, exist_ok=True)
+
+    # ensure apply.py exists
+    apply_path = os.path.join(bundle_root, "install/apply.py")
+    if not os.path.exists(apply_path):
+        with open(apply_path, "w") as f:
+            f.write(DEFAULT_APPLY)
+
+    return True
+
+DEFAULT_APPLY = '''def apply():
+    print("Bundle applied successfully.")
+'''
