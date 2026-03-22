@@ -4,8 +4,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def validate_capabilities(bundle_dir, manifest):
+def _is_allowed(path_str, allowed):
+    for a in allowed:
+        if a.endswith("/"):
+            if path_str.startswith(a):
+                return True
+        else:
+            if path_str == a:
+                return True
+    return False
 
+
+def validate_capabilities(bundle_dir, manifest):
     allowed = manifest.get("allowed_paths", [])
 
     violations = []
@@ -13,28 +23,17 @@ def validate_capabilities(bundle_dir, manifest):
     workflow_files = []
 
     for p in bundle_dir.rglob("*"):
-
         if not p.is_file():
             continue
 
         rel = p.relative_to(bundle_dir)
+        path_str = rel.as_posix()
 
-        path_str = str(rel)
-
-        allowed_match = False
-
-        for a in allowed:
-
-            if path_str.startswith(a):
-                allowed_match = True
-                break
-
-        if not allowed_match:
+        if not _is_allowed(path_str, allowed):
             violations.append(path_str)
         else:
             normal_files.append(path_str)
-
-            if ".github/workflows" in path_str:
+            if ".github/workflows/" in path_str:
                 workflow_files.append(path_str)
 
     return {
