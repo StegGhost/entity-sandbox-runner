@@ -198,5 +198,9 @@
   "llm_adapter_readme_bundle": {
     "version": "1.0.0",
     "installed": "2026-03-20T04:33:16.743320"
+  },
+  "constraint_min_bundle": {
+    "version": "1.0.0",
+    "installed": "2026-03-22T03:28:01.277651"
   }
 }

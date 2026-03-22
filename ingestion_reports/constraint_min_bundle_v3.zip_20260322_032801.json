@@ -1,0 +1,36 @@
+{
+  "bundle_name": "constraint_min_bundle",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 3,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_spec_quality.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/gap_signals.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_spec_quality.py",
+      "install/engine/gap_signals.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/constraint_min_bundle_v3.zip"
+}

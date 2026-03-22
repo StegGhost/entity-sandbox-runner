@@ -16681,3 +16681,15 @@
 [2026-03-22T03:24:36.978947] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-22T03:24:36.979479] classified files: normal=3 workflow=0
 [2026-03-22T03:24:36.980164] cleaned ingestion_tmp
+[2026-03-22T03:28:01.272035] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T03:28:01.272528] classified files: normal=3 workflow=0
+[2026-03-22T03:28:01.272788] transaction started for constraint_min_bundle_v3.zip
+[2026-03-22T03:28:01.273037] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-22T03:28:01.273306] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/tests/test_spec_quality.py
+[2026-03-22T03:28:01.273531] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/gap_signals.py
+[2026-03-22T03:28:01.275994] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-22T03:28:01.276357] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_spec_quality.py
+[2026-03-22T03:28:01.276623] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/gap_signals.py
+[2026-03-22T03:28:01.277020] transaction completed successfully
+[2026-03-22T03:28:01.277930] safe ingestion complete status=installed
+[2026-03-22T03:28:01.278255] cleaned ingestion_tmp

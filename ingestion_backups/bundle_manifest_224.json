@@ -1,0 +1,11 @@
+{
+  "bundle_name": "llm_adapter_readme_bundle",
+  "version": "1.0.0",
+  "description": "Adds LLM-agnostic adapter layer, agent registry, tool contracts, validation workflow, tests, and refreshed README documentation for governed execution systems.",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "bundle_manifest.json",
+    "install/",
+    "docs/"
+  ]
+}
