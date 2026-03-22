@@ -1,0 +1,51 @@
+{
+  "bundle_name": "stability_gate",
+  "bundle_version": "3.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/apply.py/",
+      "install/engine/",
+      "install/tests/",
+      "docs/"
+    ],
+    "violations": [
+      "stability_gate_v2/bundle_manifest.json",
+      "stability_gate_v2/docs/stability_model.md",
+      "stability_gate_v2/install/apply.py",
+      "stability_gate_v2/install/tests/test_enforcement.py",
+      "stability_gate_v2/install/tests/test_stability_score.py",
+      "stability_gate_v2/install/tests/test_adaptive_threshold.py",
+      "stability_gate_v2/install/tests/test_receipts.py",
+      "stability_gate_v2/install/engine/receipts.py",
+      "stability_gate_v2/install/engine/state_model.py",
+      "stability_gate_v2/install/engine/__init__.py",
+      "stability_gate_v2/install/engine/stability_guard.py",
+      "stability_gate_v2/install/engine/run_stability_check.py",
+      "stability_gate_v2/install/engine/enforcement.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/stability_model.md",
+      "install/apply.py",
+      "install/tests/test_enforcement.py",
+      "install/tests/test_volatility.py",
+      "install/tests/test_stability_score.py",
+      "install/tests/test_receipts.py",
+      "install/tests/test_thresholds.py",
+      "install/engine/adaptive_threshold.py",
+      "install/engine/receipts.py",
+      "install/engine/state_model.py",
+      "install/engine/__init__.py",
+      "install/engine/stability_guard.py",
+      "install/engine/runtime_check.py",
+      "install/engine/volatility.py",
+      "install/engine/enforcement.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stability_gate_v3.zip"
+}

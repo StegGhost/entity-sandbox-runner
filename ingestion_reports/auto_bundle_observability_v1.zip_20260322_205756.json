@@ -1,0 +1,37 @@
+{
+  "bundle_name": "authority_scope_enforcement_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "install/observability/observer.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_generator_rules.py",
+      "install/tests/test_execution_pipeline_v4.py",
+      "install/tests/test_observability.py",
+      "install/tests/test_admission_engine_v4.py",
+      "install/tests/test_authority_policy.py",
+      "install/tests/test_invariants.py",
+      "install/tests/test_prevention.py",
+      "install/engine/proposal_to_bundle.py",
+      "install/engine/execution_pipeline_v4.py",
+      "install/engine/authority_gate.py",
+      "install/engine/admission_engine_v4.py",
+      "install/engine/authority_policy.py",
+      "install/engine/observability_wrapper.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/auto_bundle_observability_v1.zip"
+}

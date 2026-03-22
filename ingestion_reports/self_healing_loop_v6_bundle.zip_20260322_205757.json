@@ -1,0 +1,43 @@
+{
+  "bundle_name": "self_healing_loop_v6",
+  "bundle_version": "6.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "docs/architecture_map.md",
+      "config/witness_config.json",
+      "config/relationship_defaults.json",
+      "install/decision_integration_hook.py",
+      "install/relationship_policy_engine.py",
+      "install/decision_state_recorder.py",
+      "install/self_healing_engine.py",
+      "install/non_guarantee_invariant.py",
+      "install/trust_decay_engine.py",
+      "install/relationship_history_analyzer.py",
+      "install/anomaly_detector.py",
+      "install/stegverse_ethics_guard.py",
+      "install/relationship_state_engine.py",
+      "install/apply.py",
+      "install/witness_coordinator.py",
+      "install/quorum_validator.py",
+      "install/temporal_identity_guard.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_smoke.py",
+      "install/tests/test_self_heal_runner_v6.py",
+      "install/tests/test_failure_recovery_v6.py",
+      "install/engine/failure_recovery_v6.py",
+      "install/engine/self_heal_runner_v6.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/self_healing_loop_v6_bundle.zip"
+}

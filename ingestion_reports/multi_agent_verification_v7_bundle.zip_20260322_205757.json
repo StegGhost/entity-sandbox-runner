@@ -1,0 +1,29 @@
+{
+  "bundle_name": "multi_agent_verification_v7",
+  "bundle_version": "7.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "install/apply.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_agent_verifier_v7.py",
+      "install/tests/test_receipts.py",
+      "install/engine/distributed_validation.py",
+      "install/engine/key_lifecycle.py",
+      "install/engine/agent_verifier_v7.py",
+      "install/engine/governance_receipt.py",
+      "install/engine/governance_pipeline_ext.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/multi_agent_verification_v7_bundle.zip"
+}

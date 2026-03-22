@@ -1,0 +1,38 @@
+{
+  "bundle_name": "slashing_rewards_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "stability_gate_v1/bundle_manifest.json",
+      "stability_gate_v1/docs/stability_model.md",
+      "stability_gate_v1/install/apply.py",
+      "stability_gate_v1/install/tests/test_edge_cases.py",
+      "stability_gate_v1/install/tests/test_enforcement.py",
+      "stability_gate_v1/install/tests/test_stability_score.py",
+      "stability_gate_v1/install/engine/state_model.py",
+      "stability_gate_v1/install/engine/__init__.py",
+      "stability_gate_v1/install/engine/stability_guard.py",
+      "stability_gate_v1/install/engine/enforcement.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_signed_receipts_v8.py",
+      "install/tests/test_slashing.py",
+      "install/engine/signed_receipts_v8.py",
+      "install/engine/economic_incentives.py",
+      "install/engine/slashing_rewards.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stability_gate_v1.zip"
+}

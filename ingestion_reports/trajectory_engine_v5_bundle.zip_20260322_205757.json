@@ -1,0 +1,38 @@
+{
+  "bundle_name": "trajectory_engine_v5",
+  "bundle_version": "5.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "docs/v7.md",
+      "docs/notes.md",
+      "docs/v8.md",
+      "install/apply.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_trajectory_engine_v5.py",
+      "install/tests/test_basic.py",
+      "install/tests/test_v8.py",
+      "install/tests/test_v7.py",
+      "install/engine/core.py",
+      "install/engine/consensus.py",
+      "install/engine/multi_agent.py",
+      "install/engine/trajectory_engine_v5.py",
+      "install/engine/economics.py",
+      "install/engine/conflict.py",
+      "install/engine/receipt_graph.py",
+      "install/engine/adversarial.py",
+      "install/engine/registry.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/trajectory_engine_v5_bundle.zip"
+}

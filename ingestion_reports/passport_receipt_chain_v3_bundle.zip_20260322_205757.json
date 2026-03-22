@@ -1,0 +1,28 @@
+{
+  "bundle_name": "passport_receipt_chain_v3",
+  "bundle_version": "3.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "install/apply.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_multi_sig.py",
+      "install/tests/test_receipt_chain.py",
+      "install/engine/multi_sig_verify.py",
+      "install/engine/receipt_chain.py",
+      "install/engine/multi_sig_policy.py",
+      "install/engine/governance_multi_sig_extension.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/passport_receipt_chain_v3_bundle.zip"
+}

@@ -1,0 +1,28 @@
+{
+  "bundle_name": "real_crypto_signing_v9",
+  "bundle_version": "9.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "install/apply.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_consensus.py",
+      "install/tests/test_crypto_signing_v9.py",
+      "install/engine/consensus_gate.py",
+      "install/engine/crypto_signing_v9.py",
+      "install/engine/governance_consensus_extension.py",
+      "install/engine/consensus_engine.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/crypto_signing_v9_bundle.zip"
+}

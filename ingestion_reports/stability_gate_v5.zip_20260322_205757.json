@@ -1,0 +1,47 @@
+{
+  "bundle_name": "stability_gate",
+  "bundle_version": "v5",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/apply.py/",
+      "install/engine/",
+      "install/tests/",
+      "docs/"
+    ],
+    "violations": [
+      "stability_gate_v4/bundle_manifest.json",
+      "stability_gate_v4/docs/stability_model.md",
+      "stability_gate_v4/install/apply.py",
+      "stability_gate_v4/install/tests/test_enforcement.py",
+      "stability_gate_v4/install/tests/test_volatility.py",
+      "stability_gate_v4/install/tests/test_snapshots.py",
+      "stability_gate_v4/install/tests/test_stability_score.py",
+      "stability_gate_v4/install/tests/test_receipts.py",
+      "stability_gate_v4/install/tests/test_thresholds.py",
+      "stability_gate_v4/install/engine/adaptive_threshold.py",
+      "stability_gate_v4/install/engine/state_snapshot.py",
+      "stability_gate_v4/install/engine/receipts.py",
+      "stability_gate_v4/install/engine/policy_trace.py",
+      "stability_gate_v4/install/engine/state_model.py",
+      "stability_gate_v4/install/engine/__init__.py",
+      "stability_gate_v4/install/engine/stability_guard.py",
+      "stability_gate_v4/install/engine/runtime_check.py",
+      "stability_gate_v4/install/engine/volatility.py",
+      "stability_gate_v4/install/engine/enforcement.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/notes.md",
+      "install/apply.py",
+      "install/tests/test_basic.py",
+      "install/engine/core.py",
+      "install/engine/forecast.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stability_gate_v5.zip"
+}

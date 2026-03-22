@@ -1,0 +1,28 @@
+{
+  "bundle_name": "full_governance_integration_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "install/tests/test_economic.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/engine/economic_consensus.py",
+      "install/engine/ingestion_governance_hook.py",
+      "install/engine/stake_registry.py",
+      "install/engine/governance_pipeline.py",
+      "install/engine/economic_gate.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/full_governance_integration_bundle_v1.zip"
+}
