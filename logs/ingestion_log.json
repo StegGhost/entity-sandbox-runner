@@ -292,5 +292,113 @@
     "ok": false,
     "error": "path_not_allowed:docs/architecture_map.md",
     "ts": 1774212361.9616947
+  },
+  {
+    "bundle": "admission_receipt_integration_v4_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3170507
+  },
+  {
+    "bundle": "authority_scope_enforcement_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3183537
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3190312
+  },
+  {
+    "bundle": "auto_bundle_fix_v6.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774213403.3191957
+  },
+  {
+    "bundle": "auto_bundle_fix_v7.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774213403.3193092
+  },
+  {
+    "bundle": "auto_bundle_fix_v8.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774213403.3194137
+  },
+  {
+    "bundle": "consensus_layer_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3206818
+  },
+  {
+    "bundle": "economic_governance_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3219323
+  },
+  {
+    "bundle": "governance_advanced_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3233113
+  },
+  {
+    "bundle": "multi_sig_enforcement_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3245308
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_1_full.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774213403.3248718
+  },
+  {
+    "bundle": "signed_receipts_v8_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3257008
+  },
+  {
+    "bundle": "slashing_rewards_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774213403.3267848
+  },
+  {
+    "bundle": "stability_gate_v2.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774213403.3269308
+  },
+  {
+    "bundle": "stability_gate_v4.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774213403.327073
+  },
+  {
+    "bundle": "stability_gate_v6.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/notes.md",
+    "ts": 1774213403.3273082
+  },
+  {
+    "bundle": "stability_gate_v7.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v7.md",
+    "ts": 1774213403.3275828
+  },
+  {
+    "bundle": "stability_gate_v8.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v8.md",
+    "ts": 1774213403.3278184
   }
 ]
