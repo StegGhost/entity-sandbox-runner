@@ -52,5 +52,17 @@
     "ok": true,
     "error": null,
     "ts": 1773887151.6732259
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774159368.2126353
+  },
+  {
+    "bundle": "multi_step_planner_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774159368.2151017
   }
 ]
