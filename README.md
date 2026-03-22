@@ -1,24 +1,27 @@
-# StegVerse Governed Execution + LLM Adapter Layer
+# StegVerse Governed Execution + CGE (Canonical Governance Engine)
 
-This repository now supports an **LLM-agnostic proposal adapter layer** on top of the governed execution and decision engine system.
+This repository implements a **deterministic governed execution system** with a **Canonical Governance Engine (CGE)** and an **LLM-agnostic proposal adapter layer**.
 
-## What this adds
+---
 
-The adapter layer treats any LLM, agent framework, planner, or external reasoning system as a **proposal source** rather than an authority source.
+## 🧠 System Overview
 
-That means:
+The system enforces **execution-time governance**.
 
-- LLM output does **not** directly execute actions
-- LLM output becomes a **proposal request**
-- the decision engine evaluates admissibility before execution
-- the governed executor records the result with receipts and chain integrity
+Every action:
+- is proposed  
+- evaluated  
+- admitted or rejected  
+- executed only if valid  
+- recorded with receipts  
+- chained into canonical state  
 
-## Core model
+---
 
-The architecture is:
+## 🧩 Architecture
 
-```text
-LLM(s) / Agents / Planners
+```
+LLMs / Agents / Planners
         ↓
 proposal_adapter.py
         ↓
@@ -28,65 +31,91 @@ decision_engine.py
         ↓
 governed_executor.py
         ↓
-receipts / state reconstruction / multi-node verification
+buildout engine (phases)
+        ↓
+receipt chain
+        ↓
+Merkle tree
+        ↓
+CGE (Canonical Governance Engine)
+        ↓
+canonical state + global root
 ```
 
-## Design principle
+---
 
-The system is intentionally **LLM-agnostic**.
+## 🔐 Core Capabilities
 
-Any model can connect if it can emit a structured proposal with the required fields.
+### 1. Governed Execution
+- No direct execution from LLMs  
+- All actions pass through decision logic  
+- Authority resolved at execution time  
 
-Examples:
+---
 
-- OpenAI tools / Responses API clients
-- Anthropic tool-use agents
-- local open-weight models
-- AutoGen / LangGraph / CrewAI style orchestrators
-- scripted automation systems
+### 2. Receipt Chain (Deterministic History)
+Each phase produces a receipt:
+- includes inputs, outputs, validation  
+- linked via `parent_hash`  
+- tamper-evident  
 
-## Authority model
+---
 
-Authority is not granted by the LLM itself.
+### 3. Merkle Proof Layer
+- Merkle tree per run  
+- deterministic root  
+- verifiable integrity  
 
-Authority is resolved through the governed execution layer.
+---
 
-A model may act as:
+### 4. Replay Engine
+- verifies deterministic execution  
+- detects divergence  
 
-- proposer
-- planner
-- critic
-- reviewer
-- explainer
+---
 
-But the **execution boundary** still belongs to the governed system.
+### 5. Idempotent Build System
+- identical inputs → no re-execution  
+- returns `"replayed"`  
 
-## New files
+---
 
-### `tool_contracts.py`
-Defines canonical proposal schema requirements and validation helpers.
+### 6. CGE — Canonical Governance Engine
 
-### `agent_registry.py`
-Stores agent metadata including model identity, roles, allowed tools, and trust level.
+The CGE is the **state authority layer**.
 
-### `proposal_adapter.py`
-Normalizes raw model output into a canonical proposal contract the decision engine can evaluate.
+It:
+- stores canonical objects by hash  
+- links state across runs  
+- produces a global root  
+- enables full reconstruction  
 
-### `llm_adapter.py`
-High-level adapter that converts model output into governed execution proposals.
+---
 
-### `llm_gateway.py`
-Receives normalized LLM requests, validates them, checks policy + authority context, and returns a ready proposal package.
+### 7. State Rebuild
 
-### `test_llm_adapter.py`
-Validates registry + adapter + gateway behavior.
+```python
+rebuild_state(target_dir, global_root)
+```
 
-### `.github/workflows/llm_adapter_validation.yml`
-Runs validation tests in CI.
+- reconstructs system state  
+- validates integrity  
 
-## Canonical proposal contract
+---
 
-The adapter layer uses this structure:
+## 🤖 LLM Adapter Layer
+
+LLMs are **proposal sources, not authorities**.
+
+Flow:
+
+```
+LLM → proposal_adapter → llm_gateway → decision_engine
+```
+
+---
+
+## 📦 Proposal Contract
 
 ```json
 {
@@ -96,71 +125,45 @@ The adapter layer uses this structure:
   "proposal_name": "update_customer_record",
   "authority_id": "local_admin",
   "tool_target": "records.update",
-  "payload": {
-    "customer_id": "123",
-    "status": "active"
-  },
-  "justification": "Customer status correction requested by authorized workflow.",
+  "payload": {},
+  "justification": "...",
   "confidence": 0.86,
-  "state_claims": {
-    "expected_record_exists": true
-  }
+  "state_claims": {}
 }
 ```
 
-## Simultaneous multi-LLM support
+---
 
-Yes, multiple LLMs can connect simultaneously.
+## 🧠 Principle
 
-The intended pattern is:
+> This system does not ask: “What happened?”
+>  
+> It enforces: “What is allowed to happen.”
 
-- each LLM uses its own `model_id`
-- each logical actor uses its own `agent_id`
-- each request carries its own `session_id`
-- authority is resolved independently of model origin
-- proposals are receipted independently
+---
 
-This enables:
+## 🚀 Status
 
-- parallel proposal generation
-- ensemble planning
-- planner / critic / executor separation
-- multi-model comparison before execution
+- Deterministic execution ✅  
+- Replay + idempotency ✅  
+- Receipt chain + Merkle ✅  
+- CGE canonical state ✅  
+- State rebuild + rollback (v5.1) ✅  
 
-## Recommended integration sequence
+---
 
-1. Register agents in `agent_registry.py`
-2. Convert raw LLM output with `proposal_adapter.py`
-3. Route normalized proposal through `llm_gateway.py`
-4. Pass approved proposal into `decision_engine.py`
-5. Execute through `governed_executor.py`
-6. Persist receipts + verify state / consensus
+## 🔜 Next
 
-## Installation notes
+- Constraint engine (governance layer)  
+- Authority enforcement  
+- Policy-driven execution  
 
-This bundle is designed to be ingested as a folder-mapped update.
+---
 
-Replace or add the included files at repository root:
+## ⚡ Category
 
-- `README.md`
-- `tool_contracts.py`
-- `agent_registry.py`
-- `proposal_adapter.py`
-- `llm_adapter.py`
-- `llm_gateway.py`
-- `test_llm_adapter.py`
-- `.github/workflows/llm_adapter_validation.yml`
+This is not a workflow tool.
 
-## Next recommended build after this bundle
+It is:
 
-- signed agent identities
-- tool-level policy modules
-- API routes for `/propose`, `/decide`, `/execute`
-- OpenAI / Anthropic request adapters
-- conflict detection for simultaneous proposals against shared state
-
-## Category framing
-
-This is not just an agent wrapper.
-
-It is an **execution-bound governance interface for machine-generated action**.
+**A deterministic, verifiable, governed execution system with canonical state.**
