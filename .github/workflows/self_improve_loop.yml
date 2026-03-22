@@ -1,0 +1,60 @@
+name: Self Modifying Loop
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  self-improve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Force latest repo state
+        run: |
+          git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=${PYTHONPATH}:$(pwd)" >> $GITHUB_ENV
+
+      - name: Debug repo state
+        run: |
+          echo "PWD:"
+          pwd
+          echo "ROOT:"
+          ls -la
+          echo "INCOMING_BUNDLES:"
+          ls -la incoming_bundles || echo "incoming_bundles missing"
+          echo "ENGINE:"
+          ls -la engine || echo "engine missing"
+          echo "TESTS:"
+          ls -la tests || echo "tests missing"
+
+      - name: Run self-improve generator
+        run: |
+          python engine/self_improve_runner.py
+
+      - name: Show generated bundles
+        run: |
+          echo "INCOMING_BUNDLES AFTER SELF-IMPROVE:"
+          ls -la incoming_bundles || true
+
+      - name: Commit generated bundles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add incoming_bundles || true
+          git diff --cached --quiet || git commit -m "self-improve: generated new bundle"
+          git push
