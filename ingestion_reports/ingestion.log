@@ -16713,3 +16713,24 @@
 [2026-03-22T04:38:12.938889] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/apply.py
 [2026-03-22T04:38:12.965763] safe ingestion complete status=installed
 [2026-03-22T04:38:12.966157] cleaned ingestion_tmp
+[2026-03-22T04:46:08.997018] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T04:46:08.997647] classified files: normal=7 workflow=0
+[2026-03-22T04:46:08.998009] transaction started for self_improve_bundle_v4.zip
+[2026-03-22T04:46:08.998256] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-22T04:46:08.998481] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/apply.py
+[2026-03-22T04:46:08.998730] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/tests/test_self_improve.py
+[2026-03-22T04:46:08.998965] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/proposal_to_bundle.py
+[2026-03-22T04:46:08.999162] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/llm_self_improve.py
+[2026-03-22T04:46:08.999361] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/repo_snapshot.py
+[2026-03-22T04:46:08.999551] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/self_improve_runner.py
+[2026-03-22T04:46:09.002081] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-22T04:46:09.002533] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/apply.py
+[2026-03-22T04:46:09.002978] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_self_improve.py
+[2026-03-22T04:46:09.003243] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/proposal_to_bundle.py
+[2026-03-22T04:46:09.003596] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/llm_self_improve.py
+[2026-03-22T04:46:09.004018] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/repo_snapshot.py
+[2026-03-22T04:46:09.004231] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/self_improve_runner.py
+[2026-03-22T04:46:09.004765] transaction completed successfully
+[2026-03-22T04:46:09.004968] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/apply.py
+[2026-03-22T04:46:09.033455] safe ingestion complete status=installed
+[2026-03-22T04:46:09.033927] cleaned ingestion_tmp
