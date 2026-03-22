@@ -1,0 +1,13 @@
+{
+  "bundle_name": "governed_agent_passport_v1",
+  "version": "1.0.0",
+  "bundle_version": "1.0.0",
+  "install_mode": "folder_map",
+  "allowed_paths": [
+    "install/",
+    "config/",
+    "docs/",
+    "README.md",
+    "bundle_manifest.json"
+  ]
+}

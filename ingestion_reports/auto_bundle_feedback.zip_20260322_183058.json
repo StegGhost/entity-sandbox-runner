@@ -1,0 +1,29 @@
+{
+  "bundle_name": "auto_generated_feedback_bundle",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/tests/",
+      "install/engine/"
+    ],
+    "violations": [
+      "install/apply.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_plan_memory.py",
+      "install/tests/test_step_completion.py",
+      "install/tests/test_fix_missing_cge_root.py",
+      "install/engine/llm_self_improve.py",
+      "install/engine/self_improve_runner.py",
+      "install/engine/step_completion.py",
+      "install/engine/plan_memory.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/auto_bundle_feedback.zip"
+}

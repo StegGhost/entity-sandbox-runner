@@ -1,0 +1,11 @@
+{
+  "policy_name": "Governed Agent Passport Baseline Policy",
+  "policy_version": "1.0.0",
+  "action_map": {
+    "SEND_EMAIL": "COMM.EMAIL_SEND",
+    "READ_EMAIL": "COMM.EMAIL_READ",
+    "DELETE_FILE": "SYSTEM.DELETE",
+    "SCHEDULE_EVENT": "SCHED.CALENDAR",
+    "LIST_CONTACTS": "DATA.CONTACTS"
+  }
+}
