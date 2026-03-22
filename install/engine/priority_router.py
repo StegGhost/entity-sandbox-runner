@@ -1,3 +1,4 @@
+
 def score_gaps(gaps):
     priority_order = {
         "missing_module": 100,
@@ -12,6 +13,7 @@ def score_gaps(gaps):
 
     scored = [(g, priority_order.get(g, 0)) for g in gaps]
     scored.sort(key=lambda x: x[1], reverse=True)
+
     return scored
 
 

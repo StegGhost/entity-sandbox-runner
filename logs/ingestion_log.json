@@ -202,5 +202,35 @@
     "ok": true,
     "error": null,
     "ts": 1774208153.113058
+  },
+  {
+    "bundle": "failure_feedback_loop_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774208868.3144612
+  },
+  {
+    "bundle": "multi_step_planner_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774208868.316957
+  },
+  {
+    "bundle": "plan_memory_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774208868.319104
+  },
+  {
+    "bundle": "priority_router_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774208868.3211725
+  },
+  {
+    "bundle": "step_completion_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774208868.3232644
   }
 ]
