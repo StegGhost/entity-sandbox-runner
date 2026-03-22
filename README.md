@@ -1,169 +1,100 @@
-# StegVerse Governed Execution + CGE (Canonical Governance Engine)
+# 🧠 Governed Self-Evolving System
 
-This repository implements a **deterministic governed execution system** with a **Canonical Governance Engine (CGE)** and an **LLM-agnostic proposal adapter layer**.
-
----
-
-## 🧠 System Overview
-
-The system enforces **execution-time governance**.
-
-Every action:
-- is proposed  
-- evaluated  
-- admitted or rejected  
-- executed only if valid  
-- recorded with receipts  
-- chained into canonical state  
+## Execution-Time Governance • Constraint-Bound Evolution • Observable Intelligence
 
 ---
 
-## 🧩 Architecture
+## 🚀 Overview
+
+This system implements **execution-time governance** — enforcing what is allowed to happen *before* it happens.
+
+It is not monitoring.  
+It is not validation.  
+It is **deterministic admissibility at the moment of execution**.
+
+---
+
+## 🔁 Core System Loop
 
 ```
-LLMs / Agents / Planners
-        ↓
-proposal_adapter.py
-        ↓
-llm_gateway.py
-        ↓
-decision_engine.py
-        ↓
-governed_executor.py
-        ↓
-buildout engine (phases)
-        ↓
-receipt chain
-        ↓
-Merkle tree
-        ↓
-CGE (Canonical Governance Engine)
-        ↓
-canonical state + global root
+generate
+→ apply rules
+→ validate (ingestion)
+→ repair (if needed)
+→ enforce invariants
+→ commit or rollback
+→ log events
+→ visualize system state
 ```
 
 ---
 
-## 🔐 Core Capabilities
+## 🧩 Architecture Layers
 
-### 1. Governed Execution
-- No direct execution from LLMs  
-- All actions pass through decision logic  
-- Authority resolved at execution time  
-
----
-
-### 2. Receipt Chain (Deterministic History)
-Each phase produces a receipt:
-- includes inputs, outputs, validation  
-- linked via `parent_hash`  
-- tamper-evident  
+- **Ingestion Enforcement** — capability-bound validation  
+- **Repair Engine** — self-healing corrections  
+- **Strategy Layer** — adaptive repair optimization  
+- **Prevention Layer** — pattern-based blocking  
+- **Generator Rewriting** — self-modifying generation  
+- **Invariant Enforcement (BCAT)** — constraint boundaries  
+- **Observability Layer** — event logging  
+- **Visualization Layer** — dashboards + summaries  
 
 ---
 
-### 3. Merkle Proof Layer
-- Merkle tree per run  
-- deterministic root  
-- verifiable integrity  
+## 🔒 Governance Model
+
+- Execution-time admissibility  
+- Boundary-conditioned autonomy (BCAT)  
+- Deterministic enforcement  
+- Rollback-safe evolution  
 
 ---
 
-### 4. Replay Engine
-- verifies deterministic execution  
-- detects divergence  
+## 📊 Outputs
 
----
-
-### 5. Idempotent Build System
-- identical inputs → no re-execution  
-- returns `"replayed"`  
-
----
-
-### 6. CGE — Canonical Governance Engine
-
-The CGE is the **state authority layer**.
-
-It:
-- stores canonical objects by hash  
-- links state across runs  
-- produces a global root  
-- enables full reconstruction  
-
----
-
-### 7. State Rebuild
-
-```python
-rebuild_state(target_dir, global_root)
+### Logs
+```
+install/observability/evolution_log.jsonl
 ```
 
-- reconstructs system state  
-- validates integrity  
-
----
-
-## 🤖 LLM Adapter Layer
-
-LLMs are **proposal sources, not authorities**.
-
-Flow:
-
+### Dashboard
 ```
-LLM → proposal_adapter → llm_gateway → decision_engine
+install/visualization/dashboard.html
 ```
 
 ---
 
-## 📦 Proposal Contract
+## 🧬 System Properties
 
-```json
-{
-  "model_id": "gpt-5.x",
-  "agent_id": "agent_ops",
-  "session_id": "session-123",
-  "proposal_name": "update_customer_record",
-  "authority_id": "local_admin",
-  "tool_target": "records.update",
-  "payload": {},
-  "justification": "...",
-  "confidence": 0.86,
-  "state_claims": {}
-}
-```
+- Self-improving  
+- Self-healing  
+- Self-optimizing  
+- Anticipatory  
+- Self-rewriting  
+- Constraint-bound  
+- Fully observable  
 
 ---
 
-## 🧠 Principle
+## 🧠 Core Principle
 
-> This system does not ask: “What happened?”
->  
-> It enforces: “What is allowed to happen.”
-
----
-
-## 🚀 Status
-
-- Deterministic execution ✅  
-- Replay + idempotency ✅  
-- Receipt chain + Merkle ✅  
-- CGE canonical state ✅  
-- State rebuild + rollback (v5.1) ✅  
+> The system does not ask “what happened?”  
+> It enforces “what is allowed to happen — before it happens.”
 
 ---
 
-## 🔜 Next
+## 🔥 Status
 
-- Constraint engine (governance layer)  
-- Authority enforcement  
-- Policy-driven execution  
+✅ Running  
+✅ Governed  
+✅ Observable  
+✅ Evolvable  
 
 ---
 
-## ⚡ Category
+## 📌 What This Is
 
-This is not a workflow tool.
+This is not a prototype.
 
-It is:
-
-**A deterministic, verifiable, governed execution system with canonical state.**
+This is a **governed execution system**.
