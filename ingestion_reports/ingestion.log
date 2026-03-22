@@ -16696,3 +16696,20 @@
 [2026-03-22T04:21:38.043595] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-22T04:21:38.044114] classified files: normal=5 workflow=0
 [2026-03-22T04:21:38.044821] cleaned ingestion_tmp
+[2026-03-22T04:38:12.932603] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T04:38:12.933189] classified files: normal=5 workflow=0
+[2026-03-22T04:38:12.933491] transaction started for self_improve_bundle_v3.zip
+[2026-03-22T04:38:12.933724] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/bundle_manifest.json
+[2026-03-22T04:38:12.933981] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/apply.py
+[2026-03-22T04:38:12.934223] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/tests/test_self_improve.py
+[2026-03-22T04:38:12.934482] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/llm_self_improve.py
+[2026-03-22T04:38:12.934686] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/repo_snapshot.py
+[2026-03-22T04:38:12.937176] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json
+[2026-03-22T04:38:12.937458] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/apply.py
+[2026-03-22T04:38:12.937743] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_self_improve.py
+[2026-03-22T04:38:12.938041] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/llm_self_improve.py
+[2026-03-22T04:38:12.938249] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/repo_snapshot.py
+[2026-03-22T04:38:12.938666] transaction completed successfully
+[2026-03-22T04:38:12.938889] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/apply.py
+[2026-03-22T04:38:12.965763] safe ingestion complete status=installed
+[2026-03-22T04:38:12.966157] cleaned ingestion_tmp

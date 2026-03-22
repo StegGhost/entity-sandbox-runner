@@ -1,12 +1,11 @@
 {
-  "bundle_name": "self_improve_bundle_v3",
+  "bundle_name": "constraint_min_bundle",
   "bundle_version": "1.0.0",
   "version": "1.0.0",
   "install_mode": "folder_map",
   "allowed_paths": [
     "bundle_manifest.json",
     "install/engine/",
-    "install/tests/",
-    "install/apply.py"
+    "install/tests/"
   ]
 }

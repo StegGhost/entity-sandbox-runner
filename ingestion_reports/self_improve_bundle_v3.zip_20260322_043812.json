@@ -1,0 +1,41 @@
+{
+  "bundle_name": "self_improve_bundle_v3",
+  "bundle_version": "1.0.0",
+  "status": "installed",
+  "installed_files_count": 5,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/apply.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_self_improve.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/llm_self_improve.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/repo_snapshot.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_self_improve.py",
+      "install/engine/llm_self_improve.py",
+      "install/engine/repo_snapshot.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/self_improve_bundle_v3.zip"
+}
