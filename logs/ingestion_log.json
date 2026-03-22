@@ -238,5 +238,17 @@
     "ok": true,
     "error": null,
     "ts": 1774209006.2745953
+  },
+  {
+    "bundle": "auto_bundle_fix_v2.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774209100.0298603
+  },
+  {
+    "bundle": "governed_agent_passport_v1_ingestion_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774209100.0303698
   }
 ]
