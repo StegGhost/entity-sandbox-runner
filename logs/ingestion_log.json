@@ -70,5 +70,11 @@
     "ok": true,
     "error": null,
     "ts": 1774159511.8588798
+  },
+  {
+    "bundle": "plan_memory_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774160363.5844615
   }
 ]
