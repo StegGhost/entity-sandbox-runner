@@ -1,0 +1,47 @@
+{
+  "bundle_name": "stability_gate",
+  "bundle_version": "v8",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/apply.py/",
+      "install/engine/",
+      "install/tests/",
+      "docs/"
+    ],
+    "violations": [
+      "config/witness_config.json",
+      "config/relationship_defaults.json",
+      "install/decision_integration_hook.py",
+      "install/relationship_policy_engine.py",
+      "install/decision_state_recorder.py",
+      "install/self_healing_engine.py",
+      "install/non_guarantee_invariant.py",
+      "install/trust_decay_engine.py",
+      "install/relationship_history_analyzer.py",
+      "install/anomaly_detector.py",
+      "install/stegverse_ethics_guard.py",
+      "install/relationship_state_engine.py",
+      "install/witness_coordinator.py",
+      "install/quorum_validator.py",
+      "install/temporal_identity_guard.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/architecture_map.md",
+      "docs/v8.md",
+      "install/apply.py",
+      "install/tests/test_smoke.py",
+      "install/tests/test_v8.py",
+      "install/engine/core.py",
+      "install/engine/consensus.py",
+      "install/engine/conflict.py",
+      "install/engine/registry.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stability_gate_v8.zip"
+}

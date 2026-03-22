@@ -1,0 +1,35 @@
+{
+  "bundle_name": "tokenized_governance_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "docs/v9.md"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_v9.py",
+      "install/tests/test_token.py",
+      "install/engine/token_incentives.py",
+      "install/engine/core.py",
+      "install/engine/consensus.py",
+      "install/engine/token_staking.py",
+      "install/engine/token_consensus.py",
+      "install/engine/token_ledger.py",
+      "install/engine/receipt_graph.py",
+      "install/engine/commit.py",
+      "install/engine/message_bus.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/tokenized_governance_bundle_v1.zip"
+}
