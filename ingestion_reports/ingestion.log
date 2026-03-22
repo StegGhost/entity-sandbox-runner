@@ -16678,3 +16678,6 @@
 [2026-03-21T22:56:47.042951] cleaned ingestion_tmp
 [2026-03-22T03:22:35.399381] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-22T03:22:35.400066] cleaned ingestion_tmp
+[2026-03-22T03:24:36.978947] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T03:24:36.979479] classified files: normal=3 workflow=0
+[2026-03-22T03:24:36.980164] cleaned ingestion_tmp

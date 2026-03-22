@@ -1,0 +1,21 @@
+{
+  "bundle_name": "constraint_min_bundle",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "engine/",
+      "tests/"
+    ],
+    "violations": [
+      "bundle_manifest.json",
+      "install/tests/test_spec_quality.py",
+      "install/engine/gap_signals.py"
+    ],
+    "filtered_normal_files": [],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/constraint_min_bundle_v2.zip"
+}
