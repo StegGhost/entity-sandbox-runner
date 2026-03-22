@@ -1,0 +1,75 @@
+name: Test + Failure Feedback
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-feedback:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Force latest repo state
+        run: |
+          git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=${PYTHONPATH}:$(pwd)" >> $GITHUB_ENV
+
+      # 🔥 Run tests and capture failures
+      - name: Run pytest
+        id: pytest
+        continue-on-error: true
+        run: |
+          mkdir -p logs
+          pytest -q > logs/latest_failure.txt 2>&1 || true
+
+      # 🔍 Show failure output
+      - name: Show failures
+        run: |
+          echo "---- FAILURE OUTPUT ----"
+          cat logs/latest_failure.txt || echo "no failures"
+
+      # 🔥 Run feedback-aware self improve
+      - name: Run feedback loop
+        run: |
+          python - <<EOF
+from engine.failure_feedback import load_failure_text
+from engine.self_improve_runner import run_self_improve
+
+failure_text = load_failure_text()
+result = run_self_improve(".", failure_text=failure_text)
+
+print(result)
+EOF
+
+      # 🔍 Show generated bundle
+      - name: Show generated bundles
+        run: |
+          echo "INCOMING_BUNDLES AFTER FEEDBACK:"
+          ls -la incoming_bundles || true
+
+      # 💾 Commit bundle + logs
+      - name: Commit feedback artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+
+          git add incoming_bundles logs || true
+
+          git diff --cached --quiet || git commit -m "feedback: generated bundle from test failures"
+
+          git push
