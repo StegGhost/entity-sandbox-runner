@@ -1,4 +1,4 @@
-name: Self Modifying Loop
+name: Self Improving Loop
 
 on:
   workflow_dispatch:
