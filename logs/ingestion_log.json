@@ -406,5 +406,23 @@
     "ok": false,
     "error": "path_not_allowed:docs/v8.md",
     "ts": 1774215425.8122108
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774216571.2826128
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_1_full.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774216571.2832353
+  },
+  {
+    "bundle": "stability_gate_v9.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v9.md",
+    "ts": 1774216571.28374
   }
 ]
