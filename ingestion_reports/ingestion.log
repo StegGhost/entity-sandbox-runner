@@ -16693,3 +16693,6 @@
 [2026-03-22T03:28:01.277020] transaction completed successfully
 [2026-03-22T03:28:01.277930] safe ingestion complete status=installed
 [2026-03-22T03:28:01.278255] cleaned ingestion_tmp
+[2026-03-22T04:21:38.043595] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T04:21:38.044114] classified files: normal=5 workflow=0
+[2026-03-22T04:21:38.044821] cleaned ingestion_tmp

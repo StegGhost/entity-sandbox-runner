@@ -1,0 +1,24 @@
+{
+  "bundle_name": "self_improve_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "bundle_manifest.json"
+    ],
+    "filtered_normal_files": [
+      "install/tests/test_self_improve.py",
+      "install/engine/proposal_to_bundle.py",
+      "install/engine/llm_self_improve.py",
+      "install/engine/repo_snapshot.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/self_improve_bundle_v1.zip"
+}
