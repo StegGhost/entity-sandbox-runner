@@ -29,40 +29,40 @@ jobs:
         run: |
           echo "PYTHONPATH=${PYTHONPATH}:$(pwd)" >> $GITHUB_ENV
 
-      # 🔥 Run tests and capture failures
+      - name: Ensure log directories
+        run: |
+          mkdir -p logs incoming_bundles
+
       - name: Run pytest
         id: pytest
         continue-on-error: true
         run: |
-          mkdir -p logs
           pytest -q > logs/latest_failure.txt 2>&1 || true
 
-      # 🔍 Show failure output
       - name: Show failures
         run: |
           echo "---- FAILURE OUTPUT ----"
           cat logs/latest_failure.txt || echo "no failures"
 
-      # 🔥 Run feedback-aware self improve
-      - name: Run feedback loop
+      - name: Run stabilized feedback loop
         run: |
           python - <<EOF
-from engine.failure_feedback import load_failure_text
-from engine.self_improve_runner import run_self_improve
+            from engine.failure_feedback import load_failure_text
+            from engine.self_improve_runner import run_self_improve
 
-failure_text = load_failure_text()
-result = run_self_improve(".", failure_text=failure_text)
+             failure_text = load_failure_text()
+             result = run_self_improve(".", failure_text=failure_text)
 
-print(result)
-EOF
+             print(result)
+             EOF
 
-      # 🔍 Show generated bundle
       - name: Show generated bundles
         run: |
           echo "INCOMING_BUNDLES AFTER FEEDBACK:"
           ls -la incoming_bundles || true
+          echo "FEEDBACK STATE:"
+          cat logs/feedback_state.json || echo "no feedback state"
 
-      # 💾 Commit bundle + logs
       - name: Commit feedback artifacts
         run: |
           git config user.name "github-actions[bot]"
@@ -70,6 +70,6 @@ EOF
 
           git add incoming_bundles logs || true
 
-          git diff --cached --quiet || git commit -m "feedback: generated bundle from test failures"
+          git diff --cached --quiet || git commit -m "feedback: stabilized bundle generation"
 
           git push
