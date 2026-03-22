@@ -3,9 +3,8 @@ import shutil
 import zipfile
 from pathlib import Path
 
-
-def proposal_to_bundle(proposal, output_path="incoming_bundles/auto_bundle_feedback.zip"):
-    temp_dir = Path("tmp_bundle_feedback")
+def proposal_to_bundle(proposal, output_path="incoming_bundles/auto_bundle_v4.zip"):
+    temp_dir = Path("tmp_bundle_v4")
     if temp_dir.exists():
         shutil.rmtree(temp_dir)
 
@@ -21,7 +20,7 @@ def proposal_to_bundle(proposal, output_path="incoming_bundles/auto_bundle_feedb
         path.write_text(f["content"], encoding="utf-8")
 
     manifest = {
-        "bundle_name": "auto_generated_feedback_bundle",
+        "bundle_name": "auto_generated_bundle_v4",
         "bundle_version": "1.0.0",
         "version": "1.0.0",
         "install_mode": "folder_map",
