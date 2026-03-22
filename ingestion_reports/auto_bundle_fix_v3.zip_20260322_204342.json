@@ -1,0 +1,51 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "installed",
+  "installed_files_count": 11,
+  "installed_files": [
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/apply.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_auto_repair.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/proposal_to_bundle.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/README.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/bundle_manifest.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/docs/GAP_SPEC.md",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/config/authority_policy.json",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/admission_engine.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/governed_passport.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/execution_wrapper.py",
+    "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/receipt_chain.py"
+  ],
+  "verification": {
+    "manifest_found": true,
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/gap_bundle_src/bundle_manifest.json",
+    "expected_files": [],
+    "missing_files": [],
+    "verified": true,
+    "reason": "folder_map_present_manual_scope"
+  },
+  "capabilities": {
+    "verified": true,
+    "reason": "capabilities_enforced",
+    "allowed_paths": [
+      "gap_bundle_src/",
+      "install/"
+    ],
+    "violations": [],
+    "filtered_normal_files": [
+      "install/apply.py",
+      "install/tests/test_auto_repair.py",
+      "install/engine/proposal_to_bundle.py",
+      "gap_bundle_src/README.md",
+      "gap_bundle_src/bundle_manifest.json",
+      "gap_bundle_src/docs/GAP_SPEC.md",
+      "gap_bundle_src/config/authority_policy.json",
+      "gap_bundle_src/install/admission_engine.py",
+      "gap_bundle_src/install/governed_passport.py",
+      "gap_bundle_src/install/execution_wrapper.py",
+      "gap_bundle_src/install/receipt_chain.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "installed_bundles/auto_bundle_fix_v3.zip"
+}

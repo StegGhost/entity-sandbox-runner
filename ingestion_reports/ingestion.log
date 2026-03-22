@@ -16827,3 +16827,48 @@
 [2026-03-22T19:51:07.571709] cleaned ingestion_tmp
 [2026-03-22T19:51:07.613262] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/gap_bundle_src
 [2026-03-22T19:51:07.613910] classified files: normal=8 workflow=0
+[2026-03-22T20:43:42.007792] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T20:43:42.009614] classified files: normal=11 workflow=0
+[2026-03-22T20:43:42.010492] transaction started for auto_bundle_fix_v3.zip
+[2026-03-22T20:43:42.010747] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/apply.py
+[2026-03-22T20:43:42.011010] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/tests/test_auto_repair.py
+[2026-03-22T20:43:42.011240] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/install/engine/proposal_to_bundle.py
+[2026-03-22T20:43:42.011460] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/README.md
+[2026-03-22T20:43:42.011647] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/bundle_manifest.json
+[2026-03-22T20:43:42.011862] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/docs/GAP_SPEC.md
+[2026-03-22T20:43:42.012109] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/config/authority_policy.json
+[2026-03-22T20:43:42.012336] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/install/admission_engine.py
+[2026-03-22T20:43:42.012519] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/install/governed_passport.py
+[2026-03-22T20:43:42.012731] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/install/execution_wrapper.py
+[2026-03-22T20:43:42.012917] staged /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/transaction_staging/gap_bundle_src/install/receipt_chain.py
+[2026-03-22T20:43:42.013751] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/apply.py
+[2026-03-22T20:43:42.014011] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/tests/test_auto_repair.py
+[2026-03-22T20:43:42.014414] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/proposal_to_bundle.py
+[2026-03-22T20:43:42.016449] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/README.md
+[2026-03-22T20:43:42.018705] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/bundle_manifest.json
+[2026-03-22T20:43:42.019101] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/docs/GAP_SPEC.md
+[2026-03-22T20:43:42.019467] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/config/authority_policy.json
+[2026-03-22T20:43:42.019851] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/admission_engine.py
+[2026-03-22T20:43:42.020207] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/governed_passport.py
+[2026-03-22T20:43:42.020540] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/execution_wrapper.py
+[2026-03-22T20:43:42.020947] committed /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/gap_bundle_src/install/receipt_chain.py
+[2026-03-22T20:43:42.021652] transaction completed successfully
+[2026-03-22T20:43:42.021837] running bundle installer /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install/apply.py
+[2026-03-22T20:43:42.034920] safe ingestion complete status=installed
+[2026-03-22T20:43:42.035582] cleaned ingestion_tmp
+[2026-03-22T20:43:42.074705] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install
+[2026-03-22T20:43:42.075515] classified files: normal=3 workflow=0
+[2026-03-22T20:43:42.116087] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/install
+[2026-03-22T20:43:42.116927] classified files: normal=4 workflow=0
+[2026-03-22T20:43:42.157672] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T20:43:42.158352] classified files: normal=11 workflow=0
+[2026-03-22T20:43:42.218495] cleaned ingestion_tmp
+[2026-03-22T20:43:42.261040] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T20:43:42.261675] classified files: normal=3 workflow=0
+[2026-03-22T20:43:42.317053] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T20:43:42.318168] classified files: normal=10 workflow=0
+[2026-03-22T20:43:42.371044] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T20:43:42.372090] classified files: normal=21 workflow=0
+[2026-03-22T20:43:42.419033] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-22T20:43:42.420374] classified files: normal=25 workflow=0
+[2026-03-22T20:43:42.421948] cleaned ingestion_tmp

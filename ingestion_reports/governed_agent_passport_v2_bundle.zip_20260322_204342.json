@@ -1,0 +1,31 @@
+{
+  "bundle_name": "governed_agent_passport_v2",
+  "bundle_version": "2.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "install/apply.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_memory.py",
+      "install/tests/test_governed_passport.py",
+      "install/tests/test_passport_identity_bindings.py",
+      "install/tests/test_passport_authority.py",
+      "install/tests/test_strategy.py",
+      "install/engine/governed_passport.py",
+      "install/engine/proposal_to_bundle.py",
+      "install/engine/passport_identity_bindings.py",
+      "install/engine/passport_authority.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/governed_agent_passport_v2_bundle.zip"
+}

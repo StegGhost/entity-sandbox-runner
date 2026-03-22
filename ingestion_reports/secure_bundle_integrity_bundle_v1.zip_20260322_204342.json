@@ -1,0 +1,46 @@
+{
+  "bundle_name": "secure_bundle_integrity_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      "install/apply.py/"
+    ],
+    "violations": [
+      "docs/architecture_map.md",
+      "config/witness_config.json",
+      "config/relationship_defaults.json",
+      "install/decision_integration_hook.py",
+      "install/relationship_policy_engine.py",
+      "install/decision_state_recorder.py",
+      "install/self_healing_engine.py",
+      "install/non_guarantee_invariant.py",
+      "install/trust_decay_engine.py",
+      "install/relationship_history_analyzer.py",
+      "install/anomaly_detector.py",
+      "install/stegverse_ethics_guard.py",
+      "install/relationship_state_engine.py",
+      "install/witness_coordinator.py",
+      "install/quorum_validator.py",
+      "install/temporal_identity_guard.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/apply.py",
+      "install/tests/test_smoke.py",
+      "install/tests/test_receipt_chain.py",
+      "install/tests/test_integrity_gate.py",
+      "install/engine/verify_signature.py",
+      "install/engine/verify_bundle_integrity.py",
+      "install/engine/receipt_chain.py",
+      "install/engine/integrity_gate.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/secure_bundle_integrity_bundle_v1.zip"
+}

@@ -1,42 +1,94 @@
+
 import json
+import os
 import shutil
-import zipfile
-from pathlib import Path
 
+ALLOWED_PATHS = [
+    "bundle_manifest.json",
+    "install/tests/",
+    "install/engine/",
+    "install/apply.py"
+]
 
-def proposal_to_bundle(proposal, output_path="incoming_bundles/auto_bundle_feedback.zip"):
-    temp_dir = Path("tmp_bundle_feedback")
-    if temp_dir.exists():
-        shutil.rmtree(temp_dir)
+MAX_RETRIES = 3
 
-    install_dir = temp_dir / "install"
-    install_dir.mkdir(parents=True, exist_ok=True)
-
-    for f in proposal.get("files_to_create", []):
-        rel = Path(f["path"])
-        if rel.parts[0] != "install":
-            raise ValueError("files_to_create paths must start with install/")
-        path = temp_dir / rel
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(f["content"], encoding="utf-8")
-
-    manifest = {
-        "bundle_name": "auto_generated_feedback_bundle",
-        "bundle_version": "1.0.0",
-        "version": "1.0.0",
+def build_manifest(bundle_name, bundle_version="1.0.0"):
+    return {
+        "bundle_name": bundle_name,
+        "bundle_version": bundle_version,
         "install_mode": "folder_map",
-        "allowed_paths": [
-            "bundle_manifest.json",
-            "install/tests/",
-            "install/engine/"
-        ]
+        "allowed_paths": ALLOWED_PATHS
     }
 
-    (temp_dir / "bundle_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    Path("incoming_bundles").mkdir(exist_ok=True)
+def simulate_ingestion(bundle_root):
+    manifest_path = os.path.join(bundle_root, "bundle_manifest.json")
+    if not os.path.exists(manifest_path):
+        return False, "missing_manifest"
 
-    with zipfile.ZipFile(output_path, "w", zipfile.ZIP_DEFLATED) as z:
-        for p in temp_dir.rglob("*"):
-            z.write(p, p.relative_to(temp_dir))
+    with open(manifest_path) as f:
+        manifest = json.load(f)
 
-    return output_path
+    allowed = manifest.get("allowed_paths", [])
+
+    for root, _, files in os.walk(bundle_root):
+        for file in files:
+            rel_path = os.path.relpath(os.path.join(root, file), bundle_root)
+
+            if rel_path == "bundle_manifest.json":
+                continue
+
+            valid = False
+            for path in allowed:
+                if path.endswith("/") and rel_path.startswith(path):
+                    valid = True
+                elif rel_path == path:
+                    valid = True
+
+            if not valid:
+                return False, f"capability_violation:{rel_path}"
+
+    return True, "ok"
+
+def ensure_structure(bundle_root):
+    os.makedirs(os.path.join(bundle_root, "install/tests"), exist_ok=True)
+    os.makedirs(os.path.join(bundle_root, "install/engine"), exist_ok=True)
+
+    apply_path = os.path.join(bundle_root, "install/apply.py")
+    if not os.path.exists(apply_path):
+        with open(apply_path, "w") as f:
+            f.write("def apply():\n    print(\"Bundle applied successfully.\")\n")
+
+def auto_repair(bundle_root, reason):
+    if reason.startswith("capability_violation:"):
+        bad_path = reason.split(":", 1)[1]
+        full_path = os.path.join(bundle_root, bad_path)
+
+        quarantine_dir = os.path.join(bundle_root, "quarantine")
+        os.makedirs(quarantine_dir, exist_ok=True)
+
+        if os.path.exists(full_path):
+            shutil.move(full_path, os.path.join(quarantine_dir, os.path.basename(bad_path)))
+        return True
+
+    if reason == "missing_manifest":
+        return True
+
+    return False
+
+def build_bundle(bundle_root, bundle_name):
+    ensure_structure(bundle_root)
+
+    manifest = build_manifest(bundle_name)
+    with open(os.path.join(bundle_root, "bundle_manifest.json"), "w") as f:
+        json.dump(manifest, f, indent=2)
+
+    for _ in range(MAX_RETRIES):
+        ok, reason = simulate_ingestion(bundle_root)
+        if ok:
+            return True
+
+        repaired = auto_repair(bundle_root, reason)
+        if not repaired:
+            raise Exception(f"UNRECOVERABLE:{reason}")
+
+    raise Exception(f"MAX_RETRIES_EXCEEDED:{reason}")
