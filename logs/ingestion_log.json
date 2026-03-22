@@ -262,5 +262,35 @@
     "ok": true,
     "error": null,
     "ts": 1774212091.1787534
+  },
+  {
+    "bundle": "auto_bundle_fix_v4.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774212361.9589014
+  },
+  {
+    "bundle": "auto_bundle_fix_v5.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774212361.9591422
+  },
+  {
+    "bundle": "passport_receipt_chain_v3_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774212361.9607377
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774212361.9611835
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_1_full.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774212361.9616947
   }
 ]
