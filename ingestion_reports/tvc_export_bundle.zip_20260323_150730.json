@@ -1,0 +1,39 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "ADVERSARIAL_MODEL.md/",
+      "CONSTRAINT_SYSTEM.md/",
+      "DIAGRAM.md/",
+      "FAILURE_MODES.md/",
+      "FORMAL_MODEL.md/",
+      "INVARIANTS_FORMAL.md/",
+      "README.md/",
+      "THEOREMS.md/",
+      "tvc_export_bundle/"
+    ],
+    "violations": [
+      "tvc_export_bundle/.github/workflows/export_stegtv_execution_events.yml"
+    ],
+    "filtered_normal_files": [
+      "README.md",
+      "FORMAL_MODEL.md",
+      "FAILURE_MODES.md",
+      "DIAGRAM.md",
+      "ADVERSARIAL_MODEL.md",
+      "CONSTRAINT_SYSTEM.md",
+      "INVARIANTS_FORMAL.md",
+      "THEOREMS.md",
+      "tvc_export_bundle/BUNDLE_NOTES.txt",
+      "tvc_export_bundle/app/main.py",
+      "tvc_export_bundle/app/event_log.py",
+      "tvc_export_bundle/data/.gitkeep"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/tvc_export_bundle.zip"
+}

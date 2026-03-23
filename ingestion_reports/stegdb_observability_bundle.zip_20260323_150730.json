@@ -1,0 +1,35 @@
+{
+  "bundle_name": "stability_gate",
+  "bundle_version": "v13",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/apply.py/",
+      "install/engine/",
+      "install/tests/",
+      "docs/"
+    ],
+    "violations": [
+      "BUNDLE_NOTES.txt",
+      "README.md",
+      "tools/build_observability_index.py",
+      "tools/ingest_stegtv_events.py",
+      ".github/workflows/stegdb-ingest-stegtv-ledger.yml"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/v13.md",
+      "install/apply.py",
+      "install/tests/test_v13.py",
+      "install/engine/pricing.py",
+      "install/engine/hardware_id.py",
+      "install/engine/federation.py",
+      "install/engine/zk_proof.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stegdb_observability_bundle.zip"
+}

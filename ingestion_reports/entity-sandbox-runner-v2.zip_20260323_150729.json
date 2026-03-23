@@ -1,0 +1,53 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "README.md/",
+      "app.py/",
+      "config.py/",
+      "crypto_bot_v0_3_bundle/",
+      "db.py/",
+      "entity-sandbox-runner-v2/",
+      "requirements.txt/"
+    ],
+    "violations": [
+      "entity-sandbox-runner-v2/.github/workflows/run-v2.yml"
+    ],
+    "filtered_normal_files": [
+      "README.md",
+      "requirements.txt",
+      "db.py",
+      "config.py",
+      "app.py",
+      "crypto_bot_v0_3_bundle/README.md",
+      "crypto_bot_v0_3_bundle/requirements.txt",
+      "crypto_bot_v0_3_bundle/tests/test_ledger.py",
+      "crypto_bot_v0_3_bundle/src/main.py",
+      "crypto_bot_v0_3_bundle/src/ledger.py",
+      "crypto_bot_v0_3_bundle/src/state.py",
+      "crypto_bot_v0_3_bundle/src/__init__.py",
+      "crypto_bot_v0_3_bundle/src/engine.py",
+      "crypto_bot_v0_3_bundle/src/config.py",
+      "crypto_bot_v0_3_bundle/src/risk.py",
+      "entity-sandbox-runner-v2/selector.py",
+      "entity-sandbox-runner-v2/config_v2.yaml",
+      "entity-sandbox-runner-v2/README.md",
+      "entity-sandbox-runner-v2/metrics.py",
+      "entity-sandbox-runner-v2/.gitignore",
+      "entity-sandbox-runner-v2/run_v2.py",
+      "entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc",
+      "entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc",
+      "entity-sandbox-runner-v2/results/example_summary.txt",
+      "entity-sandbox-runner-v2/results/receipts.json",
+      "entity-sandbox-runner-v2/results/summary.txt",
+      "entity-sandbox-runner-v2/results/metrics.json",
+      "entity-sandbox-runner-v2/results/example_metrics.json"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/entity-sandbox-runner-v2.zip"
+}
