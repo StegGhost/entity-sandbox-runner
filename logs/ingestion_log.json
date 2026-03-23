@@ -664,5 +664,11 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774280659.9593673
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774283862.4896362
   }
 ]
