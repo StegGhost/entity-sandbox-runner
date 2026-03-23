@@ -1,0 +1,8 @@
+{
+  "type": "feedback_execution_bridge",
+  "timestamp": 1774269402.726637,
+  "feedback_hash": "5f0d6cda10cbc09fa431f0714af0ce70e0a6adf570820bc998dee572b6fcc46b",
+  "summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
+  "engine_input_path": "payload/runtime/active_feedback.json",
+  "hash": "f1bcdaa15c25bde65037c467956dc59f53483e53783a0a61b396eebb75a0178b"
+}
