@@ -17054,3 +17054,25 @@
 [2026-03-22T23:12:26.006818] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
 [2026-03-22T23:12:26.007623] classified files: normal=18 workflow=0
 [2026-03-22T23:12:26.008802] cleaned ingestion_tmp
+[2026-03-23T04:57:41.569253] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.570135] cleaned ingestion_tmp
+[2026-03-23T04:57:41.610994] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.613315] classified files: normal=22 workflow=1
+[2026-03-23T04:57:41.653877] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.655396] cleaned ingestion_tmp
+[2026-03-23T04:57:41.697141] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.698054] classified files: normal=8 workflow=0
+[2026-03-23T04:57:41.739516] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.740209] classified files: normal=13 workflow=0
+[2026-03-23T04:57:41.781397] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.782660] classified files: normal=27 workflow=0
+[2026-03-23T04:57:41.784534] cleaned ingestion_tmp
+[2026-03-23T04:57:41.826044] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.829346] classified files: normal=24 workflow=1
+[2026-03-23T04:57:41.831033] cleaned ingestion_tmp
+[2026-03-23T04:57:41.870735] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/stegverse-guardian-runtime
+[2026-03-23T04:57:41.872298] classified files: normal=10 workflow=1
+[2026-03-23T04:57:41.911433] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.912676] cleaned ingestion_tmp
+[2026-03-23T04:57:41.951473] extracted bundle root: /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp
+[2026-03-23T04:57:41.952297] cleaned ingestion_tmp

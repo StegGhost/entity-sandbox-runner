@@ -1,0 +1,30 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "ui_advanced_v18",
+      "bundle_version": "18.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "ui/index.html",
+        "ui/styles.css",
+        "ui/app.js",
+        "install/engine/ui_control_adapter.py",
+        "install/tests/test_ui_control.py"
+      ],
+      "entrypoints": [
+        "ui/index.html"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/ui_advanced_v18.zip"
+}

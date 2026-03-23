@@ -1,0 +1,44 @@
+{
+  "bundle_name": "ingestion_tmp",
+  "bundle_version": "dev",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "stegghost-agent-simulation-lab/",
+      "stegverse-guardian-runtime/"
+    ],
+    "violations": [
+      "stegverse-guardian-runtime/.github/workflows/ci.yml"
+    ],
+    "filtered_normal_files": [
+      "stegverse-guardian-runtime/README.md",
+      "stegverse-guardian-runtime/pyproject.toml",
+      "stegverse-guardian-runtime/.gitignore",
+      "stegverse-guardian-runtime/stegverse/invariants.py",
+      "stegverse-guardian-runtime/stegverse/receipts.py",
+      "stegverse-guardian-runtime/stegverse/__init__.py",
+      "stegverse-guardian-runtime/stegverse/transition_guard.py",
+      "stegverse-guardian-runtime/stegverse/passport.py",
+      "stegverse-guardian-runtime/tests/test_guardian_runtime.py",
+      "stegverse-guardian-runtime/examples/toy_world_example.py",
+      "stegghost-agent-simulation-lab/README.md",
+      "stegghost-agent-simulation-lab/requirements.txt",
+      "stegghost-agent-simulation-lab/.gitignore",
+      "stegghost-agent-simulation-lab/env/world.py",
+      "stegghost-agent-simulation-lab/env/__pycache__/world.cpython-313.pyc",
+      "stegghost-agent-simulation-lab/agents/baseline_agent.py",
+      "stegghost-agent-simulation-lab/agents/__pycache__/baseline_agent.cpython-313.pyc",
+      "stegghost-agent-simulation-lab/analysis/summarize_run.py",
+      "stegghost-agent-simulation-lab/runs/.gitkeep",
+      "stegghost-agent-simulation-lab/runs/governed_summary.txt",
+      "stegghost-agent-simulation-lab/runs/ungoverned_summary.txt",
+      "stegghost-agent-simulation-lab/runs/governed_example.json",
+      "stegghost-agent-simulation-lab/runs/ungoverned_example.json",
+      "stegghost-agent-simulation-lab/scripts/run_simulation.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/stegverse-dual-repo-bundle.zip"
+}
