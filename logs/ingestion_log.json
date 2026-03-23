@@ -490,5 +490,29 @@
     "ok": true,
     "error": null,
     "ts": 1774237655.3136735
+  },
+  {
+    "bundle": "entity-sandbox-runner-deployment-bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774242230.2907834
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_2.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774242230.2913897
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_3.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774242230.2919447
+  },
+  {
+    "bundle": "stegverse-guardian-runtime.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774242230.2922497
   }
 ]
