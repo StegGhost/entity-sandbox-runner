@@ -1,5 +1,5 @@
 {
-  "timestamp": 1774227926.0640817,
+  "timestamp": 1774230598.6606443,
   "steps": [
     {
       "step": "document_compactor",
@@ -8,7 +8,7 @@
         "install/document_compactor.py"
       ],
       "returncode": 0,
-      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"receipt_path\": \"payload/receipts/document_compaction/document_compaction_0082.json\",\n  \"output_root\": \"docs/canonical\"\n}\n",
+      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"receipt_path\": \"payload/receipts/document_compaction/document_compaction_0083.json\",\n  \"output_root\": \"docs/canonical\"\n}\n",
       "stderr": ""
     },
     {
@@ -18,7 +18,7 @@
         "install/canonical_feedback.py"
       ],
       "returncode": 0,
-      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"feedback_hash\": \"71fd2b1e2f551448860a00db8f4b382da5d709f054e7aea112027a151b8fd31e\",\n  \"feedback_path\": \"payload/feedback/canonical_feedback.json\",\n  \"receipt_path\": \"payload/receipts/canonical_feedback/canonical_feedback_0082.json\"\n}\n",
+      "stdout": "{\n  \"status\": \"ok\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"feedback_hash\": \"53f4a564116daeea62f5924c2d4f767be4dd386201367a78bc2b9f2c24627f23\",\n  \"feedback_path\": \"payload/feedback/canonical_feedback.json\",\n  \"receipt_path\": \"payload/receipts/canonical_feedback/canonical_feedback_0083.json\"\n}\n",
       "stderr": ""
     },
     {
@@ -28,7 +28,7 @@
         "install/knowledge_delta.py"
       ],
       "returncode": 0,
-      "stdout": "{\n  \"status\": \"ok\",\n  \"delta_hash\": \"f262c3954a6127b8d2fd7971a51cead4b92ab4177093ee2d0da1500ee287301d\",\n  \"output_json\": \"payload/knowledge_delta/knowledge_delta.json\",\n  \"output_md\": \"payload/knowledge_delta/knowledge_delta.md\",\n  \"receipt_path\": \"payload/receipts/knowledge_delta/knowledge_delta_0081.json\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
+      "stdout": "{\n  \"status\": \"ok\",\n  \"delta_hash\": \"7c004eab0c80f3a9279e9caa9e8f2b2c0182991ff375f99cf1e53bafbf903e96\",\n  \"output_json\": \"payload/knowledge_delta/knowledge_delta.json\",\n  \"output_md\": \"payload/knowledge_delta/knowledge_delta.md\",\n  \"receipt_path\": \"payload/receipts/knowledge_delta/knowledge_delta_0082.json\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
       "stderr": ""
     },
     {
@@ -38,7 +38,7 @@
         "install/canonical_receipt_binder.py"
       ],
       "returncode": 0,
-      "stdout": "{\n  \"status\": \"ok\",\n  \"receipt_path\": \"payload/receipts/canonical_state/canonical_state_0080.json\",\n  \"repo_state_hash\": \"7d867bcca650fcd0aa999c2e61edafb2b505884109ad6ad43de4e1d4e01daa9e\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"canonical_feedback_hash\": \"42867b424bbd995795f923b63f0e6c1950d14a607314454338b9398b2f0ecc2f\",\n  \"knowledge_delta_hash\": \"d55dee79b5d2a8b22d4eb93de8c561df00d90d302eec3eec5f8e334b18dc07ca\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
+      "stdout": "{\n  \"status\": \"ok\",\n  \"receipt_path\": \"payload/receipts/canonical_state/canonical_state_0081.json\",\n  \"repo_state_hash\": \"93d5c53b3582f81112780ad66c9dbf71c9afc3ea061d6e905677d4bb875023a2\",\n  \"summary_hash\": \"02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed\",\n  \"canonical_feedback_hash\": \"b73d1ccc5f57829ec02da6f670a1b0b7f8f5b074eb5408b96d8789e695521f5a\",\n  \"knowledge_delta_hash\": \"ef84fd7ac53d5457c3b8745afd300fa0914f1508ae8edd87144d7f9cb5d98291\",\n  \"index_path\": \"docs/canonical/index.json\"\n}\n",
       "stderr": ""
     },
     {
@@ -48,7 +48,7 @@
         "install/feedback_injection.py"
       ],
       "returncode": 0,
-      "stdout": "{\n  \"status\": \"ok\",\n  \"feedback_hash\": \"71fd2b1e2f551448860a00db8f4b382da5d709f054e7aea112027a151b8fd31e\",\n  \"receipt_path\": \"payload/receipts/feedback_injection/feedback_injection_0080.json\",\n  \"prompt_inputs\": \"payload/injection/feedback_prompt_inputs.json\",\n  \"policy_inputs\": \"payload/injection/feedback_policy_inputs.json\"\n}\n",
+      "stdout": "{\n  \"status\": \"ok\",\n  \"feedback_hash\": \"53f4a564116daeea62f5924c2d4f767be4dd386201367a78bc2b9f2c24627f23\",\n  \"receipt_path\": \"payload/receipts/feedback_injection/feedback_injection_0081.json\",\n  \"prompt_inputs\": \"payload/injection/feedback_prompt_inputs.json\",\n  \"policy_inputs\": \"payload/injection/feedback_policy_inputs.json\"\n}\n",
       "stderr": ""
     },
     {
@@ -58,7 +58,7 @@
         "install/feedback_execution_bridge.py"
       ],
       "returncode": 0,
-      "stdout": "{\n  \"status\": \"ok\",\n  \"engine_input_path\": \"payload/runtime/active_feedback.json\",\n  \"receipt_path\": \"payload/receipts/feedback_execution_bridge/feedback_execution_bridge_0080.json\"\n}\n",
+      "stdout": "{\n  \"status\": \"ok\",\n  \"engine_input_path\": \"payload/runtime/active_feedback.json\",\n  \"receipt_path\": \"payload/receipts/feedback_execution_bridge/feedback_execution_bridge_0081.json\"\n}\n",
       "stderr": ""
     }
   ],
