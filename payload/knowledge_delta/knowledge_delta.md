@@ -4,7 +4,7 @@
 - current_summary_hash: 02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed
 - previous_state_hash: 3d91aaafda91240b106ff5aa8dd73bb13e498b5195ecdcc703400099e217611f
 - current_state_hash: 3d91aaafda91240b106ff5aa8dd73bb13e498b5195ecdcc703400099e217611f
-- delta_hash: 7c004eab0c80f3a9279e9caa9e8f2b2c0182991ff375f99cf1e53bafbf903e96
+- delta_hash: dc1ee965690c8092c55c1def45982c78d4906a9afd3e8c3bad38a36615c51ae3
 
 ## Added Claims
 
