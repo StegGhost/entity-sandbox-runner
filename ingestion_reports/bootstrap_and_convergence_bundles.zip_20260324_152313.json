@@ -1,0 +1,24 @@
+{
+  "bundle_name": "auto_generated_feedback_bundle",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/tests/",
+      "install/engine/"
+    ],
+    "violations": [
+      "sandbox_convergence_full_memory_bundle_v1.zip",
+      "sandbox_bootstrap_permission_unlock_bundle_v1.zip"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_fix_missing_cge_root.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/bootstrap_and_convergence_bundles.zip"
+}
