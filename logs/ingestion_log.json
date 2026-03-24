@@ -862,5 +862,23 @@
     "ok": false,
     "error": "path_not_allowed:docs/v13.md",
     "ts": 1774364688.5274737
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774367394.0159786
+  },
+  {
+    "bundle": "sandbox_bootstrap_permission_unlock_bundle_v1.zip",
+    "ok": false,
+    "error": "unsupported_install_mode",
+    "ts": 1774367394.0164661
+  },
+  {
+    "bundle": "sandbox_convergence_full_memory_bundle_v1.zip",
+    "ok": false,
+    "error": "unsupported_install_mode",
+    "ts": 1774367394.0168893
   }
 ]
