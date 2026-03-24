@@ -1,0 +1,11 @@
+{
+  "bundle_name": "sandbox_convergence_full_memory_bundle_v1",
+  "bundle_version": "1.0.0",
+  "version": "1.0",
+  "install_mode": "merge",
+  "allowed_paths": [
+    "bundle_manifest.json",
+    "install/engine/",
+    "install/tests/"
+  ]
+}
