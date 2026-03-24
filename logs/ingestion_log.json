@@ -784,5 +784,83 @@
     "ok": true,
     "error": null,
     "ts": 1774360035.3025634
+  },
+  {
+    "bundle": "auto_rollback_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/AUTO_ROLLBACK.md",
+    "ts": 1774364688.5222557
+  },
+  {
+    "bundle": "content_post_generation_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/CONTENT_POST_GENERATION.md",
+    "ts": 1774364688.5227804
+  },
+  {
+    "bundle": "crypto_bot_v0_4_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774364688.523034
+  },
+  {
+    "bundle": "master_workflow_v2_bundle.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/MASTER_WORKFLOW_V2.md",
+    "ts": 1774364688.5234761
+  },
+  {
+    "bundle": "multi_platform_post_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/MULTI_PLATFORM_POST.md",
+    "ts": 1774364688.523933
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_4.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774364688.5243745
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_5.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774364688.5248647
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v2_0.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774364688.5253336
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v2_1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774364688.5258358
+  },
+  {
+    "bundle": "rollback_trigger_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/ROLLBACK_TRIGGER.md",
+    "ts": 1774364688.5262353
+  },
+  {
+    "bundle": "safe_mode_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/SAFE_MODE.md",
+    "ts": 1774364688.5266504
+  },
+  {
+    "bundle": "stability_gate_v12.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v12.md",
+    "ts": 1774364688.5270612
+  },
+  {
+    "bundle": "stability_gate_v13.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v13.md",
+    "ts": 1774364688.5274737
   }
 ]
