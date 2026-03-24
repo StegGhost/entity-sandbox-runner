@@ -1,0 +1,17 @@
+name: Run Brain
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run brain
+        run: python internal_brain/brain_runner.py
+
+      - name: Show report
+        run: cat internal_brain/brain_report.json
