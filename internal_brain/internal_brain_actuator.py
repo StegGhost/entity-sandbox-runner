@@ -1,17 +1,48 @@
-from typing import Any, Dict, List
+from pathlib import Path
+import shutil
 
-def actuate(closure_output: Dict[str, Any], state: Dict[str, Any]) -> Dict[str, Any]:
-    results: List[Dict[str, Any]] = []
+
+def actuate(closure_output, state):
+    results = []
+    root = Path(state["root"])
+
     for action in closure_output.get("actions", []):
-        results.append({
-            "action": action.get("action"),
-            "status": "proposed_only",
-            "targets": action.get("targets", []),
-            "reason": action.get("reason", "")
-        })
+        name = action.get("action")
+        targets = action.get("targets", [])
+
+        if name == "inspect_failed_bundles":
+            processed = []
+
+            for rel_path in targets:
+                src = root / rel_path
+
+                if not src.exists():
+                    continue
+
+                # Move failed bundle → incoming for retry
+                dest = root / "incoming_bundles" / src.name
+                dest.parent.mkdir(parents=True, exist_ok=True)
+
+                shutil.copy2(src, dest)
+
+                processed.append(str(dest.relative_to(root)))
+
+            results.append({
+                "action": name,
+                "status": "executed",
+                "moved_to_incoming": processed,
+                "count": len(processed)
+            })
+
+        else:
+            results.append({
+                "action": name,
+                "status": "unknown_action",
+                "targets": targets
+            })
 
     return {
-        "mode": "ingested_module",
-        "summary": "Actuator preserved non-mutating proposed action list",
+        "mode": "active",
+        "summary": "Actuator executed actions",
         "results": results
     }
