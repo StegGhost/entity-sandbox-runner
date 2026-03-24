@@ -1,0 +1,58 @@
+{
+  "bundle_name": "sandbox_convergence_bundle_v1",
+  "bundle_version": "1.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/",
+      ".github/workflows/"
+    ],
+    "violations": [
+      "docs/SAFE_MODE.md",
+      "docs/architecture_map.md",
+      "docs/MASTER_WORKFLOW_V2.md",
+      "docs/MULTI_PLATFORM_POST.md",
+      "docs/ROLLBACK_TRIGGER.md",
+      "config/safe_mode_config.json",
+      "config/learning_config.json",
+      "config/governance_config.json",
+      "config/multi_platform_post_config.json",
+      "config/predictive_config.json",
+      "config/master_workflow_config.json",
+      "config/rollback_trigger_config.json",
+      "config/adversary_config.json",
+      "install/predictive_stability_engine.py",
+      "install/learning_engine.py",
+      "install/conflict_detector.py",
+      "install/multi_platform_post.py",
+      "install/incentive_model.py",
+      "install/safe_mode.py",
+      "install/slashing_engine.py",
+      "install/threshold_adapter.py",
+      "install/rollback_trigger.py",
+      "install/reputation_engine.py",
+      "install/negotiation_engine.py",
+      "install/apply.py",
+      "install/master_workflow_v2.yml.txt",
+      "install/agent_registry.py",
+      "install/preemptive_throttle.py",
+      "install/policy_feedback_loop.py",
+      "install/adversary_detector.py",
+      "install/trajectory_drift_detector.py",
+      "install/governance_fabric.py",
+      "install/byzantine_filter.py",
+      ".github/workflows/run_convergence.yml"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_placeholder.py",
+      "install/engine/closure_engine.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/sandbox_convergence_bundle_v1_fix1.zip"
+}

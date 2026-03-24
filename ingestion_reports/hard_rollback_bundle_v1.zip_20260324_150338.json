@@ -1,0 +1,30 @@
+{
+  "bundle_name": "hard_rollback_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/",
+      "config/",
+      "docs/"
+    ],
+    "violations": [
+      "README.md",
+      "requirements.txt",
+      "db.py",
+      "config.py",
+      "app.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/HARD_ROLLBACK.md",
+      "config/hard_rollback_config.json",
+      "install/hard_rollback.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/hard_rollback_bundle_v1.zip"
+}

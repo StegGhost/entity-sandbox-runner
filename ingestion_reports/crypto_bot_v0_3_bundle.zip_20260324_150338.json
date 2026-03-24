@@ -1,0 +1,38 @@
+{
+  "bundle_name": "content_post_generation_bundle_v1",
+  "bundle_version": "1.0.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/",
+      "config/",
+      "docs/"
+    ],
+    "violations": [
+      "crypto_bot_v0_3_bundle/README.md",
+      "crypto_bot_v0_3_bundle/requirements.txt",
+      "crypto_bot_v0_3_bundle/tests/test_ledger.py",
+      "crypto_bot_v0_3_bundle/src/main.py",
+      "crypto_bot_v0_3_bundle/src/ledger.py",
+      "crypto_bot_v0_3_bundle/src/state.py",
+      "crypto_bot_v0_3_bundle/src/__init__.py",
+      "crypto_bot_v0_3_bundle/src/engine.py",
+      "crypto_bot_v0_3_bundle/src/config.py",
+      "crypto_bot_v0_3_bundle/src/risk.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "docs/CONTENT_POST_GENERATION.md",
+      "docs/AUTO_ROLLBACK.md",
+      "config/auto_rollback_config.json",
+      "config/content_post_generation_config.json",
+      "install/auto_rollback.py",
+      "install/content_post_generation.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/crypto_bot_v0_3_bundle.zip"
+}
