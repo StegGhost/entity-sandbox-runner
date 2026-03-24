@@ -1,5 +1,5 @@
 {
-  "timestamp": 1774319514.205294,
+  "timestamp": 1774334923.5094013,
   "target": "{ \"bundle_version\": \"1.0\", \"review_purpose\": \"SDK review and external packaging surface\", \"namespaces\": { \"results\": { \"description\": \"run-local raw outputs\", \"authoritative\": false }, \"receipts\": { \"description\": \"provenance reference layer\", \"authoritative\": true }, \"reports\": { \"description\": \"readable derived artifacts for inspection and download\", \"authoritative\": false }, \"data_records\": { \"description\": \"canonical machine-usable evidence used across experiments\", \"authoritative\": true }, \"manifests\": { \"description\": \"portable metadata for downstream ingest/export/sdk packaging\", \"authoritative\": true } }, \"sdk_download_surfaces\": [ \"reports/latest\", \"reports/visuals\", \"reports/validation\", \"data_records/aggregates\", \"manifests\" ], \"canonical_record_sets\": [ \"data_records/canonical/admissibility_observations.jsonl\" ] }",
   "priority": 1.5,
   "action": "monitor",
