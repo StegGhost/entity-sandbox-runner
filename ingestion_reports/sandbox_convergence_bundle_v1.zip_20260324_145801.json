@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "sandbox_convergence_bundle_v1",
+      "bundle_version": "1.0.0",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/engine/",
+        "install/tests/",
+        ".github/workflows/"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/sandbox_convergence_bundle_v1.zip"
+}

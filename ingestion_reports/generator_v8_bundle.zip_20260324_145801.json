@@ -1,0 +1,22 @@
+{
+  "status": "failed",
+  "verification": {
+    "manifest_found": true,
+    "verified": false,
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version"
+    ],
+    "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
+    "manifest": {
+      "bundle_name": "generator_v8_bundle",
+      "bundle_version": "8.0.0",
+      "install_mode": "folder_map",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/"
+      ]
+    }
+  },
+  "moved_bundle_to": "failed_bundles/generator_v8_bundle.zip"
+}
