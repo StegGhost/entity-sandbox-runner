@@ -898,5 +898,35 @@
     "ok": true,
     "error": null,
     "ts": 1774374174.864709
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774379159.6593478
+  },
+  {
+    "bundle": "contract_snapshot_bundle_v1.zip",
+    "ok": false,
+    "error": "unsupported_install_mode",
+    "ts": 1774379159.6598206
+  },
+  {
+    "bundle": "history_layer_bundle_v1.zip",
+    "ok": false,
+    "error": "unsupported_install_mode",
+    "ts": 1774379159.6602533
+  },
+  {
+    "bundle": "sandbox_bootstrap_permission_unlock_bundle_v1.zip",
+    "ok": false,
+    "error": "unsupported_install_mode",
+    "ts": 1774379159.6606255
+  },
+  {
+    "bundle": "sandbox_convergence_full_memory_bundle_v1.zip",
+    "ok": false,
+    "error": "unsupported_install_mode",
+    "ts": 1774379159.661044
   }
 ]
