@@ -1,10 +1,15 @@
 import json
 import traceback
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# 🔑 CRITICAL FIX
+sys.path.insert(0, str(ROOT))
+
 REPORT_PATH = ROOT / "internal_brain" / "brain_report.json"
 
 
@@ -103,7 +108,7 @@ def main() -> int:
 
         report = {
             "ts": utc_now(),
-            "report_version": "3.0",
+            "report_version": "3.1",
             "module_source": modules["module_source"],
             "state": state,
             "explorer_output": explorer_output,
@@ -130,7 +135,7 @@ def main() -> int:
     except Exception as exc:
         error_report = {
             "ts": utc_now(),
-            "report_version": "3.0",
+            "report_version": "3.1",
             "status": "failed",
             "error": str(exc),
             "traceback": traceback.format_exc(),
