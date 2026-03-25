@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-03-25T15:42:45.249483",
+  "generated_at": "2026-03-25T16:47:08.182716",
   "resolved_next_action": {
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/relationship_conditioned_execution_v1_3.zip",
+    "target": "failed_bundles/stability_gate_v7.zip",
     "source": "fallback_convergent"
   },
   "execution": {
     "status": "ok",
     "executed": true,
     "action": "inspect_failed_bundle_family",
-    "moved_to_incoming": "incoming_bundles/relationship_conditioned_execution_v1_3.zip",
-    "bundle": "relationship_conditioned_execution_v1_3.zip",
+    "moved_to_incoming": "incoming_bundles/stability_gate_v7.zip",
+    "bundle": "stability_gate_v7.zip",
     "trigger_ingestion": true
   },
   "ingestion": {
