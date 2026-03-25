@@ -9,6 +9,9 @@ jobs:
   brain:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,6 +21,13 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Verify engines exist
+        run: |
+          test -f install/engine/receipt_reconciler.py
+          test -f install/engine/bundle_inventory_engine.py
+          test -f install/engine/gcat_bcat_evaluator.py
+          test -f install/engine/next_action_engine.py
+
       - name: Run receipt reconciler
         run: python install/engine/receipt_reconciler.py
 
@@ -26,6 +36,12 @@ jobs:
 
       - name: Run GCAT/BCAT evaluator
         run: python install/engine/gcat_bcat_evaluator.py
+
+      - name: Run next action engine
+        run: python install/engine/next_action_engine.py
+
+      - name: Show next action
+        run: cat brain_reports/next_action.json
 
       - name: Commit outputs
         run: |
