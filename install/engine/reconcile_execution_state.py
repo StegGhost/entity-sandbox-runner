@@ -76,7 +76,6 @@ def build_reconciled_state():
     resolved = exec_doc.get("resolved_next_action", {}) or next_action
     execution = exec_doc.get("execution", {})
     ingestion = exec_doc.get("ingestion", {})
-    local_install = exec_doc.get("local_install", {})
 
     selected_target = normalize_bundle_name(resolved.get("target"))
     selected_family = resolved.get("family") or family_key(selected_target)
@@ -114,13 +113,9 @@ def build_reconciled_state():
         },
         "ingestion": {
             "trigger_status": ingestion.get("status"),
+            "trigger_reason": ingestion.get("reason"),
             "log_match_found": log_match is not None,
             "latest_log_entry": log_match,
-        },
-        "installation": {
-            "status": local_install.get("status"),
-            "path": local_install.get("path"),
-            "details": local_install,
         },
         "review": {},
     }
@@ -128,10 +123,7 @@ def build_reconciled_state():
     review_state = "unknown"
     review_reason = "insufficient_evidence"
 
-    if state["installation"]["status"] == "installed":
-        review_state = "installed_locally"
-        review_reason = "local_install_completed"
-    elif log_match:
+    if log_match:
         if log_match.get("ok") is True:
             review_state = "ingested"
             review_reason = "ingestion_log_ok"
@@ -141,9 +133,6 @@ def build_reconciled_state():
     elif execution.get("status") == "failed":
         review_state = "failed"
         review_reason = execution.get("reason") or "execution_failed"
-    elif ingestion.get("status") == "failed":
-        review_state = "failed"
-        review_reason = ingestion.get("error") or "ingestion_trigger_failed"
     elif ingestion.get("status") == "triggered":
         review_state = "pending_review"
         review_reason = "awaiting_ingestion_log"
