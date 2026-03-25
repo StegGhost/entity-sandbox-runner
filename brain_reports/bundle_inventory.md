@@ -163,6 +163,7 @@
 - trajectory_aware_retry_v10_bundle.zip
 - trajectory_engine_v5_bundle.zip
 - tvc_export_bundle.zip
+- ui_advanced_v18_manifest_fixed.zip
 - ui_dashboard_control_v17.zip
 - v21_1B_ingestion_hardening_bundle.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip

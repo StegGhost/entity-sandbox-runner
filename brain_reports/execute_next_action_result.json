@@ -1,4 +1,19 @@
 {
-  "generated_at": "2026-03-25T12:31:36.520434",
-  "error": "no_next_action"
+  "generated_at": "2026-03-25T12:35:01.359449",
+  "resolved_next_action": {
+    "action": "inspect_failed_bundle_family",
+    "target": "failed_bundles/.gitkeep",
+    "source": "fallback"
+  },
+  "execution": {
+    "status": "ok",
+    "executed": true,
+    "action": "inspect_failed_bundle_family",
+    "moved_to_incoming": "incoming_bundles/.gitkeep",
+    "bundle": ".gitkeep",
+    "trigger_ingestion": true
+  },
+  "ingestion": {
+    "status": "triggered"
+  }
 }
