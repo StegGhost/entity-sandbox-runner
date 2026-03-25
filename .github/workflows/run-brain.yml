@@ -9,7 +9,7 @@ jobs:
 
     permissions:
       actions: write
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout repo
@@ -29,6 +29,20 @@ jobs:
         if: always()
         run: cat internal_brain/brain_report.json
 
+      # ✅ Persist the report to repo so you can see it on iPhone
+      - name: Save brain report to repo
+        if: always()
+        run: |
+          mkdir -p brain_reports
+          cp internal_brain/brain_report.json brain_reports/brain_report_latest.json
+
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add brain_reports/brain_report_latest.json
+          git commit -m "update brain report" || echo "no changes"
+          git push
+
       - name: Trigger ingestion workflow
         if: always()
         env:
@@ -36,76 +50,30 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           python - <<'PY'
-          import json
-          import os
-          import subprocess
-          import sys
+          import json, os, subprocess, sys
 
           repo = os.environ["REPO"]
 
           def sh(cmd):
               return subprocess.check_output(cmd, text=True)
 
-          data = json.loads(
-              sh(
-                  [
-                      "gh",
-                      "api",
-                      f"/repos/{repo}/actions/workflows",
-                  ]
-              )
-          )
-
+          data = json.loads(sh(["gh","api",f"/repos/{repo}/actions/workflows"]))
           workflows = data.get("workflows", [])
 
-          preferred_names = [
-              "Ingestion Pipeline",
-              "Forced Ingest and Evaluate",
-          ]
-
-          preferred_paths = [
-              ".github/workflows/ingestion-pipeline.yml",
-              ".github/workflows/ingest.yml",
-              ".github/workflows/ingestion.yml",
-          ]
-
           target = None
-
           for wf in workflows:
-              if wf.get("name") in preferred_names:
+              name = (wf.get("name") or "").lower()
+              path = (wf.get("path") or "").lower()
+              if "ingest" in name or "ingestion" in name or "ingest" in path:
                   target = wf
                   break
 
-          if target is None:
-              for wf in workflows:
-                  if wf.get("path") in preferred_paths:
-                      target = wf
-                      break
-
-          if target is None:
-              for wf in workflows:
-                  name = (wf.get("name") or "").lower()
-                  path = (wf.get("path") or "").lower()
-                  if "ingest" in name or "ingestion" in name or "ingest" in path or "ingestion" in path:
-                      target = wf
-                      break
-
-          if target is None:
-              print("No ingestion workflow found.")
-              print(json.dumps(workflows, indent=2))
+          if not target:
+              print("No ingestion workflow found")
               sys.exit(1)
 
-          workflow_id = str(target["id"])
-          print(f"Triggering workflow: {target.get('name')} ({target.get('path')}) [id={workflow_id}]")
-
-          subprocess.check_call(
-              [
-                  "gh",
-                  "workflow",
-                  "run",
-                  workflow_id,
-              ]
-          )
+          print(f"Triggering: {target.get('name')} ({target.get('path')})")
+          subprocess.check_call(["gh","workflow","run",str(target["id"])])
           PY
 
       - name: Fail workflow if brain failed
