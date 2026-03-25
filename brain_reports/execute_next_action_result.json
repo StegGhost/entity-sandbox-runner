@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-25T06:44:25.869944",
+  "generated_at": "2026-03-25T07:31:08.108308",
   "input_document": {
-    "generated_at": "2026-03-25T06:44:25.761550",
+    "generated_at": "2026-03-25T07:31:08.069136",
     "summary": {
       "manifest_repairable_count": 2,
       "missing_report_count": 3,
@@ -13,13 +13,13 @@
       "internal_brain_status": "ok"
     },
     "next_action": {
-      "ts": "2026-03-25T06:44:25.758258",
+      "ts": "2026-03-25T07:31:08.065486",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
-      "active_family": "v21_to",
+      "active_family": "ui_advanced",
       "action": "inspect_failed_bundle_family",
-      "target": "failed_bundles/v21_to_v30_bundle.zip",
-      "family": "v21_to",
+      "target": "failed_bundles/ui_advanced_v18.zip",
+      "family": "ui_advanced",
       "priority": 1,
       "reason": "20 recent failed bundles detected",
       "source": "internal_brain"
@@ -493,13 +493,13 @@
       },
       "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
       "mapped_action": {
-        "ts": "2026-03-25T06:44:25.758258",
+        "ts": "2026-03-25T07:31:08.065486",
         "status": "ok",
         "selection_mode": "internal_brain_closure",
-        "active_family": "v21_to",
+        "active_family": "ui_advanced",
         "action": "inspect_failed_bundle_family",
-        "target": "failed_bundles/v21_to_v30_bundle.zip",
-        "family": "v21_to",
+        "target": "failed_bundles/ui_advanced_v18.zip",
+        "family": "ui_advanced",
         "priority": 1,
         "reason": "20 recent failed bundles detected",
         "source": "internal_brain"
@@ -507,13 +507,13 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T06:44:25.758258",
+    "ts": "2026-03-25T07:31:08.065486",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
-    "active_family": "v21_to",
+    "active_family": "ui_advanced",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/v21_to_v30_bundle.zip",
-    "family": "v21_to",
+    "target": "failed_bundles/ui_advanced_v18.zip",
+    "family": "ui_advanced",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "source": "internal_brain"
@@ -523,7 +523,7 @@
     "executed": false,
     "reason": "unknown_or_unsupported_action",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/v21_to_v30_bundle.zip"
+    "target": "failed_bundles/ui_advanced_v18.zip"
   },
   "ingestion_trigger": {
     "status": "skipped",
