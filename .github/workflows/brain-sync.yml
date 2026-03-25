@@ -1,0 +1,36 @@
+name: Brain Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  brain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run receipt reconciler
+        run: python install/engine/receipt_reconciler.py
+
+      - name: Run bundle inventory
+        run: python install/engine/bundle_inventory_engine.py
+
+      - name: Run GCAT/BCAT evaluator
+        run: python install/engine/gcat_bcat_evaluator.py
+
+      - name: Commit outputs
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add brain_reports/
+          git commit -m "brain: update state" || echo "no changes"
+          git push
