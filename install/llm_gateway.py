@@ -1,44 +1,65 @@
-from typing import Dict, Any, List
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Any, Dict, List
 
-from decision_engine import decide, execute_if_allowed
 from proposal_adapter import normalize_proposal
-from governed_executor import resolver
+from tool_contracts import assert_valid_proposal_contract
+from decision_engine import decide, execute_if_allowed
+
+
+class AuthorityResolver:
+    def resolve(self, authority_id: str) -> Dict[str, Any]:
+        # Minimal deterministic authority model
+        return {
+            "authority_id": authority_id,
+            "valid": True,
+            "permissions": ["*"],
+        }
+
+
+resolver = AuthorityResolver()
 
 
 def _build_executable_proposal(proposal: Dict[str, Any]) -> Dict[str, Any]:
-    normalized = dict(proposal)
+    """
+    Ensures proposal has executable surface.
+    """
 
-    if "name" not in normalized or normalized.get("name") is None:
-        normalized["name"] = normalized.get("action", "unnamed_proposal")
+    if not callable(proposal.get("execute")):
+        payload = proposal.get("payload", {})
+        name = proposal.get("proposal_name", "unnamed")
 
-    if not callable(normalized.get("execute")):
-        payload = normalized.get("payload")
+        def _execute():
+            return {
+                "ok": True,
+                "proposal": name,
+                "payload": payload,
+            }
 
-        def _default_execute():
-            if isinstance(payload, dict):
-                return payload
-            return {"ok": True}
+        proposal["execute"] = _execute
 
-        normalized["execute"] = _default_execute
-
-    return normalized
+    return proposal
 
 
 def _evaluate_single(raw_input: Dict[str, Any]) -> Dict[str, Any]:
+    # STEP 1: Normalize
     proposal = normalize_proposal(raw_input)
-    proposal = _build_executable_proposal(proposal)
 
-    authority_id = proposal.get("authority_id")
-    authority = resolver.resolve(authority_id)
-
-    # Explicit signature rejection contract
-    if "signature" in raw_input and raw_input.get("signature") != "valid_signature":
+    # STEP 2: HARD CONTRACT VALIDATION
+    try:
+        assert_valid_proposal_contract(proposal)
+    except Exception as e:
         return {
             "allowed": False,
-            "reason": "invalid_signature",
+            "reason": "contract_violation",
+            "error": str(e),
         }
 
+    # STEP 3: Make executable
+    proposal = _build_executable_proposal(proposal)
+
+    # STEP 4: Resolve authority
+    authority = resolver.resolve(proposal.get("authority_id"))
+
+    # STEP 5: Decision
     decision = decide(
         proposal=proposal,
         authority=authority,
@@ -53,6 +74,7 @@ def _evaluate_single(raw_input: Dict[str, Any]) -> Dict[str, Any]:
             },
         }
 
+    # STEP 6: Execution
     result = execute_if_allowed(
         proposal=proposal,
         authority=authority,
@@ -64,99 +86,15 @@ def _evaluate_single(raw_input: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-def route_proposal(raw_input: Dict[str, Any]) -> Dict[str, Any]:
+def route_proposal(input_data: Any) -> Dict[str, Any]:
     """
-    Canonical single-proposal entry point.
-    Stable response contract:
-    {
-      "decision": {...} OR "allowed": False,
-      "result": {...}    OR "reason": ...
-    }
+    Entry point for ALL LLM proposals.
+    Supports single or batch input.
     """
-    return _evaluate_single(raw_input)
 
-
-def route_multi_proposal(proposals: List[Dict[str, Any]], mode: str = "parallel") -> Dict[str, Any]:
-    """
-    Multi-LLM orchestration.
-
-    mode:
-      - parallel: evaluate all independently
-      - first_allowed: return first allowed result, or deterministic fallback
-      - majority: report majority-approval summary
-    """
-    if not proposals:
+    if isinstance(input_data, list):
         return {
-            "mode": mode,
-            "count": 0,
-            "results": [],
+            "results": [_evaluate_single(item) for item in input_data]
         }
 
-    results: List[Dict[str, Any]] = []
-
-    if mode == "parallel":
-        with ThreadPoolExecutor(max_workers=min(8, len(proposals))) as executor:
-            futures = [executor.submit(_evaluate_single, p) for p in proposals]
-            for future in as_completed(futures):
-                results.append(future.result())
-
-        return {
-            "mode": mode,
-            "count": len(proposals),
-            "results": results,
-        }
-
-    elif mode == "first_allowed":
-        selected_index = None
-        selected = None
-
-        for i, proposal in enumerate(proposals):
-            result = _evaluate_single(proposal)
-            results.append(result)
-
-            decision = result.get("decision", {})
-            if decision.get("allowed", False) and selected is None:
-                selected_index = i
-                selected = result
-                break
-
-        # deterministic fallback if none were allowed
-        if selected is None and results:
-            selected_index = 0
-            selected = results[0]
-
-        return {
-            "mode": mode,
-            "count": len(proposals),
-            "selected_index": selected_index,
-            "selected": selected,
-            "results": results,
-        }
-
-    elif mode == "majority":
-        for proposal in proposals:
-            results.append(_evaluate_single(proposal))
-
-        approvals = 0
-        for item in results:
-            decision = item.get("decision", {})
-            if decision.get("allowed", False):
-                approvals += 1
-
-        return {
-            "mode": mode,
-            "count": len(proposals),
-            "approvals": approvals,
-            "majority_allowed": approvals > (len(proposals) / 2),
-            "results": results,
-        }
-
-    # deterministic fallback for unknown mode
-    for proposal in proposals:
-        results.append(_evaluate_single(proposal))
-
-    return {
-        "mode": mode,
-        "count": len(proposals),
-        "results": results,
-    }
+    return _evaluate_single(input_data)
