@@ -12,9 +12,29 @@ FAILED_DIR = "failed_bundles"
 INCOMING_DIR = "incoming_bundles"
 INSTALLED_DIR = "installed_bundles"
 
+STATE_PATH = "brain_state.json"
+
+FAILURE_THRESHOLD = 3
+
 
 # -------------------------
-# CORE HELPERS
+# STATE
+# -------------------------
+
+def load_state():
+    if not os.path.exists(STATE_PATH):
+        return {"failures": {}}
+    with open(STATE_PATH, "r") as f:
+        return json.load(f)
+
+
+def save_state(state):
+    with open(STATE_PATH, "w") as f:
+        json.dump(state, f, indent=2)
+
+
+# -------------------------
+# HELPERS
 # -------------------------
 
 def load_brain_report():
@@ -49,14 +69,20 @@ def get_installed_families():
     return families
 
 
-def is_family_converged(family):
-    # CURRENT RULE:
-    # If installed → considered converged
-    return family in get_installed_families()
+# -------------------------
+# FAILURE TRACKING
+# -------------------------
+
+def record_failure(state, family):
+    state["failures"][family] = state["failures"].get(family, 0) + 1
+
+
+def is_family_exhausted(state, family):
+    return state["failures"].get(family, 0) >= FAILURE_THRESHOLD
 
 
 # -------------------------
-# ACTION IMPLEMENTATION
+# ACTION
 # -------------------------
 
 def inspect_failed_bundle_family(target):
@@ -64,8 +90,7 @@ def inspect_failed_bundle_family(target):
         return {
             "status": "failed",
             "executed": False,
-            "reason": "target_not_found",
-            "target": target
+            "reason": "target_not_found"
         }
 
     bundle_name = os.path.basename(target)
@@ -77,8 +102,7 @@ def inspect_failed_bundle_family(target):
         return {
             "status": "failed",
             "executed": False,
-            "reason": str(e),
-            "target": target
+            "reason": str(e)
         }
 
     return {
@@ -101,21 +125,19 @@ def execute_action(action_obj):
     return {
         "status": "failed",
         "executed": False,
-        "reason": "unknown_or_unsupported_action",
-        "action": action,
-        "target": target
+        "reason": "unknown_action"
     }
 
 
 # -------------------------
-# SMART FALLBACK (FINAL)
+# SMART FALLBACK (WITH CONVERGENCE)
 # -------------------------
 
-def fallback_action():
+def fallback_action(state):
     if not os.path.exists(FAILED_DIR):
         return None
 
-    installed_families = get_installed_families()
+    installed = get_installed_families()
 
     candidates = []
 
@@ -125,52 +147,63 @@ def fallback_action():
 
         family = extract_family(f)
 
-        # 🔥 KEY FIX: skip converged families
-        if is_family_converged(family):
+        if family in installed:
             continue
 
-        candidates.append(f)
+        if is_family_exhausted(state, family):
+            continue
 
-    candidates = sorted(candidates)
+        candidates.append((family, f))
 
     if not candidates:
         return None
 
+    # pick lowest failure count first
+    candidates.sort(key=lambda x: state["failures"].get(x[0], 0))
+
+    chosen = candidates[0][1]
+
     return {
         "action": "inspect_failed_bundle_family",
-        "target": os.path.join(FAILED_DIR, candidates[0]),
-        "source": "fallback_smart"
+        "target": os.path.join(FAILED_DIR, chosen),
+        "source": "fallback_convergent"
     }
 
 
 # -------------------------
-# MAIN EXECUTION LOOP
+# MAIN
 # -------------------------
 
 def main():
     ensure_dirs()
 
+    state = load_state()
     brain = load_brain_report()
 
     next_action = None
     if brain:
         next_action = brain.get("next_action")
 
-    # fallback if brain fails or gives nothing
     if not next_action:
-        next_action = fallback_action()
+        next_action = fallback_action(state)
 
     if not next_action:
         result = {
             "generated_at": datetime.utcnow().isoformat(),
-            "status": "idle",
-            "reason": "no_valid_unprocessed_bundles_remaining"
+            "status": "converged",
+            "reason": "no_remaining_viable_bundles"
         }
+        save_state(state)
         with open(OUTPUT_PATH, "w") as f:
             json.dump(result, f, indent=2)
         return
 
     execution = execute_action(next_action)
+
+    # record failures
+    if not execution.get("executed"):
+        family = extract_family(os.path.basename(next_action.get("target", "")))
+        record_failure(state, family)
 
     result = {
         "generated_at": datetime.utcnow().isoformat(),
@@ -178,21 +211,22 @@ def main():
         "execution": execution
     }
 
-    # trigger ingestion if needed
     if execution.get("trigger_ingestion"):
         try:
             subprocess.run(
                 ["python", "install/apply.py"],
                 check=True
             )
-            result["ingestion"] = {
-                "status": "triggered"
-            }
+            result["ingestion"] = {"status": "triggered"}
         except Exception as e:
+            family = extract_family(execution.get("bundle", ""))
+            record_failure(state, family)
             result["ingestion"] = {
                 "status": "failed",
                 "error": str(e)
             }
+
+    save_state(state)
 
     with open(OUTPUT_PATH, "w") as f:
         json.dump(result, f, indent=2)
