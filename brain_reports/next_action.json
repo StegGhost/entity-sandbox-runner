@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-25T05:13:55.757268",
+  "generated_at": "2026-03-25T05:19:36.501674",
   "summary": {
     "manifest_repairable_count": 2,
-    "missing_report_count": 1,
-    "unresolved_failed_count": 97,
+    "missing_report_count": 3,
+    "unresolved_failed_count": 95,
     "obsolete_candidate_count": 31,
     "total_failed_seen": 131,
     "active_family": "ui_dashboard_control"
   },
   "next_action": {
-    "ts": "2026-03-25T05:13:55.757260",
+    "ts": "2026-03-25T05:19:36.501668",
     "status": "ok",
     "selection_mode": "active_family_continuation",
     "active_family": "ui_dashboard_control",
@@ -72,6 +72,16 @@
       }
     ],
     "missing_report": [
+      {
+        "bundle": "ui_advanced_v18_manifest_fixed.zip",
+        "family": "ui_advanced",
+        "reason": "no matched ingestion report"
+      },
+      {
+        "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+        "family": "ui_dashboard_control",
+        "reason": "no matched ingestion report"
+      },
       {
         "bundle": "v13_1_to_v14_bundle.zip",
         "family": "v13_1_to",

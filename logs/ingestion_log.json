@@ -1162,5 +1162,11 @@
     "ok": false,
     "error": "path not allowed: config/document_engine_config.json",
     "ts": 1774415953.8617878
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774415976.579255
   }
 ]
