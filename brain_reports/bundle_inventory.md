@@ -3,6 +3,7 @@
 ## FAILED
 
 - .gitkeep
+- activation_bundle_v1.zip
 - auto_bundle_feedback.zip
 - auto_bundle_fix_v2.zip
 - auto_bundle_fix_v4.zip
@@ -149,7 +150,6 @@
 
 - .gitkeep
 - governed_agent_passport_v1_ingestion_bundle.sha256
-- ui_dashboard_control_v17_manifest_fixed.zip
 
 ## INSTALLED
 
