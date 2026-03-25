@@ -9,7 +9,6 @@
 - auto_bundle_fix_v6.zip
 - auto_bundle_fix_v7.zip
 - auto_bundle_fix_v8.zip
-- auto_bundle_observability_v1.zip
 - auto_rollback_bundle_v1.zip
 - bootstrap_and_convergence_bundles.zip
 - brain_wiring_bundle_v1.zip
@@ -152,6 +151,7 @@
 - .gitkeep
 - activation_bundle_v1.zip
 - auto_bundle_feedback.zip
+- auto_bundle_observability_v1.zip
 - governed_agent_passport_v1_ingestion_bundle.sha256
 - token_economics_v6_manifest_fixed.zip
 - token_economics_v7.zip

@@ -1,12 +1,12 @@
 {
-  "ts": "2026-03-25T12:43:22.377278+00:00",
+  "ts": "2026-03-25T12:47:11.300062+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
     {
       "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle.zip",
       "bundle_name": "v21_1B_ingestion_hardening_bundle.zip",
-      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_212050.json",
+      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_210959.json",
       "status": "matched",
       "verification_reason": "manifest_missing_required_fields",
       "missing_fields": [
@@ -23,12 +23,6 @@
     {
       "bundle": "failed_bundles/v13_1_to_v14_bundle.zip",
       "bundle_name": "v13_1_to_v14_bundle.zip",
-      "matched_report": null,
-      "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
-      "bundle_name": "ui_advanced_v18_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
     },
@@ -59,48 +53,22 @@
       ]
     },
     {
-      "bundle": "failed_bundles/ui_advanced_v18.zip",
-      "bundle_name": "ui_advanced_v18.zip",
-      "matched_report": "ingestion_reports/ui_advanced_v18.zip_20260323_045741.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "ui/index.html",
-        "ui/styles.css",
-        "ui/app.js",
-        "install/engine/ui_control_adapter.py",
-        "install/tests/test_ui_control.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip",
-      "bundle_name": "ui_dashboard_control_v17_manifest_fixed.zip",
-      "matched_report": null,
-      "status": "no_report_found"
-    },
-    {
       "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
       "bundle_name": "v21_1_gatekeeper_bundle.zip",
       "matched_report": null,
       "status": "no_report_found"
     },
     {
-      "bundle": "failed_bundles/tvc_export_bundle.zip",
-      "bundle_name": "tvc_export_bundle.zip",
-      "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
-      "status": "matched"
-    },
-    {
       "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
       "bundle_name": "v21_2_formal_document_engine_bundle.zip",
       "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
       "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
+      "bundle_name": "ui_advanced_v18_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
     },
     {
       "bundle": "failed_bundles/token_economics_v10.zip",
@@ -206,6 +174,18 @@
       ]
     },
     {
+      "bundle": "failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+      "bundle_name": "stegverse_ingestion_safe_recovery_bundle_v1.zip",
+      "matched_report": "ingestion_reports/stegverse_ingestion_safe_recovery_bundle_v1.zip_20260317_103850.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+      "bundle_name": "stegverse_architecture_aligned_bundle_v3.zip",
+      "matched_report": "ingestion_reports/stegverse_architecture_aligned_bundle_v3.zip_20260317_105018.json",
+      "status": "matched"
+    },
+    {
       "bundle": "failed_bundles/token_economics_v6.zip",
       "bundle_name": "token_economics_v6.zip",
       "matched_report": "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
@@ -232,6 +212,18 @@
       "bundle_name": "token_economics_v6_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/tc_tvc_scaffolding_v0_1.zip",
+      "bundle_name": "tc_tvc_scaffolding_v0_1.zip",
+      "matched_report": "ingestion_reports/tc_tvc_scaffolding_v0_1.zip_20260315_135248.json",
+      "status": "matched",
+      "verification_reason": "manifest_valid",
+      "missing_fields": [],
+      "allowed_paths": [
+        "control_plane/",
+        "security_plane/"
+      ]
     }
   ]
 }
