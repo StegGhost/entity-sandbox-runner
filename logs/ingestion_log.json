@@ -1030,5 +1030,11 @@
     "ok": false,
     "error": "path_not_allowed:.github/workflows/document_engine.yml",
     "ts": 1774400785.5776534
+  },
+  {
+    "bundle": "token_economics_v3_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774405738.8911386
   }
 ]
