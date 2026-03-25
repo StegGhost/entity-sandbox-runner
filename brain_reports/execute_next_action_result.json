@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-25T11:54:39.276586",
+  "generated_at": "2026-03-25T12:02:47.180576",
   "input_document": {
-    "generated_at": "2026-03-25T11:54:39.236428",
+    "generated_at": "2026-03-25T12:02:47.093150",
     "summary": {
       "manifest_repairable_count": 2,
       "missing_report_count": 3,
@@ -13,13 +13,13 @@
       "internal_brain_status": "ok"
     },
     "next_action": {
-      "ts": "2026-03-25T11:54:39.232837",
+      "ts": "2026-03-25T12:02:47.089658",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
-      "active_family": "ui_advanced",
+      "active_family": "tvc_export",
       "action": "inspect_failed_bundle_family",
-      "target": "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
-      "family": "ui_advanced",
+      "target": "failed_bundles/tvc_export_bundle.zip",
+      "family": "tvc_export",
       "priority": 1,
       "reason": "20 recent failed bundles detected",
       "source": "internal_brain"
@@ -513,13 +513,13 @@
       },
       "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
       "mapped_action": {
-        "ts": "2026-03-25T11:54:39.232837",
+        "ts": "2026-03-25T12:02:47.089658",
         "status": "ok",
         "selection_mode": "internal_brain_closure",
-        "active_family": "ui_advanced",
+        "active_family": "tvc_export",
         "action": "inspect_failed_bundle_family",
-        "target": "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
-        "family": "ui_advanced",
+        "target": "failed_bundles/tvc_export_bundle.zip",
+        "family": "tvc_export",
         "priority": 1,
         "reason": "20 recent failed bundles detected",
         "source": "internal_brain"
@@ -527,13 +527,13 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T11:54:39.232837",
+    "ts": "2026-03-25T12:02:47.089658",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
-    "active_family": "ui_advanced",
+    "active_family": "tvc_export",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
-    "family": "ui_advanced",
+    "target": "failed_bundles/tvc_export_bundle.zip",
+    "family": "tvc_export",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "source": "internal_brain"
@@ -543,7 +543,7 @@
     "executed": false,
     "reason": "unknown_or_unsupported_action",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/ui_advanced_v18_manifest_fixed.zip"
+    "target": "failed_bundles/tvc_export_bundle.zip"
   },
   "ingestion_trigger": {
     "status": "skipped",
