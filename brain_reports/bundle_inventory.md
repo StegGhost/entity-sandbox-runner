@@ -156,6 +156,7 @@
 - auto_bundle_feedback.zip
 - governed_agent_passport_v1_ingestion_bundle.sha256
 - token_economics_v6_manifest_fixed.zip
+- token_economics_v7.zip
 - token_economics_v7_manifest_fixed.zip
 - token_economics_v8_manifest_fixed.zip
 - token_economics_v9_manifest_fixed.zip
@@ -164,6 +165,7 @@
 - tvc_export_bundle.zip
 - ui_advanced_v18_manifest_fixed.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
+- v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip
 
 ## INSTALLED
 

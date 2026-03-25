@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T12:11:38.407569",
+  "generated_at": "2026-03-25T12:16:07.563552",
   "inventory": {
     "failed": [
       ".gitkeep",
@@ -155,6 +155,7 @@
       "auto_bundle_feedback.zip",
       "governed_agent_passport_v1_ingestion_bundle.sha256",
       "token_economics_v6_manifest_fixed.zip",
+      "token_economics_v7.zip",
       "token_economics_v7_manifest_fixed.zip",
       "token_economics_v8_manifest_fixed.zip",
       "token_economics_v9_manifest_fixed.zip",
@@ -162,7 +163,8 @@
       "trajectory_aware_retry_v10_bundle.zip",
       "tvc_export_bundle.zip",
       "ui_advanced_v18_manifest_fixed.zip",
-      "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip"
+      "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+      "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip"
     ],
     "installed": [
       ".gitkeep",
