@@ -1,309 +1,65 @@
-import os
 import json
-import re
+import os
 from datetime import datetime
 
-ROOT = os.getcwd()
-BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
-
-RECEIPT_RECONCILED_STATE = os.path.join(BRAIN_REPORTS, "receipt_reconciled_state.json")
-BUNDLE_INVENTORY = os.path.join(BRAIN_REPORTS, "bundle_inventory.json")
-FAILED_CORRELATION = os.path.join(BRAIN_REPORTS, "failed_bundle_report_correlation.json")
-
-OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
+OUTPUT_PATH = "brain_reports/execute_next_action_result.json"
+NEXT_ACTION_PATH = "brain_reports/next_action.json"
 
 
-def utc_now():
-    return datetime.utcnow().isoformat()
+def ensure_dirs():
+    os.makedirs("brain_reports", exist_ok=True)
 
 
-def ensure_dir(path):
-    os.makedirs(path, exist_ok=True)
-
-
-def load_json(path, default=None):
-    if default is None:
-        default = {}
-    if not os.path.exists(path):
-        return default
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return default
-
-
-def write_json(path, payload):
-    ensure_dir(os.path.dirname(path))
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2)
-        f.write("\n")
-
-
-def family_key(name: str) -> str:
-    name = os.path.basename(name)
-    if name.endswith(".zip"):
-        name = name[:-4]
-
-    name = re.sub(r"_manifest_fixed$", "", name)
-    name = re.sub(r"_fixed$", "", name)
-    name = re.sub(r"_bundle$", "", name)
-    name = re.sub(r"_v\d+$", "", name)
-
-    return name
-
-
-def extract_version(name: str):
-    m = re.search(r"_v(\d+)", name)
-    if not m:
-        return None
-    try:
-        return int(m.group(1))
-    except Exception:
-        return None
-
-
-def build_inventory_maps(inventory):
-    bundle_to_state = {}
-    family_members = {}
-
-    inv = inventory.get("inventory", {})
-
-    for state_name, files in inv.items():
-        for fname in files:
-            bundle_to_state[fname] = state_name
-            fk = family_key(fname)
-            family_members.setdefault(fk, []).append(fname)
-
-    for fk, members in family_members.items():
-        family_members[fk] = sorted(
-            members,
-            key=lambda x: (
-                extract_version(x) if extract_version(x) is not None else 10**9,
-                x
-            )
-        )
-
-    return bundle_to_state, family_members
-
-
-def classify_candidates(correlations, bundle_to_state, family_members):
-    manifest_repairable = []
-    missing_report = []
-    unresolved_failed = []
-    obsolete_candidates = []
-
-    installed_families = set()
-
-    for fk, members in family_members.items():
-        for member in members:
-            if bundle_to_state.get(member) == "installed":
-                installed_families.add(fk)
-                break
-
-    corr_by_bundle = {}
-    for c in correlations:
-        bundle_name = c.get("bundle_name")
-        if bundle_name:
-            corr_by_bundle[bundle_name] = c
-
-    failed_names = sorted(
-        [bundle for bundle, state in bundle_to_state.items() if state == "failed"],
-        key=lambda x: (
-            family_key(x),
-            extract_version(x) if extract_version(x) is not None else 10**9,
-            x
-        )
-    )
-
-    for bundle_name in failed_names:
-        corr = corr_by_bundle.get(bundle_name)
-        fk = family_key(bundle_name)
-
-        if fk in installed_families:
-            obsolete_candidates.append({
-                "bundle": bundle_name,
-                "family": fk,
-                "reason": "same family has an installed member"
-            })
-            continue
-
-        if not corr:
-            unresolved_failed.append({
-                "bundle": bundle_name,
-                "family": fk,
-                "reason": "no correlation entry"
-            })
-            continue
-
-        if corr.get("status") == "no_report_found":
-            missing_report.append({
-                "bundle": bundle_name,
-                "family": fk,
-                "reason": "no matched ingestion report"
-            })
-            continue
-
-        missing_fields = corr.get("missing_fields", [])
-        verification_reason = corr.get("verification_reason")
-
-        if verification_reason == "manifest_missing_required_fields" or missing_fields:
-            manifest_repairable.append({
-                "bundle": bundle_name,
-                "family": fk,
-                "reason": verification_reason or "manifest_missing_required_fields",
-                "missing_fields": missing_fields,
-                "allowed_paths": corr.get("allowed_paths", []),
-            })
-        else:
-            unresolved_failed.append({
-                "bundle": bundle_name,
-                "family": fk,
-                "reason": "matched report but no supported repair class yet"
-            })
-
-    manifest_repairable = sorted(
-        manifest_repairable,
-        key=lambda x: (
-            extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
-            x["bundle"]
-        )
-    )
-    missing_report = sorted(
-        missing_report,
-        key=lambda x: (
-            extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
-            x["bundle"]
-        )
-    )
-    unresolved_failed = sorted(
-        unresolved_failed,
-        key=lambda x: (
-            extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
-            x["bundle"]
-        )
-    )
-    obsolete_candidates = sorted(
-        obsolete_candidates,
-        key=lambda x: (
-            extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
-            x["bundle"]
-        )
-    )
-
-    return manifest_repairable, missing_report, unresolved_failed, obsolete_candidates
-
-
-def choose_next_action(manifest_repairable, missing_report, unresolved_failed, obsolete_candidates):
-    if manifest_repairable:
-        target = manifest_repairable[0]
+def load_next_action():
+    if not os.path.exists(NEXT_ACTION_PATH):
         return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "repair_bundle_manifest",
-            "target": target["bundle"],
-            "family": target["family"],
-            "priority": "high",
-            "reason": target["reason"],
-            "missing_fields": target.get("missing_fields", []),
-            "allowed_paths": target.get("allowed_paths", []),
+            "status": "error",
+            "reason": "missing_next_action"
         }
 
-    if missing_report:
-        target = missing_report[0]
-        return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "reconstruct_bundle_report_match",
-            "target": target["bundle"],
-            "family": target["family"],
-            "priority": "high",
-            "reason": target["reason"],
-        }
+    with open(NEXT_ACTION_PATH, "r") as f:
+        return json.load(f)
 
-    if unresolved_failed:
-        target = unresolved_failed[0]
-        return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "inspect_failed_bundle_family",
-            "target": target["bundle"],
-            "family": target["family"],
-            "priority": "medium",
-            "reason": target["reason"],
-        }
 
-    if obsolete_candidates:
-        target = obsolete_candidates[0]
-        return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "mark_bundle_obsolete",
-            "target": target["bundle"],
-            "family": target["family"],
-            "priority": "low",
-            "reason": target["reason"],
-        }
-
+def execute_action(action):
+    # 🔧 Minimal safe execution layer (no side effects yet)
     return {
-        "ts": utc_now(),
         "status": "ok",
-        "action": "idle",
-        "target": None,
-        "family": None,
-        "priority": "low",
-        "reason": "no admissible next action found",
+        "executed": True,
+        "action": action.get("action"),
+        "target": action.get("target"),
+        "note": "execution stub (no-op for now)"
     }
 
 
 def main():
-    ensure_dir(BRAIN_REPORTS)
+    ensure_dirs()
 
-    _ = load_json(RECEIPT_RECONCILED_STATE, {})
-    inventory = load_json(BUNDLE_INVENTORY, {"inventory": {}})
-    correlation = load_json(FAILED_CORRELATION, {"correlations": []})
+    ts = datetime.utcnow().isoformat()
 
-    bundle_to_state, family_members = build_inventory_maps(inventory)
-    correlations = correlation.get("correlations", [])
+    next_action = load_next_action()
 
-    manifest_repairable, missing_report, unresolved_failed, obsolete_candidates = classify_candidates(
-        correlations,
-        bundle_to_state,
-        family_members,
-    )
-
-    next_action = choose_next_action(
-        manifest_repairable,
-        missing_report,
-        unresolved_failed,
-        obsolete_candidates,
-    )
-
-    output = {
-        "generated_at": utc_now(),
-        "summary": {
-            "manifest_repairable_count": len(manifest_repairable),
-            "missing_report_count": len(missing_report),
-            "unresolved_failed_count": len(unresolved_failed),
-            "obsolete_candidate_count": len(obsolete_candidates),
-            "total_failed_seen": len([b for b, state in bundle_to_state.items() if state == "failed"]),
-        },
-        "next_action": next_action,
-        "candidates": {
-            "manifest_repairable": manifest_repairable[:20],
-            "missing_report": missing_report[:20],
-            "unresolved_failed": unresolved_failed[:20],
-            "obsolete_candidates": obsolete_candidates[:20],
+    if next_action.get("status") == "error":
+        result = {
+            "ts": ts,
+            "status": "failed",
+            "reason": next_action.get("reason"),
         }
-    }
+    else:
+        execution = execute_action(next_action)
 
-    write_json(OUTPUT_PATH, output)
+        result = {
+            "ts": ts,
+            "status": execution["status"],
+            "action": next_action,
+            "execution": execution
+        }
 
-    print(json.dumps({
-        "status": "ok",
-        "output": OUTPUT_PATH,
-        "next_action": next_action,
-    }, indent=2))
+    # 🔴 THIS is what was missing before
+    with open(OUTPUT_PATH, "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
