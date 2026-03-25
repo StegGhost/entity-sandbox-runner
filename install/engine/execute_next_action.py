@@ -13,6 +13,10 @@ INCOMING_DIR = "incoming_bundles"
 INSTALLED_DIR = "installed_bundles"
 
 
+# -------------------------
+# CORE HELPERS
+# -------------------------
+
 def load_brain_report():
     if not os.path.exists(BRAIN_REPORT_PATH):
         return None
@@ -45,7 +49,16 @@ def get_installed_families():
     return families
 
 
-# 🔧 ACTION
+def is_family_converged(family):
+    # CURRENT RULE:
+    # If installed → considered converged
+    return family in get_installed_families()
+
+
+# -------------------------
+# ACTION IMPLEMENTATION
+# -------------------------
+
 def inspect_failed_bundle_family(target):
     if not target or not os.path.exists(target):
         return {
@@ -94,7 +107,10 @@ def execute_action(action_obj):
     }
 
 
-# 🔥 SMART FALLBACK (REAL FIX)
+# -------------------------
+# SMART FALLBACK (FINAL)
+# -------------------------
+
 def fallback_action():
     if not os.path.exists(FAILED_DIR):
         return None
@@ -102,14 +118,15 @@ def fallback_action():
     installed_families = get_installed_families()
 
     candidates = []
+
     for f in os.listdir(FAILED_DIR):
         if not is_valid_bundle(f):
             continue
 
         family = extract_family(f)
 
-        # skip already installed families
-        if family in installed_families:
+        # 🔥 KEY FIX: skip converged families
+        if is_family_converged(family):
             continue
 
         candidates.append(f)
@@ -126,6 +143,10 @@ def fallback_action():
     }
 
 
+# -------------------------
+# MAIN EXECUTION LOOP
+# -------------------------
+
 def main():
     ensure_dirs()
 
@@ -135,7 +156,7 @@ def main():
     if brain:
         next_action = brain.get("next_action")
 
-    # fallback if brain fails
+    # fallback if brain fails or gives nothing
     if not next_action:
         next_action = fallback_action()
 
@@ -157,7 +178,7 @@ def main():
         "execution": execution
     }
 
-    # trigger ingestion
+    # trigger ingestion if needed
     if execution.get("trigger_ingestion"):
         try:
             subprocess.run(
