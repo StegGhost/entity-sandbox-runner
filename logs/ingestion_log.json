@@ -1858,5 +1858,173 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774439679.3222654
+  },
+  {
+    "bundle": "activation_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.4576645
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.4608226
+  },
+  {
+    "bundle": "auto_bundle_observability_v1.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774444088.461123
+  },
+  {
+    "bundle": "auto_rollback_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/AUTO_ROLLBACK.md",
+    "ts": 1774444088.4615846
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_3.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774444088.4620132
+  },
+  {
+    "bundle": "secure_bundle_integrity_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.4644141
+  },
+  {
+    "bundle": "token_economics_v6_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.4648354
+  },
+  {
+    "bundle": "token_economics_v7.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774444088.4652967
+  },
+  {
+    "bundle": "token_economics_v7_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.4657714
+  },
+  {
+    "bundle": "token_economics_v8_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.4662113
+  },
+  {
+    "bundle": "token_economics_v9.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774444088.4666603
+  },
+  {
+    "bundle": "token_economics_v9_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.467131
+  },
+  {
+    "bundle": "tokenized_governance_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.4698505
+  },
+  {
+    "bundle": "trajectory_aware_retry_v10_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774444088.4701095
+  },
+  {
+    "bundle": "trajectory_engine_v5_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.471665
+  },
+  {
+    "bundle": "tvc_export_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774444088.4719946
+  },
+  {
+    "bundle": "ui_advanced_v18.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774444088.4725108
+  },
+  {
+    "bundle": "ui_advanced_v18_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.4729383
+  },
+  {
+    "bundle": "ui_dashboard_control_v17.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774444088.4734013
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774444088.4737759
+  },
+  {
+    "bundle": "v13_1_to_v14_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774444088.4740255
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.4750755
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774444088.4754736
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.4764893
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774444088.4774675
+  },
+  {
+    "bundle": "v21_1_gatekeeper_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774444088.4778414
+  },
+  {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "ok": false,
+    "error": "path_not_allowed:.github/workflows/document_engine.yml",
+    "ts": 1774444088.4782186
+  },
+  {
+    "bundle": "v21_to_v30_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774444088.478467
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T12:50:18.589485",
+  "generated_at": "2026-03-25T13:08:08.343041",
   "summary": {
     "manifest_repairable_count": 0,
     "missing_report_count": 0,
@@ -11,13 +11,13 @@
     "internal_brain_status": "ok"
   },
   "next_action": {
-    "ts": "2026-03-25T12:50:18.586511",
+    "ts": "2026-03-25T13:08:08.339603",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
-    "active_family": "v21_to",
+    "active_family": "v21_2_formal_document_engine",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/v21_to_v30_bundle.zip",
-    "family": "v21_to",
+    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+    "family": "v21_2_formal_document_engine",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "source": "internal_brain"
@@ -423,13 +423,13 @@
     },
     "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
     "mapped_action": {
-      "ts": "2026-03-25T12:50:18.586511",
+      "ts": "2026-03-25T13:08:08.339603",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
-      "active_family": "v21_to",
+      "active_family": "v21_2_formal_document_engine",
       "action": "inspect_failed_bundle_family",
-      "target": "failed_bundles/v21_to_v30_bundle.zip",
-      "family": "v21_to",
+      "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+      "family": "v21_2_formal_document_engine",
       "priority": 1,
       "reason": "20 recent failed bundles detected",
       "source": "internal_brain"

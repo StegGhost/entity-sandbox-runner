@@ -1,95 +1,24 @@
 {
-  "ts": "2026-03-25T12:50:18.561043+00:00",
+  "ts": "2026-03-25T13:08:08.311327+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
     {
-      "bundle": "failed_bundles/token_economics_v14.zip",
-      "bundle_name": "token_economics_v14.zip",
-      "matched_report": "ingestion_reports/token_economics_v14.zip_20260322_230637.json",
+      "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle.zip",
+      "bundle_name": "v21_1B_ingestion_hardening_bundle.zip",
+      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_210959.json",
       "status": "matched",
       "verification_reason": "manifest_missing_required_fields",
       "missing_fields": [
-        "version",
-        "install_mode"
+        "version"
       ],
       "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "config/recursive_goals.json",
-        "config/zk_aggregation_real.json",
-        "config/dynamic_topology.json",
-        "install/engine/recursive_goal_engine.py",
-        "install/engine/goal_tree_engine.py",
-        "install/engine/zk_aggregation_real_engine.py",
-        "install/engine/topology_optimizer.py",
-        "install/engine/network_rewire_engine.py",
-        "install/tests/test_recursive_goals.py",
-        "install/tests/test_zk_real.py",
-        "install/tests/test_topology_dynamic.py"
+        "install/",
+        "payload/",
+        "experiments/",
+        "workflow_review/",
+        "config/"
       ]
-    },
-    {
-      "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
-      "bundle_name": "trajectory_engine_v5_bundle.zip",
-      "matched_report": "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
-      "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v6.zip",
-      "bundle_name": "token_economics_v6.zip",
-      "matched_report": "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/adaptive_governance_engine.py",
-        "install/engine/attack_simulation_engine.py",
-        "install/engine/slashing_curve_engine.py",
-        "install/engine/governance_proposal_engine.py",
-        "install/sim/attack_scenarios.py",
-        "install/tests/test_adaptive.py",
-        "install/tests/test_attack_sim.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v8.zip",
-      "bundle_name": "token_economics_v8.zip",
-      "matched_report": "ingestion_reports/token_economics_v8.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "config/zk_config.json",
-        "config/rl_config.json",
-        "config/identity_config.json",
-        "install/engine/zk_circuit_engine.py",
-        "install/engine/zk_prover_engine.py",
-        "install/engine/zk_verifier_engine.py",
-        "install/engine/identity_staking_engine.py",
-        "install/engine/rl_agent_engine.py",
-        "install/engine/rl_environment.py",
-        "install/engine/replay_buffer.py",
-        "install/tests/test_zk_pipeline.py",
-        "install/tests/test_identity_staking.py",
-        "install/tests/test_rl_agent.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
-      "bundle_name": "v21_1B_ingestion_hardening_bundle_fixed.zip",
-      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
-      "status": "matched"
     },
     {
       "bundle": "failed_bundles/v13_1_to_v14_bundle.zip",
@@ -98,71 +27,22 @@
       "status": "no_report_found"
     },
     {
-      "bundle": "failed_bundles/token_economics_v5.zip",
-      "bundle_name": "token_economics_v5.zip",
-      "matched_report": "ingestion_reports/token_economics_v5.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/federation_engine.py",
-        "install/engine/cross_runner_validation.py",
-        "install/engine/onchain_anchor_engine.py",
-        "install/engine/settlement_engine.py",
-        "install/tests/test_federation.py",
-        "install/tests/test_anchor.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/tokenized_governance_bundle_v1.zip",
-      "bundle_name": "tokenized_governance_bundle_v1.zip",
-      "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
-      "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v2.zip",
-      "bundle_name": "token_economics_v2.zip",
-      "matched_report": "ingestion_reports/token_economics_v2.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode",
-        "allowed_paths"
-      ],
-      "allowed_paths": []
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v9_manifest_fixed.zip",
-      "bundle_name": "token_economics_v9_manifest_fixed.zip",
+      "bundle": "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
+      "bundle_name": "ui_advanced_v18_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
     },
     {
-      "bundle": "failed_bundles/token_economics_v4.zip",
-      "bundle_name": "token_economics_v4.zip",
-      "matched_report": "ingestion_reports/token_economics_v4.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/consensus_engine.py",
-        "install/engine/fraud_proof_engine.py",
-        "install/engine/finality_engine.py",
-        "install/engine/state_commit_engine.py",
-        "install/tests/test_consensus.py",
-        "install/tests/test_fraud_proofs.py"
-      ]
+      "bundle": "failed_bundles/v21_to_v30_bundle.zip",
+      "bundle_name": "v21_to_v30_bundle.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
+      "bundle_name": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
+      "status": "matched"
     },
     {
       "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
@@ -179,77 +59,10 @@
       ]
     },
     {
-      "bundle": "failed_bundles/token_economics_v15.zip",
-      "bundle_name": "token_economics_v15.zip",
-      "matched_report": "ingestion_reports/token_economics_v15.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "config/meta_recursive.json",
-        "config/zk_production.json",
-        "config/topology_econ.json",
-        "install/engine/meta_recursive_goal_engine.py",
-        "install/engine/goal_reflection_engine.py",
-        "install/engine/zk_production_aggregator.py",
-        "install/engine/topology_economic_engine.py",
-        "install/engine/edge_weighting_engine.py",
-        "install/tests/test_meta_recursive.py",
-        "install/tests/test_zk_prod.py",
-        "install/tests/test_topology_econ.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v7.zip",
-      "bundle_name": "token_economics_v7.zip",
-      "matched_report": "ingestion_reports/token_economics_v7.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/zk_proof_engine.py",
-        "install/engine/identity_engine.py",
-        "install/engine/agent_learning_engine.py",
-        "install/engine/strategy_store.py",
-        "install/tests/test_zk.py",
-        "install/tests/test_identity.py",
-        "install/tests/test_learning.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v3.zip",
-      "bundle_name": "token_economics_v3.zip",
-      "matched_report": "ingestion_reports/token_economics_v3.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode",
-        "allowed_paths"
-      ],
-      "allowed_paths": []
-    },
-    {
-      "bundle": "failed_bundles/v21_to_v30_bundle.zip",
-      "bundle_name": "v21_to_v30_bundle.zip",
-      "matched_report": null,
-      "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v7_manifest_fixed.zip",
-      "bundle_name": "token_economics_v7_manifest_fixed.zip",
-      "matched_report": null,
-      "status": "no_report_found"
+      "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
+      "bundle_name": "trajectory_engine_v5_bundle.zip",
+      "matched_report": "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
+      "status": "matched"
     },
     {
       "bundle": "failed_bundles/ui_advanced_v18.zip",
@@ -278,20 +91,130 @@
       "status": "no_report_found"
     },
     {
-      "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle.zip",
-      "bundle_name": "v21_1B_ingestion_hardening_bundle.zip",
-      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192304.json",
+      "bundle": "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
+      "bundle_name": "trajectory_aware_retry_v10_bundle.zip",
+      "matched_report": "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
+      "bundle_name": "v21_1_gatekeeper_bundle.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/tvc_export_bundle.zip",
+      "bundle_name": "tvc_export_bundle.zip",
+      "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+      "bundle_name": "v21_2_formal_document_engine_bundle.zip",
+      "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v10.zip",
+      "bundle_name": "token_economics_v10.zip",
+      "matched_report": "ingestion_reports/token_economics_v10.zip_20260322_230637.json",
       "status": "matched",
       "verification_reason": "manifest_missing_required_fields",
       "missing_fields": [
-        "version"
+        "version",
+        "install_mode"
       ],
       "allowed_paths": [
-        "install/",
-        "payload/",
-        "experiments/",
-        "workflow_review/",
-        "config/"
+        "bundle_manifest.json",
+        "README.md",
+        "config/mechanism_config.json",
+        "install/engine/equilibrium_engine.py",
+        "install/engine/mechanism_design_engine.py",
+        "install/engine/auction_engine.py",
+        "install/engine/market_engine.py",
+        "install/engine/zk_pipeline_wired.py",
+        "install/tests/test_equilibrium.py",
+        "install/tests/test_mechanism.py",
+        "install/tests/test_zk_wired.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v9_manifest_fixed.zip",
+      "bundle_name": "token_economics_v9_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v3.zip",
+      "bundle_name": "token_economics_v3.zip",
+      "matched_report": "ingestion_reports/token_economics_v3.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode",
+        "allowed_paths"
+      ],
+      "allowed_paths": []
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v8_manifest_fixed.zip",
+      "bundle_name": "token_economics_v8_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v10_manifest_fixed.zip",
+      "bundle_name": "token_economics_v10_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v12.zip",
+      "bundle_name": "token_economics_v12.zip",
+      "matched_report": "ingestion_reports/token_economics_v12.zip_20260322_230637.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/self_evolving.json",
+        "config/zk_recursive.json",
+        "config/identity_graph.json",
+        "install/engine/self_evolving_mechanism_engine.py",
+        "install/engine/mechanism_mutation_engine.py",
+        "install/engine/recursive_zk_engine.py",
+        "install/engine/identity_graph_engine.py",
+        "install/engine/reputation_flow_engine.py",
+        "install/tests/test_self_evolving.py",
+        "install/tests/test_recursive_zk.py",
+        "install/tests/test_identity_graph.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v7.zip",
+      "bundle_name": "token_economics_v7.zip",
+      "matched_report": "ingestion_reports/token_economics_v7.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "install/engine/zk_proof_engine.py",
+        "install/engine/identity_engine.py",
+        "install/engine/agent_learning_engine.py",
+        "install/engine/strategy_store.py",
+        "install/tests/test_zk.py",
+        "install/tests/test_identity.py",
+        "install/tests/test_learning.py"
       ]
     }
   ]
