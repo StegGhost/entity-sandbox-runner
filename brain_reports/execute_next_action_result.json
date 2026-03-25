@@ -1,0 +1,432 @@
+{
+  "ts": "2026-03-25T02:23:49.332807",
+  "status": "ok",
+  "action": {
+    "generated_at": "2026-03-25T02:23:49.251822",
+    "summary": {
+      "manifest_repairable_count": 10,
+      "missing_report_count": 1,
+      "unresolved_failed_count": 107,
+      "obsolete_candidate_count": 15,
+      "total_failed_seen": 133
+    },
+    "next_action": {
+      "ts": "2026-03-25T02:23:49.251816",
+      "status": "ok",
+      "action": "repair_bundle_manifest",
+      "target": "token_economics_v3.zip",
+      "family": "token_economics",
+      "priority": "high",
+      "reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode",
+        "allowed_paths"
+      ],
+      "allowed_paths": []
+    },
+    "candidates": {
+      "manifest_repairable": [
+        {
+          "bundle": "token_economics_v3.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode",
+            "allowed_paths"
+          ],
+          "allowed_paths": []
+        },
+        {
+          "bundle": "token_economics_v4.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "install/engine/consensus_engine.py",
+            "install/engine/fraud_proof_engine.py",
+            "install/engine/finality_engine.py",
+            "install/engine/state_commit_engine.py",
+            "install/tests/test_consensus.py",
+            "install/tests/test_fraud_proofs.py"
+          ]
+        },
+        {
+          "bundle": "token_economics_v6.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "install/engine/adaptive_governance_engine.py",
+            "install/engine/attack_simulation_engine.py",
+            "install/engine/slashing_curve_engine.py",
+            "install/engine/governance_proposal_engine.py",
+            "install/sim/attack_scenarios.py",
+            "install/tests/test_adaptive.py",
+            "install/tests/test_attack_sim.py"
+          ]
+        },
+        {
+          "bundle": "token_economics_v7.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "install/engine/zk_proof_engine.py",
+            "install/engine/identity_engine.py",
+            "install/engine/agent_learning_engine.py",
+            "install/engine/strategy_store.py",
+            "install/tests/test_zk.py",
+            "install/tests/test_identity.py",
+            "install/tests/test_learning.py"
+          ]
+        },
+        {
+          "bundle": "token_economics_v8.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "config/zk_config.json",
+            "config/rl_config.json",
+            "config/identity_config.json",
+            "install/engine/zk_circuit_engine.py",
+            "install/engine/zk_prover_engine.py",
+            "install/engine/zk_verifier_engine.py",
+            "install/engine/identity_staking_engine.py",
+            "install/engine/rl_agent_engine.py",
+            "install/engine/rl_environment.py",
+            "install/engine/replay_buffer.py",
+            "install/tests/test_zk_pipeline.py",
+            "install/tests/test_identity_staking.py",
+            "install/tests/test_rl_agent.py"
+          ]
+        },
+        {
+          "bundle": "token_economics_v9.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "config/zk_backend.json",
+            "config/rl_multi_agent.json",
+            "config/did_config.json",
+            "install/engine/zk_backend_interface.py",
+            "install/engine/zk_circom_adapter.py",
+            "install/engine/zk_halo2_adapter.py",
+            "install/engine/multi_agent_env.py",
+            "install/engine/multi_agent_trainer.py",
+            "install/engine/policy_registry.py",
+            "install/engine/did_identity_engine.py",
+            "install/engine/vc_credential_engine.py",
+            "install/engine/sybil_resistance_engine.py",
+            "install/tests/test_zk_backend.py",
+            "install/tests/test_multi_agent.py",
+            "install/tests/test_did_identity.py"
+          ]
+        },
+        {
+          "bundle": "token_economics_v10.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "config/mechanism_config.json",
+            "install/engine/equilibrium_engine.py",
+            "install/engine/mechanism_design_engine.py",
+            "install/engine/auction_engine.py",
+            "install/engine/market_engine.py",
+            "install/engine/zk_pipeline_wired.py",
+            "install/tests/test_equilibrium.py",
+            "install/tests/test_mechanism.py",
+            "install/tests/test_zk_wired.py"
+          ]
+        },
+        {
+          "bundle": "token_economics_v12.zip",
+          "family": "token_economics",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "config/self_evolving.json",
+            "config/zk_recursive.json",
+            "config/identity_graph.json",
+            "install/engine/self_evolving_mechanism_engine.py",
+            "install/engine/mechanism_mutation_engine.py",
+            "install/engine/recursive_zk_engine.py",
+            "install/engine/identity_graph_engine.py",
+            "install/engine/reputation_flow_engine.py",
+            "install/tests/test_self_evolving.py",
+            "install/tests/test_recursive_zk.py",
+            "install/tests/test_identity_graph.py"
+          ]
+        },
+        {
+          "bundle": "ui_dashboard_control_v17.zip",
+          "family": "ui_dashboard_control",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "ui/index.html",
+            "ui/styles.css",
+            "ui/app.js",
+            "install/engine/ui_api_adapter.py",
+            "install/tests/test_ui_adapter.py"
+          ]
+        },
+        {
+          "bundle": "ui_advanced_v18.zip",
+          "family": "ui_advanced",
+          "reason": "manifest_missing_required_fields",
+          "missing_fields": [
+            "version",
+            "install_mode"
+          ],
+          "allowed_paths": [
+            "bundle_manifest.json",
+            "README.md",
+            "ui/index.html",
+            "ui/styles.css",
+            "ui/app.js",
+            "install/engine/ui_control_adapter.py",
+            "install/tests/test_ui_control.py"
+          ]
+        }
+      ],
+      "missing_report": [
+        {
+          "bundle": "v13_1_to_v14_bundle.zip",
+          "family": "v13_1_to",
+          "reason": "no matched ingestion report"
+        }
+      ],
+      "unresolved_failed": [
+        {
+          "bundle": "crypto_bot_v0_2_bundle.zip",
+          "family": "crypto_bot_v0_2",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "crypto_bot_v0_3_bundle.zip",
+          "family": "crypto_bot_v0_3",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "crypto_bot_v0_4_bundle.zip",
+          "family": "crypto_bot_v0_4",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "tc_tvc_platform_v0_2.zip",
+          "family": "tc_tvc_platform_v0_2",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "tc_tvc_scaffolding_v0_1.zip",
+          "family": "tc_tvc_scaffolding_v0_1",
+          "reason": "matched report but no supported repair class yet"
+        },
+        {
+          "bundle": "auto_bundle_observability_v1.zip",
+          "family": "auto_bundle_observability",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "auto_rollback_bundle_v1.zip",
+          "family": "auto_rollback_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "content_post_generation_bundle_v1.zip",
+          "family": "content_post_generation_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "contract_snapshot_bundle_v1.zip",
+          "family": "contract_snapshot_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "docs_aware_ingestion_bundle_v1.zip",
+          "family": "docs_aware_ingestion_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "document_compression_bundle_v1.zip",
+          "family": "document_compression_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "execution_policy_engine_bundle_v1.zip",
+          "family": "execution_policy_engine_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "full_governance_integration_bundle_v1.zip",
+          "family": "full_governance_integration_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "governed_agent_passport_v1_bundle_v1.zip",
+          "family": "governed_agent_passport_v1_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "governed_agent_passport_v1_ingestion_bundle.zip",
+          "family": "governed_agent_passport_v1_ingestion",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "hard_rollback_bundle_v1.zip",
+          "family": "hard_rollback_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "history_layer_bundle_v1.zip",
+          "family": "history_layer_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "multi_platform_post_bundle_v1.zip",
+          "family": "multi_platform_post_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "publishable_demo_export_bundle_v1.zip",
+          "family": "publishable_demo_export_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "relationship_conditioned_execution_v1_1.zip",
+          "family": "relationship_conditioned_execution_v1_1",
+          "reason": "no correlation entry"
+        }
+      ],
+      "obsolete_candidates": [
+        {
+          "bundle": "coherent_experience_model_v1.zip",
+          "family": "coherent_experience_model",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "critical_ratio_campaign_bundle_v1.zip",
+          "family": "critical_ratio_campaign_bundle",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "llm_adapter_readme_bundle_v1.zip",
+          "family": "llm_adapter_readme_bundle",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "sandbox_run_workflow_upgrade_bundle_v1.zip",
+          "family": "sandbox_run_workflow_upgrade_bundle",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "self_improve_bundle_v1.zip",
+          "family": "self_improve_bundle",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "stegverse_ingestion_safe_recovery_bundle_v1.zip",
+          "family": "stegverse_ingestion_safe_recovery_bundle",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "auto_bundle_fix_v2.zip",
+          "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "constraint_min_bundle_v2.zip",
+          "family": "constraint_min_bundle",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "auto_bundle_fix_v4.zip",
+          "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "auto_bundle_fix_v5.zip",
+          "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "auto_bundle_fix_v6.zip",
+          "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "auto_bundle_fix_v7.zip",
+          "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "auto_bundle_fix_v8.zip",
+          "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+          "family": "v21_1B_ingestion_hardening",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+          "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+          "reason": "same family has an installed member"
+        }
+      ]
+    }
+  },
+  "execution": {
+    "status": "ok",
+    "executed": true,
+    "action": null,
+    "target": null,
+    "note": "execution stub (no-op for now)"
+  }
+}
