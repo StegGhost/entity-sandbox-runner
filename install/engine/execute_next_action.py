@@ -2,7 +2,6 @@ import os
 import json
 import zipfile
 import tempfile
-import subprocess
 import time
 from datetime import datetime
 
@@ -11,6 +10,7 @@ ROOT = os.getcwd()
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
 FAILED_BUNDLES = os.path.join(ROOT, "failed_bundles")
 INCOMING_BUNDLES = os.path.join(ROOT, "incoming_bundles")
+INSTALLED_BUNDLES = os.path.join(ROOT, "installed_bundles")
 LOG_PATH = os.path.join(ROOT, "logs", "ingestion_log.json")
 
 NEXT_ACTION_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
@@ -44,17 +44,6 @@ def write_json(path, payload):
         f.write("\n")
 
 
-def load_ingestion_log():
-    if not os.path.exists(LOG_PATH):
-        return []
-    try:
-        with open(LOG_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data if isinstance(data, list) else []
-    except Exception:
-        return []
-
-
 def default_allowed_paths_from_tree(extract_root):
     allowed = []
 
@@ -85,6 +74,7 @@ def default_allowed_paths_from_tree(extract_root):
 
 def repair_bundle_manifest(bundle_name, missing_fields, allowed_paths):
     src = os.path.join(FAILED_BUNDLES, bundle_name)
+
     if not os.path.exists(src):
         return {
             "status": "failed",
@@ -156,63 +146,25 @@ def repair_bundle_manifest(bundle_name, missing_fields, allowed_paths):
         }
 
 
-def maybe_trigger_ingestion():
-    workflow_path = os.environ.get("INGESTION_WORKFLOW_PATH", ".github/workflows/ingestion.yml")
-    gh_token = os.environ.get("GH_TOKEN", "")
+def local_install(repaired_bundle):
+    src = os.path.join(INCOMING_BUNDLES, repaired_bundle)
+    dst = os.path.join(INSTALLED_BUNDLES, repaired_bundle)
 
-    if not gh_token:
-        return {
-            "status": "skipped",
-            "reason": "GH_TOKEN_missing",
-            "workflow": workflow_path,
-        }
+    ensure_dir(INSTALLED_BUNDLES)
 
-    try:
-        completed = subprocess.run(
-            ["gh", "workflow", "run", workflow_path],
-            check=True,
-            text=True,
-            capture_output=True,
-        )
-        return {
-            "status": "ok",
-            "workflow": workflow_path,
-            "stdout": completed.stdout,
-            "stderr": completed.stderr,
-        }
-    except subprocess.CalledProcessError as e:
+    if not os.path.exists(src):
         return {
             "status": "failed",
-            "workflow": workflow_path,
-            "stdout": e.stdout,
-            "stderr": e.stderr,
-            "returncode": e.returncode,
+            "reason": "repaired_bundle_not_found",
+            "expected_path": src,
         }
 
-
-def confirm_ingestion(bundle_name, wait_seconds=20):
-    start = time.time()
-    seen_initial = load_ingestion_log()
-    initial_len = len(seen_initial)
-
-    while time.time() - start < wait_seconds:
-        log = load_ingestion_log()
-        if len(log) > initial_len:
-            for entry in reversed(log):
-                if entry.get("bundle") == bundle_name:
-                    return {
-                        "status": "confirmed",
-                        "bundle": bundle_name,
-                        "ok": entry.get("ok"),
-                        "error": entry.get("error"),
-                        "ts": entry.get("ts"),
-                    }
-        time.sleep(2)
+    os.rename(src, dst)
 
     return {
-        "status": "pending_ingestion_confirmation",
-        "bundle": bundle_name,
-        "reason": "no matching ingestion log entry observed within wait window",
+        "status": "installed",
+        "bundle": repaired_bundle,
+        "path": dst,
     }
 
 
@@ -241,14 +193,7 @@ def main():
             "action": action,
             "target": target,
         }
-        result["ingestion_trigger"] = {
-            "status": "skipped",
-            "reason": "no_ingestion_trigger_for_result",
-        }
-        result["ingestion_confirmation"] = {
-            "status": "skipped",
-            "reason": "no_ingestion_trigger_for_result",
-        }
+        result["local_install"] = {"status": "skipped"}
         write_json(OUTPUT_PATH, result)
         print(json.dumps(result, indent=2))
         return
@@ -267,23 +212,12 @@ def main():
     result["execution"] = execution
 
     if execution.get("status") == "ok" and action == "repair_bundle_manifest":
-        trigger = maybe_trigger_ingestion()
-        result["ingestion_trigger"] = trigger
-        if trigger.get("status") == "ok":
-            result["ingestion_confirmation"] = confirm_ingestion(execution.get("repaired_bundle"))
-        else:
-            result["ingestion_confirmation"] = {
-                "status": "skipped",
-                "reason": "ingestion_not_triggered",
-            }
+        install_result = local_install(execution.get("repaired_bundle"))
+        result["local_install"] = install_result
     else:
-        result["ingestion_trigger"] = {
+        result["local_install"] = {
             "status": "skipped",
-            "reason": "no_ingestion_trigger_for_result",
-        }
-        result["ingestion_confirmation"] = {
-            "status": "skipped",
-            "reason": "no_ingestion_trigger_for_result",
+            "reason": "no_install_performed"
         }
 
     write_json(OUTPUT_PATH, result)
