@@ -1780,5 +1780,83 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774436782.6676402
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774439679.315409
+  },
+  {
+    "bundle": "token_economics_v6_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774439679.3159897
+  },
+  {
+    "bundle": "token_economics_v7_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774439679.316437
+  },
+  {
+    "bundle": "token_economics_v8_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774439679.3169277
+  },
+  {
+    "bundle": "token_economics_v9.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774439679.3173811
+  },
+  {
+    "bundle": "token_economics_v9_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774439679.317867
+  },
+  {
+    "bundle": "trajectory_engine_v5_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774439679.3193326
+  },
+  {
+    "bundle": "ui_advanced_v18_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774439679.3198104
+  },
+  {
+    "bundle": "ui_dashboard_control_v17.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774439679.3202205
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774439679.3206363
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774439679.3215902
+  },
+  {
+    "bundle": "v21_1_gatekeeper_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774439679.3220062
+  },
+  {
+    "bundle": "v21_to_v30_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774439679.3222654
   }
 ]

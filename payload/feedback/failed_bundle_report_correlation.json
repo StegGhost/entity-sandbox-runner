@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T11:26:29.972581+00:00",
+  "ts": "2026-03-25T11:54:39.206899+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -163,7 +163,7 @@
     {
       "bundle": "failed_bundles/tokenized_governance_bundle_v1.zip",
       "bundle_name": "tokenized_governance_bundle_v1.zip",
-      "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_231226.json",
+      "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
       "status": "matched"
     },
     {
