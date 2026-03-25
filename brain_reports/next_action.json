@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-03-25T12:02:47.093150",
+  "generated_at": "2026-03-25T12:11:38.604903",
   "summary": {
     "manifest_repairable_count": 2,
-    "missing_report_count": 3,
-    "unresolved_failed_count": 95,
-    "obsolete_candidate_count": 34,
-    "total_failed_seen": 134,
+    "missing_report_count": 2,
+    "unresolved_failed_count": 93,
+    "obsolete_candidate_count": 30,
+    "total_failed_seen": 127,
     "active_family": null,
     "last_executed_bundle": null,
     "internal_brain_status": "ok"
   },
   "next_action": {
-    "ts": "2026-03-25T12:02:47.089658",
+    "ts": "2026-03-25T12:11:38.599099",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
-    "active_family": "tvc_export",
+    "active_family": "token_economics",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/tvc_export_bundle.zip",
-    "family": "tvc_export",
+    "target": "failed_bundles/token_economics_v7.zip",
+    "family": "token_economics",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "source": "internal_brain"
@@ -62,11 +62,6 @@
       }
     ],
     "missing_report": [
-      {
-        "bundle": "ui_advanced_v18_manifest_fixed.zip",
-        "family": "ui_advanced",
-        "reason": "no matched ingestion report"
-      },
       {
         "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
         "family": "ui_dashboard_control",
@@ -427,17 +422,7 @@
         "reason": "same family has an installed member"
       },
       {
-        "bundle": "token_economics_v6_manifest_fixed.zip",
-        "family": "token_economics",
-        "reason": "same family has an installed member"
-      },
-      {
         "bundle": "token_economics_v7.zip",
-        "family": "token_economics",
-        "reason": "same family has an installed member"
-      },
-      {
-        "bundle": "token_economics_v7_manifest_fixed.zip",
         "family": "token_economics",
         "reason": "same family has an installed member"
       },
@@ -447,17 +432,7 @@
         "reason": "same family has an installed member"
       },
       {
-        "bundle": "token_economics_v8_manifest_fixed.zip",
-        "family": "token_economics",
-        "reason": "same family has an installed member"
-      },
-      {
         "bundle": "token_economics_v9.zip",
-        "family": "token_economics",
-        "reason": "same family has an installed member"
-      },
-      {
-        "bundle": "token_economics_v9_manifest_fixed.zip",
         "family": "token_economics",
         "reason": "same family has an installed member"
       },
@@ -511,13 +486,13 @@
     },
     "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
     "mapped_action": {
-      "ts": "2026-03-25T12:02:47.089658",
+      "ts": "2026-03-25T12:11:38.599099",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
-      "active_family": "tvc_export",
+      "active_family": "token_economics",
       "action": "inspect_failed_bundle_family",
-      "target": "failed_bundles/tvc_export_bundle.zip",
-      "family": "tvc_export",
+      "target": "failed_bundles/token_economics_v7.zip",
+      "family": "token_economics",
       "priority": 1,
       "reason": "20 recent failed bundles detected",
       "source": "internal_brain"
