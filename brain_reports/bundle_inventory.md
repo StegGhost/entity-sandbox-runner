@@ -2,7 +2,6 @@
 
 ## FAILED
 
-- .gitkeep
 - activation_bundle_v1.zip
 - auto_bundle_feedback.zip
 - auto_bundle_fix_v2.zip
@@ -163,9 +162,11 @@
 - trajectory_aware_retry_v10_bundle.zip
 - trajectory_engine_v5_bundle.zip
 - tvc_export_bundle.zip
+- ui_advanced_v18.zip
 - ui_advanced_v18_manifest_fixed.zip
 - ui_dashboard_control_v17.zip
 - v21_1B_ingestion_hardening_bundle.zip
+- v21_1B_ingestion_hardening_bundle_fixed.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
 - v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip
 - v21_1_gatekeeper_bundle.zip
