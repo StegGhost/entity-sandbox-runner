@@ -1,0 +1,35 @@
+{
+  "bundle_name": "history_layer_bundle_v1",
+  "bundle_version": "1.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "install/engine/",
+      "install/tests/"
+    ],
+    "violations": [
+      "ingestion_engine_v3_deterministic/README.md",
+      "ingestion_engine_v3_deterministic/bundle_manifest.json",
+      "ingestion_engine_v3_deterministic/install/engine/ingestion_v3.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "install/tests/test_convergence_engine.py",
+      "install/tests/test_contract_snapshot.py",
+      "install/tests/test_history_engine.py",
+      "install/tests/test_bootstrap_permission_unlock.py",
+      "install/tests/test_fix_missing_cge_root.py",
+      "install/engine/full_system_memory.py",
+      "install/engine/contract_snapshot.py",
+      "install/engine/agent_roles.py",
+      "install/engine/bootstrap_permission_unlock.py",
+      "install/engine/closure_engine.py",
+      "install/engine/history_engine.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/ingestion_engine_v3_deterministic.zip"
+}
