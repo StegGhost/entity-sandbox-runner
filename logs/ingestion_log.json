@@ -1114,5 +1114,53 @@
     "ok": false,
     "error": "path not allowed: README.md",
     "ts": 1774415635.8274052
+  },
+  {
+    "bundle": "token_economics_v10_manifest_fixed.zip",
+    "ok": false,
+    "error": "path not allowed: README.md",
+    "ts": 1774415953.858769
+  },
+  {
+    "bundle": "tvc_export_bundle.zip",
+    "ok": false,
+    "error": "missing bundle_manifest.json",
+    "ts": 1774415953.8590665
+  },
+  {
+    "bundle": "ui_advanced_v18_manifest_fixed.zip",
+    "ok": false,
+    "error": "path not allowed: README.md",
+    "ts": 1774415953.859324
+  },
+  {
+    "bundle": "ui_dashboard_control_v17.zip",
+    "ok": false,
+    "error": "path not allowed: README.md",
+    "ts": 1774415953.8595884
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path not allowed: README.md",
+    "ts": 1774415953.8598204
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774415953.8607068
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774415953.8615327
+  },
+  {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "ok": false,
+    "error": "path not allowed: config/document_engine_config.json",
+    "ts": 1774415953.8617878
   }
 ]
