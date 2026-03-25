@@ -1318,5 +1318,65 @@
     "ok": true,
     "error": null,
     "ts": 1774419621.389911
+  },
+  {
+    "bundle": "token_economics_v10_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774419656.5570679
+  },
+  {
+    "bundle": "token_economics_v3_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419656.5596054
+  },
+  {
+    "bundle": "token_economics_v8.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419656.560109
+  },
+  {
+    "bundle": "token_economics_v9.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419656.5605967
+  },
+  {
+    "bundle": "tvc_export_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774419656.560869
+  },
+  {
+    "bundle": "ui_advanced_v18.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419656.5613277
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774419656.5617502
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419656.5627635
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419656.5637565
+  },
+  {
+    "bundle": "v21_to_v30_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774419656.5640144
   }
 ]
