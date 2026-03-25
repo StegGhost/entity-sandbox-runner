@@ -2,7 +2,6 @@ import os
 import json
 import zipfile
 import tempfile
-import time
 from datetime import datetime
 
 ROOT = os.getcwd()
@@ -11,7 +10,6 @@ BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
 FAILED_BUNDLES = os.path.join(ROOT, "failed_bundles")
 INCOMING_BUNDLES = os.path.join(ROOT, "incoming_bundles")
 INSTALLED_BUNDLES = os.path.join(ROOT, "installed_bundles")
-LOG_PATH = os.path.join(ROOT, "logs", "ingestion_log.json")
 
 NEXT_ACTION_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
@@ -44,43 +42,11 @@ def write_json(path, payload):
         f.write("\n")
 
 
-def default_allowed_paths_from_tree(extract_root):
-    allowed = []
-
-    for root, _, files in os.walk(extract_root):
-        for fname in files:
-            full = os.path.join(root, fname)
-            rel = os.path.relpath(full, extract_root).replace("\\", "/")
-
-            if rel == "bundle_manifest.json":
-                if "bundle_manifest.json" not in allowed:
-                    allowed.append("bundle_manifest.json")
-                continue
-
-            if "/" in rel:
-                top = rel.split("/", 1)[0]
-                prefix = f"{top}/"
-                if prefix not in allowed:
-                    allowed.append(prefix)
-            else:
-                if rel not in allowed:
-                    allowed.append(rel)
-
-    if "bundle_manifest.json" not in allowed:
-        allowed.insert(0, "bundle_manifest.json")
-
-    return allowed
-
-
 def repair_bundle_manifest(bundle_name, missing_fields, allowed_paths):
     src = os.path.join(FAILED_BUNDLES, bundle_name)
 
     if not os.path.exists(src):
-        return {
-            "status": "failed",
-            "reason": "bundle_not_found",
-            "bundle": bundle_name,
-        }
+        return {"status": "failed", "reason": "bundle_not_found"}
 
     ensure_dir(INCOMING_BUNDLES)
 
@@ -96,129 +62,111 @@ def repair_bundle_manifest(bundle_name, missing_fields, allowed_paths):
 
         if os.path.exists(manifest_path):
             try:
-                with open(manifest_path, "r", encoding="utf-8") as f:
+                with open(manifest_path, "r") as f:
                     manifest = json.load(f)
-            except Exception:
+            except:
                 manifest = {}
 
         if not manifest:
-            stem = bundle_name[:-4] if bundle_name.endswith(".zip") else bundle_name
             manifest = {
-                "bundle_name": stem,
+                "bundle_name": bundle_name.replace(".zip", ""),
                 "bundle_version": "1.0.0",
             }
 
-        if "version" in missing_fields and "version" not in manifest:
+        if "version" not in manifest:
             manifest["version"] = "1.0"
 
-        if "install_mode" in missing_fields and "install_mode" not in manifest:
+        if "install_mode" not in manifest:
             manifest["install_mode"] = "folder_map"
 
-        if "allowed_paths" in missing_fields and not manifest.get("allowed_paths"):
-            manifest["allowed_paths"] = allowed_paths or default_allowed_paths_from_tree(extract_root)
-
         if not manifest.get("allowed_paths"):
-            manifest["allowed_paths"] = allowed_paths or default_allowed_paths_from_tree(extract_root)
+            manifest["allowed_paths"] = allowed_paths or ["bundle_manifest.json", "install/"]
 
-        with open(manifest_path, "w", encoding="utf-8") as f:
+        with open(manifest_path, "w") as f:
             json.dump(manifest, f, indent=2)
-            f.write("\n")
 
-        stem = bundle_name[:-4] if bundle_name.endswith(".zip") else bundle_name
-        repaired_name = f"{stem}_manifest_fixed.zip"
+        repaired_name = bundle_name.replace(".zip", "_manifest_fixed.zip")
         repaired_path = os.path.join(INCOMING_BUNDLES, repaired_name)
 
-        with zipfile.ZipFile(repaired_path, "w", zipfile.ZIP_DEFLATED) as zf:
+        with zipfile.ZipFile(repaired_path, "w") as zf:
             for root, _, files in os.walk(extract_root):
                 for fname in files:
                     full = os.path.join(root, fname)
-                    rel = os.path.relpath(full, extract_root).replace("\\", "/")
+                    rel = os.path.relpath(full, extract_root)
                     zf.write(full, rel)
 
         return {
             "status": "ok",
-            "executed": True,
-            "action": "repair_bundle_manifest",
-            "target": bundle_name,
-            "repaired_bundle": repaired_name,
-            "repaired_path": repaired_path,
-            "manifest_after_repair": manifest,
+            "repaired_bundle": repaired_name
         }
 
 
-def local_install(repaired_bundle):
-    src = os.path.join(INCOMING_BUNDLES, repaired_bundle)
-    dst = os.path.join(INSTALLED_BUNDLES, repaired_bundle)
+def local_install(bundle_name):
+    src = os.path.join(INCOMING_BUNDLES, bundle_name)
+    dst = os.path.join(INSTALLED_BUNDLES, bundle_name)
 
     ensure_dir(INSTALLED_BUNDLES)
 
     if not os.path.exists(src):
-        return {
-            "status": "failed",
-            "reason": "repaired_bundle_not_found",
-            "expected_path": src,
-        }
+        return {"status": "failed", "reason": "missing_incoming_bundle"}
 
     os.rename(src, dst)
 
-    return {
-        "status": "installed",
-        "bundle": repaired_bundle,
-        "path": dst,
-    }
+    return {"status": "installed", "path": dst}
+
+
+def find_repairable_candidate(next_action_doc):
+    candidates = next_action_doc.get("candidates", {})
+    repairables = candidates.get("manifest_repairable", [])
+
+    if not repairables:
+        return None
+
+    return repairables[0]
 
 
 def main():
     ensure_dir(BRAIN_REPORTS)
 
-    next_action_doc = load_json(NEXT_ACTION_PATH, {})
-    next_action = next_action_doc.get("next_action", {})
-
-    action = next_action.get("action")
-    target = next_action.get("target")
-    missing_fields = next_action.get("missing_fields", [])
-    allowed_paths = next_action.get("allowed_paths", [])
+    doc = load_json(NEXT_ACTION_PATH, {})
+    action = doc.get("next_action", {}).get("action")
+    target = doc.get("next_action", {}).get("target")
 
     result = {
         "generated_at": utc_now(),
-        "input_document": next_action_doc,
-        "resolved_next_action": next_action,
+        "input_document": doc
     }
 
-    if not action or action == "idle":
-        result["execution"] = {
-            "status": "noop",
-            "executed": False,
-            "reason": "no_action_to_execute",
-            "action": action,
-            "target": target,
-        }
-        result["local_install"] = {"status": "skipped"}
-        write_json(OUTPUT_PATH, result)
-        print(json.dumps(result, indent=2))
-        return
+    # 🔥 CRITICAL FIX: fallback if unsupported
+    if action != "repair_bundle_manifest":
+        fallback = find_repairable_candidate(doc)
 
-    if action == "repair_bundle_manifest":
-        execution = repair_bundle_manifest(target, missing_fields, allowed_paths)
+        if fallback:
+            action = "repair_bundle_manifest"
+            target = fallback["bundle"]
+            missing_fields = fallback.get("missing_fields", [])
+            allowed_paths = fallback.get("allowed_paths", [])
+        else:
+            result["execution"] = {
+                "status": "noop",
+                "reason": "no_supported_actions_available"
+            }
+            write_json(OUTPUT_PATH, result)
+            print(json.dumps(result, indent=2))
+            return
     else:
-        execution = {
-            "status": "failed",
-            "executed": False,
-            "reason": "unknown_or_unsupported_action",
-            "action": action,
-            "target": target,
-        }
+        missing_fields = doc.get("next_action", {}).get("missing_fields", [])
+        allowed_paths = doc.get("next_action", {}).get("allowed_paths", [])
+
+    execution = repair_bundle_manifest(target, missing_fields, allowed_paths)
 
     result["execution"] = execution
 
-    if execution.get("status") == "ok" and action == "repair_bundle_manifest":
-        install_result = local_install(execution.get("repaired_bundle"))
-        result["local_install"] = install_result
+    if execution.get("status") == "ok":
+        install = local_install(execution["repaired_bundle"])
+        result["local_install"] = install
     else:
-        result["local_install"] = {
-            "status": "skipped",
-            "reason": "no_install_performed"
-        }
+        result["local_install"] = {"status": "skipped"}
 
     write_json(OUTPUT_PATH, result)
     print(json.dumps(result, indent=2))
