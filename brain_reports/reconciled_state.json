@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-03-25T20:05:05.908641",
+  "selected": {
+    "action": "inspect_failed_bundle_family",
+    "target": "relationship_conditioned_execution_v1_3.zip",
+    "family": "relationship_conditioned_execution",
+    "source": "fallback_convergent",
+    "priority": null,
+    "reason": null
+  },
+  "execution": {
+    "status": "ok",
+    "executed": true,
+    "action": "inspect_failed_bundle_family",
+    "bundle": "relationship_conditioned_execution_v1_3.zip",
+    "details": {
+      "status": "ok",
+      "executed": true,
+      "action": "inspect_failed_bundle_family",
+      "moved_to_incoming": "incoming_bundles/relationship_conditioned_execution_v1_3.zip",
+      "bundle": "relationship_conditioned_execution_v1_3.zip",
+      "trigger_ingestion": true
+    }
+  },
+  "ingestion": {
+    "trigger_status": "triggered",
+    "log_match_found": true,
+    "latest_log_entry": {
+      "bundle": "relationship_conditioned_execution_v1_3.zip",
+      "ok": false,
+      "error": "path_not_allowed:docs/architecture_map.md",
+      "ts": 1774467178.9211094
+    }
+  },
+  "installation": {
+    "status": null,
+    "path": null,
+    "details": {}
+  },
+  "review": {
+    "state": "failed",
+    "reason": "path_not_allowed:docs/architecture_map.md",
+    "bundle": "relationship_conditioned_execution_v1_3.zip",
+    "family": "relationship_conditioned_execution"
+  }
+}
