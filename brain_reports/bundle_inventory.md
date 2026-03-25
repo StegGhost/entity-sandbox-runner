@@ -153,7 +153,6 @@
 ## INCOMING
 
 - .gitkeep
-- auto_bundle_feedback.zip
 - governed_agent_passport_v1_ingestion_bundle.sha256
 
 ## INSTALLED
@@ -275,6 +274,7 @@
 - stegverse_sandbox_combined_bundle_v1.zip
 - step_completion_bundle_v1.zip
 - token_economics_v3_manifest_fixed.zip
+- trajectory_engine_v5_bundle.zip
 - v21_1A_ingestion_bootstrap_bundle.zip
 - v21_1B_ingestion_hardening_bundle.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
