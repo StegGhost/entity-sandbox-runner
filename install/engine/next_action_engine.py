@@ -1,10 +1,12 @@
 import os
 import json
 import re
+import subprocess
 from datetime import datetime
 
 ROOT = os.getcwd()
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
+INTERNAL_BRAIN_REPORT = os.path.join(ROOT, "internal_brain", "brain_report.json")
 
 RECEIPT_RECONCILED_STATE = os.path.join(BRAIN_REPORTS, "receipt_reconciled_state.json")
 BUNDLE_INVENTORY = os.path.join(BRAIN_REPORTS, "bundle_inventory.json")
@@ -223,9 +225,16 @@ def get_active_family(last_execution_doc):
     return family_key(repaired_target)
 
 
-def first_matching_family(items, family):
+def get_last_executed_bundle(last_execution_doc):
+    execution = last_execution_doc.get("execution", {})
+    if execution.get("status") != "ok":
+        return None
+    return execution.get("target")
+
+
+def first_matching_family(items, family, skip_bundle=None):
     for item in items:
-        if item.get("family") == family:
+        if item.get("family") == family and item.get("bundle") != skip_bundle:
             return item
     return None
 
@@ -236,9 +245,10 @@ def choose_next_action(
     unresolved_failed,
     obsolete_candidates,
     active_family,
+    last_bundle,
 ):
     if active_family:
-        target = first_matching_family(manifest_repairable, active_family)
+        target = first_matching_family(manifest_repairable, active_family, skip_bundle=last_bundle)
         if target:
             return {
                 "ts": utc_now(),
@@ -254,7 +264,7 @@ def choose_next_action(
                 "allowed_paths": target.get("allowed_paths", []),
             }
 
-        target = first_matching_family(missing_report, active_family)
+        target = first_matching_family(missing_report, active_family, skip_bundle=last_bundle)
         if target:
             return {
                 "ts": utc_now(),
@@ -268,7 +278,7 @@ def choose_next_action(
                 "reason": target["reason"],
             }
 
-        target = first_matching_family(unresolved_failed, active_family)
+        target = first_matching_family(unresolved_failed, active_family, skip_bundle=last_bundle)
         if target:
             return {
                 "ts": utc_now(),
@@ -353,8 +363,105 @@ def choose_next_action(
     }
 
 
+def run_internal_brain():
+    runner = os.path.join(ROOT, "internal_brain", "brain_runner.py")
+    if not os.path.exists(runner):
+        return {"status": "missing", "reason": "brain_runner_not_found"}
+
+    try:
+        completed = subprocess.run(
+            ["python", runner],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        return {
+            "status": "ok",
+            "stdout": completed.stdout,
+            "stderr": completed.stderr,
+        }
+    except subprocess.CalledProcessError as e:
+        return {
+            "status": "failed",
+            "stdout": e.stdout,
+            "stderr": e.stderr,
+            "returncode": e.returncode,
+        }
+
+
+def map_internal_brain_action(report):
+    closure = report.get("closure_output", {})
+    actions = closure.get("actions", [])
+
+    if not actions:
+        return None
+
+    first = actions[0]
+    action_name = first.get("action")
+    reason = first.get("reason", "internal_brain_action")
+    targets = first.get("targets", [])
+
+    if action_name == "repair_bundle_manifests" and targets:
+        target = targets[0]
+        if isinstance(target, dict):
+            bundle = target.get("bundle")
+            if bundle:
+                return {
+                    "ts": utc_now(),
+                    "status": "ok",
+                    "selection_mode": "internal_brain_closure",
+                    "active_family": family_key(bundle),
+                    "action": "repair_bundle_manifest",
+                    "target": bundle,
+                    "family": family_key(bundle),
+                    "priority": first.get("priority", "high"),
+                    "reason": target.get("reason", reason),
+                    "missing_fields": target.get("missing_fields", []),
+                    "allowed_paths": target.get("allowed_paths", []),
+                    "source": "internal_brain",
+                }
+
+    if action_name == "inspect_failed_bundles" and targets:
+        bundle = targets[0]
+        if isinstance(bundle, str):
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "selection_mode": "internal_brain_closure",
+                "active_family": family_key(bundle),
+                "action": "inspect_failed_bundle_family",
+                "target": bundle,
+                "family": family_key(bundle),
+                "priority": first.get("priority", "medium"),
+                "reason": reason,
+                "source": "internal_brain",
+            }
+
+    if action_name == "correlate_failed_bundles_with_ingestion_reports":
+        return {
+            "ts": utc_now(),
+            "status": "ok",
+            "selection_mode": "internal_brain_closure",
+            "active_family": None,
+            "action": "reconstruct_bundle_report_match",
+            "target": None,
+            "family": None,
+            "priority": first.get("priority", "high"),
+            "reason": reason,
+            "source": "internal_brain",
+        }
+
+    return None
+
+
 def main():
     ensure_dir(BRAIN_REPORTS)
+
+    internal_brain_run = run_internal_brain()
+    internal_brain_report = load_json(INTERNAL_BRAIN_REPORT, {})
+    mapped_action = None
+    if internal_brain_run.get("status") == "ok" and internal_brain_report:
+        mapped_action = map_internal_brain_action(internal_brain_report)
 
     _ = load_json(RECEIPT_RECONCILED_STATE, {})
     inventory = load_json(BUNDLE_INVENTORY, {"inventory": {}})
@@ -371,13 +478,15 @@ def main():
     )
 
     active_family = get_active_family(last_execution)
+    last_bundle = get_last_executed_bundle(last_execution)
 
-    next_action = choose_next_action(
+    next_action = mapped_action or choose_next_action(
         manifest_repairable,
         missing_report,
         unresolved_failed,
         obsolete_candidates,
         active_family,
+        last_bundle,
     )
 
     output = {
@@ -389,6 +498,8 @@ def main():
             "obsolete_candidate_count": len(obsolete_candidates),
             "total_failed_seen": len([b for b, state in bundle_to_state.items() if state == "failed"]),
             "active_family": active_family,
+            "last_executed_bundle": last_bundle,
+            "internal_brain_status": internal_brain_run.get("status"),
         },
         "next_action": next_action,
         "candidates": {
@@ -396,6 +507,11 @@ def main():
             "missing_report": missing_report[:50],
             "unresolved_failed": unresolved_failed[:50],
             "obsolete_candidates": obsolete_candidates[:50],
+        },
+        "internal_brain": {
+            "run": internal_brain_run,
+            "report_path": INTERNAL_BRAIN_REPORT,
+            "mapped_action": mapped_action,
         }
     }
 
