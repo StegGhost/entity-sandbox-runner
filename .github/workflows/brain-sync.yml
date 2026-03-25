@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -75,13 +77,32 @@ jobs:
         run: cat brain_reports/execute_next_action_result.json
 
       - name: Commit outputs and mutations
+        shell: bash
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+
           git add brain_reports/
           git add incoming_bundles/ || true
           git add failed_bundles/ || true
           git add installed_bundles/ || true
           git add payload/feedback/ || true
-          git commit -m "brain: update state and execute next action" || echo "no changes"
-          git push
+          git add engine/ || true
+          git add tests/ || true
+          git add brain_state.json || true
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "brain: update state and execute next action"
+
+          git fetch origin main
+          git rebase origin/main || {
+            echo "Rebase failed"
+            git rebase --abort || true
+            exit 1
+          }
+
+          git push origin HEAD:main
