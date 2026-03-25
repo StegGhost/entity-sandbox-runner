@@ -15,6 +15,7 @@ ALLOWED_PREFIXES = (
     "experiments/",
     "workflow_review/",
     "config/",
+    "docs/",
 )
 
 REPO_ROOT_PREFIX = "payload/repo_root/"
@@ -27,35 +28,41 @@ IGNORE_NAMES = (
     ".DS_Store",
 )
 
+
 def _ensure():
     os.makedirs(INCOMING, exist_ok=True)
     os.makedirs(INSTALLED, exist_ok=True)
     os.makedirs(FAILED, exist_ok=True)
     os.makedirs("logs", exist_ok=True)
 
+
 def _load_log():
     if os.path.exists(LOG) and os.path.getsize(LOG) > 0:
         try:
-            with open(LOG, "r") as f:
+            with open(LOG, "r", encoding="utf-8") as f:
                 data = json.load(f)
             return data if isinstance(data, list) else []
         except Exception:
             return []
     return []
 
+
 def _save_log(log):
-    with open(LOG, "w") as f:
+    with open(LOG, "w", encoding="utf-8") as f:
         json.dump(log, f, indent=2)
+        f.write("\n")
+
 
 def _safe_json_load(path):
     try:
         if not os.path.exists(path) or os.path.getsize(path) == 0:
             return {}
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         return data if isinstance(data, dict) else {}
     except Exception:
         return {}
+
 
 def _is_ignored_member(name):
     if any(name.startswith(prefix) for prefix in IGNORE_PREFIXES):
@@ -65,10 +72,12 @@ def _is_ignored_member(name):
         return True
     return False
 
+
 def _is_allowed_member(name):
     if name == "bundle_manifest.json":
         return True
     return any(name.startswith(prefix) for prefix in ALLOWED_PREFIXES)
+
 
 def _validate_manifest(manifest):
     required = ["bundle_name", "bundle_version", "install_mode"]
@@ -79,6 +88,7 @@ def _validate_manifest(manifest):
     if manifest.get("install_mode") != "folder_map":
         raise Exception("unsupported_install_mode")
 
+
 def _repo_destination(rel_path):
     if rel_path.startswith(REPO_ROOT_PREFIX):
         repo_rel = rel_path[len(REPO_ROOT_PREFIX):]
@@ -86,6 +96,7 @@ def _repo_destination(rel_path):
             raise Exception("empty_repo_root_mapping")
         return repo_rel
     return rel_path
+
 
 def _install_zip(path):
     tmp = f"_tmp_ingest_{int(time.time() * 1000)}"
@@ -114,10 +125,12 @@ def _install_zip(path):
             for n in filtered_names:
                 z.extract(n, tmp)
 
+        copied_count = 0
+
         for root, _, files in os.walk(tmp):
             for file in files:
                 src = os.path.join(root, file)
-                rel = os.path.relpath(src, tmp)
+                rel = os.path.relpath(src, tmp).replace("\\", "/")
 
                 if rel == "bundle_manifest.json":
                     continue
@@ -134,6 +147,10 @@ def _install_zip(path):
                     os.makedirs(parent, exist_ok=True)
 
                 shutil.copy2(src, dst)
+                copied_count += 1
+
+        if copied_count == 0:
+            raise Exception("no_valid_files")
 
         shutil.rmtree(tmp, ignore_errors=True)
         return True, None
@@ -141,6 +158,7 @@ def _install_zip(path):
     except Exception as e:
         shutil.rmtree(tmp, ignore_errors=True)
         return False, str(e)
+
 
 def process():
     _ensure()
@@ -166,6 +184,7 @@ def process():
             shutil.move(src, os.path.join(FAILED, f))
 
     _save_log(log)
+
 
 if __name__ == "__main__":
     process()
