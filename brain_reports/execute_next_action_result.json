@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-03-25T06:02:18.453292",
+  "generated_at": "2026-03-25T06:14:37.010116",
   "input_document": {
-    "generated_at": "2026-03-25T06:02:18.343386",
+    "generated_at": "2026-03-25T06:14:36.976491",
     "summary": {
       "manifest_repairable_count": 1,
       "missing_report_count": 2,
       "unresolved_failed_count": 97,
       "obsolete_candidate_count": 30,
       "total_failed_seen": 130,
-      "active_family": "ui_dashboard_control",
-      "last_executed_bundle": "ui_dashboard_control_v17.zip",
+      "active_family": null,
+      "last_executed_bundle": null,
       "internal_brain_status": "ok"
     },
     "next_action": {
-      "ts": "2026-03-25T06:02:18.340045",
+      "ts": "2026-03-25T06:14:36.973179",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
-      "active_family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+      "active_family": "v21_2_formal_document_engine",
       "action": "inspect_failed_bundle_family",
-      "target": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-      "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+      "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+      "family": "v21_2_formal_document_engine",
       "priority": 1,
       "reason": "20 recent failed bundles detected",
       "source": "internal_brain"
@@ -470,13 +470,13 @@
       },
       "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
       "mapped_action": {
-        "ts": "2026-03-25T06:02:18.340045",
+        "ts": "2026-03-25T06:14:36.973179",
         "status": "ok",
         "selection_mode": "internal_brain_closure",
-        "active_family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+        "active_family": "v21_2_formal_document_engine",
         "action": "inspect_failed_bundle_family",
-        "target": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-        "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+        "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+        "family": "v21_2_formal_document_engine",
         "priority": 1,
         "reason": "20 recent failed bundles detected",
         "source": "internal_brain"
@@ -484,13 +484,13 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T06:02:18.340045",
+    "ts": "2026-03-25T06:14:36.973179",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
-    "active_family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+    "active_family": "v21_2_formal_document_engine",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-    "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
+    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+    "family": "v21_2_formal_document_engine",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "source": "internal_brain"
@@ -500,7 +500,7 @@
     "executed": false,
     "reason": "unknown_or_unsupported_action",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip"
+    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip"
   },
   "ingestion_trigger": {
     "status": "skipped",

@@ -1228,5 +1228,89 @@
     "ok": false,
     "error": "path_not_allowed:.github/workflows/document_engine.yml",
     "ts": 1774416202.127346
+  },
+  {
+    "bundle": "token_economics_v10_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774419277.0401971
+  },
+  {
+    "bundle": "token_economics_v14.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419277.0405433
+  },
+  {
+    "bundle": "token_economics_v2.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419277.0408542
+  },
+  {
+    "bundle": "token_economics_v3_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419277.0424297
+  },
+  {
+    "bundle": "token_economics_v5.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419277.0427206
+  },
+  {
+    "bundle": "token_economics_v8.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419277.043043
+  },
+  {
+    "bundle": "trajectory_aware_retry_v10_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774419277.0432024
+  },
+  {
+    "bundle": "ui_advanced_v18.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774419277.0435054
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774419277.0437548
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419277.0443845
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419277.0449903
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774419277.0455964
+  },
+  {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "ok": false,
+    "error": "path_not_allowed:.github/workflows/document_engine.yml",
+    "ts": 1774419277.045852
+  },
+  {
+    "bundle": "v21_to_v30_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774419277.0459924
   }
 ]
