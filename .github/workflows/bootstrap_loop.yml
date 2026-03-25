@@ -1,0 +1,45 @@
+name: Bootstrap Loop
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"  # every 5 minutes
+
+jobs:
+  run-bootstrap-loop:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies (if present)
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Run one cycle (safe loop execution)
+        run: |
+          echo "Running next_action_engine..."
+          python install/engine/next_action_engine.py || true
+
+          echo "Running execute_next_action..."
+          python install/engine/execute_next_action.py || true
+
+          echo "Running ingestion..."
+          python install/ingestion_v2.py || true
+
+      - name: Commit updated state (if changed)
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add .
+          git commit -m "auto: bootstrap loop update" || echo "No changes to commit"
+          git push || echo "Nothing to push"
