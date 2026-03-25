@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T04:18:24.333402",
+  "generated_at": "2026-03-25T05:10:15.301015",
   "summary": {
     "manifest_repairable_count": 2,
     "missing_report_count": 1,
@@ -9,7 +9,7 @@
     "active_family": "ui_dashboard_control"
   },
   "next_action": {
-    "ts": "2026-03-25T04:18:24.333396",
+    "ts": "2026-03-25T05:10:15.301008",
     "status": "ok",
     "selection_mode": "active_family_continuation",
     "active_family": "ui_dashboard_control",

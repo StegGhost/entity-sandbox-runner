@@ -1090,5 +1090,17 @@
     "ok": false,
     "error": "path not allowed: README.md",
     "ts": 1774414622.1898055
+  },
+  {
+    "bundle": "auto_bundle_feedback.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774415415.3790138
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path not allowed: README.md",
+    "ts": 1774415415.379334
   }
 ]

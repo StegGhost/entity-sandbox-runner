@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-25T04:18:24.450214",
+  "generated_at": "2026-03-25T05:10:15.338358",
   "input_document": {
-    "generated_at": "2026-03-25T04:18:24.333402",
+    "generated_at": "2026-03-25T05:10:15.301015",
     "summary": {
       "manifest_repairable_count": 2,
       "missing_report_count": 1,
@@ -11,7 +11,7 @@
       "active_family": "ui_dashboard_control"
     },
     "next_action": {
-      "ts": "2026-03-25T04:18:24.333396",
+      "ts": "2026-03-25T05:10:15.301008",
       "status": "ok",
       "selection_mode": "active_family_continuation",
       "active_family": "ui_dashboard_control",
@@ -492,7 +492,7 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T04:18:24.333396",
+    "ts": "2026-03-25T05:10:15.301008",
     "status": "ok",
     "selection_mode": "active_family_continuation",
     "active_family": "ui_dashboard_control",
@@ -543,14 +543,12 @@
     }
   },
   "ingestion_trigger": {
-    "status": "ok",
-    "workflow": ".github/workflows/ingestion.yml",
-    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23524690684\n",
-    "stderr": ""
+    "status": "skipped",
+    "reason": "GH_TOKEN_missing",
+    "workflow": ".github/workflows/ingestion.yml"
   },
   "ingestion_confirmation": {
-    "status": "pending_ingestion_confirmation",
-    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
-    "reason": "no matching ingestion log entry observed within wait window"
+    "status": "skipped",
+    "reason": "ingestion_not_triggered"
   }
 }
