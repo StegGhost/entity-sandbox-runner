@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-25T05:10:15.338358",
+  "generated_at": "2026-03-25T05:13:13.677886",
   "input_document": {
-    "generated_at": "2026-03-25T05:10:15.301015",
+    "generated_at": "2026-03-25T05:13:13.640168",
     "summary": {
       "manifest_repairable_count": 2,
       "missing_report_count": 1,
@@ -11,7 +11,7 @@
       "active_family": "ui_dashboard_control"
     },
     "next_action": {
-      "ts": "2026-03-25T05:10:15.301008",
+      "ts": "2026-03-25T05:13:13.640161",
       "status": "ok",
       "selection_mode": "active_family_continuation",
       "active_family": "ui_dashboard_control",
@@ -492,7 +492,7 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T05:10:15.301008",
+    "ts": "2026-03-25T05:13:13.640161",
     "status": "ok",
     "selection_mode": "active_family_continuation",
     "active_family": "ui_dashboard_control",
