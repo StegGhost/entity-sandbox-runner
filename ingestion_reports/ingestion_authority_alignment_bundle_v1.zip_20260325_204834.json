@@ -1,0 +1,30 @@
+{
+  "bundle_name": "ingestion_authority_alignment_bundle_v1",
+  "bundle_version": "1.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "README.md/",
+      "install/ingestion_v2.py/",
+      "install/apply.py/",
+      "install/engine/execute_next_action.py/",
+      "install/engine/reconcile_execution_state.py/"
+    ],
+    "violations": [
+      "install/tests/test_fix_missing_cge_root.py"
+    ],
+    "filtered_normal_files": [
+      "bundle_manifest.json",
+      "README.md",
+      "install/apply.py",
+      "install/ingestion_v2.py",
+      "install/engine/reconcile_execution_state.py",
+      "install/engine/execute_next_action.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/ingestion_authority_alignment_bundle_v1.zip"
+}
