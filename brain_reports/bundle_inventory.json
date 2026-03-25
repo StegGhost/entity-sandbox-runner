@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T04:18:24.228671",
+  "generated_at": "2026-03-25T05:40:14.281438",
   "inventory": {
     "failed": [
       ".gitkeep",
@@ -269,6 +269,7 @@
       "v21_1A_ingestion_bootstrap_bundle.zip",
       "v21_1B_ingestion_hardening_bundle.zip",
       "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+      "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
       "v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
       "v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip",
       "v21_1_gatekeeper_bundle.zip",

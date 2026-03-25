@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-03-25T05:19:36.539179",
+  "generated_at": "2026-03-25T05:40:14.518055",
   "input_document": {
-    "generated_at": "2026-03-25T05:19:36.501674",
+    "generated_at": "2026-03-25T05:40:14.394728",
     "summary": {
-      "manifest_repairable_count": 2,
+      "manifest_repairable_count": 1,
       "missing_report_count": 3,
-      "unresolved_failed_count": 95,
-      "obsolete_candidate_count": 31,
-      "total_failed_seen": 131,
+      "unresolved_failed_count": 96,
+      "obsolete_candidate_count": 30,
+      "total_failed_seen": 130,
       "active_family": "ui_dashboard_control"
     },
     "next_action": {
-      "ts": "2026-03-25T05:19:36.501668",
+      "ts": "2026-03-25T05:40:14.394721",
       "status": "ok",
       "selection_mode": "active_family_continuation",
       "active_family": "ui_dashboard_control",
@@ -36,24 +36,6 @@
     },
     "candidates": {
       "manifest_repairable": [
-        {
-          "bundle": "ui_advanced_v18.zip",
-          "family": "ui_advanced",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "ui/index.html",
-            "ui/styles.css",
-            "ui/app.js",
-            "install/engine/ui_control_adapter.py",
-            "install/tests/test_ui_control.py"
-          ]
-        },
         {
           "bundle": "ui_dashboard_control_v17.zip",
           "family": "ui_dashboard_control",
@@ -492,17 +474,12 @@
           "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
           "family": "v21_1B_ingestion_hardening",
           "reason": "same family has an installed member"
-        },
-        {
-          "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-          "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
-          "reason": "same family has an installed member"
         }
       ]
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T05:19:36.501668",
+    "ts": "2026-03-25T05:40:14.394721",
     "status": "ok",
     "selection_mode": "active_family_continuation",
     "active_family": "ui_dashboard_control",
@@ -553,12 +530,14 @@
     }
   },
   "ingestion_trigger": {
-    "status": "skipped",
-    "reason": "GH_TOKEN_missing",
-    "workflow": ".github/workflows/ingestion.yml"
+    "status": "ok",
+    "workflow": ".github/workflows/ingestion.yml",
+    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23526743595\n",
+    "stderr": ""
   },
   "ingestion_confirmation": {
-    "status": "skipped",
-    "reason": "ingestion_not_triggered"
+    "status": "pending_ingestion_confirmation",
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "reason": "no matching ingestion log entry observed within wait window"
   }
 }
