@@ -1,6 +1,8 @@
 from pathlib import Path
 import shutil
 import json
+import zipfile
+import tempfile
 from datetime import datetime, timezone
 
 
@@ -33,6 +35,84 @@ def _match_report_for_bundle(report_dir: Path, bundle_name: str):
         "report_relpath": str(report_path),
         "report_json": report_json,
     }
+
+
+def _default_install_mode() -> str:
+    return "folder_map"
+
+
+def _default_allowed_paths_from_zip(extract_root: Path):
+    allowed = []
+
+    for path in sorted(extract_root.rglob("*")):
+        if not path.is_file():
+            continue
+
+        rel = path.relative_to(extract_root).as_posix()
+        if rel == "bundle_manifest.json":
+            allowed.append("bundle_manifest.json")
+            continue
+
+        top = rel.split("/", 1)[0]
+        if top in {"install", "payload", "experiments", "workflow_review", "config", "ui"}:
+            prefix = f"{top}/"
+            if prefix not in allowed:
+                allowed.append(prefix)
+
+    if "bundle_manifest.json" not in allowed:
+        allowed.insert(0, "bundle_manifest.json")
+
+    return allowed
+
+
+def _repair_manifest(bundle_path: Path, target_info: dict, incoming_dir: Path):
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp_root = Path(tmpdir)
+        extract_root = tmp_root / "bundle"
+        extract_root.mkdir(parents=True, exist_ok=True)
+
+        with zipfile.ZipFile(bundle_path, "r") as zf:
+            zf.extractall(extract_root)
+
+        manifest_path = extract_root / "bundle_manifest.json"
+        manifest = {}
+
+        if manifest_path.exists():
+            manifest = _safe_read_json(manifest_path) or {}
+
+        if not manifest:
+            manifest = {
+                "bundle_name": bundle_path.stem,
+                "bundle_version": "1.0.0",
+            }
+
+        missing_fields = target_info.get("missing_fields", [])
+        existing_allowed = manifest.get("allowed_paths") or []
+        suggested_allowed = target_info.get("allowed_paths") or []
+
+        if "version" in missing_fields and "version" not in manifest:
+            manifest["version"] = "1.0"
+
+        if "install_mode" in missing_fields and "install_mode" not in manifest:
+            manifest["install_mode"] = _default_install_mode()
+
+        if "allowed_paths" in missing_fields and not manifest.get("allowed_paths"):
+            manifest["allowed_paths"] = suggested_allowed or _default_allowed_paths_from_zip(extract_root)
+
+        if not manifest.get("allowed_paths"):
+            manifest["allowed_paths"] = existing_allowed or suggested_allowed or _default_allowed_paths_from_zip(extract_root)
+
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+
+        repaired_name = bundle_path.stem + "_manifest_fixed.zip"
+        repaired_zip = incoming_dir / repaired_name
+
+        with zipfile.ZipFile(repaired_zip, "w", zipfile.ZIP_DEFLATED) as zf:
+            for p in sorted(extract_root.rglob("*")):
+                if p.is_file():
+                    zf.write(p, p.relative_to(extract_root).as_posix())
+
+        return repaired_zip, manifest
 
 
 def actuate(closure_output, state):
@@ -122,6 +202,40 @@ def actuate(closure_output, state):
                 "count": len(correlations),
                 "matched": len([c for c in correlations if c["status"] == "matched"]),
                 "unmatched": len([c for c in correlations if c["status"] != "matched"]),
+                "ts": utc_now(),
+            })
+
+        elif name == "repair_bundle_manifests":
+            repaired = []
+            skipped = []
+
+            for target in targets:
+                bundle_rel = target.get("bundle")
+                if not bundle_rel:
+                    skipped.append({"target": target, "reason": "missing_bundle_path"})
+                    continue
+
+                bundle_path = root / bundle_rel
+                if not bundle_path.exists():
+                    skipped.append({"target": target, "reason": "bundle_not_found"})
+                    continue
+
+                repaired_zip, manifest = _repair_manifest(bundle_path, target, incoming_dir)
+                repaired.append({
+                    "source_bundle": bundle_rel,
+                    "repaired_bundle": str(repaired_zip.relative_to(root)),
+                    "missing_fields": target.get("missing_fields", []),
+                    "reason": target.get("reason"),
+                    "manifest_after_repair": manifest,
+                })
+
+            results.append({
+                "action": name,
+                "status": "executed",
+                "repaired": repaired,
+                "repaired_count": len(repaired),
+                "skipped": skipped,
+                "skipped_count": len(skipped),
                 "ts": utc_now(),
             })
 
