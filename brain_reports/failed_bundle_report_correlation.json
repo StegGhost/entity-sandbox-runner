@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T00:56:27.546300+00:00",
+  "ts": "2026-03-25T00:59:10.776374+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -53,12 +53,6 @@
       ]
     },
     {
-      "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
-      "bundle_name": "trajectory_engine_v5_bundle.zip",
-      "matched_report": "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
-      "status": "matched"
-    },
-    {
       "bundle": "failed_bundles/ui_advanced_v18.zip",
       "bundle_name": "ui_advanced_v18.zip",
       "matched_report": "ingestion_reports/ui_advanced_v18.zip_20260323_045741.json",
@@ -77,12 +71,6 @@
         "install/engine/ui_control_adapter.py",
         "install/tests/test_ui_control.py"
       ]
-    },
-    {
-      "bundle": "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
-      "bundle_name": "trajectory_aware_retry_v10_bundle.zip",
-      "matched_report": "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
-      "status": "matched"
     },
     {
       "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
@@ -214,12 +202,6 @@
       "status": "matched"
     },
     {
-      "bundle": "failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
-      "bundle_name": "stegverse_architecture_aligned_bundle_v3.zip",
-      "matched_report": "ingestion_reports/stegverse_architecture_aligned_bundle_v3.zip_20260317_105018.json",
-      "status": "matched"
-    },
-    {
       "bundle": "failed_bundles/token_economics_v6.zip",
       "bundle_name": "token_economics_v6.zip",
       "matched_report": "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
@@ -252,6 +234,63 @@
         "control_plane/",
         "security_plane/"
       ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v4.zip",
+      "bundle_name": "token_economics_v4.zip",
+      "matched_report": "ingestion_reports/token_economics_v4.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "install/engine/consensus_engine.py",
+        "install/engine/fraud_proof_engine.py",
+        "install/engine/finality_engine.py",
+        "install/engine/state_commit_engine.py",
+        "install/tests/test_consensus.py",
+        "install/tests/test_fraud_proofs.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v9.zip",
+      "bundle_name": "token_economics_v9.zip",
+      "matched_report": "ingestion_reports/token_economics_v9.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/zk_backend.json",
+        "config/rl_multi_agent.json",
+        "config/did_config.json",
+        "install/engine/zk_backend_interface.py",
+        "install/engine/zk_circom_adapter.py",
+        "install/engine/zk_halo2_adapter.py",
+        "install/engine/multi_agent_env.py",
+        "install/engine/multi_agent_trainer.py",
+        "install/engine/policy_registry.py",
+        "install/engine/did_identity_engine.py",
+        "install/engine/vc_credential_engine.py",
+        "install/engine/sybil_resistance_engine.py",
+        "install/tests/test_zk_backend.py",
+        "install/tests/test_multi_agent.py",
+        "install/tests/test_did_identity.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/stegverse_spec_bundle_v1_2.zip",
+      "bundle_name": "stegverse_spec_bundle_v1_2.zip",
+      "matched_report": "ingestion_reports/stegverse_spec_bundle_v1_2.zip_20260324_150339.json",
+      "status": "matched"
     }
   ]
 }
