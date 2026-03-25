@@ -1,0 +1,19 @@
+{
+  "type": "actuator_bridge",
+  "timestamp": 1774465307.8854556,
+  "goal_execution_log": "payload/runtime/goal_execution_log.json",
+  "generated_artifacts": [
+    "payload/actuation/0001_bundle_version____1_0____review_purpose____sdk_review_and_external_packaging.json",
+    "payload/actuation/0002_claims____proven_by_demo___the_critical_ratio_campaign_computes_the_candidate.json",
+    "payload/actuation/0003_claims____proven_by_demo___the_experiment_computes_the_candidate_invariant_u_e.json",
+    "payload/actuation/0004_the_critical_ratio_campaign_computes_the_candidate_invariant__u__as_specified.json",
+    "payload/actuation/0005_the_experiment_computes_the_candidate_invariant_u_exactly_as_specified.json",
+    "payload/actuation/0006_the_candidate_invariant_can_be_compared_against_simpler_baseline_ratios.json",
+    "payload/actuation/0007_supported_by_demo___the_candidate_invariant_can_be_compared_against_simpler_b.json",
+    "payload/actuation/0008_the_validation_scripts_can_check_deterministic_and_statistical_output_artifacts.json",
+    "payload/actuation/0009_the_validation_scripts_can_check_deterministic_and_statistical_output_artifact.json",
+    "payload/actuation/0010_bundle_version____1_0____review_purpose____sdk_review_and_external_packaging.json"
+  ],
+  "summary_md": "payload/actuation/actuation_summary.md",
+  "hash": "07381540506d832f11effc9de63fba639f8db13911970680e4947f624663c65f"
+}
