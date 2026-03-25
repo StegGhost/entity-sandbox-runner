@@ -1,201 +1,38 @@
 {
-  "generated_at": "2026-03-25T02:28:48.240390",
+  "generated_at": "2026-03-25T02:31:34.084947",
   "input_document": {
-    "generated_at": "2026-03-25T02:28:48.114409",
+    "generated_at": "2026-03-25T02:31:33.829638",
     "summary": {
-      "manifest_repairable_count": 10,
+      "manifest_repairable_count": 2,
       "missing_report_count": 1,
-      "unresolved_failed_count": 107,
-      "obsolete_candidate_count": 15,
+      "unresolved_failed_count": 99,
+      "obsolete_candidate_count": 31,
       "total_failed_seen": 133
     },
     "next_action": {
-      "ts": "2026-03-25T02:28:48.114402",
+      "ts": "2026-03-25T02:31:33.829630",
       "status": "ok",
       "action": "repair_bundle_manifest",
-      "target": "token_economics_v3.zip",
-      "family": "token_economics",
+      "target": "ui_dashboard_control_v17.zip",
+      "family": "ui_dashboard_control",
       "priority": "high",
       "reason": "manifest_missing_required_fields",
       "missing_fields": [
         "version",
-        "install_mode",
-        "allowed_paths"
+        "install_mode"
       ],
-      "allowed_paths": []
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "ui/index.html",
+        "ui/styles.css",
+        "ui/app.js",
+        "install/engine/ui_api_adapter.py",
+        "install/tests/test_ui_adapter.py"
+      ]
     },
     "candidates": {
       "manifest_repairable": [
-        {
-          "bundle": "token_economics_v3.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode",
-            "allowed_paths"
-          ],
-          "allowed_paths": []
-        },
-        {
-          "bundle": "token_economics_v4.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "install/engine/consensus_engine.py",
-            "install/engine/fraud_proof_engine.py",
-            "install/engine/finality_engine.py",
-            "install/engine/state_commit_engine.py",
-            "install/tests/test_consensus.py",
-            "install/tests/test_fraud_proofs.py"
-          ]
-        },
-        {
-          "bundle": "token_economics_v6.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "install/engine/adaptive_governance_engine.py",
-            "install/engine/attack_simulation_engine.py",
-            "install/engine/slashing_curve_engine.py",
-            "install/engine/governance_proposal_engine.py",
-            "install/sim/attack_scenarios.py",
-            "install/tests/test_adaptive.py",
-            "install/tests/test_attack_sim.py"
-          ]
-        },
-        {
-          "bundle": "token_economics_v7.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "install/engine/zk_proof_engine.py",
-            "install/engine/identity_engine.py",
-            "install/engine/agent_learning_engine.py",
-            "install/engine/strategy_store.py",
-            "install/tests/test_zk.py",
-            "install/tests/test_identity.py",
-            "install/tests/test_learning.py"
-          ]
-        },
-        {
-          "bundle": "token_economics_v8.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "config/zk_config.json",
-            "config/rl_config.json",
-            "config/identity_config.json",
-            "install/engine/zk_circuit_engine.py",
-            "install/engine/zk_prover_engine.py",
-            "install/engine/zk_verifier_engine.py",
-            "install/engine/identity_staking_engine.py",
-            "install/engine/rl_agent_engine.py",
-            "install/engine/rl_environment.py",
-            "install/engine/replay_buffer.py",
-            "install/tests/test_zk_pipeline.py",
-            "install/tests/test_identity_staking.py",
-            "install/tests/test_rl_agent.py"
-          ]
-        },
-        {
-          "bundle": "token_economics_v9.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "config/zk_backend.json",
-            "config/rl_multi_agent.json",
-            "config/did_config.json",
-            "install/engine/zk_backend_interface.py",
-            "install/engine/zk_circom_adapter.py",
-            "install/engine/zk_halo2_adapter.py",
-            "install/engine/multi_agent_env.py",
-            "install/engine/multi_agent_trainer.py",
-            "install/engine/policy_registry.py",
-            "install/engine/did_identity_engine.py",
-            "install/engine/vc_credential_engine.py",
-            "install/engine/sybil_resistance_engine.py",
-            "install/tests/test_zk_backend.py",
-            "install/tests/test_multi_agent.py",
-            "install/tests/test_did_identity.py"
-          ]
-        },
-        {
-          "bundle": "token_economics_v10.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "config/mechanism_config.json",
-            "install/engine/equilibrium_engine.py",
-            "install/engine/mechanism_design_engine.py",
-            "install/engine/auction_engine.py",
-            "install/engine/market_engine.py",
-            "install/engine/zk_pipeline_wired.py",
-            "install/tests/test_equilibrium.py",
-            "install/tests/test_mechanism.py",
-            "install/tests/test_zk_wired.py"
-          ]
-        },
-        {
-          "bundle": "token_economics_v12.zip",
-          "family": "token_economics",
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version",
-            "install_mode"
-          ],
-          "allowed_paths": [
-            "bundle_manifest.json",
-            "README.md",
-            "config/self_evolving.json",
-            "config/zk_recursive.json",
-            "config/identity_graph.json",
-            "install/engine/self_evolving_mechanism_engine.py",
-            "install/engine/mechanism_mutation_engine.py",
-            "install/engine/recursive_zk_engine.py",
-            "install/engine/identity_graph_engine.py",
-            "install/engine/reputation_flow_engine.py",
-            "install/tests/test_self_evolving.py",
-            "install/tests/test_recursive_zk.py",
-            "install/tests/test_identity_graph.py"
-          ]
-        },
         {
           "bundle": "ui_dashboard_control_v17.zip",
           "family": "ui_dashboard_control",
@@ -374,6 +211,11 @@
           "reason": "same family has an installed member"
         },
         {
+          "bundle": "token_economics_v1.zip",
+          "family": "token_economics",
+          "reason": "same family has an installed member"
+        },
+        {
           "bundle": "auto_bundle_fix_v2.zip",
           "family": "auto_bundle_fix",
           "reason": "same family has an installed member"
@@ -384,8 +226,23 @@
           "reason": "same family has an installed member"
         },
         {
+          "bundle": "token_economics_v2.zip",
+          "family": "token_economics",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "token_economics_v3.zip",
+          "family": "token_economics",
+          "reason": "same family has an installed member"
+        },
+        {
           "bundle": "auto_bundle_fix_v4.zip",
           "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "token_economics_v4.zip",
+          "family": "token_economics",
           "reason": "same family has an installed member"
         },
         {
@@ -394,8 +251,18 @@
           "reason": "same family has an installed member"
         },
         {
+          "bundle": "token_economics_v5.zip",
+          "family": "token_economics",
+          "reason": "same family has an installed member"
+        },
+        {
           "bundle": "auto_bundle_fix_v6.zip",
           "family": "auto_bundle_fix",
+          "reason": "same family has an installed member"
+        },
+        {
+          "bundle": "token_economics_v6.zip",
+          "family": "token_economics",
           "reason": "same family has an installed member"
         },
         {
@@ -404,60 +271,71 @@
           "reason": "same family has an installed member"
         },
         {
+          "bundle": "token_economics_v7.zip",
+          "family": "token_economics",
+          "reason": "same family has an installed member"
+        },
+        {
           "bundle": "auto_bundle_fix_v8.zip",
           "family": "auto_bundle_fix",
-          "reason": "same family has an installed member"
-        },
-        {
-          "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
-          "family": "v21_1B_ingestion_hardening",
-          "reason": "same family has an installed member"
-        },
-        {
-          "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-          "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
           "reason": "same family has an installed member"
         }
       ]
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T02:28:48.114402",
+    "ts": "2026-03-25T02:31:33.829630",
     "status": "ok",
     "action": "repair_bundle_manifest",
-    "target": "token_economics_v3.zip",
-    "family": "token_economics",
+    "target": "ui_dashboard_control_v17.zip",
+    "family": "ui_dashboard_control",
     "priority": "high",
     "reason": "manifest_missing_required_fields",
     "missing_fields": [
       "version",
-      "install_mode",
-      "allowed_paths"
+      "install_mode"
     ],
-    "allowed_paths": []
+    "allowed_paths": [
+      "bundle_manifest.json",
+      "README.md",
+      "ui/index.html",
+      "ui/styles.css",
+      "ui/app.js",
+      "install/engine/ui_api_adapter.py",
+      "install/tests/test_ui_adapter.py"
+    ]
   },
   "execution": {
     "status": "ok",
     "executed": true,
     "action": "repair_bundle_manifest",
-    "target": "token_economics_v3.zip",
-    "repaired_bundle": "token_economics_v3_manifest_fixed.zip",
-    "repaired_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/token_economics_v3_manifest_fixed.zip",
+    "target": "ui_dashboard_control_v17.zip",
+    "repaired_bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "repaired_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ui_dashboard_control_v17_manifest_fixed.zip",
     "manifest_after_repair": {
-      "bundle_name": "token_economics_v3",
-      "bundle_version": "3.0.0",
-      "version": "1.0",
-      "install_mode": "folder_map",
+      "bundle_name": "ui_dashboard_control_v17",
+      "bundle_version": "17.0.0",
       "allowed_paths": [
         "bundle_manifest.json",
-        "install/"
-      ]
+        "README.md",
+        "ui/index.html",
+        "ui/styles.css",
+        "ui/app.js",
+        "install/engine/ui_api_adapter.py",
+        "install/tests/test_ui_adapter.py"
+      ],
+      "entrypoints": [
+        "ui/index.html",
+        "install/engine/ui_api_adapter.py"
+      ],
+      "version": "1.0",
+      "install_mode": "folder_map"
     }
   },
   "ingestion_trigger": {
     "status": "ok",
     "workflow": ".github/workflows/ingestion.yml",
-    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23522011680\n",
+    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23522081093\n",
     "stderr": ""
   }
 }

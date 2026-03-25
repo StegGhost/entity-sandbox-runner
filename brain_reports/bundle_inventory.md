@@ -260,6 +260,7 @@
 - stegverse_result_delivery_bundle_v1.zip
 - stegverse_sandbox_combined_bundle_v1.zip
 - step_completion_bundle_v1.zip
+- token_economics_v3_manifest_fixed.zip
 - v21_1A_ingestion_bootstrap_bundle.zip
 - v21_1B_ingestion_hardening_bundle.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
