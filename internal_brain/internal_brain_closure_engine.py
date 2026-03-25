@@ -14,7 +14,9 @@ def compute_closure(reconciler_output, state):
     actions = []
 
     root = Path(state["root"])
-    feedback_path = root / "payload" / "feedback" / "failed_bundle_report_correlation.json"
+
+    # Read the persisted correlation artifact from the repo-visible path.
+    correlation_path = root / "brain_reports" / "failed_bundle_report_correlation.json"
 
     findings = reconciler_output.get("findings", [])
     counts = reconciler_output.get("counts", {})
@@ -45,8 +47,8 @@ def compute_closure(reconciler_output, state):
         "reason": "Need bundle-to-report closure for diagnosis"
     })
 
-    if feedback_path.exists():
-        data = _safe_read_json(feedback_path) or {}
+    if correlation_path.exists():
+        data = _safe_read_json(correlation_path) or {}
         correlations = data.get("correlations", [])
 
         repair_targets = []
@@ -62,7 +64,8 @@ def compute_closure(reconciler_output, state):
                 repair_targets.append({
                     "bundle": item.get("bundle"),
                     "missing_fields": missing_fields,
-                    "reason": reason
+                    "reason": reason,
+                    "allowed_paths": item.get("allowed_paths", []),
                 })
 
         if repair_targets:
