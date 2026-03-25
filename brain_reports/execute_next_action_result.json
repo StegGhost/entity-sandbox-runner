@@ -1,22 +1,4 @@
 {
-  "generated_at": "2026-03-25T12:25:05.869907",
-  "resolved_next_action": {
-    "ts": "2026-03-25T12:25:05.757818",
-    "status": "ok",
-    "selection_mode": "internal_brain_closure",
-    "active_family": "ui_dashboard_control",
-    "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/ui_dashboard_control_v17.zip",
-    "family": "ui_dashboard_control",
-    "priority": 1,
-    "reason": "20 recent failed bundles detected",
-    "source": "internal_brain"
-  },
-  "execution": {
-    "status": "ok",
-    "executed": true,
-    "action": "inspect_failed_bundle_family",
-    "moved_to_incoming": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ui_dashboard_control_v17.zip",
-    "bundle": "ui_dashboard_control_v17.zip"
-  }
+  "generated_at": "2026-03-25T12:31:36.520434",
+  "error": "no_next_action"
 }

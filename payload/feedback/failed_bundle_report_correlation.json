@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T12:25:05.728467+00:00",
+  "ts": "2026-03-25T12:31:36.388924+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -47,6 +47,34 @@
     {
       "bundle": "failed_bundles/token_economics_v8_manifest_fixed.zip",
       "bundle_name": "token_economics_v8_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v7.zip",
+      "bundle_name": "token_economics_v7.zip",
+      "matched_report": "ingestion_reports/token_economics_v7.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "install/engine/zk_proof_engine.py",
+        "install/engine/identity_engine.py",
+        "install/engine/agent_learning_engine.py",
+        "install/engine/strategy_store.py",
+        "install/tests/test_zk.py",
+        "install/tests/test_identity.py",
+        "install/tests/test_learning.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v6_manifest_fixed.zip",
+      "bundle_name": "token_economics_v6_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
     },
@@ -189,32 +217,6 @@
       "bundle_name": "tvc_export_bundle.zip",
       "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
       "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-      "bundle_name": "v21_2_formal_document_engine_bundle.zip",
-      "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
-      "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/ui_dashboard_control_v17.zip",
-      "bundle_name": "ui_dashboard_control_v17.zip",
-      "matched_report": "ingestion_reports/ui_dashboard_control_v17.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "ui/index.html",
-        "ui/styles.css",
-        "ui/app.js",
-        "install/engine/ui_api_adapter.py",
-        "install/tests/test_ui_adapter.py"
-      ]
     }
   ]
 }
