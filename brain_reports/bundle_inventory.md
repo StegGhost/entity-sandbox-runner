@@ -153,6 +153,7 @@
 ## INCOMING
 
 - .gitkeep
+- auto_bundle_feedback.zip
 - governed_agent_passport_v1_ingestion_bundle.sha256
 
 ## INSTALLED

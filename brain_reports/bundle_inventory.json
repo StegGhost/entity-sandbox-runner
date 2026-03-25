@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T07:42:18.271890",
+  "generated_at": "2026-03-25T08:33:42.861687",
   "inventory": {
     "failed": [
       ".gitkeep",
@@ -152,6 +152,7 @@
     ],
     "incoming": [
       ".gitkeep",
+      "auto_bundle_feedback.zip",
       "governed_agent_passport_v1_ingestion_bundle.sha256"
     ],
     "installed": [
