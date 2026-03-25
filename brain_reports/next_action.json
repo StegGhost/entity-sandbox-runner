@@ -1,15 +1,18 @@
 {
-  "generated_at": "2026-03-25T02:31:33.829638",
+  "generated_at": "2026-03-25T02:51:27.743017",
   "summary": {
     "manifest_repairable_count": 2,
     "missing_report_count": 1,
     "unresolved_failed_count": 99,
     "obsolete_candidate_count": 31,
-    "total_failed_seen": 133
+    "total_failed_seen": 133,
+    "active_family": "ui_dashboard_control"
   },
   "next_action": {
-    "ts": "2026-03-25T02:31:33.829630",
+    "ts": "2026-03-25T02:51:27.743011",
     "status": "ok",
+    "selection_mode": "active_family_continuation",
+    "active_family": "ui_dashboard_control",
     "action": "repair_bundle_manifest",
     "target": "ui_dashboard_control_v17.zip",
     "family": "ui_dashboard_control",
@@ -32,24 +35,6 @@
   "candidates": {
     "manifest_repairable": [
       {
-        "bundle": "ui_dashboard_control_v17.zip",
-        "family": "ui_dashboard_control",
-        "reason": "manifest_missing_required_fields",
-        "missing_fields": [
-          "version",
-          "install_mode"
-        ],
-        "allowed_paths": [
-          "bundle_manifest.json",
-          "README.md",
-          "ui/index.html",
-          "ui/styles.css",
-          "ui/app.js",
-          "install/engine/ui_api_adapter.py",
-          "install/tests/test_ui_adapter.py"
-        ]
-      },
-      {
         "bundle": "ui_advanced_v18.zip",
         "family": "ui_advanced",
         "reason": "manifest_missing_required_fields",
@@ -66,6 +51,24 @@
           "install/engine/ui_control_adapter.py",
           "install/tests/test_ui_control.py"
         ]
+      },
+      {
+        "bundle": "ui_dashboard_control_v17.zip",
+        "family": "ui_dashboard_control",
+        "reason": "manifest_missing_required_fields",
+        "missing_fields": [
+          "version",
+          "install_mode"
+        ],
+        "allowed_paths": [
+          "bundle_manifest.json",
+          "README.md",
+          "ui/index.html",
+          "ui/styles.css",
+          "ui/app.js",
+          "install/engine/ui_api_adapter.py",
+          "install/tests/test_ui_adapter.py"
+        ]
       }
     ],
     "missing_report": [
@@ -76,6 +79,41 @@
       }
     ],
     "unresolved_failed": [
+      {
+        "bundle": "auto_bundle_observability_v1.zip",
+        "family": "auto_bundle_observability",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "auto_rollback_bundle_v1.zip",
+        "family": "auto_rollback_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "bootstrap_and_convergence_bundles.zip",
+        "family": "bootstrap_and_convergence_bundles",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "constraint_min_bundle.zip",
+        "family": "constraint_min",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "content_post_generation_bundle_v1.zip",
+        "family": "content_post_generation_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "contract_snapshot_bundle_v1.zip",
+        "family": "contract_snapshot_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "control_plane_observability_v16.zip",
+        "family": "control_plane_observability",
+        "reason": "no correlation entry"
+      },
       {
         "bundle": "crypto_bot_v0_2_bundle.zip",
         "family": "crypto_bot_v0_2",
@@ -92,33 +130,8 @@
         "reason": "no correlation entry"
       },
       {
-        "bundle": "tc_tvc_platform_v0_2.zip",
-        "family": "tc_tvc_platform_v0_2",
-        "reason": "no correlation entry"
-      },
-      {
-        "bundle": "tc_tvc_scaffolding_v0_1.zip",
-        "family": "tc_tvc_scaffolding_v0_1",
-        "reason": "matched report but no supported repair class yet"
-      },
-      {
-        "bundle": "auto_bundle_observability_v1.zip",
-        "family": "auto_bundle_observability",
-        "reason": "no correlation entry"
-      },
-      {
-        "bundle": "auto_rollback_bundle_v1.zip",
-        "family": "auto_rollback_bundle",
-        "reason": "no correlation entry"
-      },
-      {
-        "bundle": "content_post_generation_bundle_v1.zip",
-        "family": "content_post_generation_bundle",
-        "reason": "no correlation entry"
-      },
-      {
-        "bundle": "contract_snapshot_bundle_v1.zip",
-        "family": "contract_snapshot_bundle",
+        "bundle": "crypto_signing_v9_bundle.zip",
+        "family": "crypto_signing",
         "reason": "no correlation entry"
       },
       {
@@ -132,6 +145,16 @@
         "reason": "no correlation entry"
       },
       {
+        "bundle": "entity-sandbox-runner-deployment-bundle.zip",
+        "family": "entity-sandbox-runner-deployment-bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "entity-sandbox-runner-v2.zip",
+        "family": "entity-sandbox-runner-v2",
+        "reason": "no correlation entry"
+      },
+      {
         "bundle": "execution_policy_engine_bundle_v1.zip",
         "family": "execution_policy_engine_bundle",
         "reason": "no correlation entry"
@@ -139,6 +162,41 @@
       {
         "bundle": "full_governance_integration_bundle_v1.zip",
         "family": "full_governance_integration_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "generator_v2_bundle.zip",
+        "family": "generator",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "generator_v3_bundle.zip",
+        "family": "generator",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "generator_v4_bundle.zip",
+        "family": "generator",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "generator_v6_bundle.zip",
+        "family": "generator",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "generator_v7_bundle.zip",
+        "family": "generator",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "generator_v8_bundle.zip",
+        "family": "generator",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "governed_agent_passport_v2_bundle.zip",
+        "family": "governed_agent_passport",
         "reason": "no correlation entry"
       },
       {
@@ -162,8 +220,23 @@
         "reason": "no correlation entry"
       },
       {
+        "bundle": "master_workflow_v2_bundle.zip",
+        "family": "master_workflow",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "multi_agent_verification_v7_bundle.zip",
+        "family": "multi_agent_verification",
+        "reason": "no correlation entry"
+      },
+      {
         "bundle": "multi_platform_post_bundle_v1.zip",
         "family": "multi_platform_post_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "predictive_layer_v19.zip",
+        "family": "predictive_layer",
         "reason": "no correlation entry"
       },
       {
@@ -175,12 +248,127 @@
         "bundle": "relationship_conditioned_execution_v1_1.zip",
         "family": "relationship_conditioned_execution_v1_1",
         "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v1_1_full.zip",
+        "family": "relationship_conditioned_execution_v1_1_full",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v1_2.zip",
+        "family": "relationship_conditioned_execution_v1_2",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v1_3.zip",
+        "family": "relationship_conditioned_execution_v1_3",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v1_4.zip",
+        "family": "relationship_conditioned_execution_v1_4",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v1_5.zip",
+        "family": "relationship_conditioned_execution_v1_5",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v2_0.zip",
+        "family": "relationship_conditioned_execution_v2_0",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "relationship_conditioned_execution_v2_1.zip",
+        "family": "relationship_conditioned_execution_v2_1",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "rollback_trigger_bundle_v1.zip",
+        "family": "rollback_trigger_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "safe_mode_bundle_v1.zip",
+        "family": "safe_mode_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_981_1030_v1.zip",
+        "family": "sandbox_981_1030",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_autonomous_loop_stabilization_v1.zip",
+        "family": "sandbox_autonomous_loop_stabilization",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_bootstrap_permission_unlock_bundle_v1.zip",
+        "family": "sandbox_bootstrap_permission_unlock_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_closed_loop_activation_v1.zip",
+        "family": "sandbox_closed_loop_activation",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_convergence_bundle_v1.zip",
+        "family": "sandbox_convergence_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_convergence_bundle_v1_fix1.zip",
+        "family": "sandbox_convergence_bundle_v1_fix1",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "sandbox_convergence_full_memory_bundle_v1.zip",
+        "family": "sandbox_convergence_full_memory_bundle",
+        "reason": "no correlation entry"
       }
     ],
     "obsolete_candidates": [
       {
+        "bundle": "auto_bundle_fix_v2.zip",
+        "family": "auto_bundle_fix",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "auto_bundle_fix_v4.zip",
+        "family": "auto_bundle_fix",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "auto_bundle_fix_v5.zip",
+        "family": "auto_bundle_fix",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "auto_bundle_fix_v6.zip",
+        "family": "auto_bundle_fix",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "auto_bundle_fix_v7.zip",
+        "family": "auto_bundle_fix",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "auto_bundle_fix_v8.zip",
+        "family": "auto_bundle_fix",
+        "reason": "same family has an installed member"
+      },
+      {
         "bundle": "coherent_experience_model_v1.zip",
         "family": "coherent_experience_model",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "constraint_min_bundle_v2.zip",
+        "family": "constraint_min_bundle",
         "reason": "same family has an installed member"
       },
       {
@@ -214,16 +402,6 @@
         "reason": "same family has an installed member"
       },
       {
-        "bundle": "auto_bundle_fix_v2.zip",
-        "family": "auto_bundle_fix",
-        "reason": "same family has an installed member"
-      },
-      {
-        "bundle": "constraint_min_bundle_v2.zip",
-        "family": "constraint_min_bundle",
-        "reason": "same family has an installed member"
-      },
-      {
         "bundle": "token_economics_v2.zip",
         "family": "token_economics",
         "reason": "same family has an installed member"
@@ -234,18 +412,8 @@
         "reason": "same family has an installed member"
       },
       {
-        "bundle": "auto_bundle_fix_v4.zip",
-        "family": "auto_bundle_fix",
-        "reason": "same family has an installed member"
-      },
-      {
         "bundle": "token_economics_v4.zip",
         "family": "token_economics",
-        "reason": "same family has an installed member"
-      },
-      {
-        "bundle": "auto_bundle_fix_v5.zip",
-        "family": "auto_bundle_fix",
         "reason": "same family has an installed member"
       },
       {
@@ -254,18 +422,8 @@
         "reason": "same family has an installed member"
       },
       {
-        "bundle": "auto_bundle_fix_v6.zip",
-        "family": "auto_bundle_fix",
-        "reason": "same family has an installed member"
-      },
-      {
         "bundle": "token_economics_v6.zip",
         "family": "token_economics",
-        "reason": "same family has an installed member"
-      },
-      {
-        "bundle": "auto_bundle_fix_v7.zip",
-        "family": "auto_bundle_fix",
         "reason": "same family has an installed member"
       },
       {
@@ -274,8 +432,58 @@
         "reason": "same family has an installed member"
       },
       {
-        "bundle": "auto_bundle_fix_v8.zip",
-        "family": "auto_bundle_fix",
+        "bundle": "token_economics_v8.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v9.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v10.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v10_manifest_fixed.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v11.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v12.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v13.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v14.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v15.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+        "family": "v21_1B_ingestion_hardening",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+        "family": "v21_1C_ultra_compatible_ingestion_bootstrap",
         "reason": "same family has an installed member"
       }
     ]
