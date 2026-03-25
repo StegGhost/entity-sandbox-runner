@@ -1,19 +1,11 @@
 {
-  "bundle_name": "ui_dashboard_control_v17",
-  "bundle_version": "17.0.0",
+  "bundle_name": "auto_generated_feedback_bundle",
+  "bundle_version": "1.0.0",
+  "version": "1.0.0",
+  "install_mode": "folder_map",
   "allowed_paths": [
     "bundle_manifest.json",
-    "README.md",
-    "ui/index.html",
-    "ui/styles.css",
-    "ui/app.js",
-    "install/engine/ui_api_adapter.py",
-    "install/tests/test_ui_adapter.py"
-  ],
-  "entrypoints": [
-    "ui/index.html",
-    "install/engine/ui_api_adapter.py"
-  ],
-  "version": "1.0",
-  "install_mode": "folder_map"
+    "install/tests/",
+    "install/engine/"
+  ]
 }

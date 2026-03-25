@@ -1,0 +1,30 @@
+{
+  "bundle_name": "activation_bundle_v1",
+  "bundle_version": "1.0",
+  "status": "failed",
+  "capabilities": {
+    "verified": false,
+    "reason": "capability_violation",
+    "allowed_paths": [
+      "bundle_manifest.json/",
+      "README.md/",
+      "install/engine/internal_brain_closure_engine.py/",
+      "install/engine/internal_brain_actuator.py/"
+    ],
+    "violations": [
+      "ui/index.html",
+      "ui/styles.css",
+      "ui/app.js",
+      "install/tests/test_ui_adapter.py",
+      "install/engine/ui_api_adapter.py"
+    ],
+    "filtered_normal_files": [
+      "README.md",
+      "bundle_manifest.json",
+      "install/engine/internal_brain_closure_engine.py",
+      "install/engine/internal_brain_actuator.py"
+    ],
+    "filtered_workflow_files": []
+  },
+  "moved_bundle_to": "failed_bundles/activation_bundle_v1.zip"
+}
