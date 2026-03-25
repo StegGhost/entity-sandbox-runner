@@ -24,6 +24,10 @@ def ensure_dirs():
     os.makedirs(INCOMING_DIR, exist_ok=True)
 
 
+def is_valid_bundle(filename):
+    return filename.endswith(".zip") and not filename.startswith(".")
+
+
 # 🔧 ACTION
 def inspect_failed_bundle_family(target):
     if not target or not os.path.exists(target):
@@ -73,18 +77,23 @@ def execute_action(action_obj):
     }
 
 
-# 🔥 FALLBACK: if brain fails, keep system moving
+# 🔥 SMART FALLBACK
 def fallback_action():
     if not os.path.exists(FAILED_DIR):
         return None
 
-    files = sorted(os.listdir(FAILED_DIR))
+    files = sorted([
+        f for f in os.listdir(FAILED_DIR)
+        if is_valid_bundle(f)
+    ])
+
     if not files:
         return None
 
     return {
         "action": "inspect_failed_bundle_family",
-        "target": os.path.join(FAILED_DIR, files[0])
+        "target": os.path.join(FAILED_DIR, files[0]),
+        "source": "fallback"
     }
 
 
@@ -97,16 +106,15 @@ def main():
     if brain:
         next_action = brain.get("next_action")
 
-    # 🔥 APPLY FALLBACK IF NEEDED
+    # 🔥 FALLBACK if brain fails
     if not next_action:
         next_action = fallback_action()
-        if next_action:
-            next_action["source"] = "fallback"
 
     if not next_action:
         result = {
             "generated_at": datetime.utcnow().isoformat(),
-            "error": "no_next_action_and_no_fallback"
+            "status": "idle",
+            "reason": "no_valid_bundles_remaining"
         }
         with open(OUTPUT_PATH, "w") as f:
             json.dump(result, f, indent=2)
