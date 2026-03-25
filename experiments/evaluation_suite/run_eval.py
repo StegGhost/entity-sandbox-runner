@@ -1,74 +1,84 @@
-import json, os, random
 
-from install.rigel_invariant import compute_u
-from install.rigel_policy import decide
-from install.rigel_guard import enforce_delta_guard
-from install.receipt_chain import build_receipt
+import json, os, random, hashlib, time
 
 STATE_FILE = "logs/state.json"
 
-
-def load():
+def load_state():
     if os.path.exists(STATE_FILE):
-        return json.load(open(STATE_FILE))
-    return {"cycles": 0, "last_hash": None, "state": {}}
+        try:
+            return json.load(open(STATE_FILE))
+        except:
+            return {"cycles":0,"last_receipt":None,"history":[]}
+    return {"cycles":0,"last_receipt":None,"history":[]}
 
-
-def save(s):
+def save_state(s):
     os.makedirs("logs", exist_ok=True)
     json.dump(s, open(STATE_FILE, "w"), indent=2)
 
+def hash_payload(p):
+    raw = json.dumps(p, sort_keys=True)
+    return hashlib.sha256(raw.encode()).hexdigest()
 
-def simulate_components():
-    return {
-        "stability": random.uniform(0.6, 0.95),
-        "trust": random.uniform(0.5, 0.9),
-        "constraint_pressure": random.uniform(0.1, 0.6),
-        "history": 1.0
-    }
+def sign_payload(p):
+    raw = json.dumps(p, sort_keys=True)
+    return hashlib.sha256((raw + "dev-key").encode()).hexdigest()
 
+def run_cycle():
+    results=[]
+    for s in ["s1","s2","s3"]:
+        c=random.uniform(0.5,0.9)
+        d="ok" if c>0.6 else "fail"
+        results.append({"shard":s,"confidence":c,"decision":d})
+    return results
+
+def compute_u(results):
+    return sum(r["confidence"] for r in results)/len(results)
+
+def load_policy():
+    p="config/policy.json"
+    if os.path.exists(p):
+        return json.load(open(p))
+    return {"hard_stop_u":0.3,"restrict_u":0.6,"allow_u":0.85}
+
+def enforce(policy,u):
+    if u < policy.get("hard_stop_u",0.3):
+        return "halt","hard_stop"
+    if u < policy.get("restrict_u",0.6):
+        return "restrict","mid"
+    if u < policy.get("allow_u",0.85):
+        return "allow","ok"
+    return "allow","strong"
 
 def main():
-    s = load()
-    s["cycles"] += 1
+    s=load_state()
+    s["cycles"]+=1
 
-    prev_state = s.get("state", {})
+    results=run_cycle()
+    u=compute_u(results)
 
-    components = simulate_components()
+    policy=load_policy()
+    action,reason=enforce(policy,u)
 
-    U = compute_u(components)
-
-    allowed, norm, det, unc = enforce_delta_guard(prev_state, components)
-
-    policy = {
-        "hard_stop_u": 0.3,
-        "restrict_u": 0.6
+    receipt={
+        "cycle":s["cycles"],
+        "u":u,
+        "action":action,
+        "reason":reason,
+        "prev_hash":s.get("last_receipt")
     }
 
-    action, reason = decide(U, policy)
+    receipt["hash"]=hash_payload(receipt)
+    receipt["signature"]=sign_payload(receipt)
 
-    if not allowed:
-        action = "restrict"
-        reason = f"uncertainty too high ({norm})"
+    os.makedirs("payload/receipts",exist_ok=True)
+    path=f"payload/receipts/r_{s['cycles']:04d}.json"
+    json.dump(receipt, open(path,"w"), indent=2)
 
-    receipt = build_receipt(s.get("last_hash"), {
-        "cycle": s["cycles"],
-        "U": U,
-        "action": action,
-        "reason": reason,
-        "delta_uncertainty": norm
-    })
-
-    os.makedirs("payload/receipts", exist_ok=True)
-    json.dump(receipt, open(f"payload/receipts/r_{s['cycles']:04d}.json", "w"), indent=2)
-
-    s["last_hash"] = receipt["hash"]
-    s["state"] = components
-
-    save(s)
+    s["last_receipt"]=receipt["hash"]
+    s["history"].append(receipt)
+    save_state(s)
 
     print("SUMMARY:", receipt)
 
-
-if __name__ == "__main__":
+if __name__=="__main__":
     main()

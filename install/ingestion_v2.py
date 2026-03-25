@@ -1,31 +1,10 @@
-import os
-import json
-import shutil
-import zipfile
-import time
+
+import os, json, shutil, zipfile, time
 
 INCOMING = "incoming_bundles"
 INSTALLED = "installed_bundles"
 FAILED = "failed_bundles"
 LOG = "logs/ingestion_log.json"
-
-ALLOWED_PREFIXES = (
-    "install/",
-    "payload/",
-    "experiments/",
-    "workflow_review/",
-    "config/",
-)
-
-REPO_ROOT_PREFIX = "payload/repo_root/"
-
-IGNORE_PREFIXES = (
-    "__MACOSX/",
-)
-
-IGNORE_NAMES = (
-    ".DS_Store",
-)
 
 def _ensure():
     os.makedirs(INCOMING, exist_ok=True)
@@ -34,108 +13,49 @@ def _ensure():
     os.makedirs("logs", exist_ok=True)
 
 def _load_log():
-    if os.path.exists(LOG) and os.path.getsize(LOG) > 0:
+    if os.path.exists(LOG):
         try:
-            with open(LOG, "r") as f:
-                data = json.load(f)
-            return data if isinstance(data, list) else []
-        except Exception:
+            return json.load(open(LOG))
+        except:
             return []
     return []
 
 def _save_log(log):
-    with open(LOG, "w") as f:
-        json.dump(log, f, indent=2)
+    json.dump(log, open(LOG, "w"), indent=2)
 
-def _safe_json_load(path):
-    try:
-        if not os.path.exists(path) or os.path.getsize(path) == 0:
-            return {}
-        with open(path, "r") as f:
-            data = json.load(f)
-        return data if isinstance(data, dict) else {}
-    except Exception:
-        return {}
-
-def _is_ignored_member(name):
-    if any(name.startswith(prefix) for prefix in IGNORE_PREFIXES):
-        return True
-    base = os.path.basename(name.rstrip("/"))
-    if base in IGNORE_NAMES:
-        return True
-    return False
-
-def _is_allowed_member(name):
-    if name == "bundle_manifest.json":
-        return True
-    return any(name.startswith(prefix) for prefix in ALLOWED_PREFIXES)
-
-def _validate_manifest(manifest):
-    # Support mixed legacy validators by accepting either field, while bundle ships both.
-    if "bundle_name" not in manifest:
-        raise Exception("manifest_missing_fields:['bundle_name']")
-
-    version = manifest.get("version") or manifest.get("bundle_version")
-    if not version:
-        raise Exception("manifest_missing_fields:['version_or_bundle_version']")
-
-    if manifest.get("install_mode") != "folder_map":
-        raise Exception("unsupported_install_mode")
-
-def _repo_destination(rel_path):
-    if rel_path.startswith(REPO_ROOT_PREFIX):
-        repo_rel = rel_path[len(REPO_ROOT_PREFIX):]
-        if not repo_rel:
-            raise Exception("empty_repo_root_mapping")
-        return repo_rel
-    return rel_path
+def _is_valid_member(name):
+    allowed = ("install/", "payload/", "experiments/", "workflow_review/")
+    return any(name.startswith(p) for p in allowed)
 
 def _install_zip(path):
-    tmp = f"_tmp_ingest_{int(time.time() * 1000)}"
+    tmp = f"_tmp_ingest_{int(time.time()*1000)}"
     os.makedirs(tmp, exist_ok=True)
 
     try:
         with zipfile.ZipFile(path, "r") as z:
             names = z.namelist()
             if "bundle_manifest.json" not in names:
-                raise Exception("missing_bundle_manifest")
+                raise Exception("missing bundle_manifest.json")
 
-            manifest_file = z.extract("bundle_manifest.json", tmp)
-            manifest = _safe_json_load(manifest_file)
-            _validate_manifest(manifest)
-
-            filtered_names = []
             for n in names:
                 if n.endswith("/"):
                     continue
-                if _is_ignored_member(n):
+                if n == "bundle_manifest.json":
                     continue
-                if not _is_allowed_member(n):
-                    raise Exception(f"path_not_allowed:{n}")
-                filtered_names.append(n)
+                if not _is_valid_member(n):
+                    raise Exception(f"path not allowed: {n}")
 
-            for n in filtered_names:
-                z.extract(n, tmp)
+            z.extractall(tmp)
 
-        for root, _, files in os.walk(tmp):
+        # copy files into repo root
+        for root, dirs, files in os.walk(tmp):
             for file in files:
                 src = os.path.join(root, file)
                 rel = os.path.relpath(src, tmp)
-
                 if rel == "bundle_manifest.json":
                     continue
-                if _is_ignored_member(rel):
-                    continue
-
-                dst = _repo_destination(rel)
-
-                if dst == ".git" or dst.startswith(".git/"):
-                    raise Exception(f"forbidden_destination:{dst}")
-
-                parent = os.path.dirname(dst)
-                if parent:
-                    os.makedirs(parent, exist_ok=True)
-
+                dst = rel
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
                 shutil.copy2(src, dst)
 
         shutil.rmtree(tmp, ignore_errors=True)
@@ -149,7 +69,8 @@ def process():
     _ensure()
     log = _load_log()
 
-    files = sorted(f for f in os.listdir(INCOMING) if f.endswith(".zip"))
+    files = [f for f in os.listdir(INCOMING) if f.endswith(".zip")]
+    files.sort()
 
     for f in files:
         src = os.path.join(INCOMING, f)
