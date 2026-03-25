@@ -1,9 +1,9 @@
 {
-  "ts": "2026-03-25T08:08:49.564087+00:00",
+  "ts": "2026-03-25T09:08:23.118718+00:00",
   "report_version": "3.1",
   "module_source": "internal_brain",
   "state": {
-    "ts": "2026-03-25T08:08:49.504090+00:00",
+    "ts": "2026-03-25T09:08:23.054936+00:00",
     "root": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner",
     "paths": {
       "ingestion_reports": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_reports",
@@ -16,126 +16,127 @@
     },
     "signals": {
       "recent_ingestion_reports": [
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_212050.json",
+        "ingestion_reports/v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_214006.json",
+        "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
+        "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192304.json",
+        "ingestion_reports/workflow_repair_bundle_install_report.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192124.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_191633.json",
+        "ingestion_reports/workflow_review_classifier_bundle_install_report.json",
         "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_210959.json",
         "ingestion_reports/tvc_export_bundle.zip_20260323_150730.json",
-        "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_185216.json",
-        "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
+        "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
         "ingestion_reports/ui_dashboard_control_v17.zip_20260322_230638.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_191633.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192124.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_212050.json",
-        "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
-        "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
-        "ingestion_reports/ui_advanced_v18.zip_20260322_230638.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192304.json",
-        "ingestion_reports/ui_advanced_v18.zip_20260323_045741.json",
-        "ingestion_reports/workflow_review_classifier_bundle_install_report.json",
-        "ingestion_reports/token_economics_v9.zip_20260322_230638.json",
+        "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_220131.json",
+        "ingestion_reports/token_economics_v12.zip_20260322_230637.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_185216.json",
+        "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
         "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_231226.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
-        "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
-        "ingestion_reports/ui_dashboard_control_v17.zip_20260323_045741.json"
+        "ingestion_reports/token_economics_v7.zip_20260322_230638.json"
       ],
       "recent_failed_bundles": [
+        "failed_bundles/v21_1_gatekeeper_bundle.zip",
+        "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+        "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
         "failed_bundles/v21_to_v30_bundle.zip",
         "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-        "failed_bundles/token_economics_v8_manifest_fixed.zip",
-        "failed_bundles/token_economics_v7.zip",
-        "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip",
-        "failed_bundles/token_economics_v5.zip",
-        "failed_bundles/token_economics_v6.zip",
-        "failed_bundles/v21_1B_ingestion_hardening_bundle.zip",
-        "failed_bundles/ui_dashboard_control_v17.zip",
-        "failed_bundles/tvc_export_bundle.zip",
-        "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
-        "failed_bundles/token_economics_v6_manifest_fixed.zip",
         "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
-        "failed_bundles/trajectory_engine_v5_bundle.zip",
+        "failed_bundles/token_economics_v3.zip",
         "failed_bundles/token_economics_v8.zip",
-        "failed_bundles/token_economics_v9.zip",
-        "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
-        "failed_bundles/v13_1_to_v14_bundle.zip",
+        "failed_bundles/token_economics_v5.zip",
+        "failed_bundles/trajectory_engine_v5_bundle.zip",
+        "failed_bundles/token_economics_v7.zip",
+        "failed_bundles/token_economics_v9_manifest_fixed.zip",
+        "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip",
+        "failed_bundles/ui_advanced_v18.zip",
+        "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
         "failed_bundles/token_economics_v7_manifest_fixed.zip",
-        "failed_bundles/ui_advanced_v18.zip"
+        "failed_bundles/token_economics_v4.zip",
+        "failed_bundles/token_economics_v8_manifest_fixed.zip",
+        "failed_bundles/tvc_export_bundle.zip",
+        "failed_bundles/token_economics_v6.zip"
       ],
       "recent_installed_bundles": [
-        "installed_bundles/v21_1B_ingestion_hardening_bundle.zip",
-        "installed_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
-        "installed_bundles/token_economics_v3_manifest_fixed.zip",
-        "installed_bundles/v21_to_v30_bundle.zip",
-        "installed_bundles/v21_2A_formal_document_engine_bootstrap_bundle.zip",
-        "installed_bundles/v21_1A_ingestion_bootstrap_bundle.zip",
-        "installed_bundles/v21_strict_system_bundle.zip",
+        "installed_bundles/workflow_review_classifier_bundle.zip",
+        "installed_bundles/stegverse_docs_v2_bundle.zip",
+        "installed_bundles/step_completion_bundle_v1.zip",
         "installed_bundles/v21_1_gatekeeper_bundle.zip",
         "installed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-        "installed_bundles/workflow_review_classifier_bundle.zip",
-        "installed_bundles/v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip",
-        "installed_bundles/v21_3A_publication_engine_bootstrap_bundle.zip",
         "installed_bundles/workflow_repair_bundle.zip",
-        "installed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
-        "installed_bundles/step_completion_bundle_v1.zip",
-        "installed_bundles/sandbox_v6_fixed.zip",
+        "installed_bundles/v21_strict_system_bundle.zip",
+        "installed_bundles/stegverse_sandbox_combined_bundle_v1.zip",
+        "installed_bundles/token_economics_v3_manifest_fixed.zip",
         "installed_bundles/stegverse_observatory_upgrade_bundle.zip",
+        "installed_bundles/stegverse_multi_entity_sim_bundle.zip",
         "installed_bundles/stegverse_experiment_fix_bundle_v1.zip",
-        "installed_bundles/stegverse_docs_v2_bundle.zip",
-        "installed_bundles/self_improve_bundle_v3.zip"
+        "installed_bundles/v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip",
+        "installed_bundles/v21_to_v30_bundle.zip",
+        "installed_bundles/v21_3A_publication_engine_bootstrap_bundle.zip",
+        "installed_bundles/v21_2A_formal_document_engine_bootstrap_bundle.zip",
+        "installed_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+        "installed_bundles/stegverse_result_delivery_bundle_v1.zip",
+        "installed_bundles/stegverse_ingestion_safe_recovery_bundle_v2.zip",
+        "installed_bundles/v21_1B_ingestion_hardening_bundle.zip"
       ],
       "recent_incoming_bundles": [
-        "incoming_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
-        "incoming_bundles/token_economics_v6_manifest_fixed.zip",
-        "incoming_bundles/token_economics_v9_manifest_fixed.zip",
-        "incoming_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
-        "incoming_bundles/token_economics_v7_manifest_fixed.zip",
-        "incoming_bundles/ui_advanced_v18_manifest_fixed.zip",
+        "incoming_bundles/v21_1B_ingestion_hardening_bundle.zip",
+        "incoming_bundles/v21_1_gatekeeper_bundle.zip",
         "incoming_bundles/token_economics_v8_manifest_fixed.zip",
-        "incoming_bundles/ui_advanced_v18.zip"
+        "incoming_bundles/token_economics_v7_manifest_fixed.zip",
+        "incoming_bundles/token_economics_v9_manifest_fixed.zip",
+        "incoming_bundles/ui_advanced_v18_manifest_fixed.zip",
+        "incoming_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+        "incoming_bundles/auto_bundle_feedback.zip",
+        "incoming_bundles/token_economics_v6_manifest_fixed.zip",
+        "incoming_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
+        "incoming_bundles/trajectory_engine_v5_bundle.zip"
       ],
       "recent_receipts": [
+        "receipts/install_receipt_20260317_153732.json",
         "receipts/install_receipt_20260322_215155.json",
-        "receipts/install_receipt_20260317_193822.json",
-        "receipts/install_receipt_20260317_153531.json",
-        "receipts/install_receipt_20260315_172736.json",
-        "receipts/install_receipt_20260317_194525.json",
         "receipts/install_receipt_20260317_155003.json",
-        "receipts/install_receipt_20260317_153732.json"
+        "receipts/install_receipt_20260315_172736.json",
+        "receipts/install_receipt_20260317_153531.json",
+        "receipts/install_receipt_20260317_193822.json",
+        "receipts/install_receipt_20260317_194525.json"
       ],
       "recent_feedback": [
-        "payload/feedback/canonical_feedback.md",
         "payload/feedback/failed_bundle_report_correlation.json",
         "payload/feedback/canonical_loop_report.json",
+        "payload/feedback/canonical_feedback.md",
         "payload/feedback/canonical_feedback.json"
       ]
     },
     "samples": {
       "latest_ingestion_report": {
+        "bundle_name": "v21_1B_ingestion_hardening_bundle",
+        "bundle_version": "1.0.0",
         "status": "failed",
-        "verification": {
-          "manifest_found": true,
+        "capabilities": {
           "verified": false,
-          "reason": "manifest_missing_required_fields",
-          "missing_fields": [
-            "version"
+          "reason": "capability_violation",
+          "allowed_paths": [
+            "install/",
+            "payload/",
+            "experiments/",
+            "workflow_review/",
+            "config/"
           ],
-          "manifest_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/ingestion_tmp/bundle_manifest.json",
-          "manifest": {
-            "bundle_name": "v21_1B_ingestion_hardening_bundle",
-            "bundle_version": "1.0.0",
-            "install_mode": "folder_map",
-            "description": "Minimal backward-compatible ingestion hardening bundle that ignores common zip noise like __MACOSX and .DS_Store while preserving docs-aware payload/repo_root mapping.",
-            "allowed_paths": [
-              "install/",
-              "payload/",
-              "experiments/",
-              "workflow_review/",
-              "config/"
-            ]
-          }
+          "violations": [
+            "bundle_manifest.json"
+          ],
+          "filtered_normal_files": [
+            "install/ingestion_v2.py"
+          ],
+          "filtered_workflow_files": []
         },
-        "moved_bundle_to": "failed_bundles/v21_1B_ingestion_hardening_bundle.zip"
+        "moved_bundle_to": "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip"
       },
       "latest_feedback_json": {
-        "ts": "2026-03-25T07:42:18.469080+00:00",
+        "ts": "2026-03-25T08:33:43.069118+00:00",
         "action": "correlate_failed_bundles_with_ingestion_reports",
         "count": 20,
         "correlations": [
@@ -169,48 +170,8 @@
             "status": "no_report_found"
           },
           {
-            "bundle": "failed_bundles/token_economics_v9_manifest_fixed.zip",
-            "bundle_name": "token_economics_v9_manifest_fixed.zip",
-            "matched_report": null,
-            "status": "no_report_found"
-          },
-          {
             "bundle": "failed_bundles/v21_to_v30_bundle.zip",
             "bundle_name": "v21_to_v30_bundle.zip",
-            "matched_report": null,
-            "status": "no_report_found"
-          },
-          {
-            "bundle": "failed_bundles/token_economics_v8_manifest_fixed.zip",
-            "bundle_name": "token_economics_v8_manifest_fixed.zip",
-            "matched_report": null,
-            "status": "no_report_found"
-          },
-          {
-            "bundle": "failed_bundles/token_economics_v7.zip",
-            "bundle_name": "token_economics_v7.zip",
-            "matched_report": "ingestion_reports/token_economics_v7.zip_20260322_230638.json",
-            "status": "matched",
-            "verification_reason": "manifest_missing_required_fields",
-            "missing_fields": [
-              "version",
-              "install_mode"
-            ],
-            "allowed_paths": [
-              "bundle_manifest.json",
-              "README.md",
-              "install/engine/zk_proof_engine.py",
-              "install/engine/identity_engine.py",
-              "install/engine/agent_learning_engine.py",
-              "install/engine/strategy_store.py",
-              "install/tests/test_zk.py",
-              "install/tests/test_identity.py",
-              "install/tests/test_learning.py"
-            ]
-          },
-          {
-            "bundle": "failed_bundles/token_economics_v6_manifest_fixed.zip",
-            "bundle_name": "token_economics_v6_manifest_fixed.zip",
             "matched_report": null,
             "status": "no_report_found"
           },
@@ -219,64 +180,6 @@
             "bundle_name": "v21_1B_ingestion_hardening_bundle_fixed.zip",
             "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
             "status": "matched"
-          },
-          {
-            "bundle": "failed_bundles/token_economics_v9.zip",
-            "bundle_name": "token_economics_v9.zip",
-            "matched_report": "ingestion_reports/token_economics_v9.zip_20260322_230638.json",
-            "status": "matched",
-            "verification_reason": "manifest_missing_required_fields",
-            "missing_fields": [
-              "version",
-              "install_mode"
-            ],
-            "allowed_paths": [
-              "bundle_manifest.json",
-              "README.md",
-              "config/zk_backend.json",
-              "config/rl_multi_agent.json",
-              "config/did_config.json",
-              "install/engine/zk_backend_interface.py",
-              "install/engine/zk_circom_adapter.py",
-              "install/engine/zk_halo2_adapter.py",
-              "install/engine/multi_agent_env.py",
-              "install/engine/multi_agent_trainer.py",
-              "install/engine/policy_registry.py",
-              "install/engine/did_identity_engine.py",
-              "install/engine/vc_credential_engine.py",
-              "install/engine/sybil_resistance_engine.py",
-              "install/tests/test_zk_backend.py",
-              "install/tests/test_multi_agent.py",
-              "install/tests/test_did_identity.py"
-            ]
-          },
-          {
-            "bundle": "failed_bundles/token_economics_v8.zip",
-            "bundle_name": "token_economics_v8.zip",
-            "matched_report": "ingestion_reports/token_economics_v8.zip_20260322_230638.json",
-            "status": "matched",
-            "verification_reason": "manifest_missing_required_fields",
-            "missing_fields": [
-              "version",
-              "install_mode"
-            ],
-            "allowed_paths": [
-              "bundle_manifest.json",
-              "README.md",
-              "config/zk_config.json",
-              "config/rl_config.json",
-              "config/identity_config.json",
-              "install/engine/zk_circuit_engine.py",
-              "install/engine/zk_prover_engine.py",
-              "install/engine/zk_verifier_engine.py",
-              "install/engine/identity_staking_engine.py",
-              "install/engine/rl_agent_engine.py",
-              "install/engine/rl_environment.py",
-              "install/engine/replay_buffer.py",
-              "install/tests/test_zk_pipeline.py",
-              "install/tests/test_identity_staking.py",
-              "install/tests/test_rl_agent.py"
-            ]
           },
           {
             "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
@@ -325,24 +228,6 @@
             "status": "no_report_found"
           },
           {
-            "bundle": "failed_bundles/tokenized_governance_bundle_v1.zip",
-            "bundle_name": "tokenized_governance_bundle_v1.zip",
-            "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
-            "status": "matched"
-          },
-          {
-            "bundle": "failed_bundles/token_economics_v7_manifest_fixed.zip",
-            "bundle_name": "token_economics_v7_manifest_fixed.zip",
-            "matched_report": null,
-            "status": "no_report_found"
-          },
-          {
-            "bundle": "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
-            "bundle_name": "trajectory_aware_retry_v10_bundle.zip",
-            "matched_report": "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
-            "status": "matched"
-          },
-          {
             "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
             "bundle_name": "v21_1_gatekeeper_bundle.zip",
             "matched_report": null,
@@ -353,6 +238,135 @@
             "bundle_name": "tvc_export_bundle.zip",
             "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
             "status": "matched"
+          },
+          {
+            "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+            "bundle_name": "v21_2_formal_document_engine_bundle.zip",
+            "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+            "status": "matched"
+          },
+          {
+            "bundle": "failed_bundles/ui_dashboard_control_v17.zip",
+            "bundle_name": "ui_dashboard_control_v17.zip",
+            "matched_report": "ingestion_reports/ui_dashboard_control_v17.zip_20260322_230638.json",
+            "status": "matched",
+            "verification_reason": "manifest_missing_required_fields",
+            "missing_fields": [
+              "version",
+              "install_mode"
+            ],
+            "allowed_paths": [
+              "bundle_manifest.json",
+              "README.md",
+              "ui/index.html",
+              "ui/styles.css",
+              "ui/app.js",
+              "install/engine/ui_api_adapter.py",
+              "install/tests/test_ui_adapter.py"
+            ]
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v10.zip",
+            "bundle_name": "token_economics_v10.zip",
+            "matched_report": "ingestion_reports/token_economics_v10.zip_20260322_230637.json",
+            "status": "matched",
+            "verification_reason": "manifest_missing_required_fields",
+            "missing_fields": [
+              "version",
+              "install_mode"
+            ],
+            "allowed_paths": [
+              "bundle_manifest.json",
+              "README.md",
+              "config/mechanism_config.json",
+              "install/engine/equilibrium_engine.py",
+              "install/engine/mechanism_design_engine.py",
+              "install/engine/auction_engine.py",
+              "install/engine/market_engine.py",
+              "install/engine/zk_pipeline_wired.py",
+              "install/tests/test_equilibrium.py",
+              "install/tests/test_mechanism.py",
+              "install/tests/test_zk_wired.py"
+            ]
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v9_manifest_fixed.zip",
+            "bundle_name": "token_economics_v9_manifest_fixed.zip",
+            "matched_report": null,
+            "status": "no_report_found"
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v3.zip",
+            "bundle_name": "token_economics_v3.zip",
+            "matched_report": "ingestion_reports/token_economics_v3.zip_20260322_230638.json",
+            "status": "matched",
+            "verification_reason": "manifest_missing_required_fields",
+            "missing_fields": [
+              "version",
+              "install_mode",
+              "allowed_paths"
+            ],
+            "allowed_paths": []
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v8_manifest_fixed.zip",
+            "bundle_name": "token_economics_v8_manifest_fixed.zip",
+            "matched_report": null,
+            "status": "no_report_found"
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v10_manifest_fixed.zip",
+            "bundle_name": "token_economics_v10_manifest_fixed.zip",
+            "matched_report": null,
+            "status": "no_report_found"
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v12.zip",
+            "bundle_name": "token_economics_v12.zip",
+            "matched_report": "ingestion_reports/token_economics_v12.zip_20260322_230637.json",
+            "status": "matched",
+            "verification_reason": "manifest_missing_required_fields",
+            "missing_fields": [
+              "version",
+              "install_mode"
+            ],
+            "allowed_paths": [
+              "bundle_manifest.json",
+              "README.md",
+              "config/self_evolving.json",
+              "config/zk_recursive.json",
+              "config/identity_graph.json",
+              "install/engine/self_evolving_mechanism_engine.py",
+              "install/engine/mechanism_mutation_engine.py",
+              "install/engine/recursive_zk_engine.py",
+              "install/engine/identity_graph_engine.py",
+              "install/engine/reputation_flow_engine.py",
+              "install/tests/test_self_evolving.py",
+              "install/tests/test_recursive_zk.py",
+              "install/tests/test_identity_graph.py"
+            ]
+          },
+          {
+            "bundle": "failed_bundles/token_economics_v7.zip",
+            "bundle_name": "token_economics_v7.zip",
+            "matched_report": "ingestion_reports/token_economics_v7.zip_20260322_230638.json",
+            "status": "matched",
+            "verification_reason": "manifest_missing_required_fields",
+            "missing_fields": [
+              "version",
+              "install_mode"
+            ],
+            "allowed_paths": [
+              "bundle_manifest.json",
+              "README.md",
+              "install/engine/zk_proof_engine.py",
+              "install/engine/identity_engine.py",
+              "install/engine/agent_learning_engine.py",
+              "install/engine/strategy_store.py",
+              "install/tests/test_zk.py",
+              "install/tests/test_identity.py",
+              "install/tests/test_learning.py"
+            ]
           }
         ]
       }
@@ -370,85 +384,85 @@
     },
     "observations": {
       "recent_failed_bundles": [
+        "failed_bundles/v21_1_gatekeeper_bundle.zip",
+        "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+        "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
         "failed_bundles/v21_to_v30_bundle.zip",
         "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-        "failed_bundles/token_economics_v8_manifest_fixed.zip",
-        "failed_bundles/token_economics_v7.zip",
-        "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip",
-        "failed_bundles/token_economics_v5.zip",
-        "failed_bundles/token_economics_v6.zip",
-        "failed_bundles/v21_1B_ingestion_hardening_bundle.zip",
-        "failed_bundles/ui_dashboard_control_v17.zip",
-        "failed_bundles/tvc_export_bundle.zip",
-        "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
-        "failed_bundles/token_economics_v6_manifest_fixed.zip",
         "failed_bundles/ui_advanced_v18_manifest_fixed.zip",
-        "failed_bundles/trajectory_engine_v5_bundle.zip",
+        "failed_bundles/token_economics_v3.zip",
         "failed_bundles/token_economics_v8.zip",
-        "failed_bundles/token_economics_v9.zip",
-        "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
-        "failed_bundles/v13_1_to_v14_bundle.zip",
+        "failed_bundles/token_economics_v5.zip",
+        "failed_bundles/trajectory_engine_v5_bundle.zip",
+        "failed_bundles/token_economics_v7.zip",
+        "failed_bundles/token_economics_v9_manifest_fixed.zip",
+        "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip",
+        "failed_bundles/ui_advanced_v18.zip",
+        "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
         "failed_bundles/token_economics_v7_manifest_fixed.zip",
-        "failed_bundles/ui_advanced_v18.zip"
+        "failed_bundles/token_economics_v4.zip",
+        "failed_bundles/token_economics_v8_manifest_fixed.zip",
+        "failed_bundles/tvc_export_bundle.zip",
+        "failed_bundles/token_economics_v6.zip"
       ],
       "recent_installed_bundles": [
-        "installed_bundles/v21_1B_ingestion_hardening_bundle.zip",
-        "installed_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
-        "installed_bundles/token_economics_v3_manifest_fixed.zip",
-        "installed_bundles/v21_to_v30_bundle.zip",
-        "installed_bundles/v21_2A_formal_document_engine_bootstrap_bundle.zip",
-        "installed_bundles/v21_1A_ingestion_bootstrap_bundle.zip",
-        "installed_bundles/v21_strict_system_bundle.zip",
+        "installed_bundles/workflow_review_classifier_bundle.zip",
+        "installed_bundles/stegverse_docs_v2_bundle.zip",
+        "installed_bundles/step_completion_bundle_v1.zip",
         "installed_bundles/v21_1_gatekeeper_bundle.zip",
         "installed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-        "installed_bundles/workflow_review_classifier_bundle.zip",
-        "installed_bundles/v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip",
-        "installed_bundles/v21_3A_publication_engine_bootstrap_bundle.zip",
         "installed_bundles/workflow_repair_bundle.zip",
-        "installed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
-        "installed_bundles/step_completion_bundle_v1.zip",
-        "installed_bundles/sandbox_v6_fixed.zip",
+        "installed_bundles/v21_strict_system_bundle.zip",
+        "installed_bundles/stegverse_sandbox_combined_bundle_v1.zip",
+        "installed_bundles/token_economics_v3_manifest_fixed.zip",
         "installed_bundles/stegverse_observatory_upgrade_bundle.zip",
+        "installed_bundles/stegverse_multi_entity_sim_bundle.zip",
         "installed_bundles/stegverse_experiment_fix_bundle_v1.zip",
-        "installed_bundles/stegverse_docs_v2_bundle.zip",
-        "installed_bundles/self_improve_bundle_v3.zip"
+        "installed_bundles/v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip",
+        "installed_bundles/v21_to_v30_bundle.zip",
+        "installed_bundles/v21_3A_publication_engine_bootstrap_bundle.zip",
+        "installed_bundles/v21_2A_formal_document_engine_bootstrap_bundle.zip",
+        "installed_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+        "installed_bundles/stegverse_result_delivery_bundle_v1.zip",
+        "installed_bundles/stegverse_ingestion_safe_recovery_bundle_v2.zip",
+        "installed_bundles/v21_1B_ingestion_hardening_bundle.zip"
       ],
       "recent_ingestion_reports": [
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_212050.json",
+        "ingestion_reports/v21_1D_dual_version_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_214006.json",
+        "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
+        "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192304.json",
+        "ingestion_reports/workflow_repair_bundle_install_report.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192124.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_191633.json",
+        "ingestion_reports/workflow_review_classifier_bundle_install_report.json",
         "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_210959.json",
         "ingestion_reports/tvc_export_bundle.zip_20260323_150730.json",
-        "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_185216.json",
-        "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
+        "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
         "ingestion_reports/ui_dashboard_control_v17.zip_20260322_230638.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_191633.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192124.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_212050.json",
-        "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
-        "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
-        "ingestion_reports/ui_advanced_v18.zip_20260322_230638.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_192304.json",
-        "ingestion_reports/ui_advanced_v18.zip_20260323_045741.json",
-        "ingestion_reports/workflow_review_classifier_bundle_install_report.json",
-        "ingestion_reports/token_economics_v9.zip_20260322_230638.json",
+        "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_220131.json",
+        "ingestion_reports/token_economics_v12.zip_20260322_230637.json",
+        "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_185216.json",
+        "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
         "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_231226.json",
-        "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
-        "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
-        "ingestion_reports/ui_dashboard_control_v17.zip_20260323_045741.json"
+        "ingestion_reports/token_economics_v7.zip_20260322_230638.json"
       ],
       "recent_feedback": [
-        "payload/feedback/canonical_feedback.md",
         "payload/feedback/failed_bundle_report_correlation.json",
         "payload/feedback/canonical_loop_report.json",
+        "payload/feedback/canonical_feedback.md",
         "payload/feedback/canonical_feedback.json"
       ],
       "recent_receipts": [
+        "receipts/install_receipt_20260317_153732.json",
         "receipts/install_receipt_20260322_215155.json",
-        "receipts/install_receipt_20260317_193822.json",
-        "receipts/install_receipt_20260317_153531.json",
-        "receipts/install_receipt_20260315_172736.json",
-        "receipts/install_receipt_20260317_194525.json",
         "receipts/install_receipt_20260317_155003.json",
-        "receipts/install_receipt_20260317_153732.json"
+        "receipts/install_receipt_20260315_172736.json",
+        "receipts/install_receipt_20260317_153531.json",
+        "receipts/install_receipt_20260317_193822.json",
+        "receipts/install_receipt_20260317_194525.json"
       ]
     }
   },
@@ -462,11 +476,11 @@
         "type": "failed_bundles_present",
         "detail": "20 recent failed bundles detected",
         "evidence": [
+          "failed_bundles/v21_1_gatekeeper_bundle.zip",
+          "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+          "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
           "failed_bundles/v21_to_v30_bundle.zip",
-          "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-          "failed_bundles/token_economics_v8_manifest_fixed.zip",
-          "failed_bundles/token_economics_v7.zip",
-          "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip"
+          "failed_bundles/v21_2_formal_document_engine_bundle.zip"
         ]
       },
       {
@@ -474,11 +488,11 @@
         "type": "installed_bundles_present",
         "detail": "20 recent installed bundles detected",
         "evidence": [
-          "installed_bundles/v21_1B_ingestion_hardening_bundle.zip",
-          "installed_bundles/v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
-          "installed_bundles/token_economics_v3_manifest_fixed.zip",
-          "installed_bundles/v21_to_v30_bundle.zip",
-          "installed_bundles/v21_2A_formal_document_engine_bootstrap_bundle.zip"
+          "installed_bundles/workflow_review_classifier_bundle.zip",
+          "installed_bundles/stegverse_docs_v2_bundle.zip",
+          "installed_bundles/step_completion_bundle_v1.zip",
+          "installed_bundles/v21_1_gatekeeper_bundle.zip",
+          "installed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip"
         ]
       }
     ],
@@ -498,11 +512,11 @@
         "action": "inspect_failed_bundles",
         "priority": 1,
         "targets": [
+          "failed_bundles/v21_1_gatekeeper_bundle.zip",
+          "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+          "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
           "failed_bundles/v21_to_v30_bundle.zip",
-          "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-          "failed_bundles/token_economics_v8_manifest_fixed.zip",
-          "failed_bundles/token_economics_v7.zip",
-          "failed_bundles/ui_dashboard_control_v17_manifest_fixed.zip"
+          "failed_bundles/v21_2_formal_document_engine_bundle.zip"
         ],
         "reason": "20 recent failed bundles detected"
       },
@@ -636,14 +650,14 @@
         "action": "inspect_failed_bundles",
         "status": "executed",
         "moved_to_incoming": [
+          "incoming_bundles/v21_1_gatekeeper_bundle.zip",
+          "incoming_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+          "incoming_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
           "incoming_bundles/v21_to_v30_bundle.zip",
-          "incoming_bundles/v21_2_formal_document_engine_bundle.zip",
-          "incoming_bundles/token_economics_v8_manifest_fixed.zip",
-          "incoming_bundles/token_economics_v7.zip",
-          "incoming_bundles/ui_dashboard_control_v17_manifest_fixed.zip"
+          "incoming_bundles/v21_2_formal_document_engine_bundle.zip"
         ],
         "count": 5,
-        "ts": "2026-03-25T08:08:49.536365+00:00"
+        "ts": "2026-03-25T09:08:23.088662+00:00"
       },
       {
         "action": "correlate_failed_bundles_with_ingestion_reports",
@@ -652,7 +666,7 @@
         "count": 20,
         "matched": 12,
         "unmatched": 8,
-        "ts": "2026-03-25T08:08:49.547785+00:00"
+        "ts": "2026-03-25T09:08:23.100390+00:00"
       },
       {
         "action": "repair_bundle_manifests",
@@ -822,13 +836,13 @@
         "repaired_count": 5,
         "skipped": [],
         "skipped_count": 0,
-        "ts": "2026-03-25T08:08:49.564058+00:00"
+        "ts": "2026-03-25T09:08:23.118679+00:00"
       }
     ]
   },
   "summary": {
     "recent_failed_bundles": 20,
-    "recent_incoming_bundles": 8,
+    "recent_incoming_bundles": 11,
     "recent_installed_bundles": 20,
     "recent_ingestion_reports": 20,
     "healthy": false,
