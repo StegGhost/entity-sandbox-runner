@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-25T18:37:40.223390",
+  "generated_at": "2026-03-25T19:32:58.856402",
   "resolved_next_action": {
     "action": "inspect_failed_bundle_family",
     "target": "failed_bundles/stability_gate_v7.zip",
