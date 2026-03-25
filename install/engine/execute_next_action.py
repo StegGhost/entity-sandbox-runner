@@ -10,6 +10,7 @@ OUTPUT_PATH = "brain_reports/execute_next_action_result.json"
 
 FAILED_DIR = "failed_bundles"
 INCOMING_DIR = "incoming_bundles"
+INSTALLED_DIR = "installed_bundles"
 
 
 def load_brain_report():
@@ -22,10 +23,26 @@ def load_brain_report():
 def ensure_dirs():
     os.makedirs("brain_reports", exist_ok=True)
     os.makedirs(INCOMING_DIR, exist_ok=True)
+    os.makedirs(INSTALLED_DIR, exist_ok=True)
 
 
 def is_valid_bundle(filename):
     return filename.endswith(".zip") and not filename.startswith(".")
+
+
+def extract_family(filename):
+    return filename.split("_v")[0]
+
+
+def get_installed_families():
+    if not os.path.exists(INSTALLED_DIR):
+        return set()
+
+    families = set()
+    for f in os.listdir(INSTALLED_DIR):
+        if f.endswith(".zip"):
+            families.add(extract_family(f))
+    return families
 
 
 # 🔧 ACTION
@@ -77,23 +94,35 @@ def execute_action(action_obj):
     }
 
 
-# 🔥 SMART FALLBACK
+# 🔥 SMART FALLBACK (REAL FIX)
 def fallback_action():
     if not os.path.exists(FAILED_DIR):
         return None
 
-    files = sorted([
-        f for f in os.listdir(FAILED_DIR)
-        if is_valid_bundle(f)
-    ])
+    installed_families = get_installed_families()
 
-    if not files:
+    candidates = []
+    for f in os.listdir(FAILED_DIR):
+        if not is_valid_bundle(f):
+            continue
+
+        family = extract_family(f)
+
+        # skip already installed families
+        if family in installed_families:
+            continue
+
+        candidates.append(f)
+
+    candidates = sorted(candidates)
+
+    if not candidates:
         return None
 
     return {
         "action": "inspect_failed_bundle_family",
-        "target": os.path.join(FAILED_DIR, files[0]),
-        "source": "fallback"
+        "target": os.path.join(FAILED_DIR, candidates[0]),
+        "source": "fallback_smart"
     }
 
 
@@ -106,7 +135,7 @@ def main():
     if brain:
         next_action = brain.get("next_action")
 
-    # 🔥 FALLBACK if brain fails
+    # fallback if brain fails
     if not next_action:
         next_action = fallback_action()
 
@@ -114,7 +143,7 @@ def main():
         result = {
             "generated_at": datetime.utcnow().isoformat(),
             "status": "idle",
-            "reason": "no_valid_bundles_remaining"
+            "reason": "no_valid_unprocessed_bundles_remaining"
         }
         with open(OUTPUT_PATH, "w") as f:
             json.dump(result, f, indent=2)
@@ -128,7 +157,7 @@ def main():
         "execution": execution
     }
 
-    # 🔥 AUTO-INGEST
+    # trigger ingestion
     if execution.get("trigger_ingestion"):
         try:
             subprocess.run(
