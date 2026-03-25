@@ -5,8 +5,6 @@ from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 BRAIN_REPORTS = ROOT / "brain_reports"
-TREE_PATH = BRAIN_REPORTS / "repo_file_tree.md"
-ARCH_PATH = BRAIN_REPORTS / "architecture_snapshot.md"
 
 IGNORE_DIRS = {
     ".git",
@@ -19,11 +17,13 @@ IGNORE_DIRS = {
     "node_modules",
     "_workspace",
     "ingestion_tmp",
+    "_ingest_tmp",
     ".idea",
     ".vscode",
 }
 
-MAX_FILES_PER_DIR = 200
+MAX_ENTRIES_PER_SECTION = 200
+MAX_DEPTH = 4
 
 
 def utc_now() -> str:
@@ -34,142 +34,203 @@ def should_ignore(path: Path) -> bool:
     return any(part in IGNORE_DIRS for part in path.parts)
 
 
-def walk_tree(root: Path) -> list[str]:
+def safe_iterdir(path: Path):
+    try:
+        return sorted(
+            [p for p in path.iterdir() if not should_ignore(p)],
+            key=lambda p: (p.is_file(), p.name.lower()),
+        )
+    except Exception:
+        return []
+
+
+def walk_tree(root: Path, max_depth: int = MAX_DEPTH) -> list[str]:
     lines: list[str] = []
 
-    def recurse(path: Path, prefix: str = ""):
-        try:
-            children = sorted(
-                [p for p in path.iterdir() if not should_ignore(p)],
-                key=lambda p: (p.is_file(), p.name.lower())
-            )
-        except Exception:
+    def recurse(path: Path, prefix: str = "", depth: int = 0):
+        if depth >= max_depth:
             return
 
-        if len(children) > MAX_FILES_PER_DIR:
-            children = children[:MAX_FILES_PER_DIR]
+        children = safe_iterdir(path)
+        if len(children) > MAX_ENTRIES_PER_SECTION:
+            children = children[:MAX_ENTRIES_PER_SECTION]
 
         for idx, child in enumerate(children):
             connector = "└── " if idx == len(children) - 1 else "├── "
-            lines.append(f"{prefix}{connector}{child.name}")
+            suffix = "/" if child.is_dir() else ""
+            lines.append(f"{prefix}{connector}{child.name}{suffix}")
             if child.is_dir():
                 extension = "    " if idx == len(children) - 1 else "│   "
-                recurse(child, prefix + extension)
+                recurse(child, prefix + extension, depth + 1)
 
     lines.append(f"{root.name}/")
     recurse(root)
     return lines
 
 
-def list_top_level_dirs(root: Path) -> list[str]:
-    items = []
-    for p in sorted(root.iterdir(), key=lambda x: x.name.lower()):
-        if should_ignore(p):
-            continue
-        if p.is_dir():
-            items.append(f"- {p.name}/")
-        else:
-            items.append(f"- {p.name}")
-    return items
+def write_md(path: Path, title: str, body: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    content = f"# {title}\n\nGenerated: {utc_now()}\n\n{body}"
+    path.write_text(content, encoding="utf-8")
 
 
-def summarize_operational_surfaces(root: Path) -> str:
-    sections = []
-
-    key_dirs = [
-        "internal_brain",
-        "install",
-        "incoming_bundles",
-        "installed_bundles",
-        "failed_bundles",
-        "receipts",
-        "logs",
-        "payload",
-        "brain_reports",
-        ".github/workflows",
-    ]
-
-    for rel in key_dirs:
-        path = root / rel
-        if not path.exists():
-            continue
-
-        sections.append(f"## {rel}\n")
-
-        if path.is_file():
-            sections.append(f"- file: {rel}\n")
-            continue
-
-        try:
-            entries = sorted(
-                [p.name + ("/" if (path / p.name).is_dir() else "") for p in path.iterdir() if not should_ignore(path / p.name)],
-                key=lambda x: x.lower()
-            )
-        except Exception:
-            entries = []
-
-        if not entries:
-            sections.append("- empty\n")
-        else:
-            for entry in entries[:100]:
-                sections.append(f"- {entry}\n")
-
-        sections.append("\n")
-
-    return "".join(sections)
+def markdown_tree(root: Path, max_depth: int = MAX_DEPTH) -> str:
+    return "```text\n" + "\n".join(walk_tree(root, max_depth=max_depth)) + "\n```\n"
 
 
-def write_repo_tree(root: Path) -> None:
-    lines = walk_tree(root)
-    content = [
-        f"# Repo File Tree\n",
-        f"Generated: {utc_now()}\n",
-        "```text",
-        *lines,
-        "```",
-        "",
-    ]
-    TREE_PATH.write_text("\n".join(content), encoding="utf-8")
+def list_dir_entries(path: Path) -> str:
+    entries = safe_iterdir(path)
+    if not entries:
+        return "- empty\n"
+
+    lines = []
+    for entry in entries[:MAX_ENTRIES_PER_SECTION]:
+        suffix = "/" if entry.is_dir() else ""
+        lines.append(f"- {entry.name}{suffix}")
+    return "\n".join(lines) + "\n"
 
 
-def write_architecture_snapshot(root: Path) -> None:
-    top_level = list_top_level_dirs(root)
-    operational = summarize_operational_surfaces(root)
+def summarize_root() -> None:
+    root_items = safe_iterdir(ROOT)
+    body = "## Top-level entries\n\n"
+    for item in root_items[:MAX_ENTRIES_PER_SECTION]:
+        suffix = "/" if item.is_dir() else ""
+        body += f"- {item.name}{suffix}\n"
 
-    content = f"""# Architecture Snapshot
+    body += "\n## Compact root tree\n\n"
+    body += markdown_tree(ROOT, max_depth=2)
 
-Generated: {utc_now()}
+    write_md(BRAIN_REPORTS / "repo_root_map.md", "Repo Root Map", body)
 
-## Current root surface
 
-{chr(10).join(top_level)}
+def summarize_install() -> None:
+    install_dir = ROOT / "install"
+    engine_dir = install_dir / "engine"
 
-## Operational interpretation
+    body = "## install/\n\n"
+    body += list_dir_entries(install_dir)
+    body += "\n## install/ tree\n\n"
+    body += markdown_tree(install_dir, max_depth=3)
 
-{operational}## Architectural reading
+    if engine_dir.exists():
+        body += "\n## install/engine/\n\n"
+        body += list_dir_entries(engine_dir)
+        body += "\n## install/engine tree\n\n"
+        body += markdown_tree(engine_dir, max_depth=2)
+
+    write_md(BRAIN_REPORTS / "repo_install_map.md", "Install Surface Map", body)
+
+
+def summarize_workflows() -> None:
+    wf_dir = ROOT / ".github" / "workflows"
+    body = "## .github/workflows/\n\n"
+    body += list_dir_entries(wf_dir)
+    body += "\n## Workflow tree\n\n"
+    body += markdown_tree(wf_dir, max_depth=2)
+    write_md(BRAIN_REPORTS / "repo_workflow_map.md", "Workflow Map", body)
+
+
+def summarize_bundle_surfaces() -> None:
+    incoming = ROOT / "incoming_bundles"
+    installed = ROOT / "installed_bundles"
+    failed = ROOT / "failed_bundles"
+
+    body = "## incoming_bundles/\n\n"
+    body += list_dir_entries(incoming)
+
+    body += "\n## installed_bundles/\n\n"
+    body += list_dir_entries(installed)
+
+    body += "\n## failed_bundles/\n\n"
+    body += list_dir_entries(failed)
+
+    write_md(BRAIN_REPORTS / "repo_bundle_surfaces.md", "Bundle Surface Map", body)
+
+
+def summarize_state_surfaces() -> None:
+    body = ""
+
+    for rel in ["brain_reports", "receipts", "logs", "payload", "ingestion_reports", "internal_brain"]:
+        path = ROOT / rel
+        body += f"## {rel}/\n\n"
+        body += list_dir_entries(path)
+        body += "\n"
+
+    write_md(BRAIN_REPORTS / "repo_state_surfaces.md", "State Surface Map", body)
+
+
+def summarize_architecture_snapshot() -> None:
+    body = """## Current reading
 
 - `internal_brain/` is the decision and reconciliation surface.
-- `install/` contains execution-side tooling and ingestion/runtime engines.
-- `incoming_bundles/` is the bundle ingress queue.
-- `installed_bundles/` is the admitted bundle surface.
-- `failed_bundles/` is the rejected or unresolved bundle surface.
-- `receipts/`, `logs/`, `payload/`, and `brain_reports/` are the current evidence/state surfaces.
+- `install/` is the execution/tooling surface and is currently overloaded.
+- `incoming_bundles/`, `installed_bundles/`, and `failed_bundles/` are the operational bundle lifecycle.
+- `brain_reports/`, `receipts/`, `logs/`, and `payload/` are the major evidence/state surfaces.
 - `.github/workflows/` is the automation/control wiring surface.
+- `payload/` appears to mirror or duplicate major architectural surfaces and should be treated as a distinct subsystem, not just a misc folder.
 
-## Immediate use
+## Immediate operational concerns
 
-This file is a generated operational snapshot for fast human inspection from iPhone.
-It is not the canonical architecture paper or design doc.
+- One giant repo tree is too large for iPhone inspection.
+- `install/` has enough files that it needs its own map.
+- Bundle lifecycle inspection should stay separate from root tree inspection.
+- Workflow inspection should stay separate from state/evidence inspection.
+- Temporary or staging roots like `_ingest_tmp/` should not drive architectural interpretation.
+
+## Generated map set
+
+- `repo_root_map.md`
+- `repo_install_map.md`
+- `repo_workflow_map.md`
+- `repo_bundle_surfaces.md`
+- `repo_state_surfaces.md`
+
+These are the iPhone-friendly operational maps and should be used instead of one oversized tree dump.
 """
-    ARCH_PATH.write_text(content, encoding="utf-8")
+    write_md(BRAIN_REPORTS / "architecture_snapshot.md", "Architecture Snapshot", body)
+
+
+def write_index() -> None:
+    body = """## Available generated maps
+
+- `repo_root_map.md` — top-level repo view
+- `repo_install_map.md` — install and install/engine surface
+- `repo_workflow_map.md` — workflow inventory
+- `repo_bundle_surfaces.md` — incoming / installed / failed bundle surfaces
+- `repo_state_surfaces.md` — brain_reports / receipts / logs / payload / ingestion_reports / internal_brain
+- `architecture_snapshot.md` — operational reading of the repo
+
+## Recommended usage
+
+Start with:
+1. `repo_root_map.md`
+2. `repo_bundle_surfaces.md`
+3. `repo_install_map.md`
+
+Only open the others when narrowing a specific issue.
+"""
+    write_md(BRAIN_REPORTS / "repo_map_index.md", "Repo Map Index", body)
 
 
 def main() -> int:
     BRAIN_REPORTS.mkdir(parents=True, exist_ok=True)
-    write_repo_tree(ROOT)
-    write_architecture_snapshot(ROOT)
-    print(str(TREE_PATH))
-    print(str(ARCH_PATH))
+
+    summarize_root()
+    summarize_install()
+    summarize_workflows()
+    summarize_bundle_surfaces()
+    summarize_state_surfaces()
+    summarize_architecture_snapshot()
+    write_index()
+
+    print(str(BRAIN_REPORTS / "repo_map_index.md"))
+    print(str(BRAIN_REPORTS / "repo_root_map.md"))
+    print(str(BRAIN_REPORTS / "repo_install_map.md"))
+    print(str(BRAIN_REPORTS / "repo_workflow_map.md"))
+    print(str(BRAIN_REPORTS / "repo_bundle_surfaces.md"))
+    print(str(BRAIN_REPORTS / "repo_state_surfaces.md"))
+    print(str(BRAIN_REPORTS / "architecture_snapshot.md"))
+
     return 0
 
 
