@@ -29,10 +29,11 @@ jobs:
         if: always()
         run: cat internal_brain/brain_report.json
 
-      - name: Persist brain artifacts to repo
+      - name: Persist brain artifacts and bundle mutations to repo
         if: always()
         run: |
           mkdir -p brain_reports
+
           cp internal_brain/brain_report.json brain_reports/brain_report_latest.json
 
           if [ -f payload/feedback/failed_bundle_report_correlation.json ]; then
@@ -43,12 +44,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add brain_reports/brain_report_latest.json
+          git add brain_reports/failed_bundle_report_correlation.json || true
+          git add incoming_bundles/ || true
+          git add failed_bundles/ || true
+          git add installed_bundles/ || true
+          git add payload/feedback/ || true
 
-          if [ -f brain_reports/failed_bundle_report_correlation.json ]; then
-            git add brain_reports/failed_bundle_report_correlation.json
-          fi
-
-          git commit -m "brain: persist latest artifacts" || echo "no changes"
+          git commit -m "brain: persist latest artifacts and bundle mutations" || echo "no changes"
           git push
 
       - name: Trigger ingestion workflow
