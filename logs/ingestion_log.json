@@ -1054,5 +1054,35 @@
     "ok": true,
     "error": null,
     "ts": 1774411347.611918
+  },
+  {
+    "bundle": "contract_snapshot_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774411634.5673127
+  },
+  {
+    "bundle": "history_layer_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774411634.5689845
+  },
+  {
+    "bundle": "internal_brain_ingest_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774411634.571335
+  },
+  {
+    "bundle": "sandbox_bootstrap_permission_unlock_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774411634.5728774
+  },
+  {
+    "bundle": "sandbox_convergence_full_memory_bundle_v1.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774411634.574883
   }
 ]
