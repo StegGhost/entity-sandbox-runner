@@ -2,7 +2,6 @@
 
 ## FAILED
 
-- activation_bundle_v1.zip
 - auto_bundle_feedback.zip
 - auto_bundle_fix_v2.zip
 - auto_bundle_fix_v4.zip
@@ -151,12 +150,14 @@
 ## INCOMING
 
 - .gitkeep
+- activation_bundle_v1.zip
 - auto_bundle_feedback.zip
 - governed_agent_passport_v1_ingestion_bundle.sha256
 - token_economics_v6_manifest_fixed.zip
 - token_economics_v7.zip
 - token_economics_v7_manifest_fixed.zip
 - token_economics_v8_manifest_fixed.zip
+- token_economics_v9.zip
 - token_economics_v9_manifest_fixed.zip
 - tokenized_governance_bundle_v1.zip
 - trajectory_aware_retry_v10_bundle.zip
