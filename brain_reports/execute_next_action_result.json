@@ -1,8 +1,7 @@
 {
-  "ts": "2026-03-25T02:23:49.332807",
-  "status": "ok",
-  "action": {
-    "generated_at": "2026-03-25T02:23:49.251822",
+  "generated_at": "2026-03-25T02:28:48.240390",
+  "input_document": {
+    "generated_at": "2026-03-25T02:28:48.114409",
     "summary": {
       "manifest_repairable_count": 10,
       "missing_report_count": 1,
@@ -11,7 +10,7 @@
       "total_failed_seen": 133
     },
     "next_action": {
-      "ts": "2026-03-25T02:23:49.251816",
+      "ts": "2026-03-25T02:28:48.114402",
       "status": "ok",
       "action": "repair_bundle_manifest",
       "target": "token_economics_v3.zip",
@@ -422,11 +421,43 @@
       ]
     }
   },
+  "resolved_next_action": {
+    "ts": "2026-03-25T02:28:48.114402",
+    "status": "ok",
+    "action": "repair_bundle_manifest",
+    "target": "token_economics_v3.zip",
+    "family": "token_economics",
+    "priority": "high",
+    "reason": "manifest_missing_required_fields",
+    "missing_fields": [
+      "version",
+      "install_mode",
+      "allowed_paths"
+    ],
+    "allowed_paths": []
+  },
   "execution": {
     "status": "ok",
     "executed": true,
-    "action": null,
-    "target": null,
-    "note": "execution stub (no-op for now)"
+    "action": "repair_bundle_manifest",
+    "target": "token_economics_v3.zip",
+    "repaired_bundle": "token_economics_v3_manifest_fixed.zip",
+    "repaired_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/token_economics_v3_manifest_fixed.zip",
+    "manifest_after_repair": {
+      "bundle_name": "token_economics_v3",
+      "bundle_version": "3.0.0",
+      "version": "1.0",
+      "install_mode": "folder_map",
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/"
+      ]
+    }
+  },
+  "ingestion_trigger": {
+    "status": "ok",
+    "workflow": ".github/workflows/ingestion.yml",
+    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23522011680\n",
+    "stderr": ""
   }
 }
