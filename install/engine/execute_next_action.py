@@ -24,7 +24,7 @@ def ensure_dirs():
     os.makedirs(INCOMING_DIR, exist_ok=True)
 
 
-# 🔧 ACTION: inspect_failed_bundle_family
+# 🔧 ACTION
 def inspect_failed_bundle_family(target):
     if not target or not os.path.exists(target):
         return {
@@ -73,25 +73,40 @@ def execute_action(action_obj):
     }
 
 
+# 🔥 FALLBACK: if brain fails, keep system moving
+def fallback_action():
+    if not os.path.exists(FAILED_DIR):
+        return None
+
+    files = sorted(os.listdir(FAILED_DIR))
+    if not files:
+        return None
+
+    return {
+        "action": "inspect_failed_bundle_family",
+        "target": os.path.join(FAILED_DIR, files[0])
+    }
+
+
 def main():
     ensure_dirs()
 
     brain = load_brain_report()
-    if not brain:
-        result = {
-            "generated_at": datetime.utcnow().isoformat(),
-            "error": "brain_report_not_found"
-        }
-        with open(OUTPUT_PATH, "w") as f:
-            json.dump(result, f, indent=2)
-        return
 
-    next_action = brain.get("next_action")
+    next_action = None
+    if brain:
+        next_action = brain.get("next_action")
+
+    # 🔥 APPLY FALLBACK IF NEEDED
+    if not next_action:
+        next_action = fallback_action()
+        if next_action:
+            next_action["source"] = "fallback"
 
     if not next_action:
         result = {
             "generated_at": datetime.utcnow().isoformat(),
-            "error": "no_next_action"
+            "error": "no_next_action_and_no_fallback"
         }
         with open(OUTPUT_PATH, "w") as f:
             json.dump(result, f, indent=2)
@@ -105,7 +120,7 @@ def main():
         "execution": execution
     }
 
-    # 🔥 AUTO-INGEST AFTER INSPECTION
+    # 🔥 AUTO-INGEST
     if execution.get("trigger_ingestion"):
         try:
             subprocess.run(
