@@ -13,6 +13,7 @@
 - auto_bundle_observability_v1.zip
 - auto_rollback_bundle_v1.zip
 - bootstrap_and_convergence_bundles.zip
+- brain_wiring_bundle_v1.zip
 - coherent_experience_model_v1.zip
 - constraint_min_bundle.zip
 - constraint_min_bundle_v2.zip
@@ -148,6 +149,7 @@
 
 - .gitkeep
 - governed_agent_passport_v1_ingestion_bundle.sha256
+- ui_dashboard_control_v17_manifest_fixed.zip
 
 ## INSTALLED
 
