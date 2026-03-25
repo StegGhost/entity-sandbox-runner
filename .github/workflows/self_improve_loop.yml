@@ -34,49 +34,53 @@ jobs:
         run: |
           echo "PYTHONPATH=${PYTHONPATH}:$(pwd):$(pwd)/install" >> $GITHUB_ENV
 
-      # ----------------------------------------
-      # CLEAN RECEIPTS (CRITICAL — SAME FIX)
-      # ----------------------------------------
       - name: Clean receipts
         run: |
           rm -rf receipts receipts_node_a receipts_node_b || true
           mkdir -p receipts
 
-      # ----------------------------------------
-      # RUN TESTS + CAPTURE FAILURE
-      # ----------------------------------------
-      - name: Run tests (capture output)
+      - name: Run focused sandbox tests (capture output)
         run: |
-          python -m pytest -q > test_output.txt 2>&1 || true
+          python -m pytest -q \
+            test_decision_engine.py \
+            test_api.py \
+            install/test_llm_adapter.py \
+            test_replay_system.py \
+            > test_output.txt 2>&1 || true
 
-      # ----------------------------------------
-      # RUN SELF-IMPROVE (NOW FAILURE-AWARE)
-      # ----------------------------------------
+      - name: Show captured test output
+        run: |
+          echo "===== TEST OUTPUT BEGIN ====="
+          cat test_output.txt || true
+          echo "===== TEST OUTPUT END ====="
+
       - name: Run self-improve generator
         run: |
           python engine/self_improve_runner.py test_output.txt
 
-      # ----------------------------------------
-      # DEBUG OUTPUT
-      # ----------------------------------------
+      - name: Show self-improve result
+        run: |
+          echo "===== SELF IMPROVE RESULT ====="
+          cat brain_reports/self_improve_result.json || true
+          echo "===== END SELF IMPROVE RESULT ====="
+
       - name: Show generated bundles
         run: |
           echo "INCOMING_BUNDLES AFTER SELF-IMPROVE:"
           ls -la incoming_bundles || true
 
-      # ----------------------------------------
-      # COMMIT NEW BUNDLES
-      # ----------------------------------------
-      - name: Commit generated bundles
+      - name: Commit generated artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
 
           git add incoming_bundles || true
+          git add brain_reports/self_improve_result.json || true
+          git add brain_reports/repo_snapshot_trace.jsonl || true
 
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "self-improve: generated bundle from test failure"
+            git commit -m "self-improve: generate bundle from sandbox loop"
             git push
           fi
