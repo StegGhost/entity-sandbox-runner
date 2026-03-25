@@ -15,4 +15,4 @@ def move(src, dst):
 
 move(SRC/"engine", ROOT/"engine")
 move(SRC/"tests", ROOT/"tests")
-print("slashing + rewards installed")
+print("tokenized governance installed")
