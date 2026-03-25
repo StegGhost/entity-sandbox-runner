@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-25T10:30:16.575781",
+  "generated_at": "2026-03-25T11:06:22.625056",
   "input_document": {
-    "generated_at": "2026-03-25T10:30:16.472445",
+    "generated_at": "2026-03-25T11:06:22.586535",
     "summary": {
       "manifest_repairable_count": 2,
       "missing_report_count": 3,
@@ -13,7 +13,7 @@
       "internal_brain_status": "ok"
     },
     "next_action": {
-      "ts": "2026-03-25T10:30:16.466503",
+      "ts": "2026-03-25T11:06:22.582959",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
       "active_family": "v21_1_gatekeeper",
@@ -513,7 +513,7 @@
       },
       "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
       "mapped_action": {
-        "ts": "2026-03-25T10:30:16.466503",
+        "ts": "2026-03-25T11:06:22.582959",
         "status": "ok",
         "selection_mode": "internal_brain_closure",
         "active_family": "v21_1_gatekeeper",
@@ -527,7 +527,7 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T10:30:16.466503",
+    "ts": "2026-03-25T11:06:22.582959",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
     "active_family": "v21_1_gatekeeper",

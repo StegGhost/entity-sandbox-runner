@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T10:30:16.439306+00:00",
+  "ts": "2026-03-25T11:06:22.557690+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -8,6 +8,20 @@
       "bundle_name": "v21_to_v30_bundle.zip",
       "matched_report": null,
       "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+      "bundle_name": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+      "matched_report": "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/"
+      ]
     },
     {
       "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
@@ -55,6 +69,19 @@
       "bundle_name": "token_economics_v9_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v3.zip",
+      "bundle_name": "token_economics_v3.zip",
+      "matched_report": "ingestion_reports/token_economics_v3.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode",
+        "allowed_paths"
+      ],
+      "allowed_paths": []
     },
     {
       "bundle": "failed_bundles/token_economics_v8_manifest_fixed.zip",
@@ -198,20 +225,6 @@
       ]
     },
     {
-      "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-      "bundle_name": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-      "matched_report": "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "install/"
-      ]
-    },
-    {
       "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
       "bundle_name": "trajectory_engine_v5_bundle.zip",
       "matched_report": "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
@@ -242,12 +255,6 @@
       "bundle_name": "ui_dashboard_control_v17_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/tokenized_governance_bundle_v1.zip",
-      "bundle_name": "tokenized_governance_bundle_v1.zip",
-      "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
-      "status": "matched"
     }
   ]
 }
