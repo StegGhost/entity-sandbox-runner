@@ -16,6 +16,7 @@ on:
       - "install/test_llm_adapter.py"
       - "test_decision_engine.py"
       - "test_api.py"
+      - "test_replay_system.py"
       - ".github/workflows/llm_adapter_validation.yml"
 
 jobs:
@@ -39,13 +40,40 @@ jobs:
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/install" >> $GITHUB_ENV
 
-      - name: Clean receipts
-        run: rm -rf receipts receipts_node_a receipts_node_b || true
-
-      - name: Run all tests
+      # -------------------------------------------------
+      # HARD RESET FUNCTION (inline)
+      # -------------------------------------------------
+      - name: Define clean_receipts helper
         run: |
-          python -m pytest -q \
-            test_decision_engine.py \
-            test_api.py \
-            install/test_llm_adapter.py \
-            test_replay_system.py
+          echo 'function clean_receipts() {' >> clean.sh
+          echo '  rm -rf receipts receipts_node_a receipts_node_b || true' >> clean.sh
+          echo '  mkdir -p receipts' >> clean.sh
+          echo '}' >> clean.sh
+
+      # -------------------------------------------------
+      # RUN TESTS WITH FULL ISOLATION
+      # -------------------------------------------------
+
+      - name: Run test_decision_engine
+        run: |
+          source clean.sh
+          clean_receipts
+          python -m pytest -q test_decision_engine.py
+
+      - name: Run test_api
+        run: |
+          source clean.sh
+          clean_receipts
+          python -m pytest -q test_api.py
+
+      - name: Run llm adapter tests
+        run: |
+          source clean.sh
+          clean_receipts
+          python -m pytest -q install/test_llm_adapter.py
+
+      - name: Run replay system tests (isolated)
+        run: |
+          source clean.sh
+          clean_receipts
+          python -m pytest -q test_replay_system.py
