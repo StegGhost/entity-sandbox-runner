@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-03-25T13:08:08.343041",
+  "generated_at": "2026-03-25T13:46:24.026377",
   "summary": {
     "manifest_repairable_count": 0,
-    "missing_report_count": 0,
-    "unresolved_failed_count": 89,
-    "obsolete_candidate_count": 27,
-    "total_failed_seen": 116,
+    "missing_report_count": 1,
+    "unresolved_failed_count": 94,
+    "obsolete_candidate_count": 36,
+    "total_failed_seen": 131,
     "active_family": null,
     "last_executed_bundle": null,
     "internal_brain_status": "ok"
   },
   "next_action": {
-    "ts": "2026-03-25T13:08:08.339603",
+    "ts": "2026-03-25T13:46:24.019497",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
     "active_family": "v21_2_formal_document_engine",
@@ -24,8 +24,29 @@
   },
   "candidates": {
     "manifest_repairable": [],
-    "missing_report": [],
+    "missing_report": [
+      {
+        "bundle": "v13_1_to_v14_bundle.zip",
+        "family": "v13_1_to",
+        "reason": "no matched ingestion report"
+      }
+    ],
     "unresolved_failed": [
+      {
+        "bundle": "activation_bundle_v1.zip",
+        "family": "activation_bundle",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "auto_bundle_observability_v1.zip",
+        "family": "auto_bundle_observability",
+        "reason": "no correlation entry"
+      },
+      {
+        "bundle": "auto_rollback_bundle_v1.zip",
+        "family": "auto_rollback_bundle",
+        "reason": "no correlation entry"
+      },
       {
         "bundle": "bootstrap_and_convergence_bundles.zip",
         "family": "bootstrap_and_convergence_bundles",
@@ -260,21 +281,6 @@
         "bundle": "sandbox_convergence_bundle_v1_fix1.zip",
         "family": "sandbox_convergence_bundle_v1_fix1",
         "reason": "no correlation entry"
-      },
-      {
-        "bundle": "sandbox_eval_ready_bundle.zip",
-        "family": "sandbox_eval_ready",
-        "reason": "no correlation entry"
-      },
-      {
-        "bundle": "sandbox_eval_wiring_patch_v6_1.zip",
-        "family": "sandbox_eval_wiring_patch_v6_1",
-        "reason": "no correlation entry"
-      },
-      {
-        "bundle": "sandbox_next_50_upgrades_v4.zip",
-        "family": "sandbox_next_50_upgrades",
-        "reason": "no correlation entry"
       }
     ],
     "obsolete_candidates": [
@@ -374,7 +380,37 @@
         "reason": "same family has an installed member"
       },
       {
+        "bundle": "token_economics_v6_manifest_fixed.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v7.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v7_manifest_fixed.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
         "bundle": "token_economics_v8.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v8_manifest_fixed.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v9.zip",
+        "family": "token_economics",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "token_economics_v9_manifest_fixed.zip",
         "family": "token_economics",
         "reason": "same family has an installed member"
       },
@@ -412,6 +448,21 @@
         "bundle": "token_economics_v15.zip",
         "family": "token_economics",
         "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "ui_advanced_v18.zip",
+        "family": "ui_advanced",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "ui_dashboard_control_v17.zip",
+        "family": "ui_dashboard_control",
+        "reason": "same family has an installed member"
+      },
+      {
+        "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+        "family": "v21_1B_ingestion_hardening",
+        "reason": "same family has an installed member"
       }
     ]
   },
@@ -423,7 +474,7 @@
     },
     "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
     "mapped_action": {
-      "ts": "2026-03-25T13:08:08.339603",
+      "ts": "2026-03-25T13:46:24.019497",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
       "active_family": "v21_2_formal_document_engine",

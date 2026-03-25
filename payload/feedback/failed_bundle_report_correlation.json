@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T13:08:08.311327+00:00",
+  "ts": "2026-03-25T13:46:23.986357+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -59,12 +59,6 @@
       ]
     },
     {
-      "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
-      "bundle_name": "trajectory_engine_v5_bundle.zip",
-      "matched_report": "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
-      "status": "matched"
-    },
-    {
       "bundle": "failed_bundles/ui_advanced_v18.zip",
       "bundle_name": "ui_advanced_v18.zip",
       "matched_report": "ingestion_reports/ui_advanced_v18.zip_20260323_045741.json",
@@ -91,12 +85,6 @@
       "status": "no_report_found"
     },
     {
-      "bundle": "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
-      "bundle_name": "trajectory_aware_retry_v10_bundle.zip",
-      "matched_report": "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
-      "status": "matched"
-    },
-    {
       "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
       "bundle_name": "v21_1_gatekeeper_bundle.zip",
       "matched_report": null,
@@ -113,6 +101,26 @@
       "bundle_name": "v21_2_formal_document_engine_bundle.zip",
       "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
       "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/ui_dashboard_control_v17.zip",
+      "bundle_name": "ui_dashboard_control_v17.zip",
+      "matched_report": "ingestion_reports/ui_dashboard_control_v17.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "ui/index.html",
+        "ui/styles.css",
+        "ui/app.js",
+        "install/engine/ui_api_adapter.py",
+        "install/tests/test_ui_adapter.py"
+      ]
     },
     {
       "bundle": "failed_bundles/token_economics_v10.zip",
@@ -215,6 +223,28 @@
         "install/tests/test_zk.py",
         "install/tests/test_identity.py",
         "install/tests/test_learning.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v6.zip",
+      "bundle_name": "token_economics_v6.zip",
+      "matched_report": "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "install/engine/adaptive_governance_engine.py",
+        "install/engine/attack_simulation_engine.py",
+        "install/engine/slashing_curve_engine.py",
+        "install/engine/governance_proposal_engine.py",
+        "install/sim/attack_scenarios.py",
+        "install/tests/test_adaptive.py",
+        "install/tests/test_attack_sim.py"
       ]
     }
   ]

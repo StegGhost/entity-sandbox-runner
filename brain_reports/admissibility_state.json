@@ -1,9 +1,9 @@
 {
-  "ts": "2026-03-25T12:50:17.944593",
+  "ts": "2026-03-25T13:46:23.829274",
   "metrics": {
-    "failed": 142,
-    "installed": 134,
-    "stability_score": 0.486
+    "failed": 145,
+    "installed": 135,
+    "stability_score": 0.482
   },
   "admissible": false
 }

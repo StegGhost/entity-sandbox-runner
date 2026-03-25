@@ -2,6 +2,7 @@
 
 ## FAILED
 
+- activation_bundle_v1.zip
 - auto_bundle_feedback.zip
 - auto_bundle_fix_v2.zip
 - auto_bundle_fix_v4.zip
@@ -9,6 +10,8 @@
 - auto_bundle_fix_v6.zip
 - auto_bundle_fix_v7.zip
 - auto_bundle_fix_v8.zip
+- auto_bundle_observability_v1.zip
+- auto_rollback_bundle_v1.zip
 - bootstrap_and_convergence_bundles.zip
 - brain_wiring_bundle_v1.zip
 - coherent_experience_model_v1.zip
@@ -84,7 +87,6 @@
 - sandbox_v8_1_to_8_5_bundle.zip
 - sandbox_v8_governed_system_bundle.zip
 - sandbox_v9_1_to_10_bundle.zip
-- secure_bundle_integrity_bundle_v1.zip
 - self_healing_loop_v6_bundle.zip
 - self_improve_bundle_v1.zip
 - stability_gate_v1.zip
@@ -136,6 +138,7 @@
 - tvc_export_bundle.zip
 - ui_advanced_v18.zip
 - ui_advanced_v18_manifest_fixed.zip
+- ui_dashboard_control_v17.zip
 - ui_dashboard_control_v17_manifest_fixed.zip
 - v13_1_to_v14_bundle.zip
 - v21_1B_ingestion_hardening_bundle.zip
@@ -148,32 +151,7 @@
 ## INCOMING
 
 - .gitkeep
-- activation_bundle_v1.zip
-- auto_bundle_feedback.zip
-- auto_bundle_observability_v1.zip
-- auto_rollback_bundle_v1.zip
 - governed_agent_passport_v1_ingestion_bundle.sha256
-- token_economics_v6_manifest_fixed.zip
-- token_economics_v7.zip
-- token_economics_v7_manifest_fixed.zip
-- token_economics_v8_manifest_fixed.zip
-- token_economics_v9.zip
-- token_economics_v9_manifest_fixed.zip
-- tokenized_governance_bundle_v1.zip
-- trajectory_aware_retry_v10_bundle.zip
-- trajectory_engine_v5_bundle.zip
-- tvc_export_bundle.zip
-- ui_advanced_v18.zip
-- ui_advanced_v18_manifest_fixed.zip
-- ui_dashboard_control_v17.zip
-- v13_1_to_v14_bundle.zip
-- v21_1B_ingestion_hardening_bundle.zip
-- v21_1B_ingestion_hardening_bundle_fixed.zip
-- v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
-- v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip
-- v21_1_gatekeeper_bundle.zip
-- v21_2_formal_document_engine_bundle.zip
-- v21_to_v30_bundle.zip
 
 ## INSTALLED
 
@@ -275,6 +253,7 @@
 - sandbox_v5_fixed.zip
 - sandbox_v6_fixed.zip
 - sandbox_v7_3_to_7_5_bundle.zip
+- secure_bundle_integrity_bundle_v1.zip
 - self_improve_bundle_v3.zip
 - self_improve_bundle_v4.zip
 - self_modifying_loop_bundle_v1A.zip
