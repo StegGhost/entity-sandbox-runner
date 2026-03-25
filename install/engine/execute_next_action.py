@@ -3,6 +3,7 @@ import json
 import zipfile
 import tempfile
 import subprocess
+import time
 from datetime import datetime
 
 ROOT = os.getcwd()
@@ -10,6 +11,7 @@ ROOT = os.getcwd()
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
 FAILED_BUNDLES = os.path.join(ROOT, "failed_bundles")
 INCOMING_BUNDLES = os.path.join(ROOT, "incoming_bundles")
+LOG_PATH = os.path.join(ROOT, "logs", "ingestion_log.json")
 
 NEXT_ACTION_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
@@ -40,6 +42,17 @@ def write_json(path, payload):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
         f.write("\n")
+
+
+def load_ingestion_log():
+    if not os.path.exists(LOG_PATH):
+        return []
+    try:
+        with open(LOG_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, list) else []
+    except Exception:
+        return []
 
 
 def default_allowed_paths_from_tree(extract_root):
@@ -143,36 +156,6 @@ def repair_bundle_manifest(bundle_name, missing_fields, allowed_paths):
         }
 
 
-def reconstruct_bundle_report_match(bundle_name):
-    return {
-        "status": "noop",
-        "executed": False,
-        "action": "reconstruct_bundle_report_match",
-        "target": bundle_name,
-        "reason": "not_implemented_yet",
-    }
-
-
-def inspect_failed_bundle_family(bundle_name):
-    return {
-        "status": "noop",
-        "executed": False,
-        "action": "inspect_failed_bundle_family",
-        "target": bundle_name,
-        "reason": "not_implemented_yet",
-    }
-
-
-def mark_bundle_obsolete(bundle_name):
-    return {
-        "status": "noop",
-        "executed": False,
-        "action": "mark_bundle_obsolete",
-        "target": bundle_name,
-        "reason": "not_implemented_yet",
-    }
-
-
 def maybe_trigger_ingestion():
     workflow_path = os.environ.get("INGESTION_WORKFLOW_PATH", ".github/workflows/ingestion.yml")
     gh_token = os.environ.get("GH_TOKEN", "")
@@ -207,6 +190,32 @@ def maybe_trigger_ingestion():
         }
 
 
+def confirm_ingestion(bundle_name, wait_seconds=20):
+    start = time.time()
+    seen_initial = load_ingestion_log()
+    initial_len = len(seen_initial)
+
+    while time.time() - start < wait_seconds:
+        log = load_ingestion_log()
+        if len(log) > initial_len:
+            for entry in reversed(log):
+                if entry.get("bundle") == bundle_name:
+                    return {
+                        "status": "confirmed",
+                        "bundle": bundle_name,
+                        "ok": entry.get("ok"),
+                        "error": entry.get("error"),
+                        "ts": entry.get("ts"),
+                    }
+        time.sleep(2)
+
+    return {
+        "status": "pending_ingestion_confirmation",
+        "bundle": bundle_name,
+        "reason": "no matching ingestion log entry observed within wait window",
+    }
+
+
 def main():
     ensure_dir(BRAIN_REPORTS)
 
@@ -236,23 +245,21 @@ def main():
             "status": "skipped",
             "reason": "no_ingestion_trigger_for_result",
         }
+        result["ingestion_confirmation"] = {
+            "status": "skipped",
+            "reason": "no_ingestion_trigger_for_result",
+        }
         write_json(OUTPUT_PATH, result)
         print(json.dumps(result, indent=2))
         return
 
     if action == "repair_bundle_manifest":
         execution = repair_bundle_manifest(target, missing_fields, allowed_paths)
-    elif action == "reconstruct_bundle_report_match":
-        execution = reconstruct_bundle_report_match(target)
-    elif action == "inspect_failed_bundle_family":
-        execution = inspect_failed_bundle_family(target)
-    elif action == "mark_bundle_obsolete":
-        execution = mark_bundle_obsolete(target)
     else:
         execution = {
             "status": "failed",
             "executed": False,
-            "reason": "unknown_action",
+            "reason": "unknown_or_unsupported_action",
             "action": action,
             "target": target,
         }
@@ -260,9 +267,21 @@ def main():
     result["execution"] = execution
 
     if execution.get("status") == "ok" and action == "repair_bundle_manifest":
-        result["ingestion_trigger"] = maybe_trigger_ingestion()
+        trigger = maybe_trigger_ingestion()
+        result["ingestion_trigger"] = trigger
+        if trigger.get("status") == "ok":
+            result["ingestion_confirmation"] = confirm_ingestion(execution.get("repaired_bundle"))
+        else:
+            result["ingestion_confirmation"] = {
+                "status": "skipped",
+                "reason": "ingestion_not_triggered",
+            }
     else:
         result["ingestion_trigger"] = {
+            "status": "skipped",
+            "reason": "no_ingestion_trigger_for_result",
+        }
+        result["ingestion_confirmation"] = {
             "status": "skipped",
             "reason": "no_ingestion_trigger_for_result",
         }
