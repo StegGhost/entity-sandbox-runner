@@ -1,0 +1,44 @@
+name: Repo Map
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+jobs:
+  repo_map:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate repo map
+        run: python install/engine/repo_map_generator.py
+
+      - name: Show generated files
+        run: |
+          ls -lah brain_reports || true
+          echo "===== repo_file_tree.md ====="
+          cat brain_reports/repo_file_tree.md || true
+          echo "===== architecture_snapshot.md ====="
+          cat brain_reports/architecture_snapshot.md || true
+
+      - name: Commit repo map outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add brain_reports/repo_file_tree.md
+          git add brain_reports/architecture_snapshot.md
+          git commit -m "repo-map: refresh tree and architecture snapshot" || echo "no changes"
+          git push
