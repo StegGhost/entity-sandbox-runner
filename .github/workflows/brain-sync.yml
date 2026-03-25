@@ -98,11 +98,10 @@ jobs:
 
           git commit -m "brain: update state and execute next action"
 
-          git fetch origin main
-          git rebase origin/main || {
-            echo "Rebase failed"
+          git pull --rebase origin main || {
+            echo "Rebase failed, skipping push"
             git rebase --abort || true
-            exit 1
+            exit 0
           }
 
           git push origin HEAD:main
