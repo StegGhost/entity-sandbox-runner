@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T00:40:38.731833+00:00",
+  "ts": "2026-03-25T00:50:10.320170+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -10,9 +10,41 @@
       "status": "no_report_found"
     },
     {
+      "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
+      "bundle_name": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+      "bundle_name": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+      "matched_report": "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "install/"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
+      "bundle_name": "v21_1_gatekeeper_bundle.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+      "bundle_name": "v21_2_formal_document_engine_bundle.zip",
+      "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+      "status": "matched"
+    },
+    {
       "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle.zip",
       "bundle_name": "v21_1B_ingestion_hardening_bundle.zip",
-      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_210959.json",
+      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle.zip_20260318_212050.json",
       "status": "matched",
       "verification_reason": "manifest_missing_required_fields",
       "missing_fields": [
@@ -33,6 +65,30 @@
       "status": "no_report_found"
     },
     {
+      "bundle": "failed_bundles/token_economics_v10.zip",
+      "bundle_name": "token_economics_v10.zip",
+      "matched_report": "ingestion_reports/token_economics_v10.zip_20260322_230637.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/mechanism_config.json",
+        "install/engine/equilibrium_engine.py",
+        "install/engine/mechanism_design_engine.py",
+        "install/engine/auction_engine.py",
+        "install/engine/market_engine.py",
+        "install/engine/zk_pipeline_wired.py",
+        "install/tests/test_equilibrium.py",
+        "install/tests/test_mechanism.py",
+        "install/tests/test_zk_wired.py"
+      ]
+    },
+    {
       "bundle": "failed_bundles/token_economics_v3.zip",
       "bundle_name": "token_economics_v3.zip",
       "matched_report": "ingestion_reports/token_economics_v3.zip_20260322_230638.json",
@@ -44,6 +100,32 @@
         "allowed_paths"
       ],
       "allowed_paths": []
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v12.zip",
+      "bundle_name": "token_economics_v12.zip",
+      "matched_report": "ingestion_reports/token_economics_v12.zip_20260322_230637.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/self_evolving.json",
+        "config/zk_recursive.json",
+        "config/identity_graph.json",
+        "install/engine/self_evolving_mechanism_engine.py",
+        "install/engine/mechanism_mutation_engine.py",
+        "install/engine/recursive_zk_engine.py",
+        "install/engine/identity_graph_engine.py",
+        "install/engine/reputation_flow_engine.py",
+        "install/tests/test_self_evolving.py",
+        "install/tests/test_recursive_zk.py",
+        "install/tests/test_identity_graph.py"
+      ]
     },
     {
       "bundle": "failed_bundles/token_economics_v7.zip",
@@ -111,12 +193,6 @@
       ]
     },
     {
-      "bundle": "failed_bundles/v21_1B_ingestion_hardening_bundle_fixed.zip",
-      "bundle_name": "v21_1B_ingestion_hardening_bundle_fixed.zip",
-      "matched_report": "ingestion_reports/v21_1B_ingestion_hardening_bundle_fixed.zip_20260318_212629.json",
-      "status": "matched"
-    },
-    {
       "bundle": "failed_bundles/token_economics_v9.zip",
       "bundle_name": "token_economics_v9.zip",
       "matched_report": "ingestion_reports/token_economics_v9.zip_20260322_230638.json",
@@ -172,20 +248,6 @@
         "install/tests/test_zk_pipeline.py",
         "install/tests/test_identity_staking.py",
         "install/tests/test_rl_agent.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-      "bundle_name": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
-      "matched_report": "ingestion_reports/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip_20260318_213657.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "install/"
       ]
     },
     {
@@ -290,30 +352,6 @@
         "install/engine/ui_control_adapter.py",
         "install/tests/test_ui_control.py"
       ]
-    },
-    {
-      "bundle": "failed_bundles/tokenized_governance_bundle_v1.zip",
-      "bundle_name": "tokenized_governance_bundle_v1.zip",
-      "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
-      "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
-      "bundle_name": "trajectory_aware_retry_v10_bundle.zip",
-      "matched_report": "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
-      "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
-      "bundle_name": "v21_1_gatekeeper_bundle.zip",
-      "matched_report": null,
-      "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/tvc_export_bundle.zip",
-      "bundle_name": "tvc_export_bundle.zip",
-      "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
-      "status": "matched"
     }
   ]
 }
