@@ -4,18 +4,22 @@ import re
 from datetime import datetime
 
 ROOT = os.getcwd()
-
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
 
 RECEIPT_RECONCILED_STATE = os.path.join(BRAIN_REPORTS, "receipt_reconciled_state.json")
 BUNDLE_INVENTORY = os.path.join(BRAIN_REPORTS, "bundle_inventory.json")
 FAILED_CORRELATION = os.path.join(BRAIN_REPORTS, "failed_bundle_report_correlation.json")
+EXECUTION_RESULT = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
 
 OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 
 
 def utc_now():
     return datetime.utcnow().isoformat()
+
+
+def ensure_dir(path):
+    os.makedirs(path, exist_ok=True)
 
 
 def load_json(path, default=None):
@@ -28,6 +32,13 @@ def load_json(path, default=None):
             return json.load(f)
     except Exception:
         return default
+
+
+def write_json(path, payload):
+    ensure_dir(os.path.dirname(path))
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+        f.write("\n")
 
 
 def family_key(name: str) -> str:
@@ -55,7 +66,6 @@ def extract_version(name: str):
 
 def build_inventory_maps(inventory):
     bundle_to_state = {}
-    bundle_to_location = {}
     family_members = {}
 
     inv = inventory.get("inventory", {})
@@ -63,7 +73,6 @@ def build_inventory_maps(inventory):
     for state_name, files in inv.items():
         for fname in files:
             bundle_to_state[fname] = state_name
-            bundle_to_location[fname] = state_name
             fk = family_key(fname)
             family_members.setdefault(fk, []).append(fname)
 
@@ -71,33 +80,50 @@ def build_inventory_maps(inventory):
         family_members[fk] = sorted(
             members,
             key=lambda x: (
-                extract_version(x) if extract_version(x) is not None else -1,
+                extract_version(x) if extract_version(x) is not None else 10**9,
                 x
             )
         )
 
-    return bundle_to_state, bundle_to_location, family_members
+    return bundle_to_state, family_members
 
 
-def classify_candidates(correlations, bundle_to_state, family_members):
+def build_correlation_map(correlations):
+    corr_by_bundle = {}
+    for c in correlations:
+        bundle_name = c.get("bundle_name")
+        if bundle_name:
+            corr_by_bundle[bundle_name] = c
+    return corr_by_bundle
+
+
+def installed_family_set(bundle_to_state, family_members):
+    families = set()
+    for fk, members in family_members.items():
+        for member in members:
+            if bundle_to_state.get(member) == "installed":
+                families.add(fk)
+                break
+    return families
+
+
+def build_classification(bundle_to_state, family_members, correlations):
     manifest_repairable = []
     missing_report = []
     unresolved_failed = []
     obsolete_candidates = []
 
-    installed_families = set()
+    installed_families = installed_family_set(bundle_to_state, family_members)
+    corr_by_bundle = build_correlation_map(correlations)
 
-    for fk, members in family_members.items():
-        for m in members:
-            if bundle_to_state.get(m) == "installed":
-                installed_families.add(fk)
-                break
-
-    corr_by_bundle = {}
-    for c in correlations:
-        corr_by_bundle[c.get("bundle_name")] = c
-
-    failed_names = [b for b, state in bundle_to_state.items() if state == "failed"]
+    failed_names = sorted(
+        [bundle for bundle, state in bundle_to_state.items() if state == "failed"],
+        key=lambda x: (
+            family_key(x),
+            extract_version(x) if extract_version(x) is not None else 10**9,
+            x
+        )
+    )
 
     for bundle_name in failed_names:
         corr = corr_by_bundle.get(bundle_name)
@@ -148,30 +174,31 @@ def classify_candidates(correlations, bundle_to_state, family_members):
     manifest_repairable = sorted(
         manifest_repairable,
         key=lambda x: (
+            x["family"],
             extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
             x["bundle"]
         )
     )
-
     missing_report = sorted(
         missing_report,
         key=lambda x: (
+            x["family"],
             extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
             x["bundle"]
         )
     )
-
     unresolved_failed = sorted(
         unresolved_failed,
         key=lambda x: (
+            x["family"],
             extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
             x["bundle"]
         )
     )
-
     obsolete_candidates = sorted(
         obsolete_candidates,
         key=lambda x: (
+            x["family"],
             extract_version(x["bundle"]) if extract_version(x["bundle"]) is not None else 10**9,
             x["bundle"]
         )
@@ -180,12 +207,88 @@ def classify_candidates(correlations, bundle_to_state, family_members):
     return manifest_repairable, missing_report, unresolved_failed, obsolete_candidates
 
 
-def choose_next_action(manifest_repairable, missing_report, unresolved_failed, obsolete_candidates):
+def get_active_family(last_execution_doc):
+    execution = last_execution_doc.get("execution", {})
+    if execution.get("status") != "ok":
+        return None
+
+    action = execution.get("action")
+    if action != "repair_bundle_manifest":
+        return None
+
+    repaired_target = execution.get("target")
+    if not repaired_target:
+        return None
+
+    return family_key(repaired_target)
+
+
+def first_matching_family(items, family):
+    for item in items:
+        if item.get("family") == family:
+            return item
+    return None
+
+
+def choose_next_action(
+    manifest_repairable,
+    missing_report,
+    unresolved_failed,
+    obsolete_candidates,
+    active_family,
+):
+    if active_family:
+        target = first_matching_family(manifest_repairable, active_family)
+        if target:
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "selection_mode": "active_family_continuation",
+                "active_family": active_family,
+                "action": "repair_bundle_manifest",
+                "target": target["bundle"],
+                "family": target["family"],
+                "priority": "high",
+                "reason": target["reason"],
+                "missing_fields": target.get("missing_fields", []),
+                "allowed_paths": target.get("allowed_paths", []),
+            }
+
+        target = first_matching_family(missing_report, active_family)
+        if target:
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "selection_mode": "active_family_continuation",
+                "active_family": active_family,
+                "action": "reconstruct_bundle_report_match",
+                "target": target["bundle"],
+                "family": target["family"],
+                "priority": "high",
+                "reason": target["reason"],
+            }
+
+        target = first_matching_family(unresolved_failed, active_family)
+        if target:
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "selection_mode": "active_family_continuation",
+                "active_family": active_family,
+                "action": "inspect_failed_bundle_family",
+                "target": target["bundle"],
+                "family": target["family"],
+                "priority": "medium",
+                "reason": target["reason"],
+            }
+
     if manifest_repairable:
         target = manifest_repairable[0]
         return {
             "ts": utc_now(),
             "status": "ok",
+            "selection_mode": "global_scan",
+            "active_family": active_family,
             "action": "repair_bundle_manifest",
             "target": target["bundle"],
             "family": target["family"],
@@ -200,6 +303,8 @@ def choose_next_action(manifest_repairable, missing_report, unresolved_failed, o
         return {
             "ts": utc_now(),
             "status": "ok",
+            "selection_mode": "global_scan",
+            "active_family": active_family,
             "action": "reconstruct_bundle_report_match",
             "target": target["bundle"],
             "family": target["family"],
@@ -212,6 +317,8 @@ def choose_next_action(manifest_repairable, missing_report, unresolved_failed, o
         return {
             "ts": utc_now(),
             "status": "ok",
+            "selection_mode": "global_scan",
+            "active_family": active_family,
             "action": "inspect_failed_bundle_family",
             "target": target["bundle"],
             "family": target["family"],
@@ -224,6 +331,8 @@ def choose_next_action(manifest_repairable, missing_report, unresolved_failed, o
         return {
             "ts": utc_now(),
             "status": "ok",
+            "selection_mode": "global_scan",
+            "active_family": active_family,
             "action": "mark_bundle_obsolete",
             "target": target["bundle"],
             "family": target["family"],
@@ -234,6 +343,8 @@ def choose_next_action(manifest_repairable, missing_report, unresolved_failed, o
     return {
         "ts": utc_now(),
         "status": "ok",
+        "selection_mode": "idle",
+        "active_family": active_family,
         "action": "idle",
         "target": None,
         "family": None,
@@ -243,24 +354,30 @@ def choose_next_action(manifest_repairable, missing_report, unresolved_failed, o
 
 
 def main():
+    ensure_dir(BRAIN_REPORTS)
+
     _ = load_json(RECEIPT_RECONCILED_STATE, {})
     inventory = load_json(BUNDLE_INVENTORY, {"inventory": {}})
     correlation = load_json(FAILED_CORRELATION, {"correlations": []})
+    last_execution = load_json(EXECUTION_RESULT, {})
 
-    bundle_to_state, bundle_to_location, family_members = build_inventory_maps(inventory)
+    bundle_to_state, family_members = build_inventory_maps(inventory)
     correlations = correlation.get("correlations", [])
 
-    manifest_repairable, missing_report, unresolved_failed, obsolete_candidates = classify_candidates(
-        correlations,
+    manifest_repairable, missing_report, unresolved_failed, obsolete_candidates = build_classification(
         bundle_to_state,
         family_members,
+        correlations,
     )
+
+    active_family = get_active_family(last_execution)
 
     next_action = choose_next_action(
         manifest_repairable,
         missing_report,
         unresolved_failed,
         obsolete_candidates,
+        active_family,
     )
 
     output = {
@@ -271,19 +388,18 @@ def main():
             "unresolved_failed_count": len(unresolved_failed),
             "obsolete_candidate_count": len(obsolete_candidates),
             "total_failed_seen": len([b for b, state in bundle_to_state.items() if state == "failed"]),
+            "active_family": active_family,
         },
         "next_action": next_action,
         "candidates": {
-            "manifest_repairable": manifest_repairable[:20],
-            "missing_report": missing_report[:20],
-            "unresolved_failed": unresolved_failed[:20],
-            "obsolete_candidates": obsolete_candidates[:20],
+            "manifest_repairable": manifest_repairable[:50],
+            "missing_report": missing_report[:50],
+            "unresolved_failed": unresolved_failed[:50],
+            "obsolete_candidates": obsolete_candidates[:50],
         }
     }
 
-    os.makedirs(BRAIN_REPORTS, exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2)
+    write_json(OUTPUT_PATH, output)
 
     print(json.dumps({
         "status": "ok",
