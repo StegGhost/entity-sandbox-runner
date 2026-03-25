@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-25T06:14:36.957814+00:00",
+  "ts": "2026-03-25T06:20:46.332421+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
@@ -37,19 +37,6 @@
       "bundle_name": "v21_to_v30_bundle.zip",
       "matched_report": null,
       "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v3.zip",
-      "bundle_name": "token_economics_v3.zip",
-      "matched_report": "ingestion_reports/token_economics_v3.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode",
-        "allowed_paths"
-      ],
-      "allowed_paths": []
     },
     {
       "bundle": "failed_bundles/token_economics_v7.zip",
@@ -93,27 +80,6 @@
         "install/sim/attack_scenarios.py",
         "install/tests/test_adaptive.py",
         "install/tests/test_attack_sim.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v4.zip",
-      "bundle_name": "token_economics_v4.zip",
-      "matched_report": "ingestion_reports/token_economics_v4.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/consensus_engine.py",
-        "install/engine/fraud_proof_engine.py",
-        "install/engine/finality_engine.py",
-        "install/engine/state_commit_engine.py",
-        "install/tests/test_consensus.py",
-        "install/tests/test_fraud_proofs.py"
       ]
     },
     {
@@ -195,58 +161,6 @@
       ]
     },
     {
-      "bundle": "failed_bundles/token_economics_v15.zip",
-      "bundle_name": "token_economics_v15.zip",
-      "matched_report": "ingestion_reports/token_economics_v15.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "config/meta_recursive.json",
-        "config/zk_production.json",
-        "config/topology_econ.json",
-        "install/engine/meta_recursive_goal_engine.py",
-        "install/engine/goal_reflection_engine.py",
-        "install/engine/zk_production_aggregator.py",
-        "install/engine/topology_economic_engine.py",
-        "install/engine/edge_weighting_engine.py",
-        "install/tests/test_meta_recursive.py",
-        "install/tests/test_zk_prod.py",
-        "install/tests/test_topology_econ.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v14.zip",
-      "bundle_name": "token_economics_v14.zip",
-      "matched_report": "ingestion_reports/token_economics_v14.zip_20260322_230637.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "config/recursive_goals.json",
-        "config/zk_aggregation_real.json",
-        "config/dynamic_topology.json",
-        "install/engine/recursive_goal_engine.py",
-        "install/engine/goal_tree_engine.py",
-        "install/engine/zk_aggregation_real_engine.py",
-        "install/engine/topology_optimizer.py",
-        "install/engine/network_rewire_engine.py",
-        "install/tests/test_recursive_goals.py",
-        "install/tests/test_zk_real.py",
-        "install/tests/test_topology_dynamic.py"
-      ]
-    },
-    {
       "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
       "bundle_name": "trajectory_engine_v5_bundle.zip",
       "matched_report": "ingestion_reports/trajectory_engine_v5_bundle.zip_20260322_205757.json",
@@ -295,6 +209,44 @@
       "bundle_name": "v21_1_gatekeeper_bundle.zip",
       "matched_report": null,
       "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/tvc_export_bundle.zip",
+      "bundle_name": "tvc_export_bundle.zip",
+      "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260324_145802.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+      "bundle_name": "v21_2_formal_document_engine_bundle.zip",
+      "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/ui_dashboard_control_v17.zip",
+      "bundle_name": "ui_dashboard_control_v17.zip",
+      "matched_report": "ingestion_reports/ui_dashboard_control_v17.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "ui/index.html",
+        "ui/styles.css",
+        "ui/app.js",
+        "install/engine/ui_api_adapter.py",
+        "install/tests/test_ui_adapter.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/stegverse-dual-repo-bundle.zip",
+      "bundle_name": "stegverse-dual-repo-bundle.zip",
+      "matched_report": "ingestion_reports/stegverse-dual-repo-bundle.zip_20260323_045741.json",
+      "status": "matched"
     }
   ]
 }
