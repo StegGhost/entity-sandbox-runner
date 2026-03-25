@@ -11,6 +11,7 @@ jobs:
 
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Checkout
@@ -27,26 +28,60 @@ jobs:
           test -f install/engine/bundle_inventory_engine.py
           test -f install/engine/gcat_bcat_evaluator.py
           test -f install/engine/next_action_engine.py
+          test -f install/engine/execute_next_action.py
 
       - name: Run receipt reconciler
         run: python install/engine/receipt_reconciler.py
 
+      - name: Verify receipt reconciled state exists
+        run: |
+          test -f brain_reports/receipt_reconciled_state.json
+
       - name: Run bundle inventory
         run: python install/engine/bundle_inventory_engine.py
+
+      - name: Verify bundle inventory exists
+        run: |
+          test -f brain_reports/bundle_inventory.json
 
       - name: Run GCAT/BCAT evaluator
         run: python install/engine/gcat_bcat_evaluator.py
 
-      - name: Run next action engine
+      - name: Verify admissibility state exists
+        run: |
+          test -f brain_reports/admissibility_state.json
+
+      - name: Determine next action
         run: python install/engine/next_action_engine.py
+
+      - name: Verify next action exists
+        run: |
+          test -f brain_reports/next_action.json
 
       - name: Show next action
         run: cat brain_reports/next_action.json
 
-      - name: Commit outputs
+      - name: Execute next action
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INGESTION_WORKFLOW_PATH: .github/workflows/ingestion.yml
+        run: python install/engine/execute_next_action.py
+
+      - name: Verify execution result exists
+        run: |
+          test -f brain_reports/execute_next_action_result.json
+
+      - name: Show execution result
+        run: cat brain_reports/execute_next_action_result.json
+
+      - name: Commit outputs and mutations
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add brain_reports/
-          git commit -m "brain: update state" || echo "no changes"
+          git add incoming_bundles/ || true
+          git add failed_bundles/ || true
+          git add installed_bundles/ || true
+          git add payload/feedback/ || true
+          git commit -m "brain: update state and execute next action" || echo "no changes"
           git push
