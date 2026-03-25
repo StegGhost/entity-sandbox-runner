@@ -2872,5 +2872,77 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774473727.95768
+  },
+  {
+    "bundle": "token_economics_v6_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774475458.780649
+  },
+  {
+    "bundle": "token_economics_v7_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774475458.7811596
+  },
+  {
+    "bundle": "token_economics_v8_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774475458.7817166
+  },
+  {
+    "bundle": "token_economics_v9_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774475458.7822387
+  },
+  {
+    "bundle": "trajectory_aware_retry_v10_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774475458.7825086
+  },
+  {
+    "bundle": "ui_advanced_v18.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774475458.7829883
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774475458.783448
+  },
+  {
+    "bundle": "v13_1_to_v14_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774475458.783753
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774475458.7849197
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774475458.7853496
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774475458.7864037
+  },
+  {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "ok": false,
+    "error": "path_not_allowed:.github/workflows/document_engine.yml",
+    "ts": 1774475458.7868853
   }
 ]
