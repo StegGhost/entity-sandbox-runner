@@ -41,10 +41,12 @@
 - governed_agent_passport_v2_bundle.zip
 - hard_rollback_bundle_v1.zip
 - history_layer_bundle_v1.zip
+- ingestion_engine_v3_deterministic.zip
 - llm_adapter_readme_bundle_v1.zip
 - master_workflow_v2_bundle.zip
 - multi_agent_verification_v7_bundle.zip
 - multi_platform_post_bundle_v1.zip
+- next_action_executor_v2.zip
 - passport_receipt_chain_v3_bundle.zip
 - predictive_layer_v19.zip
 - publishable_demo_export_bundle_v1.zip
@@ -170,6 +172,7 @@
 - coherent_experience_model_v1_fixed.zip
 - consensus_layer_bundle_v1.zip
 - constraint_min_bundle_v3.zip
+- contract_snapshot_bundle_v1.zip
 - critical_ratio_campaign_bundle_v2.zip
 - critical_ratio_runner_files_v1.zip
 - distributed_worker_bundle_v1.zip
@@ -185,6 +188,8 @@
 - feedback_injection_bundle_v1.zip
 - goal_directed_execution_bundle_v1A.zip
 - governance_advanced_bundle_v1.zip
+- history_layer_bundle_v1.zip
+- internal_brain_ingest_bundle_v1.zip
 - iphone_no_cli_promoter_workflow_bundle.zip
 - knowledge_delta_bundle_v1.zip
 - llm_adapter_readme_bundle_v2.zip
@@ -206,6 +211,8 @@
 - safe_ingestion_upgrade_bundle.zip
 - sandbox_901_930_v1.zip
 - sandbox_autonomous_research_upgrades_583_602_v1.zip
+- sandbox_bootstrap_permission_unlock_bundle_v1.zip
+- sandbox_convergence_full_memory_bundle_v1.zip
 - sandbox_distributed_research_upgrades_643_682_v1.zip
 - sandbox_docs_manifest_bundle_v1.zip
 - sandbox_future_upgrades_783_900_v1.zip

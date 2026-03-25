@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-03-25T02:51:27.862801",
+  "generated_at": "2026-03-25T04:18:24.450214",
   "input_document": {
-    "generated_at": "2026-03-25T02:51:27.743017",
+    "generated_at": "2026-03-25T04:18:24.333402",
     "summary": {
       "manifest_repairable_count": 2,
       "missing_report_count": 1,
-      "unresolved_failed_count": 99,
+      "unresolved_failed_count": 97,
       "obsolete_candidate_count": 31,
-      "total_failed_seen": 133,
+      "total_failed_seen": 131,
       "active_family": "ui_dashboard_control"
     },
     "next_action": {
-      "ts": "2026-03-25T02:51:27.743011",
+      "ts": "2026-03-25T04:18:24.333396",
       "status": "ok",
       "selection_mode": "active_family_continuation",
       "active_family": "ui_dashboard_control",
@@ -104,11 +104,6 @@
         {
           "bundle": "content_post_generation_bundle_v1.zip",
           "family": "content_post_generation_bundle",
-          "reason": "no correlation entry"
-        },
-        {
-          "bundle": "contract_snapshot_bundle_v1.zip",
-          "family": "contract_snapshot_bundle",
           "reason": "no correlation entry"
         },
         {
@@ -217,8 +212,8 @@
           "reason": "no correlation entry"
         },
         {
-          "bundle": "history_layer_bundle_v1.zip",
-          "family": "history_layer_bundle",
+          "bundle": "ingestion_engine_v3_deterministic.zip",
+          "family": "ingestion_engine_v3_deterministic",
           "reason": "no correlation entry"
         },
         {
@@ -234,6 +229,11 @@
         {
           "bundle": "multi_platform_post_bundle_v1.zip",
           "family": "multi_platform_post_bundle",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "next_action_executor_v2.zip",
+          "family": "next_action_executor",
           "reason": "no correlation entry"
         },
         {
@@ -307,11 +307,6 @@
           "reason": "no correlation entry"
         },
         {
-          "bundle": "sandbox_bootstrap_permission_unlock_bundle_v1.zip",
-          "family": "sandbox_bootstrap_permission_unlock_bundle",
-          "reason": "no correlation entry"
-        },
-        {
           "bundle": "sandbox_closed_loop_activation_v1.zip",
           "family": "sandbox_closed_loop_activation",
           "reason": "no correlation entry"
@@ -327,8 +322,13 @@
           "reason": "no correlation entry"
         },
         {
-          "bundle": "sandbox_convergence_full_memory_bundle_v1.zip",
-          "family": "sandbox_convergence_full_memory_bundle",
+          "bundle": "sandbox_eval_ready_bundle.zip",
+          "family": "sandbox_eval_ready",
+          "reason": "no correlation entry"
+        },
+        {
+          "bundle": "sandbox_eval_wiring_patch_v6_1.zip",
+          "family": "sandbox_eval_wiring_patch_v6_1",
           "reason": "no correlation entry"
         }
       ],
@@ -492,7 +492,7 @@
     }
   },
   "resolved_next_action": {
-    "ts": "2026-03-25T02:51:27.743011",
+    "ts": "2026-03-25T04:18:24.333396",
     "status": "ok",
     "selection_mode": "active_family_continuation",
     "active_family": "ui_dashboard_control",
@@ -545,7 +545,12 @@
   "ingestion_trigger": {
     "status": "ok",
     "workflow": ".github/workflows/ingestion.yml",
-    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23522565640\n",
+    "stdout": "https://github.com/StegGhost/entity-sandbox-runner/actions/runs/23524690684\n",
     "stderr": ""
+  },
+  "ingestion_confirmation": {
+    "status": "pending_ingestion_confirmation",
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "reason": "no matching ingestion log entry observed within wait window"
   }
 }
