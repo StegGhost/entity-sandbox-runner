@@ -163,9 +163,11 @@
 - tokenized_governance_bundle_v1.zip
 - trajectory_aware_retry_v10_bundle.zip
 - tvc_export_bundle.zip
-- ui_advanced_v18_manifest_fixed.zip
+- ui_dashboard_control_v17_manifest_fixed.zip
+- v21_1B_ingestion_hardening_bundle.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
 - v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip
+- v21_to_v30_bundle.zip
 
 ## INSTALLED
 
@@ -288,6 +290,7 @@
 - token_economics_v3_manifest_fixed.zip
 - tokenized_governance_bundle_v1.zip
 - trajectory_engine_v5_bundle.zip
+- ui_advanced_v18_manifest_fixed.zip
 - v21_1A_ingestion_bootstrap_bundle.zip
 - v21_1B_ingestion_hardening_bundle.zip
 - v21_1B_ingestion_hardening_bundle_manifest_fixed.zip
