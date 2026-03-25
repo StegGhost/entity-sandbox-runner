@@ -1168,5 +1168,65 @@
     "ok": false,
     "error": "path_not_allowed:README.md",
     "ts": 1774415976.579255
+  },
+  {
+    "bundle": "token_economics_v10_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774416202.1211717
+  },
+  {
+    "bundle": "ui_advanced_v18_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774416202.1216605
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774416202.1220982
+  },
+  {
+    "bundle": "v13_1_to_v14_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774416202.1223938
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774416202.1234858
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774416202.123914
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774416202.1249247
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774416202.1259196
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774416202.126901
+  },
+  {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "ok": false,
+    "error": "path_not_allowed:.github/workflows/document_engine.yml",
+    "ts": 1774416202.127346
   }
 ]
