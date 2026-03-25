@@ -1036,5 +1036,11 @@
     "ok": true,
     "error": null,
     "ts": 1774405738.8911386
+  },
+  {
+    "bundle": "ui_dashboard_control_v17_manifest_fixed.zip",
+    "ok": false,
+    "error": "path not allowed: README.md",
+    "ts": 1774405904.8701017
   }
 ]
