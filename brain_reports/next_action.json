@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-03-25T10:08:27.117073",
+  "generated_at": "2026-03-25T10:30:16.472445",
   "summary": {
     "manifest_repairable_count": 2,
     "missing_report_count": 3,
-    "unresolved_failed_count": 96,
+    "unresolved_failed_count": 95,
     "obsolete_candidate_count": 34,
-    "total_failed_seen": 135,
+    "total_failed_seen": 134,
     "active_family": null,
     "last_executed_bundle": null,
     "internal_brain_status": "ok"
   },
   "next_action": {
-    "ts": "2026-03-25T10:08:27.113348",
+    "ts": "2026-03-25T10:30:16.466503",
     "status": "ok",
     "selection_mode": "internal_brain_closure",
-    "active_family": "token_economics",
+    "active_family": "v21_1_gatekeeper",
     "action": "inspect_failed_bundle_family",
-    "target": "failed_bundles/token_economics_v8.zip",
-    "family": "token_economics",
+    "target": "failed_bundles/v21_1_gatekeeper_bundle.zip",
+    "family": "v21_1_gatekeeper",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "source": "internal_brain"
@@ -511,13 +511,13 @@
     },
     "report_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
     "mapped_action": {
-      "ts": "2026-03-25T10:08:27.113348",
+      "ts": "2026-03-25T10:30:16.466503",
       "status": "ok",
       "selection_mode": "internal_brain_closure",
-      "active_family": "token_economics",
+      "active_family": "v21_1_gatekeeper",
       "action": "inspect_failed_bundle_family",
-      "target": "failed_bundles/token_economics_v8.zip",
-      "family": "token_economics",
+      "target": "failed_bundles/v21_1_gatekeeper_bundle.zip",
+      "family": "v21_1_gatekeeper",
       "priority": 1,
       "reason": "20 recent failed bundles detected",
       "source": "internal_brain"
