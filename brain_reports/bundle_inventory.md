@@ -127,9 +127,13 @@
 - token_economics_v4.zip
 - token_economics_v5.zip
 - token_economics_v6.zip
+- token_economics_v6_manifest_fixed.zip
 - token_economics_v7.zip
+- token_economics_v7_manifest_fixed.zip
 - token_economics_v8.zip
+- token_economics_v8_manifest_fixed.zip
 - token_economics_v9.zip
+- token_economics_v9_manifest_fixed.zip
 - tokenized_governance_bundle_v1.zip
 - trajectory_aware_retry_v10_bundle.zip
 - trajectory_engine_v5_bundle.zip
