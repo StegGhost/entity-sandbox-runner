@@ -2350,5 +2350,89 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774457228.2538633
+  },
+  {
+    "bundle": "relationship_conditioned_execution_v1_3.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/architecture_map.md",
+    "ts": 1774460746.4264908
+  },
+  {
+    "bundle": "stability_gate_v7.zip",
+    "ok": false,
+    "error": "path_not_allowed:docs/v7.md",
+    "ts": 1774460746.4269435
+  },
+  {
+    "bundle": "token_economics_v6_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774460746.4273763
+  },
+  {
+    "bundle": "token_economics_v7_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774460746.427794
+  },
+  {
+    "bundle": "token_economics_v8_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774460746.4282465
+  },
+  {
+    "bundle": "token_economics_v9_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774460746.42868
+  },
+  {
+    "bundle": "tvc_export_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774460746.4289196
+  },
+  {
+    "bundle": "ui_advanced_v18.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774460746.4294703
+  },
+  {
+    "bundle": "v13_1_to_v14_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774460746.4297464
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774460746.4308152
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_fixed.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774460746.4311967
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774460746.4321616
+  },
+  {
+    "bundle": "v21_1_gatekeeper_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774460746.4325275
+  },
+  {
+    "bundle": "v21_to_v30_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774460746.4327466
   }
 ]
