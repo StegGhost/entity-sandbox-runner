@@ -16,9 +16,15 @@ jobs:
 
       - run: pip install pytest
 
-      # 🔥 ONLY RUN ONE TEST FILE
-      - name: Run minimal test
+      # 🔥 RUN A SMALL CONTROLLED SET
+      - name: Run controlled test set
         run: |
-          echo "===== RUNNING SINGLE TEST ====="
-          pytest tests/test_receipt_chain.py -q
+          echo "===== RUNNING CONTROLLED TEST SET ====="
+
+          pytest \
+            tests/test_receipt_chain.py \
+            tests/test_receipts.py \
+            tests/test_priority_router.py \
+            -q
+
           echo "===== DONE ====="
