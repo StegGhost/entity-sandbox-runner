@@ -2,50 +2,23 @@ name: Autonomous Loop
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
 
 jobs:
   run-loop:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - run: pip install pytest
+
+      # 🔥 ONLY RUN ONE TEST FILE
+      - name: Run minimal test
         run: |
-          pip install -r requirements.txt || true
-          pip install pytest || true
-
-      # 🔥 THIS STEP PROVES EVERYTHING
-      - name: DEBUG — Force test execution visibility
-        run: |
-          echo "===== DEBUG START ====="
-          pwd
-          ls -R | head -100
-
-          echo "----- PYTEST VERSION -----"
-          pytest --version || echo "pytest not found"
-
-          echo "----- RUNNING PYTEST -----"
-          pytest -q || true
-
-          echo "===== DEBUG END ====="
-
-      # 🔥 YOUR LOOP (unchanged)
-      - name: Run Autonomous Loop
-        run: python install/autonomous_loop_orchestrator.py
-
-      - name: Commit outputs
-        run: |
-          git config user.name "actions-user"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "autonomous loop run" || echo "nothing to commit"
-          git push
+          echo "===== RUNNING SINGLE TEST ====="
+          pytest tests/test_receipt_chain.py -q
+          echo "===== DONE ====="
