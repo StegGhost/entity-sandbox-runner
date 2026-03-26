@@ -16,9 +16,9 @@ jobs:
 
       - run: pip install pytest
 
-      - name: Run controlled test set
+      - name: Run expanded controlled test set
         run: |
-          echo "===== RUNNING CONTROLLED TEST SET ====="
+          echo "===== RUNNING EXPANDED CONTROLLED TEST SET ====="
 
           pytest \
             tests/test_receipt_chain.py \
@@ -27,6 +27,10 @@ jobs:
             tests/test_step_completion.py \
             tests/test_plan_memory.py \
             tests/test_multi_step_planner.py \
+            tests/test_self_improve.py \
+            tests/test_execution_pipeline_v4.py \
+            tests/test_failure_feedback.py \
+            tests/test_generator_v2.py \
             -q
 
           echo "===== DONE ====="
