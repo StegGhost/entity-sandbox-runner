@@ -1,14 +1,14 @@
 import json
 import os
+import shutil
 import subprocess
 import zipfile
 import time
 
 from engine.repo_snapshot import generate_snapshot
-from engine.llm_self_improve import generate_proposal
+from engine.llm_self_improve import generate_proposals
 
-INCOMING = "incoming_bundles"
-SANDBOX = "sandbox_workspace"
+SANDBOX_BASE = "sandbox_runs"
 RESULT_PATH = "brain_reports/apply_result.json"
 
 
@@ -19,43 +19,39 @@ def run_tests():
         capture_output=True,
         text=True
     )
-    return result.stdout + "\n" + result.stderr
+    return result.returncode, result.stdout + "\n" + result.stderr
 
 
-def build_bundle(proposal):
-    ts = int(time.time())
-    bundle_name = f"auto_repair_{proposal['proposal_name']}_{ts}.zip"
-    bundle_path = os.path.join(INCOMING, bundle_name)
-
-    os.makedirs(INCOMING, exist_ok=True)
-
-    with zipfile.ZipFile(bundle_path, "w") as z:
-        for f in proposal.get("files_to_create", []):
-            tmp_path = f"/tmp/{os.path.basename(f['path'])}"
-            with open(tmp_path, "w") as tmp:
-                tmp.write(f["content"])
-            z.write(tmp_path, f["path"])
-
-    return bundle_path
+def apply_patch(files, sandbox_dir):
+    for f in files:
+        path = os.path.join(sandbox_dir, f["path"])
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as out:
+            out.write(f["content"])
 
 
-def apply_bundle(bundle_path):
-    try:
-        with zipfile.ZipFile(bundle_path, "r") as z:
-            z.extractall(SANDBOX)
+def copy_repo_to_sandbox(sandbox_dir):
+    if os.path.exists(sandbox_dir):
+        shutil.rmtree(sandbox_dir)
 
-        for root, _, files in os.walk(SANDBOX):
-            for f in files:
-                src = os.path.join(root, f)
-                dst = os.path.relpath(src, SANDBOX)
-                os.makedirs(os.path.dirname(dst), exist_ok=True)
-                with open(src, "rb") as s, open(dst, "wb") as d:
-                    d.write(s.read())
+    shutil.copytree(".", sandbox_dir, ignore=shutil.ignore_patterns(
+        "__pycache__", ".git", SANDBOX_BASE, "brain_reports"
+    ))
 
-        return {"status": "applied"}
 
-    except Exception as e:
-        return {"status": "failed", "error": str(e)}
+def score_result(returncode, output):
+    score = 0
+
+    if returncode == 0:
+        score += 100
+
+    failures = output.count("FAILED")
+    errors = output.count("ERROR")
+
+    score -= failures * 10
+    score -= errors * 5
+
+    return score
 
 
 def main(failure_file=None):
@@ -67,32 +63,68 @@ def main(failure_file=None):
 
     snapshot = generate_snapshot(".")
 
-    result = generate_proposal(snapshot, failure_text)
+    result = generate_proposals(snapshot, failure_text)
 
-    if result["status"] != "repair_generated":
+    if result["status"] != "candidates_generated":
         print(json.dumps(result, indent=2))
         return
 
-    proposal = result["proposal"]
+    proposals = result["proposals"]
 
-    bundle_path = build_bundle(proposal)
+    best_score = -9999
+    best = None
 
-    apply_result = apply_bundle(bundle_path)
+    os.makedirs(SANDBOX_BASE, exist_ok=True)
 
-    post_test_output = run_tests()
+    for i, proposal in enumerate(proposals):
 
-    final = {
-        "proposal": proposal,
-        "bundle": bundle_path,
-        "apply_result": apply_result,
-        "post_test_output": post_test_output[:2000]
+        sandbox_dir = os.path.join(SANDBOX_BASE, f"run_{i}")
+
+        copy_repo_to_sandbox(sandbox_dir)
+
+        apply_patch(proposal.get("files_to_create", []), sandbox_dir)
+
+        cwd = os.getcwd()
+        os.chdir(sandbox_dir)
+
+        rc, output = run_tests()
+        score = score_result(rc, output)
+
+        os.chdir(cwd)
+
+        if score > best_score:
+            best_score = score
+            best = {
+                "proposal": proposal,
+                "score": score,
+                "output": output[:1000]
+            }
+
+    # =========================
+    # APPLY BEST (SAFE)
+    # =========================
+
+    applied = False
+
+    if best and best["score"] > 0:
+        for f in best["proposal"].get("files_to_create", []):
+            path = f["path"]
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, "w") as out:
+                out.write(f["content"])
+        applied = True
+
+    result = {
+        "best": best,
+        "applied": applied,
+        "ts": time.time()
     }
 
     os.makedirs("brain_reports", exist_ok=True)
     with open(RESULT_PATH, "w") as f:
-        json.dump(final, f, indent=2)
+        json.dump(result, f, indent=2)
 
-    print(json.dumps(final, indent=2))
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
