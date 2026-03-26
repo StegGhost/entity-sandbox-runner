@@ -1,4 +1,4 @@
-name: Self Improving Loop
+name: Autonomous Sandbox Loop
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  self-improve:
+  loop:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,13 +29,13 @@ jobs:
 
       - run: rm -rf receipts receipts_node_a receipts_node_b || true
 
-      - name: Run tests (capture)
+      - name: Run baseline tests
         run: python -m pytest -q > test_output.txt 2>&1 || true
 
-      - name: Run multi-repair loop
+      - name: Run autonomous repair loop
         run: python engine/self_improve_runner.py test_output.txt
 
-      - name: Show result
+      - name: Output result
         run: cat brain_reports/apply_result.json || true
 
       - name: Commit if improved
@@ -43,5 +43,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add .
-          git diff --cached --quiet || git commit -m "self-improve: selected best repair"
+          git diff --cached --quiet || git commit -m "auto: autonomous repair selection"
           git push
