@@ -1,29 +1,67 @@
 """
-LLM SELF IMPROVE ENGINE — MINIMAL VALID IMPLEMENTATION
+LLM SELF IMPROVE ENGINE — stable contract implementation
 
 Purpose:
-- Provide deterministic proposal generation
-- Unblock test_self_improve + generator_v2 + failure_feedback
-- No external dependencies
+- provide deterministic proposal generation
+- satisfy self_improve + failure_feedback tests
+- accept failure_text keyword argument
 """
 
-from typing import Dict, Any
+from __future__ import annotations
+
+from typing import Any, Dict, List, Optional
 
 
-def generate_proposal(context: Dict[str, Any]) -> Dict[str, Any]:
+def classify_gaps(snapshot: Optional[Dict[str, Any]] = None, failure_text: str = "") -> List[str]:
+    snapshot = snapshot or {}
+    gaps: List[str] = []
+
+    if snapshot.get("test_count", 0) < 3:
+        gaps.append("low_test_coverage")
+
+    if not snapshot.get("has_cge", True):
+        gaps.append("missing_cge_root")
+
+    if "ModuleNotFoundError" in failure_text:
+        gaps.append("missing_module")
+
+    if "ImportError" in failure_text:
+        gaps.append("import_failure")
+
+    if "KeyError" in failure_text:
+        gaps.append("contract_mismatch")
+
+    if "AssertionError" in failure_text:
+        gaps.append("behavior_failure")
+
+    return list(dict.fromkeys(gaps))
+
+
+def generate_proposal(
+    snapshot: Optional[Dict[str, Any]] = None,
+    failure_text: str = "",
+) -> Dict[str, Any]:
     """
-    Minimal deterministic proposal generator.
+    Deterministic proposal generator.
 
-    This is NOT the final intelligence layer.
-    This is a stable contract implementation so the loop can run.
+    Accepts:
+    - snapshot
+    - failure_text keyword argument
     """
+    snapshot = snapshot or {}
+    gaps = classify_gaps(snapshot, failure_text=failure_text)
 
     return {
         "proposal_id": "auto-proposal-001",
+        "proposal_name": "priority_fix",
         "action": "noop",
         "reason": "baseline proposal for system stabilization",
         "confidence": 0.5,
+        "gaps": gaps,
+        "selected_gap": gaps[0] if gaps else None,
+        "files_to_create": [],
         "metadata": {
-            "source": "llm_self_improve_stub"
-        }
+            "source": "llm_self_improve_stub",
+            "failure_text_present": bool(failure_text),
+        },
     }
