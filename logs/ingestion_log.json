@@ -3556,5 +3556,83 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774507590.1407676
+  },
+  {
+    "bundle": "token_economics_v6.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774511315.476052
+  },
+  {
+    "bundle": "token_economics_v6_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774511315.4767418
+  },
+  {
+    "bundle": "token_economics_v7.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774511315.477435
+  },
+  {
+    "bundle": "token_economics_v7_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774511315.47815
+  },
+  {
+    "bundle": "token_economics_v8.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774511315.4788463
+  },
+  {
+    "bundle": "token_economics_v8_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774511315.4796078
+  },
+  {
+    "bundle": "token_economics_v9_manifest_fixed.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774511315.4803143
+  },
+  {
+    "bundle": "tvc_export_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774511315.4807305
+  },
+  {
+    "bundle": "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774511315.482372
+  },
+  {
+    "bundle": "v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
+    "ok": true,
+    "error": null,
+    "ts": 1774511315.4838445
+  },
+  {
+    "bundle": "v21_1_gatekeeper_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version']",
+    "ts": 1774511315.4844987
+  },
+  {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "ok": false,
+    "error": "path_not_allowed:.github/workflows/document_engine.yml",
+    "ts": 1774511315.4851239
+  },
+  {
+    "bundle": "v21_to_v30_bundle.zip",
+    "ok": false,
+    "error": "missing_bundle_manifest",
+    "ts": 1774511315.4855328
   }
 ]
