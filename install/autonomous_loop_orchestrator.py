@@ -1,10 +1,9 @@
 """
-AUTONOMOUS LOOP ORCHESTRATOR — controlled baseline + classification
+AUTONOMOUS LOOP ORCHESTRATOR — governed loop (final baseline)
 
 Adds:
-- state diff
-- mutation classification (inline, no new files)
-- loop invariant enforcement
+- classification-driven action
+- minimal repair trigger (stub)
 """
 
 from __future__ import annotations
@@ -40,7 +39,6 @@ GREEN_TEST_SET: List[str] = [
 ]
 
 
-# 🔥 INLINE CLASSIFIER (no extra files)
 def classify_state(pre: Dict[str, Any], post: Dict[str, Any]) -> Dict[str, Any]:
     if not isinstance(pre, dict) or not isinstance(post, dict):
         return {"type": "invalid", "severity": "critical", "action": "halt"}
@@ -49,17 +47,13 @@ def classify_state(pre: Dict[str, Any], post: Dict[str, Any]) -> Dict[str, Any]:
         return {"type": "no_change", "severity": "none", "action": "noop"}
 
     if pre.get("repo_hash") != post.get("repo_hash"):
-        return {
-            "type": "repo_mutation",
-            "severity": "high",
-            "action": "inspect",
-        }
+        return {"type": "repo_mutation", "severity": "high", "action": "inspect"}
 
-    return {
-        "type": "system_activity",
-        "severity": "low",
-        "action": "observe",
-    }
+    return {"type": "system_activity", "severity": "low", "action": "observe"}
+
+
+def decide_action(classification: Dict[str, Any]) -> str:
+    return classification.get("action", "noop")
 
 
 def ensure_pytest() -> None:
@@ -80,17 +74,7 @@ def ensure_pytest() -> None:
 
 def run_tests() -> Dict[str, Any]:
     cmd = [sys.executable, "-m", "pytest", *GREEN_TEST_SET, "-q"]
-
-    try:
-        result = subprocess.run(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-        )
-    except Exception as exc:
-        return {"ok": False, "error": str(exc)}
-
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     return {
         "ok": result.returncode == 0,
         "stdout": result.stdout,
@@ -112,21 +96,15 @@ def write_json(path: str, data: Dict[str, Any]) -> None:
 
 
 def snapshot(path: str) -> Dict[str, Any]:
-    try:
-        mod = importlib.import_module("install.engine.repo_snapshot")
+    mod = importlib.import_module("install.engine.repo_snapshot")
 
-        if hasattr(mod, "write_snapshot"):
-            snap = mod.write_snapshot(output_path=path)
-        else:
-            snap = mod.build_snapshot()
-            write_json(path, snap)
+    if hasattr(mod, "write_snapshot"):
+        snap = mod.write_snapshot(output_path=path)
+    else:
+        snap = mod.build_snapshot()
+        write_json(path, snap)
 
-        return snap if isinstance(snap, dict) else {"value": snap}
-
-    except Exception as e:
-        data = {"error": str(e)}
-        write_json(path, data)
-        return data
+    return snap if isinstance(snap, dict) else {"value": snap}
 
 
 def main() -> None:
@@ -143,23 +121,27 @@ def main() -> None:
 
     post = snapshot(post_path)
 
-    changed = pre != post
     classification = classify_state(pre, post)
+    action = decide_action(classification)
 
-    loop_ok = (
-        test.get("ok")
-        and isinstance(pre, dict)
-        and isinstance(post, dict)
-    )
+    # 🔥 minimal action execution (stub only)
+    action_result = "noop"
+    if action == "inspect":
+        action_result = "inspection_required"
+    elif action == "halt":
+        action_result = "halted"
+
+    loop_ok = test["ok"] and isinstance(pre, dict) and isinstance(post, dict)
 
     report = {
         "status": "ok",
         "loop_ok": loop_ok,
-        "tests_passed": test.get("ok"),
-        "state_changed": changed,
+        "tests_passed": test["ok"],
         "classification": classification,
+        "action": action,
+        "action_result": action_result,
         "duration": round(time.time() - start, 3),
-        "summary": extract_summary(test.get("stdout", ""), test.get("stderr", "")),
+        "summary": extract_summary(test["stdout"], test["stderr"]),
         "state": {
             "pre": pre_path,
             "post": post_path,
