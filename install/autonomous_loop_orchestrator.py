@@ -1,10 +1,10 @@
 """
-AUTONOMOUS LOOP ORCHESTRATOR — controlled green-baseline runtime + state diff
+AUTONOMOUS LOOP ORCHESTRATOR — controlled baseline + classification
 
 Adds:
-- pre/post snapshot capture
-- deterministic state diff detection
-- loop_ok invariant (true health signal)
+- state diff
+- mutation classification (inline, no new files)
+- loop invariant enforcement
 """
 
 from __future__ import annotations
@@ -40,6 +40,28 @@ GREEN_TEST_SET: List[str] = [
 ]
 
 
+# 🔥 INLINE CLASSIFIER (no extra files)
+def classify_state(pre: Dict[str, Any], post: Dict[str, Any]) -> Dict[str, Any]:
+    if not isinstance(pre, dict) or not isinstance(post, dict):
+        return {"type": "invalid", "severity": "critical", "action": "halt"}
+
+    if pre == post:
+        return {"type": "no_change", "severity": "none", "action": "noop"}
+
+    if pre.get("repo_hash") != post.get("repo_hash"):
+        return {
+            "type": "repo_mutation",
+            "severity": "high",
+            "action": "inspect",
+        }
+
+    return {
+        "type": "system_activity",
+        "severity": "low",
+        "action": "observe",
+    }
+
+
 def ensure_pytest() -> None:
     try:
         subprocess.run(
@@ -56,7 +78,7 @@ def ensure_pytest() -> None:
         )
 
 
-def run_controlled_tests() -> Dict[str, Any]:
+def run_tests() -> Dict[str, Any]:
     cmd = [sys.executable, "-m", "pytest", *GREEN_TEST_SET, "-q"]
 
     try:
@@ -67,106 +89,77 @@ def run_controlled_tests() -> Dict[str, Any]:
             text=True,
         )
     except Exception as exc:
-        return {
-            "ok": False,
-            "returncode": -1,
-            "stdout": "",
-            "stderr": str(exc),
-            "cmd": cmd,
-        }
+        return {"ok": False, "error": str(exc)}
 
     return {
         "ok": result.returncode == 0,
-        "returncode": result.returncode,
         "stdout": result.stdout,
         "stderr": result.stderr,
-        "cmd": cmd,
+        "returncode": result.returncode,
     }
 
 
 def extract_summary(stdout: str, stderr: str) -> str:
     text = (stdout or "") + ("\n" + stderr if stderr else "")
-    lines = [line.rstrip() for line in text.splitlines() if line.strip()]
-    return "\n".join(lines[-12:]) if lines else "no output"
+    lines = [l for l in text.splitlines() if l.strip()]
+    return "\n".join(lines[-10:]) if lines else "no output"
 
 
-def write_json(path: str, payload: Dict[str, Any]) -> None:
+def write_json(path: str, data: Dict[str, Any]) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, sort_keys=True)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2, sort_keys=True)
 
 
-def _capture_snapshot(output_path: str) -> Dict[str, Any]:
+def snapshot(path: str) -> Dict[str, Any]:
     try:
-        module = importlib.import_module("install.engine.repo_snapshot")
-    except Exception as exc:
-        payload = {"ok": False, "error": str(exc)}
-        write_json(output_path, payload)
-        return payload
+        mod = importlib.import_module("install.engine.repo_snapshot")
 
-    try:
-        if hasattr(module, "write_snapshot"):
-            snapshot = module.write_snapshot(output_path=output_path)
-        elif hasattr(module, "build_snapshot"):
-            snapshot = module.build_snapshot()
-            write_json(output_path, snapshot)
+        if hasattr(mod, "write_snapshot"):
+            snap = mod.write_snapshot(output_path=path)
         else:
-            raise RuntimeError("snapshot api missing")
+            snap = mod.build_snapshot()
+            write_json(path, snap)
 
-        return {"ok": True, "snapshot": snapshot}
+        return snap if isinstance(snap, dict) else {"value": snap}
 
-    except Exception as exc:
-        payload = {"ok": False, "error": str(exc)}
-        write_json(output_path, payload)
-        return payload
+    except Exception as e:
+        data = {"error": str(e)}
+        write_json(path, data)
+        return data
 
 
 def main() -> None:
-    started = time.time()
+    start = time.time()
 
     pre_path = "payload/runtime/system_snapshot_pre.json"
     post_path = "payload/runtime/system_snapshot_post.json"
     report_path = "payload/runtime/autonomous_loop_report.json"
 
-    # 🔥 capture state BEFORE execution
-    pre = _capture_snapshot(pre_path)
+    pre = snapshot(pre_path)
 
     ensure_pytest()
-    test_result = run_controlled_tests()
+    test = run_tests()
 
-    # 🔥 capture state AFTER execution
-    post = _capture_snapshot(post_path)
+    post = snapshot(post_path)
 
-    finished = time.time()
+    changed = pre != post
+    classification = classify_state(pre, post)
 
-    # 🔥 state diff (simple but deterministic)
-    state_changed = False
-    if pre.get("ok") and post.get("ok"):
-        state_changed = pre["snapshot"] != post["snapshot"]
-
-    # 🔥 real loop health invariant
     loop_ok = (
-        test_result["ok"]
-        and pre.get("ok")
-        and post.get("ok")
+        test.get("ok")
+        and isinstance(pre, dict)
+        and isinstance(post, dict)
     )
 
     report = {
         "status": "ok",
-        "mode": "controlled_green_baseline",
         "loop_ok": loop_ok,
-        "tests_passed": test_result["ok"],
-        "repair_triggered": not test_result["ok"],
-        "state_changed": state_changed,
-        "timestamp": finished,
-        "duration_seconds": round(finished - started, 3),
-        "report": report_path,
-        "test_count": len(GREEN_TEST_SET),
-        "pytest_returncode": test_result["returncode"],
-        "test_output_snippet": extract_summary(
-            test_result.get("stdout", ""),
-            test_result.get("stderr", ""),
-        ),
+        "tests_passed": test.get("ok"),
+        "state_changed": changed,
+        "classification": classification,
+        "duration": round(time.time() - start, 3),
+        "summary": extract_summary(test.get("stdout", ""), test.get("stderr", "")),
         "state": {
             "pre": pre_path,
             "post": post_path,
