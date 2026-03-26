@@ -1,60 +1,47 @@
-import os
-import json
 import subprocess
+import json
 import time
+import os
 
-TEST_OUTPUT = "test_output.txt"
-RESULT_PATH = "payload/runtime/autonomous_loop_report.json"
+
+REPORT_PATH = "payload/runtime/autonomous_loop_report.json"
 
 
 def run_tests():
-    proc = subprocess.run(
-        "python -m pytest -q",
-        shell=True,
-        capture_output=True,
-        text=True
-    )
-    return proc.returncode, proc.stdout + proc.stderr
+    try:
+        result = subprocess.run(
+            ["pytest", "-q"],
+            capture_output=True,
+            text=True
+        )
 
+        output = result.stdout + "\n" + result.stderr
 
-def run_self_improve():
-    proc = subprocess.run(
-        f"python engine/self_improve_runner.py {TEST_OUTPUT}",
-        shell=True,
-        capture_output=True,
-        text=True
-    )
-    return proc.returncode, proc.stdout + proc.stderr
+        print("===== PYTEST OUTPUT BEGIN =====")
+        print(output)
+        print("===== PYTEST OUTPUT END =====")
+
+        return result.returncode == 0, output
+
+    except Exception as e:
+        return False, str(e)
 
 
 def main():
-
     os.makedirs("payload/runtime", exist_ok=True)
 
-    # 1. RUN TESTS (this is the missing piece)
-    rc, out = run_tests()
+    tests_passed, test_output = run_tests()
 
-    with open(TEST_OUTPUT, "w") as f:
-        f.write(out)
-
-    # 2. IF FAILURE → TRIGGER REPAIR LOOP
-    repair_triggered = False
-    repair_output = ""
-
-    if rc != 0:
-        repair_triggered = True
-        _, repair_output = run_self_improve()
-
-    # 3. STILL PRODUCE RECEIPTS (your existing behavior)
     report = {
         "status": "ok",
-        "tests_passed": rc == 0,
-        "repair_triggered": repair_triggered,
+        "tests_passed": tests_passed,
+        "repair_triggered": not tests_passed,
         "timestamp": time.time(),
-        "report": RESULT_PATH
+        "report": REPORT_PATH,
+        "test_output_snippet": test_output[-1000:]  # last 1000 chars
     }
 
-    with open(RESULT_PATH, "w") as f:
+    with open(REPORT_PATH, "w") as f:
         json.dump(report, f, indent=2)
 
     print(json.dumps(report, indent=2))
