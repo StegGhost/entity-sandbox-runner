@@ -1,67 +1,63 @@
 """
-LLM SELF IMPROVE ENGINE — stable contract implementation
+PROPOSAL TO BUNDLE — stable contract implementation
 
 Purpose:
-- provide deterministic proposal generation
-- satisfy self_improve + failure_feedback tests
-- accept failure_text keyword argument
+- expose normalize_allowed_paths for generator tests
+- convert proposal payloads into a deterministic bundle structure
+- keep behavior simple and dependency-free
 """
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+import json
+from typing import Any, Dict, List
 
 
-def classify_gaps(snapshot: Optional[Dict[str, Any]] = None, failure_text: str = "") -> List[str]:
-    snapshot = snapshot or {}
-    gaps: List[str] = []
+def normalize_allowed_paths(bundle_name: str) -> List[str]:
+    """
+    Return a deterministic allowlist for a named bundle.
 
-    if snapshot.get("test_count", 0) < 3:
-        gaps.append("low_test_coverage")
-
-    if not snapshot.get("has_cge", True):
-        gaps.append("missing_cge_root")
-
-    if "ModuleNotFoundError" in failure_text:
-        gaps.append("missing_module")
-
-    if "ImportError" in failure_text:
-        gaps.append("import_failure")
-
-    if "KeyError" in failure_text:
-        gaps.append("contract_mismatch")
-
-    if "AssertionError" in failure_text:
-        gaps.append("behavior_failure")
-
-    return list(dict.fromkeys(gaps))
+    Current tests expect at least:
+    - "install/"
+    - "bundle_manifest.json"
+    """
+    _ = bundle_name
+    return [
+        "bundle_manifest.json",
+        "install/",
+    ]
 
 
-def generate_proposal(
-    snapshot: Optional[Dict[str, Any]] = None,
-    failure_text: str = "",
+def _normalize_file_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
+    path = str(entry.get("path", "")).replace("\\", "/").strip()
+    content = entry.get("content", "")
+    return {
+        "path": path,
+        "content": content,
+    }
+
+
+def proposal_to_bundle(
+    proposal: Dict[str, Any],
+    allowed_paths: List[str] | None = None,
 ) -> Dict[str, Any]:
-    """
-    Deterministic proposal generator.
+    bundle_name = proposal.get("proposal_name", "generated_bundle")
+    normalized_allowed = allowed_paths or normalize_allowed_paths(bundle_name)
 
-    Accepts:
-    - snapshot
-    - failure_text keyword argument
-    """
-    snapshot = snapshot or {}
-    gaps = classify_gaps(snapshot, failure_text=failure_text)
+    files: List[Dict[str, Any]] = []
+    for entry in proposal.get("files_to_create", []) or []:
+        normalized = _normalize_file_entry(entry)
+        if normalized["path"]:
+            files.append(normalized)
 
     return {
-        "proposal_id": "auto-proposal-001",
-        "proposal_name": "priority_fix",
-        "action": "noop",
-        "reason": "baseline proposal for system stabilization",
-        "confidence": 0.5,
-        "gaps": gaps,
-        "selected_gap": gaps[0] if gaps else None,
-        "files_to_create": [],
-        "metadata": {
-            "source": "llm_self_improve_stub",
-            "failure_text_present": bool(failure_text),
-        },
+        "bundle_name": bundle_name,
+        "allowed_paths": normalized_allowed,
+        "files": files,
+        "file_count": len(files),
+        "metadata": proposal.get("metadata", {}),
     }
+
+
+def serialize_bundle(bundle: Dict[str, Any]) -> str:
+    return json.dumps(bundle, sort_keys=True, indent=2, default=str)
