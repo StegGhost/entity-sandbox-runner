@@ -16,7 +16,6 @@ jobs:
 
       - run: pip install pytest
 
-      # 🔥 RUN A SMALL CONTROLLED SET
       - name: Run controlled test set
         run: |
           echo "===== RUNNING CONTROLLED TEST SET ====="
@@ -25,6 +24,9 @@ jobs:
             tests/test_receipt_chain.py \
             tests/test_receipts.py \
             tests/test_priority_router.py \
+            tests/test_step_completion.py \
+            tests/test_plan_memory.py \
+            tests/test_multi_step_planner.py \
             -q
 
           echo "===== DONE ====="
