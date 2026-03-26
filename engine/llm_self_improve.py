@@ -5,6 +5,7 @@ Purpose:
 - provide deterministic proposal generation
 - satisfy self_improve + failure_feedback tests
 - accept failure_text keyword argument
+- tolerate snapshot being missing or incorrectly passed as a string
 """
 
 from __future__ import annotations
@@ -12,8 +13,34 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional
 
 
-def classify_gaps(snapshot: Optional[Dict[str, Any]] = None, failure_text: str = "") -> List[str]:
-    snapshot = snapshot or {}
+def _coerce_snapshot_and_failure_text(
+    snapshot: Optional[Dict[str, Any]] = None,
+    failure_text: str = "",
+) -> tuple[Dict[str, Any], str]:
+    """
+    Some callers may accidentally pass failure_text as the first positional arg.
+    This normalizes that into:
+      snapshot -> dict
+      failure_text -> str
+    """
+    if isinstance(snapshot, str):
+        return {}, snapshot
+
+    if snapshot is None:
+        return {}, failure_text
+
+    if not isinstance(snapshot, dict):
+        return {}, failure_text
+
+    return snapshot, failure_text
+
+
+def classify_gaps(
+    snapshot: Optional[Dict[str, Any]] = None,
+    failure_text: str = "",
+) -> List[str]:
+    snapshot, failure_text = _coerce_snapshot_and_failure_text(snapshot, failure_text)
+
     gaps: List[str] = []
 
     if snapshot.get("test_count", 0) < 3:
@@ -47,8 +74,9 @@ def generate_proposal(
     Accepts:
     - snapshot
     - failure_text keyword argument
+    - failure_text accidentally passed as first positional arg
     """
-    snapshot = snapshot or {}
+    snapshot, failure_text = _coerce_snapshot_and_failure_text(snapshot, failure_text)
     gaps = classify_gaps(snapshot, failure_text=failure_text)
 
     return {
