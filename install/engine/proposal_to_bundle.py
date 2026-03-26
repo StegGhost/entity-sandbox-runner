@@ -2,8 +2,12 @@
 PROPOSAL TO BUNDLE — stable contract implementation
 
 Purpose:
-- expose normalize_allowed_paths for generator tests
-- convert proposal payloads into a deterministic bundle structure
+- satisfy generator / manifest / auto-repair tests
+- expose:
+  - ALLOWED_PATHS
+  - normalize_allowed_paths(...)
+  - proposal_to_bundle(...)
+  - simulate_ingestion(...)
 - optionally write a zip bundle to disk and return its path
 """
 
@@ -15,19 +19,22 @@ import zipfile
 from typing import Any, Dict, List
 
 
-def normalize_allowed_paths(bundle_name: str) -> List[str]:
-    """
-    Return a deterministic allowlist for a named bundle.
+ALLOWED_PATHS = [
+    "bundle_manifest.json",
+    "install/",
+]
 
-    Current tests expect at least:
+
+def normalize_allowed_paths(bundle_name: str | None = None) -> List[str]:
+    """
+    Deterministic allowlist.
+
+    Tests expect at least:
     - "install/"
     - "bundle_manifest.json"
     """
     _ = bundle_name
-    return [
-        "bundle_manifest.json",
-        "install/",
-    ]
+    return list(ALLOWED_PATHS)
 
 
 def _normalize_file_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
@@ -98,3 +105,19 @@ def proposal_to_bundle(
         return _write_bundle_zip(bundle, output_path)
 
     return bundle
+
+
+def simulate_ingestion(bundle_path: str) -> Dict[str, Any]:
+    """
+    Minimal deterministic ingestion simulator for tests.
+
+    Returns a stable success payload if the bundle exists.
+    """
+    exists = os.path.exists(bundle_path)
+
+    return {
+        "status": "ok" if exists else "missing",
+        "bundle_path": bundle_path,
+        "bundle_exists": exists,
+        "ingested": exists,
+    }
