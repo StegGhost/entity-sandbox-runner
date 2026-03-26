@@ -4,7 +4,7 @@
   "failed_cge_bundles": [
     "stegcge_closure_modules_v1_bundle.zip"
   ],
-  "file_count": 4367,
+  "file_count": 4369,
   "files": [
     ".gitignore",
     "PROPOSED_BUILD.md",
@@ -207,7 +207,7 @@
     "brain_state.json",
     "bundle_auto_repair.py"
   ],
-  "generated_at": 1774550808.2842095,
+  "generated_at": 1774551532.1301804,
   "has_cge": true,
   "has_pending_bundles": true,
   "incoming_bundle_count": 3,
@@ -220,7 +220,7 @@
   "latest_global_root": null,
   "phase_registry_entry_count": 0,
   "registry_entry_count": 0,
-  "repo_hash": "3c542ba1ea76bad27fcd12c594f9fb6e43932771439f87675059e8c3fc012d8a",
+  "repo_hash": "2ab1ff44e77ea407137760671b1920cbc961cb34379b19ccc4c1a25378410a4f",
   "root": ".",
   "snapshot_source_file": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/repo_snapshot.py",
   "snapshot_source_module": "__main__",
