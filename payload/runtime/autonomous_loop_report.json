@@ -12,7 +12,7 @@
     "severity": "none",
     "type": "no_change"
   },
-  "duration_seconds": 4.724,
+  "duration_seconds": 5.92,
   "loop_ok": false,
   "mode": "bounded_sandbox_loop",
   "pytest_returncode": 0,
@@ -36,14 +36,14 @@
     },
     "next_action": {
       "ok": true,
-      "output_snippet": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/next_action.json\",\n  \"next_action\": {\n    \"ts\": \"2026-03-26T18:58:51.896642\",\n    \"status\": \"ok\",\n    \"action\": \"idle\",\n    \"priority\": \"low\",\n    \"reason\": \"no admissible next action found\"\n  }\n}",
+      "output_snippet": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/next_action.json\",\n  \"next_action\": {\n    \"ts\": \"2026-03-26T19:14:18.390477\",\n    \"status\": \"ok\",\n    \"action\": \"idle\",\n    \"priority\": \"low\",\n    \"reason\": \"no admissible next action found\"\n  }\n}",
       "runner_returncode": 0,
       "summary": {
         "action": "idle",
         "priority": "low",
         "reason": "no admissible next action found",
         "status": "ok",
-        "ts": "2026-03-26T18:58:51.896642"
+        "ts": "2026-03-26T19:14:18.390477"
       }
     },
     "post_snapshot": {
@@ -79,7 +79,7 @@
     }
   },
   "test_count": 18,
-  "test_output_snippet": "[FORCE IMPORT] receipt_chain -> /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/receipt_chain.py\n........................                                                 [100%]\n24 passed in 0.77s",
+  "test_output_snippet": "[FORCE IMPORT] receipt_chain -> /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/receipt_chain.py\n........................                                                 [100%]\n24 passed in 0.68s",
   "test_surface": [
     "tests/test_receipt_chain.py",
     "tests/test_receipts.py",
@@ -101,5 +101,5 @@
     "tests/test_bootstrap_permission_unlock.py"
   ],
   "tests_passed": true,
-  "timestamp": 1774551532.2778926
+  "timestamp": 1774552458.7561386
 }

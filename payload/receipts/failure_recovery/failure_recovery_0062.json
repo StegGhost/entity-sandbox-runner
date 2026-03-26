@@ -1,0 +1,7 @@
+{
+  "type": "failure_recovery",
+  "timestamp": 1774552458.797926,
+  "status": "ok",
+  "report_path": "payload/runtime/failure_recovery_report.json",
+  "hash": "7ee21b4fd3a827149e8acf76ed4a8668067d8ca425848796dabe51a70232576b"
+}
