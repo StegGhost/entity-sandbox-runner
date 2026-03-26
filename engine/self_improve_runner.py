@@ -1,131 +1,169 @@
-import os
 import json
+import os
 import shutil
 import subprocess
-import time
-import multiprocessing
+import tempfile
+from typing import Dict, Any, List
 
-from engine.repo_snapshot import generate_snapshot
-from engine.llm_self_improve import generate_proposals
-
-BASE_SANDBOX = "sandbox_runs"
-RESULT_PATH = "brain_reports/apply_result.json"
-QUARANTINE = "quarantine_patches"
+from engine.proposal_to_bundle import proposal_to_bundle
 
 
-# =========================
-# TEST EXECUTION
-# =========================
+TEST_CMD = "python -m pytest -q"
 
-def run_tests(cwd):
+
+# -------------------------
+# RUN TESTS
+# -------------------------
+
+def run_tests(cwd: str) -> int:
     proc = subprocess.run(
-        "python -m pytest -q",
+        TEST_CMD,
         shell=True,
         cwd=cwd,
-        capture_output=True,
-        text=True
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
     )
-    return proc.returncode, proc.stdout + proc.stderr
+    return proc.returncode
 
 
-def score(rc, out):
-    score = 0
-    if rc == 0:
-        score += 100
-    score -= out.count("FAILED") * 10
-    score -= out.count("ERROR") * 5
-    return score
+# -------------------------
+# APPLY PATCH
+# -------------------------
+
+def apply_patch(bundle: Dict[str, Any], root: str):
+    for f in bundle.get("files_to_create", []):
+        path = os.path.join(root, f["path"])
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w") as fp:
+            fp.write(f["content"])
 
 
-# =========================
-# SANDBOX RUNNER
-# =========================
+# -------------------------
+# SANDBOX EXECUTION
+# -------------------------
 
-def run_candidate(args):
-    idx, proposal = args
-    sandbox = f"{BASE_SANDBOX}/run_{idx}"
+def evaluate_bundle(bundle: Dict[str, Any], snapshot_root: str) -> Dict[str, Any]:
 
-    if os.path.exists(sandbox):
-        shutil.rmtree(sandbox)
+    tmpdir = tempfile.mkdtemp()
 
-    shutil.copytree(".", sandbox,
-        ignore=shutil.ignore_patterns("__pycache__", ".git", BASE_SANDBOX, "brain_reports")
-    )
+    try:
+        shutil.copytree(snapshot_root, tmpdir, dirs_exist_ok=True)
 
-    # apply patch
-    for f in proposal["files"]:
-        p = os.path.join(sandbox, f["path"])
-        os.makedirs(os.path.dirname(p), exist_ok=True)
-        with open(p, "w") as out:
-            out.write(f["content"])
+        apply_patch(bundle, tmpdir)
 
-    rc, out = run_tests(sandbox)
-    return {
-        "proposal": proposal,
-        "score": score(rc, out),
-        "rc": rc,
-        "output": out[:1000]
-    }
+        rc = run_tests(tmpdir)
+
+        return {
+            "success": rc == 0,
+            "return_code": rc,
+            "bundle": bundle,
+        }
+
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
 
 
-# =========================
-# MAIN LOOP
-# =========================
+# -------------------------
+# MULTI-REPAIR ENGINE
+# -------------------------
 
-def main(failure_file=None):
+def generate_candidates(snapshot: Dict[str, Any], failure_text: str) -> List[Dict[str, Any]]:
+    # reuse proposal engine but expand
+    base = proposal_to_bundle(snapshot, failure_text)
+
+    if base["proposal_name"] == "no_op":
+        return []
+
+    # for now: single + variants
+    return [base]
+
+
+# -------------------------
+# SELECT BEST FIX
+# -------------------------
+
+def select_best(results: List[Dict[str, Any]]) -> Dict[str, Any]:
+    for r in results:
+        if r["success"]:
+            return r
+    return {}
+
+
+# -------------------------
+# APPLY FINAL FIX
+# -------------------------
+
+def apply_best(bundle: Dict[str, Any], root: str):
+    apply_patch(bundle, root)
+
+
+# -------------------------
+# MAIN
+# -------------------------
+
+def main():
 
     failure_text = ""
-    if failure_file and os.path.exists(failure_file):
-        with open(failure_file) as f:
+
+    if len(os.sys.argv) > 1:
+        with open(os.sys.argv[1], "r") as f:
             failure_text = f.read()
 
-    snapshot = generate_snapshot(".")
-
-    gen = generate_proposals(snapshot, failure_text)
-
-    if not gen["proposals"]:
-        print("No proposals")
-        return
-
-    os.makedirs(BASE_SANDBOX, exist_ok=True)
-
-    pool = multiprocessing.Pool(processes=min(4, len(gen["proposals"])))
-    results = pool.map(run_candidate, list(enumerate(gen["proposals"])))
-    pool.close()
-    pool.join()
-
-    best = max(results, key=lambda x: x["score"])
-
-    applied = False
-
-    # apply only if improvement
-    if best["score"] > 0:
-        for f in best["proposal"]["files"]:
-            os.makedirs(os.path.dirname(f["path"]), exist_ok=True)
-            with open(f["path"], "w") as out:
-                out.write(f["content"])
-        applied = True
-    else:
-        os.makedirs(QUARANTINE, exist_ok=True)
-        with open(f"{QUARANTINE}/failed_{int(time.time())}.json", "w") as f:
-            json.dump(results, f, indent=2)
-
-    result = {
-        "classification": gen["classification"],
-        "candidates": results,
-        "best": best,
-        "applied": applied,
-        "ts": time.time()
+    snapshot = {
+        "root": "."
     }
 
-    os.makedirs("brain_reports", exist_ok=True)
-    with open(RESULT_PATH, "w") as f:
-        json.dump(result, f, indent=2)
+    # -------------------------
+    # GENERATE CANDIDATES
+    # -------------------------
+
+    candidates = generate_candidates(snapshot, failure_text)
+
+    if not candidates:
+        result = {
+            "status": "no_op",
+            "reason": "no_candidates"
+        }
+        print(json.dumps(result, indent=2))
+        return
+
+    # -------------------------
+    # TEST EACH IN SANDBOX
+    # -------------------------
+
+    results = []
+    for c in candidates:
+        r = evaluate_bundle(c, ".")
+        results.append(r)
+
+    # -------------------------
+    # SELECT BEST
+    # -------------------------
+
+    best = select_best(results)
+
+    if not best:
+        result = {
+            "status": "failed",
+            "reason": "no_valid_fix",
+            "attempts": results
+        }
+        print(json.dumps(result, indent=2))
+        return
+
+    # -------------------------
+    # APPLY TO REAL REPO
+    # -------------------------
+
+    apply_best(best["bundle"], ".")
+
+    result = {
+        "status": "fixed",
+        "applied": best["bundle"]["proposal_name"]
+    }
 
     print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
-    import sys
-    arg = sys.argv[1] if len(sys.argv) > 1 else None
-    main(arg)
+    main()
