@@ -6,10 +6,9 @@ import zipfile
 from typing import Any, Dict, List, Tuple
 
 
-# 🔧 FIX 1: must include "install/" explicitly for test_install_scope
 ALLOWED_PATHS = [
     "bundle_manifest.json",
-    "install/",              # <-- REQUIRED
+    "install/",
     "install/tests/",
     "install/engine/",
     "install/apply.py",
@@ -96,41 +95,85 @@ def _is_allowed_path(rel_path: str, allowed_paths: List[str]) -> bool:
     return False
 
 
+def _load_manifest(bundle_path: str) -> Dict[str, Any] | None:
+    manifest_path = os.path.join(bundle_path, "bundle_manifest.json")
+    if not os.path.exists(manifest_path):
+        return None
+
+    with open(manifest_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
 def simulate_ingestion(bundle_path: str) -> Tuple[bool, str]:
     if not os.path.exists(bundle_path):
         return False, "missing_bundle"
 
-    manifest_path = os.path.join(bundle_path, "bundle_manifest.json")
-    if not os.path.exists(manifest_path):
-        return False, "missing_manifest"
+    if os.path.isdir(bundle_path):
+        manifest = _load_manifest(bundle_path)
+        if manifest is None:
+            return False, "missing_manifest"
 
-    with open(manifest_path, "r", encoding="utf-8") as f:
-        manifest = json.load(f)
+        allowed_paths = manifest.get("allowed_paths", [])
 
-    allowed_paths = manifest.get("allowed_paths", [])
+        for root, _, files in os.walk(bundle_path):
+            for name in files:
+                abs_path = os.path.join(root, name)
+                rel_path = os.path.relpath(abs_path, bundle_path).replace("\\", "/")
 
-    for root, _, files in os.walk(bundle_path):
-        for name in files:
-            abs_path = os.path.join(root, name)
-            rel_path = os.path.relpath(abs_path, bundle_path).replace("\\", "/")
+                if rel_path == "bundle_manifest.json":
+                    continue
 
-            if rel_path == "bundle_manifest.json":
-                continue
+                if not _is_allowed_path(rel_path, allowed_paths):
+                    return False, f"path_not_allowed:{rel_path}"
 
-            if not _is_allowed_path(rel_path, allowed_paths):
-                return False, f"path_not_allowed:{rel_path}"
+        return True, "ok"
 
-    return True, "ok"
+    if zipfile.is_zipfile(bundle_path):
+        with zipfile.ZipFile(bundle_path, "r") as zf:
+            names = zf.namelist()
+            if "bundle_manifest.json" not in names:
+                return False, "missing_manifest"
+
+            manifest = json.loads(zf.read("bundle_manifest.json").decode("utf-8"))
+            allowed_paths = manifest.get("allowed_paths", [])
+
+            for name in names:
+                normalized = name.replace("\\", "/")
+                if normalized.endswith("/") or normalized == "bundle_manifest.json":
+                    continue
+                if not _is_allowed_path(normalized, allowed_paths):
+                    return False, f"path_not_allowed:{normalized}"
+
+        return True, "ok"
+
+    return False, "unsupported_bundle_type"
 
 
-# 🔧 FIX 2: accept (bundle_path, reason)
 def auto_repair(bundle_path: str, reason: str | None = None) -> Dict[str, Any]:
-    ok, _ = simulate_ingestion(bundle_path)
+    """
+    Minimal deterministic auto-repair helper for tests.
+
+    For directory bundles:
+    - if a path_not_allowed violation is reported, remove the offending file
+    - then re-run ingestion check
+    """
+    ok, detected_reason = simulate_ingestion(bundle_path)
+    repair_reason = reason or detected_reason
+
+    if not ok and os.path.isdir(bundle_path):
+        prefix = "path_not_allowed:"
+        if isinstance(repair_reason, str) and repair_reason.startswith(prefix):
+            bad_rel = repair_reason[len(prefix):]
+            bad_abs = os.path.join(bundle_path, bad_rel)
+            if os.path.exists(bad_abs) and os.path.isfile(bad_abs):
+                os.remove(bad_abs)
+
+        ok, detected_reason = simulate_ingestion(bundle_path)
 
     return {
         "status": "ok",
         "bundle_path": bundle_path,
         "bundle_exists": os.path.exists(bundle_path),
         "repaired": ok,
-        "reason": reason,
+        "reason": detected_reason,
     }
