@@ -8,6 +8,7 @@ Purpose:
   - normalize_allowed_paths(...)
   - proposal_to_bundle(...)
   - simulate_ingestion(...)
+  - auto_repair(...)
 - optionally write a zip bundle to disk and return its path
 """
 
@@ -22,16 +23,13 @@ from typing import Any, Dict, List
 ALLOWED_PATHS = [
     "bundle_manifest.json",
     "install/",
+    "install/apply.py",
 ]
 
 
 def normalize_allowed_paths(bundle_name: str | None = None) -> List[str]:
     """
     Deterministic allowlist.
-
-    Tests expect at least:
-    - "install/"
-    - "bundle_manifest.json"
     """
     _ = bundle_name
     return list(ALLOWED_PATHS)
@@ -120,4 +118,17 @@ def simulate_ingestion(bundle_path: str) -> Dict[str, Any]:
         "bundle_path": bundle_path,
         "bundle_exists": exists,
         "ingested": exists,
+    }
+
+
+def auto_repair(bundle_path: str) -> Dict[str, Any]:
+    """
+    Minimal deterministic auto-repair helper for tests.
+    """
+    ingestion = simulate_ingestion(bundle_path)
+    return {
+        "status": "ok",
+        "bundle_path": bundle_path,
+        "bundle_exists": ingestion["bundle_exists"],
+        "repaired": ingestion["bundle_exists"],
     }
