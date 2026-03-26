@@ -31,6 +31,14 @@ jobs:
             tests/test_execution_pipeline_v4.py \
             tests/test_failure_feedback.py \
             tests/test_generator_v2.py \
+            tests/test_authority_policy.py \
+            tests/test_consensus.py \
+            tests/test_manifest.py \
+            tests/test_auto_repair.py \
+            tests/test_history_engine.py \
+            tests/test_contract_snapshot.py \
+            tests/test_convergence_engine.py \
+            tests/test_bootstrap_permission_unlock.py \
             -q
 
           echo "===== DONE ====="
