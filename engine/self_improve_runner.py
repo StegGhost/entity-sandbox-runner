@@ -1,57 +1,109 @@
 import json
-import sys
-from pathlib import Path
+import os
+import subprocess
+import zipfile
+import time
 
-from engine.step_completion import mark_completed_steps
-from engine.repo_snapshot import build_snapshot
+from engine.repo_snapshot import generate_snapshot
 from engine.llm_self_improve import generate_proposal
-from engine.proposal_to_bundle import proposal_to_bundle
+
+INCOMING = "incoming_bundles"
+SANDBOX = "sandbox_workspace"
+APPLY_LOG = "brain_reports/apply_result.json"
 
 
-REPORT_PATH = Path("brain_reports/self_improve_result.json")
+def run_tests():
+    result = subprocess.run(
+        "python -m pytest -q",
+        shell=True,
+        capture_output=True,
+        text=True
+    )
+    return result.stdout + "\n" + result.stderr
 
 
-def _read_failure_text(argv) -> str:
-    if len(argv) < 2:
-        return ""
-
-    path = Path(argv[1])
-    if not path.exists():
-        return ""
-
-    return path.read_text(encoding="utf-8", errors="ignore")
+def write_file(path, content):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        f.write(content)
 
 
-def _write_report(payload: dict) -> None:
-    REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    REPORT_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+def build_bundle(proposal):
+    ts = int(time.time())
+    bundle_name = f"auto_repair_{proposal['proposal_name']}_{ts}.zip"
+    bundle_path = os.path.join(INCOMING, bundle_name)
+
+    os.makedirs(INCOMING, exist_ok=True)
+
+    with zipfile.ZipFile(bundle_path, "w") as z:
+        for f in proposal.get("files_to_create", []):
+            tmp_path = f"/tmp/{os.path.basename(f['path'])}"
+            with open(tmp_path, "w") as tmp:
+                tmp.write(f["content"])
+            z.write(tmp_path, f["path"])
+
+    return bundle_path
 
 
-def run_self_improve(target_dir=".", failure_text=""):
-    mark_completed_steps()
+def apply_bundle(bundle_path):
+    try:
+        with zipfile.ZipFile(bundle_path, "r") as z:
+            z.extractall(SANDBOX)
 
-    snapshot = build_snapshot(target_dir)
-    proposal = generate_proposal(snapshot, failure_text=failure_text)
+        # overlay onto repo (sandbox-first)
+        for root, _, files in os.walk(SANDBOX):
+            for f in files:
+                src = os.path.join(root, f)
+                dst = os.path.relpath(src, SANDBOX)
+                os.makedirs(os.path.dirname(dst), exist_ok=True)
+                with open(src, "rb") as s, open(dst, "wb") as d:
+                    d.write(s.read())
+
+        return {"status": "applied"}
+
+    except Exception as e:
+        return {"status": "failed", "error": str(e)}
+
+
+def main(failure_file=None):
+
+    failure_text = ""
+    if failure_file and os.path.exists(failure_file):
+        with open(failure_file, "r") as f:
+            failure_text = f.read()
+
+    snapshot = generate_snapshot(".")
+
+    proposal_result = generate_proposal(snapshot, failure_text)
+
+    if proposal_result["status"] != "repair_generated":
+        print(json.dumps(proposal_result, indent=2))
+        return
+
+    proposal = proposal_result["proposal"]
+
+    bundle_path = build_bundle(proposal)
+
+    apply_result = apply_bundle(bundle_path)
+
+    # re-test after apply
+    test_output = run_tests()
 
     result = {
-        "status": "no_op",
-        "snapshot": snapshot,
         "proposal": proposal,
-        "bundle_result": None,
+        "bundle": bundle_path,
+        "apply_result": apply_result,
+        "post_test_output": test_output[:2000]
     }
 
-    if proposal.get("files_to_create"):
-        bundle_result = proposal_to_bundle(
-            proposal,
-            output_path="incoming_bundles/auto_bundle_feedback.zip",
-        )
-        result["status"] = "ok"
-        result["bundle_result"] = bundle_result
+    os.makedirs("brain_reports", exist_ok=True)
+    with open(APPLY_LOG, "w") as f:
+        json.dump(result, f, indent=2)
 
-    _write_report(result)
-    return result
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
-    failure_text = _read_failure_text(sys.argv)
-    print(json.dumps(run_self_improve(failure_text=failure_text), indent=2))
+    import sys
+    arg = sys.argv[1] if len(sys.argv) > 1 else None
+    main(arg)
