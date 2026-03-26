@@ -9,7 +9,7 @@ from engine.llm_self_improve import generate_proposal
 
 INCOMING = "incoming_bundles"
 SANDBOX = "sandbox_workspace"
-APPLY_LOG = "brain_reports/apply_result.json"
+RESULT_PATH = "brain_reports/apply_result.json"
 
 
 def run_tests():
@@ -20,12 +20,6 @@ def run_tests():
         text=True
     )
     return result.stdout + "\n" + result.stderr
-
-
-def write_file(path, content):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-        f.write(content)
 
 
 def build_bundle(proposal):
@@ -50,7 +44,6 @@ def apply_bundle(bundle_path):
         with zipfile.ZipFile(bundle_path, "r") as z:
             z.extractall(SANDBOX)
 
-        # overlay onto repo (sandbox-first)
         for root, _, files in os.walk(SANDBOX):
             for f in files:
                 src = os.path.join(root, f)
@@ -74,33 +67,32 @@ def main(failure_file=None):
 
     snapshot = generate_snapshot(".")
 
-    proposal_result = generate_proposal(snapshot, failure_text)
+    result = generate_proposal(snapshot, failure_text)
 
-    if proposal_result["status"] != "repair_generated":
-        print(json.dumps(proposal_result, indent=2))
+    if result["status"] != "repair_generated":
+        print(json.dumps(result, indent=2))
         return
 
-    proposal = proposal_result["proposal"]
+    proposal = result["proposal"]
 
     bundle_path = build_bundle(proposal)
 
     apply_result = apply_bundle(bundle_path)
 
-    # re-test after apply
-    test_output = run_tests()
+    post_test_output = run_tests()
 
-    result = {
+    final = {
         "proposal": proposal,
         "bundle": bundle_path,
         "apply_result": apply_result,
-        "post_test_output": test_output[:2000]
+        "post_test_output": post_test_output[:2000]
     }
 
     os.makedirs("brain_reports", exist_ok=True)
-    with open(APPLY_LOG, "w") as f:
-        json.dump(result, f, indent=2)
+    with open(RESULT_PATH, "w") as f:
+        json.dump(final, f, indent=2)
 
-    print(json.dumps(result, indent=2))
+    print(json.dumps(final, indent=2))
 
 
 if __name__ == "__main__":
