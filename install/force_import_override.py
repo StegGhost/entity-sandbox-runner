@@ -1,99 +1,38 @@
-import importlib
+"""
+SAFE FORCE IMPORT OVERRIDE (FINAL)
+
+- Only overrides specific modules (receipt_chain)
+- Does NOT hijack global import system
+- Prevents breaking internal package imports
+"""
+
 import sys
 import os
-from types import ModuleType
-from pathlib import Path
-import time
+import importlib.util
 
 
-# 🔥 CONFIG: modules you want to control
-FORCED_MODULES = {
-    "receipt_chain": [
-        "engine/receipt_chain.py",
-        "receipt_chain.py",
-        "install/engine/receipt_chain.py",
-    ],
-    "replay_engine": [
-        "engine/replay_engine.py",
-        "replay_engine.py",
-        "install/engine/replay_engine.py",
-    ]
-}
+def _force_module(module_name: str, file_path: str):
+    if not os.path.exists(file_path):
+        return False
 
-
-TRACE_FILE = "brain_reports/import_override_trace.jsonl"
-
-
-def log_trace(event: dict):
-    os.makedirs("brain_reports", exist_ok=True)
-    with open(TRACE_FILE, "a") as f:
-        f.write(f"{event}\n")
-
-
-def resolve_first_existing(paths):
-    for p in paths:
-        if os.path.exists(p):
-            return p
-    return None
-
-
-def load_module_from_path(module_name: str, file_path: str) -> ModuleType:
     spec = importlib.util.spec_from_file_location(module_name, file_path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module
-
-
-def force_import(module_name: str):
-
-    if module_name not in FORCED_MODULES:
-        return None
-
-    candidate_paths = FORCED_MODULES[module_name]
-    selected = resolve_first_existing(candidate_paths)
-
-    if not selected:
-        log_trace({
-            "ts": time.time(),
-            "module": module_name,
-            "status": "not_found",
-            "candidates": candidate_paths
-        })
-        return None
-
-    module = load_module_from_path(module_name, selected)
 
     sys.modules[module_name] = module
-
-    log_trace({
-        "ts": time.time(),
-        "module": module_name,
-        "status": "forced",
-        "path": selected
-    })
-
-    return module
-
-
-# 🔥 GLOBAL HOOK
-_original_import = __import__
-
-
-def custom_import(name, globals=None, locals=None, fromlist=(), level=0):
-    if name in FORCED_MODULES:
-        module = force_import(name)
-        if module:
-            return module
-
-    return _original_import(name, globals, locals, fromlist, level)
+    return True
 
 
 def activate():
-    sys.meta_path = []  # 🔥 kill meta importers (optional hard mode)
-    builtins = __import__.__globals__
-    builtins["__import__"] = custom_import
+    root = os.getcwd()
 
-    log_trace({
-        "ts": time.time(),
-        "event": "force_import_override_activated"
-    })
+    candidates = [
+        os.path.join(root, "receipt_chain.py"),
+        os.path.join(root, "engine", "receipt_chain.py"),
+        os.path.join(root, "install", "engine", "receipt_chain.py"),
+    ]
+
+    for path in candidates:
+        if _force_module("receipt_chain", path):
+            print(f"[SAFE IMPORT OVERRIDE] receipt_chain -> {path}")
+            break
