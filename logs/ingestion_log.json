@@ -4414,5 +4414,11 @@
     "ok": false,
     "error": "missing_bundle_manifest",
     "ts": 1774550526.4620094
+  },
+  {
+    "bundle": "auto_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version', 'install_mode']",
+    "ts": 1774554195.6857069
   }
 ]
