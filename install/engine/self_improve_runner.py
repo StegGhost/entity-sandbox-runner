@@ -1,10 +1,10 @@
 """
-SELF IMPROVE RUNNER — minimal stable contract implementation
+SELF IMPROVE RUNNER — stable contract implementation
 
 Purpose:
 - provide run_self_improve for tests/test_self_improve.py
+- accept failure_text keyword argument
 - keep behavior deterministic
-- avoid external dependencies while stabilizing the sandbox baseline
 """
 
 from __future__ import annotations
@@ -16,34 +16,33 @@ from install.engine.proposal_to_bundle import proposal_to_bundle
 
 
 def run_self_improve(
-    context: Optional[Dict[str, Any]] = None,
+    snapshot: Optional[Dict[str, Any]] = None,
+    failure_text: str = "",
     allowed_paths: Optional[list[str]] = None,
 ) -> Dict[str, Any]:
     """
     Minimal deterministic self-improve pipeline:
 
-    1. Generate a proposal
-    2. Convert proposal to a bundle structure
-    3. Return a stable result object
+    1. Generate proposal from snapshot + failure_text
+    2. Convert proposal into bundle structure
+    3. Return stable result
     """
-    context = context or {}
+    snapshot = snapshot or {}
     allowed_paths = allowed_paths or []
 
-    proposal = generate_proposal(context)
+    proposal = generate_proposal(snapshot, failure_text=failure_text)
     bundle = proposal_to_bundle(proposal, allowed_paths=allowed_paths)
 
     return {
         "status": "ok",
-        "context": context,
+        "snapshot": snapshot,
+        "failure_text": failure_text,
         "proposal": proposal,
         "bundle": bundle,
     }
 
 
 def main() -> Dict[str, Any]:
-    """
-    Simple entry point for direct invocation.
-    """
     return run_self_improve({})
 
 
