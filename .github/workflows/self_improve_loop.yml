@@ -17,35 +17,31 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Force latest repo state
-        run: git pull origin main
+      - run: git pull origin main
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt || true
+      - run: pip install -r requirements.txt || true
 
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=${PYTHONPATH}:$(pwd)" >> $GITHUB_ENV
+      - run: echo "PYTHONPATH=${PYTHONPATH}:$(pwd)" >> $GITHUB_ENV
 
-      - name: Clean receipts
-        run: rm -rf receipts receipts_node_a receipts_node_b || true
+      - run: rm -rf receipts receipts_node_a receipts_node_b || true
 
-      - name: Run focused sandbox tests
+      - name: Run tests (capture)
         run: python -m pytest -q > test_output.txt 2>&1 || true
 
-      - name: Run self-improve FULL LOOP
+      - name: Run multi-repair loop
         run: python engine/self_improve_runner.py test_output.txt
 
       - name: Show result
         run: cat brain_reports/apply_result.json || true
 
-      - name: Commit changes
+      - name: Commit if improved
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add .
-          git diff --cached --quiet || git commit -m "self-improve: autonomous repair"
+          git diff --cached --quiet || git commit -m "self-improve: selected best repair"
           git push
