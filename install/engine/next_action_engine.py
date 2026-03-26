@@ -37,44 +37,85 @@ def write_json(path, payload):
         f.write("\n")
 
 
-def choose_next_action(snapshot, reconciled):
-    incoming_count = snapshot.get("incoming_bundle_count", 0)
-    failed_count = snapshot.get("failed_bundle_count", 0)
-    review_state = (reconciled.get("review") or {}).get("state")
+# 🔍 NEW — detect repo repair candidates
+def detect_repo_issues(snapshot):
+    issues = []
 
-    if incoming_count > 0:
-        return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "process_incoming_bundle",
+    # missing expected files (baseline sanity)
+    expected_files = [
+        "install/engine/execute_next_action.py",
+        "install/engine/next_action_engine.py",
+        "install/engine/reconcile_execution_state.py",
+        "install/engine/repo_snapshot.py",
+    ]
+
+    existing = set(snapshot.get("files", []))
+
+    for f in expected_files:
+        if f not in existing:
+            issues.append({
+                "type": "missing_core_file",
+                "target": f,
+                "priority": "critical",
+            })
+
+    # bundle backlog
+    if snapshot.get("incoming_bundle_count", 0) > 0:
+        issues.append({
+            "type": "incoming_bundle",
             "priority": "high",
-            "reason": "incoming bundles are waiting",
-        }
+        })
 
-    if review_state in {"executed_pending_review", "pending_review"}:
-        return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "await_settlement",
+    if snapshot.get("failed_bundle_count", 0) > 0:
+        issues.append({
+            "type": "failed_bundle",
             "priority": "medium",
-            "reason": f"previous execution still settling: {review_state}",
-        }
+        })
 
-    if failed_count > 0:
-        return {
-            "ts": utc_now(),
-            "status": "ok",
-            "action": "requeue_failed_bundle",
-            "priority": "medium",
-            "reason": "no incoming bundles; attempt failed-bundle recovery",
-        }
+    return issues
 
+
+def choose_next_action(snapshot, reconciled):
+    issues = detect_repo_issues(snapshot)
+
+    if issues:
+        top = issues[0]
+
+        if top["type"] == "missing_core_file":
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "action": "repair_repo_file",
+                "target": top["target"],
+                "priority": "critical",
+                "reason": "missing core engine file",
+            }
+
+        if top["type"] == "incoming_bundle":
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "action": "process_incoming_bundle",
+                "priority": "high",
+                "reason": "incoming bundles waiting",
+            }
+
+        if top["type"] == "failed_bundle":
+            return {
+                "ts": utc_now(),
+                "status": "ok",
+                "action": "requeue_failed_bundle",
+                "priority": "medium",
+                "reason": "failed bundles exist",
+            }
+
+    # fallback to stabilization
     return {
         "ts": utc_now(),
         "status": "ok",
         "action": "idle",
         "priority": "low",
-        "reason": "no admissible next action found",
+        "reason": "no issues detected",
     }
 
 
@@ -88,25 +129,18 @@ def main():
 
     output = {
         "generated_at": utc_now(),
+        "next_action": next_action,
         "snapshot_summary": {
             "repo_hash": snapshot.get("repo_hash"),
-            "incoming_bundle_count": snapshot.get("incoming_bundle_count"),
-            "installed_bundle_count": snapshot.get("installed_bundle_count"),
-            "failed_bundle_count": snapshot.get("failed_bundle_count"),
-            "last_review_state": snapshot.get("last_review_state"),
-        },
-        "reconciled_summary": {
-            "review_state": (reconciled.get("review") or {}).get("state"),
-            "review_reason": (reconciled.get("review") or {}).get("reason"),
-        },
-        "next_action": next_action,
+            "incoming": snapshot.get("incoming_bundle_count"),
+            "failed": snapshot.get("failed_bundle_count"),
+        }
     }
 
     write_json(OUTPUT_PATH, output)
 
     print(json.dumps({
         "status": "ok",
-        "output": OUTPUT_PATH,
         "next_action": next_action,
     }, indent=2))
 
