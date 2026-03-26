@@ -1,13 +1,18 @@
-import os
-import sys
+
 from pathlib import Path
+import shutil
 
 ROOT = Path.cwd()
-sys.path.insert(0, str(ROOT))
+SRC = ROOT / "install"
 
-print("apply.py compatibility wrapper: delegating to install.ingestion_v2.process()")
+def move(src, dst):
+    if not src.exists(): return
+    for p in src.rglob("*"):
+        if p.is_file():
+            t = dst / p.relative_to(src)
+            t.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(p, t)
 
-from install.ingestion_v2 import process
-
-if __name__ == "__main__":
-    process()
+move(SRC/"engine", ROOT/"engine")
+move(SRC/"tests", ROOT/"tests")
+print("tokenized governance installed")
