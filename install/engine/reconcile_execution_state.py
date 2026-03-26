@@ -5,10 +5,11 @@ from datetime import datetime
 ROOT = os.getcwd()
 
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
+LOGS = os.path.join(ROOT, "logs")
 
 NEXT_ACTION_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 EXECUTION_RESULT_PATH = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
-SNAPSHOT_PATH = os.path.join(BRAIN_REPORTS, "repo_snapshot.json")
+INGESTION_LOG_PATH = os.path.join(LOGS, "ingestion_log.json")
 OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "reconciled_state.json")
 
 
@@ -25,97 +26,121 @@ def load_json(path, default):
         return default
     try:
         with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data
+            return json.load(f)
     except Exception:
         return default
 
 
-def normalize_bundle_name(name):
+def normalize(name):
     if not name:
         return None
     return os.path.basename(name)
 
 
-def build_reconciled_state():
-    next_doc = load_json(NEXT_ACTION_PATH, {})
-    exec_doc = load_json(EXECUTION_RESULT_PATH, {})
-    snapshot = load_json(SNAPSHOT_PATH, {})
+def family_key(name):
+    if not name:
+        return None
+    name = normalize(name)
+    if name.endswith(".zip"):
+        name = name[:-4]
+    for suffix in ["_manifest_fixed", "_fixed", "_bundle"]:
+        if name.endswith(suffix):
+            name = name[:-len(suffix)]
+    if "_v" in name:
+        name = name.split("_v")[0]
+    return name
 
-    next_action = next_doc.get("next_action", {})
-    execution = exec_doc.get("execution", {})
 
-    selected_action = next_action.get("action")
-    selected_reason = next_action.get("reason")
-
-    execution_status = execution.get("status")
-    execution_bundle = normalize_bundle_name(execution.get("bundle"))
-    execution_family = execution.get("family")
-
-    review_state = "unknown"
-    review_reason = "insufficient_evidence"
-
-    if selected_action == "idle":
-        review_state = "idle"
-        review_reason = "no_action_requested"
-    elif selected_action == "await_settlement":
-        review_state = "pending_review"
-        review_reason = "awaiting_settlement"
-    elif execution_status == "ok" and execution.get("action") == "process_incoming_bundle":
-        review_state = "ingested"
-        review_reason = "bundle_moved_to_installed"
-    elif execution_status == "ok" and execution.get("action") == "requeue_failed_bundle":
-        review_state = "executed_pending_review"
-        review_reason = "bundle_requeued_to_incoming"
-    elif execution_status == "failed":
-        review_state = "failed"
-        review_reason = execution.get("reason") or "execution_failed"
-
-    state = {
-        "generated_at": utc_now(),
-        "selected": {
-            "action": selected_action,
-            "reason": selected_reason,
-        },
-        "execution": {
-            "status": execution_status,
-            "executed": execution.get("executed"),
-            "action": execution.get("action"),
-            "bundle": execution_bundle,
-            "family": execution_family,
-            "details": execution,
-        },
-        "snapshot": {
-            "repo_hash": snapshot.get("repo_hash"),
-            "incoming_bundle_count": snapshot.get("incoming_bundle_count"),
-            "installed_bundle_count": snapshot.get("installed_bundle_count"),
-            "failed_bundle_count": snapshot.get("failed_bundle_count"),
-        },
-        "review": {
-            "state": review_state,
-            "reason": review_reason,
-            "bundle": execution_bundle,
-            "family": execution_family,
-        },
-    }
-
-    return state
+def latest_ingestion_entry(bundle, log):
+    bundle = normalize(bundle)
+    matches = [e for e in log if normalize(e.get("bundle")) == bundle]
+    if not matches:
+        return None
+    return sorted(matches, key=lambda x: x.get("ts", 0))[-1]
 
 
 def main():
     ensure_dir(BRAIN_REPORTS)
-    reconciled = build_reconciled_state()
+
+    next_doc = load_json(NEXT_ACTION_PATH, {})
+    exec_doc = load_json(EXECUTION_RESULT_PATH, {})
+    ingestion_log = load_json(INGESTION_LOG_PATH, [])
+
+    next_action = next_doc.get("next_action", {})
+    execution = exec_doc.get("execution", {})
+    ingestion = exec_doc.get("ingestion", {})
+
+    target = normalize(next_action.get("target"))
+    action = next_action.get("action")
+    family = next_action.get("family") or family_key(target)
+
+    execution_bundle = normalize(
+        execution.get("bundle")
+        or execution.get("repaired_bundle")
+        or execution.get("target")
+        or target
+    )
+
+    log_match = latest_ingestion_entry(execution_bundle, ingestion_log)
+
+    # ---- CORE DECISION LOGIC ----
+    if execution.get("status") == "failed":
+        review_state = "failed"
+        reason = execution.get("reason", "execution_failed")
+
+    elif log_match:
+        if log_match.get("ok") is True:
+            review_state = "ingested"
+            reason = "ingestion_success"
+        else:
+            review_state = "failed"
+            reason = log_match.get("error", "ingestion_failed")
+
+    elif ingestion.get("status") == "triggered":
+        review_state = "pending"
+        reason = "waiting_for_ingestion"
+
+    elif execution.get("status") == "ok":
+        review_state = "executed"
+        reason = "execution_without_confirmation"
+
+    else:
+        review_state = "unknown"
+        reason = "no_signal"
+
+    # ---- OUTPUT ----
+    result = {
+        "generated_at": utc_now(),
+        "selected": {
+            "action": action,
+            "target": target,
+            "family": family,
+        },
+        "execution": {
+            "status": execution.get("status"),
+            "bundle": execution_bundle,
+        },
+        "ingestion": {
+            "triggered": ingestion.get("status") == "triggered",
+            "log_found": log_match is not None,
+        },
+        "review": {
+            "state": review_state,
+            "reason": reason,
+            "bundle": execution_bundle,
+            "family": family,
+        },
+    }
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(reconciled, f, indent=2)
+        json.dump(result, f, indent=2)
         f.write("\n")
 
     print(json.dumps({
         "status": "ok",
-        "output": OUTPUT_PATH,
-        "review_state": reconciled["review"]["state"],
-        "bundle": reconciled["review"]["bundle"],
-        "family": reconciled["review"]["family"],
+        "review_state": review_state,
+        "bundle": execution_bundle,
+        "family": family,
     }, indent=2))
 
 
