@@ -5,11 +5,13 @@ Purpose:
 - run the exact controlled sandbox test surface that is currently green
 - ensure pytest is available at runtime
 - emit a stable report for the autonomous loop workflow
+- capture pre/post state snapshots from install.engine.repo_snapshot
 - avoid scanning the full repo or drifting into broken test surfaces
 """
 
 from __future__ import annotations
 
+import importlib
 import json
 import os
 import subprocess
@@ -107,13 +109,93 @@ def write_json(path: str, payload: Dict[str, Any]) -> None:
         json.dump(payload, f, indent=2, sort_keys=True)
 
 
+def _capture_snapshot(output_path: str) -> Dict[str, Any]:
+    """
+    Capture a state snapshot using install.engine.repo_snapshot if available.
+
+    Supported repo_snapshot contracts:
+    - write_snapshot(root=".", output_path=...)
+    - write_snapshot(output_path=...)
+    - build_snapshot(root=".")
+    - build_snapshot()
+
+    If none are available, return a structured failure payload instead of raising.
+    """
+    try:
+        module = importlib.import_module("install.engine.repo_snapshot")
+    except Exception as exc:
+        payload = {
+            "ok": False,
+            "error": f"snapshot_import_failed: {exc}",
+            "output_path": output_path,
+        }
+        write_json(output_path, payload)
+        return payload
+
+    write_snapshot_fn = getattr(module, "write_snapshot", None)
+    build_snapshot_fn = getattr(module, "build_snapshot", None)
+
+    try:
+        if callable(write_snapshot_fn):
+            try:
+                snapshot = write_snapshot_fn(root=".", output_path=output_path)
+            except TypeError:
+                try:
+                    snapshot = write_snapshot_fn(output_path=output_path)
+                except TypeError:
+                    snapshot = write_snapshot_fn()
+                    write_json(output_path, snapshot if isinstance(snapshot, dict) else {"value": snapshot})
+
+            if isinstance(snapshot, dict):
+                return {"ok": True, "snapshot": snapshot, "output_path": output_path}
+
+            payload = {"ok": True, "snapshot": {"value": snapshot}, "output_path": output_path}
+            write_json(output_path, payload["snapshot"])
+            return payload
+
+        if callable(build_snapshot_fn):
+            try:
+                snapshot = build_snapshot_fn(root=".")
+            except TypeError:
+                snapshot = build_snapshot_fn()
+
+            if not isinstance(snapshot, dict):
+                snapshot = {"value": snapshot}
+
+            write_json(output_path, snapshot)
+            return {"ok": True, "snapshot": snapshot, "output_path": output_path}
+
+        payload = {
+            "ok": False,
+            "error": "snapshot_api_missing",
+            "output_path": output_path,
+        }
+        write_json(output_path, payload)
+        return payload
+
+    except Exception as exc:
+        payload = {
+            "ok": False,
+            "error": f"snapshot_capture_failed: {exc}",
+            "output_path": output_path,
+        }
+        write_json(output_path, payload)
+        return payload
+
+
 def main() -> None:
     started_at = time.time()
+    report_path = "payload/runtime/autonomous_loop_report.json"
+    pre_snapshot_path = "payload/runtime/system_snapshot_pre.json"
+    post_snapshot_path = "payload/runtime/system_snapshot_post.json"
+
+    pre_snapshot_result = _capture_snapshot(pre_snapshot_path)
+
     ensure_pytest()
     test_result = run_controlled_tests()
-    finished_at = time.time()
 
-    report_path = "payload/runtime/autonomous_loop_report.json"
+    post_snapshot_result = _capture_snapshot(post_snapshot_path)
+    finished_at = time.time()
 
     report = {
         "status": "ok",
@@ -131,6 +213,12 @@ def main() -> None:
             test_result.get("stdout", ""),
             test_result.get("stderr", ""),
         ),
+        "state": {
+            "pre": pre_snapshot_path,
+            "post": post_snapshot_path,
+            "pre_ok": pre_snapshot_result["ok"],
+            "post_ok": post_snapshot_result["ok"],
+        },
     }
 
     write_json(report_path, report)
