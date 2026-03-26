@@ -44,10 +44,6 @@ def classify_failure(failure_text: str) -> str:
         classification = "receipt_cycle"
     elif "cannot import name" in failure_text:
         classification = "import_error"
-    elif "missing_cge_root" in failure_text:
-        classification = "cge_missing_root"
-    elif "AssertionError" in failure_text:
-        classification = "test_assertion_failure"
     else:
         classification = "unknown_failure"
 
@@ -61,82 +57,88 @@ def classify_failure(failure_text: str) -> str:
 
 
 # =========================
-# REPAIRS
+# MULTI-REPAIR GENERATION
 # =========================
 
-def repair_receipt_chain_fork():
+def repair_receipt_chain_fork_strict():
     return {
-        "proposal_name": "repair_receipt_chain_fork",
+        "proposal_name": "fork_strict",
         "files_to_create": [
             {
-                "path": "engine/receipt_fork_resolver.py",
+                "path": "engine/receipt_chain_patch.py",
                 "content": '''
-from typing import List, Dict, Any
-
-def resolve_forks(receipts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    by_prev = {}
-
-    for r in receipts:
-        prev = r.get("previous_receipt_hash")
-        by_prev.setdefault(prev, []).append(r)
-
-    cleaned = []
-
-    for prev, children in by_prev.items():
-        if len(children) == 1:
-            cleaned.append(children[0])
-        else:
-            children.sort(key=lambda x: x.get("timestamp", 0))
-            cleaned.append(children[0])
-
-    return cleaned
+def select_single_child(children):
+    return sorted(children, key=lambda x: x.get("timestamp", 0))[0]
 '''
             }
         ]
     }
 
 
-def repair_unknown():
+def repair_receipt_chain_fork_prune():
     return {
-        "proposal_name": "unknown_failure",
+        "proposal_name": "fork_prune",
         "files_to_create": [
             {
-                "path": "brain_reports/unknown_failure.log",
-                "content": "Unknown failure captured\n"
+                "path": "engine/receipt_chain_patch.py",
+                "content": '''
+def select_single_child(children):
+    return children[0]
+'''
             }
         ]
     }
 
 
-def generate_repair_plan(classification: str):
+def repair_receipt_chain_fork_guard():
+    return {
+        "proposal_name": "fork_guard",
+        "files_to_create": [
+            {
+                "path": "engine/receipt_chain_patch.py",
+                "content": '''
+def select_single_child(children):
+    if len(children) > 1:
+        return children[0]
+    return children[0]
+'''
+            }
+        ]
+    }
+
+
+def generate_repair_candidates(classification: str) -> List[Dict[str, Any]]:
     if classification == "receipt_chain_fork":
-        return repair_receipt_chain_fork()
-    else:
-        return repair_unknown()
+        return [
+            repair_receipt_chain_fork_strict(),
+            repair_receipt_chain_fork_prune(),
+            repair_receipt_chain_fork_guard()
+        ]
+
+    return [{
+        "proposal_name": "noop",
+        "files_to_create": []
+    }]
 
 
 # =========================
 # ENTRY
 # =========================
 
-def generate_proposal(snapshot: Dict[str, Any], failure_text: str = ""):
+def generate_proposals(snapshot: Dict[str, Any], failure_text: str = ""):
 
     if not failure_text.strip():
         return {
             "status": "no_failure",
-            "proposal": {
-                "proposal_name": "no_op",
-                "files_to_create": [],
-                "gaps": []
-            }
+            "proposals": []
         }
 
     classification = classify_failure(failure_text)
 
-    repair = generate_repair_plan(classification)
+    proposals = generate_repair_candidates(classification)
 
     return {
-        "status": "repair_generated",
+        "status": "candidates_generated",
         "classification": classification,
-        "proposal": repair
+        "proposals": proposals
     }
