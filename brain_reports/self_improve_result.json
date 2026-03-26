@@ -2,7 +2,7 @@
   "status": "no_op",
   "snapshot": {
     "root": ".",
-    "file_count": 10631,
+    "file_count": 10630,
     "test_count": 118,
     "files": [
       "shard_reliability_lock_bundle_v1.zip",
@@ -226,9 +226,18 @@
     "failed_bundle_count": 146
   },
   "proposal": {
-    "proposal_name": "no_op",
-    "files_to_create": [],
-    "gaps": []
+    "status": "repair_generated",
+    "classification": "receipt_chain_fork",
+    "proposal": {
+      "proposal_name": "repair_receipt_chain_fork",
+      "files_to_create": [
+        {
+          "path": "engine/receipt_fork_resolver.py",
+          "content": "\nfrom typing import List, Dict, Any\n\ndef resolve_forks(receipts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:\n    by_prev = {}\n\n    for r in receipts:\n        prev = r.get(\"previous_receipt_hash\")\n        by_prev.setdefault(prev, []).append(r)\n\n    cleaned = []\n\n    for prev, children in by_prev.items():\n        if len(children) == 1:\n            cleaned.append(children[0])\n        else:\n            # quarantine extras\n            children.sort(key=lambda x: x.get(\"timestamp\", 0))\n            cleaned.append(children[0])\n\n    return cleaned\n"
+        }
+      ],
+      "quarantine": true
+    }
   },
   "bundle_result": null
 }
