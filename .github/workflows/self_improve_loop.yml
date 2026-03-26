@@ -18,69 +18,34 @@ jobs:
           fetch-depth: 0
 
       - name: Force latest repo state
-        run: |
-          git pull origin main
+        run: git pull origin main
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install fastapi uvicorn pytest httpx
+        run: pip install -r requirements.txt || true
 
       - name: Set PYTHONPATH
-        run: |
-          echo "PYTHONPATH=${PYTHONPATH}:$(pwd):$(pwd)/install" >> $GITHUB_ENV
+        run: echo "PYTHONPATH=${PYTHONPATH}:$(pwd)" >> $GITHUB_ENV
 
       - name: Clean receipts
-        run: |
-          rm -rf receipts receipts_node_a receipts_node_b || true
-          mkdir -p receipts
+        run: rm -rf receipts receipts_node_a receipts_node_b || true
 
-      - name: Run focused sandbox tests (capture output)
-        run: |
-          python -m pytest -q \
-            test_decision_engine.py \
-            test_api.py \
-            install/test_llm_adapter.py \
-            test_replay_system.py \
-            > test_output.txt 2>&1 || true
+      - name: Run focused sandbox tests
+        run: python -m pytest -q > test_output.txt 2>&1 || true
 
-      - name: Show captured test output
-        run: |
-          echo "===== TEST OUTPUT BEGIN ====="
-          cat test_output.txt || true
-          echo "===== TEST OUTPUT END ====="
+      - name: Run self-improve FULL LOOP
+        run: python engine/self_improve_runner.py test_output.txt
 
-      - name: Run self-improve generator
-        run: |
-          python engine/self_improve_runner.py test_output.txt
+      - name: Show result
+        run: cat brain_reports/apply_result.json || true
 
-      - name: Show self-improve result
-        run: |
-          echo "===== SELF IMPROVE RESULT ====="
-          cat brain_reports/self_improve_result.json || true
-          echo "===== END SELF IMPROVE RESULT ====="
-
-      - name: Show generated bundles
-        run: |
-          echo "INCOMING_BUNDLES AFTER SELF-IMPROVE:"
-          ls -la incoming_bundles || true
-
-      - name: Commit generated artifacts
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
-
-          git add incoming_bundles || true
-          git add brain_reports/self_improve_result.json || true
-          git add brain_reports/repo_snapshot_trace.jsonl || true
-
-          if git diff --cached --quiet; then
-            echo "No changes"
-          else
-            git commit -m "self-improve: generate bundle from sandbox loop"
-            git push
-          fi
+          git add .
+          git diff --cached --quiet || git commit -m "self-improve: autonomous repair"
+          git push
