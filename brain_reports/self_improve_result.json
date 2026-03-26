@@ -2,7 +2,7 @@
   "status": "no_op",
   "snapshot": {
     "root": ".",
-    "file_count": 10625,
+    "file_count": 10631,
     "test_count": 118,
     "files": [
       "shard_reliability_lock_bundle_v1.zip",
@@ -221,7 +221,7 @@
     "failed_cge_bundles": [
       "stegcge_closure_modules_v1_bundle.zip"
     ],
-    "incoming_bundle_count": 12,
+    "incoming_bundle_count": 16,
     "installed_bundle_count": 134,
     "failed_bundle_count": 146
   },
