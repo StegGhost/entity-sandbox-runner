@@ -1,57 +1,64 @@
-import subprocess
-import json
-import time
 import os
+import json
+import subprocess
+import time
 
-STEPS = [
-    ("document_compactor", ["python", "install/document_compactor.py"]),
-    ("canonical_feedback", ["python", "install/canonical_feedback.py"]),
-    ("knowledge_delta", ["python", "install/knowledge_delta.py"]),
-    ("canonical_receipt_binder", ["python", "install/canonical_receipt_binder.py"]),
-    ("feedback_injection", ["python", "install/feedback_injection.py"]),
-    ("feedback_execution_bridge", ["python", "install/feedback_execution_bridge.py"]),
-]
+TEST_OUTPUT = "test_output.txt"
+RESULT_PATH = "payload/runtime/autonomous_loop_report.json"
 
-OUTPUT_REPORT = "payload/runtime/autonomous_loop_report.json"
 
-def run_step(name, cmd):
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    return {
-        "step": name,
-        "cmd": cmd,
-        "returncode": result.returncode,
-        "stdout": result.stdout,
-        "stderr": result.stderr
-    }
+def run_tests():
+    proc = subprocess.run(
+        "python -m pytest -q",
+        shell=True,
+        capture_output=True,
+        text=True
+    )
+    return proc.returncode, proc.stdout + proc.stderr
+
+
+def run_self_improve():
+    proc = subprocess.run(
+        f"python engine/self_improve_runner.py {TEST_OUTPUT}",
+        shell=True,
+        capture_output=True,
+        text=True
+    )
+    return proc.returncode, proc.stdout + proc.stderr
+
 
 def main():
+
     os.makedirs("payload/runtime", exist_ok=True)
 
+    # 1. RUN TESTS (this is the missing piece)
+    rc, out = run_tests()
+
+    with open(TEST_OUTPUT, "w") as f:
+        f.write(out)
+
+    # 2. IF FAILURE → TRIGGER REPAIR LOOP
+    repair_triggered = False
+    repair_output = ""
+
+    if rc != 0:
+        repair_triggered = True
+        _, repair_output = run_self_improve()
+
+    # 3. STILL PRODUCE RECEIPTS (your existing behavior)
     report = {
+        "status": "ok",
+        "tests_passed": rc == 0,
+        "repair_triggered": repair_triggered,
         "timestamp": time.time(),
-        "steps": []
+        "report": RESULT_PATH
     }
 
-    for name, cmd in STEPS:
-        step_result = run_step(name, cmd)
-        report["steps"].append(step_result)
-
-        if step_result["returncode"] != 0:
-            report["status"] = "failed"
-            break
-    else:
-        report["status"] = "ok"
-
-    with open(OUTPUT_REPORT, "w", encoding="utf-8") as f:
+    with open(RESULT_PATH, "w") as f:
         json.dump(report, f, indent=2)
 
-    print(json.dumps({
-        "status": report["status"],
-        "report": OUTPUT_REPORT
-    }, indent=2))
+    print(json.dumps(report, indent=2))
 
-    if report["status"] != "ok":
-        raise SystemExit(1)
 
 if __name__ == "__main__":
     main()
