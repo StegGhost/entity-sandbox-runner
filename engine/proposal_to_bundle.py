@@ -1,51 +1,58 @@
-import os
+import io
 import json
-import uuid
+import os
+import zipfile
 from datetime import datetime
+from pathlib import Path
 
 
-def proposal_to_bundle(proposal: dict):
+def proposal_to_bundle(proposal: dict, output_path: str = "incoming_bundles/auto_bundle_feedback.zip"):
     """
-    Converts a proposal into a bundle on disk.
+    Convert a proposal into a real zip bundle for ingestion.
+
+    Expected proposal shape:
+    {
+      "proposal_name": "...",
+      "files_to_create": [
+        {"path": "install/foo.py", "content": "..."}
+      ]
+    }
     """
 
-    bundle_id = f"bundle_{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}_{uuid.uuid4().hex[:6]}"
-    base_path = os.path.join("incoming_bundles", bundle_id)
-
-    os.makedirs(base_path, exist_ok=True)
+    output = Path(output_path)
+    output.parent.mkdir(parents=True, exist_ok=True)
 
     files = proposal.get("files_to_create", [])
+    normalized_files = []
 
-    written_files = []
-
-    for file in files:
-        path = file.get("path")
-        content = file.get("content", "")
-
-        if not path:
+    for item in files:
+        rel_path = item.get("path")
+        content = item.get("content", "")
+        if not rel_path:
             continue
-
-        full_path = os.path.join(base_path, path)
-        os.makedirs(os.path.dirname(full_path), exist_ok=True)
-
-        with open(full_path, "w") as f:
-            f.write(content)
-
-        written_files.append(path)
+        normalized_files.append({
+            "path": rel_path.replace("\\", "/"),
+            "content": content,
+        })
 
     manifest = {
-        "bundle_id": bundle_id,
-        "proposal_name": proposal.get("proposal_name"),
-        "created_at": datetime.utcnow().isoformat(),
-        "files": written_files,
+        "bundle_name": proposal.get("proposal_name", "auto_bundle_feedback"),
+        "bundle_version": "1.0.0",
+        "install_mode": "folder_map",
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "files": [f["path"] for f in normalized_files],
     }
 
-    with open(os.path.join(base_path, "bundle_manifest.json"), "w") as f:
-        json.dump(manifest, f, indent=2)
+    with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr("bundle_manifest.json", json.dumps(manifest, indent=2) + "\n")
+
+        for item in normalized_files:
+            zf.writestr(item["path"], item["content"])
 
     return {
         "status": "bundle_created",
-        "bundle_id": bundle_id,
-        "path": base_path,
-        "files_written": written_files,
+        "output_path": str(output),
+        "bundle_name": manifest["bundle_name"],
+        "bundle_version": manifest["bundle_version"],
+        "files_written": manifest["files"],
     }
