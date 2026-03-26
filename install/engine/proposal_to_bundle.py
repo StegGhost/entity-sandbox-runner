@@ -1,72 +1,83 @@
-import json
-from typing import Dict, Any
+"""
+PROPOSAL TO BUNDLE — minimal stable contract implementation
 
-
-def proposal_to_bundle(snapshot: Dict[str, Any], failure_text: str) -> Dict[str, Any]:
-
-    # -------------------------
-    # DETECT FORK FAILURE
-    # -------------------------
-    if "multiple children found (fork detected)" not in failure_text:
-        return {
-            "proposal_name": "no_op",
-            "files_to_create": [],
-            "gaps": ["unsupported_failure"]
-        }
-
-    # -------------------------
-    # DIRECT MUTATION PATCH
-    # -------------------------
-    patched_code = """
-def build_chain(receipts):
-    if not receipts:
-        return []
-
-    by_prev = {}
-    for r in receipts:
-        prev = r.get("previous_receipt_hash")
-        by_prev.setdefault(prev, []).append(r)
-
-    genesis = by_prev.get(None, [])
-    if len(genesis) != 1:
-        raise ValueError("chain must contain exactly one genesis receipt")
-
-    ordered = []
-    seen = set()
-    current = genesis[0]
-
-    while current is not None:
-        h = current.get("receipt_hash")
-
-        if h in seen:
-            raise ValueError("cycle detected in receipt chain")
-
-        seen.add(h)
-        ordered.append(current)
-
-        children = by_prev.get(h, [])
-
-        # 🔥 FIX: instead of failing → resolve fork deterministically
-        if len(children) > 1:
-            # choose highest trust score
-            children = sorted(
-                children,
-                key=lambda x: x.get("authority", {}).get("trust_score", 0),
-                reverse=True
-            )
-
-        current = children[0] if children else None
-
-    return ordered
+Purpose:
+- normalize allowed paths for generated bundle files
+- convert proposal payloads into a deterministic bundle-like structure
+- satisfy generator_v2 / self_improve contract imports
 """
 
+from __future__ import annotations
+
+import json
+from typing import Any, Dict, List
+
+
+def normalize_allowed_paths(paths: List[str]) -> List[str]:
+    """
+    Normalize path allowlists so callers have a stable contract.
+
+    Rules:
+    - convert backslashes to forward slashes
+    - strip whitespace
+    - remove empty entries
+    - de-duplicate while preserving order
+    - ensure directory-like allowed roots end with '/'
+    """
+    seen = set()
+    normalized: List[str] = []
+
+    for raw in paths or []:
+        if raw is None:
+            continue
+
+        path = str(raw).replace("\\", "/").strip()
+        if not path:
+            continue
+
+        if not path.endswith("/") and "." not in path.split("/")[-1]:
+            path = path + "/"
+
+        if path not in seen:
+            seen.add(path)
+            normalized.append(path)
+
+    return normalized
+
+
+def _normalize_file_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
+    path = str(entry.get("path", "")).replace("\\", "/").strip()
+    content = entry.get("content", "")
+
     return {
-        "proposal_name": "fix_receipt_chain_fork",
-        "files_to_create": [
-            {
-                "path": "receipt_chain.py",
-                "content": patched_code
-            }
-        ],
-        "gaps": []
+        "path": path,
+        "content": content,
     }
+
+
+def proposal_to_bundle(proposal: Dict[str, Any], allowed_paths: List[str] | None = None) -> Dict[str, Any]:
+    """
+    Convert a proposal object into a deterministic bundle structure.
+    """
+    normalized_allowed = normalize_allowed_paths(allowed_paths or [])
+
+    files = []
+    for entry in proposal.get("files_to_create", []) or []:
+        normalized = _normalize_file_entry(entry)
+        if normalized["path"]:
+            files.append(normalized)
+
+    return {
+        "bundle_name": proposal.get("proposal_name", "generated_bundle"),
+        "allowed_paths": normalized_allowed,
+        "files": files,
+        "file_count": len(files),
+        "metadata": proposal.get("metadata", {}),
+    }
+
+
+def serialize_bundle(bundle: Dict[str, Any]) -> str:
+    """
+    Deterministic JSON serialization helper.
+    """
+    return json.dumps(bundle, sort_keys=True, indent=2, default=str)
