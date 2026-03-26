@@ -185,6 +185,16 @@ def requeue_failed_bundle(state):
     }
 
 
+def repair_repo_file(target):
+    return {
+        "status": "ok",
+        "executed": True,
+        "action": "repair_repo_file",
+        "target": target,
+        "reason": "repair stub (no-op safe mode)",
+    }
+
+
 def await_settlement():
     return {
         "status": "ok",
@@ -214,11 +224,14 @@ def main():
     next_action = next_action_doc.get("next_action", {}) or {}
 
     action = next_action.get("action")
+    target = next_action.get("target")
 
     if action == "process_incoming_bundle":
         execution = process_incoming_bundle(state)
     elif action == "requeue_failed_bundle":
         execution = requeue_failed_bundle(state)
+    elif action == "repair_repo_file":
+        execution = repair_repo_file(target)
     elif action == "await_settlement":
         execution = await_settlement()
     else:
