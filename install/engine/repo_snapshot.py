@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import time
@@ -5,6 +6,7 @@ from pathlib import Path
 
 
 TRACE_LOG_PATH = Path("brain_reports/repo_snapshot_trace.jsonl")
+DEFAULT_OUTPUT_PATH = Path("payload/runtime/repo_snapshot.json")
 
 
 def _safe_read_json(path: Path):
@@ -14,6 +16,17 @@ def _safe_read_json(path: Path):
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return None
+
+
+def _safe_read_text(path: Path):
+    try:
+        return path.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return ""
+
+
+def _sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
 def _scan_bundle_dir(path: Path):
@@ -57,6 +70,53 @@ def _find_cge_bundle_state(root: Path):
     }
 
 
+def _collect_files(root: Path):
+    files = []
+    tests = []
+
+    excluded_dirs = {
+        ".git",
+        ".github",
+        "__pycache__",
+        ".pytest_cache",
+        ".mypy_cache",
+        ".venv",
+        "venv",
+        "ingestion_backups",
+        "experiments",
+    }
+
+    for p in root.rglob("*"):
+        if not p.is_file():
+            continue
+
+        rel = str(p.relative_to(root)).replace("\\", "/")
+        parts = set(rel.split("/"))
+        if parts & excluded_dirs:
+            continue
+
+        files.append(rel)
+
+        name = p.name
+        if name.startswith("test_") or "/tests/" in f"/{rel}/":
+            tests.append(rel)
+
+    files.sort()
+    tests.sort()
+    return files, tests
+
+
+def _hash_paths_and_contents(root: Path, rel_paths):
+    material = []
+    for rel in rel_paths:
+        p = root / rel
+        material.append({
+            "path": rel,
+            "content_hash": _sha256_text(_safe_read_text(p)),
+        })
+    return _sha256_text(json.dumps(material, sort_keys=True, separators=(",", ":")))
+
+
 def _trace_snapshot(snapshot: dict):
     if os.getenv("REPO_SNAPSHOT_TRACE", "1") != "1":
         return
@@ -68,11 +128,13 @@ def _trace_snapshot(snapshot: dict):
         "module_file": __file__,
         "cwd": os.getcwd(),
         "root": snapshot.get("root"),
+        "repo_hash": snapshot.get("repo_hash"),
+        "test_surface_hash": snapshot.get("test_surface_hash"),
         "has_cge": snapshot.get("has_cge"),
         "cge_state": snapshot.get("cge_state"),
-        "incoming_cge_bundles": snapshot.get("incoming_cge_bundles", []),
-        "installed_cge_bundles": snapshot.get("installed_cge_bundles", []),
-        "failed_cge_bundles": snapshot.get("failed_cge_bundles", []),
+        "incoming_bundle_count": snapshot.get("incoming_bundle_count"),
+        "installed_bundle_count": snapshot.get("installed_bundle_count"),
+        "failed_bundle_count": snapshot.get("failed_bundle_count"),
     }
 
     with TRACE_LOG_PATH.open("a", encoding="utf-8") as f:
@@ -81,33 +143,34 @@ def _trace_snapshot(snapshot: dict):
 
 def build_snapshot(root="."):
     root = Path(root)
-    files = []
-    tests = []
-
-    for p in root.rglob("*"):
-        if p.is_file():
-            rel = str(p.relative_to(root)).replace("\\", "/")
-            files.append(rel)
-            if p.name.startswith("test_") or "/tests/" in f"/{rel}/" or "test" in p.name.lower():
-                tests.append(rel)
+    files, tests = _collect_files(root)
 
     buildout_registry = _safe_read_json(root / ".buildout_registry.json") or {}
     phase_registry = _safe_read_json(root / ".buildout_phase_registry.json") or {}
+    reconciled = _safe_read_json(root / "brain_reports" / "reconciled_state.json") or {}
+    execution = _safe_read_json(root / "brain_reports" / "execute_next_action_result.json") or {}
+    next_action = _safe_read_json(root / "brain_reports" / "next_action.json") or {}
 
     cge_info = _find_cge_bundle_state(root)
 
     snapshot = {
+        "generated_at": time.time(),
         "root": str(root),
         "file_count": len(files),
         "test_count": len(tests),
-        "files": files[:100],
-        "tests": tests[:100],
+        "files": files[:200],
+        "tests": tests[:200],
         "registry_entry_count": len(buildout_registry),
         "phase_registry_entry_count": len(phase_registry),
         "latest_global_root": None,
         "has_pending_bundles": cge_info["incoming_bundle_count"] > 0,
         "snapshot_source_module": __name__,
         "snapshot_source_file": __file__,
+        "repo_hash": _hash_paths_and_contents(root, files),
+        "test_surface_hash": _hash_paths_and_contents(root, tests),
+        "last_review_state": (reconciled.get("review") or {}).get("state"),
+        "last_execution_status": (execution.get("execution") or {}).get("status"),
+        "last_next_action": (next_action.get("next_action") or {}).get("action"),
         **cge_info,
     }
 
@@ -117,3 +180,17 @@ def build_snapshot(root="."):
 
 def snapshot_repo_state(root="."):
     return build_snapshot(root)
+
+
+def write_snapshot(root=".", output_path=None):
+    snapshot = build_snapshot(root=root)
+
+    target = Path(output_path) if output_path else DEFAULT_OUTPUT_PATH
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(snapshot, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+    return snapshot
+
+
+if __name__ == "__main__":
+    print(json.dumps(write_snapshot(), indent=2, sort_keys=True))
