@@ -1,38 +1,44 @@
 """
 SAFE FORCE IMPORT OVERRIDE (FINAL)
 
-- Only overrides specific modules (receipt_chain)
-- Does NOT hijack global import system
-- Prevents breaking internal package imports
+- Does NOT override Python's core import system
+- Only ensures repo root is importable
+- Adds explicit module redirection for known conflicts
+- Prevents global interpreter corruption
 """
 
 import sys
 import os
-import importlib.util
-
-
-def _force_module(module_name: str, file_path: str):
-    if not os.path.exists(file_path):
-        return False
-
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-
-    sys.modules[module_name] = module
-    return True
+import importlib
 
 
 def activate():
-    root = os.getcwd()
+    """
+    Safe activation:
+    - Ensure repo root is in sys.path
+    - Do NOT override __import__
+    - Do NOT touch builtins
+    """
 
-    candidates = [
-        os.path.join(root, "receipt_chain.py"),
-        os.path.join(root, "engine", "receipt_chain.py"),
-        os.path.join(root, "install", "engine", "receipt_chain.py"),
-    ]
+    repo_root = os.getcwd()
 
-    for path in candidates:
-        if _force_module("receipt_chain", path):
-            print(f"[SAFE IMPORT OVERRIDE] receipt_chain -> {path}")
-            break
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
+
+    # Ensure install package resolves correctly
+    install_path = os.path.join(repo_root, "install")
+    if install_path not in sys.path:
+        sys.path.insert(0, install_path)
+
+    print("[SAFE IMPORT] sys.path configured")
+
+
+def force_import(module_name: str):
+    """
+    Explicit controlled import (used ONLY when needed)
+    """
+    try:
+        return importlib.import_module(module_name)
+    except Exception as e:
+        print(f"[SAFE IMPORT ERROR] {module_name}: {e}")
+        raise
