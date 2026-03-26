@@ -2,11 +2,10 @@ import json
 import os
 from datetime import datetime
 
+from install.engine.repo_snapshot import snapshot_repo_state
+
 ROOT = os.getcwd()
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
-
-SNAPSHOT_PATH = os.path.join(BRAIN_REPORTS, "repo_snapshot.json")
-RECONCILED_STATE_PATH = os.path.join(BRAIN_REPORTS, "reconciled_state.json")
 OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 
 
@@ -18,18 +17,6 @@ def ensure_dir(path):
     os.makedirs(path, exist_ok=True)
 
 
-def load_json(path, default=None):
-    if default is None:
-        default = {}
-    if not os.path.exists(path):
-        return default
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return default
-
-
 def write_json(path, payload):
     ensure_dir(os.path.dirname(path))
     with open(path, "w", encoding="utf-8") as f:
@@ -37,111 +24,68 @@ def write_json(path, payload):
         f.write("\n")
 
 
-# 🔍 NEW — detect repo repair candidates
-def detect_repo_issues(snapshot):
-    issues = []
+def choose_action(snapshot):
+    incoming = snapshot.get("incoming_bundle_count", 0)
+    failed = snapshot.get("failed_bundle_count", 0)
 
-    # missing expected files (baseline sanity)
-    expected_files = [
-        "install/engine/execute_next_action.py",
-        "install/engine/next_action_engine.py",
-        "install/engine/reconcile_execution_state.py",
-        "install/engine/repo_snapshot.py",
-    ]
-
-    existing = set(snapshot.get("files", []))
-
-    for f in expected_files:
-        if f not in existing:
-            issues.append({
-                "type": "missing_core_file",
-                "target": f,
-                "priority": "critical",
-            })
-
-    # bundle backlog
-    if snapshot.get("incoming_bundle_count", 0) > 0:
-        issues.append({
-            "type": "incoming_bundle",
+    # Priority 1: process incoming work
+    if incoming > 0:
+        return {
+            "action": "process_incoming_bundle",
+            "reason": "incoming_bundle_available",
             "priority": "high",
-        })
+        }
 
-    if snapshot.get("failed_bundle_count", 0) > 0:
-        issues.append({
-            "type": "failed_bundle",
+    # Priority 2: retry failed bundles
+    if failed > 0:
+        return {
+            "action": "requeue_failed_bundle",
+            "reason": "failed_bundle_available",
             "priority": "medium",
-        })
+        }
 
-    return issues
-
-
-def choose_next_action(snapshot, reconciled):
-    issues = detect_repo_issues(snapshot)
-
-    if issues:
-        top = issues[0]
-
-        if top["type"] == "missing_core_file":
-            return {
-                "ts": utc_now(),
-                "status": "ok",
-                "action": "repair_repo_file",
-                "target": top["target"],
-                "priority": "critical",
-                "reason": "missing core engine file",
-            }
-
-        if top["type"] == "incoming_bundle":
-            return {
-                "ts": utc_now(),
-                "status": "ok",
-                "action": "process_incoming_bundle",
-                "priority": "high",
-                "reason": "incoming bundles waiting",
-            }
-
-        if top["type"] == "failed_bundle":
-            return {
-                "ts": utc_now(),
-                "status": "ok",
-                "action": "requeue_failed_bundle",
-                "priority": "medium",
-                "reason": "failed bundles exist",
-            }
-
-    # fallback to stabilization
+    # Priority 3: no work
     return {
-        "ts": utc_now(),
-        "status": "ok",
         "action": "idle",
+        "reason": "no_work_detected",
         "priority": "low",
-        "reason": "no issues detected",
     }
 
 
 def main():
     ensure_dir(BRAIN_REPORTS)
 
-    snapshot = load_json(SNAPSHOT_PATH, {})
-    reconciled = load_json(RECONCILED_STATE_PATH, {})
+    snapshot = snapshot_repo_state()
 
-    next_action = choose_next_action(snapshot, reconciled)
+    decision = choose_action(snapshot)
 
     output = {
         "generated_at": utc_now(),
-        "next_action": next_action,
-        "snapshot_summary": {
-            "repo_hash": snapshot.get("repo_hash"),
-            "incoming": snapshot.get("incoming_bundle_count"),
-            "failed": snapshot.get("failed_bundle_count"),
-        }
+        "snapshot": {
+            "incoming_bundle_count": snapshot.get("incoming_bundle_count"),
+            "installed_bundle_count": snapshot.get("installed_bundle_count"),
+            "failed_bundle_count": snapshot.get("failed_bundle_count"),
+            "has_work": snapshot.get("has_work"),
+            "cge_state": snapshot.get("cge_state"),
+        },
+        "next_action": {
+            "ts": utc_now(),
+            "status": "ok",
+            "selection_mode": "snapshot_driven",
+            "action": decision["action"],
+            "target": None,
+            "priority": decision["priority"],
+            "reason": decision["reason"],
+        },
     }
 
     write_json(OUTPUT_PATH, output)
 
     print(json.dumps({
         "status": "ok",
-        "next_action": next_action,
+        "action": decision["action"],
+        "incoming": snapshot.get("incoming_bundle_count"),
+        "failed": snapshot.get("failed_bundle_count"),
     }, indent=2))
 
 
