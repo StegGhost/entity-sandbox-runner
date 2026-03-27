@@ -29,15 +29,22 @@
     ],
     "type": "repo_mutation"
   },
-  "duration_seconds": 5.261,
+  "duration_seconds": 5.06,
   "execution": {
     "action": "inspect_failed_bundle_family",
-    "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
-    "file_count": 3,
+    "bundle": "failed_bundles/v21_to_v30_bundle.zip",
+    "file_count": 12,
     "sample_files": [
-      "bundle_manifest.json",
-      "install/engine/trajectory_engine_v5.py",
-      "install/tests/test_trajectory_engine_v5.py"
+      "install/node_identity.py",
+      "install/peer_verification.py",
+      "install/reputation_decay.py",
+      "install/remote_ingest.py",
+      "install/anomaly.py",
+      "install/policy_voting.py",
+      "install/audit.py",
+      "install/drift.py",
+      "install/quorum.py",
+      "install/arbitration.py"
     ],
     "status": "ok"
   },
@@ -45,21 +52,21 @@
   "mode": "sandbox_loop_with_observer",
   "next_action": {
     "action": "inspect_failed_bundle_family",
-    "active_family": "trajectory_engine",
-    "family": "trajectory_engine",
+    "active_family": "v21_to",
+    "family": "v21_to",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "selection_mode": "internal_brain_closure",
     "source": "internal_brain",
     "status": "ok",
-    "target": "failed_bundles/trajectory_engine_v5_bundle.zip",
-    "ts": "2026-03-27T01:54:06.810053"
+    "target": "failed_bundles/v21_to_v30_bundle.zip",
+    "ts": "2026-03-27T02:46:46.491042"
   },
   "reconcile": {
-    "bundle": "trajectory_engine_v5_bundle.zip",
-    "family": "trajectory_engine",
-    "reason": "ingestion_success",
-    "state": "ingested"
+    "bundle": "v21_to_v30_bundle.zip",
+    "family": "v21_to",
+    "reason": "missing_bundle_manifest",
+    "state": "failed"
   },
   "state": {
     "post": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/system_snapshot_post.json",
@@ -70,23 +77,23 @@
   "steps": {
     "execute": {
       "ok": true,
-      "output_snippet": "{\n  \"status\": \"ok\",\n  \"action\": \"inspect_failed_bundle_family\",\n  \"bundle\": \"failed_bundles/trajectory_engine_v5_bundle.zip\",\n  \"file_count\": 3,\n  \"sample_files\": [\n    \"bundle_manifest.json\",\n    \"install/engine/trajectory_engine_v5.py\",\n    \"install/tests/test_trajectory_engine_v5.py\"\n  ]\n}",
+      "output_snippet": "    \"install/node_identity.py\",\n    \"install/peer_verification.py\",\n    \"install/reputation_decay.py\",\n    \"install/remote_ingest.py\",\n    \"install/anomaly.py\",\n    \"install/policy_voting.py\",\n    \"install/audit.py\",\n    \"install/drift.py\",\n    \"install/quorum.py\",\n    \"install/arbitration.py\"\n  ]\n}",
       "returncode": 0
     },
     "explore": {
       "explore_json_present": true,
       "ok": true,
-      "output_snippet": "      \"ingestion_reports/token_economics_v3.zip_20260322_230638.json\",\n      \"ingestion_reports/token_economics_v4.zip_20260322_230638.json\"\n    ],\n    \"recent_feedback\": [\n      \"payload/feedback/canonical_feedback.md\",\n      \"payload/feedback/canonical_loop_report.json\",\n      \"payload/feedback/failed_bundle_report_correlation.json\",\n      \"payload/feedback/canonical_feedback.json\"\n    ],\n    \"recent_receipts\": []\n  }\n}",
+      "output_snippet": "      \"ingestion_reports/token_economics_v6.zip_20260322_230638.json\",\n      \"ingestion_reports/ui_dashboard_control_v17.zip_20260323_045741.json\"\n    ],\n    \"recent_feedback\": [\n      \"payload/feedback/canonical_loop_report.json\",\n      \"payload/feedback/failed_bundle_report_correlation.json\",\n      \"payload/feedback/canonical_feedback.md\",\n      \"payload/feedback/canonical_feedback.json\"\n    ],\n    \"recent_receipts\": []\n  }\n}",
       "returncode": 0
     },
     "next_action": {
       "ok": true,
-      "output_snippet": "    \"ts\": \"2026-03-27T01:54:06.810053\",\n    \"status\": \"ok\",\n    \"selection_mode\": \"internal_brain_closure\",\n    \"active_family\": \"trajectory_engine\",\n    \"action\": \"inspect_failed_bundle_family\",\n    \"target\": \"failed_bundles/trajectory_engine_v5_bundle.zip\",\n    \"family\": \"trajectory_engine\",\n    \"priority\": 1,\n    \"reason\": \"20 recent failed bundles detected\",\n    \"source\": \"internal_brain\"\n  }\n}",
+      "output_snippet": "    \"ts\": \"2026-03-27T02:46:46.491042\",\n    \"status\": \"ok\",\n    \"selection_mode\": \"internal_brain_closure\",\n    \"active_family\": \"v21_to\",\n    \"action\": \"inspect_failed_bundle_family\",\n    \"target\": \"failed_bundles/v21_to_v30_bundle.zip\",\n    \"family\": \"v21_to\",\n    \"priority\": 1,\n    \"reason\": \"20 recent failed bundles detected\",\n    \"source\": \"internal_brain\"\n  }\n}",
       "returncode": 0
     },
     "reconcile": {
       "ok": true,
-      "output_snippet": "{\n  \"status\": \"ok\",\n  \"review_state\": \"ingested\",\n  \"bundle\": \"trajectory_engine_v5_bundle.zip\",\n  \"family\": \"trajectory_engine\"\n}",
+      "output_snippet": "{\n  \"status\": \"ok\",\n  \"review_state\": \"failed\",\n  \"bundle\": \"v21_to_v30_bundle.zip\",\n  \"family\": \"v21_to\"\n}",
       "returncode": 0
     }
   },
