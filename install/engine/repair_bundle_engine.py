@@ -1,4 +1,3 @@
-import os
 import json
 import subprocess
 import time
@@ -13,6 +12,7 @@ REPAIRED_DIR = ROOT / "repaired_bundles"
 BRAIN_REPORTS = ROOT / "brain_reports"
 
 REPAIR_WORKER = ROOT / "install" / "engine" / "repair_bundle.py"
+REINTEGRATE_WORKER = ROOT / "install" / "engine" / "reintegrate_repaired_bundle.py"
 REPORT_PATH = BRAIN_REPORTS / "repair_bundle_engine_result.json"
 
 REPAIRED_DIR.mkdir(parents=True, exist_ok=True)
@@ -34,21 +34,15 @@ def load_json(path: Path) -> Optional[dict]:
     if not path.exists():
         return None
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, str):
+            data = json.loads(data)
+        return data if isinstance(data, dict) else None
     except Exception:
         return None
 
 
 def resolve_bundle_path(target: str) -> str:
-    """
-    Resolve bundle location across possible directories.
-
-    Resolution order:
-      1. exact path as provided
-      2. failed_bundles/<target>
-      3. incoming_bundles/<target>
-      4. repaired_bundles/<target>
-    """
     if not target:
         return ""
 
@@ -71,15 +65,12 @@ def resolve_bundle_path(target: str) -> str:
     return ""
 
 
-def run_worker(bundle_path: str) -> Dict[str, Any]:
-    """
-    Execute the deterministic repair worker and capture its structured output.
-    """
+def run_python(cmd: list[str]) -> Dict[str, Any]:
     start = time.time()
 
     try:
         result = subprocess.run(
-            ["python", str(REPAIR_WORKER), "--target", bundle_path],
+            cmd,
             capture_output=True,
             text=True,
             cwd=str(ROOT)
@@ -91,22 +82,18 @@ def run_worker(bundle_path: str) -> Dict[str, Any]:
             "stdout": "",
             "stderr": str(e),
             "duration": 0.0,
-            "parsed_stdout": None,
-            "worker_report": None
+            "parsed_stdout": None
         }
 
     duration = round(time.time() - start, 3)
-
-    parsed_stdout = None
     stdout = result.stdout.strip()
 
+    parsed_stdout = None
     if stdout:
         try:
             parsed_stdout = json.loads(stdout)
         except Exception:
             parsed_stdout = None
-
-    worker_report = load_json(ROOT / "brain_reports" / "repair_bundle_result.json")
 
     return {
         "ok": result.returncode == 0,
@@ -114,8 +101,7 @@ def run_worker(bundle_path: str) -> Dict[str, Any]:
         "stdout": stdout,
         "stderr": result.stderr.strip(),
         "duration": duration,
-        "parsed_stdout": parsed_stdout,
-        "worker_report": worker_report
+        "parsed_stdout": parsed_stdout
     }
 
 
@@ -134,6 +120,7 @@ def propose_repair(action_payload: Dict[str, Any]) -> Dict[str, Any]:
         "target": target,
         "resolved_path": None,
         "worker_result": None,
+        "reintegrate_result": None,
         "reason": None,
         "output_report": str(REPORT_PATH)
     }
@@ -156,28 +143,63 @@ def propose_repair(action_payload: Dict[str, Any]) -> Dict[str, Any]:
         write_json(REPORT_PATH, result)
         return result
 
-    worker_result = run_worker(resolved_path)
+    worker_result = run_python([
+        "python",
+        str(REPAIR_WORKER),
+        "--target",
+        resolved_path
+    ])
     result["worker_result"] = worker_result
 
-    worker_report = worker_result.get("worker_report") or {}
+    worker_report = load_json(ROOT / "brain_reports" / "repair_bundle_result.json") or {}
     worker_status = worker_report.get("status")
 
-    if worker_result.get("ok") and worker_status == "repaired":
-        result["status"] = "ok"
-        result["reason"] = "repair_completed"
+    if not (worker_result.get("ok") and worker_status == "repaired"):
+        result["status"] = "failed"
+        result["reason"] = "repair_worker_failed"
         result["original_bundle"] = resolved_path
         result["repaired_bundle"] = worker_report.get("output_bundle")
         result["changes_applied"] = worker_report.get("changes_applied", [])
         result["hash_before"] = worker_report.get("hash_before")
         result["hash_after"] = worker_report.get("hash_after")
+        write_json(REPORT_PATH, result)
+        return result
+
+    result["original_bundle"] = resolved_path
+    result["repaired_bundle"] = worker_report.get("output_bundle")
+    result["changes_applied"] = worker_report.get("changes_applied", [])
+    result["hash_before"] = worker_report.get("hash_before")
+    result["hash_after"] = worker_report.get("hash_after")
+
+    if not REINTEGRATE_WORKER.exists():
+        result["status"] = "ok"
+        result["reason"] = "repair_completed_no_reintegrator"
+        write_json(REPORT_PATH, result)
+        return result
+
+    reintegrate_payload = {
+        "repaired_bundle": worker_report.get("output_bundle"),
+        "family": family,
+        "original_bundle": resolved_path
+    }
+
+    reintegrate_result = run_python([
+        "python",
+        str(REINTEGRATE_WORKER),
+        "--action-payload-json",
+        json.dumps(reintegrate_payload)
+    ])
+    result["reintegrate_result"] = reintegrate_result
+
+    reintegrate_report = load_json(ROOT / "brain_reports" / "reintegrate_repaired_bundle_result.json") or {}
+    result["reintegrate_report"] = reintegrate_report
+
+    if reintegrate_result.get("ok") and reintegrate_report.get("status") == "ok":
+        result["status"] = "ok"
+        result["reason"] = "repair_completed_and_reintegrated"
     else:
         result["status"] = "failed"
-        result["reason"] = "repair_worker_failed"
-        result["original_bundle"] = resolved_path
-        result["repaired_bundle"] = None
-        result["changes_applied"] = worker_report.get("changes_applied", [])
-        result["hash_before"] = worker_report.get("hash_before")
-        result["hash_after"] = worker_report.get("hash_after")
+        result["reason"] = "repair_completed_but_reintegration_failed"
 
     write_json(REPORT_PATH, result)
     return result
@@ -186,27 +208,11 @@ def propose_repair(action_payload: Dict[str, Any]) -> Dict[str, Any]:
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Loop-facing repair bundle engine."
-    )
-    parser.add_argument(
-        "--action-payload-json",
-        default="",
-        help="Raw JSON string for the action payload."
-    )
-    parser.add_argument(
-        "--target",
-        default="",
-        help="Direct target bundle path or bundle name."
-    )
-    parser.add_argument(
-        "--family",
-        default="unknown",
-        help="Optional family name when using direct args."
-    )
+    parser = argparse.ArgumentParser(description="Loop-facing repair bundle engine.")
+    parser.add_argument("--action-payload-json", default="", help="Raw JSON string for the action payload.")
+    parser.add_argument("--target", default="", help="Direct target bundle path or bundle name.")
+    parser.add_argument("--family", default="unknown", help="Optional family name when using direct args.")
     args = parser.parse_args()
-
-    action_payload: Dict[str, Any]
 
     if args.action_payload_json:
         try:
