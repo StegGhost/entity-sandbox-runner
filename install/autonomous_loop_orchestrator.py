@@ -1,5 +1,14 @@
 """
-AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner (observer surfaced correctly)
+AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner (repo-state aware)
+
+Purpose:
+- run the real sandbox loop in this order:
+
+    system_state -> snapshot -> explore -> next_action -> execute -> reconcile -> snapshot
+
+- keep the green controlled test surface as the execution health gate
+- write a single stable runtime report
+- read authoritative system state from payload/context/SYSTEM_STATE_v1.md
 """
 
 from __future__ import annotations
@@ -15,10 +24,12 @@ from typing import Any, Dict, List
 ROOT = os.getcwd()
 PAYLOAD_RUNTIME = os.path.join(ROOT, "payload", "runtime")
 BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
+CONTEXT_DIR = os.path.join(ROOT, "payload", "context")
 
 REPORT_PATH = os.path.join(PAYLOAD_RUNTIME, "autonomous_loop_report.json")
 PRE_SNAPSHOT_PATH = os.path.join(PAYLOAD_RUNTIME, "system_snapshot_pre.json")
 POST_SNAPSHOT_PATH = os.path.join(PAYLOAD_RUNTIME, "system_snapshot_post.json")
+SYSTEM_STATE_PATH = os.path.join(CONTEXT_DIR, "SYSTEM_STATE_v1.md")
 
 REPO_SNAPSHOT_REPORT = os.path.join(BRAIN_REPORTS, "repo_snapshot.json")
 EXPLORE_REPORT = os.path.join(BRAIN_REPORTS, "explore.json")
@@ -69,6 +80,16 @@ def load_json(path: str, default: Any = None) -> Any:
     try:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
+    except Exception:
+        return default
+
+
+def load_text(path: str, default: str = "") -> str:
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path, "r", encoding="utf-8", errors="replace") as f:
+            return f.read()
     except Exception:
         return default
 
@@ -127,11 +148,11 @@ def capture_snapshot(output_path: str) -> Dict[str, Any]:
     script_path = os.path.join(ROOT, "install", "engine", "repo_snapshot.py")
     runner = run_python_file(script_path)
     snapshot = load_json(REPO_SNAPSHOT_REPORT, {})
-    write_json(output_path, snapshot)
+    write_json(output_path, snapshot if isinstance(snapshot, dict) else {})
     return {
         "ok": runner["ok"] and isinstance(snapshot, dict) and bool(snapshot),
         "runner": runner,
-        "snapshot": snapshot,
+        "snapshot": snapshot if isinstance(snapshot, dict) else {},
     }
 
 
@@ -177,11 +198,74 @@ def build_activity_summary(explore_doc: Dict[str, Any], next_doc: Dict[str, Any]
     }
 
 
+def classify_state(pre: Dict[str, Any], post: Dict[str, Any]) -> Dict[str, Any]:
+    if not isinstance(pre, dict) or not isinstance(post, dict):
+        return {
+            "type": "invalid_snapshot",
+            "severity": "critical",
+            "action": "halt",
+        }
+
+    if pre == post:
+        return {
+            "type": "no_change",
+            "severity": "none",
+            "action": "noop",
+        }
+
+    signals: List[str] = []
+
+    if pre.get("repo_hash") != post.get("repo_hash"):
+        signals.append("repo_modified")
+
+    if pre.get("incoming_bundle_count") != post.get("incoming_bundle_count"):
+        signals.append("incoming_bundle_queue_changed")
+
+    if pre.get("installed_bundle_count") != post.get("installed_bundle_count"):
+        signals.append("installed_bundle_set_changed")
+
+    if pre.get("failed_bundle_count") != post.get("failed_bundle_count"):
+        signals.append("failed_bundle_set_changed")
+
+    if pre.get("has_work") != post.get("has_work"):
+        signals.append("work_presence_changed")
+
+    if pre.get("cge_state") != post.get("cge_state"):
+        signals.append("cge_state_changed")
+
+    if not signals:
+        return {
+            "type": "opaque_change",
+            "severity": "medium",
+            "action": "inspect",
+            "signals": [],
+        }
+
+    if "repo_modified" in signals:
+        return {
+            "type": "repo_mutation",
+            "severity": "high",
+            "action": "inspect",
+            "signals": signals,
+        }
+
+    return {
+        "type": "system_activity",
+        "severity": "low",
+        "action": "observe",
+        "signals": signals,
+    }
+
+
 def main() -> None:
     started = time.time()
 
     ensure_dir(PAYLOAD_RUNTIME)
     ensure_dir(BRAIN_REPORTS)
+    ensure_dir(CONTEXT_DIR)
+
+    system_state_text = load_text(SYSTEM_STATE_PATH, "")
+    system_state_present = bool(system_state_text.strip())
 
     ensure_pytest()
     test_result = run_green_tests()
@@ -213,6 +297,11 @@ def main() -> None:
     internal_brain_doc = load_json(INTERNAL_BRAIN_REPORT, {})
     activity = build_activity_summary(explore_doc, next_doc, internal_brain_doc)
 
+    pre_snapshot = pre.get("snapshot", {})
+    post_snapshot = post.get("snapshot", {})
+    classification = classify_state(pre_snapshot, post_snapshot)
+    state_changed = pre_snapshot != post_snapshot if isinstance(pre_snapshot, dict) and isinstance(post_snapshot, dict) else False
+
     finished = time.time()
 
     report = {
@@ -228,7 +317,15 @@ def main() -> None:
         ),
         "duration_seconds": round(finished - started, 3),
         "tests_passed": test_result["ok"],
+        "system_state": {
+            "path": SYSTEM_STATE_PATH,
+            "present": system_state_present,
+            "bytes": len(system_state_text.encode("utf-8")) if system_state_text else 0,
+            "preview": system_state_text[:400],
+        },
         "activity": activity,
+        "state_changed": state_changed,
+        "classification": classification,
         "next_action": next_doc.get("next_action", {}),
         "execution": exec_doc.get("execution", {}),
         "reconcile": recon_doc.get("review", {}),
