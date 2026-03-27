@@ -1,153 +1,98 @@
-from pathlib import Path
-from typing import Dict, Any, List
+import os
 import json
-import zipfile
 import shutil
 from datetime import datetime
 
-ALLOWED_ROOTS = {
-    "bundle_manifest.json",
-    "install/",
-    "install/engine/",
-    "install/tests/",
-}
-
-OUTPUT_DIR = "fixed_bundles"
-REPORT_DIR = "repair_reports"
+OUTPUT_DIR = "incoming_bundles"
+REPORT_PATH = "brain_reports/repair_report.json"
 
 
-def _now():
-    return datetime.utcnow().isoformat()
+def _write_report(data):
+    os.makedirs("brain_reports", exist_ok=True)
+    with open(REPORT_PATH, "w") as f:
+        json.dump(data, f, indent=2)
 
 
-def _safe_read_json(path: Path) -> Dict[str, Any]:
-    if not path.exists():
-        return {}
-    try:
-        return json.loads(path.read_text())
-    except Exception:
-        return {}
+def _sanitize_bundle(bundle_path):
+    """
+    Minimal repair strategy:
+    - remove disallowed paths (e.g., docs/)
+    - keep only admissible install/ structure
+    """
+
+    if not os.path.exists(bundle_path):
+        return None, "bundle_not_found"
+
+    repaired_path = bundle_path.replace(".zip", "_repaired.zip")
+
+    # --- TEMP DIR ---
+    tmp_dir = bundle_path + "_tmp"
+
+    if os.path.exists(tmp_dir):
+        shutil.rmtree(tmp_dir)
+
+    os.makedirs(tmp_dir, exist_ok=True)
+
+    # --- UNZIP ---
+    shutil.unpack_archive(bundle_path, tmp_dir)
+
+    # --- REMOVE DISALLOWED PATHS ---
+    for root, dirs, files in os.walk(tmp_dir):
+        for d in list(dirs):
+            if d == "docs":
+                shutil.rmtree(os.path.join(root, d), ignore_errors=True)
+
+    # --- REPACK ---
+    shutil.make_archive(repaired_path.replace(".zip", ""), 'zip', tmp_dir)
+
+    shutil.rmtree(tmp_dir)
+
+    return repaired_path, None
 
 
-def _ensure_dirs(root: Path):
-    (root / OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
-    (root / REPORT_DIR).mkdir(parents=True, exist_ok=True)
+def propose_repair(action_payload):
+    ts = datetime.utcnow().isoformat()
 
-
-def _is_allowed(path: str) -> bool:
-    return any(path.startswith(prefix) for prefix in ALLOWED_ROOTS)
-
-
-def _filter_files(file_list: List[str]) -> Dict[str, List[str]]:
-    allowed = []
-    removed = []
-
-    for f in file_list:
-        if _is_allowed(f):
-            allowed.append(f)
-        else:
-            removed.append(f)
-
-    return {
-        "allowed": allowed,
-        "removed": removed
-    }
-
-
-def _extract_bundle(zip_path: Path, extract_to: Path) -> List[str]:
-    with zipfile.ZipFile(zip_path, 'r') as z:
-        z.extractall(extract_to)
-        return z.namelist()
-
-
-def _create_fixed_bundle(root: Path, source_dir: Path, files: List[str], output_name: str) -> Path:
-    output_path = root / OUTPUT_DIR / output_name
-
-    with zipfile.ZipFile(output_path, 'w', zipfile.ZIP_DEFLATED) as z:
-        for rel_path in files:
-            full_path = source_dir / rel_path
-            if full_path.exists():
-                z.write(full_path, rel_path)
-
-    return output_path
-
-
-def _write_report(root: Path, report: Dict[str, Any], name: str):
-    path = root / REPORT_DIR / name
-    path.write_text(json.dumps(report, indent=2))
-
-
-def repair_bundle(state: Dict[str, Any]) -> Dict[str, Any]:
-    root = Path(state["root"])
-
-    action = state.get("next_action", {})
-    target = action.get("target")
+    target = action_payload.get("target")
 
     if not target:
-        return {
-            "status": "noop",
-            "reason": "no_target_provided"
-        }
-
-    bundle_path = root / target
-
-    if not bundle_path.exists():
-        return {
-            "status": "failed",
-            "reason": "bundle_not_found",
-            "target": target
-        }
-
-    _ensure_dirs(root)
-
-    temp_dir = root / "_repair_tmp"
-    if temp_dir.exists():
-        shutil.rmtree(temp_dir)
-    temp_dir.mkdir(parents=True)
-
-    try:
-        original_files = _extract_bundle(bundle_path, temp_dir)
-
-        filtered = _filter_files(original_files)
-
-        fixed_name = bundle_path.stem + "_fixed.zip"
-        fixed_bundle_path = _create_fixed_bundle(
-            root,
-            temp_dir,
-            filtered["allowed"],
-            fixed_name
-        )
-
         report = {
-            "timestamp": _now(),
-            "original_bundle": str(bundle_path.relative_to(root)),
-            "fixed_bundle": str(fixed_bundle_path.relative_to(root)),
-            "original_file_count": len(original_files),
-            "allowed_file_count": len(filtered["allowed"]),
-            "removed_file_count": len(filtered["removed"]),
-            "removed_files": filtered["removed"],
-            "status": "repaired"
+            "status": "failed",
+            "reason": "no_target_bundle",
+            "ts": ts
         }
+        _write_report(report)
+        return report
 
-        report_name = fixed_name.replace(".zip", ".json")
-        _write_report(root, report, report_name)
+    repaired_bundle, err = _sanitize_bundle(target)
 
-        return {
-            "status": "ok",
-            "action": "bundle_repaired",
-            "fixed_bundle": str(fixed_bundle_path.relative_to(root)),
-            "report": str((root / REPORT_DIR / report_name).relative_to(root)),
-            "removed_files": filtered["removed"],
-            "kept_files": filtered["allowed"]
+    if err:
+        report = {
+            "status": "failed",
+            "reason": err,
+            "target": target,
+            "ts": ts
         }
+        _write_report(report)
+        return report
 
-    except Exception as e:
-        return {
-            "status": "error",
-            "error": str(e),
-            "target": target
-        }
+    # --- MOVE TO INCOMING ---
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    finally:
-        if temp_dir.exists():
-            shutil.rmtree(temp_dir)
+    final_path = os.path.join(
+        OUTPUT_DIR,
+        os.path.basename(repaired_bundle)
+    )
+
+    shutil.move(repaired_bundle, final_path)
+
+    report = {
+        "status": "ok",
+        "action": "repair_generated",
+        "original_bundle": target,
+        "repaired_bundle": final_path,
+        "ts": ts
+    }
+
+    _write_report(report)
+    return report
