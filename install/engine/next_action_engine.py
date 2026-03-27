@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[2]
 BRAIN_REPORTS = ROOT / "brain_reports"
 SNAPSHOT_PATH = BRAIN_REPORTS / "repo_snapshot.json"
 NEXT_ACTION_PATH = BRAIN_REPORTS / "next_action.json"
+STATE_FILE = BRAIN_REPORTS / "loop_state.json"
 
 
 def load_json(path: Path):
@@ -23,6 +24,144 @@ def write_json(path: Path, payload: dict):
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
+def load_state():
+    if not STATE_FILE.exists():
+        return {}
+    try:
+        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def save_state(state: dict):
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def build_idle(reason: str):
+    return {
+        "ts": datetime.utcnow().isoformat(),
+        "status": "ok",
+        "selection_mode": "idle",
+        "action": "idle",
+        "reason": reason,
+        "source": "next_action_engine",
+    }
+
+
+def choose_incoming_candidate(snapshot: dict):
+    incoming_by_family = snapshot.get("latest_incoming_by_family", {})
+    if not incoming_by_family:
+        return None
+
+    candidates = []
+    for family, meta in incoming_by_family.items():
+        candidates.append(
+            {
+                "kind": "incoming",
+                "family": family,
+                "target": meta["path"],
+                "mtime": meta.get("mtime", 0),
+                "priority": "high",
+                "selection_mode": "incoming_priority",
+                "action": "inspect_incoming_bundle_family",
+                "reason": "incoming_bundle_detected",
+                "source": "next_action_engine",
+            }
+        )
+
+    candidates.sort(key=lambda x: x["mtime"], reverse=True)
+    return candidates[0]
+
+
+def choose_repair_candidate(snapshot: dict):
+    failed_by_family = snapshot.get("latest_failed_by_family", {})
+    repaired_by_family = snapshot.get("latest_repaired_by_family", {})
+
+    if not failed_by_family:
+        return None
+
+    candidates = []
+
+    for family, failed_meta in failed_by_family.items():
+        failed_mtime = failed_meta.get("mtime", 0)
+        repaired_meta = repaired_by_family.get(family)
+
+        # convergence lock:
+        # skip any family already having a repaired artifact newer than the latest failure
+        if repaired_meta is not None:
+            repaired_mtime = repaired_meta.get("mtime", 0)
+            if repaired_mtime >= failed_mtime:
+                continue
+
+        candidates.append(
+            {
+                "kind": "repair",
+                "family": family,
+                "target": failed_meta["path"],
+                "mtime": failed_mtime,
+                "priority": "high",
+                "selection_mode": "repair_escalation",
+                "action": "propose_repair_for_bundle_family",
+                "reason": "failed_bundle_without_newer_repair",
+                "source": "repair_escalation",
+            }
+        )
+
+    if not candidates:
+        return None
+
+    candidates.sort(key=lambda x: x["mtime"], reverse=True)
+    return candidates[0]
+
+
+def apply_family_lock(chosen: dict | None):
+    """
+    Keep the loop from thrashing between families.
+    If a different family is selected, hold the previous active family
+    for up to 3 cycles, but only if that family still has admissible work.
+    """
+    if not chosen:
+        state = load_state()
+        state["active_family"] = None
+        state["lock_count"] = 0
+        state["last_action_kind"] = None
+        save_state(state)
+        return None
+
+    state = load_state()
+    last_family = state.get("active_family")
+    last_kind = state.get("last_action_kind")
+    lock_count = int(state.get("lock_count", 0))
+
+    chosen_family = chosen.get("family")
+    chosen_kind = chosen.get("kind")
+
+    # reset lock if same family or no prior family
+    if not last_family or last_family == chosen_family:
+        state["active_family"] = chosen_family
+        state["lock_count"] = 0
+        state["last_action_kind"] = chosen_kind
+        save_state(state)
+        return chosen
+
+    # only lock when the action kind stays the same
+    if last_kind == chosen_kind and lock_count < 3:
+        chosen["locked_from_family"] = last_family
+        state["lock_count"] = lock_count + 1
+        state["active_family"] = chosen_family
+        state["last_action_kind"] = chosen_kind
+        save_state(state)
+        return chosen
+
+    # release lock and accept new family
+    state["active_family"] = chosen_family
+    state["lock_count"] = 0
+    state["last_action_kind"] = chosen_kind
+    save_state(state)
+    return chosen
+
+
 def choose_action(snapshot: dict):
     if not snapshot:
         return {
@@ -34,76 +173,26 @@ def choose_action(snapshot: dict):
             "source": "next_action_engine",
         }
 
-    failed_by_family = snapshot.get("latest_failed_by_family", {})
-    repaired_by_family = snapshot.get("latest_repaired_by_family", {})
-    incoming_by_family = snapshot.get("latest_incoming_by_family", {})
+    incoming_candidate = choose_incoming_candidate(snapshot)
+    repair_candidate = choose_repair_candidate(snapshot)
 
-    # 1. Prefer incoming bundles that do not already have same-family installed/repaired dominance.
-    # Keep this simple and conservative for now.
-    for family, meta in sorted(incoming_by_family.items()):
-        return {
-            "ts": datetime.utcnow().isoformat(),
-            "status": "ok",
-            "selection_mode": "incoming_priority",
-            "active_family": family,
-            "action": "inspect_incoming_bundle_family",
-            "target": meta["path"],
-            "family": family,
-            "priority": "high",
-            "reason": "incoming_bundle_detected",
-            "source": "next_action_engine",
-        }
+    chosen = incoming_candidate or repair_candidate
+    chosen = apply_family_lock(chosen)
 
-    # 2. Repair escalation with convergence lock:
-    # do NOT re-repair a family if repaired artifact is newer than latest failed bundle.
-    repair_candidates = []
+    if not chosen:
+        return build_idle("no_admissible_work")
 
-    for family, failed_meta in failed_by_family.items():
-        failed_mtime = failed_meta.get("mtime", 0)
-        repaired_meta = repaired_by_family.get(family)
-
-        if repaired_meta is not None:
-            repaired_mtime = repaired_meta.get("mtime", 0)
-
-            # convergence lock:
-            # if repaired bundle is newer or equal, skip this family
-            if repaired_mtime >= failed_mtime:
-                continue
-
-        repair_candidates.append(
-            {
-                "family": family,
-                "target": failed_meta["path"],
-                "failed_mtime": failed_mtime,
-                "reason": "failed_bundle_without_newer_repair",
-            }
-        )
-
-    if repair_candidates:
-        repair_candidates.sort(key=lambda x: x["failed_mtime"], reverse=True)
-        chosen = repair_candidates[0]
-
-        return {
-            "ts": datetime.utcnow().isoformat(),
-            "status": "ok",
-            "selection_mode": "repair_escalation",
-            "active_family": chosen["family"],
-            "action": "propose_repair_for_bundle_family",
-            "target": chosen["target"],
-            "family": chosen["family"],
-            "priority": "high",
-            "reason": chosen["reason"],
-            "source": "repair_escalation",
-        }
-
-    # 3. Nothing admissible to do
     return {
         "ts": datetime.utcnow().isoformat(),
         "status": "ok",
-        "selection_mode": "idle",
-        "action": "idle",
-        "reason": "no_admissible_work",
-        "source": "next_action_engine",
+        "selection_mode": chosen["selection_mode"],
+        "active_family": chosen["family"],
+        "action": chosen["action"],
+        "target": chosen["target"],
+        "family": chosen["family"],
+        "priority": chosen["priority"],
+        "reason": chosen["reason"],
+        "source": chosen["source"],
     }
 
 
