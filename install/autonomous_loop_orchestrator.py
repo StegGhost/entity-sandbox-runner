@@ -1,94 +1,89 @@
 import json
-import os
 import subprocess
-from datetime import datetime
+import time
+from pathlib import Path
 
-ROOT = os.getcwd()
+ROOT = Path(__file__).resolve().parents[1]
 
-REPORT_PATH = "payload/runtime/autonomous_loop_report.json"
+EXPLORE = ROOT / "install/engine/repo_snapshot.py"
+NEXT = ROOT / "install/engine/next_action_engine.py"
+EXECUTE = ROOT / "install/engine/execute_next_action.py"
+RECONCILE = ROOT / "install/engine/reconcile_execution_state.py"
+
+INGEST = ROOT / "install/ingestion_v2.py"
 
 
-def run_step(name, cmd):
+def run_step(cmd):
+    start = time.time()
+    proc = subprocess.run(
+        ["python", str(cmd)],
+        capture_output=True,
+        text=True
+    )
+    return {
+        "ok": proc.returncode == 0,
+        "returncode": proc.returncode,
+        "output_snippet": proc.stdout[-1000:],
+        "duration": round(time.time() - start, 3)
+    }
+
+
+def extract_repair_output(exec_output: str):
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True
-        )
-        return {
-            "ok": result.returncode == 0,
-            "returncode": result.returncode,
-            "output_snippet": result.stdout[-2000:]
-        }
-    except Exception as e:
-        return {
-            "ok": False,
-            "error": str(e)
-        }
+        data = json.loads(exec_output)
+        return data.get("execution", {}).get("result", {}).get("repaired_bundle")
+    except:
+        return None
 
 
-def load_json(path):
-    if os.path.exists(path):
-        with open(path) as f:
-            return json.load(f)
-    return None
+def run_ingestion(bundle_path: str):
+    proc = subprocess.run(
+        ["python", str(INGEST), bundle_path],
+        capture_output=True,
+        text=True
+    )
+    return {
+        "ok": proc.returncode == 0,
+        "returncode": proc.returncode,
+        "output": proc.stdout[-1000:]
+    }
 
 
 def main():
-    start = datetime.utcnow()
+    start = time.time()
 
-    steps = {}
+    explore = run_step(EXPLORE)
+    next_action = run_step(NEXT)
+    execute = run_step(EXECUTE)
 
-    # --- EXPLORE ---
-    steps["explore"] = run_step(
-        "explore",
-        ["python", "-m", "install.explorer"]
-    )
+    repaired_bundle = None
 
-    # --- NEXT ACTION ---
-    steps["next_action"] = run_step(
-        "next_action",
-        ["python", "-m", "install.engine.next_action_engine"]
-    )
+    if execute["ok"]:
+        repaired_bundle = extract_repair_output(execute["output_snippet"])
 
-    next_action_data = load_json("brain_reports/next_action.json")
+    ingest_result = None
 
-    # --- EXECUTE ---
-    steps["execute"] = run_step(
-        "execute",
-        ["python", "-m", "install.engine.execute_next_action"]
-    )
+    # 🔥 NEW: loop closure
+    if repaired_bundle:
+        ingest_result = run_ingestion(repaired_bundle)
 
-    # --- RECONCILE ---
-    steps["reconcile"] = run_step(
-        "reconcile",
-        ["python", "-m", "install.engine.reconcile_execution_state"]
-    )
+    reconcile = run_step(RECONCILE)
 
-    duration = (datetime.utcnow() - start).total_seconds()
-
-    report = {
+    result = {
         "status": "ok",
-        "mode": "sandbox_loop_with_observer",
+        "mode": "closed_loop_autonomous",
         "loop_ok": True,
-        "duration_seconds": duration,
-        "timestamp": start.timestamp(),
-        "steps": steps,
-        "next_action": next_action_data,
-        "artifacts": {
-            "explore": "brain_reports/explore.json",
-            "next_action": "brain_reports/next_action.json",
-            "execution_result": "brain_reports/execute_next_action_result.json",
-            "reconciled_state": "brain_reports/reconciled_state.json"
+        "duration_seconds": round(time.time() - start, 3),
+        "steps": {
+            "explore": explore,
+            "next_action": next_action,
+            "execute": execute,
+            "ingest_repair": ingest_result,
+            "reconcile": reconcile
         }
     }
 
-    os.makedirs("payload/runtime", exist_ok=True)
-
-    with open(REPORT_PATH, "w") as f:
-        json.dump(report, f, indent=2)
-
-    print(json.dumps(report, indent=2))
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
