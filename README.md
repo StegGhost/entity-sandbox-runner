@@ -98,3 +98,64 @@ install/visualization/dashboard.html
 This is not a prototype.
 
 This is a **governed execution system**.
+
+# StegVerse — Autonomous Closed Loop (Entity Sandbox Runner)
+
+This repository implements a **governed closed-loop execution system**.
+
+It is not a collection of tools.
+
+It is a **single continuous loop**:
+
+explore → decide → execute → reconcile → repeat
+
+No side workflows.  
+No reporting layers.  
+No manual intervention required for operation.
+
+---
+
+## 🔁 Core Loop
+
+The system runs through:
+
+python install/autonomous_loop_orchestrator.py
+
+### Execution Steps
+
+| Step          | Description |
+|---------------|-------------|
+| explore       | Observes repository + bundle state |
+| next_action   | Selects next admissible action |
+| execute       | Performs the action |
+| reconcile     | Validates resulting system state |
+
+---
+
+## ⚙️ Current Verified Behavior
+
+- Loop executes deterministically
+- Repair escalation triggers correctly
+- Failed bundles are detected and repaired
+- Repaired bundles are written to disk
+- Reconciliation marks system state as `repaired`
+
+---
+
+## 📌 System Principle
+
+This system enforces:
+
+- Single loop authority
+- No parallel workflows
+- No speculative execution
+- Evidence-based state transitions only
+
+---
+
+## 🚧 Next Hardening Steps
+
+1. Prevent redundant repair loops
+2. Improve explore signal visibility
+3. Upgrade repair from copy → transformation
+
