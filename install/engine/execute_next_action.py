@@ -1,85 +1,82 @@
 import json
 import os
-import zipfile
-from typing import Dict, Any
+from datetime import datetime
+
+# --- Import repair engine ---
+try:
+    from install.engine.repair_engine_v1 import propose_repair
+except Exception:
+    propose_repair = None
 
 
-ROOT = os.getcwd()
-
-NEXT_ACTION_PATH = os.path.join(ROOT, "brain_reports", "next_action.json")
-OUTPUT_PATH = os.path.join(ROOT, "brain_reports", "execute_next_action_result.json")
+OUTPUT_PATH = "brain_reports/execute_next_action_result.json"
 
 
-def load_json(path: str) -> Dict[str, Any]:
-    if not os.path.exists(path):
-        return {}
-    with open(path, "r") as f:
-        return json.load(f)
+def _write_output(data):
+    os.makedirs("brain_reports", exist_ok=True)
+    with open(OUTPUT_PATH, "w") as f:
+        json.dump(data, f, indent=2)
 
 
-def write_json(path: str, payload: Dict[str, Any]):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-        json.dump(payload, f, indent=2)
+def execute(action_payload):
+    ts = datetime.utcnow().isoformat()
 
-
-def inspect_failed_bundle(path: str) -> Dict[str, Any]:
-    full_path = os.path.join(ROOT, path)
-
-    if not os.path.exists(full_path):
-        return {
-            "status": "error",
-            "reason": "bundle_not_found",
-            "path": path
-        }
-
-    try:
-        with zipfile.ZipFile(full_path, 'r') as z:
-            file_list = z.namelist()
-
-        return {
+    if not action_payload or not action_payload.get("action"):
+        result = {
             "status": "ok",
-            "action": "inspect_failed_bundle_family",
-            "bundle": path,
-            "file_count": len(file_list),
-            "sample_files": file_list[:10]
+            "executed": False,
+            "action": "idle",
+            "reason": "no_action_to_execute",
+            "ts": ts
         }
+        _write_output(result)
+        return result
 
-    except Exception as e:
-        return {
-            "status": "error",
-            "reason": str(e),
-            "bundle": path
-        }
+    action = action_payload["action"]
 
+    # --- HANDLE REPAIR ACTION ---
+    if action == "propose_repair_for_bundle_family":
+        if propose_repair is None:
+            result = {
+                "status": "failed",
+                "executed": False,
+                "action": action,
+                "reason": "repair_engine_not_available",
+                "ts": ts
+            }
+        else:
+            repair_result = propose_repair(action_payload)
 
-def execute_action(next_action: Dict[str, Any]) -> Dict[str, Any]:
-    action = next_action.get("action")
+            result = {
+                "status": "ok",
+                "executed": True,
+                "action": action,
+                "repair": repair_result,
+                "ts": ts
+            }
 
-    if action == "inspect_failed_bundle_family":
-        target = next_action.get("target")
-        return inspect_failed_bundle(target)
+        _write_output(result)
+        return result
 
-    return {
+    # --- DEFAULT FALLBACK ---
+    result = {
         "status": "ok",
         "executed": False,
-        "action": "idle",
-        "reason": "no_action_handler"
+        "action": action,
+        "reason": "no_action_handler",
+        "ts": ts
     }
 
-
-def main():
-    data = load_json(NEXT_ACTION_PATH)
-    next_action = data.get("next_action", {})
-
-    result = execute_action(next_action)
-
-    write_json(OUTPUT_PATH, {
-        "execution": result
-    })
-
-    print(json.dumps(result, indent=2))
+    _write_output(result)
+    return result
 
 
 if __name__ == "__main__":
-    main()
+    path = "brain_reports/next_action.json"
+    if os.path.exists(path):
+        with open(path) as f:
+            payload = json.load(f)
+    else:
+        payload = {}
+
+    execute(payload)
