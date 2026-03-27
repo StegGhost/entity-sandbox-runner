@@ -16,42 +16,49 @@ def load_execution_result():
         return None
 
 
-def reconcile_state(execution_result: dict):
-    if not execution_result:
+def reconcile_state(data: dict):
+    if not data:
         return {
             "status": "failed",
             "reason": "no_execution_result"
         }
 
-    execution = execution_result.get("execution", {})
+    # 🔥 handle actual structure correctly
+    execution = data.get("execution", {})
     result = execution.get("result", {})
 
-    # 🔥 CRITICAL FIX: prefer repaired bundle if present
-    repaired_bundle = result.get("repaired_bundle")
-    original_bundle = result.get("original_bundle")
-
-    bundle_used = repaired_bundle or original_bundle
+    if not execution or not result:
+        return {
+            "status": "failed",
+            "review_state": "failed",
+            "reason": "missing_execution_result"
+        }
 
     if execution.get("status") != "ok":
         return {
             "status": "failed",
             "review_state": "failed",
-            "bundle": original_bundle,
             "reason": "execution_failed"
         }
 
+    repaired_bundle = result.get("repaired_bundle")
+    original_bundle = result.get("original_bundle")
+    family = result.get("family")
+
+    bundle_used = repaired_bundle or original_bundle
+
     return {
         "status": "ok",
-        "review_state": "repaired",
+        "review_state": "repaired" if repaired_bundle else "passed",
         "bundle": bundle_used,
-        "family": result.get("family")
+        "family": family
     }
 
 
 def main():
-    execution_result = load_execution_result()
+    data = load_execution_result()
 
-    reconciled = reconcile_state(execution_result)
+    reconciled = reconcile_state(data)
 
     output = {
         "status": "ok" if reconciled.get("status") == "ok" else "failed",
