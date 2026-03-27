@@ -20,7 +20,7 @@ RECEIPT_RECONCILED_STATE = os.path.join(BRAIN_REPORTS, "receipt_reconciled_state
 BUNDLE_INVENTORY = os.path.join(BRAIN_REPORTS, "bundle_inventory.json")
 FAILED_CORRELATION = os.path.join(BRAIN_REPORTS, "failed_bundle_report_correlation.json")
 EXECUTION_RESULT = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
-
+RECONCILED_STATE = os.path.join(BRAIN_REPORTS, "reconciled_state.json")
 OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 
 
@@ -250,11 +250,61 @@ def get_last_executed_bundle(last_execution_doc):
     return execution.get("target")
 
 
+def get_last_execution_action(last_execution_doc):
+    execution = last_execution_doc.get("execution", {})
+    if execution.get("status") != "ok":
+        return None
+    return execution.get("action")
+
+
+def get_reconcile_review(reconciled_doc):
+    if not isinstance(reconciled_doc, dict):
+        return {}
+    review = reconciled_doc.get("review", {})
+    return review if isinstance(review, dict) else {}
+
+
 def first_matching_family(items, family, skip_bundle=None):
     for item in items:
         if item.get("family") == family and item.get("bundle") != skip_bundle:
             return item
     return None
+
+
+def choose_repair_escalation(reconciled_doc, last_execution_doc):
+    review = get_reconcile_review(reconciled_doc)
+    last_action = get_last_execution_action(last_execution_doc)
+    last_bundle = get_last_executed_bundle(last_execution_doc)
+
+    review_state = review.get("state")
+    review_family = review.get("family")
+    review_bundle = review.get("bundle")
+    review_reason = review.get("reason")
+
+    if review_state != "failed":
+        return None
+
+    if last_action != "inspect_failed_bundle_family":
+        return None
+
+    bundle = review_bundle or last_bundle
+    family = review_family or family_key(bundle) if bundle else None
+
+    if not bundle or not family:
+        return None
+
+    return {
+        "ts": utc_now(),
+        "status": "ok",
+        "selection_mode": "repair_escalation",
+        "active_family": family,
+        "action": "propose_repair_for_bundle_family",
+        "target": bundle,
+        "family": family,
+        "priority": "high",
+        "reason": review_reason or "inspection_completed_but_failure_persists",
+        "source": "repair_escalation",
+    }
 
 
 def choose_next_action(
@@ -485,6 +535,7 @@ def main():
     inventory = load_json(BUNDLE_INVENTORY, {"inventory": {}})
     correlation = load_json(FAILED_CORRELATION, {"correlations": []})
     last_execution = load_json(EXECUTION_RESULT, {})
+    reconciled_state = load_json(RECONCILED_STATE, {})
 
     bundle_to_state, family_members = build_inventory_maps(inventory)
     correlations = correlation.get("correlations", [])
@@ -498,7 +549,9 @@ def main():
     active_family = get_active_family(last_execution)
     last_bundle = get_last_executed_bundle(last_execution)
 
-    next_action = mapped_action or choose_next_action(
+    repair_escalation = choose_repair_escalation(reconciled_state, last_execution)
+
+    next_action = repair_escalation or mapped_action or choose_next_action(
         manifest_repairable,
         missing_report,
         unresolved_failed,
@@ -518,6 +571,7 @@ def main():
             "active_family": active_family,
             "last_executed_bundle": last_bundle,
             "internal_brain_status": internal_brain_run.get("status"),
+            "repair_escalation_active": repair_escalation is not None,
         },
         "next_action": next_action,
         "candidates": {
@@ -531,6 +585,8 @@ def main():
             "report_path": INTERNAL_BRAIN_REPORT,
             "mapped_action": mapped_action,
         },
+        "repair_escalation": repair_escalation,
+        "reconciled_review": get_reconcile_review(reconciled_state),
     }
 
     write_json(OUTPUT_PATH, output)
