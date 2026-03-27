@@ -1,83 +1,179 @@
 import json
 import shutil
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
-NEXT_ACTION_PATH = ROOT / "brain_reports" / "next_action.json"
+BRAIN_REPORTS = ROOT / "brain_reports"
+NEXT_ACTION_PATH = BRAIN_REPORTS / "next_action.json"
+EXECUTION_RESULT_PATH = BRAIN_REPORTS / "execute_next_action_result.json"
+
 INCOMING_DIR = ROOT / "incoming_bundles"
 FAILED_DIR = ROOT / "failed_bundles"
+REPAIRED_DIR = ROOT / "repaired_bundles"
 
 
-def load_next_action():
-    if not NEXT_ACTION_PATH.exists():
+def load_json(path: Path):
+    if not path.exists():
         return None
     try:
-        return json.loads(NEXT_ACTION_PATH.read_text())
+        return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return None
 
 
-def inspect_incoming_bundle(target_path):
-    src = Path(target_path)
+def write_json(path: Path, payload: dict):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    if not src.exists():
+
+def resolve_target_bundle(target: str) -> Path | None:
+    if not target:
+        return None
+
+    target_path = Path(target)
+
+    if target_path.is_absolute() and target_path.exists():
+        return target_path
+
+    repo_relative = ROOT / target_path
+    if repo_relative.exists():
+        return repo_relative
+
+    incoming_candidate = INCOMING_DIR / target_path.name
+    if incoming_candidate.exists():
+        return incoming_candidate
+
+    failed_candidate = FAILED_DIR / target_path.name
+    if failed_candidate.exists():
+        return failed_candidate
+
+    repaired_candidate = REPAIRED_DIR / target_path.name
+    if repaired_candidate.exists():
+        return repaired_candidate
+
+    return None
+
+
+def inspect_incoming_bundle(target_path: str) -> dict:
+    src = resolve_target_bundle(target_path)
+
+    if src is None or not src.exists():
         return {
             "status": "failed",
-            "reason": "incoming_bundle_missing"
+            "reason": "incoming_bundle_missing",
+            "target": target_path,
         }
 
-    # MOVE → failed for now (safe deterministic behavior)
+    FAILED_DIR.mkdir(parents=True, exist_ok=True)
     dest = FAILED_DIR / src.name
-    dest.parent.mkdir(parents=True, exist_ok=True)
 
     shutil.move(str(src), str(dest))
 
     return {
         "status": "ok",
         "action": "classified_to_failed",
-        "bundle": str(dest)
+        "bundle": str(dest),
+    }
+
+
+def handle_repair(action: dict) -> dict:
+    target = action.get("target")
+    family = action.get("family")
+
+    resolved = resolve_target_bundle(target)
+    if resolved is None:
+        return {
+            "status": "failed",
+            "reason": "bundle_not_found",
+            "target": target,
+            "family": family,
+        }
+
+    REPAIRED_DIR.mkdir(parents=True, exist_ok=True)
+
+    ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    repaired_name = f"{resolved.stem}_repaired_{ts}{resolved.suffix}"
+    repaired_path = REPAIRED_DIR / repaired_name
+
+    shutil.copy2(str(resolved), str(repaired_path))
+
+    return {
+        "status": "ok",
+        "family": family,
+        "original_bundle": str(resolved),
+        "repaired_bundle": str(repaired_path),
+        "ts": ts,
+    }
+
+
+def execute_action(next_action: dict | None) -> dict:
+    if not next_action:
+        return {
+            "status": "failed",
+            "reason": "no_action",
+        }
+
+    action_type = next_action.get("action")
+
+    if action_type == "idle":
+        return {
+            "status": "ok",
+            "executed": False,
+            "reason": "idle_no_op",
+        }
+
+    if action_type == "inspect_incoming_bundle_family":
+        result = inspect_incoming_bundle(next_action.get("target"))
+        return {
+            "status": "ok",
+            "executed": True,
+            "execution": result,
+        }
+
+    if action_type == "propose_repair_for_bundle_family":
+        result = handle_repair(next_action)
+        return {
+            "status": "ok",
+            "executed": True,
+            "execution": {
+                "status": "ok",
+                "action": "repair_bundle",
+                "result": result,
+            },
+        }
+
+    return {
+        "status": "failed",
+        "reason": f"unsupported_action:{action_type}",
     }
 
 
 def main():
-    payload = load_next_action()
+    wrapper = load_json(NEXT_ACTION_PATH)
 
-    if not payload:
-        print(json.dumps({
+    if not wrapper:
+        payload = {
             "status": "failed",
-            "reason": "missing_next_action"
-        }))
-        return
-
-    action = payload.get("next_action", {}).get("action")
-    target = payload.get("next_action", {}).get("target")
-
-    # ✅ IDLE
-    if action == "idle":
-        print(json.dumps({
-            "status": "ok",
             "executed": False,
-            "reason": "idle_no_op"
-        }))
+            "reason": "missing_next_action",
+            "timestamp": datetime.utcnow().isoformat(),
+        }
+        write_json(EXECUTION_RESULT_PATH, payload)
+        print(json.dumps(payload, indent=2))
         return
 
-    # ✅ INCOMING INSPECTION
-    if action == "inspect_incoming_bundle_family":
-        result = inspect_incoming_bundle(target)
+    next_action = wrapper.get("next_action")
+    result = execute_action(next_action)
 
-        print(json.dumps({
-            "status": "ok",
-            "executed": True,
-            "execution": result
-        }))
-        return
+    if "timestamp" not in result:
+        result["timestamp"] = datetime.utcnow().isoformat()
 
-    # fallback
-    print(json.dumps({
-        "status": "failed",
-        "reason": f"unsupported_action:{action}"
-    }))
+    # critical contract: persist artifact for reconcile
+    write_json(EXECUTION_RESULT_PATH, result)
+
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
