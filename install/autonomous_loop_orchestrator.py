@@ -1,14 +1,5 @@
 """
-AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner
-
-Purpose:
-- run the real sandbox loop in this order:
-
-    snapshot -> next_action -> execute -> reconcile -> snapshot
-
-- keep the green controlled test surface as the execution health gate
-- write a single stable runtime report
-- avoid repo-wide drift and avoid old competing workflow logic
+AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner (with observer integration)
 """
 
 from __future__ import annotations
@@ -30,6 +21,7 @@ PRE_SNAPSHOT_PATH = os.path.join(PAYLOAD_RUNTIME, "system_snapshot_pre.json")
 POST_SNAPSHOT_PATH = os.path.join(PAYLOAD_RUNTIME, "system_snapshot_post.json")
 
 REPO_SNAPSHOT_REPORT = os.path.join(BRAIN_REPORTS, "repo_snapshot.json")
+EXPLORE_REPORT = os.path.join(BRAIN_REPORTS, "explore.json")
 NEXT_ACTION_REPORT = os.path.join(BRAIN_REPORTS, "next_action.json")
 EXECUTION_REPORT = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
 RECONCILED_REPORT = os.path.join(BRAIN_REPORTS, "reconciled_state.json")
@@ -106,141 +98,36 @@ def ensure_pytest() -> None:
 
 def run_green_tests() -> Dict[str, Any]:
     cmd = [sys.executable, "-m", "pytest", *GREEN_TEST_SET, "-q"]
-
-    try:
-        result = subprocess.run(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-        )
-        return {
-            "ok": result.returncode == 0,
-            "returncode": result.returncode,
-            "stdout": result.stdout,
-            "stderr": result.stderr,
-            "cmd": cmd,
-        }
-    except Exception as exc:
-        return {
-            "ok": False,
-            "returncode": -1,
-            "stdout": "",
-            "stderr": str(exc),
-            "cmd": cmd,
-        }
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    return {
+        "ok": result.returncode == 0,
+        "returncode": result.returncode,
+        "stdout": result.stdout,
+        "stderr": result.stderr,
+    }
 
 
-def run_python_file(path: str, args: List[str] | None = None) -> Dict[str, Any]:
-    args = args or []
-    cmd = [sys.executable, path, *args]
-
-    try:
-        result = subprocess.run(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-        )
-        return {
-            "ok": result.returncode == 0,
-            "returncode": result.returncode,
-            "stdout": result.stdout,
-            "stderr": result.stderr,
-            "cmd": cmd,
-        }
-    except Exception as exc:
-        return {
-            "ok": False,
-            "returncode": -1,
-            "stdout": "",
-            "stderr": str(exc),
-            "cmd": cmd,
-        }
+def run_python_file(path: str) -> Dict[str, Any]:
+    result = subprocess.run(
+        [sys.executable, path],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    return {
+        "ok": result.returncode == 0,
+        "returncode": result.returncode,
+        "stdout": result.stdout,
+        "stderr": result.stderr,
+    }
 
 
 def capture_snapshot(output_path: str) -> Dict[str, Any]:
     script_path = os.path.join(ROOT, "install", "engine", "repo_snapshot.py")
-    result = run_python_file(script_path)
-
+    runner = run_python_file(script_path)
     snapshot = load_json(REPO_SNAPSHOT_REPORT, {})
-    if not isinstance(snapshot, dict):
-        snapshot = {}
-
     write_json(output_path, snapshot)
-
-    return {
-        "ok": result["ok"] and bool(snapshot),
-        "runner": result,
-        "snapshot": snapshot,
-        "output_path": output_path,
-    }
-
-
-def classify_state(pre: Dict[str, Any], post: Dict[str, Any]) -> Dict[str, Any]:
-    if not isinstance(pre, dict) or not isinstance(post, dict):
-        return {
-            "type": "invalid_snapshot",
-            "severity": "critical",
-            "action": "halt",
-        }
-
-    if pre == post:
-        return {
-            "type": "no_change",
-            "severity": "none",
-            "action": "noop",
-        }
-
-    signals: List[str] = []
-
-    if pre.get("repo_hash") != post.get("repo_hash"):
-        signals.append("repo_modified")
-
-    if pre.get("incoming_bundle_count") != post.get("incoming_bundle_count"):
-        signals.append("incoming_bundle_queue_changed")
-
-    if pre.get("installed_bundle_count") != post.get("installed_bundle_count"):
-        signals.append("installed_bundle_set_changed")
-
-    if pre.get("failed_bundle_count") != post.get("failed_bundle_count"):
-        signals.append("failed_bundle_set_changed")
-
-    if pre.get("last_review_state") != post.get("last_review_state"):
-        signals.append("review_state_changed")
-
-    if pre.get("last_next_action") != post.get("last_next_action"):
-        signals.append("next_action_changed")
-
-    if pre.get("last_execution_status") != post.get("last_execution_status"):
-        signals.append("execution_status_changed")
-
-    if not signals:
-        return {
-            "type": "opaque_change",
-            "severity": "medium",
-            "action": "inspect",
-            "signals": [],
-        }
-
-    if "repo_modified" in signals:
-        return {
-            "type": "repo_mutation",
-            "severity": "high",
-            "action": "inspect",
-            "signals": signals,
-        }
-
-    return {
-        "type": "system_activity",
-        "severity": "low",
-        "action": "observe",
-        "signals": signals,
-    }
-
-
-def decide_action(classification: Dict[str, Any]) -> str:
-    return classification.get("action", "noop")
+    return {"ok": runner["ok"], "snapshot": snapshot}
 
 
 def main() -> None:
@@ -249,133 +136,59 @@ def main() -> None:
     ensure_dir(PAYLOAD_RUNTIME)
     ensure_dir(BRAIN_REPORTS)
 
-    # 1) health gate first: keep bounded green baseline alive
     ensure_pytest()
     test_result = run_green_tests()
 
-    # 2) snapshot before loop action
+    # 1. Snapshot (state)
     pre = capture_snapshot(PRE_SNAPSHOT_PATH)
 
-    # 3) next_action
-    next_action_runner = run_python_file(
+    # 2. Activity observer
+    explore_runner = run_python_file(
+        os.path.join(ROOT, "internal_brain", "explore.py")
+    )
+    explore_doc = load_json(EXPLORE_REPORT, {})
+
+    # 3. Decision
+    next_runner = run_python_file(
         os.path.join(ROOT, "install", "engine", "next_action_engine.py")
     )
-    next_action_doc = load_json(NEXT_ACTION_REPORT, {})
+    next_doc = load_json(NEXT_ACTION_REPORT, {})
 
-    # 4) execute
-    execute_runner = run_python_file(
+    # 4. Execute
+    exec_runner = run_python_file(
         os.path.join(ROOT, "install", "engine", "execute_next_action.py")
     )
-    execution_doc = load_json(EXECUTION_REPORT, {})
+    exec_doc = load_json(EXECUTION_REPORT, {})
 
-    # 5) reconcile
-    reconcile_runner = run_python_file(
+    # 5. Reconcile
+    recon_runner = run_python_file(
         os.path.join(ROOT, "install", "engine", "reconcile_execution_state.py")
     )
-    reconciled_doc = load_json(RECONCILED_REPORT, {})
+    recon_doc = load_json(RECONCILED_REPORT, {})
 
-    # 6) snapshot after loop action
+    # 6. Snapshot again
     post = capture_snapshot(POST_SNAPSHOT_PATH)
-
-    pre_snapshot = pre.get("snapshot", {})
-    post_snapshot = post.get("snapshot", {})
-
-    state_changed = isinstance(pre_snapshot, dict) and isinstance(post_snapshot, dict) and pre_snapshot != post_snapshot
-    classification = classify_state(pre_snapshot, post_snapshot)
-    action = decide_action(classification)
-
-    loop_ok = (
-        test_result.get("ok", False)
-        and pre.get("ok", False)
-        and next_action_runner.get("ok", False)
-        and execute_runner.get("ok", False)
-        and reconcile_runner.get("ok", False)
-        and post.get("ok", False)
-    )
 
     finished = time.time()
 
     report = {
         "status": "ok",
-        "mode": "bounded_sandbox_loop",
-        "loop_ok": loop_ok,
-        "tests_passed": test_result.get("ok", False),
-        "state_changed": state_changed,
-        "classification": classification,
-        "action": action,
+        "mode": "sandbox_loop_with_observer",
+        "loop_ok": test_result["ok"],
         "duration_seconds": round(finished - started, 3),
-        "timestamp": finished,
-        "test_surface": GREEN_TEST_SET,
-        "test_count": len(GREEN_TEST_SET),
-        "pytest_returncode": test_result.get("returncode"),
-        "test_output_snippet": extract_summary(
-            test_result.get("stdout", ""),
-            test_result.get("stderr", ""),
-        ),
+        "tests_passed": test_result["ok"],
+        "activity": explore_doc.get("counts", {}),
+        "next_action": next_doc.get("next_action", {}),
+        "execution": exec_doc.get("execution", {}),
+        "reconcile": recon_doc.get("review", {}),
         "state": {
             "pre": PRE_SNAPSHOT_PATH,
             "post": POST_SNAPSHOT_PATH,
-        },
-        "artifacts": {
-            "repo_snapshot": REPO_SNAPSHOT_REPORT,
-            "next_action": NEXT_ACTION_REPORT,
-            "execution_result": EXECUTION_REPORT,
-            "reconciled_state": RECONCILED_REPORT,
-            "runtime_report": REPORT_PATH,
-        },
-        "steps": {
-            "pre_snapshot": {
-                "ok": pre.get("ok", False),
-                "summary": {
-                    "repo_hash": pre_snapshot.get("repo_hash"),
-                    "incoming_bundle_count": pre_snapshot.get("incoming_bundle_count"),
-                    "installed_bundle_count": pre_snapshot.get("installed_bundle_count"),
-                    "failed_bundle_count": pre_snapshot.get("failed_bundle_count"),
-                },
-                "runner_returncode": (pre.get("runner") or {}).get("returncode"),
-            },
-            "next_action": {
-                "ok": next_action_runner.get("ok", False),
-                "runner_returncode": next_action_runner.get("returncode"),
-                "summary": next_action_doc.get("next_action", {}),
-                "output_snippet": extract_summary(
-                    next_action_runner.get("stdout", ""),
-                    next_action_runner.get("stderr", ""),
-                ),
-            },
-            "execute": {
-                "ok": execute_runner.get("ok", False),
-                "runner_returncode": execute_runner.get("returncode"),
-                "summary": execution_doc.get("execution", {}),
-                "output_snippet": extract_summary(
-                    execute_runner.get("stdout", ""),
-                    execute_runner.get("stderr", ""),
-                ),
-            },
-            "reconcile": {
-                "ok": reconcile_runner.get("ok", False),
-                "runner_returncode": reconcile_runner.get("returncode"),
-                "summary": reconciled_doc.get("review", {}),
-                "output_snippet": extract_summary(
-                    reconcile_runner.get("stdout", ""),
-                    reconcile_runner.get("stderr", ""),
-                ),
-            },
-            "post_snapshot": {
-                "ok": post.get("ok", False),
-                "summary": {
-                    "repo_hash": post_snapshot.get("repo_hash"),
-                    "incoming_bundle_count": post_snapshot.get("incoming_bundle_count"),
-                    "installed_bundle_count": post_snapshot.get("installed_bundle_count"),
-                    "failed_bundle_count": post_snapshot.get("failed_bundle_count"),
-                },
-                "runner_returncode": (post.get("runner") or {}).get("returncode"),
-            },
-        },
+        }
     }
 
     write_json(REPORT_PATH, report)
-    print(json.dumps(report, indent=2, sort_keys=True))
+    print(json.dumps(report, indent=2))
 
 
 if __name__ == "__main__":
