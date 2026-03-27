@@ -12,68 +12,212 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # -------------------------------
-      # 🔍 ENSURE STATE EXISTS
-      # -------------------------------
-      - name: Ensure bundle directories exist
+      - name: Ensure directories
         run: |
+          mkdir -p incoming_bundles
           mkdir -p failed_bundles
           mkdir -p repaired_bundles
-          mkdir -p incoming_bundles
+          mkdir -p installed_bundles
           mkdir -p brain_reports
+          mkdir -p logs
 
-      - name: Debug bundle state
+      - name: Seed demo incoming bundle if missing
         run: |
+          python - <<'PY'
+          import json, zipfile, os
+          from pathlib import Path
+
+          bundle = Path("incoming_bundles/demo_missing_install_v1.zip")
+          if bundle.exists():
+              print("demo bundle already exists")
+              raise SystemExit(0)
+
+          tmp = Path("_demo_seed")
+          if tmp.exists():
+              import shutil
+              shutil.rmtree(tmp)
+          tmp.mkdir(parents=True, exist_ok=True)
+
+          manifest = {
+              "bundle_name": "demo_missing_install_v1",
+              "bundle_version": "0.0.1",
+              "status": "seeded",
+              "capabilities": {},
+              "files": ["bundle_manifest.json"]
+          }
+
+          (tmp / "bundle_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+
+          with zipfile.ZipFile(bundle, "w", zipfile.ZIP_DEFLATED) as z:
+              z.write(tmp / "bundle_manifest.json", "bundle_manifest.json")
+
+          print(f"seeded {bundle}")
+          PY
+
+      - name: Debug initial state
+        run: |
+          echo "INCOMING:"
+          ls -la incoming_bundles || true
           echo "FAILED:"
           ls -la failed_bundles || true
           echo "REPAIRED:"
           ls -la repaired_bundles || true
+          echo "INSTALLED:"
+          ls -la installed_bundles || true
 
-      # -------------------------------
-      # 🔁 RUN LOOP
-      # -------------------------------
-      - name: Run Autonomous Loop
+      # PASS 1: inspect incoming, fail it if invalid
+      - name: Run loop pass 1
         run: |
           python install/autonomous_loop_orchestrator.py
 
-      # -------------------------------
-      # 💾 PERSIST STATE (CRITICAL FIX)
-      # -------------------------------
-      - name: Commit outputs and state
+      - name: Route rejected incoming bundle to failed_bundles
+        run: |
+          python - <<'PY'
+          import json, shutil
+          from pathlib import Path
+
+          report = Path("brain_reports/inspection_result.json")
+          if not report.exists():
+              print("no inspection report; skipping")
+              raise SystemExit(0)
+
+          data = json.loads(report.read_text(encoding="utf-8"))
+          inspection = data.get("inspection", {})
+          decision = inspection.get("decision", {})
+          action = decision.get("action")
+          target = inspection.get("target")
+
+          if not action or not action.startswith("reject_"):
+              print("inspection did not reject; skipping")
+              raise SystemExit(0)
+
+          if not target:
+              print("missing target; skipping")
+              raise SystemExit(0)
+
+          src = Path(target)
+          if not src.exists():
+              print("target missing on disk; skipping")
+              raise SystemExit(0)
+
+          dst = Path("failed_bundles") / src.name
+          shutil.move(str(src), str(dst))
+          print(f"moved rejected incoming bundle to failed: {dst}")
+          PY
+
+      - name: Persist state after pass 1
         run: |
           git config user.name "actions-user"
           git config user.email "actions@github.com"
-
-          git add brain_reports/ || true
-          git add failed_bundles/ || true
-          git add repaired_bundles/ || true
-
-          git commit -m "persist loop state" || echo "no changes"
+          git add incoming_bundles/ failed_bundles/ repaired_bundles/ installed_bundles/ brain_reports/ logs/ || true
+          git commit -m "persist loop state pass 1" || echo "no changes"
           git push
 
-      # -------------------------------
-      # 🧪 RENDER TEST (HEADLESS)
-      # -------------------------------
-      - name: Headless Render Test
+      # PASS 2: repair failed bundle, reintegrate to incoming
+      - name: Run loop pass 2
         run: |
-          echo "Testing render readiness..."
+          python install/autonomous_loop_orchestrator.py
 
-          if [ -f brain_reports/repair_bundle_result.json ]; then
-            echo "Repair pipeline active"
-          else
-            echo "No repair output yet"
-          fi
+      - name: Persist state after pass 2
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+          git add incoming_bundles/ failed_bundles/ repaired_bundles/ installed_bundles/ brain_reports/ logs/ || true
+          git commit -m "persist loop state pass 2" || echo "no changes"
+          git push
 
-          if [ -f brain_reports/next_action.json ]; then
-            echo "Decision layer active"
-          else
-            echo "Decision missing"
-          fi
+      # PASS 3: inspect repaired incoming, promote if valid
+      - name: Run loop pass 3
+        run: |
+          python install/autonomous_loop_orchestrator.py
 
-          echo "Render test complete"
+      - name: Promote valid inspected incoming bundle to installed_bundles
+        run: |
+          python - <<'PY'
+          import json, shutil
+          from pathlib import Path
+
+          report = Path("brain_reports/inspection_result.json")
+          if not report.exists():
+              print("no inspection report; skipping")
+              raise SystemExit(0)
+
+          data = json.loads(report.read_text(encoding="utf-8"))
+          inspection = data.get("inspection", {})
+          decision = inspection.get("decision", {})
+          action = decision.get("action")
+          target = inspection.get("target")
+
+          if action != "promote_to_install":
+              print(f"inspection action={action}; not promoting")
+              raise SystemExit(0)
+
+          if not target:
+              print("missing target; skipping")
+              raise SystemExit(0)
+
+          src = Path(target)
+          if not src.exists():
+              print("target missing on disk; skipping")
+              raise SystemExit(0)
+
+          dst = Path("installed_bundles") / src.name
+          shutil.move(str(src), str(dst))
+          print(f"promoted installed bundle: {dst}")
+          PY
+
+      - name: Persist state after pass 3
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+          git add incoming_bundles/ failed_bundles/ repaired_bundles/ installed_bundles/ brain_reports/ logs/ || true
+          git commit -m "persist loop state pass 3" || echo "no changes"
+          git push
+
+      - name: Render headless confirmation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("brain_reports/headless_cmd_test.json")
+          if not path.exists():
+              raise SystemExit("missing brain_reports/headless_cmd_test.json")
+
+          data = json.loads(path.read_text(encoding="utf-8"))
+          steps = data.get("steps", {})
+
+          required = ["health", "token", "execute", "verify"]
+          failed = [k for k in required if not steps.get(k, {}).get("ok", False)]
+
+          print(json.dumps({
+              "render_test": "steggate_live_test",
+              "required_steps": required,
+              "failed_steps": failed,
+              "passed": not failed
+          }, indent=2))
+
+          if failed:
+              raise SystemExit(1)
+          PY
+
+      - name: Final state summary
+        run: |
+          echo "INCOMING:"
+          ls -la incoming_bundles || true
+          echo "FAILED:"
+          ls -la failed_bundles || true
+          echo "REPAIRED:"
+          ls -la repaired_bundles || true
+          echo "INSTALLED:"
+          ls -la installed_bundles || true
+          echo "REPORTS:"
+          ls -la brain_reports || true
