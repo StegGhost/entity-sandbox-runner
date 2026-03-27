@@ -40,9 +40,19 @@ def run_step(cmd):
 def safe_json_load(path):
     if not os.path.exists(path):
         return {}
+
     try:
         with open(path) as f:
-            return json.load(f)
+            data = json.load(f)
+
+        if isinstance(data, str):
+            try:
+                data = json.loads(data)
+            except Exception:
+                return {}
+
+        return data if isinstance(data, dict) else {}
+
     except Exception:
         return {}
 
@@ -91,7 +101,11 @@ def run_loop():
         os.path.join(REPORT_DIR, "preflight_decision.json")
     )
 
-    preflight_decision = preflight_data.get("decision", {}).get("decision")
+    preflight_decision = None
+    if isinstance(preflight_data.get("decision"), dict):
+        preflight_decision = preflight_data.get("decision", {}).get("decision")
+    else:
+        preflight_decision = preflight_data.get("decision")
 
     # -----------------------------
     # 3. NEXT ACTION
@@ -133,7 +147,6 @@ def run_loop():
     # 5. EXECUTION ROUTES
     # -----------------------------
 
-    # ---- INSPECTION ----
     if routed_decision == "inspect_sandbox":
         inspect = run_step([
             "python",
@@ -143,7 +156,6 @@ def run_loop():
         ])
         steps["inspect"] = inspect
 
-    # ---- REPAIR ----
     elif routed_decision == "repair_sandbox":
         repair = run_step([
             "python",
@@ -153,7 +165,6 @@ def run_loop():
         ])
         steps["repair"] = repair
 
-    # ---- EXECUTION ----
     elif routed_decision == "run_experiment":
         execute = run_step([
             "python",
@@ -177,7 +188,6 @@ def run_loop():
     result["duration_seconds"] = round(time.time() - start, 3)
     result["steps"] = steps
 
-    # Write final output
     output_path = os.path.join(REPORT_DIR, "loop_result.json")
     with open(output_path, "w") as f:
         json.dump(result, f, indent=2)
