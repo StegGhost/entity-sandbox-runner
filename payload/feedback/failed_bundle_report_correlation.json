@@ -1,26 +1,8 @@
 {
-  "ts": "2026-03-25T19:32:58.796451+00:00",
+  "ts": "2026-03-27T01:54:06.786158+00:00",
   "action": "correlate_failed_bundles_with_ingestion_reports",
   "count": 20,
   "correlations": [
-    {
-      "bundle": "failed_bundles/v21_to_v30_bundle.zip",
-      "bundle_name": "v21_to_v30_bundle.zip",
-      "matched_report": null,
-      "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-      "bundle_name": "v21_2_formal_document_engine_bundle.zip",
-      "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
-      "status": "matched"
-    },
-    {
-      "bundle": "failed_bundles/v21_1_gatekeeper_bundle.zip",
-      "bundle_name": "v21_1_gatekeeper_bundle.zip",
-      "matched_report": null,
-      "status": "no_report_found"
-    },
     {
       "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
       "bundle_name": "trajectory_engine_v5_bundle.zip",
@@ -45,28 +27,6 @@
         "ui/app.js",
         "install/engine/ui_api_adapter.py",
         "install/tests/test_ui_adapter.py"
-      ]
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v6.zip",
-      "bundle_name": "token_economics_v6.zip",
-      "matched_report": "ingestion_reports/token_economics_v6.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/adaptive_governance_engine.py",
-        "install/engine/attack_simulation_engine.py",
-        "install/engine/slashing_curve_engine.py",
-        "install/engine/governance_proposal_engine.py",
-        "install/sim/attack_scenarios.py",
-        "install/tests/test_adaptive.py",
-        "install/tests/test_attack_sim.py"
       ]
     },
     {
@@ -110,27 +70,6 @@
       "status": "no_report_found"
     },
     {
-      "bundle": "failed_bundles/token_economics_v5.zip",
-      "bundle_name": "token_economics_v5.zip",
-      "matched_report": "ingestion_reports/token_economics_v5.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/federation_engine.py",
-        "install/engine/cross_runner_validation.py",
-        "install/engine/onchain_anchor_engine.py",
-        "install/engine/settlement_engine.py",
-        "install/tests/test_federation.py",
-        "install/tests/test_anchor.py"
-      ]
-    },
-    {
       "bundle": "failed_bundles/tokenized_governance_bundle_v1.zip",
       "bundle_name": "tokenized_governance_bundle_v1.zip",
       "matched_report": "ingestion_reports/tokenized_governance_bundle_v1.zip_20260322_214850.json",
@@ -141,27 +80,6 @@
       "bundle_name": "token_economics_v9_manifest_fixed.zip",
       "matched_report": null,
       "status": "no_report_found"
-    },
-    {
-      "bundle": "failed_bundles/token_economics_v4.zip",
-      "bundle_name": "token_economics_v4.zip",
-      "matched_report": "ingestion_reports/token_economics_v4.zip_20260322_230638.json",
-      "status": "matched",
-      "verification_reason": "manifest_missing_required_fields",
-      "missing_fields": [
-        "version",
-        "install_mode"
-      ],
-      "allowed_paths": [
-        "bundle_manifest.json",
-        "README.md",
-        "install/engine/consensus_engine.py",
-        "install/engine/fraud_proof_engine.py",
-        "install/engine/finality_engine.py",
-        "install/engine/state_commit_engine.py",
-        "install/tests/test_consensus.py",
-        "install/tests/test_fraud_proofs.py"
-      ]
     },
     {
       "bundle": "failed_bundles/v21_1C_ultra_compatible_ingestion_bootstrap_bundle.zip",
@@ -198,6 +116,12 @@
         "install/tests/test_identity.py",
         "install/tests/test_learning.py"
       ]
+    },
+    {
+      "bundle": "failed_bundles/v21_to_v30_bundle.zip",
+      "bundle_name": "v21_to_v30_bundle.zip",
+      "matched_report": null,
+      "status": "no_report_found"
     },
     {
       "bundle": "failed_bundles/token_economics_v7_manifest_fixed.zip",
@@ -253,6 +177,60 @@
       "bundle_name": "tvc_export_bundle.zip",
       "matched_report": "ingestion_reports/tvc_export_bundle.zip_20260323_150730.json",
       "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+      "bundle_name": "v21_2_formal_document_engine_bundle.zip",
+      "matched_report": "ingestion_reports/v21_2_formal_document_engine_bundle.zip_20260319_020317.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/trajectory_aware_retry_v10_bundle.zip",
+      "bundle_name": "trajectory_aware_retry_v10_bundle.zip",
+      "matched_report": "ingestion_reports/trajectory_aware_retry_v10_bundle.zip_20260322_230638.json",
+      "status": "matched"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v6_manifest_fixed.zip",
+      "bundle_name": "token_economics_v6_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v9.zip",
+      "bundle_name": "token_economics_v9.zip",
+      "matched_report": "ingestion_reports/token_economics_v9.zip_20260322_230638.json",
+      "status": "matched",
+      "verification_reason": "manifest_missing_required_fields",
+      "missing_fields": [
+        "version",
+        "install_mode"
+      ],
+      "allowed_paths": [
+        "bundle_manifest.json",
+        "README.md",
+        "config/zk_backend.json",
+        "config/rl_multi_agent.json",
+        "config/did_config.json",
+        "install/engine/zk_backend_interface.py",
+        "install/engine/zk_circom_adapter.py",
+        "install/engine/zk_halo2_adapter.py",
+        "install/engine/multi_agent_env.py",
+        "install/engine/multi_agent_trainer.py",
+        "install/engine/policy_registry.py",
+        "install/engine/did_identity_engine.py",
+        "install/engine/vc_credential_engine.py",
+        "install/engine/sybil_resistance_engine.py",
+        "install/tests/test_zk_backend.py",
+        "install/tests/test_multi_agent.py",
+        "install/tests/test_did_identity.py"
+      ]
+    },
+    {
+      "bundle": "failed_bundles/token_economics_v8_manifest_fixed.zip",
+      "bundle_name": "token_economics_v8_manifest_fixed.zip",
+      "matched_report": null,
+      "status": "no_report_found"
     }
   ]
 }

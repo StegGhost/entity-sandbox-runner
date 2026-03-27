@@ -56,7 +56,7 @@
   "failed_cge_bundles": [
     "stegcge_closure_modules_v1_bundle.zip"
   ],
-  "file_count": 4386,
+  "file_count": 4400,
   "files": [
     ".gitignore",
     "PROPOSED_BUILD.md",
@@ -247,6 +247,7 @@
     "brain_reports/bundle_inventory.json",
     "brain_reports/bundle_inventory.md",
     "brain_reports/execute_next_action_result.json",
+    "brain_reports/explore.json",
     "brain_reports/failed_bundle_report_correlation.json",
     "brain_reports/next_action.json",
     "brain_reports/receipt_catalog.json",
@@ -256,18 +257,27 @@
     "brain_reports/repo_file_tree.md",
     "brain_reports/repo_snapshot.json",
     "brain_reports/repo_snapshot_trace.jsonl",
-    "brain_reports/self_improve_result.json",
-    "brain_state.json"
+    "brain_reports/self_improve_result.json"
   ],
   "has_cge": true,
   "has_work": true,
-  "incoming_bundle_count": 5,
+  "incoming_bundle_count": 15,
   "incoming_bundles": [
     ".gitkeep",
     "auto_bundle.zip",
     "auto_bundle_feedback_test.zip",
     "auto_bundle_v4_test.zip",
-    "governed_agent_passport_v1_ingestion_bundle.sha256"
+    "governed_agent_passport_v1_ingestion_bundle.sha256",
+    "token_economics_v6_manifest_fixed.zip",
+    "token_economics_v7.zip",
+    "token_economics_v7_manifest_fixed.zip",
+    "token_economics_v8_manifest_fixed.zip",
+    "token_economics_v9_manifest_fixed.zip",
+    "trajectory_engine_v5_bundle.zip",
+    "ui_dashboard_control_v17_manifest_fixed.zip",
+    "v13_1_to_v14_bundle.zip",
+    "v21_1B_ingestion_hardening_bundle_manifest_fixed.zip",
+    "v21_2_formal_document_engine_bundle.zip"
   ],
   "incoming_cge_bundles": [],
   "installed_bundle_count": 135,
@@ -324,7 +334,7 @@
     "plan_memory_bundle_v1.zip"
   ],
   "installed_cge_bundles": [],
-  "repo_hash": "1759666a1fb8c333f35da64bc0d914eb906a5708b51b7784854bbb416438a3c0",
+  "repo_hash": "c4c22fccb3eeb829ff821c9090bbbd23d1e0055ea7ee89b3c2b141aefd1f6bfb",
   "root": ".",
   "snapshot_source_file": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/repo_snapshot.py",
   "snapshot_source_module": "__main__",
@@ -401,5 +411,5 @@
     "tests/test_trajectory_engine_v5.py",
     "tests/test_v8.py"
   ],
-  "timestamp": 1774573696.7673497
+  "timestamp": 1774576447.0385325
 }

@@ -1,11 +1,15 @@
 {
   "activity": {
-    "active_family": "v21_2_formal_document_engine",
-    "counts": {},
-    "mode": "internal_brain_signal",
-    "source": "next_action_internal_brain",
-    "summary": "20 recent failed bundles detected",
-    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip"
+    "counts": {
+      "recent_failed_bundles": 20,
+      "recent_feedback": 4,
+      "recent_ingestion_reports": 20,
+      "recent_installed_bundles": 20,
+      "recent_receipts": 0
+    },
+    "mode": "observer",
+    "source": "explore_json",
+    "summary": "Explorer collected repo activity signals"
   },
   "artifacts": {
     "execution_result": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/execute_next_action_result.json",
@@ -16,60 +20,81 @@
     "repo_snapshot": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repo_snapshot.json",
     "runtime_report": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/autonomous_loop_report.json"
   },
-  "duration_seconds": 5.601,
+  "classification": {
+    "action": "inspect",
+    "severity": "high",
+    "signals": [
+      "repo_modified",
+      "incoming_bundle_queue_changed"
+    ],
+    "type": "repo_mutation"
+  },
+  "duration_seconds": 5.261,
   "execution": {
-    "action": "idle",
-    "executed": false,
-    "reason": "no_action_to_execute",
+    "action": "inspect_failed_bundle_family",
+    "bundle": "failed_bundles/trajectory_engine_v5_bundle.zip",
+    "file_count": 3,
+    "sample_files": [
+      "bundle_manifest.json",
+      "install/engine/trajectory_engine_v5.py",
+      "install/tests/test_trajectory_engine_v5.py"
+    ],
     "status": "ok"
   },
-  "loop_ok": false,
+  "loop_ok": true,
   "mode": "sandbox_loop_with_observer",
   "next_action": {
     "action": "inspect_failed_bundle_family",
-    "active_family": "v21_2_formal_document_engine",
-    "family": "v21_2_formal_document_engine",
+    "active_family": "trajectory_engine",
+    "family": "trajectory_engine",
     "priority": 1,
     "reason": "20 recent failed bundles detected",
     "selection_mode": "internal_brain_closure",
     "source": "internal_brain",
     "status": "ok",
-    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
-    "ts": "2026-03-25T19:32:58.821371"
+    "target": "failed_bundles/trajectory_engine_v5_bundle.zip",
+    "ts": "2026-03-27T01:54:06.810053"
   },
   "reconcile": {
-    "bundle": "v21_2_formal_document_engine_bundle.zip",
-    "family": "v21_2_formal_document_engine",
-    "reason": "path_not_allowed:.github/workflows/document_engine.yml",
-    "state": "failed"
+    "bundle": "trajectory_engine_v5_bundle.zip",
+    "family": "trajectory_engine",
+    "reason": "ingestion_success",
+    "state": "ingested"
   },
   "state": {
     "post": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/system_snapshot_post.json",
     "pre": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/system_snapshot_pre.json"
   },
+  "state_changed": true,
   "status": "ok",
   "steps": {
     "execute": {
       "ok": true,
-      "output_snippet": "    \"family\": \"v21_2_formal_document_engine\",\n    \"priority\": 1,\n    \"reason\": \"20 recent failed bundles detected\",\n    \"source\": \"internal_brain\"\n  },\n  \"execution\": {\n    \"status\": \"ok\",\n    \"executed\": false,\n    \"action\": \"idle\",\n    \"reason\": \"no_action_to_execute\"\n  }\n}",
+      "output_snippet": "{\n  \"status\": \"ok\",\n  \"action\": \"inspect_failed_bundle_family\",\n  \"bundle\": \"failed_bundles/trajectory_engine_v5_bundle.zip\",\n  \"file_count\": 3,\n  \"sample_files\": [\n    \"bundle_manifest.json\",\n    \"install/engine/trajectory_engine_v5.py\",\n    \"install/tests/test_trajectory_engine_v5.py\"\n  ]\n}",
       "returncode": 0
     },
     "explore": {
-      "explore_json_present": false,
-      "ok": false,
-      "output_snippet": "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python: can't open file '/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/explore.py': [Errno 2] No such file or directory",
-      "returncode": 2
+      "explore_json_present": true,
+      "ok": true,
+      "output_snippet": "      \"ingestion_reports/token_economics_v3.zip_20260322_230638.json\",\n      \"ingestion_reports/token_economics_v4.zip_20260322_230638.json\"\n    ],\n    \"recent_feedback\": [\n      \"payload/feedback/canonical_feedback.md\",\n      \"payload/feedback/canonical_loop_report.json\",\n      \"payload/feedback/failed_bundle_report_correlation.json\",\n      \"payload/feedback/canonical_feedback.json\"\n    ],\n    \"recent_receipts\": []\n  }\n}",
+      "returncode": 0
     },
     "next_action": {
-      "ok": false,
-      "output_snippet": "Traceback (most recent call last):\n  File \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/next_action_engine.py\", line 5, in <module>\n    from install.engine.repo_snapshot import snapshot_repo_state\nModuleNotFoundError: No module named 'install'",
-      "returncode": 1
+      "ok": true,
+      "output_snippet": "    \"ts\": \"2026-03-27T01:54:06.810053\",\n    \"status\": \"ok\",\n    \"selection_mode\": \"internal_brain_closure\",\n    \"active_family\": \"trajectory_engine\",\n    \"action\": \"inspect_failed_bundle_family\",\n    \"target\": \"failed_bundles/trajectory_engine_v5_bundle.zip\",\n    \"family\": \"trajectory_engine\",\n    \"priority\": 1,\n    \"reason\": \"20 recent failed bundles detected\",\n    \"source\": \"internal_brain\"\n  }\n}",
+      "returncode": 0
     },
     "reconcile": {
       "ok": true,
-      "output_snippet": "{\n  \"status\": \"ok\",\n  \"review_state\": \"failed\",\n  \"bundle\": \"v21_2_formal_document_engine_bundle.zip\",\n  \"family\": \"v21_2_formal_document_engine\"\n}",
+      "output_snippet": "{\n  \"status\": \"ok\",\n  \"review_state\": \"ingested\",\n  \"bundle\": \"trajectory_engine_v5_bundle.zip\",\n  \"family\": \"trajectory_engine\"\n}",
       "returncode": 0
     }
+  },
+  "system_state": {
+    "bytes": 3359,
+    "path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/context/SYSTEM_STATE_v1.md",
+    "present": true,
+    "preview": "# SYSTEM_STATE_v1\n\n## PURPOSE\n\nStabilize and operate a **closed-loop governed sandbox system** capable of:\n\n- autonomous ingestion\n- deterministic decision-making\n- controlled execution\n- reconciliation and state tracking\n\nThis system must:\n- operate without external chat context\n- derive all decisions from repo state\n- converge toward a fully functional repo\n\n---\n\n## CORE LOOP (AUTHORITATIVE)\n\nSi"
   },
   "tests_passed": true
 }
