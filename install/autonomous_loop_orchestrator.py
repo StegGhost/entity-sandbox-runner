@@ -1,5 +1,5 @@
 """
-AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner (with observer integration)
+AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner (observer surfaced correctly)
 """
 
 from __future__ import annotations
@@ -25,6 +25,7 @@ EXPLORE_REPORT = os.path.join(BRAIN_REPORTS, "explore.json")
 NEXT_ACTION_REPORT = os.path.join(BRAIN_REPORTS, "next_action.json")
 EXECUTION_REPORT = os.path.join(BRAIN_REPORTS, "execute_next_action_result.json")
 RECONCILED_REPORT = os.path.join(BRAIN_REPORTS, "reconciled_state.json")
+INTERNAL_BRAIN_REPORT = os.path.join(ROOT, "internal_brain", "brain_report.json")
 
 
 GREEN_TEST_SET: List[str] = [
@@ -127,7 +128,53 @@ def capture_snapshot(output_path: str) -> Dict[str, Any]:
     runner = run_python_file(script_path)
     snapshot = load_json(REPO_SNAPSHOT_REPORT, {})
     write_json(output_path, snapshot)
-    return {"ok": runner["ok"], "snapshot": snapshot}
+    return {
+        "ok": runner["ok"] and isinstance(snapshot, dict) and bool(snapshot),
+        "runner": runner,
+        "snapshot": snapshot,
+    }
+
+
+def build_activity_summary(explore_doc: Dict[str, Any], next_doc: Dict[str, Any], internal_brain_doc: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(explore_doc, dict) and explore_doc.get("counts"):
+        return {
+            "source": "explore_json",
+            "counts": explore_doc.get("counts", {}),
+            "summary": explore_doc.get("summary"),
+            "mode": explore_doc.get("mode"),
+        }
+
+    next_action = next_doc.get("next_action", {}) if isinstance(next_doc, dict) else {}
+    if next_action.get("source") == "internal_brain":
+        return {
+            "source": "next_action_internal_brain",
+            "counts": {},
+            "summary": next_action.get("reason"),
+            "mode": "internal_brain_signal",
+            "active_family": next_action.get("active_family"),
+            "target": next_action.get("target"),
+        }
+
+    closure = internal_brain_doc.get("closure_output", {}) if isinstance(internal_brain_doc, dict) else {}
+    actions = closure.get("actions", []) if isinstance(closure, dict) else []
+    if actions:
+        first = actions[0]
+        return {
+            "source": "internal_brain_report",
+            "counts": {},
+            "summary": first.get("reason"),
+            "mode": "internal_brain_signal",
+            "action": first.get("action"),
+            "priority": first.get("priority"),
+            "targets": first.get("targets", []),
+        }
+
+    return {
+        "source": "none",
+        "counts": {},
+        "summary": "no observer activity surfaced",
+        "mode": "missing",
+    }
 
 
 def main() -> None:
@@ -139,52 +186,100 @@ def main() -> None:
     ensure_pytest()
     test_result = run_green_tests()
 
-    # 1. Snapshot (state)
     pre = capture_snapshot(PRE_SNAPSHOT_PATH)
 
-    # 2. Activity observer
     explore_runner = run_python_file(
         os.path.join(ROOT, "internal_brain", "explore.py")
     )
     explore_doc = load_json(EXPLORE_REPORT, {})
 
-    # 3. Decision
     next_runner = run_python_file(
         os.path.join(ROOT, "install", "engine", "next_action_engine.py")
     )
     next_doc = load_json(NEXT_ACTION_REPORT, {})
 
-    # 4. Execute
     exec_runner = run_python_file(
         os.path.join(ROOT, "install", "engine", "execute_next_action.py")
     )
     exec_doc = load_json(EXECUTION_REPORT, {})
 
-    # 5. Reconcile
     recon_runner = run_python_file(
         os.path.join(ROOT, "install", "engine", "reconcile_execution_state.py")
     )
     recon_doc = load_json(RECONCILED_REPORT, {})
 
-    # 6. Snapshot again
     post = capture_snapshot(POST_SNAPSHOT_PATH)
+
+    internal_brain_doc = load_json(INTERNAL_BRAIN_REPORT, {})
+    activity = build_activity_summary(explore_doc, next_doc, internal_brain_doc)
 
     finished = time.time()
 
     report = {
         "status": "ok",
         "mode": "sandbox_loop_with_observer",
-        "loop_ok": test_result["ok"],
+        "loop_ok": (
+            test_result["ok"]
+            and pre["ok"]
+            and next_runner["ok"]
+            and exec_runner["ok"]
+            and recon_runner["ok"]
+            and post["ok"]
+        ),
         "duration_seconds": round(finished - started, 3),
         "tests_passed": test_result["ok"],
-        "activity": explore_doc.get("counts", {}),
+        "activity": activity,
         "next_action": next_doc.get("next_action", {}),
         "execution": exec_doc.get("execution", {}),
         "reconcile": recon_doc.get("review", {}),
+        "artifacts": {
+            "repo_snapshot": REPO_SNAPSHOT_REPORT,
+            "explore": EXPLORE_REPORT,
+            "next_action": NEXT_ACTION_REPORT,
+            "execution_result": EXECUTION_REPORT,
+            "reconciled_state": RECONCILED_REPORT,
+            "internal_brain_report": INTERNAL_BRAIN_REPORT,
+            "runtime_report": REPORT_PATH,
+        },
+        "steps": {
+            "explore": {
+                "ok": explore_runner["ok"],
+                "returncode": explore_runner["returncode"],
+                "output_snippet": extract_summary(
+                    explore_runner.get("stdout", ""),
+                    explore_runner.get("stderr", ""),
+                ),
+                "explore_json_present": bool(explore_doc),
+            },
+            "next_action": {
+                "ok": next_runner["ok"],
+                "returncode": next_runner["returncode"],
+                "output_snippet": extract_summary(
+                    next_runner.get("stdout", ""),
+                    next_runner.get("stderr", ""),
+                ),
+            },
+            "execute": {
+                "ok": exec_runner["ok"],
+                "returncode": exec_runner["returncode"],
+                "output_snippet": extract_summary(
+                    exec_runner.get("stdout", ""),
+                    exec_runner.get("stderr", ""),
+                ),
+            },
+            "reconcile": {
+                "ok": recon_runner["ok"],
+                "returncode": recon_runner["returncode"],
+                "output_snippet": extract_summary(
+                    recon_runner.get("stdout", ""),
+                    recon_runner.get("stderr", ""),
+                ),
+            },
+        },
         "state": {
             "pre": PRE_SNAPSHOT_PATH,
             "post": POST_SNAPSHOT_PATH,
-        }
+        },
     }
 
     write_json(REPORT_PATH, report)
