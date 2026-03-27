@@ -1,98 +1,161 @@
-import os
 import json
+import os
 import shutil
+import tempfile
+import zipfile
 from datetime import datetime
+from typing import Any, Dict, List, Tuple
 
-OUTPUT_DIR = "incoming_bundles"
-REPORT_PATH = "brain_reports/repair_report.json"
+ROOT = os.getcwd()
+OUTPUT_DIR = os.path.join(ROOT, "incoming_bundles")
+REPORT_PATH = os.path.join(ROOT, "brain_reports", "repair_report.json")
 
-
-def _write_report(data):
-    os.makedirs("brain_reports", exist_ok=True)
-    with open(REPORT_PATH, "w") as f:
-        json.dump(data, f, indent=2)
-
-
-def _sanitize_bundle(bundle_path):
-    """
-    Minimal repair strategy:
-    - remove disallowed paths (e.g., docs/)
-    - keep only admissible install/ structure
-    """
-
-    if not os.path.exists(bundle_path):
-        return None, "bundle_not_found"
-
-    repaired_path = bundle_path.replace(".zip", "_repaired.zip")
-
-    # --- TEMP DIR ---
-    tmp_dir = bundle_path + "_tmp"
-
-    if os.path.exists(tmp_dir):
-        shutil.rmtree(tmp_dir)
-
-    os.makedirs(tmp_dir, exist_ok=True)
-
-    # --- UNZIP ---
-    shutil.unpack_archive(bundle_path, tmp_dir)
-
-    # --- REMOVE DISALLOWED PATHS ---
-    for root, dirs, files in os.walk(tmp_dir):
-        for d in list(dirs):
-            if d == "docs":
-                shutil.rmtree(os.path.join(root, d), ignore_errors=True)
-
-    # --- REPACK ---
-    shutil.make_archive(repaired_path.replace(".zip", ""), 'zip', tmp_dir)
-
-    shutil.rmtree(tmp_dir)
-
-    return repaired_path, None
+ALLOWED_PREFIXES = [
+    "bundle_manifest.json",
+    "install/",
+    "install/engine/",
+    "install/tests/",
+]
 
 
-def propose_repair(action_payload):
-    ts = datetime.utcnow().isoformat()
+def utc_now() -> str:
+    return datetime.utcnow().isoformat()
 
+
+def ensure_dir(path: str) -> None:
+    os.makedirs(path, exist_ok=True)
+
+
+def write_json(path: str, payload: Dict[str, Any]) -> None:
+    ensure_dir(os.path.dirname(path))
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+        f.write("\n")
+
+
+def is_allowed(rel_path: str) -> bool:
+    normalized = rel_path.replace("\\", "/")
+    return any(
+        normalized == prefix or normalized.startswith(prefix)
+        for prefix in ALLOWED_PREFIXES
+    )
+
+
+def collect_zip_members(zip_path: str) -> List[str]:
+    with zipfile.ZipFile(zip_path, "r") as zf:
+        members = []
+        for info in zf.infolist():
+            if info.is_dir():
+                continue
+            members.append(info.filename.replace("\\", "/"))
+        return members
+
+
+def filter_members(members: List[str]) -> Tuple[List[str], List[str]]:
+    allowed: List[str] = []
+    filtered_out: List[str] = []
+
+    for member in members:
+        if is_allowed(member):
+            allowed.append(member)
+        else:
+            filtered_out.append(member)
+
+    return allowed, filtered_out
+
+
+def build_repaired_bundle(source_zip: str, allowed_members: List[str], output_zip: str) -> None:
+    with tempfile.TemporaryDirectory() as tmpdir:
+        extract_root = os.path.join(tmpdir, "bundle")
+        os.makedirs(extract_root, exist_ok=True)
+
+        with zipfile.ZipFile(source_zip, "r") as zf:
+            zf.extractall(extract_root)
+
+        with zipfile.ZipFile(output_zip, "w", zipfile.ZIP_DEFLATED) as out:
+            for rel_path in allowed_members:
+                full_path = os.path.join(extract_root, rel_path)
+                if os.path.exists(full_path) and os.path.isfile(full_path):
+                    out.write(full_path, rel_path)
+
+
+def propose_repair(action_payload: Dict[str, Any]) -> Dict[str, Any]:
     target = action_payload.get("target")
+    family = action_payload.get("family")
+    reason = action_payload.get("reason")
 
     if not target:
         report = {
             "status": "failed",
             "reason": "no_target_bundle",
-            "ts": ts
+            "ts": utc_now(),
         }
-        _write_report(report)
+        write_json(REPORT_PATH, report)
         return report
 
-    repaired_bundle, err = _sanitize_bundle(target)
-
-    if err:
+    source_zip = os.path.join(ROOT, target)
+    if not os.path.exists(source_zip):
         report = {
             "status": "failed",
-            "reason": err,
+            "reason": "bundle_not_found",
             "target": target,
-            "ts": ts
+            "ts": utc_now(),
         }
-        _write_report(report)
+        write_json(REPORT_PATH, report)
         return report
 
-    # --- MOVE TO INCOMING ---
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    ensure_dir(OUTPUT_DIR)
 
-    final_path = os.path.join(
-        OUTPUT_DIR,
-        os.path.basename(repaired_bundle)
-    )
+    try:
+        original_members = collect_zip_members(source_zip)
+        allowed_members, filtered_out = filter_members(original_members)
 
-    shutil.move(repaired_bundle, final_path)
+        if not allowed_members:
+            report = {
+                "status": "failed",
+                "reason": "no_allowed_files_after_filtering",
+                "target": target,
+                "family": family,
+                "filtered_out": filtered_out,
+                "ts": utc_now(),
+            }
+            write_json(REPORT_PATH, report)
+            return report
 
-    report = {
-        "status": "ok",
-        "action": "repair_generated",
-        "original_bundle": target,
-        "repaired_bundle": final_path,
-        "ts": ts
-    }
+        source_name = os.path.basename(source_zip)
+        if source_name.endswith(".zip"):
+            repaired_name = source_name[:-4] + "_repaired.zip"
+        else:
+            repaired_name = source_name + "_repaired.zip"
 
-    _write_report(report)
-    return report
+        repaired_zip = os.path.join(OUTPUT_DIR, repaired_name)
+        build_repaired_bundle(source_zip, allowed_members, repaired_zip)
+
+        report = {
+            "status": "ok",
+            "action": "repair_generated",
+            "original_bundle": target,
+            "repaired_bundle": os.path.relpath(repaired_zip, ROOT).replace("\\", "/"),
+            "family": family,
+            "reason": reason,
+            "original_file_count": len(original_members),
+            "kept_file_count": len(allowed_members),
+            "filtered_out_count": len(filtered_out),
+            "filtered_out": filtered_out,
+            "kept_files": allowed_members,
+            "ts": utc_now(),
+        }
+        write_json(REPORT_PATH, report)
+        return report
+
+    except Exception as e:
+        report = {
+            "status": "failed",
+            "reason": "repair_exception",
+            "error": str(e),
+            "target": target,
+            "family": family,
+            "ts": utc_now(),
+        }
+        write_json(REPORT_PATH, report)
+        return report
