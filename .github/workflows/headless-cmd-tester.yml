@@ -1,0 +1,123 @@
+name: Headless Cmd Tester
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Select a predefined test mode"
+        required: true
+        default: "steggate_live_test"
+        type: choice
+        options:
+          - steggate_live_test
+          - loop_self_check
+          - repo_snapshot_check
+          - custom
+      custom_command:
+        description: "Custom shell command to run when test_mode=custom"
+        required: false
+        default: ""
+        type: string
+
+jobs:
+  run-headless-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ensure brain_reports exists
+        run: mkdir -p brain_reports
+
+      - name: Run predefined or custom test
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          MODE="${{ github.event.inputs.test_mode }}"
+          CUSTOM="${{ github.event.inputs.custom_command }}"
+
+          echo "Selected mode: $MODE"
+
+          if [ "$MODE" = "custom" ]; then
+            if [ -z "$CUSTOM" ]; then
+              echo "custom_command is required when test_mode=custom"
+              exit 1
+            fi
+
+            echo "Running custom command..."
+            bash -lc "$CUSTOM"
+            exit 0
+          fi
+
+          if [ "$MODE" = "steggate_live_test" ]; then
+            python install/engine/headless_cmd_tester.py
+            exit 0
+          fi
+
+          if [ "$MODE" = "loop_self_check" ]; then
+            python install/autonomous_loop_orchestrator.py > brain_reports/loop_self_check.json
+            python - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("brain_reports/loop_self_check.json")
+raw = path.read_text(encoding="utf-8")
+
+try:
+    payload = json.loads(raw)
+except Exception:
+    payload = {"status": "failed", "raw_output": raw}
+
+md = []
+md.append("# Loop Self Check")
+md.append("")
+md.append("```json")
+md.append(json.dumps(payload, indent=2))
+md.append("```")
+Path("brain_reports/loop_self_check.md").write_text("\n".join(md), encoding="utf-8")
+PY
+            exit 0
+          fi
+
+          if [ "$MODE" = "repo_snapshot_check" ]; then
+            python install/engine/repo_snapshot.py > brain_reports/repo_snapshot_check.json
+            python - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("brain_reports/repo_snapshot_check.json")
+raw = path.read_text(encoding="utf-8")
+
+try:
+    payload = json.loads(raw)
+except Exception:
+    payload = {"status": "failed", "raw_output": raw}
+
+md = []
+md.append("# Repo Snapshot Check")
+md.append("")
+md.append("```json")
+md.append(json.dumps(payload, indent=2))
+md.append("```")
+Path("brain_reports/repo_snapshot_check.md").write_text("\n".join(md), encoding="utf-8")
+PY
+            exit 0
+          fi
+
+          echo "Unknown test_mode: $MODE"
+          exit 1
+
+      - name: Upload brain_reports artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: headless-cmd-test-artifacts
+          path: |
+            brain_reports/**
+          if-no-files-found: warn
