@@ -1,105 +1,75 @@
 {
-  "action": "noop",
+  "activity": {
+    "active_family": "v21_2_formal_document_engine",
+    "counts": {},
+    "mode": "internal_brain_signal",
+    "source": "next_action_internal_brain",
+    "summary": "20 recent failed bundles detected",
+    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip"
+  },
   "artifacts": {
     "execution_result": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/execute_next_action_result.json",
+    "explore": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/explore.json",
+    "internal_brain_report": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/brain_report.json",
     "next_action": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/next_action.json",
     "reconciled_state": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reconciled_state.json",
     "repo_snapshot": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repo_snapshot.json",
     "runtime_report": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/autonomous_loop_report.json"
   },
-  "classification": {
-    "action": "noop",
-    "severity": "none",
-    "type": "no_change"
+  "duration_seconds": 5.601,
+  "execution": {
+    "action": "idle",
+    "executed": false,
+    "reason": "no_action_to_execute",
+    "status": "ok"
   },
-  "duration_seconds": 5.92,
   "loop_ok": false,
-  "mode": "bounded_sandbox_loop",
-  "pytest_returncode": 0,
+  "mode": "sandbox_loop_with_observer",
+  "next_action": {
+    "action": "inspect_failed_bundle_family",
+    "active_family": "v21_2_formal_document_engine",
+    "family": "v21_2_formal_document_engine",
+    "priority": 1,
+    "reason": "20 recent failed bundles detected",
+    "selection_mode": "internal_brain_closure",
+    "source": "internal_brain",
+    "status": "ok",
+    "target": "failed_bundles/v21_2_formal_document_engine_bundle.zip",
+    "ts": "2026-03-25T19:32:58.821371"
+  },
+  "reconcile": {
+    "bundle": "v21_2_formal_document_engine_bundle.zip",
+    "family": "v21_2_formal_document_engine",
+    "reason": "path_not_allowed:.github/workflows/document_engine.yml",
+    "state": "failed"
+  },
   "state": {
     "post": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/system_snapshot_post.json",
     "pre": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/payload/runtime/system_snapshot_pre.json"
   },
-  "state_changed": false,
   "status": "ok",
   "steps": {
     "execute": {
       "ok": true,
-      "output_snippet": "    \"status\": \"ok\",\n    \"action\": \"idle\",\n    \"priority\": \"low\",\n    \"reason\": \"no admissible next action found\"\n  },\n  \"execution\": {\n    \"status\": \"ok\",\n    \"executed\": false,\n    \"action\": \"idle\",\n    \"reason\": \"no_action_to_execute\"\n  }\n}",
-      "runner_returncode": 0,
-      "summary": {
-        "action": "idle",
-        "executed": false,
-        "reason": "no_action_to_execute",
-        "status": "ok"
-      }
+      "output_snippet": "    \"family\": \"v21_2_formal_document_engine\",\n    \"priority\": 1,\n    \"reason\": \"20 recent failed bundles detected\",\n    \"source\": \"internal_brain\"\n  },\n  \"execution\": {\n    \"status\": \"ok\",\n    \"executed\": false,\n    \"action\": \"idle\",\n    \"reason\": \"no_action_to_execute\"\n  }\n}",
+      "returncode": 0
+    },
+    "explore": {
+      "explore_json_present": false,
+      "ok": false,
+      "output_snippet": "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python: can't open file '/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/internal_brain/explore.py': [Errno 2] No such file or directory",
+      "returncode": 2
     },
     "next_action": {
-      "ok": true,
-      "output_snippet": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/next_action.json\",\n  \"next_action\": {\n    \"ts\": \"2026-03-26T19:14:18.390477\",\n    \"status\": \"ok\",\n    \"action\": \"idle\",\n    \"priority\": \"low\",\n    \"reason\": \"no admissible next action found\"\n  }\n}",
-      "runner_returncode": 0,
-      "summary": {
-        "action": "idle",
-        "priority": "low",
-        "reason": "no admissible next action found",
-        "status": "ok",
-        "ts": "2026-03-26T19:14:18.390477"
-      }
-    },
-    "post_snapshot": {
       "ok": false,
-      "runner_returncode": 0,
-      "summary": {
-        "failed_bundle_count": null,
-        "incoming_bundle_count": null,
-        "installed_bundle_count": null,
-        "repo_hash": null
-      }
-    },
-    "pre_snapshot": {
-      "ok": false,
-      "runner_returncode": 0,
-      "summary": {
-        "failed_bundle_count": null,
-        "incoming_bundle_count": null,
-        "installed_bundle_count": null,
-        "repo_hash": null
-      }
+      "output_snippet": "Traceback (most recent call last):\n  File \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/install/engine/next_action_engine.py\", line 5, in <module>\n    from install.engine.repo_snapshot import snapshot_repo_state\nModuleNotFoundError: No module named 'install'",
+      "returncode": 1
     },
     "reconcile": {
       "ok": true,
-      "output_snippet": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reconciled_state.json\",\n  \"review_state\": \"idle\",\n  \"bundle\": null,\n  \"family\": null\n}",
-      "runner_returncode": 0,
-      "summary": {
-        "bundle": null,
-        "family": null,
-        "reason": "no_action_requested",
-        "state": "idle"
-      }
+      "output_snippet": "{\n  \"status\": \"ok\",\n  \"review_state\": \"failed\",\n  \"bundle\": \"v21_2_formal_document_engine_bundle.zip\",\n  \"family\": \"v21_2_formal_document_engine\"\n}",
+      "returncode": 0
     }
   },
-  "test_count": 18,
-  "test_output_snippet": "[FORCE IMPORT] receipt_chain -> /home/runner/work/entity-sandbox-runner/entity-sandbox-runner/receipt_chain.py\n........................                                                 [100%]\n24 passed in 0.68s",
-  "test_surface": [
-    "tests/test_receipt_chain.py",
-    "tests/test_receipts.py",
-    "tests/test_priority_router.py",
-    "tests/test_step_completion.py",
-    "tests/test_plan_memory.py",
-    "tests/test_multi_step_planner.py",
-    "tests/test_self_improve.py",
-    "tests/test_execution_pipeline_v4.py",
-    "tests/test_failure_feedback.py",
-    "tests/test_generator_v2.py",
-    "tests/test_authority_policy.py",
-    "tests/test_consensus.py",
-    "tests/test_manifest.py",
-    "tests/test_auto_repair.py",
-    "tests/test_history_engine.py",
-    "tests/test_contract_snapshot.py",
-    "tests/test_convergence_engine.py",
-    "tests/test_bootstrap_permission_unlock.py"
-  ],
-  "tests_passed": true,
-  "timestamp": 1774552458.7561386
+  "tests_passed": true
 }
