@@ -28,7 +28,7 @@ def write_json(path: Path, payload: dict):
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
-def resolve_target_bundle(target: str) -> Path | None:
+def resolve_target_bundle(target: str):
     if not target:
         return None
 
@@ -56,7 +56,7 @@ def resolve_target_bundle(target: str) -> Path | None:
     return None
 
 
-def inspect_incoming_bundle(target_path: str) -> dict:
+def inspect_incoming_bundle(target_path: str):
     src = resolve_target_bundle(target_path)
 
     if src is None or not src.exists():
@@ -78,9 +78,9 @@ def inspect_incoming_bundle(target_path: str) -> dict:
     }
 
 
-def handle_repair(action: dict) -> dict:
-    target = action.get("target")
-    family = action.get("family")
+def handle_repair(next_action: dict):
+    target = next_action.get("target")
+    family = next_action.get("family")
 
     resolved = resolve_target_bundle(target)
     if resolved is None:
@@ -108,10 +108,11 @@ def handle_repair(action: dict) -> dict:
     }
 
 
-def execute_action(next_action: dict | None) -> dict:
+def execute_action(next_action: dict | None):
     if not next_action:
         return {
             "status": "failed",
+            "executed": False,
             "reason": "no_action",
         }
 
@@ -146,6 +147,7 @@ def execute_action(next_action: dict | None) -> dict:
 
     return {
         "status": "failed",
+        "executed": False,
         "reason": f"unsupported_action:{action_type}",
     }
 
@@ -170,8 +172,16 @@ def main():
     if "timestamp" not in result:
         result["timestamp"] = datetime.utcnow().isoformat()
 
-    # critical contract: persist artifact for reconcile
+    # Critical contract: reconcile reads this file
     write_json(EXECUTION_RESULT_PATH, result)
+
+    # Optional sanity marker for easier debugging
+    marker = {
+        "written_at": datetime.utcnow().isoformat(),
+        "execution_result_path": str(EXECUTION_RESULT_PATH),
+        "exists": EXECUTION_RESULT_PATH.exists(),
+    }
+    write_json(BRAIN_REPORTS / "execute_write_check.json", marker)
 
     print(json.dumps(result, indent=2))
 
