@@ -1,5 +1,5 @@
 """
-AUTONOMOUS LOOP ORCHESTRATOR — bounded sandbox loop runner (repo-state aware)
+AUTONOMOUS LOOP ORCHESTRATOR — repo-state aware bounded sandbox loop runner
 
 Purpose:
 - run the real sandbox loop in this order:
@@ -8,7 +8,7 @@ Purpose:
 
 - keep the green controlled test surface as the execution health gate
 - write a single stable runtime report
-- read authoritative system state from payload/context/SYSTEM_STATE_v1.md
+- read authoritative system state from payload/context/SYSTEM_STATE_v2.md when present
 """
 
 from __future__ import annotations
@@ -29,7 +29,9 @@ CONTEXT_DIR = os.path.join(ROOT, "payload", "context")
 REPORT_PATH = os.path.join(PAYLOAD_RUNTIME, "autonomous_loop_report.json")
 PRE_SNAPSHOT_PATH = os.path.join(PAYLOAD_RUNTIME, "system_snapshot_pre.json")
 POST_SNAPSHOT_PATH = os.path.join(PAYLOAD_RUNTIME, "system_snapshot_post.json")
-SYSTEM_STATE_PATH = os.path.join(CONTEXT_DIR, "SYSTEM_STATE_v1.md")
+
+SYSTEM_STATE_V2_PATH = os.path.join(CONTEXT_DIR, "SYSTEM_STATE_v2.md")
+SYSTEM_STATE_V1_PATH = os.path.join(CONTEXT_DIR, "SYSTEM_STATE_v1.md")
 
 REPO_SNAPSHOT_REPORT = os.path.join(BRAIN_REPORTS, "repo_snapshot.json")
 EXPLORE_REPORT = os.path.join(BRAIN_REPORTS, "explore.json")
@@ -94,6 +96,25 @@ def load_text(path: str, default: str = "") -> str:
         return default
 
 
+def resolve_system_state() -> Dict[str, Any]:
+    if os.path.exists(SYSTEM_STATE_V2_PATH):
+        text = load_text(SYSTEM_STATE_V2_PATH, "")
+        return {
+            "path": SYSTEM_STATE_V2_PATH,
+            "version": "v2",
+            "present": bool(text.strip()),
+            "text": text,
+        }
+
+    text = load_text(SYSTEM_STATE_V1_PATH, "")
+    return {
+        "path": SYSTEM_STATE_V1_PATH,
+        "version": "v1",
+        "present": bool(text.strip()),
+        "text": text,
+    }
+
+
 def extract_summary(stdout: str, stderr: str, tail_lines: int = 12) -> str:
     text = (stdout or "") + ("\n" + stderr if stderr else "")
     lines = [line.rstrip() for line in text.splitlines() if line.strip()]
@@ -126,6 +147,7 @@ def run_green_tests() -> Dict[str, Any]:
         "returncode": result.returncode,
         "stdout": result.stdout,
         "stderr": result.stderr,
+        "cmd": cmd,
     }
 
 
@@ -141,6 +163,7 @@ def run_python_file(path: str) -> Dict[str, Any]:
         "returncode": result.returncode,
         "stdout": result.stdout,
         "stderr": result.stderr,
+        "cmd": [sys.executable, path],
     }
 
 
@@ -148,11 +171,13 @@ def capture_snapshot(output_path: str) -> Dict[str, Any]:
     script_path = os.path.join(ROOT, "install", "engine", "repo_snapshot.py")
     runner = run_python_file(script_path)
     snapshot = load_json(REPO_SNAPSHOT_REPORT, {})
-    write_json(output_path, snapshot if isinstance(snapshot, dict) else {})
+    snapshot = snapshot if isinstance(snapshot, dict) else {}
+    write_json(output_path, snapshot)
     return {
-        "ok": runner["ok"] and isinstance(snapshot, dict) and bool(snapshot),
+        "ok": runner["ok"] and bool(snapshot),
         "runner": runner,
-        "snapshot": snapshot if isinstance(snapshot, dict) else {},
+        "snapshot": snapshot,
+        "output_path": output_path,
     }
 
 
@@ -217,19 +242,14 @@ def classify_state(pre: Dict[str, Any], post: Dict[str, Any]) -> Dict[str, Any]:
 
     if pre.get("repo_hash") != post.get("repo_hash"):
         signals.append("repo_modified")
-
     if pre.get("incoming_bundle_count") != post.get("incoming_bundle_count"):
         signals.append("incoming_bundle_queue_changed")
-
     if pre.get("installed_bundle_count") != post.get("installed_bundle_count"):
         signals.append("installed_bundle_set_changed")
-
     if pre.get("failed_bundle_count") != post.get("failed_bundle_count"):
         signals.append("failed_bundle_set_changed")
-
     if pre.get("has_work") != post.get("has_work"):
         signals.append("work_presence_changed")
-
     if pre.get("cge_state") != post.get("cge_state"):
         signals.append("cge_state_changed")
 
@@ -264,8 +284,7 @@ def main() -> None:
     ensure_dir(BRAIN_REPORTS)
     ensure_dir(CONTEXT_DIR)
 
-    system_state_text = load_text(SYSTEM_STATE_PATH, "")
-    system_state_present = bool(system_state_text.strip())
+    system_state = resolve_system_state()
 
     ensure_pytest()
     test_result = run_green_tests()
@@ -300,7 +319,11 @@ def main() -> None:
     pre_snapshot = pre.get("snapshot", {})
     post_snapshot = post.get("snapshot", {})
     classification = classify_state(pre_snapshot, post_snapshot)
-    state_changed = pre_snapshot != post_snapshot if isinstance(pre_snapshot, dict) and isinstance(post_snapshot, dict) else False
+    state_changed = (
+        isinstance(pre_snapshot, dict)
+        and isinstance(post_snapshot, dict)
+        and pre_snapshot != post_snapshot
+    )
 
     finished = time.time()
 
@@ -316,12 +339,21 @@ def main() -> None:
             and post["ok"]
         ),
         "duration_seconds": round(finished - started, 3),
+        "timestamp": finished,
         "tests_passed": test_result["ok"],
+        "pytest_returncode": test_result["returncode"],
+        "test_surface": GREEN_TEST_SET,
+        "test_count": len(GREEN_TEST_SET),
+        "test_output_snippet": extract_summary(
+            test_result.get("stdout", ""),
+            test_result.get("stderr", ""),
+        ),
         "system_state": {
-            "path": SYSTEM_STATE_PATH,
-            "present": system_state_present,
-            "bytes": len(system_state_text.encode("utf-8")) if system_state_text else 0,
-            "preview": system_state_text[:400],
+            "path": system_state["path"],
+            "version": system_state["version"],
+            "present": system_state["present"],
+            "bytes": len(system_state["text"].encode("utf-8")) if system_state["text"] else 0,
+            "preview": system_state["text"][:400],
         },
         "activity": activity,
         "state_changed": state_changed,
