@@ -3,6 +3,7 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+# Absolute root (CI-safe)
 ROOT = Path(__file__).resolve().parents[2]
 
 BRAIN_REPORTS = ROOT / "brain_reports"
@@ -25,7 +26,11 @@ def load_json(path: Path):
 
 def write_json(path: Path, payload: dict):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    # atomic write (prevents CI race / partial writes)
+    tmp_path = path.with_suffix(".tmp")
+    tmp_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    tmp_path.replace(path)
 
 
 def resolve_target_bundle(target: str):
@@ -169,19 +174,14 @@ def main():
     next_action = wrapper.get("next_action")
     result = execute_action(next_action)
 
-    if "timestamp" not in result:
-        result["timestamp"] = datetime.utcnow().isoformat()
+    result["timestamp"] = datetime.utcnow().isoformat()
 
-    # Critical contract: reconcile reads this file
+    # 🔴 CRITICAL: this is what reconcile reads
     write_json(EXECUTION_RESULT_PATH, result)
 
-    # Optional sanity marker for easier debugging
-    marker = {
-        "written_at": datetime.utcnow().isoformat(),
-        "execution_result_path": str(EXECUTION_RESULT_PATH),
-        "exists": EXECUTION_RESULT_PATH.exists(),
-    }
-    write_json(BRAIN_REPORTS / "execute_write_check.json", marker)
+    # Debug proof (you will see this in logs)
+    print("EXECUTION RESULT WRITTEN TO:", EXECUTION_RESULT_PATH)
+    print("FILE EXISTS:", EXECUTION_RESULT_PATH.exists())
 
     print(json.dumps(result, indent=2))
 
