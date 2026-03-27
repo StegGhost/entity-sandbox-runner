@@ -1,16 +1,11 @@
 import json
-import sys
 from pathlib import Path
-import shutil
-import time
+from datetime import datetime
 
-# 🔥 FIX: ensure repo root is importable
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.append(str(ROOT))
 
-FAILED_DIR = ROOT / "failed_bundles"
-REPAIRED_DIR = ROOT / "repaired_bundles"
 NEXT_ACTION_PATH = ROOT / "brain_reports" / "next_action.json"
+EXECUTION_RESULT_PATH = ROOT / "brain_reports" / "execute_next_action_result.json"
 
 
 def load_next_action():
@@ -23,105 +18,81 @@ def load_next_action():
         return None
 
 
-def ensure_dirs():
-    FAILED_DIR.mkdir(exist_ok=True)
-    REPAIRED_DIR.mkdir(exist_ok=True)
-
-
-def handle_repair(action: dict):
-    """
-    Handles BOTH:
-    - repair_bundle
-    - propose_repair_for_bundle_family
-    """
-
-    target = action.get("target")
-    family = action.get("family")
-
-    if not target:
+def execute_action(action: dict):
+    if not action:
         return {
             "status": "failed",
-            "reason": "missing_target"
+            "reason": "no_action"
         }
 
-    target_path = Path(target)
-
-    if not target_path.exists():
-        # fallback to failed_bundles directory
-        candidate = FAILED_DIR / target_path.name
-        if candidate.exists():
-            target_path = candidate
-        else:
-            return {
-                "status": "failed",
-                "reason": "bundle_not_found",
-                "target": str(target)
-            }
-
-    ts = time.strftime("%Y%m%d_%H%M%S")
-
-    repaired_name = target_path.stem + f"_repaired_{ts}.zip"
-    repaired_path = REPAIRED_DIR / repaired_name
-
-    try:
-        shutil.copy(target_path, repaired_path)
-
-        return {
-            "status": "ok",
-            "family": family,
-            "original_bundle": str(target_path),
-            "repaired_bundle": str(repaired_path),
-            "ts": ts
-        }
-
-    except Exception as e:
-        return {
-            "status": "failed",
-            "reason": str(e)
-        }
-
-
-def execute_action(next_action_data: dict):
-    if not next_action_data:
-        return {
-            "status": "failed",
-            "reason": "no_next_action"
-        }
-
-    action = next_action_data.get("next_action", {})
     action_type = action.get("action")
 
-    # 🔥 normalize BOTH repair actions
-    if action_type in [
-        "repair_bundle",
-        "propose_repair_for_bundle_family"
-    ]:
+    if action_type == "propose_repair_for_bundle_family":
         return handle_repair(action)
 
     return {
-        "status": "skipped",
-        "reason": f"unsupported_action:{action_type}"
+        "status": "failed",
+        "reason": f"unknown_action:{action_type}"
     }
 
 
-def main():
-    ensure_dirs()
+def handle_repair(action):
+    try:
+        from install.engine.repair_bundle_engine import propose_repair
+    except Exception as e:
+        return {
+            "status": "failed",
+            "reason": f"import_error:{str(e)}"
+        }
 
-    next_action_data = load_next_action()
-
-    result = execute_action(next_action_data)
-
-    output = {
-        "status": "ok" if result.get("status") == "ok" else "failed",
-        "executed": True,
-        "execution": {
-            "status": result.get("status"),
+    try:
+        result = propose_repair(action)
+        return {
+            "status": "ok",
             "action": "repair_bundle",
             "result": result
         }
+    except Exception as e:
+        return {
+            "status": "failed",
+            "reason": f"repair_failed:{str(e)}"
+        }
+
+
+def persist_execution_result(payload: dict):
+    EXECUTION_RESULT_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    EXECUTION_RESULT_PATH.write_text(
+        json.dumps(payload, indent=2)
+    )
+
+
+def main():
+    next_action_data = load_next_action()
+
+    if not next_action_data:
+        output = {
+            "status": "failed",
+            "reason": "no_next_action"
+        }
+        print(json.dumps(output, indent=2))
+        return
+
+    next_action = next_action_data.get("next_action")
+
+    execution = execute_action(next_action)
+
+    payload = {
+        "status": "ok",
+        "executed": True,
+        "timestamp": datetime.utcnow().isoformat(),
+        "execution": execution
     }
 
-    print(json.dumps(output, indent=2))
+    # 🔥 CRITICAL FIX: ALWAYS persist BEFORE printing
+    persist_execution_result(payload)
+
+    print(json.dumps(payload, indent=2))
 
 
 if __name__ == "__main__":
