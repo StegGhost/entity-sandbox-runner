@@ -1,230 +1,107 @@
+import os
 import json
-from pathlib import Path
-from datetime import datetime
+import time
+from typing import Dict, Any, List
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = os.getcwd()
 
-BRAIN_REPORTS = ROOT / "brain_reports"
-REPO_SNAPSHOT_PATH = BRAIN_REPORTS / "repo_snapshot.json"
-NEXT_ACTION_PATH = BRAIN_REPORTS / "next_action.json"
+FAILED_DIR = os.path.join(ROOT, "failed_bundles")
+INCOMING_DIR = os.path.join(ROOT, "incoming_bundles")
+BRAIN_REPORTS = os.path.join(ROOT, "brain_reports")
 
-INCOMING_DIR = ROOT / "incoming_bundles"
-FAILED_DIR = ROOT / "failed_bundles"
-REPAIRED_DIR = ROOT / "repaired_bundles"
-INSTALLED_DIR = ROOT / "installed_bundles"
+os.makedirs(BRAIN_REPORTS, exist_ok=True)
 
-
-def load_json(path: Path):
-    if not path.exists():
-        return None
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return None
+OUTPUT_PATH = os.path.join(BRAIN_REPORTS, "next_action.json")
 
 
-def write_json(path: Path, payload: dict):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = path.with_suffix(".tmp")
-    tmp_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    tmp_path.replace(path)
+def now_ts():
+    return time.strftime("%Y-%m-%dT%H:%M:%S")
 
 
-def family_from_name(name: str) -> str:
-    base = Path(name).stem
-
-    suffixes = [
-        "_manifest_fixed",
-        "_repaired",
-        "_bundle",
-        "_v0_1",
-        "_v0_2",
-        "_v0_3",
-        "_v0_4",
-        "_v0_5",
-        "_v0_6",
-        "_v0_7",
-        "_v0_8",
-        "_v0_9",
-        "_v1_0",
-        "_v1_1",
-        "_v1_2",
-        "_v1_3",
-        "_v1_4",
-        "_v1_5",
-        "_v1_6",
-        "_v1_7",
-        "_v1_8",
-        "_v1_9",
-        "_v2",
-        "_v3",
-        "_v4",
-        "_v5",
-        "_v6",
-        "_v7",
-        "_v8",
-        "_v9",
-        "_v10",
-        "_v11",
-        "_v12",
-        "_v13",
-        "_v14",
-        "_v15",
-        "_v16",
-        "_v17",
-        "_v18",
-        "_v19",
-        "_v20",
-        "_v21",
-        "_v22",
-        "_v23",
-        "_v24",
-        "_v25",
-        "_v26",
-        "_v27",
-        "_v28",
-        "_v29",
-        "_v30",
-    ]
-
-    for suffix in suffixes:
-        if base.endswith(suffix):
-            return base[: -len(suffix)]
-
-    parts = base.split("_")
-    if len(parts) >= 2 and parts[-1].startswith("v") and parts[-1][1:].replace("_", "").isdigit():
-        return "_".join(parts[:-1])
-
-    return base
-
-
-def newest_zip_by_mtime(directory: Path):
-    if not directory.exists():
+def list_bundles(path: str) -> List[str]:
+    if not os.path.exists(path):
         return []
-    return sorted(directory.glob("*.zip"), key=lambda p: p.stat().st_mtime, reverse=True)
+    return sorted([
+        f for f in os.listdir(path)
+        if f.endswith(".zip")
+    ])
 
 
-def same_family_installed(family: str) -> bool:
-    if not INSTALLED_DIR.exists():
-        return False
-    for path in INSTALLED_DIR.glob("*.zip"):
-        if family_from_name(path.name) == family:
-            return True
-    return False
-
-
-def same_family_repaired(family: str) -> bool:
-    if not REPAIRED_DIR.exists():
-        return False
-    for path in REPAIRED_DIR.glob("*.zip"):
-        if family_from_name(path.name) == family:
-            return True
-    return False
-
-
-def choose_incoming_action():
-    incoming = newest_zip_by_mtime(INCOMING_DIR)
-    if not incoming:
-        return None
-
-    target = incoming[0]
-    family = family_from_name(target.name)
-
-    return {
-        "ts": datetime.utcnow().isoformat(),
-        "status": "ok",
-        "selection_mode": "incoming_priority",
-        "action_class": "inspection",
-        "active_family": family,
-        "action": "inspect_incoming_bundle_family",
-        "target": str(target),
-        "family": family,
-        "priority": "high",
-        "reason": "incoming_bundle_detected",
-        "source": "next_action_engine",
-    }
-
-
-def choose_failed_repair_action():
-    failed = newest_zip_by_mtime(FAILED_DIR)
+def select_failed_bundle() -> str:
+    failed = list_bundles(FAILED_DIR)
     if not failed:
-        return None
+        return ""
+    return failed[0]  # deterministic
 
-    for target in failed:
-        family = family_from_name(target.name)
 
-        if same_family_installed(family):
-            continue
-        if same_family_repaired(family):
-            continue
+def select_incoming_bundle() -> str:
+    incoming = list_bundles(INCOMING_DIR)
+    if not incoming:
+        return ""
+    return incoming[0]
 
+
+def build_action() -> Dict[str, Any]:
+    incoming_bundle = select_incoming_bundle()
+    if incoming_bundle:
         return {
-            "ts": datetime.utcnow().isoformat(),
+            "ts": now_ts(),
             "status": "ok",
-            "selection_mode": "repair_escalation",
+            "selection_mode": "incoming_priority",
+            "action_class": "inspection",
+            "active_family": "auto",
+            "action": "inspect_incoming_bundle_family",
+            "target": os.path.join(INCOMING_DIR, incoming_bundle),
+            "family": "auto",
+            "priority": "high",
+            "reason": "incoming_bundle_detected",
+            "source": "next_action_engine"
+        }
+
+    failed_bundle = select_failed_bundle()
+    if failed_bundle:
+        return {
+            "ts": now_ts(),
+            "status": "ok",
+            "selection_mode": "failed_priority",
             "action_class": "repair",
-            "active_family": family,
+            "active_family": "auto",
             "action": "propose_repair_for_bundle_family",
-            "target": target.name,
-            "family": family,
+            "target": failed_bundle,
+            "family": "auto",
             "priority": "high",
             "reason": "failed_bundle_detected",
-            "source": "next_action_engine",
+            "source": "next_action_engine"
         }
 
-    return None
-
-
-def choose_default_experiment_action():
     return {
-        "ts": datetime.utcnow().isoformat(),
+        "ts": now_ts(),
         "status": "ok",
-        "selection_mode": "default_experiment",
-        "action_class": "experiment",
-        "action": "sandbox_experiment_heartbeat",
-        "target": None,
-        "family": None,
+        "selection_mode": "idle",
+        "action_class": "idle",
+        "active_family": "none",
+        "action": "idle",
+        "target": "",
+        "family": "none",
         "priority": "low",
-        "reason": "no_actionable_bundle_work",
-        "source": "next_action_engine",
+        "reason": "no_work",
+        "source": "next_action_engine"
     }
-
-
-def choose_action(repo_snapshot: dict | None):
-    if not repo_snapshot:
-        return {
-            "ts": datetime.utcnow().isoformat(),
-            "status": "failed",
-            "selection_mode": "none",
-            "action_class": "idle",
-            "action": "idle",
-            "reason": "missing_repo_snapshot",
-            "source": "next_action_engine",
-        }
-
-    incoming_action = choose_incoming_action()
-    if incoming_action:
-        return incoming_action
-
-    repair_action = choose_failed_repair_action()
-    if repair_action:
-        return repair_action
-
-    return choose_default_experiment_action()
 
 
 def main():
-    repo_snapshot = load_json(REPO_SNAPSHOT_PATH)
-    next_action = choose_action(repo_snapshot)
+    action = build_action()
 
-    payload = {
-        "status": "ok" if next_action.get("status") == "ok" else "failed",
-        "output": str(NEXT_ACTION_PATH),
-        "next_action": next_action,
+    result = {
+        "status": "ok",
+        "output": OUTPUT_PATH,
+        "next_action": action
     }
 
-    write_json(NEXT_ACTION_PATH, payload)
-    print(json.dumps(payload, indent=2))
+    with open(OUTPUT_PATH, "w") as f:
+        json.dump(result, f, indent=2)
+
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
