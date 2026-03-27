@@ -8,13 +8,9 @@ ROOT = Path(__file__).resolve().parents[1]
 BRAIN_REPORTS = ROOT / "brain_reports"
 
 SNAPSHOT_FILE = BRAIN_REPORTS / "repo_snapshot.json"
-PREFLIGHT_FILE = BRAIN_REPORTS / "headless_cmd_test.json"
+NEXT_ACTION_FILE = BRAIN_REPORTS / "next_action.json"
 PREFLIGHT_DECISION_FILE = BRAIN_REPORTS / "preflight_decision.json"
 
-
-# -----------------------
-# GENERIC RUNNER
-# -----------------------
 
 def run_step(cmd):
     start = time.time()
@@ -58,28 +54,58 @@ def ensure_snapshot_exists():
     return SNAPSHOT_FILE.exists()
 
 
-# -----------------------
-# MAIN LOOP
-# -----------------------
+def semantic_route(preflight_decision: str, next_action_payload: dict | None):
+    """
+    Decide the execution lane from both sandbox admissibility and action semantics.
+
+    Returns:
+      run_experiment
+      repair_sandbox
+      inspect_sandbox
+      reject_sandbox
+      idle
+      unknown
+    """
+    if preflight_decision != "run_experiment":
+        return preflight_decision or "unknown"
+
+    if not next_action_payload:
+        return "unknown"
+
+    next_action = next_action_payload.get("next_action", {})
+    action = next_action.get("action")
+    action_class = next_action.get("action_class", "idle")
+
+    if action == "idle" or action_class == "idle":
+        return "idle"
+
+    if action_class == "repair":
+        return "repair_sandbox"
+
+    if action_class == "inspection":
+        return "inspect_sandbox"
+
+    if action_class == "experiment":
+        return "run_experiment"
+
+    return "unknown"
+
 
 def main():
     loop_start = time.time()
-
     steps = {}
 
     # -----------------
     # STEP 1: EXPLORE
     # -----------------
     explore = run_step(["python", "install/engine/repo_snapshot.py"])
-
     if not ensure_snapshot_exists():
         explore["ok"] = False
         explore["stderr"] = "repo_snapshot_not_created"
-
     steps["explore"] = explore
 
     # -----------------
-    # STEP 2: PREFLIGHT DIAGNOSTICS
+    # STEP 2: PREFLIGHT
     # -----------------
     preflight = run_step([
         "python",
@@ -87,103 +113,106 @@ def main():
         "--mode",
         "steggate_live_test"
     ])
-
     steps["preflight"] = preflight
 
     # -----------------
-    # STEP 3: PREFLIGHT DECISION (CGE)
+    # STEP 3: PREFLIGHT GATE
     # -----------------
-    preflight_gate = run_step([
-        "python",
-        "install/engine/preflight_gate.py"
-    ])
-
+    preflight_gate = run_step(["python", "install/engine/preflight_gate.py"])
     steps["preflight_gate"] = preflight_gate
 
-    decision_payload = load_json(PREFLIGHT_DECISION_FILE)
-    decision = None
+    preflight_decision_payload = load_json(PREFLIGHT_DECISION_FILE)
+    preflight_decision = None
+    if preflight_decision_payload:
+        preflight_decision = preflight_decision_payload.get("decision")
 
-    if decision_payload:
-        decision = decision_payload.get("decision")
-
-    steps["decision"] = decision_payload
+    steps["preflight_decision"] = preflight_decision_payload
 
     # -----------------
-    # STEP 4: ROUTING
+    # STEP 4: NEXT ACTION
     # -----------------
+    next_action = run_step(["python", "install/engine/next_action_engine.py"])
+    steps["next_action"] = next_action
 
-    execute = None
-    reconcile = None
-    next_action = None
+    next_action_payload = load_json(NEXT_ACTION_FILE)
+    steps["next_action_payload"] = next_action_payload
 
-    if decision == "run_experiment":
+    routed_decision = semantic_route(preflight_decision, next_action_payload)
+    steps["routed_decision"] = {
+        "preflight_decision": preflight_decision,
+        "routed_decision": routed_decision
+    }
 
-        # -----------------
-        # NEXT ACTION
-        # -----------------
-        next_action = run_step(["python", "install/engine/next_action_engine.py"])
-        steps["next_action"] = next_action
-
-        # -----------------
-        # EXECUTE
-        # -----------------
+    # -----------------
+    # STEP 5: ROUTING
+    # -----------------
+    if routed_decision == "run_experiment":
         execute = run_step(["python", "install/engine/execute_next_action.py"])
         steps["execute"] = execute
 
-        # -----------------
-        # RECONCILE
-        # -----------------
         reconcile = run_step(["python", "install/engine/reconcile_execution_state.py"])
         steps["reconcile"] = reconcile
 
-    elif decision == "repair_sandbox":
-
-        # Minimal deterministic repair (v1)
+    elif routed_decision == "repair_sandbox":
         repair = []
 
-        # Re-run snapshot as safe repair
-        repair.append(run_step(["python", "install/engine/repo_snapshot.py"]))
-
-        # Re-run preflight once
-        repair.append(run_step([
-            "python",
-            "install/engine/headless_cmd_tester.py",
-            "--mode",
-            "steggate_live_test"
-        ]))
-
-        repair.append(run_step([
-            "python",
-            "install/engine/preflight_gate.py"
-        ]))
+        # deterministic repair v1 only
+        repair.append({
+            "action": "rerun_repo_snapshot",
+            "result": run_step(["python", "install/engine/repo_snapshot.py"])
+        })
+        repair.append({
+            "action": "rerun_preflight",
+            "result": run_step([
+                "python",
+                "install/engine/headless_cmd_tester.py",
+                "--mode",
+                "steggate_live_test"
+            ])
+        })
+        repair.append({
+            "action": "rerun_preflight_gate",
+            "result": run_step(["python", "install/engine/preflight_gate.py"])
+        })
 
         steps["repair"] = repair
 
-    elif decision == "reject_sandbox":
+    elif routed_decision == "inspect_sandbox":
+        inspection = []
 
+        # inspection lane is non-mutating
+        inspection.append({
+            "action": "inspection_no_mutation",
+            "note": "inspection action acknowledged; no execution mutation performed"
+        })
+
+        steps["inspection"] = inspection
+
+    elif routed_decision == "reject_sandbox":
         steps["reject"] = {
             "status": "blocked",
             "reason": "sandbox_not_admissible"
         }
 
-    else:
-
-        steps["error"] = {
-            "status": "failed",
-            "reason": "unknown_or_missing_decision"
+    elif routed_decision == "idle":
+        steps["idle"] = {
+            "status": "ok",
+            "reason": "no_experiment_action_selected"
         }
 
-    # -----------------
-    # FINAL OUTPUT
-    # -----------------
+    else:
+        steps["error"] = {
+            "status": "failed",
+            "reason": "unknown_or_missing_routed_decision"
+        }
 
     total_duration = round(time.time() - loop_start, 3)
 
     output = {
         "status": "ok",
         "mode": "governed_autonomous_loop",
-        "loop_ok": decision == "run_experiment",
-        "decision": decision,
+        "loop_ok": routed_decision == "run_experiment",
+        "decision": routed_decision,
         "duration_seconds": total_duration,
         "steps": steps
     }
