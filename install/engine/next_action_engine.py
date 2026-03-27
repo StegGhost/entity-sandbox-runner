@@ -104,20 +104,6 @@ def newest_zip_by_mtime(directory: Path):
     return sorted(directory.glob("*.zip"), key=lambda p: p.stat().st_mtime, reverse=True)
 
 
-def collect_family_index(directory: Path):
-    families = {}
-    for path in newest_zip_by_mtime(directory):
-        fam = family_from_name(path.name)
-        if fam not in families:
-            families[fam] = {
-                "path": str(path),
-                "mtime": path.stat().st_mtime,
-                "name": path.name,
-                "family": fam,
-            }
-    return families
-
-
 def same_family_installed(family: str) -> bool:
     if not INSTALLED_DIR.exists():
         return False
@@ -148,6 +134,7 @@ def choose_incoming_action():
         "ts": datetime.utcnow().isoformat(),
         "status": "ok",
         "selection_mode": "incoming_priority",
+        "action_class": "inspection",
         "active_family": family,
         "action": "inspect_incoming_bundle_family",
         "target": str(target),
@@ -166,8 +153,6 @@ def choose_failed_repair_action():
     for target in failed:
         family = family_from_name(target.name)
 
-        # Skip families that already have an installed or repaired representative.
-        # This prevents thrashing on obsolete history.
         if same_family_installed(family):
             continue
         if same_family_repaired(family):
@@ -177,6 +162,7 @@ def choose_failed_repair_action():
             "ts": datetime.utcnow().isoformat(),
             "status": "ok",
             "selection_mode": "repair_escalation",
+            "action_class": "repair",
             "active_family": family,
             "action": "propose_repair_for_bundle_family",
             "target": target.name,
@@ -189,12 +175,28 @@ def choose_failed_repair_action():
     return None
 
 
+def choose_default_experiment_action():
+    return {
+        "ts": datetime.utcnow().isoformat(),
+        "status": "ok",
+        "selection_mode": "default_experiment",
+        "action_class": "experiment",
+        "action": "sandbox_experiment_heartbeat",
+        "target": None,
+        "family": None,
+        "priority": "low",
+        "reason": "no_actionable_bundle_work",
+        "source": "next_action_engine",
+    }
+
+
 def choose_action(repo_snapshot: dict | None):
     if not repo_snapshot:
         return {
             "ts": datetime.utcnow().isoformat(),
             "status": "failed",
             "selection_mode": "none",
+            "action_class": "idle",
             "action": "idle",
             "reason": "missing_repo_snapshot",
             "source": "next_action_engine",
@@ -208,14 +210,7 @@ def choose_action(repo_snapshot: dict | None):
     if repair_action:
         return repair_action
 
-    return {
-        "ts": datetime.utcnow().isoformat(),
-        "status": "ok",
-        "selection_mode": "none",
-        "action": "idle",
-        "reason": "no_actionable_work",
-        "source": "next_action_engine",
-    }
+    return choose_default_experiment_action()
 
 
 def main():
