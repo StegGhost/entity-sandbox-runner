@@ -5,9 +5,13 @@ from datetime import datetime
 ROOT = Path(__file__).resolve().parents[2]
 
 BRAIN_REPORTS = ROOT / "brain_reports"
-SNAPSHOT_PATH = BRAIN_REPORTS / "repo_snapshot.json"
+REPO_SNAPSHOT_PATH = BRAIN_REPORTS / "repo_snapshot.json"
 NEXT_ACTION_PATH = BRAIN_REPORTS / "next_action.json"
-STATE_FILE = BRAIN_REPORTS / "loop_state.json"
+
+INCOMING_DIR = ROOT / "incoming_bundles"
+FAILED_DIR = ROOT / "failed_bundles"
+REPAIRED_DIR = ROOT / "repaired_bundles"
+INSTALLED_DIR = ROOT / "installed_bundles"
 
 
 def load_json(path: Path):
@@ -21,149 +25,172 @@ def load_json(path: Path):
 
 def write_json(path: Path, payload: dict):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    tmp_path = path.with_suffix(".tmp")
+    tmp_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    tmp_path.replace(path)
 
 
-def load_state():
-    if not STATE_FILE.exists():
-        return {}
-    try:
-        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
+def family_from_name(name: str) -> str:
+    base = Path(name).stem
+
+    suffixes = [
+        "_manifest_fixed",
+        "_repaired",
+        "_bundle",
+        "_v0_1",
+        "_v0_2",
+        "_v0_3",
+        "_v0_4",
+        "_v0_5",
+        "_v0_6",
+        "_v0_7",
+        "_v0_8",
+        "_v0_9",
+        "_v1_0",
+        "_v1_1",
+        "_v1_2",
+        "_v1_3",
+        "_v1_4",
+        "_v1_5",
+        "_v1_6",
+        "_v1_7",
+        "_v1_8",
+        "_v1_9",
+        "_v2",
+        "_v3",
+        "_v4",
+        "_v5",
+        "_v6",
+        "_v7",
+        "_v8",
+        "_v9",
+        "_v10",
+        "_v11",
+        "_v12",
+        "_v13",
+        "_v14",
+        "_v15",
+        "_v16",
+        "_v17",
+        "_v18",
+        "_v19",
+        "_v20",
+        "_v21",
+        "_v22",
+        "_v23",
+        "_v24",
+        "_v25",
+        "_v26",
+        "_v27",
+        "_v28",
+        "_v29",
+        "_v30",
+    ]
+
+    for suffix in suffixes:
+        if base.endswith(suffix):
+            return base[: -len(suffix)]
+
+    parts = base.split("_")
+    if len(parts) >= 2 and parts[-1].startswith("v") and parts[-1][1:].replace("_", "").isdigit():
+        return "_".join(parts[:-1])
+
+    return base
 
 
-def save_state(state: dict):
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+def newest_zip_by_mtime(directory: Path):
+    if not directory.exists():
+        return []
+    return sorted(directory.glob("*.zip"), key=lambda p: p.stat().st_mtime, reverse=True)
 
 
-def build_idle(reason: str):
+def collect_family_index(directory: Path):
+    families = {}
+    for path in newest_zip_by_mtime(directory):
+        fam = family_from_name(path.name)
+        if fam not in families:
+            families[fam] = {
+                "path": str(path),
+                "mtime": path.stat().st_mtime,
+                "name": path.name,
+                "family": fam,
+            }
+    return families
+
+
+def same_family_installed(family: str) -> bool:
+    if not INSTALLED_DIR.exists():
+        return False
+    for path in INSTALLED_DIR.glob("*.zip"):
+        if family_from_name(path.name) == family:
+            return True
+    return False
+
+
+def same_family_repaired(family: str) -> bool:
+    if not REPAIRED_DIR.exists():
+        return False
+    for path in REPAIRED_DIR.glob("*.zip"):
+        if family_from_name(path.name) == family:
+            return True
+    return False
+
+
+def choose_incoming_action():
+    incoming = newest_zip_by_mtime(INCOMING_DIR)
+    if not incoming:
+        return None
+
+    target = incoming[0]
+    family = family_from_name(target.name)
+
     return {
         "ts": datetime.utcnow().isoformat(),
         "status": "ok",
-        "selection_mode": "idle",
-        "action": "idle",
-        "reason": reason,
+        "selection_mode": "incoming_priority",
+        "active_family": family,
+        "action": "inspect_incoming_bundle_family",
+        "target": str(target),
+        "family": family,
+        "priority": "high",
+        "reason": "incoming_bundle_detected",
         "source": "next_action_engine",
     }
 
 
-def choose_incoming_candidate(snapshot: dict):
-    incoming_by_family = snapshot.get("latest_incoming_by_family", {})
-    if not incoming_by_family:
+def choose_failed_repair_action():
+    failed = newest_zip_by_mtime(FAILED_DIR)
+    if not failed:
         return None
 
-    candidates = []
-    for family, meta in incoming_by_family.items():
-        candidates.append(
-            {
-                "kind": "incoming",
-                "family": family,
-                "target": meta["path"],
-                "mtime": meta.get("mtime", 0),
-                "priority": "high",
-                "selection_mode": "incoming_priority",
-                "action": "inspect_incoming_bundle_family",
-                "reason": "incoming_bundle_detected",
-                "source": "next_action_engine",
-            }
-        )
+    for target in failed:
+        family = family_from_name(target.name)
 
-    candidates.sort(key=lambda x: x["mtime"], reverse=True)
-    return candidates[0]
+        # Skip families that already have an installed or repaired representative.
+        # This prevents thrashing on obsolete history.
+        if same_family_installed(family):
+            continue
+        if same_family_repaired(family):
+            continue
 
+        return {
+            "ts": datetime.utcnow().isoformat(),
+            "status": "ok",
+            "selection_mode": "repair_escalation",
+            "active_family": family,
+            "action": "propose_repair_for_bundle_family",
+            "target": target.name,
+            "family": family,
+            "priority": "high",
+            "reason": "failed_bundle_detected",
+            "source": "next_action_engine",
+        }
 
-def choose_repair_candidate(snapshot: dict):
-    failed_by_family = snapshot.get("latest_failed_by_family", {})
-    repaired_by_family = snapshot.get("latest_repaired_by_family", {})
-
-    if not failed_by_family:
-        return None
-
-    candidates = []
-
-    for family, failed_meta in failed_by_family.items():
-        failed_mtime = failed_meta.get("mtime", 0)
-        repaired_meta = repaired_by_family.get(family)
-
-        # convergence lock:
-        # skip any family already having a repaired artifact newer than the latest failure
-        if repaired_meta is not None:
-            repaired_mtime = repaired_meta.get("mtime", 0)
-            if repaired_mtime >= failed_mtime:
-                continue
-
-        candidates.append(
-            {
-                "kind": "repair",
-                "family": family,
-                "target": failed_meta["path"],
-                "mtime": failed_mtime,
-                "priority": "high",
-                "selection_mode": "repair_escalation",
-                "action": "propose_repair_for_bundle_family",
-                "reason": "failed_bundle_without_newer_repair",
-                "source": "repair_escalation",
-            }
-        )
-
-    if not candidates:
-        return None
-
-    candidates.sort(key=lambda x: x["mtime"], reverse=True)
-    return candidates[0]
+    return None
 
 
-def apply_family_lock(chosen: dict | None):
-    """
-    Keep the loop from thrashing between families.
-    If a different family is selected, hold the previous active family
-    for up to 3 cycles, but only if that family still has admissible work.
-    """
-    if not chosen:
-        state = load_state()
-        state["active_family"] = None
-        state["lock_count"] = 0
-        state["last_action_kind"] = None
-        save_state(state)
-        return None
-
-    state = load_state()
-    last_family = state.get("active_family")
-    last_kind = state.get("last_action_kind")
-    lock_count = int(state.get("lock_count", 0))
-
-    chosen_family = chosen.get("family")
-    chosen_kind = chosen.get("kind")
-
-    # reset lock if same family or no prior family
-    if not last_family or last_family == chosen_family:
-        state["active_family"] = chosen_family
-        state["lock_count"] = 0
-        state["last_action_kind"] = chosen_kind
-        save_state(state)
-        return chosen
-
-    # only lock when the action kind stays the same
-    if last_kind == chosen_kind and lock_count < 3:
-        chosen["locked_from_family"] = last_family
-        state["lock_count"] = lock_count + 1
-        state["active_family"] = chosen_family
-        state["last_action_kind"] = chosen_kind
-        save_state(state)
-        return chosen
-
-    # release lock and accept new family
-    state["active_family"] = chosen_family
-    state["lock_count"] = 0
-    state["last_action_kind"] = chosen_kind
-    save_state(state)
-    return chosen
-
-
-def choose_action(snapshot: dict):
-    if not snapshot:
+def choose_action(repo_snapshot: dict | None):
+    if not repo_snapshot:
         return {
             "ts": datetime.utcnow().isoformat(),
             "status": "failed",
@@ -173,32 +200,27 @@ def choose_action(snapshot: dict):
             "source": "next_action_engine",
         }
 
-    incoming_candidate = choose_incoming_candidate(snapshot)
-    repair_candidate = choose_repair_candidate(snapshot)
+    incoming_action = choose_incoming_action()
+    if incoming_action:
+        return incoming_action
 
-    chosen = incoming_candidate or repair_candidate
-    chosen = apply_family_lock(chosen)
-
-    if not chosen:
-        return build_idle("no_admissible_work")
+    repair_action = choose_failed_repair_action()
+    if repair_action:
+        return repair_action
 
     return {
         "ts": datetime.utcnow().isoformat(),
         "status": "ok",
-        "selection_mode": chosen["selection_mode"],
-        "active_family": chosen["family"],
-        "action": chosen["action"],
-        "target": chosen["target"],
-        "family": chosen["family"],
-        "priority": chosen["priority"],
-        "reason": chosen["reason"],
-        "source": chosen["source"],
+        "selection_mode": "none",
+        "action": "idle",
+        "reason": "no_actionable_work",
+        "source": "next_action_engine",
     }
 
 
 def main():
-    snapshot = load_json(SNAPSHOT_PATH)
-    next_action = choose_action(snapshot)
+    repo_snapshot = load_json(REPO_SNAPSHOT_PATH)
+    next_action = choose_action(repo_snapshot)
 
     payload = {
         "status": "ok" if next_action.get("status") == "ok" else "failed",
