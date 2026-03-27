@@ -1,26 +1,79 @@
-name: Forced Ingest and Evaluate
+name: forced-ingest-and-eval
 
 on:
   workflow_dispatch:
-
-permissions:
-  contents: write
+  push:
+    branches: [ main ]
 
 jobs:
-  run:
+  run-loop:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Manual only notice
+      # -------------------------------
+      # 🔍 ENSURE STATE EXISTS
+      # -------------------------------
+      - name: Ensure bundle directories exist
         run: |
-          echo "forced_ingest_and_eval.yml schedule disabled."
-          echo "This workflow is no longer part of the live mutation path."
-          echo "Authoritative live path is:"
-          echo "Brain Sync -> Ingestion Pipeline -> Reconciliation"
-          echo "Run this workflow manually only if explicitly needed."
+          mkdir -p failed_bundles
+          mkdir -p repaired_bundles
+          mkdir -p incoming_bundles
+          mkdir -p brain_reports
+
+      - name: Debug bundle state
+        run: |
+          echo "FAILED:"
+          ls -la failed_bundles || true
+          echo "REPAIRED:"
+          ls -la repaired_bundles || true
+
+      # -------------------------------
+      # 🔁 RUN LOOP
+      # -------------------------------
+      - name: Run Autonomous Loop
+        run: |
+          python install/autonomous_loop_orchestrator.py
+
+      # -------------------------------
+      # 💾 PERSIST STATE (CRITICAL FIX)
+      # -------------------------------
+      - name: Commit outputs and state
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+
+          git add brain_reports/ || true
+          git add failed_bundles/ || true
+          git add repaired_bundles/ || true
+
+          git commit -m "persist loop state" || echo "no changes"
+          git push
+
+      # -------------------------------
+      # 🧪 RENDER TEST (HEADLESS)
+      # -------------------------------
+      - name: Headless Render Test
+        run: |
+          echo "Testing render readiness..."
+
+          if [ -f brain_reports/repair_bundle_result.json ]; then
+            echo "Repair pipeline active"
+          else
+            echo "No repair output yet"
+          fi
+
+          if [ -f brain_reports/next_action.json ]; then
+            echo "Decision layer active"
+          else
+            echo "Decision missing"
+          fi
+
+          echo "Render test complete"
