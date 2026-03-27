@@ -143,6 +143,10 @@ def main():
         "routed_decision": routed_decision
     }
 
+    selected_next_action = {}
+    if next_action_payload:
+        selected_next_action = next_action_payload.get("next_action", {})
+
     # -----------------
     # STEP 5: ROUTING
     # -----------------
@@ -154,14 +158,31 @@ def main():
         steps["reconcile"] = reconcile
 
     elif routed_decision == "repair_sandbox":
-        repair = []
+        repair_steps = []
 
-        # deterministic repair v1 only
-        repair.append({
+        target = selected_next_action.get("target", "")
+        family = selected_next_action.get("family", "unknown")
+        action_payload_json = json.dumps(selected_next_action)
+
+        repair_steps.append({
+            "action": "attempt_bundle_repair",
+            "target": target,
+            "family": family,
+            "result": run_step([
+                "python",
+                "install/engine/repair_bundle_engine.py",
+                "--action-payload-json",
+                action_payload_json
+            ])
+        })
+
+        # Safe recheck cycle after repair attempt
+        repair_steps.append({
             "action": "rerun_repo_snapshot",
             "result": run_step(["python", "install/engine/repo_snapshot.py"])
         })
-        repair.append({
+
+        repair_steps.append({
             "action": "rerun_preflight",
             "result": run_step([
                 "python",
@@ -170,20 +191,44 @@ def main():
                 "steggate_live_test"
             ])
         })
-        repair.append({
+
+        repair_steps.append({
             "action": "rerun_preflight_gate",
             "result": run_step(["python", "install/engine/preflight_gate.py"])
         })
 
-        steps["repair"] = repair
+        repair_steps.append({
+            "action": "rerun_next_action_engine",
+            "result": run_step(["python", "install/engine/next_action_engine.py"])
+        })
+
+        steps["repair"] = repair_steps
+
+        updated_preflight_decision_payload = load_json(PREFLIGHT_DECISION_FILE)
+        updated_next_action_payload = load_json(NEXT_ACTION_FILE)
+
+        updated_preflight_decision = None
+        if updated_preflight_decision_payload:
+            updated_preflight_decision = updated_preflight_decision_payload.get("decision")
+
+        updated_routed_decision = semantic_route(
+            updated_preflight_decision,
+            updated_next_action_payload
+        )
+
+        steps["post_repair_state"] = {
+            "preflight_decision": updated_preflight_decision,
+            "routed_decision": updated_routed_decision,
+            "next_action_payload": updated_next_action_payload
+        }
 
     elif routed_decision == "inspect_sandbox":
         inspection = []
 
-        # inspection lane is non-mutating
         inspection.append({
             "action": "inspection_no_mutation",
-            "note": "inspection action acknowledged; no execution mutation performed"
+            "note": "inspection action acknowledged; no execution mutation performed",
+            "selected_action": selected_next_action
         })
 
         steps["inspection"] = inspection
