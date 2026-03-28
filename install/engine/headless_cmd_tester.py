@@ -12,9 +12,6 @@ BASE_URL = "https://steggate-api.onrender.com"
 REPORT_DIR = Path("brain_reports")
 
 
-# -------------------------
-# Helpers
-# -------------------------
 def stable_json(obj) -> str:
     return json.dumps(obj, sort_keys=True, separators=(",", ":"))
 
@@ -58,17 +55,20 @@ def write_reports(report: dict):
 
     json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
 
-    md = [
+    md_lines = [
         "# Headless Command Test Report",
         "",
+        f"**Mode:** {report.get('mode')}",
         f"**Status:** {report.get('status')}",
-        f"**Reason:** {report.get('reason', 'ok')}",
+        f"**Timestamp:** {report.get('ts')}",
         "",
+        "## report",
         "```json",
         json.dumps(report, indent=2),
         "```",
+        "",
     ]
-    md_path.write_text("\n".join(md), encoding="utf-8")
+    md_path.write_text("\n".join(md_lines), encoding="utf-8")
 
     report["artifacts"] = {
         "json_report": str(json_path.resolve()),
@@ -78,23 +78,19 @@ def write_reports(report: dict):
     json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
 
 
-def fail(report, reason, err=None, extra=None):
+def fail(report: dict, reason: str, err: Exception | str | None = None, extra: dict | None = None):
     report["status"] = "invalid"
     report["reason"] = reason
-    if err:
+    if err is not None:
         report["error"] = str(err)
     if extra:
         report.update(extra)
-
     write_reports(report)
     print(json.dumps(report, indent=2))
     sys.exit(1)
 
 
-# -------------------------
-# Main
-# -------------------------
-def run(base_url):
+def run(base_url: str):
     report = {
         "mode": "steggate_live_test",
         "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -108,7 +104,11 @@ def run(base_url):
         # HEALTH
         # -------------------------
         code, data = http_get(f"{base_url}/health")
-        report["steps"]["health"] = {"ok": code == 200, "data": data}
+        report["steps"]["health"] = {
+            "ok": code == 200,
+            "status_code": code,
+            "data": data,
+        }
         if code != 200:
             fail(report, "health_failed")
 
@@ -117,106 +117,132 @@ def run(base_url):
         # -------------------------
         code, data = http_post(f"{base_url}/token", {})
         token = data.get("token")
-
-        report["steps"]["token"] = {"ok": code == 200, "data": data}
-        if not token:
+        report["steps"]["token"] = {
+            "ok": code == 200 and bool(token),
+            "status_code": code,
+            "data": data,
+        }
+        if code != 200 or not token:
             fail(report, "token_failed")
 
         # -------------------------
-        # EXECUTE (FIXED CONTRACT)
+        # EXECUTE
+        # Confirmed contract from latest 422 evidence:
+        #   POST /execute?token=...
+        #   body = { "target": "...", "body": {...} }
         # -------------------------
         body_payload = {"t": 1}
         body_canonical = stable_json(body_payload)
-        local_hash = sha256_text(body_canonical)
+        local_action_hash = sha256_text(body_canonical)
 
         execute_body = {
-            "payload": {
-                "target": "https://httpbin.org/post",
-                "body": body_payload,
-            }
+            "target": "https://httpbin.org/post",
+            "body": body_payload,
         }
 
-        query = urllib.parse.urlencode({"token": token})
-        execute_url = f"{base_url}/execute?{query}"
+        execute_url = f"{base_url}/execute?{urllib.parse.urlencode({'token': token})}"
 
         report["steps"]["execute_request"] = {
             "url": execute_url,
             "body": execute_body,
-            "canonical": body_canonical,
-            "local_hash": local_hash,
+            "body_canonical": body_canonical,
+            "local_action_hash": local_action_hash,
         }
 
         try:
             code, data = http_post(execute_url, execute_body)
         except urllib.error.HTTPError as e:
-            raw = e.read().decode()
+            raw_body = e.read().decode("utf-8", errors="replace")
             try:
-                parsed = json.loads(raw)
-            except:
-                parsed = {"raw": raw}
+                parsed_body = json.loads(raw_body)
+            except json.JSONDecodeError:
+                parsed_body = {"raw_body": raw_body}
+
+            report["steps"]["execute"] = {
+                "ok": False,
+                "status_code": e.code,
+                "request_url": execute_url,
+                "request_body": execute_body,
+                "body_canonical": body_canonical,
+                "local_action_hash": local_action_hash,
+                "error_body": parsed_body,
+            }
 
             fail(
                 report,
-                f"http_{e.code}",
+                f"http_error_{e.code}",
                 e,
-                {"execute_error_body": parsed},
+                extra={
+                    "execute_http_status": e.code,
+                    "execute_error_body": parsed_body,
+                },
             )
 
         receipt = data.get("receipt", {})
 
         report["steps"]["execute"] = {
             "ok": code == 200,
+            "status_code": code,
+            "request_url": execute_url,
+            "request_body": execute_body,
+            "body_canonical": body_canonical,
+            "local_action_hash": local_action_hash,
             "data": data,
         }
-
         if code != 200:
             fail(report, "execute_failed")
 
         # -------------------------
         # VERIFY
         # -------------------------
-        rid = receipt.get("receipt_id")
-        if not rid:
-            fail(report, "missing_receipt")
+        receipt_id = receipt.get("receipt_id")
+        if not receipt_id:
+            fail(report, "missing_receipt_id")
 
-        code, verify = http_post(
+        code, verify_data = http_post(
             f"{base_url}/verify",
-            {"receipt_id": rid},
+            {"receipt_id": receipt_id},
         )
-
         report["steps"]["verify"] = {
             "ok": code == 200,
-            "data": verify,
+            "status_code": code,
+            "data": verify_data,
         }
-
         if code != 200:
             fail(report, "verify_failed")
 
         # -------------------------
-        # HASH MATCH
+        # HASH / RECEIPT BINDING
         # -------------------------
-        receipt_hash = receipt.get("action_hash")
-
+        receipt_action_hash = receipt.get("action_hash")
         report["binding"] = {
-            "local": local_hash,
-            "receipt": receipt_hash,
-            "match": local_hash == receipt_hash,
+            "body_canonical": body_canonical,
+            "local_action_hash": local_action_hash,
+            "receipt_action_hash": receipt_action_hash,
+            "match": local_action_hash == receipt_action_hash,
         }
 
-        if local_hash != receipt_hash:
+        if receipt_action_hash is None:
+            fail(report, "missing_receipt_action_hash")
+
+        if local_action_hash != receipt_action_hash:
             fail(report, "hash_mismatch")
 
         write_reports(report)
         print(json.dumps(report, indent=2))
 
+    except urllib.error.HTTPError as e:
+        fail(report, f"http_error_{e.code}", e)
     except Exception as e:
-        fail(report, "unexpected", e)
+        fail(report, "unexpected_error", e)
 
 
-# -------------------------
-if __name__ == "__main__":
+def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default=BASE_URL)
-    args = parser.parse_args()
+    return parser.parse_args()
 
+
+if __name__ == "__main__":
+    args = parse_args()
     run(args.base_url)
