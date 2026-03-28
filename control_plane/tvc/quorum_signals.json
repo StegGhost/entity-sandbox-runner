@@ -1,0 +1,16 @@
+{
+  "signals": [
+    {
+      "signer": "guardian_a",
+      "approved": true
+    },
+    {
+      "signer": "guardian_b",
+      "approved": true
+    },
+    {
+      "signer": "guardian_c",
+      "approved": false
+    }
+  ]
+}
