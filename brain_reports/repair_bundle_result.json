@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:22:31.629027Z",
+  "ts": "2026-03-28T03:22:32.324926Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/control_plane_observability_v16.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/control_plane_observability_v16.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
   "changes_applied": [
-    "fixed_manifest_fields",
+    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "control_plane_observability",
-  "hash_before": "acbdb2f970f5caa7beb2f77fcafab3625638008dab09253f05c135e51ba635e8",
-  "hash_after": "503a264850d13a162771310d05748ba6fe9b4c1150fbe437ad12819fecd49339"
+  "family": "critical_ratio_campaign",
+  "hash_before": "d6c399c5aab58a8399f3cf91917ed905fddec57d6a97b0673271fdd366b9e809",
+  "hash_after": "e850e0191094ca1d323eb3b3bd1851d3a5d79ddeb4f965fa5c5ae882aa2d2213"
 }
