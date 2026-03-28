@@ -45,6 +45,12 @@ jobs:
           test -f brain_reports/control_plane_evidence_test.json
           test -f brain_reports/control_plane_evidence_test.md
 
+      - name: Run StegCore Gate
+        run: python control_plane/stegcore_gate.py
+
+      - name: Enforce Commit Gate
+        run: python install/engine/commit_gate.py
+
       # -----------------------------
       # Show summary in logs (debug)
       # -----------------------------
