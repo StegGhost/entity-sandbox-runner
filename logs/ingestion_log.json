@@ -5326,5 +5326,11 @@
     "ok": false,
     "error": "manifest_missing_fields:['bundle_version', 'install_mode']",
     "ts": 1774735139.7537785
+  },
+  {
+    "bundle": "auto_bundle.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['bundle_version', 'install_mode']",
+    "ts": 1774737515.8681855
   }
 ]
