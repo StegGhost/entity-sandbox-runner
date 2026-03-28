@@ -1,13 +1,14 @@
 {
-  "ts": "2026-03-28T05:43:51.282536Z",
+  "ts": "2026-03-28T05:43:52.251991Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegcge_closure_modules_v1_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegcge_closure_modules_v1_bundle.zip",
   "changes_applied": [
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "demo_missing_install",
-  "hash_before": "07ab9eb9017694ff1e5f091413713e4ae22aed3757300ae643d5f184270ba876",
-  "hash_after": "8fa93e64a18cffaf33a68b5c1bf028d6b4e4f4be323e6153b7d41a6adbe10246"
+  "family": "stegcge_closure_modules",
+  "hash_before": "3af443d11d77f31e1c64de1c87863cad566e694a963eddcd44af42c3d906d75e",
+  "hash_after": "dcccc46b38715114fd3456f240b7db75cb87b2e1cf853ed4b67b64b8ea9553f2"
 }
