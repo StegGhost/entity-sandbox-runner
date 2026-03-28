@@ -1,20 +1,23 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:54:29",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v7_autonomous_loop_bundle.zip",
-  "family": "sandbox_v7_autonomous",
+  "ts": "2026-03-28T04:54:30",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v8_1_to_8_5_bundle.zip",
+  "family": "sandbox_v8_1",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "payload/loop_state.json",
-      "experiments/autonomous/autonomous_controller.py",
-      "install/orchestrator_hook.py",
+      "README.md",
+      "github_workflows/autonomous_loop.yml",
+      "experiments/evaluation_suite/run_eval.py",
+      "install/external_signal_adapter.py",
+      "install/coordination.py",
+      "install/economic_weighting.py",
       "install/apply.py",
-      "install/bundle_manifest.json",
-      "workflow_review/V7_README.md"
+      "install/deterministic_enforcer.py",
+      "install/receipt_logger.py"
     ]
   },
   "decision": {
