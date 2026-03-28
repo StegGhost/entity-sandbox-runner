@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T05:43:53.051575Z",
+  "ts": "2026-03-28T05:50:14.270935Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegdb_observability_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegdb_observability_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "stegdb_observability_bundle",
-  "hash_before": "1f8ab6ae0bcbf12f7998e70a5ecbe4f013d42706c8d0a25d72c3abc3285fb2e3",
-  "hash_after": "62fdc957fa60aef8c144d266a9027d00ce7448cfcc1ccdd4043eef8f3d6f5510"
+  "family": "demo_missing_install",
+  "hash_before": "977b99438712e7a0c29c622ef7e9510f006a5daec9f54b6e71c8671c4fd79591",
+  "hash_after": "4b31be3e186fe1809d6281e3272647e3524b2f45fd02a5fe6fe366fcd488a02d"
 }
