@@ -1,26 +1,20 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:46:59",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v14_3_to_v15_bundle.zip",
-  "family": "sandbox_v14_3",
+  "ts": "2026-03-28T04:47:00",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip",
+  "family": "sandbox_v6_2",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "payload/control_plane/override.json",
-      "config/policy.json",
-      "github_workflows/autonomous_v15.yml",
-      "experiments/evaluation_suite/run_eval.py",
-      "install/finco.py",
-      "install/remote_policy.py",
-      "install/node_consensus.py",
-      "install/control_plane.py",
+      "install/eval_metrics.py",
+      "install/system_state.py",
+      "install/adaptive_scheduler.py",
+      "install/eval_orchestrator.py",
       "install/apply.py",
-      "install/policy_signature.py",
-      "install/policy_engine.py",
-      "workflow_review/V14_3_TO_V15_NOTES.md"
+      "workflow_review/V6_2_SHARED_STATE_PATCH.md"
     ]
   },
   "decision": {

@@ -1,17 +1,17 @@
 {
   "status": "ok",
-  "ts": "20260328_044659",
-  "family": "sandbox_v14_3",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v14_3_to_v15_bundle.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v14_3_to_v15_bundle.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v14_3_to_v15_bundle.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_v14_3_to_v15_bundle.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v14_3_to_v15_bundle.zip",
+  "ts": "20260328_044700",
+  "family": "sandbox_v6_2",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v6_2_shared_state_patch.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v6_2_shared_state_patch.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_v6_2_shared_state_patch.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v6_2_shared_state_patch.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:46:59\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v14_3_to_v15_bundle.zip\",\n    \"family\": \"sandbox_v14_3\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"payload/control_plane/override.json\",\n        \"config/policy.json\",\n        \"github_workflows/autonomous_v15.yml\",\n        \"experiments/evaluation_suite/run_eval.py\",\n        \"install/finco.py\",\n        \"install/remote_policy.py\",\n        \"install/node_consensus.py\",\n        \"install/control_plane.py\",\n        \"install/apply.py\",\n        \"install/policy_signature.py\",\n        \"install/policy_engine.py\",\n        \"workflow_review/V14_3_TO_V15_NOTES.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:47:00\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip\",\n    \"family\": \"sandbox_v6_2\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/eval_metrics.py\",\n        \"install/system_state.py\",\n        \"install/adaptive_scheduler.py\",\n        \"install/eval_orchestrator.py\",\n        \"install/apply.py\",\n        \"workflow_review/V6_2_SHARED_STATE_PATCH.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
     "duration": 0.037,
     "parsed_stdout": {
@@ -19,27 +19,21 @@
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T04:46:59",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v14_3_to_v15_bundle.zip",
-        "family": "sandbox_v14_3",
+        "ts": "2026-03-28T04:47:00",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip",
+        "family": "sandbox_v6_2",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
           "install_dir_present": true,
           "files": [
             "bundle_manifest.json",
-            "payload/control_plane/override.json",
-            "config/policy.json",
-            "github_workflows/autonomous_v15.yml",
-            "experiments/evaluation_suite/run_eval.py",
-            "install/finco.py",
-            "install/remote_policy.py",
-            "install/node_consensus.py",
-            "install/control_plane.py",
+            "install/eval_metrics.py",
+            "install/system_state.py",
+            "install/adaptive_scheduler.py",
+            "install/eval_orchestrator.py",
             "install/apply.py",
-            "install/policy_signature.py",
-            "install/policy_engine.py",
-            "workflow_review/V14_3_TO_V15_NOTES.md"
+            "workflow_review/V6_2_SHARED_STATE_PATCH.md"
           ]
         },
         "decision": {

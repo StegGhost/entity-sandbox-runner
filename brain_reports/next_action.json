@@ -7,8 +7,8 @@
     "selection_mode": "deterministic_failed_scan",
     "action_class": "repair",
     "action": "propose_repair_for_bundle_family",
-    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v14_3_to_v15_bundle.zip",
-    "family": "sandbox_v14_3_to_v15_bundle",
+    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v6_2_shared_state_patch.zip",
+    "family": "sandbox_v6_2_shared_state_patch",
     "priority": "high",
     "reason": "failed_bundle_present",
     "source": "next_action_engine"
