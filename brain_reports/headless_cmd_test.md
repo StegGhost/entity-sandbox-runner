@@ -2,7 +2,7 @@
 
 **Mode:** steggate_live_test
 **Status:** ok
-**Timestamp:** 2026-03-28T01:45:19.509189
+**Timestamp:** 2026-03-28T01:51:00.082368
 
 ## health
 ```json
@@ -12,7 +12,7 @@
   "data": {
     "status": "ok",
     "service": "steggate-api",
-    "ts": 1774662319
+    "ts": 1774662660
   }
 }
 ```
@@ -24,7 +24,7 @@
   "status_code": 200,
   "data": {
     "status": "ok",
-    "token": "f1e25d55013096a3e8c172d3019b51e836977033c731b49adb73bf2d4a329e11",
+    "token": "475bf71b5a869137f16443ecbd36503f12510175c5e76c8f292b895f8e1a23b0",
     "expires_in": 120
   }
 }
@@ -39,14 +39,14 @@
     "status": "executed",
     "result": {
       "status_code": 200,
-      "body": "{\n  \"args\": {}, \n  \"data\": \"{\\\"t\\\": 1}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept-Encoding\": \"identity\", \n    \"Content-Length\": \"8\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"Python-urllib/3.11\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69c732b0-27de71a61d963bb779773a07\"\n  }, \n  \"json\": {\n    \"t\": 1\n  }, \n  \"origin\": \"74.220.48.248\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
+      "body": "{\n  \"args\": {}, \n  \"data\": \"{\\\"t\\\": 1}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept-Encoding\": \"identity\", \n    \"Content-Length\": \"8\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"Python-urllib/3.11\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69c73405-43db639c5faba801349e1e25\"\n  }, \n  \"json\": {\n    \"t\": 1\n  }, \n  \"origin\": \"74.220.48.248\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
     },
     "receipt": {
-      "receipt_id": "30aa1ae5fff1e3b1021c048d188b2bfda4ae5d23891084301c02168351093243",
-      "timestamp": 1774662320,
+      "receipt_id": "ecf42175b7cbc64ae1e198a388a620ed5f2cdafbe150bbc41b9cb7b141a82466",
+      "timestamp": 1774662661,
       "target": "https://httpbin.org/post",
       "action_hash": "4834945f7bf91f82efc5cf881d902ec1cfa58f1be01cb35fe602b8ad4620c552",
-      "result_hash": "3e0e537c2a403c51324a5897dac1393e404f4223c01f131405b5a50689cc1456",
+      "result_hash": "f8decdad8dacd38d517b017f3143d8587c52118da8e4523eb501fe61379676f0",
       "policy_passed": true
     }
   }
@@ -61,7 +61,7 @@
   "data": {
     "valid": true,
     "reason": "ok",
-    "receipt_id": "30aa1ae5fff1e3b1021c048d188b2bfda4ae5d23891084301c02168351093243"
+    "receipt_id": "ecf42175b7cbc64ae1e198a388a620ed5f2cdafbe150bbc41b9cb7b141a82466"
   }
 }
 ```
