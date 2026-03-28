@@ -1,27 +1,15 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T06:20:44",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/token_economics_v11.zip",
-  "family": "token_economics_v11",
+  "ts": "2026-03-28T19:28:34",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/auto_bundle.zip",
+  "family": "priority_fix",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "README.md",
-      "config/meta_governance.json",
-      "config/zk_compiled.json",
-      "config/cross_chain.json",
-      "install/apply.py",
-      "install/engine/cross_chain_bridge.py",
-      "install/engine/state_relay_engine.py",
-      "install/engine/meta_governance_engine.py",
-      "install/engine/zk_compiled_pipeline.py",
-      "install/engine/circom_compile.sh",
-      "install/tests/test_cross_chain.py",
-      "install/tests/test_meta_governance.py",
-      "install/tests/test_zk_compiled.py"
+      "install/apply.py"
     ]
   },
   "decision": {
