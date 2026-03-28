@@ -1,27 +1,27 @@
 {
   "status": "ok",
-  "ts": "20260328_045533",
-  "family": "sandbox_v8_governed",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v8_governed_system_bundle.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v8_governed_system_bundle.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v8_governed_system_bundle.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_v8_governed_system_bundle.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v8_governed_system_bundle.zip",
+  "ts": "20260328_045534",
+  "family": "sandbox_v9_1",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v9_1_to_10_bundle.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v9_1_to_10_bundle.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v9_1_to_10_bundle.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_v9_1_to_10_bundle.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v9_1_to_10_bundle.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:55:33\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v8_governed_system_bundle.zip\",\n    \"family\": \"sandbox_v8_governed\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"payload/config/v8_policy.json\",\n        \"github_workflows/autonomous_loop.yml\",\n        \"experiments/evaluation_suite/run_eval.py\",\n        \"install/external_signal_adapter.py\",\n        \"install/coordination.py\",\n        \"install/economic_weighting.py\",\n        \"install/apply.py\",\n        \"install/deterministic_enforcer.py\",\n        \"install/receipt_logger.py\",\n        \"workflow_review/V8_NOTES.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:55:34\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v9_1_to_10_bundle.zip\",\n    \"family\": \"sandbox_v9_1\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"config/policy.json\",\n        \"github_workflows/autonomous_v10.yml\",\n        \"experiments/evaluation_suite/run_eval.py\",\n        \"install/replay.py\",\n        \"install/apply.py\",\n        \"install/crypto.py\",\n        \"install/policy_engine.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
-    "duration": 0.045,
+    "duration": 0.04,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T04:55:33",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v8_governed_system_bundle.zip",
-        "family": "sandbox_v8_governed",
+        "ts": "2026-03-28T04:55:34",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v9_1_to_10_bundle.zip",
+        "family": "sandbox_v9_1",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
@@ -29,16 +29,13 @@
           "files": [
             "bundle_manifest.json",
             "README.md",
-            "payload/config/v8_policy.json",
-            "github_workflows/autonomous_loop.yml",
+            "config/policy.json",
+            "github_workflows/autonomous_v10.yml",
             "experiments/evaluation_suite/run_eval.py",
-            "install/external_signal_adapter.py",
-            "install/coordination.py",
-            "install/economic_weighting.py",
+            "install/replay.py",
             "install/apply.py",
-            "install/deterministic_enforcer.py",
-            "install/receipt_logger.py",
-            "workflow_review/V8_NOTES.md"
+            "install/crypto.py",
+            "install/policy_engine.py"
           ]
         },
         "decision": {

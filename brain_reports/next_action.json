@@ -2,13 +2,13 @@
   "status": "ok",
   "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/next_action.json",
   "next_action": {
-    "ts": "2026-03-28T04:55:33",
+    "ts": "2026-03-28T04:55:34",
     "status": "ok",
     "selection_mode": "deterministic_failed_scan",
     "action_class": "repair",
     "action": "propose_repair_for_bundle_family",
-    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v8_governed_system_bundle.zip",
-    "family": "sandbox_v8_governed_system_bundle",
+    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v9_1_to_10_bundle.zip",
+    "family": "sandbox_v9_1_to_10_bundle",
     "priority": "high",
     "reason": "failed_bundle_present",
     "source": "next_action_engine"
