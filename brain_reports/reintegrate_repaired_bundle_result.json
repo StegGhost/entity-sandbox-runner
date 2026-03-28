@@ -1,39 +1,34 @@
 {
   "status": "ok",
-  "ts": "20260328_044700",
-  "family": "sandbox_v6_2",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v6_2_shared_state_patch.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_v6_2_shared_state_patch.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_v6_2_shared_state_patch.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v6_2_shared_state_patch.zip",
+  "ts": "20260328_045052",
+  "family": "demo_missing_install",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:47:00\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip\",\n    \"family\": \"sandbox_v6_2\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/eval_metrics.py\",\n        \"install/system_state.py\",\n        \"install/adaptive_scheduler.py\",\n        \"install/eval_orchestrator.py\",\n        \"install/apply.py\",\n        \"workflow_review/V6_2_SHARED_STATE_PATCH.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:50:52\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"family\": \"demo_missing_install\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
-    "duration": 0.037,
+    "duration": 0.039,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T04:47:00",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip",
-        "family": "sandbox_v6_2",
+        "ts": "2026-03-28T04:50:52",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+        "family": "demo_missing_install",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
           "install_dir_present": true,
           "files": [
             "bundle_manifest.json",
-            "install/eval_metrics.py",
-            "install/system_state.py",
-            "install/adaptive_scheduler.py",
-            "install/eval_orchestrator.py",
-            "install/apply.py",
-            "workflow_review/V6_2_SHARED_STATE_PATCH.md"
+            "install/apply.py"
           ]
         },
         "decision": {

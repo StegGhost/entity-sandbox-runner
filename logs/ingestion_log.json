@@ -5080,5 +5080,11 @@
     "ok": false,
     "error": "manifest_missing_fields:['install_mode']",
     "ts": 1774673218.2092555
+  },
+  {
+    "bundle": "demo_missing_install_v1.zip",
+    "ok": false,
+    "error": "manifest_missing_fields:['install_mode']",
+    "ts": 1774673452.0556085
   }
 ]

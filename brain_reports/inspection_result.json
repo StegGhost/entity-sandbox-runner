@@ -1,20 +1,15 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:47:00",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v6_2_shared_state_patch.zip",
-  "family": "sandbox_v6_2",
+  "ts": "2026-03-28T04:50:52",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "install/eval_metrics.py",
-      "install/system_state.py",
-      "install/adaptive_scheduler.py",
-      "install/eval_orchestrator.py",
-      "install/apply.py",
-      "workflow_review/V6_2_SHARED_STATE_PATCH.md"
+      "install/apply.py"
     ]
   },
   "decision": {
