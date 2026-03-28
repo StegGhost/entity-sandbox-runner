@@ -1,94 +1,82 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:36:27",
+  "ts": "2026-03-28T03:36:28",
   "action": "propose_repair_for_bundle_family",
-  "family": "entity-sandbox-runner-v2",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
+  "family": "execution_policy_engine",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:36:27.229430Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"entity-sandbox-runner-v2\", \"hash_before\": \"8b4b9bcf3a1d4212a39c1a2d2d9b1d6044662c0e8ab06036198a1a70ab13d465\", \"hash_after\": \"b6595fb8930a3a4ad870013321324ea0674c9c9f5ae988c1feb5c260c6a0498a\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:36:27.971587Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"execution_policy_engine\", \"hash_before\": \"a88391068773d9a574cf2634b3845169d15812f476cabe045d2bb49f266cb271\", \"hash_after\": \"0f6c2b9b978c01532423ecb9dcec9e68c41e7b5a3716c28c2cabedecbb83c1e4\"}}",
     "stderr": "",
-    "duration": 0.041,
+    "duration": 0.038,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:36:27.229430Z",
+        "ts": "2026-03-28T03:36:27.971587Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip",
         "changes_applied": [
-          "created_missing_manifest",
+          "fixed_manifest_fields",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "entity-sandbox-runner-v2",
-        "hash_before": "8b4b9bcf3a1d4212a39c1a2d2d9b1d6044662c0e8ab06036198a1a70ab13d465",
-        "hash_after": "b6595fb8930a3a4ad870013321324ea0674c9c9f5ae988c1feb5c260c6a0498a"
+        "family": "execution_policy_engine",
+        "hash_before": "a88391068773d9a574cf2634b3845169d15812f476cabe045d2bb49f266cb271",
+        "hash_after": "0f6c2b9b978c01532423ecb9dcec9e68c41e7b5a3716c28c2cabedecbb83c1e4"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
-    "family": "entity-sandbox-runner-v2",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip",
+    "family": "execution_policy_engine",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033627\",\n    \"family\": \"entity-sandbox-runner-v2\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/entity-sandbox-runner-v2.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:36:27\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\\\",\\n    \\\"family\\\": \\\"entity-sandbox-runner-v2\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"entity-sandbox-runner-v2/metrics.py\\\",\\n        \\\"entity-sandbox-runner-v2/selector.py\\\",\\n        \\\"entity-sandbox-runner-v2/.gitignore\\\",\\n        \\\"entity-sandbox-runner-v2/config_v2.yaml\\\",\\n        \\\"entity-sandbox-runner-v2/run_v2.py\\\",\\n        \\\"entity-sandbox-runner-v2/README.md\\\",\\n        \\\"entity-sandbox-runner-v2/results/receipts.json\\\",\\n        \\\"entity-sandbox-runner-v2/results/metrics.json\\\",\\n        \\\"entity-sandbox-runner-v2/results/summary.txt\\\",\\n        \\\"entity-sandbox-runner-v2/results/example_metrics.json\\\",\\n        \\\"entity-sandbox-runner-v2/results/example_summary.txt\\\",\\n        \\\"entity-sandbox-runner-v2/.github/workflows/run-v2.yml\\\",\\n        \\\"entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc\\\",\\n        \\\"entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.04,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:36:27\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\",\n          \"family\": \"entity-sandbox-runner-v2\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"entity-sandbox-runner-v2/metrics.py\",\n              \"entity-sandbox-runner-v2/selector.py\",\n              \"entity-sandbox-runner-v2/.gitignore\",\n              \"entity-sandbox-runner-v2/config_v2.yaml\",\n              \"entity-sandbox-runner-v2/run_v2.py\",\n              \"entity-sandbox-runner-v2/README.md\",\n              \"entity-sandbox-runner-v2/results/receipts.json\",\n              \"entity-sandbox-runner-v2/results/metrics.json\",\n              \"entity-sandbox-runner-v2/results/summary.txt\",\n              \"entity-sandbox-runner-v2/results/example_metrics.json\",\n              \"entity-sandbox-runner-v2/results/example_summary.txt\",\n              \"entity-sandbox-runner-v2/.github/workflows/run-v2.yml\",\n              \"entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc\",\n              \"entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033628\",\n    \"family\": \"execution_policy_engine\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/execution_policy_engine_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:36:28\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"execution_policy_engine\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/execution_policy.yml.txt\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/execution_policy_engine.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.035,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:36:28\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip\",\n          \"family\": \"execution_policy_engine\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/execution_policy.yml.txt\",\n              \"install/apply.py\",\n              \"install/execution_policy_engine.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.074,
+    "duration": 0.069,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_033627",
-        "family": "entity-sandbox-runner-v2",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/entity-sandbox-runner-v2.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
+        "ts": "20260328_033628",
+        "family": "execution_policy_engine",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/execution_policy_engine_bundle_v1.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:36:27\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\",\n    \"family\": \"entity-sandbox-runner-v2\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"entity-sandbox-runner-v2/metrics.py\",\n        \"entity-sandbox-runner-v2/selector.py\",\n        \"entity-sandbox-runner-v2/.gitignore\",\n        \"entity-sandbox-runner-v2/config_v2.yaml\",\n        \"entity-sandbox-runner-v2/run_v2.py\",\n        \"entity-sandbox-runner-v2/README.md\",\n        \"entity-sandbox-runner-v2/results/receipts.json\",\n        \"entity-sandbox-runner-v2/results/metrics.json\",\n        \"entity-sandbox-runner-v2/results/summary.txt\",\n        \"entity-sandbox-runner-v2/results/example_metrics.json\",\n        \"entity-sandbox-runner-v2/results/example_summary.txt\",\n        \"entity-sandbox-runner-v2/.github/workflows/run-v2.yml\",\n        \"entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc\",\n        \"entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:36:28\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip\",\n    \"family\": \"execution_policy_engine\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/execution_policy.yml.txt\",\n        \"install/apply.py\",\n        \"install/execution_policy_engine.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.04,
+          "duration": 0.035,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:36:27",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip",
-              "family": "entity-sandbox-runner-v2",
+              "ts": "2026-03-28T03:36:28",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip",
+              "family": "execution_policy_engine",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
+                  "install/execution_policy.yml.txt",
                   "install/apply.py",
-                  "entity-sandbox-runner-v2/metrics.py",
-                  "entity-sandbox-runner-v2/selector.py",
-                  "entity-sandbox-runner-v2/.gitignore",
-                  "entity-sandbox-runner-v2/config_v2.yaml",
-                  "entity-sandbox-runner-v2/run_v2.py",
-                  "entity-sandbox-runner-v2/README.md",
-                  "entity-sandbox-runner-v2/results/receipts.json",
-                  "entity-sandbox-runner-v2/results/metrics.json",
-                  "entity-sandbox-runner-v2/results/summary.txt",
-                  "entity-sandbox-runner-v2/results/example_metrics.json",
-                  "entity-sandbox-runner-v2/results/example_summary.txt",
-                  "entity-sandbox-runner-v2/.github/workflows/run-v2.yml",
-                  "entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc",
-                  "entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc"
+                  "install/execution_policy_engine.py"
                 ]
               },
               "decision": {
@@ -105,18 +93,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:36:27.229430Z",
+    "ts": "2026-03-28T03:36:27.971587Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/execution_policy_engine_bundle_v1.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/execution_policy_engine_bundle_v1.zip",
     "changes_applied": [
-      "created_missing_manifest",
+      "fixed_manifest_fields",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "entity-sandbox-runner-v2",
-    "hash_before": "8b4b9bcf3a1d4212a39c1a2d2d9b1d6044662c0e8ab06036198a1a70ab13d465",
-    "hash_after": "b6595fb8930a3a4ad870013321324ea0674c9c9f5ae988c1feb5c260c6a0498a"
+    "family": "execution_policy_engine",
+    "hash_before": "a88391068773d9a574cf2634b3845169d15812f476cabe045d2bb49f266cb271",
+    "hash_after": "0f6c2b9b978c01532423ecb9dcec9e68c41e7b5a3716c28c2cabedecbb83c1e4"
   },
   "reason": "repair_completed_and_reintegrated"
 }

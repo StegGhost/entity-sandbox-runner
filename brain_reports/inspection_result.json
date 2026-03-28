@@ -1,29 +1,17 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:36:27",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip",
-  "family": "entity-sandbox-runner-v2",
+  "ts": "2026-03-28T03:36:28",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/execution_policy_engine_bundle_v1.zip",
+  "family": "execution_policy_engine",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
+      "install/execution_policy.yml.txt",
       "install/apply.py",
-      "entity-sandbox-runner-v2/metrics.py",
-      "entity-sandbox-runner-v2/selector.py",
-      "entity-sandbox-runner-v2/.gitignore",
-      "entity-sandbox-runner-v2/config_v2.yaml",
-      "entity-sandbox-runner-v2/run_v2.py",
-      "entity-sandbox-runner-v2/README.md",
-      "entity-sandbox-runner-v2/results/receipts.json",
-      "entity-sandbox-runner-v2/results/metrics.json",
-      "entity-sandbox-runner-v2/results/summary.txt",
-      "entity-sandbox-runner-v2/results/example_metrics.json",
-      "entity-sandbox-runner-v2/results/example_summary.txt",
-      "entity-sandbox-runner-v2/.github/workflows/run-v2.yml",
-      "entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc",
-      "entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc"
+      "install/execution_policy_engine.py"
     ]
   },
   "decision": {
