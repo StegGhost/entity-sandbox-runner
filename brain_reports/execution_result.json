@@ -1,85 +1,90 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T06:03:42",
+  "ts": "2026-03-28T06:03:43",
   "action": "propose_repair_for_bundle_family",
-  "family": "stegverse_spec_bundle",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip",
+  "family": "tc_tvc_platform",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T06:03:42.383649Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"stegverse_spec_bundle\", \"hash_before\": \"7287beb246538dcf375d7b4d198a67eb647bc1b2c01d6cdb59fbf2c937660757\", \"hash_after\": \"66e43dde7240d939477a8710fe3c17c9216d9dd85a902ebd9bf80b13be4bc2f6\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T06:03:43.165720Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"tc_tvc_platform\", \"hash_before\": \"abf25fe2dfc94c666973d2bd4ec2992fc7481c4ffd1beae7179574c896310859\", \"hash_after\": \"1815d945ea374b5940611c5e64fc48fd9c9fb6e54541effffbc0bf57309f1c67\"}}",
     "stderr": "",
-    "duration": 0.043,
+    "duration": 0.047,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T06:03:42.383649Z",
+        "ts": "2026-03-28T06:03:43.165720Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip",
         "changes_applied": [
           "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "stegverse_spec_bundle",
-        "hash_before": "7287beb246538dcf375d7b4d198a67eb647bc1b2c01d6cdb59fbf2c937660757",
-        "hash_after": "66e43dde7240d939477a8710fe3c17c9216d9dd85a902ebd9bf80b13be4bc2f6"
+        "family": "tc_tvc_platform",
+        "hash_before": "abf25fe2dfc94c666973d2bd4ec2992fc7481c4ffd1beae7179574c896310859",
+        "hash_after": "1815d945ea374b5940611c5e64fc48fd9c9fb6e54541effffbc0bf57309f1c67"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip",
-    "family": "stegverse_spec_bundle",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip",
+    "family": "tc_tvc_platform",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_060342\",\n    \"family\": \"stegverse_spec_bundle\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_spec_bundle_v1_2.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse_spec_bundle_v1_2.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T06:03:42\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_spec_bundle_v1_2.zip\\\",\\n    \\\"family\\\": \\\"stegverse_spec_bundle\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"ADVERSARIAL_MODEL.md\\\",\\n        \\\"FORMAL_MODEL.md\\\",\\n        \\\"CONSTRAINT_SYSTEM.md\\\",\\n        \\\"bundle_manifest.json\\\",\\n        \\\"README.md\\\",\\n        \\\"FAILURE_MODES.md\\\",\\n        \\\"INVARIANTS_FORMAL.md\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.04,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T06:03:42\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_spec_bundle_v1_2.zip\",\n          \"family\": \"stegverse_spec_bundle\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"ADVERSARIAL_MODEL.md\",\n              \"FORMAL_MODEL.md\",\n              \"CONSTRAINT_SYSTEM.md\",\n              \"bundle_manifest.json\",\n              \"README.md\",\n              \"FAILURE_MODES.md\",\n              \"INVARIANTS_FORMAL.md\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_060343\",\n    \"family\": \"tc_tvc_platform\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/tc_tvc_platform_v0_2.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T06:03:43\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip\\\",\\n    \\\"family\\\": \\\"tc_tvc_platform\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"tc_tvc_platform_v0_2/bundle_capabilities.json\\\",\\n        \\\"tc_tvc_platform_v0_2/bundle_readme.md\\\",\\n        \\\"tc_tvc_platform_v0_2/bundle_manifest.json\\\",\\n        \\\"tc_tvc_platform_v0_2/observatory/state_log/record_state.py\\\",\\n        \\\"tc_tvc_platform_v0_2/evidence_plane/receipt.py\\\",\\n        \\\"tc_tvc_platform_v0_2/control_plane/tvc/verify_bundle_install.py\\\",\\n        \\\"tc_tvc_platform_v0_2/control_plane/tc/bundle_install.tc.json\\\",\\n        \\\"tc_tvc_platform_v0_2/security_plane/key_registry/authority_keys.json\\\",\\n        \\\"tc_tvc_platform_v0_2/security_plane/crypto/pq_signatures.py\\\",\\n        \\\"tc_tvc_platform_v0_2/security_plane/crypto/pq_hash.py\\\",\\n        \\\"tc_tvc_platform_v0_2/security_plane/crypto/provider.py\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.038,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T06:03:43\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip\",\n          \"family\": \"tc_tvc_platform\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"tc_tvc_platform_v0_2/bundle_capabilities.json\",\n              \"tc_tvc_platform_v0_2/bundle_readme.md\",\n              \"tc_tvc_platform_v0_2/bundle_manifest.json\",\n              \"tc_tvc_platform_v0_2/observatory/state_log/record_state.py\",\n              \"tc_tvc_platform_v0_2/evidence_plane/receipt.py\",\n              \"tc_tvc_platform_v0_2/control_plane/tvc/verify_bundle_install.py\",\n              \"tc_tvc_platform_v0_2/control_plane/tc/bundle_install.tc.json\",\n              \"tc_tvc_platform_v0_2/security_plane/key_registry/authority_keys.json\",\n              \"tc_tvc_platform_v0_2/security_plane/crypto/pq_signatures.py\",\n              \"tc_tvc_platform_v0_2/security_plane/crypto/pq_hash.py\",\n              \"tc_tvc_platform_v0_2/security_plane/crypto/provider.py\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.079,
+    "duration": 0.078,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_060342",
-        "family": "stegverse_spec_bundle",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_spec_bundle_v1_2.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse_spec_bundle_v1_2.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip",
+        "ts": "20260328_060343",
+        "family": "tc_tvc_platform",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/tc_tvc_platform_v0_2.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T06:03:42\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_spec_bundle_v1_2.zip\",\n    \"family\": \"stegverse_spec_bundle\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"ADVERSARIAL_MODEL.md\",\n        \"FORMAL_MODEL.md\",\n        \"CONSTRAINT_SYSTEM.md\",\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"FAILURE_MODES.md\",\n        \"INVARIANTS_FORMAL.md\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T06:03:43\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip\",\n    \"family\": \"tc_tvc_platform\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"tc_tvc_platform_v0_2/bundle_capabilities.json\",\n        \"tc_tvc_platform_v0_2/bundle_readme.md\",\n        \"tc_tvc_platform_v0_2/bundle_manifest.json\",\n        \"tc_tvc_platform_v0_2/observatory/state_log/record_state.py\",\n        \"tc_tvc_platform_v0_2/evidence_plane/receipt.py\",\n        \"tc_tvc_platform_v0_2/control_plane/tvc/verify_bundle_install.py\",\n        \"tc_tvc_platform_v0_2/control_plane/tc/bundle_install.tc.json\",\n        \"tc_tvc_platform_v0_2/security_plane/key_registry/authority_keys.json\",\n        \"tc_tvc_platform_v0_2/security_plane/crypto/pq_signatures.py\",\n        \"tc_tvc_platform_v0_2/security_plane/crypto/pq_hash.py\",\n        \"tc_tvc_platform_v0_2/security_plane/crypto/provider.py\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.04,
+          "duration": 0.038,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T06:03:42",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_spec_bundle_v1_2.zip",
-              "family": "stegverse_spec_bundle",
+              "ts": "2026-03-28T06:03:43",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip",
+              "family": "tc_tvc_platform",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
-                  "ADVERSARIAL_MODEL.md",
-                  "FORMAL_MODEL.md",
-                  "CONSTRAINT_SYSTEM.md",
                   "bundle_manifest.json",
-                  "README.md",
-                  "FAILURE_MODES.md",
-                  "INVARIANTS_FORMAL.md",
+                  "tc_tvc_platform_v0_2/bundle_capabilities.json",
+                  "tc_tvc_platform_v0_2/bundle_readme.md",
+                  "tc_tvc_platform_v0_2/bundle_manifest.json",
+                  "tc_tvc_platform_v0_2/observatory/state_log/record_state.py",
+                  "tc_tvc_platform_v0_2/evidence_plane/receipt.py",
+                  "tc_tvc_platform_v0_2/control_plane/tvc/verify_bundle_install.py",
+                  "tc_tvc_platform_v0_2/control_plane/tc/bundle_install.tc.json",
+                  "tc_tvc_platform_v0_2/security_plane/key_registry/authority_keys.json",
+                  "tc_tvc_platform_v0_2/security_plane/crypto/pq_signatures.py",
+                  "tc_tvc_platform_v0_2/security_plane/crypto/pq_hash.py",
+                  "tc_tvc_platform_v0_2/security_plane/crypto/provider.py",
                   "install/apply.py"
                 ]
               },
@@ -97,18 +102,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T06:03:42.383649Z",
+    "ts": "2026-03-28T06:03:43.165720Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_2.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_2.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip",
     "changes_applied": [
       "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "stegverse_spec_bundle",
-    "hash_before": "7287beb246538dcf375d7b4d198a67eb647bc1b2c01d6cdb59fbf2c937660757",
-    "hash_after": "66e43dde7240d939477a8710fe3c17c9216d9dd85a902ebd9bf80b13be4bc2f6"
+    "family": "tc_tvc_platform",
+    "hash_before": "abf25fe2dfc94c666973d2bd4ec2992fc7481c4ffd1beae7179574c896310859",
+    "hash_after": "1815d945ea374b5940611c5e64fc48fd9c9fb6e54541effffbc0bf57309f1c67"
   },
   "reason": "repair_completed_and_reintegrated"
 }
