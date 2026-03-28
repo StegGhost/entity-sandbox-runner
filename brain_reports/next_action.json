@@ -2,13 +2,13 @@
   "status": "ok",
   "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/next_action.json",
   "next_action": {
-    "ts": "2026-03-28T05:56:39",
+    "ts": "2026-03-28T05:56:40",
     "status": "ok",
     "selection_mode": "deterministic_failed_scan",
     "action_class": "repair",
     "action": "propose_repair_for_bundle_family",
-    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
-    "family": "stegverse-guardian-runtime",
+    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+    "family": "stegverse_architecture_aligned_bundle_v3",
     "priority": "high",
     "reason": "failed_bundle_present",
     "source": "next_action_engine"

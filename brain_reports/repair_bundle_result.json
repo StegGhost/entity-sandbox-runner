@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T05:56:39.701132Z",
+  "ts": "2026-03-28T05:56:40.603418Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "stegverse-guardian-runtime",
-  "hash_before": "fbb6b51730dcdfe466a84900ca99e3ec527501ba17ba5e72ebc87a3d70f47727",
-  "hash_after": "595b5e4b1ff941b8568a2033847c5fa806d04c96c3583c41c1bbca12b9dcfe39"
+  "family": "stegverse_architecture_aligned",
+  "hash_before": "8682ddab93eafd80bf696fd818a4bd7f3278147812a12c54c6379896c4ce9619",
+  "hash_after": "a33f16fd5a4722ba3ff6b1e20df47c81f55369966ac019564f1b6fb74bc8fb9a"
 }

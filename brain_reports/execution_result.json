@@ -1,91 +1,92 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T05:56:39",
+  "ts": "2026-03-28T05:56:40",
   "action": "propose_repair_for_bundle_family",
-  "family": "stegverse-guardian-runtime",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
+  "family": "stegverse_architecture_aligned",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T05:56:39.701132Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"stegverse-guardian-runtime\", \"hash_before\": \"fbb6b51730dcdfe466a84900ca99e3ec527501ba17ba5e72ebc87a3d70f47727\", \"hash_after\": \"595b5e4b1ff941b8568a2033847c5fa806d04c96c3583c41c1bbca12b9dcfe39\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T05:56:40.603418Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"stegverse_architecture_aligned\", \"hash_before\": \"8682ddab93eafd80bf696fd818a4bd7f3278147812a12c54c6379896c4ce9619\", \"hash_after\": \"a33f16fd5a4722ba3ff6b1e20df47c81f55369966ac019564f1b6fb74bc8fb9a\"}}",
     "stderr": "",
-    "duration": 0.044,
+    "duration": 0.048,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T05:56:39.701132Z",
+        "ts": "2026-03-28T05:56:40.603418Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip",
         "changes_applied": [
-          "created_missing_manifest",
+          "fixed_manifest_fields",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "stegverse-guardian-runtime",
-        "hash_before": "fbb6b51730dcdfe466a84900ca99e3ec527501ba17ba5e72ebc87a3d70f47727",
-        "hash_after": "595b5e4b1ff941b8568a2033847c5fa806d04c96c3583c41c1bbca12b9dcfe39"
+        "family": "stegverse_architecture_aligned",
+        "hash_before": "8682ddab93eafd80bf696fd818a4bd7f3278147812a12c54c6379896c4ce9619",
+        "hash_after": "a33f16fd5a4722ba3ff6b1e20df47c81f55369966ac019564f1b6fb74bc8fb9a"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip",
-    "family": "stegverse-guardian-runtime",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+    "family": "stegverse_architecture_aligned",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_055639\",\n    \"family\": \"stegverse-guardian-runtime\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse-guardian-runtime.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T05:56:39\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip\\\",\\n    \\\"family\\\": \\\"stegverse-guardian-runtime\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"stegverse-guardian-runtime/.gitignore\\\",\\n        \\\"stegverse-guardian-runtime/pyproject.toml\\\",\\n        \\\"stegverse-guardian-runtime/README.md\\\",\\n        \\\"stegverse-guardian-runtime/stegverse/__init__.py\\\",\\n        \\\"stegverse-guardian-runtime/stegverse/receipts.py\\\",\\n        \\\"stegverse-guardian-runtime/stegverse/transition_guard.py\\\",\\n        \\\"stegverse-guardian-runtime/stegverse/invariants.py\\\",\\n        \\\"stegverse-guardian-runtime/stegverse/passport.py\\\",\\n        \\\"stegverse-guardian-runtime/.github/workflows/ci.yml\\\",\\n        \\\"stegverse-guardian-runtime/tests/test_guardian_runtime.py\\\",\\n        \\\"stegverse-guardian-runtime/examples/toy_world_example.py\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.042,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T05:56:39\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip\",\n          \"family\": \"stegverse-guardian-runtime\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"stegverse-guardian-runtime/.gitignore\",\n              \"stegverse-guardian-runtime/pyproject.toml\",\n              \"stegverse-guardian-runtime/README.md\",\n              \"stegverse-guardian-runtime/stegverse/__init__.py\",\n              \"stegverse-guardian-runtime/stegverse/receipts.py\",\n              \"stegverse-guardian-runtime/stegverse/transition_guard.py\",\n              \"stegverse-guardian-runtime/stegverse/invariants.py\",\n              \"stegverse-guardian-runtime/stegverse/passport.py\",\n              \"stegverse-guardian-runtime/.github/workflows/ci.yml\",\n              \"stegverse-guardian-runtime/tests/test_guardian_runtime.py\",\n              \"stegverse-guardian-runtime/examples/toy_world_example.py\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_055640\",\n    \"family\": \"stegverse_architecture_aligned\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T05:56:40\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip\\\",\\n    \\\"family\\\": \\\"stegverse_architecture_aligned\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"payload/canonical_manifest_template.json\\\",\\n        \\\"payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json\\\",\\n        \\\"payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json\\\",\\n        \\\"payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json\\\",\\n        \\\"payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json\\\",\\n        \\\"payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/bundle_guard.py\\\",\\n        \\\"workflow_review/ARCHITECTURE_MAP.md\\\",\\n        \\\"workflow_review/PROPOSED_BUILD.md\\\",\\n        \\\"workflow_review/INSTALLATION_NOTES.md\\\",\\n        \\\"workflow_review/INGESTION_POLICY_PATCH.md\\\",\\n        \\\"workflow_review/FORWARD_BUILD_NOTES.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T05:56:40\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n          \"family\": \"stegverse_architecture_aligned\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"payload/canonical_manifest_template.json\",\n              \"payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json\",\n              \"payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json\",\n              \"payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json\",\n              \"payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json\",\n              \"payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json\",\n              \"install/apply.py\",\n              \"install/bundle_guard.py\",\n              \"workflow_review/ARCHITECTURE_MAP.md\",\n              \"workflow_review/PROPOSED_BUILD.md\",\n              \"workflow_review/INSTALLATION_NOTES.md\",\n              \"workflow_review/INGESTION_POLICY_PATCH.md\",\n              \"workflow_review/FORWARD_BUILD_NOTES.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.08,
+    "duration": 0.075,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_055639",
-        "family": "stegverse-guardian-runtime",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse-guardian-runtime.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
+        "ts": "20260328_055640",
+        "family": "stegverse_architecture_aligned",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:56:39\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip\",\n    \"family\": \"stegverse-guardian-runtime\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"stegverse-guardian-runtime/.gitignore\",\n        \"stegverse-guardian-runtime/pyproject.toml\",\n        \"stegverse-guardian-runtime/README.md\",\n        \"stegverse-guardian-runtime/stegverse/__init__.py\",\n        \"stegverse-guardian-runtime/stegverse/receipts.py\",\n        \"stegverse-guardian-runtime/stegverse/transition_guard.py\",\n        \"stegverse-guardian-runtime/stegverse/invariants.py\",\n        \"stegverse-guardian-runtime/stegverse/passport.py\",\n        \"stegverse-guardian-runtime/.github/workflows/ci.yml\",\n        \"stegverse-guardian-runtime/tests/test_guardian_runtime.py\",\n        \"stegverse-guardian-runtime/examples/toy_world_example.py\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:56:40\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip\",\n    \"family\": \"stegverse_architecture_aligned\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"payload/canonical_manifest_template.json\",\n        \"payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json\",\n        \"payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json\",\n        \"payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json\",\n        \"payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json\",\n        \"payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json\",\n        \"install/apply.py\",\n        \"install/bundle_guard.py\",\n        \"workflow_review/ARCHITECTURE_MAP.md\",\n        \"workflow_review/PROPOSED_BUILD.md\",\n        \"workflow_review/INSTALLATION_NOTES.md\",\n        \"workflow_review/INGESTION_POLICY_PATCH.md\",\n        \"workflow_review/FORWARD_BUILD_NOTES.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.042,
+          "duration": 0.037,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T05:56:39",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip",
-              "family": "stegverse-guardian-runtime",
+              "ts": "2026-03-28T05:56:40",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+              "family": "stegverse_architecture_aligned",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "stegverse-guardian-runtime/.gitignore",
-                  "stegverse-guardian-runtime/pyproject.toml",
-                  "stegverse-guardian-runtime/README.md",
-                  "stegverse-guardian-runtime/stegverse/__init__.py",
-                  "stegverse-guardian-runtime/stegverse/receipts.py",
-                  "stegverse-guardian-runtime/stegverse/transition_guard.py",
-                  "stegverse-guardian-runtime/stegverse/invariants.py",
-                  "stegverse-guardian-runtime/stegverse/passport.py",
-                  "stegverse-guardian-runtime/.github/workflows/ci.yml",
-                  "stegverse-guardian-runtime/tests/test_guardian_runtime.py",
-                  "stegverse-guardian-runtime/examples/toy_world_example.py",
-                  "install/apply.py"
+                  "payload/canonical_manifest_template.json",
+                  "payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json",
+                  "payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json",
+                  "payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json",
+                  "payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json",
+                  "payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json",
+                  "install/apply.py",
+                  "install/bundle_guard.py",
+                  "workflow_review/ARCHITECTURE_MAP.md",
+                  "workflow_review/PROPOSED_BUILD.md",
+                  "workflow_review/INSTALLATION_NOTES.md",
+                  "workflow_review/INGESTION_POLICY_PATCH.md",
+                  "workflow_review/FORWARD_BUILD_NOTES.md"
                 ]
               },
               "decision": {
@@ -102,18 +103,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T05:56:39.701132Z",
+    "ts": "2026-03-28T05:56:40.603418Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-guardian-runtime.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-guardian-runtime.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_architecture_aligned_bundle_v3.zip",
     "changes_applied": [
-      "created_missing_manifest",
+      "fixed_manifest_fields",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "stegverse-guardian-runtime",
-    "hash_before": "fbb6b51730dcdfe466a84900ca99e3ec527501ba17ba5e72ebc87a3d70f47727",
-    "hash_after": "595b5e4b1ff941b8568a2033847c5fa806d04c96c3583c41c1bbca12b9dcfe39"
+    "family": "stegverse_architecture_aligned",
+    "hash_before": "8682ddab93eafd80bf696fd818a4bd7f3278147812a12c54c6379896c4ce9619",
+    "hash_after": "a33f16fd5a4722ba3ff6b1e20df47c81f55369966ac019564f1b6fb74bc8fb9a"
   },
   "reason": "repair_completed_and_reintegrated"
 }

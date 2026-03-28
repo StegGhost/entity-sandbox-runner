@@ -1,26 +1,27 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T05:56:39",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse-guardian-runtime.zip",
-  "family": "stegverse-guardian-runtime",
+  "ts": "2026-03-28T05:56:40",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_architecture_aligned_bundle_v3.zip",
+  "family": "stegverse_architecture_aligned",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "stegverse-guardian-runtime/.gitignore",
-      "stegverse-guardian-runtime/pyproject.toml",
-      "stegverse-guardian-runtime/README.md",
-      "stegverse-guardian-runtime/stegverse/__init__.py",
-      "stegverse-guardian-runtime/stegverse/receipts.py",
-      "stegverse-guardian-runtime/stegverse/transition_guard.py",
-      "stegverse-guardian-runtime/stegverse/invariants.py",
-      "stegverse-guardian-runtime/stegverse/passport.py",
-      "stegverse-guardian-runtime/.github/workflows/ci.yml",
-      "stegverse-guardian-runtime/tests/test_guardian_runtime.py",
-      "stegverse-guardian-runtime/examples/toy_world_example.py",
-      "install/apply.py"
+      "payload/canonical_manifest_template.json",
+      "payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json",
+      "payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json",
+      "payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json",
+      "install/apply.py",
+      "install/bundle_guard.py",
+      "workflow_review/ARCHITECTURE_MAP.md",
+      "workflow_review/PROPOSED_BUILD.md",
+      "workflow_review/INSTALLATION_NOTES.md",
+      "workflow_review/INGESTION_POLICY_PATCH.md",
+      "workflow_review/FORWARD_BUILD_NOTES.md"
     ]
   },
   "decision": {
