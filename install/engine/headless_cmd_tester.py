@@ -28,14 +28,22 @@ def http_post(url: str, payload: dict):
     )
     with urllib.request.urlopen(req) as resp:
         body = resp.read().decode("utf-8")
-        return resp.getcode(), json.loads(body)
+        try:
+            parsed = json.loads(body)
+        except json.JSONDecodeError:
+            parsed = {"raw_body": body}
+        return resp.getcode(), parsed
 
 
 def http_get(url: str):
     req = urllib.request.Request(url, method="GET")
     with urllib.request.urlopen(req) as resp:
         body = resp.read().decode("utf-8")
-        return resp.getcode(), json.loads(body)
+        try:
+            parsed = json.loads(body)
+        except json.JSONDecodeError:
+            parsed = {"raw_body": body}
+        return resp.getcode(), parsed
 
 
 def write_reports(report: dict):
@@ -69,11 +77,13 @@ def write_reports(report: dict):
     json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
 
 
-def fail(report: dict, reason: str, err: Exception | str | None = None):
+def fail(report: dict, reason: str, err: Exception | str | None = None, extra: dict | None = None):
     report["status"] = "invalid"
     report["reason"] = reason
     if err is not None:
         report["error"] = str(err)
+    if extra:
+        report.update(extra)
     write_reports(report)
     print(json.dumps(report, indent=2))
     sys.exit(1)
@@ -116,8 +126,8 @@ def run(base_url: str):
 
         # -------------------------
         # EXECUTE
-        # Minimal payload only:
-        # token, target, body
+        # Current minimal payload only.
+        # We are not changing semantics until we see the 422 response body.
         # -------------------------
         body_payload = {"t": 1}
         body_canonical = stable_json(body_payload)
@@ -129,7 +139,40 @@ def run(base_url: str):
             "body": body_payload,
         }
 
-        code, data = http_post(f"{base_url}/execute", execute_payload)
+        report["steps"]["execute_request"] = {
+            "payload": execute_payload,
+            "body_canonical": body_canonical,
+            "local_action_hash": local_action_hash,
+        }
+
+        try:
+            code, data = http_post(f"{base_url}/execute", execute_payload)
+        except urllib.error.HTTPError as e:
+            raw_body = e.read().decode("utf-8", errors="replace")
+            try:
+                parsed_body = json.loads(raw_body)
+            except json.JSONDecodeError:
+                parsed_body = {"raw_body": raw_body}
+
+            report["steps"]["execute"] = {
+                "ok": False,
+                "status_code": e.code,
+                "request_payload": execute_payload,
+                "body_canonical": body_canonical,
+                "local_action_hash": local_action_hash,
+                "error_body": parsed_body,
+            }
+
+            fail(
+                report,
+                f"http_error_{e.code}",
+                e,
+                extra={
+                    "execute_http_status": e.code,
+                    "execute_error_body": parsed_body,
+                },
+            )
+
         receipt = data.get("receipt", {})
 
         report["steps"]["execute"] = {
