@@ -1,63 +1,63 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:33:15",
+  "ts": "2026-03-28T03:33:16",
   "action": "propose_repair_for_bundle_family",
   "family": "crypto_bot_v0",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:33:15.654673Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"crypto_bot_v0\", \"hash_before\": \"8153d60be4dfb8c000288bad3dc76a82b4ba3dfd643e24cc1cec63336b3ce496\", \"hash_after\": \"47dae8dcaf5fb9791056b9c983323fb6c06ae2912becb02523768ce5bd0dc160\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:33:16.351970Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"crypto_bot_v0\", \"hash_before\": \"a5aca102a7c70806a0dbd0ce428f7094c58c019e8f6ffda91ef48a0f5c095a40\", \"hash_after\": \"b73fbd9905d3fe382b0a48c468201e382b3bcbdb5dab0ff9d5fa60250c0279a2\"}}",
     "stderr": "",
-    "duration": 0.043,
+    "duration": 0.042,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:33:15.654673Z",
+        "ts": "2026-03-28T03:33:16.351970Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip",
         "changes_applied": [
           "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
         "family": "crypto_bot_v0",
-        "hash_before": "8153d60be4dfb8c000288bad3dc76a82b4ba3dfd643e24cc1cec63336b3ce496",
-        "hash_after": "47dae8dcaf5fb9791056b9c983323fb6c06ae2912becb02523768ce5bd0dc160"
+        "hash_before": "a5aca102a7c70806a0dbd0ce428f7094c58c019e8f6ffda91ef48a0f5c095a40",
+        "hash_after": "b73fbd9905d3fe382b0a48c468201e382b3bcbdb5dab0ff9d5fa60250c0279a2"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip",
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip",
     "family": "crypto_bot_v0",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip"
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033315\",\n    \"family\": \"crypto_bot_v0\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_3_bundle.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/crypto_bot_v0_3_bundle.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:33:15\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_3_bundle.zip\\\",\\n    \\\"family\\\": \\\"crypto_bot_v0\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"crypto_bot_v0_3_bundle/requirements.txt\\\",\\n        \\\"crypto_bot_v0_3_bundle/README.md\\\",\\n        \\\"crypto_bot_v0_3_bundle/tests/test_ledger.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/main.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/__init__.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/state.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/ledger.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/engine.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/risk.py\\\",\\n        \\\"crypto_bot_v0_3_bundle/src/config.py\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:33:15\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_3_bundle.zip\",\n          \"family\": \"crypto_bot_v0\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"crypto_bot_v0_3_bundle/requirements.txt\",\n              \"crypto_bot_v0_3_bundle/README.md\",\n              \"crypto_bot_v0_3_bundle/tests/test_ledger.py\",\n              \"crypto_bot_v0_3_bundle/src/main.py\",\n              \"crypto_bot_v0_3_bundle/src/__init__.py\",\n              \"crypto_bot_v0_3_bundle/src/state.py\",\n              \"crypto_bot_v0_3_bundle/src/ledger.py\",\n              \"crypto_bot_v0_3_bundle/src/engine.py\",\n              \"crypto_bot_v0_3_bundle/src/risk.py\",\n              \"crypto_bot_v0_3_bundle/src/config.py\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033316\",\n    \"family\": \"crypto_bot_v0\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_4_bundle.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/crypto_bot_v0_4_bundle.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:33:16\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_4_bundle.zip\\\",\\n    \\\"family\\\": \\\"crypto_bot_v0\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"db.py\\\",\\n        \\\"requirements.txt\\\",\\n        \\\"app.py\\\",\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config.py\\\",\\n        \\\"README.md\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:33:16\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_4_bundle.zip\",\n          \"family\": \"crypto_bot_v0\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"db.py\",\n              \"requirements.txt\",\n              \"app.py\",\n              \"bundle_manifest.json\",\n              \"config.py\",\n              \"README.md\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.072,
+    "duration": 0.077,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_033315",
+        "ts": "20260328_033316",
         "family": "crypto_bot_v0",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_3_bundle.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/crypto_bot_v0_3_bundle.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_4_bundle.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/crypto_bot_v0_4_bundle.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:33:15\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_3_bundle.zip\",\n    \"family\": \"crypto_bot_v0\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"crypto_bot_v0_3_bundle/requirements.txt\",\n        \"crypto_bot_v0_3_bundle/README.md\",\n        \"crypto_bot_v0_3_bundle/tests/test_ledger.py\",\n        \"crypto_bot_v0_3_bundle/src/main.py\",\n        \"crypto_bot_v0_3_bundle/src/__init__.py\",\n        \"crypto_bot_v0_3_bundle/src/state.py\",\n        \"crypto_bot_v0_3_bundle/src/ledger.py\",\n        \"crypto_bot_v0_3_bundle/src/engine.py\",\n        \"crypto_bot_v0_3_bundle/src/risk.py\",\n        \"crypto_bot_v0_3_bundle/src/config.py\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:33:16\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_4_bundle.zip\",\n    \"family\": \"crypto_bot_v0\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"db.py\",\n        \"requirements.txt\",\n        \"app.py\",\n        \"bundle_manifest.json\",\n        \"config.py\",\n        \"README.md\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
           "duration": 0.037,
           "parsed_stdout": {
@@ -65,25 +65,20 @@
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:33:15",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_3_bundle.zip",
+              "ts": "2026-03-28T03:33:16",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_4_bundle.zip",
               "family": "crypto_bot_v0",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
+                  "db.py",
+                  "requirements.txt",
+                  "app.py",
                   "bundle_manifest.json",
-                  "crypto_bot_v0_3_bundle/requirements.txt",
-                  "crypto_bot_v0_3_bundle/README.md",
-                  "crypto_bot_v0_3_bundle/tests/test_ledger.py",
-                  "crypto_bot_v0_3_bundle/src/main.py",
-                  "crypto_bot_v0_3_bundle/src/__init__.py",
-                  "crypto_bot_v0_3_bundle/src/state.py",
-                  "crypto_bot_v0_3_bundle/src/ledger.py",
-                  "crypto_bot_v0_3_bundle/src/engine.py",
-                  "crypto_bot_v0_3_bundle/src/risk.py",
-                  "crypto_bot_v0_3_bundle/src/config.py",
+                  "config.py",
+                  "README.md",
                   "install/apply.py"
                 ]
               },
@@ -101,18 +96,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:33:15.654673Z",
+    "ts": "2026-03-28T03:33:16.351970Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip",
     "changes_applied": [
       "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
     "family": "crypto_bot_v0",
-    "hash_before": "8153d60be4dfb8c000288bad3dc76a82b4ba3dfd643e24cc1cec63336b3ce496",
-    "hash_after": "47dae8dcaf5fb9791056b9c983323fb6c06ae2912becb02523768ce5bd0dc160"
+    "hash_before": "a5aca102a7c70806a0dbd0ce428f7094c58c019e8f6ffda91ef48a0f5c095a40",
+    "hash_after": "b73fbd9905d3fe382b0a48c468201e382b3bcbdb5dab0ff9d5fa60250c0279a2"
   },
   "reason": "repair_completed_and_reintegrated"
 }

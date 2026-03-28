@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:33:15.654673Z",
+  "ts": "2026-03-28T03:33:16.351970Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_3_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_3_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_4_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_4_bundle.zip",
   "changes_applied": [
     "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
   "family": "crypto_bot_v0",
-  "hash_before": "8153d60be4dfb8c000288bad3dc76a82b4ba3dfd643e24cc1cec63336b3ce496",
-  "hash_after": "47dae8dcaf5fb9791056b9c983323fb6c06ae2912becb02523768ce5bd0dc160"
+  "hash_before": "a5aca102a7c70806a0dbd0ce428f7094c58c019e8f6ffda91ef48a0f5c095a40",
+  "hash_after": "b73fbd9905d3fe382b0a48c468201e382b3bcbdb5dab0ff9d5fa60250c0279a2"
 }
