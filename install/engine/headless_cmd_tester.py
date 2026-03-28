@@ -11,75 +11,55 @@ BASE_URL = "https://steggate-api.onrender.com"
 REPORT_DIR = Path("brain_reports")
 
 
-def stable_json(obj) -> str:
+def stable_json(obj):
     return json.dumps(obj, sort_keys=True, separators=(",", ":"))
 
 
-def sha256_text(text: str) -> str:
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+def sha256_text(text):
+    return hashlib.sha256(text.encode()).hexdigest()
 
 
-def http_post(url: str, payload: dict):
+def post(url, payload):
     req = urllib.request.Request(
         url,
-        data=json.dumps(payload).encode("utf-8"),
+        data=json.dumps(payload).encode(),
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req) as resp:
-        body = resp.read().decode("utf-8")
-        return resp.getcode(), json.loads(body)
+    with urllib.request.urlopen(req) as r:
+        return r.getcode(), json.loads(r.read().decode())
 
 
-def http_get(url: str):
-    req = urllib.request.Request(url, method="GET")
-    with urllib.request.urlopen(req) as resp:
-        body = resp.read().decode("utf-8")
-        return resp.getcode(), json.loads(body)
+def get(url):
+    with urllib.request.urlopen(url) as r:
+        return r.getcode(), json.loads(r.read().decode())
 
 
-def write_reports(report: dict):
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+def write(report):
+    REPORT_DIR.mkdir(exist_ok=True)
 
-    json_path = REPORT_DIR / "headless_cmd_test.json"
-    md_path = REPORT_DIR / "headless_cmd_test.md"
+    (REPORT_DIR / "headless_cmd_test.json").write_text(
+        json.dumps(report, indent=2)
+    )
 
-    json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
-
-    md_lines = [
-        "# Headless Command Test Report",
-        "",
-        f"**Mode:** {report.get('mode')}",
-        f"**Status:** {report.get('status')}",
-        f"**Timestamp:** {report.get('ts')}",
-        "",
-        "## report",
-        "```json",
-        json.dumps(report, indent=2),
-        "```",
-        "",
-    ]
-    md_path.write_text("\n".join(md_lines), encoding="utf-8")
-
-    report["artifacts"] = {
-        "json_report": str(json_path.resolve()),
-        "md_report": str(md_path.resolve()),
-    }
-
-    json_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    (REPORT_DIR / "headless_cmd_test.md").write_text(
+        "# Headless Cmd Test\n\n```json\n"
+        + json.dumps(report, indent=2)
+        + "\n```"
+    )
 
 
-def fail(report: dict, reason: str, err: Exception | str | None = None):
+def fail(report, reason, err=None):
     report["status"] = "invalid"
     report["reason"] = reason
-    if err is not None:
+    if err:
         report["error"] = str(err)
-    write_reports(report)
+    write(report)
     print(json.dumps(report, indent=2))
     sys.exit(1)
 
 
-def run(base_url: str):
+def run(base_url):
     report = {
         "mode": "steggate_live_test",
         "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
@@ -89,95 +69,85 @@ def run(base_url: str):
     }
 
     try:
-        # -------------------------
+        # -------------------
         # HEALTH
-        # -------------------------
-        code, data = http_get(f"{base_url}/health")
-        report["steps"]["health"] = {
-            "ok": code == 200,
-            "status_code": code,
-            "data": data,
-        }
-        if code != 200:
-            fail(report, "health_failed")
+        # -------------------
+        code, data = get(f"{base_url}/health")
+        report["steps"]["health"] = {"ok": code == 200, "data": data}
 
-        # -------------------------
+        # -------------------
         # TOKEN
-        # -------------------------
-        code, data = http_post(f"{base_url}/token", {})
+        # -------------------
+        code, data = post(f"{base_url}/token", {})
         token = data.get("token")
-        report["steps"]["token"] = {
-            "ok": code == 200 and bool(token),
-            "status_code": code,
-            "data": data,
-        }
-        if code != 200 or not token:
+        report["steps"]["token"] = {"ok": bool(token), "data": data}
+
+        if not token:
             fail(report, "token_failed")
 
-        # -------------------------
-        # EXACT PREVIOUSLY-WORKING EXECUTE CONTRACT
-        # -------------------------
-        body_payload = {"t": 1}
-        data_string = stable_json(body_payload)
-        local_action_hash = sha256_text(data_string)
+        # -------------------
+        # EXECUTE (UPDATED CONTRACT)
+        # -------------------
+        body = {"t": 1}
+        body_str = stable_json(body)
 
-        execute_payload = {
+        payload = {
             "token": token,
             "target": "https://httpbin.org/post",
-            "data": data_string,
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": body_str
         }
 
-        code, data = http_post(f"{base_url}/execute", execute_payload)
-        receipt = data.get("receipt", {})
+        local_hash = sha256_text(body_str)
+
+        code, data = post(f"{base_url}/execute", payload)
 
         report["steps"]["execute"] = {
             "ok": code == 200,
-            "status_code": code,
-            "request_payload": execute_payload,
-            "data_string": data_string,
-            "data_string_sha256": local_action_hash,
-            "data": data,
+            "payload": payload,
+            "response": data,
+            "local_hash": local_hash
         }
+
         if code != 200:
             fail(report, "execute_failed")
 
-        # -------------------------
-        # VERIFY
-        # -------------------------
+        receipt = data.get("receipt", {})
         receipt_id = receipt.get("receipt_id")
-        if not receipt_id:
-            fail(report, "missing_receipt_id")
 
-        code, verify_data = http_post(
-            f"{base_url}/verify",
-            {"receipt_id": receipt_id},
-        )
+        if not receipt_id:
+            fail(report, "missing_receipt")
+
+        # -------------------
+        # VERIFY
+        # -------------------
+        code, verify = post(f"{base_url}/verify", {
+            "receipt_id": receipt_id
+        })
+
         report["steps"]["verify"] = {
             "ok": code == 200,
-            "status_code": code,
-            "data": verify_data,
+            "data": verify
         }
-        if code != 200:
-            fail(report, "verify_failed")
 
-        # -------------------------
-        # HASH / RECEIPT BINDING
-        # -------------------------
-        receipt_action_hash = receipt.get("action_hash")
+        # -------------------
+        # HASH BINDING
+        # -------------------
+        receipt_hash = receipt.get("action_hash")
+
         report["binding"] = {
-            "data_string": data_string,
-            "local_action_hash": local_action_hash,
-            "receipt_action_hash": receipt_action_hash,
-            "match": local_action_hash == receipt_action_hash,
+            "local": local_hash,
+            "receipt": receipt_hash,
+            "match": local_hash == receipt_hash
         }
 
-        if receipt_action_hash is None:
-            fail(report, "missing_receipt_action_hash")
-
-        if local_action_hash != receipt_action_hash:
+        if local_hash != receipt_hash:
             fail(report, "hash_mismatch")
 
-        write_reports(report)
+        write(report)
         print(json.dumps(report, indent=2))
 
     except urllib.error.HTTPError as e:
@@ -186,12 +156,9 @@ def run(base_url: str):
         fail(report, "unexpected_error", e)
 
 
-def parse_args():
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--base-url", default=BASE_URL)
-    return parser.parse_args()
+    args = parser.parse_args()
 
-
-if __name__ == "__main__":
-    args = parse_args()
     run(args.base_url)
