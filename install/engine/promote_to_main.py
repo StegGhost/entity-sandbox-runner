@@ -5,7 +5,6 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-REPORTS = ROOT / "brain_reports"
 
 
 def run(cmd):
@@ -19,31 +18,34 @@ def fail(reason):
 
 def main():
     # =========================
-    # ISSUE TOKEN (policy)
+    # POLICY TOKEN
     # =========================
     if run(["python", "control_plane/tvc/issue_token.py"]).returncode != 0:
         fail("token_issue_failed")
 
-    # =========================
-    # VERIFY TOKEN
-    # =========================
     if run(["python", "control_plane/tvc/verify_token.py"]).returncode != 0:
         fail("token_invalid")
 
     # =========================
-    # QUORUM CHECK
+    # LOCAL SIGNED QUORUM
     # =========================
-    if run(["python", "control_plane/tvc/check_quorum.py"]).returncode != 0:
-        fail("quorum_failed")
+    if run(["python", "control_plane/tvc/check_signed_quorum.py"]).returncode != 0:
+        fail("signed_quorum_failed")
 
     # =========================
-    # RECEIPT BINDING
+    # DISTRIBUTED QUORUM
     # =========================
-    if run(["python", "control_plane/tvc/bind_receipt.py"]).returncode != 0:
-        fail("receipt_binding_failed")
+    if run(["python", "control_plane/tvc/check_distributed_quorum.py"]).returncode != 0:
+        fail("distributed_quorum_failed")
 
     # =========================
-    # GIT PROMOTION
+    # RECEIPT VERIFICATION
+    # =========================
+    if run(["python", "control_plane/tc/verify_receipt.py"]).returncode != 0:
+        fail("receipt_verification_failed")
+
+    # =========================
+    # GIT SAFE PROMOTION
     # =========================
     run(["git", "config", "user.name", "actions-user"])
     run(["git", "config", "user.email", "actions@github.com"])
@@ -59,7 +61,7 @@ def main():
 
     print(json.dumps({
         "status": "promoted",
-        "reason": "policy_quorum_receipt_passed",
+        "mode": "distributed_signed_verified",
         "ts": time.strftime("%Y-%m-%dT%H:%M:%S")
     }, indent=2))
 
