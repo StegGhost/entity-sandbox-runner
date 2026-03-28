@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T01:51:56",
+  "ts": "2026-03-28T01:55:49",
   "action": "propose_repair_for_bundle_family",
   "family": "activation_bundle_v1",
   "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip",
@@ -8,22 +8,22 @@
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T01:51:56.468635Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip\", \"changes_applied\": [], \"errors\": [], \"family\": \"activation_bundle_v1\", \"hash_before\": \"c747fe7a8547d9a0bac61d19c9d6b2101d94a7ff7c80e868234566cb93d77871\", \"hash_after\": \"7f7324168271776639ab0858cef0dc0352c493a9b2f6b8c7d8c1c24ad2b99dc2\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T01:55:49.300376Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip\", \"changes_applied\": [], \"errors\": [], \"family\": \"activation_bundle_v1\", \"hash_before\": \"7f7324168271776639ab0858cef0dc0352c493a9b2f6b8c7d8c1c24ad2b99dc2\", \"hash_after\": \"a4615593009ea1ff358cb0b83d810fd2676dfe9c9b8cbdd77312da4e06d1fd34\"}}",
     "stderr": "",
-    "duration": 0.04,
+    "duration": 0.046,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T01:51:56.468635Z",
+        "ts": "2026-03-28T01:55:49.300376Z",
         "status": "repaired",
         "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip",
         "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip",
         "changes_applied": [],
         "errors": [],
         "family": "activation_bundle_v1",
-        "hash_before": "c747fe7a8547d9a0bac61d19c9d6b2101d94a7ff7c80e868234566cb93d77871",
-        "hash_after": "7f7324168271776639ab0858cef0dc0352c493a9b2f6b8c7d8c1c24ad2b99dc2"
+        "hash_before": "7f7324168271776639ab0858cef0dc0352c493a9b2f6b8c7d8c1c24ad2b99dc2",
+        "hash_after": "a4615593009ea1ff358cb0b83d810fd2676dfe9c9b8cbdd77312da4e06d1fd34"
       }
     }
   },
@@ -35,15 +35,15 @@
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"failed\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"failed\",\n    \"ts\": \"20260328_015156\",\n    \"family\": \"activation_bundle_v1\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/activation_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip\",\n    \"original_failed_removed\": false,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T01:51:56\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/activation_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"activation_bundle_v1\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"README.md\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/engine/internal_brain_closure_engine.py\\\",\\n        \\\"install/engine/internal_brain_actuator.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.046\n    },\n    \"reason\": \"inspection_rejected\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"failed\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"failed\",\n    \"ts\": \"20260328_015549\",\n    \"family\": \"activation_bundle_v1\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/activation_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip\",\n    \"original_failed_removed\": false,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T01:55:49\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/activation_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"activation_bundle_v1\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"README.md\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/engine/internal_brain_closure_engine.py\\\",\\n        \\\"install/engine/internal_brain_actuator.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037\n    },\n    \"reason\": \"inspection_rejected\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.087,
+    "duration": 0.091,
     "parsed_stdout": {
       "status": "failed",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "failed",
-        "ts": "20260328_015156",
+        "ts": "20260328_015549",
         "family": "activation_bundle_v1",
         "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip",
         "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip",
@@ -53,9 +53,9 @@
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T01:51:56\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/activation_bundle_v1.zip\",\n    \"family\": \"activation_bundle_v1\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"install/apply.py\",\n        \"install/engine/internal_brain_closure_engine.py\",\n        \"install/engine/internal_brain_actuator.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T01:55:49\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/activation_bundle_v1.zip\",\n    \"family\": \"activation_bundle_v1\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"install/apply.py\",\n        \"install/engine/internal_brain_closure_engine.py\",\n        \"install/engine/internal_brain_actuator.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.046
+          "duration": 0.037
         },
         "reason": "inspection_rejected",
         "output_report": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json"
@@ -63,15 +63,15 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T01:51:56.468635Z",
+    "ts": "2026-03-28T01:55:49.300376Z",
     "status": "repaired",
     "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip",
     "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip",
     "changes_applied": [],
     "errors": [],
     "family": "activation_bundle_v1",
-    "hash_before": "c747fe7a8547d9a0bac61d19c9d6b2101d94a7ff7c80e868234566cb93d77871",
-    "hash_after": "7f7324168271776639ab0858cef0dc0352c493a9b2f6b8c7d8c1c24ad2b99dc2"
+    "hash_before": "7f7324168271776639ab0858cef0dc0352c493a9b2f6b8c7d8c1c24ad2b99dc2",
+    "hash_after": "a4615593009ea1ff358cb0b83d810fd2676dfe9c9b8cbdd77312da4e06d1fd34"
   },
   "reason": "repair_completed_and_reintegrated"
 }
