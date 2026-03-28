@@ -2,43 +2,42 @@
   "status": "ok",
   "ts": "2026-03-28T05:07:36",
   "action": "propose_repair_for_bundle_family",
-  "family": "stability_gate_v2",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip",
+  "family": "stability_gate",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T05:07:36.079817Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"stability_gate_v2\", \"hash_before\": \"18ce36e749b4771e1dc40819b0f029eb70fe216fe39ef56a6561a0ffa1f61970\", \"hash_after\": \"263a1b0ce57a6baa275c590bceedfc69709201c070c8c7009e5929943bfda171\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T05:07:36.890059Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip\", \"changes_applied\": [\"fixed_manifest_fields\"], \"errors\": [], \"family\": \"stability_gate\", \"hash_before\": \"c85f0ed5877add8fca1304101f7a93a8e31115cd4fe3f0f3d6ab7151982cfc2c\", \"hash_after\": \"6c00773889c1aba6a32f1cd87026ac505b8e448e8306dbb1351d0b96b98ada15\"}}",
     "stderr": "",
-    "duration": 0.043,
+    "duration": 0.044,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T05:07:36.079817Z",
+        "ts": "2026-03-28T05:07:36.890059Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip",
         "changes_applied": [
-          "created_missing_manifest",
-          "created_missing_install_stub"
+          "fixed_manifest_fields"
         ],
         "errors": [],
-        "family": "stability_gate_v2",
-        "hash_before": "18ce36e749b4771e1dc40819b0f029eb70fe216fe39ef56a6561a0ffa1f61970",
-        "hash_after": "263a1b0ce57a6baa275c590bceedfc69709201c070c8c7009e5929943bfda171"
+        "family": "stability_gate",
+        "hash_before": "c85f0ed5877add8fca1304101f7a93a8e31115cd4fe3f0f3d6ab7151982cfc2c",
+        "hash_after": "6c00773889c1aba6a32f1cd87026ac505b8e448e8306dbb1351d0b96b98ada15"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip",
-    "family": "stability_gate_v2",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip",
+    "family": "stability_gate",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_050736\",\n    \"family\": \"stability_gate_v2\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v2.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stability_gate_v2.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T05:07:36\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v2.zip\\\",\\n    \\\"family\\\": \\\"stability_gate_v2\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"stability_gate_v2/bundle_manifest.json\\\",\\n        \\\"stability_gate_v2/install/apply.py\\\",\\n        \\\"stability_gate_v2/install/engine/__init__.py\\\",\\n        \\\"stability_gate_v2/install/engine/receipts.py\\\",\\n        \\\"stability_gate_v2/install/engine/state_model.py\\\",\\n        \\\"stability_gate_v2/install/engine/run_stability_check.py\\\",\\n        \\\"stability_gate_v2/install/engine/stability_guard.py\\\",\\n        \\\"stability_gate_v2/install/engine/enforcement.py\\\",\\n        \\\"stability_gate_v2/install/tests/test_stability_score.py\\\",\\n        \\\"stability_gate_v2/install/tests/test_receipts.py\\\",\\n        \\\"stability_gate_v2/install/tests/test_enforcement.py\\\",\\n        \\\"stability_gate_v2/install/tests/test_adaptive_threshold.py\\\",\\n        \\\"stability_gate_v2/docs/stability_model.md\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.036,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T05:07:36\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v2.zip\",\n          \"family\": \"stability_gate_v2\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"stability_gate_v2/bundle_manifest.json\",\n              \"stability_gate_v2/install/apply.py\",\n              \"stability_gate_v2/install/engine/__init__.py\",\n              \"stability_gate_v2/install/engine/receipts.py\",\n              \"stability_gate_v2/install/engine/state_model.py\",\n              \"stability_gate_v2/install/engine/run_stability_check.py\",\n              \"stability_gate_v2/install/engine/stability_guard.py\",\n              \"stability_gate_v2/install/engine/enforcement.py\",\n              \"stability_gate_v2/install/tests/test_stability_score.py\",\n              \"stability_gate_v2/install/tests/test_receipts.py\",\n              \"stability_gate_v2/install/tests/test_enforcement.py\",\n              \"stability_gate_v2/install/tests/test_adaptive_threshold.py\",\n              \"stability_gate_v2/docs/stability_model.md\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_050736\",\n    \"family\": \"stability_gate\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stability_gate_v3.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T05:07:36\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip\\\",\\n    \\\"family\\\": \\\"stability_gate\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/engine/__init__.py\\\",\\n        \\\"install/engine/receipts.py\\\",\\n        \\\"install/engine/volatility.py\\\",\\n        \\\"install/engine/state_model.py\\\",\\n        \\\"install/engine/adaptive_threshold.py\\\",\\n        \\\"install/engine/stability_guard.py\\\",\\n        \\\"install/engine/runtime_check.py\\\",\\n        \\\"install/engine/enforcement.py\\\",\\n        \\\"install/tests/test_stability_score.py\\\",\\n        \\\"install/tests/test_volatility.py\\\",\\n        \\\"install/tests/test_receipts.py\\\",\\n        \\\"install/tests/test_enforcement.py\\\",\\n        \\\"install/tests/test_thresholds.py\\\",\\n        \\\"docs/stability_model.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.036,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T05:07:36\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip\",\n          \"family\": \"stability_gate\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"install/engine/__init__.py\",\n              \"install/engine/receipts.py\",\n              \"install/engine/volatility.py\",\n              \"install/engine/state_model.py\",\n              \"install/engine/adaptive_threshold.py\",\n              \"install/engine/stability_guard.py\",\n              \"install/engine/runtime_check.py\",\n              \"install/engine/enforcement.py\",\n              \"install/tests/test_stability_score.py\",\n              \"install/tests/test_volatility.py\",\n              \"install/tests/test_receipts.py\",\n              \"install/tests/test_enforcement.py\",\n              \"install/tests/test_thresholds.py\",\n              \"docs/stability_model.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
     "duration": 0.071,
     "parsed_stdout": {
@@ -47,17 +46,17 @@
       "result": {
         "status": "ok",
         "ts": "20260328_050736",
-        "family": "stability_gate_v2",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v2.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stability_gate_v2.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip",
+        "family": "stability_gate",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stability_gate_v3.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:07:36\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v2.zip\",\n    \"family\": \"stability_gate_v2\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"stability_gate_v2/bundle_manifest.json\",\n        \"stability_gate_v2/install/apply.py\",\n        \"stability_gate_v2/install/engine/__init__.py\",\n        \"stability_gate_v2/install/engine/receipts.py\",\n        \"stability_gate_v2/install/engine/state_model.py\",\n        \"stability_gate_v2/install/engine/run_stability_check.py\",\n        \"stability_gate_v2/install/engine/stability_guard.py\",\n        \"stability_gate_v2/install/engine/enforcement.py\",\n        \"stability_gate_v2/install/tests/test_stability_score.py\",\n        \"stability_gate_v2/install/tests/test_receipts.py\",\n        \"stability_gate_v2/install/tests/test_enforcement.py\",\n        \"stability_gate_v2/install/tests/test_adaptive_threshold.py\",\n        \"stability_gate_v2/docs/stability_model.md\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:07:36\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip\",\n    \"family\": \"stability_gate\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"install/engine/__init__.py\",\n        \"install/engine/receipts.py\",\n        \"install/engine/volatility.py\",\n        \"install/engine/state_model.py\",\n        \"install/engine/adaptive_threshold.py\",\n        \"install/engine/stability_guard.py\",\n        \"install/engine/runtime_check.py\",\n        \"install/engine/enforcement.py\",\n        \"install/tests/test_stability_score.py\",\n        \"install/tests/test_volatility.py\",\n        \"install/tests/test_receipts.py\",\n        \"install/tests/test_enforcement.py\",\n        \"install/tests/test_thresholds.py\",\n        \"docs/stability_model.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
           "duration": 0.036,
           "parsed_stdout": {
@@ -66,28 +65,29 @@
             "inspection": {
               "status": "ok",
               "ts": "2026-03-28T05:07:36",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v2.zip",
-              "family": "stability_gate_v2",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip",
+              "family": "stability_gate",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "stability_gate_v2/bundle_manifest.json",
-                  "stability_gate_v2/install/apply.py",
-                  "stability_gate_v2/install/engine/__init__.py",
-                  "stability_gate_v2/install/engine/receipts.py",
-                  "stability_gate_v2/install/engine/state_model.py",
-                  "stability_gate_v2/install/engine/run_stability_check.py",
-                  "stability_gate_v2/install/engine/stability_guard.py",
-                  "stability_gate_v2/install/engine/enforcement.py",
-                  "stability_gate_v2/install/tests/test_stability_score.py",
-                  "stability_gate_v2/install/tests/test_receipts.py",
-                  "stability_gate_v2/install/tests/test_enforcement.py",
-                  "stability_gate_v2/install/tests/test_adaptive_threshold.py",
-                  "stability_gate_v2/docs/stability_model.md",
-                  "install/apply.py"
+                  "install/apply.py",
+                  "install/engine/__init__.py",
+                  "install/engine/receipts.py",
+                  "install/engine/volatility.py",
+                  "install/engine/state_model.py",
+                  "install/engine/adaptive_threshold.py",
+                  "install/engine/stability_guard.py",
+                  "install/engine/runtime_check.py",
+                  "install/engine/enforcement.py",
+                  "install/tests/test_stability_score.py",
+                  "install/tests/test_volatility.py",
+                  "install/tests/test_receipts.py",
+                  "install/tests/test_enforcement.py",
+                  "install/tests/test_thresholds.py",
+                  "docs/stability_model.md"
                 ]
               },
               "decision": {
@@ -104,18 +104,17 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T05:07:36.079817Z",
+    "ts": "2026-03-28T05:07:36.890059Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v2.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v2.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v3.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v3.zip",
     "changes_applied": [
-      "created_missing_manifest",
-      "created_missing_install_stub"
+      "fixed_manifest_fields"
     ],
     "errors": [],
-    "family": "stability_gate_v2",
-    "hash_before": "18ce36e749b4771e1dc40819b0f029eb70fe216fe39ef56a6561a0ffa1f61970",
-    "hash_after": "263a1b0ce57a6baa275c590bceedfc69709201c070c8c7009e5929943bfda171"
+    "family": "stability_gate",
+    "hash_before": "c85f0ed5877add8fca1304101f7a93a8e31115cd4fe3f0f3d6ab7151982cfc2c",
+    "hash_after": "6c00773889c1aba6a32f1cd87026ac505b8e448e8306dbb1351d0b96b98ada15"
   },
   "reason": "repair_completed_and_reintegrated"
 }
