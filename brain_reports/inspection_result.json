@@ -1,32 +1,15 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:02:12",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip",
-  "family": "relationship_conditioned_execution",
+  "ts": "2026-03-28T04:03:03",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "config/witness_config.json",
-      "config/relationship_defaults.json",
-      "install/relationship_policy_engine.py",
-      "install/relationship_history_analyzer.py",
-      "install/self_healing_engine.py",
-      "install/decision_state_recorder.py",
-      "install/relationship_state_engine.py",
-      "install/decision_integration_hook.py",
-      "install/anomaly_detector.py",
-      "install/apply.py",
-      "install/trust_decay_engine.py",
-      "install/quorum_validator.py",
-      "install/witness_coordinator.py",
-      "install/stegverse_ethics_guard.py",
-      "install/non_guarantee_invariant.py",
-      "install/temporal_identity_guard.py",
-      "install/tests/test_smoke.py",
-      "docs/architecture_map.md"
+      "install/apply.py"
     ]
   },
   "decision": {
