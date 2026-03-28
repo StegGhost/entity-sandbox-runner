@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T06:00:43.901006Z",
+  "ts": "2026-03-28T06:00:44.744376Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_1.zip",
   "changes_applied": [
     "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "stegverse_ingestion_safe",
-  "hash_before": "b4c619aed06425d3f55488a01a041ce5075d26379feef1ff86703dee4f1f3cae",
-  "hash_after": "9f83bacc443f0461e41b8f49e0fbf2177a4668c008a3038d5f8714f952ea1545"
+  "family": "stegverse_spec_bundle",
+  "hash_before": "ec8d1127120fd78dfba2caaa9f38bfcc9dc14027b375dc8867b771a5094a3949",
+  "hash_after": "78b9acad9227796e0b0f55fdd222aa2d389f5cb6a4ea9e5a535056ca881f18c9"
 }
