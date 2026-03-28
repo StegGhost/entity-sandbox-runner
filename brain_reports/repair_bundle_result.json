@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T02:46:12.620276Z",
+  "ts": "2026-03-28T02:46:13.310928Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/coherent_experience_model_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/coherent_experience_model_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/constraint_min_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/constraint_min_bundle.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "coherent_experience_model",
-  "hash_before": "6c4ef13e2821c7b62db70e20059b1c8bcb4fe15469a9d2af5a823ca1b4a34201",
-  "hash_after": "d3f36e0dc4b78bfd96d7411409ae41e8cac36a96cef874fd90b902bf49ee911e"
+  "family": "constraint_min_bundle",
+  "hash_before": "e27c116fa8810e1819458abc26404668e2d891fbf2ab84d7ef36ae23a36ebb0f",
+  "hash_after": "477b0b9b9afd6de6c7e489b0d0f91898ab7309506af3cd424c8e3f34d0b80697"
 }
