@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "scope": "promotion_to_main",
+      "require_reconcile_ok": true,
+      "require_headless_ok": true,
+      "allowed_branches": ["loop/latest"],
+      "ttl_seconds": 60,
+      "require_quorum": true,
+      "quorum_min": 2
+    }
+  ]
+}
