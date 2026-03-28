@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T05:00:29",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v12.zip",
+  "ts": "2026-03-28T05:00:30",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v13.zip",
   "family": "stability_gate",
   "validation": {
     "valid_zip": true,
@@ -10,12 +10,12 @@
     "files": [
       "bundle_manifest.json",
       "install/apply.py",
-      "install/engine/reputation.py",
-      "install/engine/slashing.py",
-      "install/engine/adversarial.py",
-      "install/engine/verify.py",
-      "install/tests/test_v12.py",
-      "docs/v12.md"
+      "install/engine/pricing.py",
+      "install/engine/federation.py",
+      "install/engine/zk_proof.py",
+      "install/engine/hardware_id.py",
+      "install/tests/test_v13.py",
+      "docs/v13.md"
     ]
   },
   "decision": {
