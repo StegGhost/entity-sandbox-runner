@@ -105,7 +105,7 @@ def ensure_headless_artifact():
     write_json(HEADLESS_OUTPUT_PATH, fallback)
 
 
-def resolve_bundle_path(target: str) -> Path | None:
+def resolve_bundle_path(target: str):
     if not target:
         return None
 
@@ -127,31 +127,20 @@ def resolve_bundle_path(target: str) -> Path | None:
 
 
 def execute_repair_target(action: dict):
-    engine_step = run_step([
-        "python",
-        "install/engine/repair_bundle_engine.py"
-    ])
-
-    engine_payload = engine_step.get("parsed_stdout") or {}
-    engine_result = engine_payload.get("result", {}) if isinstance(engine_payload, dict) else {}
-
-    target_from_engine = engine_result.get("target") or action.get("target") or ""
-    resolved_path = resolve_bundle_path(target_from_engine)
+    target_from_action = action.get("target") or ""
+    resolved_path = resolve_bundle_path(target_from_action)
 
     if not resolved_path:
         return {
             "status": "failed",
             "ts": now_ts(),
             "action": action.get("action"),
-            "family": engine_result.get("family", "unknown"),
-            "target": target_from_engine,
+            "family": action.get("family"),
+            "target": target_from_action,
             "resolved_path": None,
             "worker_result": None,
             "reintegrate_result": None,
             "reason": "missing_target",
-            "output_report": str(BRAIN_REPORTS / "repair_bundle_engine_result.json"),
-            "engine_step": engine_step,
-            "engine_result": engine_result,
         }
 
     worker_step = run_step([
@@ -162,24 +151,50 @@ def execute_repair_target(action: dict):
     ])
 
     worker_payload = worker_step.get("parsed_stdout") or {}
-    worker_result = worker_payload.get("result", {}) if isinstance(worker_payload, dict) else {}
+    repair_result = worker_payload.get("result", {}) if isinstance(worker_payload, dict) else {}
+    repaired_bundle = repair_result.get("output_bundle")
 
-    result = {
-        "status": "ok" if worker_step["ok"] else "failed",
+    reintegrate_step = None
+    reintegrate_payload = None
+    reintegrate_result = None
+
+    if repaired_bundle:
+        reintegrate_payload = {
+            "repaired_bundle": repaired_bundle,
+            "family": repair_result.get("family", action.get("family")),
+            "original_bundle": str(resolved_path),
+        }
+
+        reintegrate_step = run_step([
+            "python",
+            "install/engine/reintegrate_repaired_bundle.py",
+            "--action-payload-json",
+            json.dumps(reintegrate_payload),
+        ])
+
+        reintegrate_stdout = reintegrate_step.get("parsed_stdout") or {}
+        reintegrate_result = reintegrate_stdout.get("result", {}) if isinstance(reintegrate_stdout, dict) else None
+
+    final_status = "ok" if worker_step["ok"] else "failed"
+    final_reason = "repair_completed"
+
+    if worker_step["ok"] and repaired_bundle and reintegrate_step is not None:
+        final_status = "ok" if reintegrate_step["ok"] else "failed"
+        final_reason = "repair_completed_and_reintegrated" if reintegrate_step["ok"] else "repair_completed_but_reintegration_failed"
+
+    return {
+        "status": final_status,
         "ts": now_ts(),
         "action": action.get("action"),
-        "family": engine_result.get("family", action.get("family", "unknown")),
-        "target": target_from_engine,
+        "family": repair_result.get("family", action.get("family")),
+        "target": target_from_action,
         "resolved_path": str(resolved_path),
         "worker_result": worker_step,
-        "reintegrate_result": None,
-        "reason": "repair_completed" if worker_step["ok"] else "repair_failed",
-        "output_report": str(BRAIN_REPORTS / "repair_bundle_engine_result.json"),
-        "engine_step": engine_step,
-        "engine_result": engine_result,
-        "repair_result": worker_result,
+        "reintegrate_payload": reintegrate_payload,
+        "reintegrate_result": reintegrate_step,
+        "repair_result": repair_result,
+        "reason": final_reason,
     }
-    return result
 
 
 def execute_inspection(action: dict):
