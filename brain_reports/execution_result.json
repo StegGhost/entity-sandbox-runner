@@ -1,86 +1,87 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:34:07",
+  "ts": "2026-03-28T04:34:08",
   "action": "propose_repair_for_bundle_family",
-  "family": "sandbox_eval_wiring",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
+  "family": "sandbox_next_50",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T04:34:07.721195Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"sandbox_eval_wiring\", \"hash_before\": \"4de21f1c9109effe05cb6430297cf7337e44d1d68a76159759e46fd48e993a3f\", \"hash_after\": \"7acb3c06418a9be19d25d4873eaa278a65bdea4cf3d5a6ae67f7dab01ab53cb4\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T04:34:08.515885Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"sandbox_next_50\", \"hash_before\": \"9d2918c1e2721fda0177e0489696c1705d860821248cea6d60a06d0531901368\", \"hash_after\": \"47812f75674ab1a8b168eea587daf4a77651c27de53d266e39d085b1a1247853\"}}",
     "stderr": "",
-    "duration": 0.044,
+    "duration": 0.043,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T04:34:07.721195Z",
+        "ts": "2026-03-28T04:34:08.515885Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip",
         "changes_applied": [
-          "created_missing_manifest",
+          "fixed_manifest_fields",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "sandbox_eval_wiring",
-        "hash_before": "4de21f1c9109effe05cb6430297cf7337e44d1d68a76159759e46fd48e993a3f",
-        "hash_after": "7acb3c06418a9be19d25d4873eaa278a65bdea4cf3d5a6ae67f7dab01ab53cb4"
+        "family": "sandbox_next_50",
+        "hash_before": "9d2918c1e2721fda0177e0489696c1705d860821248cea6d60a06d0531901368",
+        "hash_after": "47812f75674ab1a8b168eea587daf4a77651c27de53d266e39d085b1a1247853"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-    "family": "sandbox_eval_wiring",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip",
+    "family": "sandbox_next_50",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_043407\",\n    \"family\": \"sandbox_eval_wiring\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T04:34:07\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_eval_wiring_patch_v6_1.zip\\\",\\n    \\\"family\\\": \\\"sandbox_eval_wiring\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"payload/config/eval_config.json\\\",\\n        \\\"experiments/evaluation_suite/run_eval.py\\\",\\n        \\\"install/eval_metrics.py\\\",\\n        \\\"install/eval_orchestrator.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/stability_governor.py\\\",\\n        \\\"workflow_review/EVAL_WIRING_PATCH.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.039,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T04:34:07\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n          \"family\": \"sandbox_eval_wiring\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"payload/config/eval_config.json\",\n              \"experiments/evaluation_suite/run_eval.py\",\n              \"install/eval_metrics.py\",\n              \"install/eval_orchestrator.py\",\n              \"install/apply.py\",\n              \"install/stability_governor.py\",\n              \"workflow_review/EVAL_WIRING_PATCH.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_043408\",\n    \"family\": \"sandbox_next_50\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_next_50_upgrades_v4.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_next_50_upgrades_v4.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T04:34:08\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_next_50_upgrades_v4.zip\\\",\\n    \\\"family\\\": \\\"sandbox_next_50\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"payload/upgrades/UPGRADE_LIST.md\\\",\\n        \\\"install/saas_enforcement.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/trust_consensus.py\\\",\\n        \\\"install/self_healing_ingestion.py\\\",\\n        \\\"install/decentralized_worker_runtime.py\\\",\\n        \\\"install/precision_engine.py\\\",\\n        \\\"workflow_review/BUILD_NOTES.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T04:34:08\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_next_50_upgrades_v4.zip\",\n          \"family\": \"sandbox_next_50\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"payload/upgrades/UPGRADE_LIST.md\",\n              \"install/saas_enforcement.py\",\n              \"install/apply.py\",\n              \"install/trust_consensus.py\",\n              \"install/self_healing_ingestion.py\",\n              \"install/decentralized_worker_runtime.py\",\n              \"install/precision_engine.py\",\n              \"workflow_review/BUILD_NOTES.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.077,
+    "duration": 0.074,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_043407",
-        "family": "sandbox_eval_wiring",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
+        "ts": "20260328_043408",
+        "family": "sandbox_next_50",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_next_50_upgrades_v4.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/sandbox_next_50_upgrades_v4.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:34:07\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_eval_wiring_patch_v6_1.zip\",\n    \"family\": \"sandbox_eval_wiring\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"payload/config/eval_config.json\",\n        \"experiments/evaluation_suite/run_eval.py\",\n        \"install/eval_metrics.py\",\n        \"install/eval_orchestrator.py\",\n        \"install/apply.py\",\n        \"install/stability_governor.py\",\n        \"workflow_review/EVAL_WIRING_PATCH.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:34:08\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_next_50_upgrades_v4.zip\",\n    \"family\": \"sandbox_next_50\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"payload/upgrades/UPGRADE_LIST.md\",\n        \"install/saas_enforcement.py\",\n        \"install/apply.py\",\n        \"install/trust_consensus.py\",\n        \"install/self_healing_ingestion.py\",\n        \"install/decentralized_worker_runtime.py\",\n        \"install/precision_engine.py\",\n        \"workflow_review/BUILD_NOTES.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.039,
+          "duration": 0.037,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T04:34:07",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-              "family": "sandbox_eval_wiring",
+              "ts": "2026-03-28T04:34:08",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_next_50_upgrades_v4.zip",
+              "family": "sandbox_next_50",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "payload/config/eval_config.json",
-                  "experiments/evaluation_suite/run_eval.py",
-                  "install/eval_metrics.py",
-                  "install/eval_orchestrator.py",
+                  "payload/upgrades/UPGRADE_LIST.md",
+                  "install/saas_enforcement.py",
                   "install/apply.py",
-                  "install/stability_governor.py",
-                  "workflow_review/EVAL_WIRING_PATCH.md"
+                  "install/trust_consensus.py",
+                  "install/self_healing_ingestion.py",
+                  "install/decentralized_worker_runtime.py",
+                  "install/precision_engine.py",
+                  "workflow_review/BUILD_NOTES.md"
                 ]
               },
               "decision": {
@@ -97,18 +98,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T04:34:07.721195Z",
+    "ts": "2026-03-28T04:34:08.515885Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip",
     "changes_applied": [
-      "created_missing_manifest",
+      "fixed_manifest_fields",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "sandbox_eval_wiring",
-    "hash_before": "4de21f1c9109effe05cb6430297cf7337e44d1d68a76159759e46fd48e993a3f",
-    "hash_after": "7acb3c06418a9be19d25d4873eaa278a65bdea4cf3d5a6ae67f7dab01ab53cb4"
+    "family": "sandbox_next_50",
+    "hash_before": "9d2918c1e2721fda0177e0489696c1705d860821248cea6d60a06d0531901368",
+    "hash_after": "47812f75674ab1a8b168eea587daf4a77651c27de53d266e39d085b1a1247853"
   },
   "reason": "repair_completed_and_reintegrated"
 }

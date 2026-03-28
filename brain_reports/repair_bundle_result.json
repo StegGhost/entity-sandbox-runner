@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T04:34:07.721195Z",
+  "ts": "2026-03-28T04:34:08.515885Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_wiring_patch_v6_1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_wiring_patch_v6_1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_next_50_upgrades_v4.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_next_50_upgrades_v4.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "sandbox_eval_wiring",
-  "hash_before": "4de21f1c9109effe05cb6430297cf7337e44d1d68a76159759e46fd48e993a3f",
-  "hash_after": "7acb3c06418a9be19d25d4873eaa278a65bdea4cf3d5a6ae67f7dab01ab53cb4"
+  "family": "sandbox_next_50",
+  "hash_before": "9d2918c1e2721fda0177e0489696c1705d860821248cea6d60a06d0531901368",
+  "hash_after": "47812f75674ab1a8b168eea587daf4a77651c27de53d266e39d085b1a1247853"
 }
