@@ -1,13 +1,13 @@
 {
-  "ts": "2026-03-28T05:00:28.659664Z",
+  "ts": "2026-03-28T05:00:29.615514Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stability_gate_v12.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stability_gate_v12.zip",
   "changes_applied": [
-    "created_missing_install_stub"
+    "fixed_manifest_fields"
   ],
   "errors": [],
-  "family": "demo_missing_install",
-  "hash_before": "8a4ba6d1d90a43a5b75164b9a57bac6899989cfb67f69ad183f6eed5b5bb8736",
-  "hash_after": "1f3a4c2e1fcd711a3b36cb54ae15f66ebf97917c259b4062097ff0193cfb4950"
+  "family": "stability_gate",
+  "hash_before": "cdcc139f19cf5012cc4a0dc48aae380fcea5e4460d709111b9e573fc170bc5da",
+  "hash_after": "0faf7332a83a582c13d4d330b05792ffa212227adf8cbb4caf60af11d1e0620d"
 }
