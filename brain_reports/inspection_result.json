@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T06:12:12",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/token_economics_v1.zip",
-  "family": "token_economics_v1",
+  "ts": "2026-03-28T06:12:13",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/token_economics_v10.zip",
+  "family": "token_economics_v10",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
@@ -10,7 +10,16 @@
     "files": [
       "bundle_manifest.json",
       "README.md",
-      "install/apply.py"
+      "config/mechanism_config.json",
+      "install/apply.py",
+      "install/engine/equilibrium_engine.py",
+      "install/engine/zk_pipeline_wired.py",
+      "install/engine/mechanism_design_engine.py",
+      "install/engine/auction_engine.py",
+      "install/engine/market_engine.py",
+      "install/tests/test_mechanism.py",
+      "install/tests/test_zk_wired.py",
+      "install/tests/test_equilibrium.py"
     ]
   },
   "decision": {
