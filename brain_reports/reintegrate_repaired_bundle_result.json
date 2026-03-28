@@ -1,17 +1,17 @@
 {
   "status": "ok",
-  "ts": "20260328_054352",
-  "family": "stegcge_closure_modules",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegcge_closure_modules_v1_bundle.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegcge_closure_modules_v1_bundle.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegcge_closure_modules_v1_bundle.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegcge_closure_modules_v1_bundle.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegcge_closure_modules_v1_bundle.zip",
+  "ts": "20260328_054353",
+  "family": "stegdb_observability_bundle",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegdb_observability_bundle.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegdb_observability_bundle.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegdb_observability_bundle.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegdb_observability_bundle.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegdb_observability_bundle.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:43:52\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegcge_closure_modules_v1_bundle.zip\",\n    \"family\": \"stegcge_closure_modules\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"cge/accepted_change_receipt.py\",\n        \"cge/dependency_graph.py\",\n        \"cge/mutation_classifier.py\",\n        \"cge/verification_engine.py\",\n        \"cge/closure_planner.py\",\n        \"install/apply.py\",\n        \"tests/test_verification_closure.py\",\n        \"tests/test_mutation_classifier.py\",\n        \"tests/test_closure_planner.py\",\n        \"tests/test_dependency_graph.py\",\n        \"docs/CLOSURE_ENGINE.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:43:53\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegdb_observability_bundle.zip\",\n    \"family\": \"stegdb_observability_bundle\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"BUNDLE_NOTES.txt\",\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \".github/workflows/stegdb-ingest-stegtv-ledger.yml\",\n        \"tools/ingest_stegtv_events.py\",\n        \"tools/build_observability_index.py\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
     "duration": 0.038,
     "parsed_stdout": {
@@ -19,26 +19,21 @@
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T05:43:52",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegcge_closure_modules_v1_bundle.zip",
-        "family": "stegcge_closure_modules",
+        "ts": "2026-03-28T05:43:53",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegdb_observability_bundle.zip",
+        "family": "stegdb_observability_bundle",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
           "install_dir_present": true,
           "files": [
+            "BUNDLE_NOTES.txt",
             "bundle_manifest.json",
-            "cge/accepted_change_receipt.py",
-            "cge/dependency_graph.py",
-            "cge/mutation_classifier.py",
-            "cge/verification_engine.py",
-            "cge/closure_planner.py",
-            "install/apply.py",
-            "tests/test_verification_closure.py",
-            "tests/test_mutation_classifier.py",
-            "tests/test_closure_planner.py",
-            "tests/test_dependency_graph.py",
-            "docs/CLOSURE_ENGINE.md"
+            "README.md",
+            ".github/workflows/stegdb-ingest-stegtv-ledger.yml",
+            "tools/ingest_stegtv_events.py",
+            "tools/build_observability_index.py",
+            "install/apply.py"
           ]
         },
         "decision": {
