@@ -1,44 +1,43 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:02:11",
+  "ts": "2026-03-28T04:02:12",
   "action": "propose_repair_for_bundle_family",
   "family": "relationship_conditioned_execution",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T04:02:11.413243Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"relationship_conditioned_execution\", \"hash_before\": \"423ab3e75a0b376fbd83672e99e890700db0f68f1758fc215ee5d2a6a3161db3\", \"hash_after\": \"fc82777ef736ad932a00ace47c2ef1b95146fa261d65b7b8b880735c004e2ee9\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T04:02:12.149475Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip\", \"changes_applied\": [\"fixed_manifest_fields\"], \"errors\": [], \"family\": \"relationship_conditioned_execution\", \"hash_before\": \"aaa86f732e9520f8bbc7a70d2077eb5efa6cd48ea4a0b890184ed1cddc5f17a3\", \"hash_after\": \"dcc5677bed45972c6a7dd6060c0f4246e1507fc58a59ae34e7ffc851f7f8bf8b\"}}",
     "stderr": "",
-    "duration": 0.042,
+    "duration": 0.046,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T04:02:11.413243Z",
+        "ts": "2026-03-28T04:02:12.149475Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip",
         "changes_applied": [
-          "fixed_manifest_fields",
-          "created_missing_install_stub"
+          "fixed_manifest_fields"
         ],
         "errors": [],
         "family": "relationship_conditioned_execution",
-        "hash_before": "423ab3e75a0b376fbd83672e99e890700db0f68f1758fc215ee5d2a6a3161db3",
-        "hash_after": "fc82777ef736ad932a00ace47c2ef1b95146fa261d65b7b8b880735c004e2ee9"
+        "hash_before": "aaa86f732e9520f8bbc7a70d2077eb5efa6cd48ea4a0b890184ed1cddc5f17a3",
+        "hash_after": "dcc5677bed45972c6a7dd6060c0f4246e1507fc58a59ae34e7ffc851f7f8bf8b"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip",
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip",
     "family": "relationship_conditioned_execution",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip"
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_040211\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v1_1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T04:02:11\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1.zip\\\",\\n    \\\"family\\\": \\\"relationship_conditioned_execution\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config/witness_config.json\\\",\\n        \\\"install/self_healing_engine.py\\\",\\n        \\\"install/anomaly_detector.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/trust_decay_engine.py\\\",\\n        \\\"install/quorum_validator.py\\\",\\n        \\\"install/witness_coordinator.py\\\",\\n        \\\"docs/architecture_map.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T04:02:11\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1.zip\",\n          \"family\": \"relationship_conditioned_execution\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"config/witness_config.json\",\n              \"install/self_healing_engine.py\",\n              \"install/anomaly_detector.py\",\n              \"install/apply.py\",\n              \"install/trust_decay_engine.py\",\n              \"install/quorum_validator.py\",\n              \"install/witness_coordinator.py\",\n              \"docs/architecture_map.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_040212\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T04:02:12\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip\\\",\\n    \\\"family\\\": \\\"relationship_conditioned_execution\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config/witness_config.json\\\",\\n        \\\"config/relationship_defaults.json\\\",\\n        \\\"install/relationship_policy_engine.py\\\",\\n        \\\"install/relationship_history_analyzer.py\\\",\\n        \\\"install/self_healing_engine.py\\\",\\n        \\\"install/decision_state_recorder.py\\\",\\n        \\\"install/relationship_state_engine.py\\\",\\n        \\\"install/decision_integration_hook.py\\\",\\n        \\\"install/anomaly_detector.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/trust_decay_engine.py\\\",\\n        \\\"install/quorum_validator.py\\\",\\n        \\\"install/witness_coordinator.py\\\",\\n        \\\"install/stegverse_ethics_guard.py\\\",\\n        \\\"install/non_guarantee_invariant.py\\\",\\n        \\\"install/temporal_identity_guard.py\\\",\\n        \\\"install/tests/test_smoke.py\\\",\\n        \\\"docs/architecture_map.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T04:02:12\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n          \"family\": \"relationship_conditioned_execution\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"config/witness_config.json\",\n              \"config/relationship_defaults.json\",\n              \"install/relationship_policy_engine.py\",\n              \"install/relationship_history_analyzer.py\",\n              \"install/self_healing_engine.py\",\n              \"install/decision_state_recorder.py\",\n              \"install/relationship_state_engine.py\",\n              \"install/decision_integration_hook.py\",\n              \"install/anomaly_detector.py\",\n              \"install/apply.py\",\n              \"install/trust_decay_engine.py\",\n              \"install/quorum_validator.py\",\n              \"install/witness_coordinator.py\",\n              \"install/stegverse_ethics_guard.py\",\n              \"install/non_guarantee_invariant.py\",\n              \"install/temporal_identity_guard.py\",\n              \"install/tests/test_smoke.py\",\n              \"docs/architecture_map.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
     "duration": 0.073,
     "parsed_stdout": {
@@ -46,18 +45,18 @@
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_040211",
+        "ts": "20260328_040212",
         "family": "relationship_conditioned_execution",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v1_1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v1_1_full.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:02:11\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1.zip\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/witness_config.json\",\n        \"install/self_healing_engine.py\",\n        \"install/anomaly_detector.py\",\n        \"install/apply.py\",\n        \"install/trust_decay_engine.py\",\n        \"install/quorum_validator.py\",\n        \"install/witness_coordinator.py\",\n        \"docs/architecture_map.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:02:12\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/witness_config.json\",\n        \"config/relationship_defaults.json\",\n        \"install/relationship_policy_engine.py\",\n        \"install/relationship_history_analyzer.py\",\n        \"install/self_healing_engine.py\",\n        \"install/decision_state_recorder.py\",\n        \"install/relationship_state_engine.py\",\n        \"install/decision_integration_hook.py\",\n        \"install/anomaly_detector.py\",\n        \"install/apply.py\",\n        \"install/trust_decay_engine.py\",\n        \"install/quorum_validator.py\",\n        \"install/witness_coordinator.py\",\n        \"install/stegverse_ethics_guard.py\",\n        \"install/non_guarantee_invariant.py\",\n        \"install/temporal_identity_guard.py\",\n        \"install/tests/test_smoke.py\",\n        \"docs/architecture_map.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
           "duration": 0.037,
           "parsed_stdout": {
@@ -65,8 +64,8 @@
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T04:02:11",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1.zip",
+              "ts": "2026-03-28T04:02:12",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v1_1_full.zip",
               "family": "relationship_conditioned_execution",
               "validation": {
                 "valid_zip": true,
@@ -75,12 +74,22 @@
                 "files": [
                   "bundle_manifest.json",
                   "config/witness_config.json",
+                  "config/relationship_defaults.json",
+                  "install/relationship_policy_engine.py",
+                  "install/relationship_history_analyzer.py",
                   "install/self_healing_engine.py",
+                  "install/decision_state_recorder.py",
+                  "install/relationship_state_engine.py",
+                  "install/decision_integration_hook.py",
                   "install/anomaly_detector.py",
                   "install/apply.py",
                   "install/trust_decay_engine.py",
                   "install/quorum_validator.py",
                   "install/witness_coordinator.py",
+                  "install/stegverse_ethics_guard.py",
+                  "install/non_guarantee_invariant.py",
+                  "install/temporal_identity_guard.py",
+                  "install/tests/test_smoke.py",
                   "docs/architecture_map.md"
                 ]
               },
@@ -98,18 +107,17 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T04:02:11.413243Z",
+    "ts": "2026-03-28T04:02:12.149475Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_1_full.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_1_full.zip",
     "changes_applied": [
-      "fixed_manifest_fields",
-      "created_missing_install_stub"
+      "fixed_manifest_fields"
     ],
     "errors": [],
     "family": "relationship_conditioned_execution",
-    "hash_before": "423ab3e75a0b376fbd83672e99e890700db0f68f1758fc215ee5d2a6a3161db3",
-    "hash_after": "fc82777ef736ad932a00ace47c2ef1b95146fa261d65b7b8b880735c004e2ee9"
+    "hash_before": "aaa86f732e9520f8bbc7a70d2077eb5efa6cd48ea4a0b890184ed1cddc5f17a3",
+    "hash_after": "dcc5677bed45972c6a7dd6060c0f4246e1507fc58a59ae34e7ffc851f7f8bf8b"
   },
   "reason": "repair_completed_and_reintegrated"
 }
