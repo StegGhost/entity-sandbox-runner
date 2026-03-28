@@ -1,0 +1,68 @@
+name: control-plane-evidence
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"  # every 30 minutes
+
+jobs:
+  run-control-plane-evidence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pynacl requests
+
+      # -----------------------------
+      # Run evidence test through headless_cmd
+      # -----------------------------
+      - name: Run control plane evidence (headless)
+        run: |
+          python install/engine/headless_cmd_tester.py \
+            --mode steggate_live_test \
+            --cmd "python install/engine/control_plane_evidence_test.py"
+
+      # -----------------------------
+      # Verify outputs exist
+      # -----------------------------
+      - name: Verify evidence outputs
+        run: |
+          echo "---- CHECK OUTPUT FILES ----"
+          ls -lah brain_reports || true
+
+          test -f brain_reports/control_plane_evidence_test.json
+          test -f brain_reports/control_plane_evidence_test.md
+
+      # -----------------------------
+      # Show summary in logs (debug)
+      # -----------------------------
+      - name: Print summary
+        run: |
+          echo "---- JSON SUMMARY ----"
+          cat brain_reports/control_plane_evidence_test.json || true
+
+      # -----------------------------
+      # Commit evidence artifacts
+      # -----------------------------
+      - name: Commit evidence reports
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+
+          git add -A brain_reports || true
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "control-plane evidence run"
+            git push
+          fi
