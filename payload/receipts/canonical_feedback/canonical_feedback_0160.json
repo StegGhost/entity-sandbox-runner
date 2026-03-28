@@ -1,0 +1,18 @@
+{
+  "type": "canonical_feedback",
+  "timestamp": 1774681455.4766278,
+  "summary_hash": "02309cde4ffa522137791a7bdc597d4a8cd0003b630a40652632a20ddf943aed",
+  "feedback_hash": "679e5be8666b4aaab16b31189f9e9da89bc394594d2deb3052e29e04e47ce09e",
+  "input_files": [
+    "docs/canonical/claims_canonical.md",
+    "docs/canonical/definitions_canonical.md",
+    "docs/canonical/findings_canonical.md",
+    "docs/canonical/compaction_summary.json",
+    "docs/canonical/system_summary.md"
+  ],
+  "output_files": [
+    "payload/feedback/canonical_feedback.json",
+    "payload/feedback/canonical_feedback.md"
+  ],
+  "hash": "7363221e7fe3d60c3e1e697063704404c50d364490133e86aff60b0439a07b87"
+}
