@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T06:03:43.165720Z",
+  "ts": "2026-03-28T06:07:42.011972Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_platform_v0_2.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_platform_v0_2.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/auto_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/auto_bundle.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "tc_tvc_platform",
-  "hash_before": "abf25fe2dfc94c666973d2bd4ec2992fc7481c4ffd1beae7179574c896310859",
-  "hash_after": "1815d945ea374b5940611c5e64fc48fd9c9fb6e54541effffbc0bf57309f1c67"
+  "family": "priority_fix",
+  "hash_before": "61d7d2ac9ac50923d1e9b3a200a601081430c8c797e08ddf021e9b7ec474b9dc",
+  "hash_after": "0ccbd01ec20d116b94b3ac8f07c2c38dd6037e6109d24e92becd3b3dc3859fa2"
 }

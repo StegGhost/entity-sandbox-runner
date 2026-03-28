@@ -1,25 +1,14 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T06:03:43",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/tc_tvc_platform_v0_2.zip",
-  "family": "tc_tvc_platform",
+  "ts": "2026-03-28T06:07:42",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/auto_bundle.zip",
+  "family": "priority_fix",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "tc_tvc_platform_v0_2/bundle_capabilities.json",
-      "tc_tvc_platform_v0_2/bundle_readme.md",
-      "tc_tvc_platform_v0_2/bundle_manifest.json",
-      "tc_tvc_platform_v0_2/observatory/state_log/record_state.py",
-      "tc_tvc_platform_v0_2/evidence_plane/receipt.py",
-      "tc_tvc_platform_v0_2/control_plane/tvc/verify_bundle_install.py",
-      "tc_tvc_platform_v0_2/control_plane/tc/bundle_install.tc.json",
-      "tc_tvc_platform_v0_2/security_plane/key_registry/authority_keys.json",
-      "tc_tvc_platform_v0_2/security_plane/crypto/pq_signatures.py",
-      "tc_tvc_platform_v0_2/security_plane/crypto/pq_hash.py",
-      "tc_tvc_platform_v0_2/security_plane/crypto/provider.py",
       "install/apply.py"
     ]
   },
