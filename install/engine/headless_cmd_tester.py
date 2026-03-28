@@ -86,10 +86,11 @@ def run(base_url):
             fail(report, "token_failed")
 
         # -------------------
-        # EXECUTE (UPDATED CONTRACT)
+        # EXECUTE (CORRECT CONTRACT)
         # -------------------
         body = {"t": 1}
         body_str = stable_json(body)
+        local_hash = sha256_text(body_str)
 
         payload = {
             "token": token,
@@ -98,10 +99,8 @@ def run(base_url):
             "headers": {
                 "Content-Type": "application/json"
             },
-            "data": body_str
+            "body": body   # ✅ FIX: USE body, NOT data
         }
-
-        local_hash = sha256_text(body_str)
 
         code, data = post(f"{base_url}/execute", payload)
 
@@ -124,9 +123,10 @@ def run(base_url):
         # -------------------
         # VERIFY
         # -------------------
-        code, verify = post(f"{base_url}/verify", {
-            "receipt_id": receipt_id
-        })
+        code, verify = post(
+            f"{base_url}/verify",
+            {"receipt_id": receipt_id}
+        )
 
         report["steps"]["verify"] = {
             "ok": code == 200,
@@ -143,6 +143,9 @@ def run(base_url):
             "receipt": receipt_hash,
             "match": local_hash == receipt_hash
         }
+
+        if receipt_hash is None:
+            fail(report, "missing_receipt_hash")
 
         if local_hash != receipt_hash:
             fail(report, "hash_mismatch")
