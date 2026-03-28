@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T02:14:58.690962Z",
+  "ts": "2026-03-28T02:14:59.483959Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/auto_rollback_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/auto_rollback_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/bootstrap_and_convergence_bundles.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/bootstrap_and_convergence_bundles.zip",
   "changes_applied": [
-    "fixed_manifest_fields",
+    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "auto_rollback_bundle",
-  "hash_before": "712bf910d5812ea4b59590e77734a9fe5963d5c41d238a34a4fcb4fb7265bbac",
-  "hash_after": "e9cce1af6573ff693ab73c12b327940efb15edfcf0ec9d369dcb93fce35c133d"
+  "family": "bootstrap_and_convergence",
+  "hash_before": "be09898a7b75ae09f2c55b781a10486254786ce455078a3271d5a6fa41caf205",
+  "hash_after": "6de5d577a6ea3bf140aca97395aaf6d79d10b098c88a2b493e15d90977c431ab"
 }

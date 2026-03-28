@@ -1,18 +1,17 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T02:14:58",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/auto_rollback_bundle_v1.zip",
-  "family": "auto_rollback_bundle",
+  "ts": "2026-03-28T02:14:59",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/bootstrap_and_convergence_bundles.zip",
+  "family": "bootstrap_and_convergence",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
+      "sandbox_convergence_full_memory_bundle_v1.zip",
       "bundle_manifest.json",
-      "config/auto_rollback_config.json",
-      "install/apply.py",
-      "install/auto_rollback.py",
-      "docs/AUTO_ROLLBACK.md"
+      "sandbox_bootstrap_permission_unlock_bundle_v1.zip",
+      "install/apply.py"
     ]
   },
   "decision": {
