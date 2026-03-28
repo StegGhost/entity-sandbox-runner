@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "name": "node_a",
+      "url": "http://node-a.local/quorum"
+    },
+    {
+      "name": "node_b",
+      "url": "http://node-b.local/quorum"
+    },
+    {
+      "name": "node_c",
+      "url": "http://node-c.local/quorum"
+    }
+  ],
+  "required": 2
+}
