@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T06:00:44.744376Z",
+  "ts": "2026-03-28T06:03:41.399135Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_spec_bundle_v1_1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_spec_bundle_v1_1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "stegverse_spec_bundle",
-  "hash_before": "ec8d1127120fd78dfba2caaa9f38bfcc9dc14027b375dc8867b771a5094a3949",
-  "hash_after": "78b9acad9227796e0b0f55fdd222aa2d389f5cb6a4ea9e5a535056ca881f18c9"
+  "family": "demo_missing_install",
+  "hash_before": "60dcd6facebf093142a05e55734a45be97658035ec33cec540b014b3d8508775",
+  "hash_after": "acb84a4dec9759720b8e7667e7310d535ca2f1bcfd4c2b0f19f0d161c00feb23"
 }
