@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T03:56:56.973568Z",
+  "ts": "2026-03-28T03:57:27.146005Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "ingestion_engine_v3",
-  "hash_before": "f601702d56c39af5a542bf7fd07fa1ffa87b7f79eab71e876016f15f2b027d79",
-  "hash_after": "d10d0a89897c78fde6b802f9e209c8eef75cce6537678050b144b26593c87d9c"
+  "family": "demo_missing_install",
+  "hash_before": "564b55d1a084fb0095b054c21da9466817a2e0f7d0f205a58f98a67a03e22fed",
+  "hash_after": "f9af1deb10e6715c7a57bc691d885994bc04178da6246213eaa5d81d2251a8de"
 }
