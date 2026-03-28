@@ -1,17 +1,17 @@
 {
   "status": "ok",
-  "ts": "20260328_045726",
-  "family": "self_healing_loop",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/self_healing_loop_v6_bundle.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/self_healing_loop_v6_bundle.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/self_healing_loop_v6_bundle.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/self_healing_loop_v6_bundle.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/self_healing_loop_v6_bundle.zip",
+  "ts": "20260328_045727",
+  "family": "self_improve_bundle",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/self_improve_bundle_v1.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/self_improve_bundle_v1.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/self_improve_bundle_v1.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/self_improve_bundle_v1.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/self_improve_bundle_v1.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:57:26\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/self_healing_loop_v6_bundle.zip\",\n    \"family\": \"self_healing_loop\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"install/engine/failure_recovery_v6.py\",\n        \"install/engine/self_heal_runner_v6.py\",\n        \"install/tests/test_self_heal_runner_v6.py\",\n        \"install/tests/test_failure_recovery_v6.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:57:27\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/self_improve_bundle_v1.zip\",\n    \"family\": \"self_improve_bundle\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"install/engine/repo_snapshot.py\",\n        \"install/engine/proposal_to_bundle.py\",\n        \"install/engine/llm_self_improve.py\",\n        \"install/tests/test_self_improve.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
     "duration": 0.037,
     "parsed_stdout": {
@@ -19,9 +19,9 @@
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T04:57:26",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/self_healing_loop_v6_bundle.zip",
-        "family": "self_healing_loop",
+        "ts": "2026-03-28T04:57:27",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/self_improve_bundle_v1.zip",
+        "family": "self_improve_bundle",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
@@ -29,10 +29,10 @@
           "files": [
             "bundle_manifest.json",
             "install/apply.py",
-            "install/engine/failure_recovery_v6.py",
-            "install/engine/self_heal_runner_v6.py",
-            "install/tests/test_self_heal_runner_v6.py",
-            "install/tests/test_failure_recovery_v6.py"
+            "install/engine/repo_snapshot.py",
+            "install/engine/proposal_to_bundle.py",
+            "install/engine/llm_self_improve.py",
+            "install/tests/test_self_improve.py"
           ]
         },
         "decision": {
