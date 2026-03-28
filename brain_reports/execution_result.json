@@ -1,83 +1,103 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:35:09",
+  "ts": "2026-03-28T03:35:10",
   "action": "propose_repair_for_bundle_family",
-  "family": "document_compression_bundle",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip",
+  "family": "entity-sandbox-runner-deployment-bundle",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:35:09.823771Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"document_compression_bundle\", \"hash_before\": \"8c8eeb020d5bbb6a98fb912f34fcee1c063fc732a7dbdb07a08fa9a7ac61e4f5\", \"hash_after\": \"74c04dd332d8835bfa50025975fcd3375891e7a7e0b0c2004feafdd24775b39a\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:35:10.558859Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"entity-sandbox-runner-deployment-bundle\", \"hash_before\": \"101be9da20471f8f1a0b6de4fd8b99ffb77b99a20f26ad56492de47b778030c9\", \"hash_after\": \"254c32af2331c64e16c3d50f88e2ab1b6c2ca4da76017448c47269735376c485\"}}",
     "stderr": "",
-    "duration": 0.042,
+    "duration": 0.047,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:35:09.823771Z",
+        "ts": "2026-03-28T03:35:10.558859Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip",
         "changes_applied": [
-          "fixed_manifest_fields",
+          "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "document_compression_bundle",
-        "hash_before": "8c8eeb020d5bbb6a98fb912f34fcee1c063fc732a7dbdb07a08fa9a7ac61e4f5",
-        "hash_after": "74c04dd332d8835bfa50025975fcd3375891e7a7e0b0c2004feafdd24775b39a"
+        "family": "entity-sandbox-runner-deployment-bundle",
+        "hash_before": "101be9da20471f8f1a0b6de4fd8b99ffb77b99a20f26ad56492de47b778030c9",
+        "hash_after": "254c32af2331c64e16c3d50f88e2ab1b6c2ca4da76017448c47269735376c485"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip",
-    "family": "document_compression_bundle",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip",
+    "family": "entity-sandbox-runner-deployment-bundle",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033509\",\n    \"family\": \"document_compression_bundle\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/document_compression_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/document_compression_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:35:09\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/document_compression_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"document_compression_bundle\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config/document_compactor_config.json\\\",\\n        \\\"install/document_compactor.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"docs/DOCUMENT_COMPRESSION_V1.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:35:09\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/document_compression_bundle_v1.zip\",\n          \"family\": \"document_compression_bundle\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"config/document_compactor_config.json\",\n              \"install/document_compactor.py\",\n              \"install/apply.py\",\n              \"docs/DOCUMENT_COMPRESSION_V1.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033510\",\n    \"family\": \"entity-sandbox-runner-deployment-bundle\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:35:10\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-deployment-bundle.zip\\\",\\n    \\\"family\\\": \\\"entity-sandbox-runner-deployment-bundle\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"render.yaml\\\",\\n        \\\".env.example\\\",\\n        \\\".gitignore\\\",\\n        \\\"requirements.txt\\\",\\n        \\\"docker-compose.yml\\\",\\n        \\\"fly.toml\\\",\\n        \\\"bundle_manifest.json\\\",\\n        \\\"README.md\\\",\\n        \\\"app/main.py\\\",\\n        \\\"app/__init__.py\\\",\\n        \\\"app/models.py\\\",\\n        \\\"app/config.py\\\",\\n        \\\"app/worker.py\\\",\\n        \\\"app/engines/__init__.py\\\",\\n        \\\"app/engines/metrics.py\\\",\\n        \\\"app/engines/predictive.py\\\",\\n        \\\"app/engines/execution.py\\\",\\n        \\\"app/engines/control_plane.py\\\",\\n        \\\"app/engines/events.py\\\",\\n        \\\".github/workflows/ci.yml\\\",\\n        \\\"deploy/Dockerfile.api\\\",\\n        \\\"deploy/Dockerfile.worker\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"tests/test_health.py\\\",\\n        \\\"tests/test_dashboard.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.044,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:35:10\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n          \"family\": \"entity-sandbox-runner-deployment-bundle\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"render.yaml\",\n              \".env.example\",\n              \".gitignore\",\n              \"requirements.txt\",\n              \"docker-compose.yml\",\n              \"fly.toml\",\n              \"bundle_manifest.json\",\n              \"README.md\",\n              \"app/main.py\",\n              \"app/__init__.py\",\n              \"app/models.py\",\n              \"app/config.py\",\n              \"app/worker.py\",\n              \"app/engines/__init__.py\",\n              \"app/engines/metrics.py\",\n              \"app/engines/predictive.py\",\n              \"app/engines/execution.py\",\n              \"app/engines/control_plane.py\",\n              \"app/engines/events.py\",\n              \".github/workflows/ci.yml\",\n              \"deploy/Dockerfile.api\",\n              \"deploy/Dockerfile.worker\",\n              \"install/apply.py\",\n              \"tests/test_health.py\",\n              \"tests/test_dashboard.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.074,
+    "duration": 0.082,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_033509",
-        "family": "document_compression_bundle",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/document_compression_bundle_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/document_compression_bundle_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip",
+        "ts": "20260328_033510",
+        "family": "entity-sandbox-runner-deployment-bundle",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-deployment-bundle.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/entity-sandbox-runner-deployment-bundle.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:35:09\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/document_compression_bundle_v1.zip\",\n    \"family\": \"document_compression_bundle\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/document_compactor_config.json\",\n        \"install/document_compactor.py\",\n        \"install/apply.py\",\n        \"docs/DOCUMENT_COMPRESSION_V1.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:35:10\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-deployment-bundle.zip\",\n    \"family\": \"entity-sandbox-runner-deployment-bundle\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"render.yaml\",\n        \".env.example\",\n        \".gitignore\",\n        \"requirements.txt\",\n        \"docker-compose.yml\",\n        \"fly.toml\",\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"app/main.py\",\n        \"app/__init__.py\",\n        \"app/models.py\",\n        \"app/config.py\",\n        \"app/worker.py\",\n        \"app/engines/__init__.py\",\n        \"app/engines/metrics.py\",\n        \"app/engines/predictive.py\",\n        \"app/engines/execution.py\",\n        \"app/engines/control_plane.py\",\n        \"app/engines/events.py\",\n        \".github/workflows/ci.yml\",\n        \"deploy/Dockerfile.api\",\n        \"deploy/Dockerfile.worker\",\n        \"install/apply.py\",\n        \"tests/test_health.py\",\n        \"tests/test_dashboard.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.037,
+          "duration": 0.044,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:35:09",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/document_compression_bundle_v1.zip",
-              "family": "document_compression_bundle",
+              "ts": "2026-03-28T03:35:10",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-deployment-bundle.zip",
+              "family": "entity-sandbox-runner-deployment-bundle",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
+                  "render.yaml",
+                  ".env.example",
+                  ".gitignore",
+                  "requirements.txt",
+                  "docker-compose.yml",
+                  "fly.toml",
                   "bundle_manifest.json",
-                  "config/document_compactor_config.json",
-                  "install/document_compactor.py",
+                  "README.md",
+                  "app/main.py",
+                  "app/__init__.py",
+                  "app/models.py",
+                  "app/config.py",
+                  "app/worker.py",
+                  "app/engines/__init__.py",
+                  "app/engines/metrics.py",
+                  "app/engines/predictive.py",
+                  "app/engines/execution.py",
+                  "app/engines/control_plane.py",
+                  "app/engines/events.py",
+                  ".github/workflows/ci.yml",
+                  "deploy/Dockerfile.api",
+                  "deploy/Dockerfile.worker",
                   "install/apply.py",
-                  "docs/DOCUMENT_COMPRESSION_V1.md"
+                  "tests/test_health.py",
+                  "tests/test_dashboard.py"
                 ]
               },
               "decision": {
@@ -94,18 +114,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:35:09.823771Z",
+    "ts": "2026-03-28T03:35:10.558859Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/document_compression_bundle_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/document_compression_bundle_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-deployment-bundle.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-deployment-bundle.zip",
     "changes_applied": [
-      "fixed_manifest_fields",
+      "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "document_compression_bundle",
-    "hash_before": "8c8eeb020d5bbb6a98fb912f34fcee1c063fc732a7dbdb07a08fa9a7ac61e4f5",
-    "hash_after": "74c04dd332d8835bfa50025975fcd3375891e7a7e0b0c2004feafdd24775b39a"
+    "family": "entity-sandbox-runner-deployment-bundle",
+    "hash_before": "101be9da20471f8f1a0b6de4fd8b99ffb77b99a20f26ad56492de47b778030c9",
+    "hash_after": "254c32af2331c64e16c3d50f88e2ab1b6c2ca4da76017448c47269735376c485"
   },
   "reason": "repair_completed_and_reintegrated"
 }
