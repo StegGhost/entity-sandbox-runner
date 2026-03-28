@@ -1,14 +1,16 @@
-name: Autonomous Loop
+name: run-loop
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
 
 jobs:
-  run-loop:
+  run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -16,5 +18,43 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Run Autonomous Loop
-        run: python install/autonomous_loop_orchestrator.py
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt || true
+
+      # =========================
+      # RUN LOOP (authoritative)
+      # =========================
+      - name: Run orchestrator
+        run: |
+          python install/autonomous_loop_orchestrator.py
+
+      # =========================
+      # CREATE ISOLATED BRANCH
+      # =========================
+      - name: Persist state to loop branch
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+
+          RUN_ID="${GITHUB_RUN_ID:-local}-$(date +%s)"
+          BRANCH="loop/${RUN_ID}"
+
+          echo "Using branch: $BRANCH"
+
+          git checkout -b "$BRANCH"
+
+          git add -A
+          git commit -m "loop run $RUN_ID state snapshot" || echo "Nothing to commit"
+
+          git push origin "$BRANCH"
+
+          # update moving pointer
+          git push origin "$BRANCH:refs/heads/loop/latest" --force
+
+      # =========================
+      # PROMOTION GATE
+      # =========================
+      - name: Promote to main (StegCore gate)
+        run: |
+          python install/engine/promote_to_main.py
