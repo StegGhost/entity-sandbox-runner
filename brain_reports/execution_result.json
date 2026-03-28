@@ -1,71 +1,71 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:04:16",
+  "ts": "2026-03-28T04:04:17",
   "action": "propose_repair_for_bundle_family",
   "family": "relationship_conditioned_execution",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T04:04:16.462419Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip\", \"changes_applied\": [\"fixed_manifest_fields\"], \"errors\": [], \"family\": \"relationship_conditioned_execution\", \"hash_before\": \"89a2ab06920e18461b92ddcd2129136000ff0a2cdb3c2364df9eab286efc11b7\", \"hash_after\": \"93ea51a4344f7fbcdeab381594f624b96ffe0225a12c5d0b9b0ddfb751488064\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T04:04:17.190177Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip\", \"changes_applied\": [\"fixed_manifest_fields\"], \"errors\": [], \"family\": \"relationship_conditioned_execution\", \"hash_before\": \"a64f18c61b105cc744ec88908fee9eb55507d5dfd4f9f8650f360395c8e4866c\", \"hash_after\": \"ea1fb26003449f828d0c6336470c30d65bcbc63b12803a74bab997d78b7cd4e1\"}}",
     "stderr": "",
-    "duration": 0.046,
+    "duration": 0.044,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T04:04:16.462419Z",
+        "ts": "2026-03-28T04:04:17.190177Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip",
         "changes_applied": [
           "fixed_manifest_fields"
         ],
         "errors": [],
         "family": "relationship_conditioned_execution",
-        "hash_before": "89a2ab06920e18461b92ddcd2129136000ff0a2cdb3c2364df9eab286efc11b7",
-        "hash_after": "93ea51a4344f7fbcdeab381594f624b96ffe0225a12c5d0b9b0ddfb751488064"
+        "hash_before": "a64f18c61b105cc744ec88908fee9eb55507d5dfd4f9f8650f360395c8e4866c",
+        "hash_after": "ea1fb26003449f828d0c6336470c30d65bcbc63b12803a74bab997d78b7cd4e1"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip",
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip",
     "family": "relationship_conditioned_execution",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip"
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_040416\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_0.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v2_0.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T04:04:16\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_0.zip\\\",\\n    \\\"family\\\": \\\"relationship_conditioned_execution\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config/governance_config.json\\\",\\n        \\\"install/governance_fabric.py\\\",\\n        \\\"install/conflict_detector.py\\\",\\n        \\\"install/agent_registry.py\\\",\\n        \\\"install/incentive_model.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/negotiation_engine.py\\\",\\n        \\\"docs/architecture_map.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.039,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T04:04:16\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_0.zip\",\n          \"family\": \"relationship_conditioned_execution\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"config/governance_config.json\",\n              \"install/governance_fabric.py\",\n              \"install/conflict_detector.py\",\n              \"install/agent_registry.py\",\n              \"install/incentive_model.py\",\n              \"install/apply.py\",\n              \"install/negotiation_engine.py\",\n              \"docs/architecture_map.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_040417\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v2_1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T04:04:17\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_1.zip\\\",\\n    \\\"family\\\": \\\"relationship_conditioned_execution\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config/adversary_config.json\\\",\\n        \\\"install/reputation_engine.py\\\",\\n        \\\"install/slashing_engine.py\\\",\\n        \\\"install/byzantine_filter.py\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/adversary_detector.py\\\",\\n        \\\"docs/architecture_map.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.04,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T04:04:17\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_1.zip\",\n          \"family\": \"relationship_conditioned_execution\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"config/adversary_config.json\",\n              \"install/reputation_engine.py\",\n              \"install/slashing_engine.py\",\n              \"install/byzantine_filter.py\",\n              \"install/apply.py\",\n              \"install/adversary_detector.py\",\n              \"docs/architecture_map.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.078,
+    "duration": 0.079,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_040416",
+        "ts": "20260328_040417",
         "family": "relationship_conditioned_execution",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_0.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v2_0.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_1.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/relationship_conditioned_execution_v2_1.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:04:16\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_0.zip\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/governance_config.json\",\n        \"install/governance_fabric.py\",\n        \"install/conflict_detector.py\",\n        \"install/agent_registry.py\",\n        \"install/incentive_model.py\",\n        \"install/apply.py\",\n        \"install/negotiation_engine.py\",\n        \"docs/architecture_map.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:04:17\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_1.zip\",\n    \"family\": \"relationship_conditioned_execution\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/adversary_config.json\",\n        \"install/reputation_engine.py\",\n        \"install/slashing_engine.py\",\n        \"install/byzantine_filter.py\",\n        \"install/apply.py\",\n        \"install/adversary_detector.py\",\n        \"docs/architecture_map.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.039,
+          "duration": 0.04,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T04:04:16",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_0.zip",
+              "ts": "2026-03-28T04:04:17",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/relationship_conditioned_execution_v2_1.zip",
               "family": "relationship_conditioned_execution",
               "validation": {
                 "valid_zip": true,
@@ -73,13 +73,12 @@
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "config/governance_config.json",
-                  "install/governance_fabric.py",
-                  "install/conflict_detector.py",
-                  "install/agent_registry.py",
-                  "install/incentive_model.py",
+                  "config/adversary_config.json",
+                  "install/reputation_engine.py",
+                  "install/slashing_engine.py",
+                  "install/byzantine_filter.py",
                   "install/apply.py",
-                  "install/negotiation_engine.py",
+                  "install/adversary_detector.py",
                   "docs/architecture_map.md"
                 ]
               },
@@ -97,17 +96,17 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T04:04:16.462419Z",
+    "ts": "2026-03-28T04:04:17.190177Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_0.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_0.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v2_1.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v2_1.zip",
     "changes_applied": [
       "fixed_manifest_fields"
     ],
     "errors": [],
     "family": "relationship_conditioned_execution",
-    "hash_before": "89a2ab06920e18461b92ddcd2129136000ff0a2cdb3c2364df9eab286efc11b7",
-    "hash_after": "93ea51a4344f7fbcdeab381594f624b96ffe0225a12c5d0b9b0ddfb751488064"
+    "hash_before": "a64f18c61b105cc744ec88908fee9eb55507d5dfd4f9f8650f360395c8e4866c",
+    "hash_after": "ea1fb26003449f828d0c6336470c30d65bcbc63b12803a74bab997d78b7cd4e1"
   },
   "reason": "repair_completed_and_reintegrated"
 }
