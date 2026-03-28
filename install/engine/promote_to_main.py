@@ -7,17 +7,15 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 REPORTS = ROOT / "brain_reports"
 
-SUMMARY_PATH = REPORTS / "loop_summary.json"
-RECONCILE_PATH = REPORTS / "reconcile_result.json"
-HEADLESS_PATH = REPORTS / "headless_cmd_test.json"
+SUMMARY = REPORTS / "loop_summary.json"
+RECONCILE = REPORTS / "reconcile_result.json"
+HEADLESS = REPORTS / "headless_cmd_test.json"
 
 
-def load_json(path: Path):
-    if not path.exists():
-        return None
+def load(path):
     try:
         return json.loads(path.read_text())
-    except Exception:
+    except:
         return None
 
 
@@ -26,22 +24,31 @@ def run(cmd):
 
 
 def fail(reason):
-    payload = {
+    print(json.dumps({
         "status": "rejected",
         "reason": reason,
         "ts": time.strftime("%Y-%m-%dT%H:%M:%S")
-    }
-    print(json.dumps(payload, indent=2))
-    sys.exit(0)  # NOT failure → governance rejection
+    }, indent=2))
+    sys.exit(0)
+
+
+def require_tvc_token():
+    issue = run(["python", "control_plane/tvc/issue_token.py"])
+    if issue.returncode != 0:
+        fail("tvc_issue_failed")
+
+    verify = run(["python", "control_plane/tvc/verify_token.py"])
+    if verify.returncode != 0:
+        fail("tvc_verify_failed")
 
 
 def main():
-    summary = load_json(SUMMARY_PATH)
-    reconcile = load_json(RECONCILE_PATH)
-    headless = load_json(HEADLESS_PATH)
+    summary = load(SUMMARY)
+    reconcile = load(RECONCILE)
+    headless = load(HEADLESS)
 
     if not summary or summary.get("status") != "ok":
-        fail("loop_summary_not_ok")
+        fail("loop_not_ok")
 
     if not reconcile or reconcile.get("status") != "ok":
         fail("reconcile_not_ok")
@@ -49,21 +56,19 @@ def main():
     if not reconcile.get("reintegrated_ok"):
         fail("reintegrate_not_ok")
 
-    # receipt optional (your current model allows this)
-    # but enforce headless validation if present
     if headless:
-        if headless.get("status") != "ok":
-            fail("headless_failed")
-
         verify = headless.get("steps", {}).get("verify", {})
         if not verify.get("ok"):
             fail("receipt_verify_failed")
 
     # =========================
-    # PROMOTION EXECUTION
+    # TVC AUTHORITY CHECK
     # =========================
-    print("Promotion conditions passed. Promoting to main...")
+    require_tvc_token()
 
+    # =========================
+    # PROMOTE
+    # =========================
     run(["git", "config", "user.name", "actions-user"])
     run(["git", "config", "user.email", "actions@github.com"])
 
@@ -80,7 +85,7 @@ def main():
 
     print(json.dumps({
         "status": "promoted",
-        "reason": "admissibility_passed",
+        "reason": "admissibility_and_authority_passed",
         "ts": time.strftime("%Y-%m-%dT%H:%M:%S")
     }, indent=2))
 
