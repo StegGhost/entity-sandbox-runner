@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T04:05:51.836432Z",
+  "ts": "2026-03-28T04:06:23.544241Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_autonomous_loop_stabilization_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_autonomous_loop_stabilization_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "sandbox_autonomous_loop",
-  "hash_before": "0bae15a46fae433e11e609f4f38f14e1699bc085e46f24306be0df5e87e22a49",
-  "hash_after": "8061f5a391dba08f06a0a7682d3c05b1718ed57409bcba0f6bbbb20c5a06886e"
+  "family": "demo_missing_install",
+  "hash_before": "540b2559ef23893a34a6a2f3642fa4a3c0680a3c0b7f98932b5e03cf868609fa",
+  "hash_after": "330e35e83dd5d73cceada314b112975a02d82a5a8fe55f767b041e0de50261e7"
 }

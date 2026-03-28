@@ -1,17 +1,14 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:05:51",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_autonomous_loop_stabilization_v1.zip",
-  "family": "sandbox_autonomous_loop",
+  "ts": "2026-03-28T04:06:23",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "payload/.github/workflows/closed_loop_runner.yml",
-      "payload/autonomy_plane/campaign_state_manager.py",
-      "payload/autonomy_plane/closed_loop_controller.py",
       "install/apply.py"
     ]
   },
