@@ -1,73 +1,73 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:22:32",
+  "ts": "2026-03-28T03:33:14",
   "action": "propose_repair_for_bundle_family",
-  "family": "critical_ratio_campaign",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
+  "family": "crypto_bot_v0",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:22:32.324926Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"critical_ratio_campaign\", \"hash_before\": \"d6c399c5aab58a8399f3cf91917ed905fddec57d6a97b0673271fdd366b9e809\", \"hash_after\": \"e850e0191094ca1d323eb3b3bd1851d3a5d79ddeb4f965fa5c5ae882aa2d2213\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:33:14.818596Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"crypto_bot_v0\", \"hash_before\": \"7e5ade5f480877d4d073dd1fae69ecf4047f7b9d87f9cf91e08a5b64e5d1753b\", \"hash_after\": \"8cf18c98f3ce1f80d2c5ac57f389134b27614c2d3458a4a033dc60ccb422d12f\"}}",
     "stderr": "",
-    "duration": 0.044,
+    "duration": 0.052,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:22:32.324926Z",
+        "ts": "2026-03-28T03:33:14.818596Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip",
         "changes_applied": [
           "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "critical_ratio_campaign",
-        "hash_before": "d6c399c5aab58a8399f3cf91917ed905fddec57d6a97b0673271fdd366b9e809",
-        "hash_after": "e850e0191094ca1d323eb3b3bd1851d3a5d79ddeb4f965fa5c5ae882aa2d2213"
+        "family": "crypto_bot_v0",
+        "hash_before": "7e5ade5f480877d4d073dd1fae69ecf4047f7b9d87f9cf91e08a5b64e5d1753b",
+        "hash_after": "8cf18c98f3ce1f80d2c5ac57f389134b27614c2d3458a4a033dc60ccb422d12f"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
-    "family": "critical_ratio_campaign",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip",
+    "family": "crypto_bot_v0",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_032232\",\n    \"family\": \"critical_ratio_campaign\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/critical_ratio_campaign_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:22:32\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"critical_ratio_campaign\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/bundle_readme.md\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/bundle_manifest.json\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/run_experiment.py\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/protocol.md\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/experiment_config.json\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/README.md\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/visualize_phase_space.py\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/results/README.md\\\",\\n        \\\"critical_ratio_campaign_bundle_v1/install/install_bundle_autoregister.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.036,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:22:32\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip\",\n          \"family\": \"critical_ratio_campaign\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"critical_ratio_campaign_bundle_v1/bundle_readme.md\",\n              \"critical_ratio_campaign_bundle_v1/bundle_manifest.json\",\n              \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/run_experiment.py\",\n              \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/protocol.md\",\n              \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/experiment_config.json\",\n              \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/README.md\",\n              \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/visualize_phase_space.py\",\n              \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/results/README.md\",\n              \"critical_ratio_campaign_bundle_v1/install/install_bundle_autoregister.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033314\",\n    \"family\": \"crypto_bot_v0\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/crypto_bot_v0_2_bundle.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:33:14\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip\\\",\\n    \\\"family\\\": \\\"crypto_bot_v0\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"crypto_bot_v0_2_bundle/requirements.txt\\\",\\n        \\\"crypto_bot_v0_2_bundle/app.py\\\",\\n        \\\"crypto_bot_v0_2_bundle/config.py\\\",\\n        \\\"crypto_bot_v0_2_bundle/README.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.038,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:33:14\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip\",\n          \"family\": \"crypto_bot_v0\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"crypto_bot_v0_2_bundle/requirements.txt\",\n              \"crypto_bot_v0_2_bundle/app.py\",\n              \"crypto_bot_v0_2_bundle/config.py\",\n              \"crypto_bot_v0_2_bundle/README.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.073,
+    "duration": 0.074,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_032232",
-        "family": "critical_ratio_campaign",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/critical_ratio_campaign_bundle_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
+        "ts": "20260328_033314",
+        "family": "crypto_bot_v0",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/crypto_bot_v0_2_bundle.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:22:32\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip\",\n    \"family\": \"critical_ratio_campaign\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"critical_ratio_campaign_bundle_v1/bundle_readme.md\",\n        \"critical_ratio_campaign_bundle_v1/bundle_manifest.json\",\n        \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/run_experiment.py\",\n        \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/protocol.md\",\n        \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/experiment_config.json\",\n        \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/README.md\",\n        \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/visualize_phase_space.py\",\n        \"critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/results/README.md\",\n        \"critical_ratio_campaign_bundle_v1/install/install_bundle_autoregister.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:33:14\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip\",\n    \"family\": \"crypto_bot_v0\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"crypto_bot_v0_2_bundle/requirements.txt\",\n        \"crypto_bot_v0_2_bundle/app.py\",\n        \"crypto_bot_v0_2_bundle/config.py\",\n        \"crypto_bot_v0_2_bundle/README.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.036,
+          "duration": 0.038,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:22:32",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip",
-              "family": "critical_ratio_campaign",
+              "ts": "2026-03-28T03:33:14",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip",
+              "family": "crypto_bot_v0",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
@@ -75,15 +75,10 @@
                 "files": [
                   "bundle_manifest.json",
                   "install/apply.py",
-                  "critical_ratio_campaign_bundle_v1/bundle_readme.md",
-                  "critical_ratio_campaign_bundle_v1/bundle_manifest.json",
-                  "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/run_experiment.py",
-                  "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/protocol.md",
-                  "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/experiment_config.json",
-                  "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/README.md",
-                  "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/visualize_phase_space.py",
-                  "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/results/README.md",
-                  "critical_ratio_campaign_bundle_v1/install/install_bundle_autoregister.py"
+                  "crypto_bot_v0_2_bundle/requirements.txt",
+                  "crypto_bot_v0_2_bundle/app.py",
+                  "crypto_bot_v0_2_bundle/config.py",
+                  "crypto_bot_v0_2_bundle/README.md"
                 ]
               },
               "decision": {
@@ -100,18 +95,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:22:32.324926Z",
+    "ts": "2026-03-28T03:33:14.818596Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip",
     "changes_applied": [
       "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "critical_ratio_campaign",
-    "hash_before": "d6c399c5aab58a8399f3cf91917ed905fddec57d6a97b0673271fdd366b9e809",
-    "hash_after": "e850e0191094ca1d323eb3b3bd1851d3a5d79ddeb4f965fa5c5ae882aa2d2213"
+    "family": "crypto_bot_v0",
+    "hash_before": "7e5ade5f480877d4d073dd1fae69ecf4047f7b9d87f9cf91e08a5b64e5d1753b",
+    "hash_after": "8cf18c98f3ce1f80d2c5ac57f389134b27614c2d3458a4a033dc60ccb422d12f"
   },
   "reason": "repair_completed_and_reintegrated"
 }

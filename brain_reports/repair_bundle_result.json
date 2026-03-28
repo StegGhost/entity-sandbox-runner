@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:22:32.324926Z",
+  "ts": "2026-03-28T03:33:14.818596Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/critical_ratio_campaign_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_bot_v0_2_bundle.zip",
   "changes_applied": [
     "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "critical_ratio_campaign",
-  "hash_before": "d6c399c5aab58a8399f3cf91917ed905fddec57d6a97b0673271fdd366b9e809",
-  "hash_after": "e850e0191094ca1d323eb3b3bd1851d3a5d79ddeb4f965fa5c5ae882aa2d2213"
+  "family": "crypto_bot_v0",
+  "hash_before": "7e5ade5f480877d4d073dd1fae69ecf4047f7b9d87f9cf91e08a5b64e5d1753b",
+  "hash_after": "8cf18c98f3ce1f80d2c5ac57f389134b27614c2d3458a4a033dc60ccb422d12f"
 }

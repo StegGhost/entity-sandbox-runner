@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-28T03:22:32",
+  "ts": "2026-03-28T03:33:14",
   "status": "ok",
   "reason": "loop_hardened_path_passed",
   "ingestion_ok": true,
@@ -7,13 +7,13 @@
   "execute_ok": true,
   "reconcile_ok": true,
   "next_action": {
-    "ts": "2026-03-28T03:22:32",
+    "ts": "2026-03-28T03:33:14",
     "status": "ok",
     "selection_mode": "deterministic_failed_scan",
     "action_class": "repair",
     "action": "propose_repair_for_bundle_family",
-    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/critical_ratio_campaign_bundle_v1.zip",
-    "family": "critical_ratio_campaign_bundle_v1",
+    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_bot_v0_2_bundle.zip",
+    "family": "crypto_bot_v0_2_bundle",
     "priority": "high",
     "reason": "failed_bundle_present",
     "source": "next_action_engine"

@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:22:32",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/critical_ratio_campaign_bundle_v1.zip",
-  "family": "critical_ratio_campaign",
+  "ts": "2026-03-28T03:33:14",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/crypto_bot_v0_2_bundle.zip",
+  "family": "crypto_bot_v0",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
@@ -10,15 +10,10 @@
     "files": [
       "bundle_manifest.json",
       "install/apply.py",
-      "critical_ratio_campaign_bundle_v1/bundle_readme.md",
-      "critical_ratio_campaign_bundle_v1/bundle_manifest.json",
-      "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/run_experiment.py",
-      "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/protocol.md",
-      "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/experiment_config.json",
-      "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/README.md",
-      "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/visualize_phase_space.py",
-      "critical_ratio_campaign_bundle_v1/payload/experiments/critical_ratio_campaign/results/README.md",
-      "critical_ratio_campaign_bundle_v1/install/install_bundle_autoregister.py"
+      "crypto_bot_v0_2_bundle/requirements.txt",
+      "crypto_bot_v0_2_bundle/app.py",
+      "crypto_bot_v0_2_bundle/config.py",
+      "crypto_bot_v0_2_bundle/README.md"
     ]
   },
   "decision": {
