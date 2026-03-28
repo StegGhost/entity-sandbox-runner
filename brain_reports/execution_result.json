@@ -2,77 +2,89 @@
   "status": "ok",
   "ts": "2026-03-28T06:00:43",
   "action": "propose_repair_for_bundle_family",
-  "family": "demo_missing_install",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "family": "stegverse_ingestion_safe",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T06:00:42.934345Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\", \"changes_applied\": [\"created_missing_install_stub\"], \"errors\": [], \"family\": \"demo_missing_install\", \"hash_before\": \"7db12a955b0ccf380b624f84d668cc702ce75bdd3e1693db0ac444aefb45c0fc\", \"hash_after\": \"dc65e4c61ededcdc8380ca004d772d6e92833eb3e29f197f68086abfafe08b82\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T06:00:43.901006Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"stegverse_ingestion_safe\", \"hash_before\": \"b4c619aed06425d3f55488a01a041ce5075d26379feef1ff86703dee4f1f3cae\", \"hash_after\": \"9f83bacc443f0461e41b8f49e0fbf2177a4668c008a3038d5f8714f952ea1545\"}}",
     "stderr": "",
-    "duration": 0.116,
+    "duration": 0.044,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T06:00:42.934345Z",
+        "ts": "2026-03-28T06:00:43.901006Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
         "changes_applied": [
+          "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "demo_missing_install",
-        "hash_before": "7db12a955b0ccf380b624f84d668cc702ce75bdd3e1693db0ac444aefb45c0fc",
-        "hash_after": "dc65e4c61ededcdc8380ca004d772d6e92833eb3e29f197f68086abfafe08b82"
+        "family": "stegverse_ingestion_safe",
+        "hash_before": "b4c619aed06425d3f55488a01a041ce5075d26379feef1ff86703dee4f1f3cae",
+        "hash_after": "9f83bacc443f0461e41b8f49e0fbf2177a4668c008a3038d5f8714f952ea1545"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-    "family": "demo_missing_install",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+    "family": "stegverse_ingestion_safe",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_060043\",\n    \"family\": \"demo_missing_install\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T06:00:43\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\\\",\\n    \\\"family\\\": \\\"demo_missing_install\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.047,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T06:00:43\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n          \"family\": \"demo_missing_install\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_060043\",\n    \"family\": \"stegverse_ingestion_safe\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T06:00:43\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"stegverse_ingestion_safe\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/README.md\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/payload/canonical_manifest_template.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/install/bundle_guard.py\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/installation_notes.md\\\",\\n        \\\"stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/forward_build_notes.md\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.036,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T06:00:43\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n          \"family\": \"stegverse_ingestion_safe\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/README.md\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/payload/canonical_manifest_template.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/install/bundle_guard.py\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/installation_notes.md\",\n              \"stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/forward_build_notes.md\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.083,
+    "duration": 0.072,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
         "ts": "20260328_060043",
-        "family": "demo_missing_install",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+        "family": "stegverse_ingestion_safe",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T06:00:43\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"family\": \"demo_missing_install\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T06:00:43\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip\",\n    \"family\": \"stegverse_ingestion_safe\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/README.md\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/payload/canonical_manifest_template.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/install/bundle_guard.py\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/installation_notes.md\",\n        \"stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/forward_build_notes.md\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.047,
+          "duration": 0.036,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
               "ts": "2026-03-28T06:00:43",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-              "family": "demo_missing_install",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+              "family": "stegverse_ingestion_safe",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/README.md",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/payload/canonical_manifest_template.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_closed_loop_activation_v1.bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_research_grade_upgrades_1031_1040_v1.bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/publishable_demo_export_bundle_v1.bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_autonomous_loop_stabilization_v1.bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/payload/fixed_manifests/sandbox_next_50_upgrades_981_1030_v1.bundle_manifest.json",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/install/bundle_guard.py",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/installation_notes.md",
+                  "stegverse_ingestion_safe_recovery_bundle_v1/workflow_review/forward_build_notes.md",
                   "install/apply.py"
                 ]
               },
@@ -90,17 +102,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T06:00:42.934345Z",
+    "ts": "2026-03-28T06:00:43.901006Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse_ingestion_safe_recovery_bundle_v1.zip",
     "changes_applied": [
+      "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "demo_missing_install",
-    "hash_before": "7db12a955b0ccf380b624f84d668cc702ce75bdd3e1693db0ac444aefb45c0fc",
-    "hash_after": "dc65e4c61ededcdc8380ca004d772d6e92833eb3e29f197f68086abfafe08b82"
+    "family": "stegverse_ingestion_safe",
+    "hash_before": "b4c619aed06425d3f55488a01a041ce5075d26379feef1ff86703dee4f1f3cae",
+    "hash_after": "9f83bacc443f0461e41b8f49e0fbf2177a4668c008a3038d5f8714f952ea1545"
   },
   "reason": "repair_completed_and_reintegrated"
 }
