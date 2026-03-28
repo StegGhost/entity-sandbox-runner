@@ -1,13 +1,14 @@
 {
-  "ts": "2026-03-28T03:48:30.430090Z",
+  "ts": "2026-03-28T03:48:31.325602Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/full_governance_integration_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/full_governance_integration_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v2_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v2_bundle.zip",
   "changes_applied": [
-    "fixed_manifest_fields"
+    "fixed_manifest_fields",
+    "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "full_governance_integration",
-  "hash_before": "e9265716adf4eafeb809f5a19a650f28d8076a05a1adeba8c036375f7f907e3a",
-  "hash_after": "4fc9e12150fa5f3e79b6d33a4a88980b2c0c362ee0ef27872eef7c840f4c9b16"
+  "family": "generator_v2_bundle",
+  "hash_before": "63998f66925c05e2a0540dedb5dbda283c355c25bf57a07e321cefa6be89f39d",
+  "hash_after": "416ffacb3bc6ee9874a9ce1f1ec5163b9826cc4b27dbeeec8458425ad8c88f1e"
 }
