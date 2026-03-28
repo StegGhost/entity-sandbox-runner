@@ -53,7 +53,10 @@ jobs:
               "files": ["bundle_manifest.json"]
           }
 
-          (tmp / "bundle_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+          (tmp / "bundle_manifest.json").write_text(
+              json.dumps(manifest, indent=2),
+              encoding="utf-8"
+          )
 
           with zipfile.ZipFile(bundle, "w", zipfile.ZIP_DEFLATED) as z:
               z.write(tmp / "bundle_manifest.json", "bundle_manifest.json")
@@ -230,6 +233,38 @@ jobs:
           if failed:
               raise SystemExit(1)
           PY
+
+      - name: EVIDENCE - workspace + git root
+        run: |
+          echo "PWD:"
+          pwd
+          echo "GIT ROOT:"
+          git rev-parse --show-toplevel
+          echo "---- STATUS ----"
+          git status --ignored
+
+      - name: EVIDENCE - brain_reports files
+        run: |
+          echo "---- FILE LIST ----"
+          find brain_reports -maxdepth 2 -type f -print || true
+          echo "---- FILE DETAILS ----"
+          find brain_reports -maxdepth 2 -type f -printf "%TY-%Tm-%Td %TH:%TM:%TS %p\n" | sort || true
+
+      - name: EVIDENCE - git diff before add
+        run: |
+          echo "---- UNSTAGED DIFF ----"
+          git diff -- brain_reports failed_bundles repaired_bundles incoming_bundles installed_bundles logs || true
+
+      - name: EVIDENCE - git add and status
+        run: |
+          git add -A brain_reports failed_bundles repaired_bundles incoming_bundles installed_bundles logs || true
+          echo "---- STATUS AFTER ADD ----"
+          git status --ignored
+
+      - name: EVIDENCE - staged diff
+        run: |
+          echo "---- STAGED DIFF ----"
+          git diff --cached -- brain_reports failed_bundles repaired_bundles incoming_bundles installed_bundles logs || true
 
       - name: Final state summary
         run: |
