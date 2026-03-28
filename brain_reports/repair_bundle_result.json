@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T02:46:11.795685Z",
+  "ts": "2026-03-28T02:46:12.620276Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/brain_wiring_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/brain_wiring_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/coherent_experience_model_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/coherent_experience_model_v1.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "brain_wiring_bundle",
-  "hash_before": "44d5b90a08e64365491b9edb54add79cf7d3e9d0285d0b937cb20932adce7856",
-  "hash_after": "c98b77d5b42b255af1fa92a9dc9861d574dd231f57e23501e003725a2ee15ceb"
+  "family": "coherent_experience_model",
+  "hash_before": "6c4ef13e2821c7b62db70e20059b1c8bcb4fe15469a9d2af5a823ca1b4a34201",
+  "hash_after": "d3f36e0dc4b78bfd96d7411409ae41e8cac36a96cef874fd90b902bf49ee911e"
 }
