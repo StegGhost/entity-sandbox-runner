@@ -10,6 +10,10 @@ NEXT_ACTION_PATH = BRAIN_REPORTS / "next_action.json"
 OUTPUT_PATH = BRAIN_REPORTS / "execution_result.json"
 HEADLESS_OUTPUT_PATH = BRAIN_REPORTS / "headless_cmd_test.json"
 
+FAILED_DIR = ROOT / "failed_bundles"
+INCOMING_DIR = ROOT / "incoming_bundles"
+REPAIRED_DIR = ROOT / "repaired_bundles"
+
 
 def now_ts() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%S")
@@ -34,6 +38,15 @@ def load_json(path: Path):
         return None
 
 
+def parse_json_maybe(text: str):
+    if not text:
+        return None
+    try:
+        return json.loads(text)
+    except Exception:
+        return None
+
+
 def run_step(cmd: list[str]):
     start = time.time()
     try:
@@ -49,6 +62,7 @@ def run_step(cmd: list[str]):
             "stdout": proc.stdout.strip(),
             "stderr": proc.stderr.strip(),
             "duration": round(time.time() - start, 3),
+            "parsed_stdout": parse_json_maybe(proc.stdout.strip()),
         }
     except Exception as e:
         return {
@@ -57,6 +71,7 @@ def run_step(cmd: list[str]):
             "stdout": "",
             "stderr": str(e),
             "duration": round(time.time() - start, 3),
+            "parsed_stdout": None,
         }
 
 
@@ -68,7 +83,7 @@ def ensure_headless_artifact():
         "python",
         "install/engine/headless_cmd_tester.py",
         "--mode",
-        "steggate_live_test"
+        "steggate_live_test",
     ])
 
     if HEADLESS_OUTPUT_PATH.exists():
@@ -85,14 +100,164 @@ def ensure_headless_artifact():
             "token": {"ok": False},
             "execute": {"ok": False},
             "verify": {"ok": False},
-        }
+        },
     }
     write_json(HEADLESS_OUTPUT_PATH, fallback)
+
+
+def resolve_bundle_path(target: str) -> Path | None:
+    if not target:
+        return None
+
+    p = Path(target)
+    if p.exists():
+        return p.resolve()
+
+    candidates = [
+        FAILED_DIR / target,
+        INCOMING_DIR / target,
+        REPAIRED_DIR / target,
+    ]
+
+    for c in candidates:
+        if c.exists():
+            return c.resolve()
+
+    return None
+
+
+def execute_repair_target(action: dict):
+    engine_step = run_step([
+        "python",
+        "install/engine/repair_bundle_engine.py"
+    ])
+
+    engine_payload = engine_step.get("parsed_stdout") or {}
+    engine_result = engine_payload.get("result", {}) if isinstance(engine_payload, dict) else {}
+
+    target_from_engine = engine_result.get("target") or action.get("target") or ""
+    resolved_path = resolve_bundle_path(target_from_engine)
+
+    if not resolved_path:
+        return {
+            "status": "failed",
+            "ts": now_ts(),
+            "action": action.get("action"),
+            "family": engine_result.get("family", "unknown"),
+            "target": target_from_engine,
+            "resolved_path": None,
+            "worker_result": None,
+            "reintegrate_result": None,
+            "reason": "missing_target",
+            "output_report": str(BRAIN_REPORTS / "repair_bundle_engine_result.json"),
+            "engine_step": engine_step,
+            "engine_result": engine_result,
+        }
+
+    worker_step = run_step([
+        "python",
+        "install/engine/repair_bundle.py",
+        "--target",
+        str(resolved_path),
+    ])
+
+    worker_payload = worker_step.get("parsed_stdout") or {}
+    worker_result = worker_payload.get("result", {}) if isinstance(worker_payload, dict) else {}
+
+    result = {
+        "status": "ok" if worker_step["ok"] else "failed",
+        "ts": now_ts(),
+        "action": action.get("action"),
+        "family": engine_result.get("family", action.get("family", "unknown")),
+        "target": target_from_engine,
+        "resolved_path": str(resolved_path),
+        "worker_result": worker_step,
+        "reintegrate_result": None,
+        "reason": "repair_completed" if worker_step["ok"] else "repair_failed",
+        "output_report": str(BRAIN_REPORTS / "repair_bundle_engine_result.json"),
+        "engine_step": engine_step,
+        "engine_result": engine_result,
+        "repair_result": worker_result,
+    }
+    return result
+
+
+def execute_inspection(action: dict):
+    target = action.get("target", "")
+    resolved_path = resolve_bundle_path(target)
+
+    if not resolved_path:
+        return {
+            "status": "failed",
+            "ts": now_ts(),
+            "action": action.get("action"),
+            "target": target,
+            "resolved_path": None,
+            "worker_result": None,
+            "reason": "missing_target",
+        }
+
+    inspect_step = run_step([
+        "python",
+        "install/engine/inspect_bundle_engine.py",
+        "--action-payload-json",
+        json.dumps({
+            **action,
+            "target": str(resolved_path),
+        }),
+    ])
+
+    return {
+        "status": "ok" if inspect_step["ok"] else "failed",
+        "ts": now_ts(),
+        "action": action.get("action"),
+        "target": str(resolved_path),
+        "resolved_path": str(resolved_path),
+        "worker_result": inspect_step,
+        "reason": "inspection_completed" if inspect_step["ok"] else "inspection_failed",
+    }
+
+
+def execute_reintegrate(action: dict):
+    target = action.get("target", "")
+    resolved_path = resolve_bundle_path(target)
+
+    if not resolved_path:
+        return {
+            "status": "failed",
+            "ts": now_ts(),
+            "action": action.get("action"),
+            "target": target,
+            "resolved_path": None,
+            "worker_result": None,
+            "reason": "missing_target",
+        }
+
+    reintegrate_step = run_step([
+        "python",
+        "install/engine/reintegrate_repaired_bundle.py",
+        "--action-payload-json",
+        json.dumps({
+            **action,
+            "target": str(resolved_path),
+        }),
+    ])
+
+    return {
+        "status": "ok" if reintegrate_step["ok"] else "failed",
+        "ts": now_ts(),
+        "action": action.get("action"),
+        "target": str(resolved_path),
+        "resolved_path": str(resolved_path),
+        "worker_result": reintegrate_step,
+        "reason": "reintegrate_completed" if reintegrate_step["ok"] else "reintegrate_failed",
+    }
 
 
 def main():
     payload = load_json(NEXT_ACTION_PATH)
     if not isinstance(payload, dict):
+        ensure_headless_artifact()
         result = {
             "status": "failed",
             "ts": now_ts(),
@@ -104,6 +269,7 @@ def main():
 
     action = payload.get("next_action", {})
     if not isinstance(action, dict):
+        ensure_headless_artifact()
         result = {
             "status": "failed",
             "ts": now_ts(),
@@ -113,8 +279,7 @@ def main():
         print(json.dumps({"status": "failed", "output": str(OUTPUT_PATH), "result": result}, indent=2))
         return
 
-    action_name = action.get("action")
-    target = action.get("target", "")
+    action_name = action.get("action", "idle")
 
     if action_name == "idle":
         ensure_headless_artifact()
@@ -123,92 +288,29 @@ def main():
             "ts": now_ts(),
             "reason": "idle_no_op",
             "action": action_name,
-            "target": target,
+            "target": action.get("target", ""),
         }
         write_json(OUTPUT_PATH, result)
         print(json.dumps({"status": "idle", "output": str(OUTPUT_PATH), "result": result}, indent=2))
         return
 
-    if not target:
-        ensure_headless_artifact()
-        result = {
-            "status": "failed",
-            "ts": now_ts(),
-            "reason": "missing_target",
-            "action": action_name,
-            "target": target,
-        }
-        write_json(OUTPUT_PATH, result)
-        print(json.dumps({"status": "failed", "output": str(OUTPUT_PATH), "result": result}, indent=2))
-        return
-
-    target_path = Path(target)
-    if not target_path.exists():
-        ensure_headless_artifact()
-        result = {
-            "status": "failed",
-            "ts": now_ts(),
-            "reason": "target_not_found",
-            "action": action_name,
-            "target": target,
-        }
-        write_json(OUTPUT_PATH, result)
-        print(json.dumps({"status": "failed", "output": str(OUTPUT_PATH), "result": result}, indent=2))
-        return
-
     if action_name == "propose_repair_for_bundle_family":
-        step = run_step([
-            "python",
-            "install/engine/repair_bundle_engine.py",
-            "--action-payload-json",
-            json.dumps(action)
-        ])
+        result = execute_repair_target(action)
         ensure_headless_artifact()
-        result = {
-            "status": "ok" if step["ok"] else "failed",
-            "ts": now_ts(),
-            "action": action_name,
-            "target": target,
-            "worker_result": step,
-        }
-        write_json(OUTPUT_PATH, result)
-        print(json.dumps({"status": result["status"], "output": str(OUTPUT_PATH), "result": result}, indent=2))
-        return
-
-    if action_name == "reintegrate_repaired_bundle":
-        step = run_step([
-            "python",
-            "install/engine/reintegrate_repaired_bundle.py",
-            "--action-payload-json",
-            json.dumps(action)
-        ])
-        ensure_headless_artifact()
-        result = {
-            "status": "ok" if step["ok"] else "failed",
-            "ts": now_ts(),
-            "action": action_name,
-            "target": target,
-            "worker_result": step,
-        }
         write_json(OUTPUT_PATH, result)
         print(json.dumps({"status": result["status"], "output": str(OUTPUT_PATH), "result": result}, indent=2))
         return
 
     if action_name == "inspect_incoming_bundle_family":
-        step = run_step([
-            "python",
-            "install/engine/inspect_bundle_engine.py",
-            "--action-payload-json",
-            json.dumps(action)
-        ])
+        result = execute_inspection(action)
         ensure_headless_artifact()
-        result = {
-            "status": "ok" if step["ok"] else "failed",
-            "ts": now_ts(),
-            "action": action_name,
-            "target": target,
-            "worker_result": step,
-        }
+        write_json(OUTPUT_PATH, result)
+        print(json.dumps({"status": result["status"], "output": str(OUTPUT_PATH), "result": result}, indent=2))
+        return
+
+    if action_name == "reintegrate_repaired_bundle":
+        result = execute_reintegrate(action)
+        ensure_headless_artifact()
         write_json(OUTPUT_PATH, result)
         print(json.dumps({"status": result["status"], "output": str(OUTPUT_PATH), "result": result}, indent=2))
         return
@@ -219,7 +321,7 @@ def main():
         "ts": now_ts(),
         "reason": "unknown_action",
         "action": action_name,
-        "target": target,
+        "target": action.get("target", ""),
     }
     write_json(OUTPUT_PATH, result)
     print(json.dumps({"status": "failed", "output": str(OUTPUT_PATH), "result": result}, indent=2))
