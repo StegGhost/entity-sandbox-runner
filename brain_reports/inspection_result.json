@@ -1,29 +1,15 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T05:07:36",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v3.zip",
-  "family": "stability_gate",
+  "ts": "2026-03-28T05:17:12",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "install/apply.py",
-      "install/engine/__init__.py",
-      "install/engine/receipts.py",
-      "install/engine/volatility.py",
-      "install/engine/state_model.py",
-      "install/engine/adaptive_threshold.py",
-      "install/engine/stability_guard.py",
-      "install/engine/runtime_check.py",
-      "install/engine/enforcement.py",
-      "install/tests/test_stability_score.py",
-      "install/tests/test_volatility.py",
-      "install/tests/test_receipts.py",
-      "install/tests/test_enforcement.py",
-      "install/tests/test_thresholds.py",
-      "docs/stability_model.md"
+      "install/apply.py"
     ]
   },
   "decision": {
