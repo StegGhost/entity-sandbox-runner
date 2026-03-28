@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T03:34:00.754555Z",
+  "ts": "2026-03-28T03:34:01.726629Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/crypto_signing_v9_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/crypto_signing_v9_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "real_crypto_signing",
-  "hash_before": "be8bbac7cf56fea146c0ef95aa74fb6f53b0ad94a0d789293d38821d0f4706d2",
-  "hash_after": "8ebb3c6180bcded68c9944e432de7eb9237de676f70a2fd1a608be08a9b817d7"
+  "family": "demo_missing_install",
+  "hash_before": "371afa9e07c19d5affb45e2c2c83c63969e6eefc129956a5759f523a5db04625",
+  "hash_after": "27783725c182cd82eaf88d2e0172723f34305ee5bb2ad1e3959f3c67fe1c68e3"
 }
