@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T02:14:59.483959Z",
+  "ts": "2026-03-28T02:46:11.795685Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/bootstrap_and_convergence_bundles.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/bootstrap_and_convergence_bundles.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/brain_wiring_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/brain_wiring_bundle_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "bootstrap_and_convergence",
-  "hash_before": "be09898a7b75ae09f2c55b781a10486254786ce455078a3271d5a6fa41caf205",
-  "hash_after": "6de5d577a6ea3bf140aca97395aaf6d79d10b098c88a2b493e15d90977c431ab"
+  "family": "brain_wiring_bundle",
+  "hash_before": "44d5b90a08e64365491b9edb54add79cf7d3e9d0285d0b937cb20932adce7856",
+  "hash_after": "c98b77d5b42b255af1fa92a9dc9861d574dd231f57e23501e003725a2ee15ceb"
 }
