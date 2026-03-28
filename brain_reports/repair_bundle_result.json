@@ -1,11 +1,11 @@
 {
-  "ts": "2026-03-28T01:55:50.254027Z",
+  "ts": "2026-03-28T01:55:51.020034Z",
   "status": "repaired",
   "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/activation_bundle_v1.zip",
   "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/activation_bundle_v1.zip",
   "changes_applied": [],
   "errors": [],
   "family": "activation_bundle_v1",
-  "hash_before": "a4615593009ea1ff358cb0b83d810fd2676dfe9c9b8cbdd77312da4e06d1fd34",
+  "hash_before": "b0ad92399f651d44b3a1fd5b53c14856708289ef38ce1294763fb0b1a12b690b",
   "hash_after": "b0ad92399f651d44b3a1fd5b53c14856708289ef38ce1294763fb0b1a12b690b"
 }

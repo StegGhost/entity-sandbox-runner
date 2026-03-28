@@ -4852,5 +4852,11 @@
     "ok": false,
     "error": "path_not_allowed:README.md",
     "ts": 1774662950.162827
+  },
+  {
+    "bundle": "activation_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774662950.9262075
   }
 ]
