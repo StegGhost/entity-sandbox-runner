@@ -4798,5 +4798,11 @@
     "ok": false,
     "error": "manifest_missing_fields:['install_mode']",
     "ts": 1774662657.2613
+  },
+  {
+    "bundle": "activation_bundle_v1.zip",
+    "ok": false,
+    "error": "path_not_allowed:README.md",
+    "ts": 1774662658.3687804
   }
 ]
