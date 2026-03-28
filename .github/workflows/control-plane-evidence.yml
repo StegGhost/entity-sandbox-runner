@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,11 +25,9 @@ jobs:
           pip install pynacl requests
 
       - name: Ensure brain_reports exists
-        run: mkdir -p brain_reports
+        run: |
+          mkdir -p brain_reports
 
-      # -----------------------------
-      # FIXED: HEADLESS TEST
-      # -----------------------------
       - name: Run control plane evidence (headless + local)
         run: |
           echo "---- HEADLESS RECEIPT TEST ----"
@@ -36,43 +36,36 @@ jobs:
           echo "---- LOCAL CONTROL PLANE TEST ----"
           python install/engine/control_plane_evidence_test.py
 
-      # -----------------------------
-      # Verify outputs
-      # -----------------------------
       - name: Verify evidence outputs
         run: |
           echo "---- CHECK OUTPUT FILES ----"
           ls -lah brain_reports || true
 
           test -f brain_reports/headless_cmd_test.json
+          test -f brain_reports/headless_cmd_test.md
           test -f brain_reports/control_plane_evidence_test.json
+          test -f brain_reports/control_plane_evidence_test.md
 
-      # -----------------------------
-      # StegCore Gate
-      # -----------------------------
       - name: Run StegCore Gate
-        run: python control_plane/stegcore_gate.py
-
-      # -----------------------------
-      # Commit Gate
-      # -----------------------------
-      - name: Enforce Commit Gate
-        run: python install/engine/commit_gate.py
-
-      # -----------------------------
-      # Debug summary
-      # -----------------------------
-      - name: Print summary
         run: |
-          echo "---- HEADLESS ----"
+          python control_plane/stegcore_gate.py
+          test -f brain_reports/stegcore_gate_result.json
+
+      - name: Enforce Commit Gate
+        run: |
+          python install/engine/commit_gate.py
+
+      - name: Print summaries
+        run: |
+          echo "---- HEADLESS CMD TEST ----"
           cat brain_reports/headless_cmd_test.json || true
 
-          echo "---- CONTROL PLANE ----"
+          echo "---- CONTROL PLANE EVIDENCE TEST ----"
           cat brain_reports/control_plane_evidence_test.json || true
 
-      # -----------------------------
-      # Commit evidence
-      # -----------------------------
+          echo "---- STEGCORE GATE RESULT ----"
+          cat brain_reports/stegcore_gate_result.json || true
+
       - name: Commit evidence reports
         run: |
           git config user.name "actions-user"
@@ -82,7 +75,11 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "control-plane evidence run"
-            git push
+            exit 0
           fi
+
+          git commit -m "control-plane evidence run"
+
+          git fetch origin main
+          git pull --rebase origin main
+          git push origin HEAD:main
