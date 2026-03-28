@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:07:10",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_convergence_bundle_v1.zip",
+  "ts": "2026-03-28T04:07:11",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_convergence_bundle_v1_fix1.zip",
   "family": "sandbox_convergence_bundle",
   "validation": {
     "valid_zip": true,
