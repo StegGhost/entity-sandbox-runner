@@ -1,0 +1,10 @@
+{
+  "status": "bound",
+  "binding_hash": "d486d74d430df7a02c7eb01ebd281eee1b4593d749354ff6cb3169e57feab5c7",
+  "details": {
+    "token": "dd75ea7da5dc5beced711d85751f5d40e119b1130e09dc7ac7b7b72380ccb8f2",
+    "receipt_id": "ce2f7516649ff33db023a548e74bc85d5c853afac65105e90834d74733c2e2c7",
+    "action_hash": "4834945f7bf91f82efc5cf881d902ec1cfa58f1be01cb35fe602b8ad4620c552",
+    "result_hash": "bef23da184e375024cf1112622d34a094b513514df2d15765f4ef395d01bc861"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "issued",
+  "ts": 1774673239,
+  "ttl": 60,
+  "scope": "promotion_to_main",
+  "quorum_required": true,
+  "quorum_min": 2,
+  "token": "daf170e8d592b33ed0e2a8e1ba4050d7560766a98f2fc370713cb2e0198765f9"
+}
