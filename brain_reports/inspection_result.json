@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:51:40",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v6_bundle.zip",
-  "family": "generator_v6_bundle",
+  "ts": "2026-03-28T03:51:41",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v7_bundle.zip",
+  "family": "generator_v7_bundle",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
@@ -14,7 +14,8 @@
       "install/engine/receipt_chain.py",
       "install/engine/passport.py",
       "install/engine/proposal_to_bundle.py",
-      "install/tests/test_generator_v6.py"
+      "install/engine/trust_engine.py",
+      "install/tests/test_generator_v7.py"
     ]
   },
   "decision": {
