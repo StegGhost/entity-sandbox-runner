@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T04:31:43.745945Z",
+  "ts": "2026-03-28T04:34:06.723321Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_eval_ready_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_eval_ready_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "sandbox_eval_ready",
-  "hash_before": "3e3eaacf9b3365b49939733bb85c0208b70c0e8ad885c754b34e3517eb7210b6",
-  "hash_after": "e9dcf9750ae093182423083b28e38441bba0786033247357c32b3c051bc638a0"
+  "family": "demo_missing_install",
+  "hash_before": "4fd7e5cc203e5247e1f7dae9e0ff165ae7ee76063ba3f48d0d14fa9dde014a48",
+  "hash_after": "32588fd4902515fa4276ce336460879cfdb7da99f61c1a89b896f656b0d04ccb"
 }
