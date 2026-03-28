@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T06:07:42",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/auto_bundle.zip",
-  "family": "priority_fix",
+  "ts": "2026-03-28T06:07:43",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
