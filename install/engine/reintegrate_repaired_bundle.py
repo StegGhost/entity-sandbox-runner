@@ -1,22 +1,20 @@
-import os
+import argparse
 import json
 import shutil
-import time
 import subprocess
+import time
 from pathlib import Path
-from typing import Dict, Any, Optional
+
 
 ROOT = Path(__file__).resolve().parents[2]
 
-FAILED_DIR = ROOT / "failed_bundles"
-INCOMING_DIR = ROOT / "incoming_bundles"
-REPAIRED_DIR = ROOT / "repaired_bundles"
 BRAIN_REPORTS = ROOT / "brain_reports"
+INCOMING_DIR = ROOT / "incoming_bundles"
+INSTALLED_DIR = ROOT / "installed_bundles"
+FAILED_DIR = ROOT / "failed_bundles"
+REPAIRED_DIR = ROOT / "repaired_bundles"
 
-REPORT_PATH = BRAIN_REPORTS / "reintegrate_repaired_bundle_result.json"
-
-INCOMING_DIR.mkdir(parents=True, exist_ok=True)
-BRAIN_REPORTS.mkdir(parents=True, exist_ok=True)
+OUTPUT_PATH = BRAIN_REPORTS / "reintegrate_repaired_bundle_result.json"
 
 
 def now_ts() -> str:
@@ -25,39 +23,21 @@ def now_ts() -> str:
 
 def write_json(path: Path, payload: dict):
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = path.with_suffix(".tmp")
-    tmp_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
-    tmp_path.replace(path)
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    tmp.replace(path)
 
 
-def load_json(path: Path) -> Optional[dict]:
-    if not path.exists():
+def parse_json_maybe(text: str):
+    if not text:
         return None
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        if isinstance(data, str):
-            data = json.loads(data)
-        return data if isinstance(data, dict) else None
+        return json.loads(text)
     except Exception:
         return None
 
 
-def resolve_repaired_bundle(path_or_name: str) -> str:
-    if not path_or_name:
-        return ""
-
-    candidate = Path(path_or_name)
-    if candidate.exists():
-        return str(candidate.resolve())
-
-    alt = REPAIRED_DIR / path_or_name
-    if alt.exists():
-        return str(alt.resolve())
-
-    return ""
-
-
-def run_step(cmd: list[str]) -> Dict[str, Any]:
+def run_step(cmd: list[str]) -> dict:
     start = time.time()
     try:
         proc = subprocess.run(
@@ -71,7 +51,8 @@ def run_step(cmd: list[str]) -> Dict[str, Any]:
             "returncode": proc.returncode,
             "stdout": proc.stdout.strip(),
             "stderr": proc.stderr.strip(),
-            "duration": round(time.time() - start, 3)
+            "duration": round(time.time() - start, 3),
+            "parsed_stdout": parse_json_maybe(proc.stdout.strip()),
         }
     except Exception as e:
         return {
@@ -79,128 +60,192 @@ def run_step(cmd: list[str]) -> Dict[str, Any]:
             "returncode": -1,
             "stdout": "",
             "stderr": str(e),
-            "duration": round(time.time() - start, 3)
+            "duration": round(time.time() - start, 3),
+            "parsed_stdout": None,
         }
 
 
-def reintegrate(action_payload: Dict[str, Any]) -> Dict[str, Any]:
-    ts = now_ts()
+def resolve_path(value: str | None) -> Path | None:
+    if not value:
+        return None
 
-    repaired_bundle = action_payload.get("repaired_bundle") or action_payload.get("target")
-    family = action_payload.get("family", "unknown")
-    original_bundle = action_payload.get("original_bundle", "")
+    p = Path(value)
+    if p.exists():
+        return p.resolve()
 
-    result: Dict[str, Any] = {
-        "status": "failed",
-        "ts": ts,
-        "family": family,
-        "repaired_bundle": repaired_bundle,
-        "resolved_repaired_bundle": None,
-        "incoming_bundle": None,
-        "original_bundle": original_bundle,
-        "original_failed_removed": False,
-        "inspection_result": None,
-        "reason": None,
-        "output_report": str(REPORT_PATH)
-    }
+    candidates = [
+        ROOT / value,
+        REPAIRED_DIR / value,
+        FAILED_DIR / value,
+        INCOMING_DIR / value,
+        INSTALLED_DIR / value,
+    ]
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate.resolve()
 
-    resolved = resolve_repaired_bundle(repaired_bundle)
-    result["resolved_repaired_bundle"] = resolved
+    return None
 
-    if not resolved:
-        result["reason"] = "missing_repaired_bundle"
-        write_json(REPORT_PATH, result)
-        return result
 
-    bundle_name = os.path.basename(resolved)
-    incoming_path = INCOMING_DIR / bundle_name
+def load_action_payload(raw: str) -> dict:
+    payload = json.loads(raw)
+    if isinstance(payload, str):
+        payload = json.loads(payload)
+    if not isinstance(payload, dict):
+        raise ValueError("action payload must be a JSON object")
+    return payload
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--action-payload-json", required=True)
+    args = parser.parse_args()
+
+    INCOMING_DIR.mkdir(parents=True, exist_ok=True)
+    INSTALLED_DIR.mkdir(parents=True, exist_ok=True)
+    FAILED_DIR.mkdir(parents=True, exist_ok=True)
+    REPAIRED_DIR.mkdir(parents=True, exist_ok=True)
+    BRAIN_REPORTS.mkdir(parents=True, exist_ok=True)
 
     try:
-        shutil.copy2(resolved, incoming_path)
+        payload = load_action_payload(args.action_payload_json)
     except Exception as e:
-        result["reason"] = "copy_to_incoming_failed"
-        result["error"] = str(e)
-        write_json(REPORT_PATH, result)
-        return result
+        result = {
+            "status": "failed",
+            "ts": now_ts(),
+            "family": None,
+            "repaired_bundle": None,
+            "resolved_repaired_bundle": None,
+            "incoming_bundle": None,
+            "installed_bundle": None,
+            "original_bundle": None,
+            "original_failed_removed": False,
+            "inspection_result": None,
+            "reason": f"invalid_action_payload: {e}",
+            "output_report": str(OUTPUT_PATH),
+        }
+        write_json(OUTPUT_PATH, result)
+        print(json.dumps({
+            "status": "failed",
+            "output": str(OUTPUT_PATH),
+            "result": result
+        }, indent=2))
+        return
 
-    result["incoming_bundle"] = str(incoming_path.resolve())
+    family = payload.get("family")
+    repaired_bundle_value = payload.get("repaired_bundle") or payload.get("target")
+    original_bundle_value = payload.get("original_bundle")
 
-    inspect_payload = {
-        "action": "inspect_incoming_bundle_family",
-        "action_class": "inspection",
-        "target": str(incoming_path.resolve()),
-        "family": family,
-        "source": "reintegrate_repaired_bundle"
-    }
+    repaired_bundle = resolve_path(repaired_bundle_value)
+    original_bundle = resolve_path(original_bundle_value) if original_bundle_value else None
+
+    if repaired_bundle is None or not repaired_bundle.exists():
+        result = {
+            "status": "failed",
+            "ts": now_ts(),
+            "family": family,
+            "repaired_bundle": repaired_bundle_value,
+            "resolved_repaired_bundle": None,
+            "incoming_bundle": None,
+            "installed_bundle": None,
+            "original_bundle": str(original_bundle) if original_bundle else original_bundle_value,
+            "original_failed_removed": False,
+            "inspection_result": None,
+            "reason": "missing_repaired_bundle",
+            "output_report": str(OUTPUT_PATH),
+        }
+        write_json(OUTPUT_PATH, result)
+        print(json.dumps({
+            "status": "failed",
+            "output": str(OUTPUT_PATH),
+            "result": result
+        }, indent=2))
+        return
+
+    incoming_bundle = INCOMING_DIR / repaired_bundle.name
+    installed_bundle = INSTALLED_DIR / repaired_bundle.name
+
+    if incoming_bundle.exists():
+        incoming_bundle.unlink()
+
+    shutil.copy2(repaired_bundle, incoming_bundle)
 
     inspect_step = run_step([
         "python",
         "install/engine/inspect_bundle_engine.py",
         "--action-payload-json",
-        json.dumps(inspect_payload)
+        json.dumps({
+            "action": "inspect_incoming_bundle_family",
+            "target": str(incoming_bundle),
+            "family": family,
+        }),
     ])
-    result["inspection_result"] = inspect_step
 
-    inspection_report = load_json(BRAIN_REPORTS / "inspection_result.json") or {}
-    inspection = inspection_report.get("inspection", {})
-    decision = inspection.get("decision", {})
-    action = decision.get("action")
+    inspect_stdout = inspect_step.get("parsed_stdout") or {}
+    inspection = inspect_stdout.get("inspection", {}) if isinstance(inspect_stdout, dict) else {}
+    decision = inspection.get("decision", {}) if isinstance(inspection, dict) else {}
 
-    if action == "promote_to_install":
-        result["status"] = "ok"
-        result["reason"] = "reintegrated_and_valid"
+    decision_action = decision.get("action")
+    decision_valid = decision.get("valid")
 
-        failed_original = ""
-        if original_bundle and os.path.exists(original_bundle):
-            failed_original = original_bundle
-        else:
-            guess = FAILED_DIR / bundle_name
-            if guess.exists():
-                failed_original = str(guess.resolve())
+    promoted = False
+    original_failed_removed = False
 
-        if failed_original and os.path.exists(failed_original):
-            try:
-                os.remove(failed_original)
-                result["original_failed_removed"] = True
-                result["original_bundle"] = failed_original
-            except Exception as e:
-                result["original_failed_removed"] = False
-                result["original_failed_remove_error"] = str(e)
-    else:
-        result["status"] = "failed"
-        result["reason"] = action or "inspection_rejected"
+    if inspect_step["ok"] and decision_action == "promote_to_install" and decision_valid is True:
+        if installed_bundle.exists():
+            installed_bundle.unlink()
+        shutil.move(str(incoming_bundle), str(installed_bundle))
+        promoted = True
 
-    write_json(REPORT_PATH, result)
-    return result
+        if original_bundle and original_bundle.exists():
+            original_bundle.unlink()
+            original_failed_removed = True
 
+        if repaired_bundle.exists():
+            repaired_bundle.unlink()
 
-def main():
-    import argparse
-
-    parser = argparse.ArgumentParser(description="Reintegrate repaired bundle into incoming lane.")
-    parser.add_argument("--action-payload-json", default="", help="Raw JSON string")
-    parser.add_argument("--repaired-bundle", default="", help="Path or filename under repaired_bundles")
-    parser.add_argument("--family", default="unknown", help="Optional family")
-    parser.add_argument("--original-bundle", default="", help="Original failed bundle path")
-    args = parser.parse_args()
-
-    if args.action_payload_json:
-        try:
-            payload = json.loads(args.action_payload_json)
-        except Exception:
-            payload = {}
-    else:
-        payload = {
-            "repaired_bundle": args.repaired_bundle,
-            "family": args.family,
-            "original_bundle": args.original_bundle
+        result = {
+            "status": "ok",
+            "ts": now_ts(),
+            "family": family,
+            "repaired_bundle": repaired_bundle_value,
+            "resolved_repaired_bundle": str(repaired_bundle),
+            "incoming_bundle": str(incoming_bundle),
+            "installed_bundle": str(installed_bundle),
+            "original_bundle": str(original_bundle) if original_bundle else original_bundle_value,
+            "original_failed_removed": original_failed_removed,
+            "inspection_result": inspect_step,
+            "promoted": promoted,
+            "reason": "promoted_to_install",
+            "output_report": str(OUTPUT_PATH),
         }
+        write_json(OUTPUT_PATH, result)
+        print(json.dumps({
+            "status": "ok",
+            "output": str(OUTPUT_PATH),
+            "result": result
+        }, indent=2))
+        return
 
-    result = reintegrate(payload)
-
+    result = {
+        "status": "failed",
+        "ts": now_ts(),
+        "family": family,
+        "repaired_bundle": repaired_bundle_value,
+        "resolved_repaired_bundle": str(repaired_bundle),
+        "incoming_bundle": str(incoming_bundle),
+        "installed_bundle": None,
+        "original_bundle": str(original_bundle) if original_bundle else original_bundle_value,
+        "original_failed_removed": False,
+        "inspection_result": inspect_step,
+        "promoted": False,
+        "reason": "inspection_rejected",
+        "output_report": str(OUTPUT_PATH),
+    }
+    write_json(OUTPUT_PATH, result)
     print(json.dumps({
-        "status": result["status"],
-        "output": str(REPORT_PATH),
+        "status": "failed",
+        "output": str(OUTPUT_PATH),
         "result": result
     }, indent=2))
 
