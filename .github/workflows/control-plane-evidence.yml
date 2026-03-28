@@ -3,7 +3,7 @@ name: control-plane-evidence
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"  # every 30 minutes
+    - cron: "*/30 * * * *"
 
 jobs:
   run-control-plane-evidence:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -22,21 +24,18 @@ jobs:
         run: |
           pip install pynacl requests
 
-      # -----------------------------
-      # Run evidence test through headless_cmd
-      # -----------------------------
+      - name: Ensure brain_reports exists
+        run: |
+          mkdir -p brain_reports
+
       - name: Run control plane evidence (headless + local)
         run: |
           echo "---- HEADLESS RECEIPT TEST ----"
-          python install/engine/headless_cmd_tester.py \
-            --mode steggate_live_test
+          python install/engine/headless_cmd_tester.py --mode steggate_live_test
 
           echo "---- LOCAL CONTROL PLANE TEST ----"
           python install/engine/control_plane_evidence_test.py
 
-      # -----------------------------
-      # Verify outputs exist
-      # -----------------------------
       - name: Verify evidence outputs
         run: |
           echo "---- CHECK OUTPUT FILES ----"
@@ -44,33 +43,43 @@ jobs:
 
           test -f brain_reports/control_plane_evidence_test.json
           test -f brain_reports/control_plane_evidence_test.md
+          test -f brain_reports/headless_cmd_test.json
+          test -f brain_reports/headless_cmd_test.md
 
       - name: Run StegCore Gate
-        run: python control_plane/stegcore_gate.py
+        run: |
+          python control_plane/stegcore_gate.py
+          test -f brain_reports/stegcore_gate_result.json
 
       - name: Enforce Commit Gate
-        run: python install/engine/commit_gate.py
-
-      # -----------------------------
-      # Show summary in logs (debug)
-      # -----------------------------
-      - name: Print summary
         run: |
-          echo "---- JSON SUMMARY ----"
+          python install/engine/commit_gate.py
+
+      - name: Print summaries
+        run: |
+          echo "---- CONTROL PLANE EVIDENCE ----"
           cat brain_reports/control_plane_evidence_test.json || true
 
-      # -----------------------------
-      # Commit evidence artifacts
-      # -----------------------------
-      - name: Commit evidence safely
+          echo "---- HEADLESS CMD TEST ----"
+          cat brain_reports/headless_cmd_test.json || true
+
+          echo "---- STEGCORE GATE ----"
+          cat brain_reports/stegcore_gate_result.json || true
+
+      - name: Commit evidence reports
         run: |
           git config user.name "actions-user"
           git config user.email "actions@github.com"
 
-          git add .
+          git add -A brain_reports || true
 
-          git commit -m "persist governed state" || echo "no changes"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
 
-          git pull --rebase origin main || true
+          git commit -m "control-plane evidence run"
 
-          git push origin main || echo "push skipped"
+          git fetch origin main
+          git pull --rebase origin main
+          git push origin HEAD:main
