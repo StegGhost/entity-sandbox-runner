@@ -1,13 +1,14 @@
 {
-  "ts": "2026-03-28T03:57:27.146005Z",
+  "ts": "2026-03-28T03:57:28.404228Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
   "changes_applied": [
+    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "demo_missing_install",
-  "hash_before": "564b55d1a084fb0095b054c21da9466817a2e0f7d0f205a58f98a67a03e22fed",
-  "hash_after": "f9af1deb10e6715c7a57bc691d885994bc04178da6246213eaa5d81d2251a8de"
+  "family": "llm_adapter_readme",
+  "hash_before": "bb1ea1fca7d0e631a6aa6ca404de5e706a8b21bb8d9d8d5c8c0f7fcd4e07b59d",
+  "hash_after": "e6a8f36cda2bb3b5e8e79751d0cda8b51b69b2f372227824b8d64bfe520de82f"
 }
