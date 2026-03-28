@@ -1,0 +1,16 @@
+{
+  "payload": {
+    "action": "promote_to_main",
+    "ts": 1774666000
+  },
+  "signatures": [
+    {
+      "signer": "guardian_a",
+      "signature": "<hex>"
+    },
+    {
+      "signer": "guardian_b",
+      "signature": "<hex>"
+    }
+  ]
+}
