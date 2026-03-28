@@ -1,18 +1,17 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T02:46:47",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/content_post_generation_bundle_v1.zip",
-  "family": "content_post_generation",
+  "ts": "2026-03-28T02:46:48",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/contract_snapshot_bundle_v1.zip",
+  "family": "contract_snapshot_bundle",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "config/content_post_generation_config.json",
       "install/apply.py",
-      "install/content_post_generation.py",
-      "docs/CONTENT_POST_GENERATION.md"
+      "install/engine/contract_snapshot.py",
+      "install/tests/test_contract_snapshot.py"
     ]
   },
   "decision": {
