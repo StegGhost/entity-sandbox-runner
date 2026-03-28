@@ -1,13 +1,13 @@
 {
-  "ts": "2026-03-28T02:02:25.471422Z",
+  "ts": "2026-03-28T02:02:26.341311Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/auto_bundle_fix_v4.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/auto_bundle_fix_v4.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/auto_bundle_fix_v5.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/auto_bundle_fix_v5.zip",
   "changes_applied": [
     "created_missing_manifest"
   ],
   "errors": [],
   "family": "auto_bundle_fix",
-  "hash_before": "986649ffb2e3fab366c315a3fb55e52e115f781898c307f18637c1bbc466d2ca",
-  "hash_after": "ffbd83ead7d8268917714945b23e14c96e90603c91a109d465a6bf53ba4e94e1"
+  "hash_before": "3e7cd8fda40996577f21232393c8b242708b2228ed9289fc90fd6d5b907fd08c",
+  "hash_after": "7d68ec40218f78b7ccbadb86b9a8009bbc84568acebe09cfdaa8fb411f66b162"
 }
