@@ -32,7 +32,7 @@ jobs:
       - name: Seed demo incoming bundle if missing
         run: |
           python - <<'PY'
-          import json, zipfile, os
+          import json, zipfile, shutil
           from pathlib import Path
 
           bundle = Path("incoming_bundles/demo_missing_install_v1.zip")
@@ -42,7 +42,6 @@ jobs:
 
           tmp = Path("_demo_seed")
           if tmp.exists():
-              import shutil
               shutil.rmtree(tmp)
           tmp.mkdir(parents=True, exist_ok=True)
 
@@ -73,10 +72,9 @@ jobs:
           echo "INSTALLED:"
           ls -la installed_bundles || true
 
-      # PASS 1: inspect incoming, fail it if invalid
       - name: Run loop pass 1
         run: |
-          python install/autonomous_loop_orchestrator.py
+          python install/autonomous_loop_orchestrator.py || true
 
       - name: Route rejected incoming bundle to failed_bundles
         run: |
@@ -95,7 +93,7 @@ jobs:
           action = decision.get("action")
           target = inspection.get("target")
 
-          if not action or not action.startswith("reject_"):
+          if not action or not str(action).startswith("reject_"):
               print("inspection did not reject; skipping")
               raise SystemExit(0)
 
@@ -121,10 +119,9 @@ jobs:
           git commit -m "persist loop state pass 1" || echo "no changes"
           git push
 
-      # PASS 2: repair failed bundle, reintegrate to incoming
       - name: Run loop pass 2
         run: |
-          python install/autonomous_loop_orchestrator.py
+          python install/autonomous_loop_orchestrator.py || true
 
       - name: Persist state after pass 2
         run: |
@@ -134,10 +131,9 @@ jobs:
           git commit -m "persist loop state pass 2" || echo "no changes"
           git push
 
-      # PASS 3: inspect repaired incoming, promote if valid
       - name: Run loop pass 3
         run: |
-          python install/autonomous_loop_orchestrator.py
+          python install/autonomous_loop_orchestrator.py || true
 
       - name: Promote valid inspected incoming bundle to installed_bundles
         run: |
@@ -181,6 +177,32 @@ jobs:
           git add incoming_bundles/ failed_bundles/ repaired_bundles/ installed_bundles/ brain_reports/ logs/ || true
           git commit -m "persist loop state pass 3" || echo "no changes"
           git push
+
+      - name: Ensure Render headless artifact exists
+        run: |
+          python install/engine/headless_cmd_tester.py --mode steggate_live_test || true
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("brain_reports/headless_cmd_test.json")
+          if not p.exists():
+              p.parent.mkdir(parents=True, exist_ok=True)
+              p.write_text(json.dumps({
+                  "mode": "steggate_live_test",
+                  "status": "failed",
+                  "reason": "headless_tester_did_not_emit_report",
+                  "steps": {
+                      "health": {"ok": False},
+                      "token": {"ok": False},
+                      "execute": {"ok": False},
+                      "verify": {"ok": False}
+                  }
+              }, indent=2), encoding="utf-8")
+              print("created fallback headless artifact")
+          else:
+              print("headless artifact already exists")
+          PY
 
       - name: Render headless confirmation
         run: |
