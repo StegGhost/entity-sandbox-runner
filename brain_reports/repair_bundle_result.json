@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T05:50:15.166849Z",
+  "ts": "2026-03-28T05:50:15.901520Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-dual-repo-bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-dual-repo-bundle.zip",
   "changes_applied": [
     "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "stegghost-agent-simulation-lab",
-  "hash_before": "b1664de3f6004f179a1e6e84c1a4191bdb9485347157cad35a138ed99311df5d",
-  "hash_after": "81258ec47fc5215dc9cae01a0b49b051a747b648825ab3ff1e9f78da9bb830ff"
+  "family": "stegverse-dual-repo-bundle",
+  "hash_before": "101baf37708e6bc859900ff722c3d5e57a442046a4b0c2bc0329f8b122c9d5b1",
+  "hash_after": "1b3410145beaedf0da7bbaf1306d76016347c46ab1f3230007607a20cdc412e9"
 }
