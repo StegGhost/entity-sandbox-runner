@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T05:21:29",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v6.zip",
+  "ts": "2026-03-28T05:21:30",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v7.zip",
   "family": "stability_gate",
   "validation": {
     "valid_zip": true,
@@ -11,10 +11,10 @@
       "bundle_manifest.json",
       "install/apply.py",
       "install/engine/core.py",
-      "install/engine/multi_agent.py",
-      "install/engine/adversarial.py",
-      "install/tests/test_basic.py",
-      "docs/notes.md"
+      "install/engine/economics.py",
+      "install/engine/receipt_graph.py",
+      "install/tests/test_v7.py",
+      "docs/v7.md"
     ]
   },
   "decision": {
