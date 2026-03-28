@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:57:59.246971Z",
+  "ts": "2026-03-28T03:58:00.473621Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/multi_agent_verification_v7_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/multi_agent_verification_v7_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/multi_platform_post_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/multi_platform_post_bundle_v1.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "multi_agent_verification",
-  "hash_before": "b3fe9c7106a750c284b941c01cb4535ca6f2c00bc4a029aab586afacacb631dc",
-  "hash_after": "41639e3148435662e33f67ec60c0ba62f815850ee892c5a1ee48066f4d003dc5"
+  "family": "multi_platform_post",
+  "hash_before": "c0e689750e64aa1139b5a3da584b0b81319852b5330100a4b48e2e0bdc71893b",
+  "hash_after": "5099705289cc801670fc13dd81ad2ea7139ff6f8ce660db058aa7d34ec6e84ce"
 }

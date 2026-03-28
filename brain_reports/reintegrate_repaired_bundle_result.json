@@ -1,36 +1,37 @@
 {
   "status": "ok",
-  "ts": "20260328_035759",
-  "family": "multi_agent_verification",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/multi_agent_verification_v7_bundle.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/multi_agent_verification_v7_bundle.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_agent_verification_v7_bundle.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/multi_agent_verification_v7_bundle.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/multi_agent_verification_v7_bundle.zip",
+  "ts": "20260328_035800",
+  "family": "multi_platform_post",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/multi_platform_post_bundle_v1.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/multi_platform_post_bundle_v1.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_platform_post_bundle_v1.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/multi_platform_post_bundle_v1.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/multi_platform_post_bundle_v1.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:57:59\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_agent_verification_v7_bundle.zip\",\n    \"family\": \"multi_agent_verification\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"install/engine/agent_verifier_v7.py\",\n        \"install/tests/test_agent_verifier_v7.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:58:00\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_platform_post_bundle_v1.zip\",\n    \"family\": \"multi_platform_post\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/multi_platform_post_config.json\",\n        \"install/multi_platform_post.py\",\n        \"install/apply.py\",\n        \"docs/MULTI_PLATFORM_POST.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
-    "duration": 0.037,
+    "duration": 0.05,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T03:57:59",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_agent_verification_v7_bundle.zip",
-        "family": "multi_agent_verification",
+        "ts": "2026-03-28T03:58:00",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_platform_post_bundle_v1.zip",
+        "family": "multi_platform_post",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
           "install_dir_present": true,
           "files": [
             "bundle_manifest.json",
+            "config/multi_platform_post_config.json",
+            "install/multi_platform_post.py",
             "install/apply.py",
-            "install/engine/agent_verifier_v7.py",
-            "install/tests/test_agent_verifier_v7.py"
+            "docs/MULTI_PLATFORM_POST.md"
           ]
         },
         "decision": {
