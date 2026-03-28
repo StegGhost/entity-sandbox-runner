@@ -1,13 +1,13 @@
 {
-  "ts": "2026-03-28T04:03:03.696640Z",
+  "ts": "2026-03-28T04:03:04.661997Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/relationship_conditioned_execution_v1_2.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/relationship_conditioned_execution_v1_2.zip",
   "changes_applied": [
-    "created_missing_install_stub"
+    "fixed_manifest_fields"
   ],
   "errors": [],
-  "family": "demo_missing_install",
-  "hash_before": "c25c3ca196e9384c723304bb966b336287c76e5654c9f8a069a1b1a1ac2accd5",
-  "hash_after": "131b62920c0e691ce15f53b5baf7fc56fd0bd777171fe579cca69cc3e480f973"
+  "family": "relationship_conditioned_execution",
+  "hash_before": "e4e0ad42f5a2eb172329ee7130448c9a0d1511050548627e4370f880e48e6fb1",
+  "hash_after": "239c2788fa1bf1bea820aa39f227effee6f00f4a354911c0a19ed3dd1b735f24"
 }
