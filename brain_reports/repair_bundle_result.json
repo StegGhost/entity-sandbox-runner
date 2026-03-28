@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T04:01:22.692292Z",
+  "ts": "2026-03-28T04:01:23.636595Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/predictive_layer_v19.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/predictive_layer_v19.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/publishable_demo_export_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/publishable_demo_export_bundle_v1.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "predictive_layer_v19",
-  "hash_before": "fbb1fc96a9b45fe516d9c39b28d5f9392eff7520f545742bbfdab257684b0465",
-  "hash_after": "f246ed354521d384fdc532238a2f61ff0e14b331de2ba287f857f159cd5ae0db"
+  "family": "publishable_demo_export",
+  "hash_before": "ef755e27ac237a4ee321cd721b0f2d86059f150dc9c83d571b4d006867d306c6",
+  "hash_after": "4b3868227a4a75eac44a8ed7597c464ed0ccf3f570872939c78cf1673aca29fa"
 }

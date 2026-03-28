@@ -1,17 +1,17 @@
 {
   "status": "ok",
-  "ts": "20260328_040122",
-  "family": "predictive_layer_v19",
-  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/predictive_layer_v19.zip",
-  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/predictive_layer_v19.zip",
-  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/predictive_layer_v19.zip",
-  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/predictive_layer_v19.zip",
-  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/predictive_layer_v19.zip",
+  "ts": "20260328_040123",
+  "family": "publishable_demo_export",
+  "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/publishable_demo_export_bundle_v1.zip",
+  "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/publishable_demo_export_bundle_v1.zip",
+  "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/publishable_demo_export_bundle_v1.zip",
+  "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/publishable_demo_export_bundle_v1.zip",
+  "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/publishable_demo_export_bundle_v1.zip",
   "original_failed_removed": true,
   "inspection_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:01:22\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/predictive_layer_v19.zip\",\n    \"family\": \"predictive_layer_v19\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"config/predictive_config.json\",\n        \"install/apply.py\",\n        \"install/engine/forecast_engine.py\",\n        \"install/engine/trajectory_engine.py\",\n        \"install/engine/auto_tuning_engine.py\",\n        \"install/engine/recommendation_engine.py\",\n        \"install/tests/test_recommendations.py\",\n        \"install/tests/test_autotune.py\",\n        \"install/tests/test_forecast.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T04:01:23\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/publishable_demo_export_bundle_v1.zip\",\n    \"family\": \"publishable_demo_export\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"payload/publication_plane/paper_draft.md\",\n        \"payload/publication_plane/README.md\",\n        \"payload/observatory/validation_report.py\",\n        \"payload/.github/workflows/publish_demo.yml\",\n        \"payload/sandbox_service/export_to_demo.py\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
     "stderr": "",
     "duration": 0.042,
     "parsed_stdout": {
@@ -19,25 +19,21 @@
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
       "inspection": {
         "status": "ok",
-        "ts": "2026-03-28T04:01:22",
-        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/predictive_layer_v19.zip",
-        "family": "predictive_layer_v19",
+        "ts": "2026-03-28T04:01:23",
+        "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/publishable_demo_export_bundle_v1.zip",
+        "family": "publishable_demo_export",
         "validation": {
           "valid_zip": true,
           "manifest_present": true,
           "install_dir_present": true,
           "files": [
             "bundle_manifest.json",
-            "README.md",
-            "config/predictive_config.json",
-            "install/apply.py",
-            "install/engine/forecast_engine.py",
-            "install/engine/trajectory_engine.py",
-            "install/engine/auto_tuning_engine.py",
-            "install/engine/recommendation_engine.py",
-            "install/tests/test_recommendations.py",
-            "install/tests/test_autotune.py",
-            "install/tests/test_forecast.py"
+            "payload/publication_plane/paper_draft.md",
+            "payload/publication_plane/README.md",
+            "payload/observatory/validation_report.py",
+            "payload/.github/workflows/publish_demo.yml",
+            "payload/sandbox_service/export_to_demo.py",
+            "install/apply.py"
           ]
         },
         "decision": {
