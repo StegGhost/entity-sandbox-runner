@@ -1,14 +1,24 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:58:58",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-  "family": "demo_missing_install",
+  "ts": "2026-03-28T04:58:59",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stability_gate_v1.zip",
+  "family": "stability_gate_v1",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
+      "stability_gate_v1/bundle_manifest.json",
+      "stability_gate_v1/install/apply.py",
+      "stability_gate_v1/install/engine/__init__.py",
+      "stability_gate_v1/install/engine/state_model.py",
+      "stability_gate_v1/install/engine/stability_guard.py",
+      "stability_gate_v1/install/engine/enforcement.py",
+      "stability_gate_v1/install/tests/test_stability_score.py",
+      "stability_gate_v1/install/tests/test_enforcement.py",
+      "stability_gate_v1/install/tests/test_edge_cases.py",
+      "stability_gate_v1/docs/stability_model.md",
       "install/apply.py"
     ]
   },
