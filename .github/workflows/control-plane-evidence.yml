@@ -25,11 +25,14 @@ jobs:
       # -----------------------------
       # Run evidence test through headless_cmd
       # -----------------------------
-      - name: Run control plane evidence (headless)
+      - name: Run control plane evidence (headless + local)
         run: |
+          echo "---- HEADLESS RECEIPT TEST ----"
           python install/engine/headless_cmd_tester.py \
-            --mode steggate_live_test \
-            --custom-command "python install/engine/control_plane_evidence_test.py"
+            --mode steggate_live_test
+
+          echo "---- LOCAL CONTROL PLANE TEST ----"
+          python install/engine/control_plane_evidence_test.py
 
       # -----------------------------
       # Verify outputs exist
