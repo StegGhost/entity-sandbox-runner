@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T04:38:04.592274Z",
+  "ts": "2026-03-28T04:38:05.361706Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_platform_bundle_v1_1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_platform_bundle_v1_1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_research_grade_upgrades_1031_1040_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_research_grade_upgrades_1031_1040_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "sandbox_platform_bundle",
-  "hash_before": "e0014c10cff362524c1854e1963c5ca436e45d2c07a74d429af575e0b64799df",
-  "hash_after": "e83bd1e977424b3649c9a2649fc5ec45b655c9940f6f8a47b3829e2b6034cada"
+  "family": "sandbox_research_grade",
+  "hash_before": "1af2ddfd9a1eb1d833694890a255b53aa6fe50c3d357a367e1bece8a46e51f96",
+  "hash_after": "dd9fcf4ef938dc3eb69c1369b2fc57df5b1f6b8d024a2ac4c0de8ba8c2d614fc"
 }
