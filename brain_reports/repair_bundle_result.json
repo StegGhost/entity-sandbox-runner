@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:56:02.513813Z",
+  "ts": "2026-03-28T03:56:03.285230Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/hard_rollback_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/hard_rollback_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/history_layer_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/history_layer_bundle_v1.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "hard_rollback_bundle",
-  "hash_before": "36bf6bfeda58ac8efd63c95858cbb00b187b2b3e4f15c6a7671b49084aac3ac2",
-  "hash_after": "9a5fd445d0bb9a3b169469362289229e827b77628016967ec00c7274bdb7281c"
+  "family": "history_layer_bundle",
+  "hash_before": "91934c185255bc3a82fabbe13b97e4d1f7d4bb872d83b0454dc4aa3794e3ea4d",
+  "hash_after": "e3860aa6efeaa501cc7f08c7823d6f68cd998f428659bbc39fe24b355bf40245"
 }
