@@ -1,83 +1,83 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:56:56",
+  "ts": "2026-03-28T03:56:57",
   "action": "propose_repair_for_bundle_family",
-  "family": "ingestion_authority_alignment",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip",
+  "family": "ingestion_engine_v3",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:56:56.055529Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip\", \"changes_applied\": [\"fixed_manifest_fields\"], \"errors\": [], \"family\": \"ingestion_authority_alignment\", \"hash_before\": \"d3ef77b22f1de8b8e894c86fe7f3fd51d1fdcee7b21f4926131db6dc043ba109\", \"hash_after\": \"bd8bc6dcde3734ff1948ae5dc1f471342e359016b34d506214e829c13388470c\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:56:56.973568Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"ingestion_engine_v3\", \"hash_before\": \"f601702d56c39af5a542bf7fd07fa1ffa87b7f79eab71e876016f15f2b027d79\", \"hash_after\": \"d10d0a89897c78fde6b802f9e209c8eef75cce6537678050b144b26593c87d9c\"}}",
     "stderr": "",
-    "duration": 0.043,
+    "duration": 0.041,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:56:56.055529Z",
+        "ts": "2026-03-28T03:56:56.973568Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip",
         "changes_applied": [
-          "fixed_manifest_fields"
+          "created_missing_manifest",
+          "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "ingestion_authority_alignment",
-        "hash_before": "d3ef77b22f1de8b8e894c86fe7f3fd51d1fdcee7b21f4926131db6dc043ba109",
-        "hash_after": "bd8bc6dcde3734ff1948ae5dc1f471342e359016b34d506214e829c13388470c"
+        "family": "ingestion_engine_v3",
+        "hash_before": "f601702d56c39af5a542bf7fd07fa1ffa87b7f79eab71e876016f15f2b027d79",
+        "hash_after": "d10d0a89897c78fde6b802f9e209c8eef75cce6537678050b144b26593c87d9c"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip",
-    "family": "ingestion_authority_alignment",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip",
+    "family": "ingestion_engine_v3",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_035656\",\n    \"family\": \"ingestion_authority_alignment\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:56:56\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_authority_alignment_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"ingestion_authority_alignment\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"README.md\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/ingestion_v2.py\\\",\\n        \\\"install/engine/reconcile_execution_state.py\\\",\\n        \\\"install/engine/execute_next_action.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:56:56\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n          \"family\": \"ingestion_authority_alignment\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"README.md\",\n              \"install/apply.py\",\n              \"install/ingestion_v2.py\",\n              \"install/engine/reconcile_execution_state.py\",\n              \"install/engine/execute_next_action.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_035657\",\n    \"family\": \"ingestion_engine_v3\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_engine_v3_deterministic.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/ingestion_engine_v3_deterministic.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:56:57\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_engine_v3_deterministic.zip\\\",\\n    \\\"family\\\": \\\"ingestion_engine_v3\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"ingestion_engine_v3_deterministic/bundle_manifest.json\\\",\\n        \\\"ingestion_engine_v3_deterministic/README.md\\\",\\n        \\\"ingestion_engine_v3_deterministic/install/engine/ingestion_v3.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.038,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:56:57\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_engine_v3_deterministic.zip\",\n          \"family\": \"ingestion_engine_v3\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"ingestion_engine_v3_deterministic/bundle_manifest.json\",\n              \"ingestion_engine_v3_deterministic/README.md\",\n              \"ingestion_engine_v3_deterministic/install/engine/ingestion_v3.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.074,
+    "duration": 0.075,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_035656",
-        "family": "ingestion_authority_alignment",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_authority_alignment_bundle_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/ingestion_authority_alignment_bundle_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip",
+        "ts": "20260328_035657",
+        "family": "ingestion_engine_v3",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_engine_v3_deterministic.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/ingestion_engine_v3_deterministic.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:56:56\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_authority_alignment_bundle_v1.zip\",\n    \"family\": \"ingestion_authority_alignment\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"install/apply.py\",\n        \"install/ingestion_v2.py\",\n        \"install/engine/reconcile_execution_state.py\",\n        \"install/engine/execute_next_action.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:56:57\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_engine_v3_deterministic.zip\",\n    \"family\": \"ingestion_engine_v3\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"ingestion_engine_v3_deterministic/bundle_manifest.json\",\n        \"ingestion_engine_v3_deterministic/README.md\",\n        \"ingestion_engine_v3_deterministic/install/engine/ingestion_v3.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.037,
+          "duration": 0.038,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:56:56",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_authority_alignment_bundle_v1.zip",
-              "family": "ingestion_authority_alignment",
+              "ts": "2026-03-28T03:56:57",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/ingestion_engine_v3_deterministic.zip",
+              "family": "ingestion_engine_v3",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "README.md",
                   "install/apply.py",
-                  "install/ingestion_v2.py",
-                  "install/engine/reconcile_execution_state.py",
-                  "install/engine/execute_next_action.py"
+                  "ingestion_engine_v3_deterministic/bundle_manifest.json",
+                  "ingestion_engine_v3_deterministic/README.md",
+                  "ingestion_engine_v3_deterministic/install/engine/ingestion_v3.py"
                 ]
               },
               "decision": {
@@ -94,17 +94,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:56:56.055529Z",
+    "ts": "2026-03-28T03:56:56.973568Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_engine_v3_deterministic.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_engine_v3_deterministic.zip",
     "changes_applied": [
-      "fixed_manifest_fields"
+      "created_missing_manifest",
+      "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "ingestion_authority_alignment",
-    "hash_before": "d3ef77b22f1de8b8e894c86fe7f3fd51d1fdcee7b21f4926131db6dc043ba109",
-    "hash_after": "bd8bc6dcde3734ff1948ae5dc1f471342e359016b34d506214e829c13388470c"
+    "family": "ingestion_engine_v3",
+    "hash_before": "f601702d56c39af5a542bf7fd07fa1ffa87b7f79eab71e876016f15f2b027d79",
+    "hash_after": "d10d0a89897c78fde6b802f9e209c8eef75cce6537678050b144b26593c87d9c"
   },
   "reason": "repair_completed_and_reintegrated"
 }
