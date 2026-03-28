@@ -1,15 +1,21 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:34:01",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-  "family": "demo_missing_install",
+  "ts": "2026-03-28T03:34:02",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/docs_aware_ingestion_bundle_v1.zip",
+  "family": "docs_aware_ingestion",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "install/apply.py"
+      "payload/examples/docs_bundle_template/bundle_manifest.json",
+      "payload/examples/docs_bundle_template/payload/repo_root/README.md",
+      "payload/examples/docs_bundle_template/payload/repo_root/docs/overview.md",
+      "config/bundle_manifest_rules.json",
+      "install/apply.py",
+      "install/ingestion_v2.py",
+      "workflow_review/DOCS_BUNDLE_LAYOUT.md"
     ]
   },
   "decision": {
