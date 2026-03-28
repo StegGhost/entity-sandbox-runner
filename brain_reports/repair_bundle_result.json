@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T06:20:44.554434Z",
+  "ts": "2026-03-28T07:13:56.569234Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/token_economics_v11.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/token_economics_v11.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/token_economics_v12.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/token_economics_v12.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "token_economics_v11",
-  "hash_before": "8217f0b9d73646ba7970c2b6fc4dc9984b05716a5324bfc5e122a90294187d27",
-  "hash_after": "3d56fcf25cae8be0425ffbb9d2437978d8ed1d2613f898b1f63084431bb02dbf"
+  "family": "token_economics_v12",
+  "hash_before": "b6625ba71b8b8b8f23caa161c757067de34c46ed1f39f9cf1aca2e068407ac95",
+  "hash_after": "ec07cc53d4472faab949a73bfb4263b3e6bc60752cdbc4b1de3b78c766aebcc0"
 }
