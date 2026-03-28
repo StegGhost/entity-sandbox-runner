@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T03:58:38.402578Z",
+  "ts": "2026-03-28T04:01:21.775295Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/passport_receipt_chain_v3_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/passport_receipt_chain_v3_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "passport_receipt_chain",
-  "hash_before": "cc07a919df70e824176474a851af18f6cd00142038e6ee07a346fd37ea27727f",
-  "hash_after": "9cc2e43640c55ec72e2c38b1713e90cb9475fbff847ff88557a46aa12f57b973"
+  "family": "demo_missing_install",
+  "hash_before": "6be057983f517cbb4e68f7014b88dda5f5135b674f57eadd378d7b9a0b5a6152",
+  "hash_after": "a7ff3dae42722661612ec56a6d625e136030db6beffa7197de090ad08f63757b"
 }
