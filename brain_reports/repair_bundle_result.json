@@ -1,14 +1,13 @@
 {
-  "ts": "2026-03-28T05:50:15.901520Z",
+  "ts": "2026-03-28T05:56:38.592077Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegverse-dual-repo-bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegverse-dual-repo-bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "stegverse-dual-repo-bundle",
-  "hash_before": "101baf37708e6bc859900ff722c3d5e57a442046a4b0c2bc0329f8b122c9d5b1",
-  "hash_after": "1b3410145beaedf0da7bbaf1306d76016347c46ab1f3230007607a20cdc412e9"
+  "family": "demo_missing_install",
+  "hash_before": "a62645d4a74f34ea6522cd0c73a4500812e55ca9b19fd8ee38895affd1ccdebf",
+  "hash_after": "f8d7e91bf1891eac89a0792f1333b1fea8f8037bbaa94735dd999b595710efe1"
 }
