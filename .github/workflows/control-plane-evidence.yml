@@ -62,16 +62,15 @@ jobs:
       # -----------------------------
       # Commit evidence artifacts
       # -----------------------------
-      - name: Commit evidence reports
+      - name: Commit evidence safely
         run: |
           git config user.name "actions-user"
           git config user.email "actions@github.com"
 
-          git add -A brain_reports || true
+          git add .
 
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "control-plane evidence run"
-            git push
-          fi
+          git commit -m "persist governed state" || echo "no changes"
+
+          git pull --rebase origin main || true
+
+          git push origin main || echo "push skipped"
