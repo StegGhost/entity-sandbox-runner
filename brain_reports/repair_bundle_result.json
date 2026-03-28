@@ -1,13 +1,13 @@
 {
-  "ts": "2026-03-28T03:56:54.905389Z",
+  "ts": "2026-03-28T03:56:56.055529Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/ingestion_authority_alignment_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/ingestion_authority_alignment_bundle_v1.zip",
   "changes_applied": [
-    "created_missing_install_stub"
+    "fixed_manifest_fields"
   ],
   "errors": [],
-  "family": "demo_missing_install",
-  "hash_before": "3f85a6fd80237494a0a2ef5a8b6d2f99e3da9a30a3dcf043a0ae1a2b46aa1c46",
-  "hash_after": "606c4a9419d09b57ee06cdf9b1077187f8be01a65b527220fb9d4aa0ca377b4b"
+  "family": "ingestion_authority_alignment",
+  "hash_before": "d3ef77b22f1de8b8e894c86fe7f3fd51d1fdcee7b21f4926131db6dc043ba109",
+  "hash_after": "bd8bc6dcde3734ff1948ae5dc1f471342e359016b34d506214e829c13388470c"
 }
