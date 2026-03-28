@@ -1,0 +1,12 @@
+{
+  "status": "noop",
+  "ts": "20260328_013253",
+  "action": null,
+  "family": null,
+  "target": null,
+  "resolved_path": null,
+  "worker_result": null,
+  "reintegrate_result": null,
+  "reason": "no_failures_detected",
+  "output_report": "brain_reports/repair_bundle_engine_result.json"
+}
