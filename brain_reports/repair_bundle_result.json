@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:22:30.817118Z",
+  "ts": "2026-03-28T03:22:31.629027Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/auto_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/auto_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/control_plane_observability_v16.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/control_plane_observability_v16.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "priority_fix",
-  "hash_before": "593f8f329a7a5520cc59d1c5003f367ed149d8f5f9b811c1c5a483ca74262183",
-  "hash_after": "78db43ed6d0f7a6ad1a706365e115ec2d4fc02bf6b5f5091163de506ed1ba633"
+  "family": "control_plane_observability",
+  "hash_before": "acbdb2f970f5caa7beb2f77fcafab3625638008dab09253f05c135e51ba635e8",
+  "hash_after": "503a264850d13a162771310d05748ba6fe9b4c1150fbe437ad12819fecd49339"
 }
