@@ -1,22 +1,15 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:55:34",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v9_1_to_10_bundle.zip",
-  "family": "sandbox_v9_1",
+  "ts": "2026-03-28T04:57:25",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "README.md",
-      "config/policy.json",
-      "github_workflows/autonomous_v10.yml",
-      "experiments/evaluation_suite/run_eval.py",
-      "install/replay.py",
-      "install/apply.py",
-      "install/crypto.py",
-      "install/policy_engine.py"
+      "install/apply.py"
     ]
   },
   "decision": {
