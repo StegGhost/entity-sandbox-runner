@@ -1,78 +1,93 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T05:50:14",
+  "ts": "2026-03-28T05:50:15",
   "action": "propose_repair_for_bundle_family",
-  "family": "demo_missing_install",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "family": "stegghost-agent-simulation-lab",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T05:50:14.270935Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\", \"changes_applied\": [\"created_missing_install_stub\"], \"errors\": [], \"family\": \"demo_missing_install\", \"hash_before\": \"977b99438712e7a0c29c622ef7e9510f006a5daec9f54b6e71c8671c4fd79591\", \"hash_after\": \"4b31be3e186fe1809d6281e3272647e3524b2f45fd02a5fe6fe366fcd488a02d\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T05:50:15.166849Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"stegghost-agent-simulation-lab\", \"hash_before\": \"b1664de3f6004f179a1e6e84c1a4191bdb9485347157cad35a138ed99311df5d\", \"hash_after\": \"81258ec47fc5215dc9cae01a0b49b051a747b648825ab3ff1e9f78da9bb830ff\"}}",
     "stderr": "",
-    "duration": 0.044,
+    "duration": 0.046,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T05:50:14.270935Z",
+        "ts": "2026-03-28T05:50:15.166849Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip",
         "changes_applied": [
+          "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "demo_missing_install",
-        "hash_before": "977b99438712e7a0c29c622ef7e9510f006a5daec9f54b6e71c8671c4fd79591",
-        "hash_after": "4b31be3e186fe1809d6281e3272647e3524b2f45fd02a5fe6fe366fcd488a02d"
+        "family": "stegghost-agent-simulation-lab",
+        "hash_before": "b1664de3f6004f179a1e6e84c1a4191bdb9485347157cad35a138ed99311df5d",
+        "hash_after": "81258ec47fc5215dc9cae01a0b49b051a747b648825ab3ff1e9f78da9bb830ff"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-    "family": "demo_missing_install",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip",
+    "family": "stegghost-agent-simulation-lab",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_055014\",\n    \"family\": \"demo_missing_install\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T05:50:14\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\\\",\\n    \\\"family\\\": \\\"demo_missing_install\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T05:50:14\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n          \"family\": \"demo_missing_install\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_055015\",\n    \"family\": \"stegghost-agent-simulation-lab\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegghost-agent-simulation-lab.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegghost-agent-simulation-lab.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T05:50:15\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegghost-agent-simulation-lab.zip\\\",\\n    \\\"family\\\": \\\"stegghost-agent-simulation-lab\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"stegghost-agent-simulation-lab/.gitignore\\\",\\n        \\\"stegghost-agent-simulation-lab/requirements.txt\\\",\\n        \\\"stegghost-agent-simulation-lab/README.md\\\",\\n        \\\"stegghost-agent-simulation-lab/runs/governed_example.json\\\",\\n        \\\"stegghost-agent-simulation-lab/runs/ungoverned_example.json\\\",\\n        \\\"stegghost-agent-simulation-lab/runs/.gitkeep\\\",\\n        \\\"stegghost-agent-simulation-lab/runs/governed_summary.txt\\\",\\n        \\\"stegghost-agent-simulation-lab/runs/ungoverned_summary.txt\\\",\\n        \\\"stegghost-agent-simulation-lab/analysis/summarize_run.py\\\",\\n        \\\"stegghost-agent-simulation-lab/scripts/run_simulation.py\\\",\\n        \\\"stegghost-agent-simulation-lab/agents/baseline_agent.py\\\",\\n        \\\"stegghost-agent-simulation-lab/agents/__pycache__/baseline_agent.cpython-313.pyc\\\",\\n        \\\"stegghost-agent-simulation-lab/env/world.py\\\",\\n        \\\"stegghost-agent-simulation-lab/env/__pycache__/world.cpython-313.pyc\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.047,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T05:50:15\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegghost-agent-simulation-lab.zip\",\n          \"family\": \"stegghost-agent-simulation-lab\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"stegghost-agent-simulation-lab/.gitignore\",\n              \"stegghost-agent-simulation-lab/requirements.txt\",\n              \"stegghost-agent-simulation-lab/README.md\",\n              \"stegghost-agent-simulation-lab/runs/governed_example.json\",\n              \"stegghost-agent-simulation-lab/runs/ungoverned_example.json\",\n              \"stegghost-agent-simulation-lab/runs/.gitkeep\",\n              \"stegghost-agent-simulation-lab/runs/governed_summary.txt\",\n              \"stegghost-agent-simulation-lab/runs/ungoverned_summary.txt\",\n              \"stegghost-agent-simulation-lab/analysis/summarize_run.py\",\n              \"stegghost-agent-simulation-lab/scripts/run_simulation.py\",\n              \"stegghost-agent-simulation-lab/agents/baseline_agent.py\",\n              \"stegghost-agent-simulation-lab/agents/__pycache__/baseline_agent.cpython-313.pyc\",\n              \"stegghost-agent-simulation-lab/env/world.py\",\n              \"stegghost-agent-simulation-lab/env/__pycache__/world.cpython-313.pyc\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.073,
+    "duration": 0.085,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_055014",
-        "family": "demo_missing_install",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+        "ts": "20260328_055015",
+        "family": "stegghost-agent-simulation-lab",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegghost-agent-simulation-lab.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/stegghost-agent-simulation-lab.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:50:14\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"family\": \"demo_missing_install\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T05:50:15\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegghost-agent-simulation-lab.zip\",\n    \"family\": \"stegghost-agent-simulation-lab\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"stegghost-agent-simulation-lab/.gitignore\",\n        \"stegghost-agent-simulation-lab/requirements.txt\",\n        \"stegghost-agent-simulation-lab/README.md\",\n        \"stegghost-agent-simulation-lab/runs/governed_example.json\",\n        \"stegghost-agent-simulation-lab/runs/ungoverned_example.json\",\n        \"stegghost-agent-simulation-lab/runs/.gitkeep\",\n        \"stegghost-agent-simulation-lab/runs/governed_summary.txt\",\n        \"stegghost-agent-simulation-lab/runs/ungoverned_summary.txt\",\n        \"stegghost-agent-simulation-lab/analysis/summarize_run.py\",\n        \"stegghost-agent-simulation-lab/scripts/run_simulation.py\",\n        \"stegghost-agent-simulation-lab/agents/baseline_agent.py\",\n        \"stegghost-agent-simulation-lab/agents/__pycache__/baseline_agent.cpython-313.pyc\",\n        \"stegghost-agent-simulation-lab/env/world.py\",\n        \"stegghost-agent-simulation-lab/env/__pycache__/world.cpython-313.pyc\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.037,
+          "duration": 0.047,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T05:50:14",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-              "family": "demo_missing_install",
+              "ts": "2026-03-28T05:50:15",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/stegghost-agent-simulation-lab.zip",
+              "family": "stegghost-agent-simulation-lab",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
+                  "stegghost-agent-simulation-lab/.gitignore",
+                  "stegghost-agent-simulation-lab/requirements.txt",
+                  "stegghost-agent-simulation-lab/README.md",
+                  "stegghost-agent-simulation-lab/runs/governed_example.json",
+                  "stegghost-agent-simulation-lab/runs/ungoverned_example.json",
+                  "stegghost-agent-simulation-lab/runs/.gitkeep",
+                  "stegghost-agent-simulation-lab/runs/governed_summary.txt",
+                  "stegghost-agent-simulation-lab/runs/ungoverned_summary.txt",
+                  "stegghost-agent-simulation-lab/analysis/summarize_run.py",
+                  "stegghost-agent-simulation-lab/scripts/run_simulation.py",
+                  "stegghost-agent-simulation-lab/agents/baseline_agent.py",
+                  "stegghost-agent-simulation-lab/agents/__pycache__/baseline_agent.cpython-313.pyc",
+                  "stegghost-agent-simulation-lab/env/world.py",
+                  "stegghost-agent-simulation-lab/env/__pycache__/world.cpython-313.pyc",
                   "install/apply.py"
                 ]
               },
@@ -90,17 +105,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T05:50:14.270935Z",
+    "ts": "2026-03-28T05:50:15.166849Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/stegghost-agent-simulation-lab.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/stegghost-agent-simulation-lab.zip",
     "changes_applied": [
+      "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "demo_missing_install",
-    "hash_before": "977b99438712e7a0c29c622ef7e9510f006a5daec9f54b6e71c8671c4fd79591",
-    "hash_after": "4b31be3e186fe1809d6281e3272647e3524b2f45fd02a5fe6fe366fcd488a02d"
+    "family": "stegghost-agent-simulation-lab",
+    "hash_before": "b1664de3f6004f179a1e6e84c1a4191bdb9485347157cad35a138ed99311df5d",
+    "hash_after": "81258ec47fc5215dc9cae01a0b49b051a747b648825ab3ff1e9f78da9bb830ff"
   },
   "reason": "repair_completed_and_reintegrated"
 }
