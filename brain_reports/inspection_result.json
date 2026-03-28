@@ -1,18 +1,15 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:58:00",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/multi_platform_post_bundle_v1.zip",
-  "family": "multi_platform_post",
+  "ts": "2026-03-28T03:58:36",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
+  "family": "demo_missing_install",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "config/multi_platform_post_config.json",
-      "install/multi_platform_post.py",
-      "install/apply.py",
-      "docs/MULTI_PLATFORM_POST.md"
+      "install/apply.py"
     ]
   },
   "decision": {
