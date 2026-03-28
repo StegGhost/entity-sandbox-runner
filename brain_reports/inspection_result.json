@@ -1,17 +1,18 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T02:46:46",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/constraint_min_bundle_v2.zip",
-  "family": "constraint_min_bundle",
+  "ts": "2026-03-28T02:46:47",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/content_post_generation_bundle_v1.zip",
+  "family": "content_post_generation",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
+      "config/content_post_generation_config.json",
       "install/apply.py",
-      "install/engine/gap_signals.py",
-      "install/tests/test_spec_quality.py"
+      "install/content_post_generation.py",
+      "docs/CONTENT_POST_GENERATION.md"
     ]
   },
   "decision": {
