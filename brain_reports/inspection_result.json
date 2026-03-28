@@ -1,7 +1,7 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T02:14:30",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/auto_bundle_fix_v6.zip",
+  "ts": "2026-03-28T02:14:31",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/auto_bundle_fix_v7.zip",
   "family": "auto_bundle_fix",
   "validation": {
     "valid_zip": true,
@@ -11,7 +11,7 @@
       "bundle_manifest.json",
       "install/apply.py",
       "install/engine/proposal_to_bundle.py",
-      "install/tests/test_prevention.py"
+      "install/tests/test_generator_rules.py"
     ]
   },
   "decision": {
