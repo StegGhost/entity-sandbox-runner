@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T06:07:43.819184Z",
+  "ts": "2026-03-28T06:11:30.711278Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_scaffolding_v0_1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_scaffolding_v0_1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/token_economics_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/token_economics_v1.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "tc_tvc_scaffolding",
-  "hash_before": "0b265ee1ecbe3d38915885b9cd91db7707a9fee4d0c0481f5edd1c614bcd3398",
-  "hash_after": "d59dcc1f889f22f0e1b969877d28372caf8a209a5165078ab83b79d86816a32f"
+  "family": "token_economics_v1",
+  "hash_before": "632af06f757421fdb135f093445346ed3dcef1bb71567b443f752a757ac3b66d",
+  "hash_after": "299410e4c3dbc3403e3e4e17207494252ef84ddaded20af2647dfccba68ac903"
 }
