@@ -33,12 +33,54 @@ def load_json(path: Path):
         return None
 
 
+def extract_result_block(payload):
+    if not isinstance(payload, dict):
+        return None
+
+    # Shape A:
+    # {
+    #   "status": "...",
+    #   "output": "...",
+    #   "result": { ... actual execution result ... }
+    # }
+    nested = payload.get("result")
+    if isinstance(nested, dict):
+        return nested
+
+    # Shape B:
+    # { ... actual execution result directly at top level ... }
+    if "action" in payload or "reason" in payload or "worker_result" in payload:
+        return payload
+
+    return None
+
+
+def extract_receipt(result_block):
+    if not isinstance(result_block, dict):
+        return None
+
+    worker_result = result_block.get("worker_result")
+    if isinstance(worker_result, dict):
+        parsed = worker_result.get("parsed_stdout")
+        if isinstance(parsed, dict):
+            if isinstance(parsed.get("receipt"), dict):
+                return parsed.get("receipt")
+
+            data = parsed.get("data")
+            if isinstance(data, dict) and isinstance(data.get("receipt"), dict):
+                return data.get("receipt")
+
+    return None
+
+
 def main():
     execution_payload = load_json(EXECUTION_RESULT_PATH)
-    if not isinstance(execution_payload, dict):
+    if execution_payload is None:
         result = {
             "status": "invalid",
             "reason": "missing_execution_result",
+            "action": None,
+            "execution_reason": None,
             "output": str(OUTPUT_PATH),
             "ts": now_ts(),
         }
@@ -46,11 +88,13 @@ def main():
         print(json.dumps(result, indent=2))
         return
 
-    result_block = execution_payload.get("result", {})
+    result_block = extract_result_block(execution_payload)
     if not isinstance(result_block, dict):
         result = {
             "status": "invalid",
-            "reason": "invalid_execution_result",
+            "reason": "invalid_execution_result_shape",
+            "action": None,
+            "execution_reason": None,
             "output": str(OUTPUT_PATH),
             "ts": now_ts(),
         }
@@ -59,27 +103,15 @@ def main():
         return
 
     action = result_block.get("action")
-    reason = result_block.get("reason")
+    execution_reason = result_block.get("reason")
+    receipt = extract_receipt(result_block)
 
-    reintegrate_result = result_block.get("reintegrate_result")
-    repair_result = result_block.get("repair_result")
-    worker_result = result_block.get("worker_result")
-
-    receipt = None
-
-    if isinstance(worker_result, dict):
-        parsed = worker_result.get("parsed_stdout")
-        if isinstance(parsed, dict):
-            worker_data = parsed.get("data")
-            if isinstance(worker_data, dict):
-                receipt = worker_data.get("receipt")
-            if receipt is None:
-                receipt = parsed.get("receipt")
-
-    if receipt is not None:
+    if isinstance(receipt, dict):
         result = {
             "status": "ok",
             "reason": "receipt_present",
+            "action": action,
+            "execution_reason": execution_reason,
             "receipt_present": True,
             "receipt": receipt,
             "output": str(OUTPUT_PATH),
@@ -95,23 +127,34 @@ def main():
         "reintegrate_repaired_bundle",
     }
 
-    reintegrated_ok = (
-        isinstance(reintegrate_result, dict)
-        and reintegrate_result.get("ok") is True
-    )
-
-    if action in lifecycle_actions and reason in {
+    lifecycle_reasons = {
         "repair_completed",
         "repair_completed_and_reintegrated",
         "inspection_completed",
         "reintegrate_completed",
-    }:
+        "promoted_to_install",
+    }
+
+    reintegrate_result = result_block.get("reintegrate_result")
+    repair_result = result_block.get("repair_result")
+
+    reintegrated_ok = False
+    if isinstance(reintegrate_result, dict):
+        if reintegrate_result.get("ok") is True:
+            reintegrated_ok = True
+        parsed_stdout = reintegrate_result.get("parsed_stdout")
+        if isinstance(parsed_stdout, dict):
+            nested_result = parsed_stdout.get("result")
+            if isinstance(nested_result, dict) and nested_result.get("status") == "ok":
+                reintegrated_ok = True
+
+    if action in lifecycle_actions and execution_reason in lifecycle_reasons:
         result = {
             "status": "ok",
             "reason": "lifecycle_reconciled_without_receipt",
-            "receipt_present": False,
             "action": action,
-            "execution_reason": reason,
+            "execution_reason": execution_reason,
+            "receipt_present": False,
             "repair_present": isinstance(repair_result, dict),
             "reintegrated_ok": reintegrated_ok,
             "output": str(OUTPUT_PATH),
@@ -125,7 +168,7 @@ def main():
         "status": "invalid",
         "reason": "missing_receipt",
         "action": action,
-        "execution_reason": reason,
+        "execution_reason": execution_reason,
         "output": str(OUTPUT_PATH),
         "ts": now_ts(),
     }
