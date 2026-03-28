@@ -1,79 +1,94 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:36:26",
+  "ts": "2026-03-28T03:36:27",
   "action": "propose_repair_for_bundle_family",
-  "family": "demo_missing_install",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+  "family": "entity-sandbox-runner-v2",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:36:26.411238Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\", \"changes_applied\": [\"created_missing_install_stub\"], \"errors\": [], \"family\": \"demo_missing_install\", \"hash_before\": \"9227b623fb9411f4167b936015315b039eb502fce343a854a4ab5861f018ccb5\", \"hash_after\": \"b759442bd0c893409e3f921b9ee17b615248071f46e53c5623159bbeeb07cdd6\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:36:27.229430Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"entity-sandbox-runner-v2\", \"hash_before\": \"8b4b9bcf3a1d4212a39c1a2d2d9b1d6044662c0e8ab06036198a1a70ab13d465\", \"hash_after\": \"b6595fb8930a3a4ad870013321324ea0674c9c9f5ae988c1feb5c260c6a0498a\"}}",
     "stderr": "",
-    "duration": 0.114,
+    "duration": 0.041,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:36:26.411238Z",
+        "ts": "2026-03-28T03:36:27.229430Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
         "changes_applied": [
+          "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "demo_missing_install",
-        "hash_before": "9227b623fb9411f4167b936015315b039eb502fce343a854a4ab5861f018ccb5",
-        "hash_after": "b759442bd0c893409e3f921b9ee17b615248071f46e53c5623159bbeeb07cdd6"
+        "family": "entity-sandbox-runner-v2",
+        "hash_before": "8b4b9bcf3a1d4212a39c1a2d2d9b1d6044662c0e8ab06036198a1a70ab13d465",
+        "hash_after": "b6595fb8930a3a4ad870013321324ea0674c9c9f5ae988c1feb5c260c6a0498a"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-    "family": "demo_missing_install",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
+    "family": "entity-sandbox-runner-v2",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033626\",\n    \"family\": \"demo_missing_install\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:36:26\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\\\",\\n    \\\"family\\\": \\\"demo_missing_install\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.044,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:36:26\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n          \"family\": \"demo_missing_install\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_033627\",\n    \"family\": \"entity-sandbox-runner-v2\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/entity-sandbox-runner-v2.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:36:27\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\\\",\\n    \\\"family\\\": \\\"entity-sandbox-runner-v2\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"entity-sandbox-runner-v2/metrics.py\\\",\\n        \\\"entity-sandbox-runner-v2/selector.py\\\",\\n        \\\"entity-sandbox-runner-v2/.gitignore\\\",\\n        \\\"entity-sandbox-runner-v2/config_v2.yaml\\\",\\n        \\\"entity-sandbox-runner-v2/run_v2.py\\\",\\n        \\\"entity-sandbox-runner-v2/README.md\\\",\\n        \\\"entity-sandbox-runner-v2/results/receipts.json\\\",\\n        \\\"entity-sandbox-runner-v2/results/metrics.json\\\",\\n        \\\"entity-sandbox-runner-v2/results/summary.txt\\\",\\n        \\\"entity-sandbox-runner-v2/results/example_metrics.json\\\",\\n        \\\"entity-sandbox-runner-v2/results/example_summary.txt\\\",\\n        \\\"entity-sandbox-runner-v2/.github/workflows/run-v2.yml\\\",\\n        \\\"entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc\\\",\\n        \\\"entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.04,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:36:27\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\",\n          \"family\": \"entity-sandbox-runner-v2\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"entity-sandbox-runner-v2/metrics.py\",\n              \"entity-sandbox-runner-v2/selector.py\",\n              \"entity-sandbox-runner-v2/.gitignore\",\n              \"entity-sandbox-runner-v2/config_v2.yaml\",\n              \"entity-sandbox-runner-v2/run_v2.py\",\n              \"entity-sandbox-runner-v2/README.md\",\n              \"entity-sandbox-runner-v2/results/receipts.json\",\n              \"entity-sandbox-runner-v2/results/metrics.json\",\n              \"entity-sandbox-runner-v2/results/summary.txt\",\n              \"entity-sandbox-runner-v2/results/example_metrics.json\",\n              \"entity-sandbox-runner-v2/results/example_summary.txt\",\n              \"entity-sandbox-runner-v2/.github/workflows/run-v2.yml\",\n              \"entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc\",\n              \"entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.078,
+    "duration": 0.074,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_033626",
-        "family": "demo_missing_install",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/demo_missing_install_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
+        "ts": "20260328_033627",
+        "family": "entity-sandbox-runner-v2",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/entity-sandbox-runner-v2.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:36:26\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip\",\n    \"family\": \"demo_missing_install\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:36:27\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip\",\n    \"family\": \"entity-sandbox-runner-v2\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"entity-sandbox-runner-v2/metrics.py\",\n        \"entity-sandbox-runner-v2/selector.py\",\n        \"entity-sandbox-runner-v2/.gitignore\",\n        \"entity-sandbox-runner-v2/config_v2.yaml\",\n        \"entity-sandbox-runner-v2/run_v2.py\",\n        \"entity-sandbox-runner-v2/README.md\",\n        \"entity-sandbox-runner-v2/results/receipts.json\",\n        \"entity-sandbox-runner-v2/results/metrics.json\",\n        \"entity-sandbox-runner-v2/results/summary.txt\",\n        \"entity-sandbox-runner-v2/results/example_metrics.json\",\n        \"entity-sandbox-runner-v2/results/example_summary.txt\",\n        \"entity-sandbox-runner-v2/.github/workflows/run-v2.yml\",\n        \"entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc\",\n        \"entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.044,
+          "duration": 0.04,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:36:26",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/demo_missing_install_v1.zip",
-              "family": "demo_missing_install",
+              "ts": "2026-03-28T03:36:27",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/entity-sandbox-runner-v2.zip",
+              "family": "entity-sandbox-runner-v2",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "install/apply.py"
+                  "install/apply.py",
+                  "entity-sandbox-runner-v2/metrics.py",
+                  "entity-sandbox-runner-v2/selector.py",
+                  "entity-sandbox-runner-v2/.gitignore",
+                  "entity-sandbox-runner-v2/config_v2.yaml",
+                  "entity-sandbox-runner-v2/run_v2.py",
+                  "entity-sandbox-runner-v2/README.md",
+                  "entity-sandbox-runner-v2/results/receipts.json",
+                  "entity-sandbox-runner-v2/results/metrics.json",
+                  "entity-sandbox-runner-v2/results/summary.txt",
+                  "entity-sandbox-runner-v2/results/example_metrics.json",
+                  "entity-sandbox-runner-v2/results/example_summary.txt",
+                  "entity-sandbox-runner-v2/.github/workflows/run-v2.yml",
+                  "entity-sandbox-runner-v2/__pycache__/metrics.cpython-313.pyc",
+                  "entity-sandbox-runner-v2/__pycache__/selector.cpython-313.pyc"
                 ]
               },
               "decision": {
@@ -90,17 +105,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:36:26.411238Z",
+    "ts": "2026-03-28T03:36:27.229430Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/entity-sandbox-runner-v2.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/entity-sandbox-runner-v2.zip",
     "changes_applied": [
+      "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "demo_missing_install",
-    "hash_before": "9227b623fb9411f4167b936015315b039eb502fce343a854a4ab5861f018ccb5",
-    "hash_after": "b759442bd0c893409e3f921b9ee17b615248071f46e53c5623159bbeeb07cdd6"
+    "family": "entity-sandbox-runner-v2",
+    "hash_before": "8b4b9bcf3a1d4212a39c1a2d2d9b1d6044662c0e8ab06036198a1a70ab13d465",
+    "hash_after": "b6595fb8930a3a4ad870013321324ea0674c9c9f5ae988c1feb5c260c6a0498a"
   },
   "reason": "repair_completed_and_reintegrated"
 }
