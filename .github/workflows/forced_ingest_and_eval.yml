@@ -266,6 +266,14 @@ jobs:
           echo "---- STAGED DIFF ----"
           git diff --cached -- brain_reports failed_bundles repaired_bundles incoming_bundles installed_bundles logs || true
 
+      - name: Final persist after headless + evidence
+        run: |
+          git config user.name "actions-user"
+          git config user.email "actions@github.com"
+          git add -A brain_reports failed_bundles repaired_bundles incoming_bundles installed_bundles logs || true
+          git commit -m "persist final headless and evidence state" || echo "no changes"
+          git push
+
       - name: Final state summary
         run: |
           echo "INCOMING:"
