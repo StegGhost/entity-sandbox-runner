@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:52:44.028729Z",
+  "ts": "2026-03-28T03:52:44.808547Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip",
   "changes_applied": [
-    "fixed_manifest_fields",
+    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "generator_v8_bundle",
-  "hash_before": "0f82182fda94f9cc8de1e45c3bb6d1422c54083225648b399b74625d2453587b",
-  "hash_after": "befc4fefbd8958b5e33c765e041879c0d6a750f331a6e4a5d32d9da39e368892"
+  "family": "governed_agent_passport",
+  "hash_before": "3a119c6441b95cf562011c7c7f1650e3b2912e7faa8417748224cb7a450c40d6",
+  "hash_after": "192a05be17b406d5adb82bb51f5f3760bc5fcab06262c3d60458acb17a86140a"
 }

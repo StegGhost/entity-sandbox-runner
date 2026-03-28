@@ -2,62 +2,62 @@
   "status": "ok",
   "ts": "2026-03-28T03:52:44",
   "action": "propose_repair_for_bundle_family",
-  "family": "generator_v8_bundle",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip",
+  "family": "governed_agent_passport",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:52:44.028729Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"generator_v8_bundle\", \"hash_before\": \"0f82182fda94f9cc8de1e45c3bb6d1422c54083225648b399b74625d2453587b\", \"hash_after\": \"befc4fefbd8958b5e33c765e041879c0d6a750f331a6e4a5d32d9da39e368892\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:52:44.808547Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"governed_agent_passport\", \"hash_before\": \"3a119c6441b95cf562011c7c7f1650e3b2912e7faa8417748224cb7a450c40d6\", \"hash_after\": \"192a05be17b406d5adb82bb51f5f3760bc5fcab06262c3d60458acb17a86140a\"}}",
     "stderr": "",
-    "duration": 0.042,
+    "duration": 0.044,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:52:44.028729Z",
+        "ts": "2026-03-28T03:52:44.808547Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip",
         "changes_applied": [
-          "fixed_manifest_fields",
+          "created_missing_manifest",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "generator_v8_bundle",
-        "hash_before": "0f82182fda94f9cc8de1e45c3bb6d1422c54083225648b399b74625d2453587b",
-        "hash_after": "befc4fefbd8958b5e33c765e041879c0d6a750f331a6e4a5d32d9da39e368892"
+        "family": "governed_agent_passport",
+        "hash_before": "3a119c6441b95cf562011c7c7f1650e3b2912e7faa8417748224cb7a450c40d6",
+        "hash_after": "192a05be17b406d5adb82bb51f5f3760bc5fcab06262c3d60458acb17a86140a"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip",
-    "family": "generator_v8_bundle",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip",
+    "family": "governed_agent_passport",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_035244\",\n    \"family\": \"generator_v8_bundle\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v8_bundle.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/generator_v8_bundle.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:52:44\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v8_bundle.zip\\\",\\n    \\\"family\\\": \\\"generator_v8_bundle\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"README.md\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"install/engine/receipt_chain.py\\\",\\n        \\\"install/engine/passport.py\\\",\\n        \\\"install/engine/proposal_to_bundle.py\\\",\\n        \\\"install/engine/trust_engine.py\\\",\\n        \\\"install/engine/economic_engine.py\\\",\\n        \\\"install/tests/test_generator_v8.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:52:44\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v8_bundle.zip\",\n          \"family\": \"generator_v8_bundle\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"README.md\",\n              \"install/apply.py\",\n              \"install/engine/receipt_chain.py\",\n              \"install/engine/passport.py\",\n              \"install/engine/proposal_to_bundle.py\",\n              \"install/engine/trust_engine.py\",\n              \"install/engine/economic_engine.py\",\n              \"install/tests/test_generator_v8.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_035244\",\n    \"family\": \"governed_agent_passport\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:52:44\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/governed_agent_passport_v1_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"governed_agent_passport\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"gap_bundle_src/bundle_manifest.json\\\",\\n        \\\"gap_bundle_src/README.md\\\",\\n        \\\"gap_bundle_src/config/authority_policy.json\\\",\\n        \\\"gap_bundle_src/install/admission_engine.py\\\",\\n        \\\"gap_bundle_src/install/receipt_chain.py\\\",\\n        \\\"gap_bundle_src/install/execution_wrapper.py\\\",\\n        \\\"gap_bundle_src/install/governed_passport.py\\\",\\n        \\\"gap_bundle_src/docs/GAP_SPEC.md\\\",\\n        \\\"install/apply.py\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.037,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:52:44\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n          \"family\": \"governed_agent_passport\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"gap_bundle_src/bundle_manifest.json\",\n              \"gap_bundle_src/README.md\",\n              \"gap_bundle_src/config/authority_policy.json\",\n              \"gap_bundle_src/install/admission_engine.py\",\n              \"gap_bundle_src/install/receipt_chain.py\",\n              \"gap_bundle_src/install/execution_wrapper.py\",\n              \"gap_bundle_src/install/governed_passport.py\",\n              \"gap_bundle_src/docs/GAP_SPEC.md\",\n              \"install/apply.py\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.074,
+    "duration": 0.072,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
         "ts": "20260328_035244",
-        "family": "generator_v8_bundle",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v8_bundle.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/generator_v8_bundle.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip",
+        "family": "governed_agent_passport",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/governed_agent_passport_v1_bundle_v1.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/governed_agent_passport_v1_bundle_v1.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:52:44\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v8_bundle.zip\",\n    \"family\": \"generator_v8_bundle\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"README.md\",\n        \"install/apply.py\",\n        \"install/engine/receipt_chain.py\",\n        \"install/engine/passport.py\",\n        \"install/engine/proposal_to_bundle.py\",\n        \"install/engine/trust_engine.py\",\n        \"install/engine/economic_engine.py\",\n        \"install/tests/test_generator_v8.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:52:44\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/governed_agent_passport_v1_bundle_v1.zip\",\n    \"family\": \"governed_agent_passport\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"gap_bundle_src/bundle_manifest.json\",\n        \"gap_bundle_src/README.md\",\n        \"gap_bundle_src/config/authority_policy.json\",\n        \"gap_bundle_src/install/admission_engine.py\",\n        \"gap_bundle_src/install/receipt_chain.py\",\n        \"gap_bundle_src/install/execution_wrapper.py\",\n        \"gap_bundle_src/install/governed_passport.py\",\n        \"gap_bundle_src/docs/GAP_SPEC.md\",\n        \"install/apply.py\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
           "duration": 0.037,
           "parsed_stdout": {
@@ -66,22 +66,23 @@
             "inspection": {
               "status": "ok",
               "ts": "2026-03-28T03:52:44",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/generator_v8_bundle.zip",
-              "family": "generator_v8_bundle",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/governed_agent_passport_v1_bundle_v1.zip",
+              "family": "governed_agent_passport",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
-                  "README.md",
-                  "install/apply.py",
-                  "install/engine/receipt_chain.py",
-                  "install/engine/passport.py",
-                  "install/engine/proposal_to_bundle.py",
-                  "install/engine/trust_engine.py",
-                  "install/engine/economic_engine.py",
-                  "install/tests/test_generator_v8.py"
+                  "gap_bundle_src/bundle_manifest.json",
+                  "gap_bundle_src/README.md",
+                  "gap_bundle_src/config/authority_policy.json",
+                  "gap_bundle_src/install/admission_engine.py",
+                  "gap_bundle_src/install/receipt_chain.py",
+                  "gap_bundle_src/install/execution_wrapper.py",
+                  "gap_bundle_src/install/governed_passport.py",
+                  "gap_bundle_src/docs/GAP_SPEC.md",
+                  "install/apply.py"
                 ]
               },
               "decision": {
@@ -98,18 +99,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:52:44.028729Z",
+    "ts": "2026-03-28T03:52:44.808547Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/generator_v8_bundle.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/generator_v8_bundle.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/governed_agent_passport_v1_bundle_v1.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/governed_agent_passport_v1_bundle_v1.zip",
     "changes_applied": [
-      "fixed_manifest_fields",
+      "created_missing_manifest",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "generator_v8_bundle",
-    "hash_before": "0f82182fda94f9cc8de1e45c3bb6d1422c54083225648b399b74625d2453587b",
-    "hash_after": "befc4fefbd8958b5e33c765e041879c0d6a750f331a6e4a5d32d9da39e368892"
+    "family": "governed_agent_passport",
+    "hash_before": "3a119c6441b95cf562011c7c7f1650e3b2912e7faa8417748224cb7a450c40d6",
+    "hash_after": "192a05be17b406d5adb82bb51f5f3760bc5fcab06262c3d60458acb17a86140a"
   },
   "reason": "repair_completed_and_reintegrated"
 }
