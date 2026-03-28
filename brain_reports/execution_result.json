@@ -1,90 +1,83 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:57:28",
+  "ts": "2026-03-28T03:57:29",
   "action": "propose_repair_for_bundle_family",
-  "family": "llm_adapter_readme",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
-  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
+  "family": "master_workflow_v2",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip",
+  "resolved_path": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip",
   "worker_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:57:28.404228Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip\", \"changes_applied\": [\"created_missing_manifest\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"llm_adapter_readme\", \"hash_before\": \"bb1ea1fca7d0e631a6aa6ca404de5e706a8b21bb8d9d8d5c8c0f7fcd4e07b59d\", \"hash_after\": \"e6a8f36cda2bb3b5e8e79751d0cda8b51b69b2f372227824b8d64bfe520de82f\"}}",
+    "stdout": "{\"status\": \"repaired\", \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json\", \"result\": {\"ts\": \"2026-03-28T03:57:29.150686Z\", \"status\": \"repaired\", \"input_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip\", \"output_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip\", \"changes_applied\": [\"fixed_manifest_fields\", \"created_missing_install_stub\"], \"errors\": [], \"family\": \"master_workflow_v2\", \"hash_before\": \"532905f5a35dbf7dd6d1f1a708a9df19cb66ddf696289224a9230effddb109d1\", \"hash_after\": \"a0edb95a4fe36cb50be6a3e7db629780c2a55be95fc366cd921ade64efbb0a0d\"}}",
     "stderr": "",
-    "duration": 0.045,
+    "duration": 0.041,
     "parsed_stdout": {
       "status": "repaired",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/repair_bundle_result.json",
       "result": {
-        "ts": "2026-03-28T03:57:28.404228Z",
+        "ts": "2026-03-28T03:57:29.150686Z",
         "status": "repaired",
-        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
-        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
+        "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip",
+        "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip",
         "changes_applied": [
-          "created_missing_manifest",
+          "fixed_manifest_fields",
           "created_missing_install_stub"
         ],
         "errors": [],
-        "family": "llm_adapter_readme",
-        "hash_before": "bb1ea1fca7d0e631a6aa6ca404de5e706a8b21bb8d9d8d5c8c0f7fcd4e07b59d",
-        "hash_after": "e6a8f36cda2bb3b5e8e79751d0cda8b51b69b2f372227824b8d64bfe520de82f"
+        "family": "master_workflow_v2",
+        "hash_before": "532905f5a35dbf7dd6d1f1a708a9df19cb66ddf696289224a9230effddb109d1",
+        "hash_after": "a0edb95a4fe36cb50be6a3e7db629780c2a55be95fc366cd921ade64efbb0a0d"
       }
     }
   },
   "reintegrate_payload": {
-    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
-    "family": "llm_adapter_readme",
-    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip"
+    "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip",
+    "family": "master_workflow_v2",
+    "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip"
   },
   "reintegrate_result": {
     "ok": true,
     "returncode": 0,
-    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_035728\",\n    \"family\": \"llm_adapter_readme\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/llm_adapter_readme_bundle_v1.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:57:28\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip\\\",\\n    \\\"family\\\": \\\"llm_adapter_readme\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"llm_adapter_readme_bundle/bundle_manifest.json\\\",\\n        \\\"llm_adapter_readme_bundle/install/proposal_adapter.py\\\",\\n        \\\"llm_adapter_readme_bundle/install/agent_registry.py\\\",\\n        \\\"llm_adapter_readme_bundle/install/test_llm_adapter.py\\\",\\n        \\\"llm_adapter_readme_bundle/install/llm_adapter.py\\\",\\n        \\\"llm_adapter_readme_bundle/install/README.md\\\",\\n        \\\"llm_adapter_readme_bundle/install/tool_contracts.py\\\",\\n        \\\"llm_adapter_readme_bundle/install/llm_gateway.py\\\",\\n        \\\"llm_adapter_readme_bundle/install/.github/workflows/llm_adapter_validation.yml\\\",\\n        \\\"llm_adapter_readme_bundle/docs/README_bundle_notes.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.039,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:57:28\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip\",\n          \"family\": \"llm_adapter_readme\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"install/apply.py\",\n              \"llm_adapter_readme_bundle/bundle_manifest.json\",\n              \"llm_adapter_readme_bundle/install/proposal_adapter.py\",\n              \"llm_adapter_readme_bundle/install/agent_registry.py\",\n              \"llm_adapter_readme_bundle/install/test_llm_adapter.py\",\n              \"llm_adapter_readme_bundle/install/llm_adapter.py\",\n              \"llm_adapter_readme_bundle/install/README.md\",\n              \"llm_adapter_readme_bundle/install/tool_contracts.py\",\n              \"llm_adapter_readme_bundle/install/llm_gateway.py\",\n              \"llm_adapter_readme_bundle/install/.github/workflows/llm_adapter_validation.yml\",\n              \"llm_adapter_readme_bundle/docs/README_bundle_notes.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
+    "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\",\n  \"result\": {\n    \"status\": \"ok\",\n    \"ts\": \"20260328_035729\",\n    \"family\": \"master_workflow_v2\",\n    \"repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip\",\n    \"resolved_repaired_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip\",\n    \"incoming_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip\",\n    \"installed_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/master_workflow_v2_bundle.zip\",\n    \"original_bundle\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip\",\n    \"original_failed_removed\": true,\n    \"inspection_result\": {\n      \"ok\": true,\n      \"returncode\": 0,\n      \"stdout\": \"{\\n  \\\"status\\\": \\\"ok\\\",\\n  \\\"output\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\\\",\\n  \\\"inspection\\\": {\\n    \\\"status\\\": \\\"ok\\\",\\n    \\\"ts\\\": \\\"2026-03-28T03:57:29\\\",\\n    \\\"target\\\": \\\"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip\\\",\\n    \\\"family\\\": \\\"master_workflow_v2\\\",\\n    \\\"validation\\\": {\\n      \\\"valid_zip\\\": true,\\n      \\\"manifest_present\\\": true,\\n      \\\"install_dir_present\\\": true,\\n      \\\"files\\\": [\\n        \\\"bundle_manifest.json\\\",\\n        \\\"config/master_workflow_config.json\\\",\\n        \\\"install/master_workflow_v2.yml.txt\\\",\\n        \\\"install/apply.py\\\",\\n        \\\"docs/MASTER_WORKFLOW_V2.md\\\"\\n      ]\\n    },\\n    \\\"decision\\\": {\\n      \\\"action\\\": \\\"promote_to_install\\\",\\n      \\\"valid\\\": true\\n    }\\n  }\\n}\",\n      \"stderr\": \"\",\n      \"duration\": 0.036,\n      \"parsed_stdout\": {\n        \"status\": \"ok\",\n        \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n        \"inspection\": {\n          \"status\": \"ok\",\n          \"ts\": \"2026-03-28T03:57:29\",\n          \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip\",\n          \"family\": \"master_workflow_v2\",\n          \"validation\": {\n            \"valid_zip\": true,\n            \"manifest_present\": true,\n            \"install_dir_present\": true,\n            \"files\": [\n              \"bundle_manifest.json\",\n              \"config/master_workflow_config.json\",\n              \"install/master_workflow_v2.yml.txt\",\n              \"install/apply.py\",\n              \"docs/MASTER_WORKFLOW_V2.md\"\n            ]\n          },\n          \"decision\": {\n            \"action\": \"promote_to_install\",\n            \"valid\": true\n          }\n        }\n      }\n    },\n    \"promoted\": true,\n    \"reason\": \"promoted_to_install\",\n    \"output_report\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json\"\n  }\n}",
     "stderr": "",
-    "duration": 0.077,
+    "duration": 0.072,
     "parsed_stdout": {
       "status": "ok",
       "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/reintegrate_repaired_bundle_result.json",
       "result": {
         "status": "ok",
-        "ts": "20260328_035728",
-        "family": "llm_adapter_readme",
-        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
-        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
-        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip",
-        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/llm_adapter_readme_bundle_v1.zip",
-        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
+        "ts": "20260328_035729",
+        "family": "master_workflow_v2",
+        "repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip",
+        "resolved_repaired_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip",
+        "incoming_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip",
+        "installed_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/installed_bundles/master_workflow_v2_bundle.zip",
+        "original_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip",
         "original_failed_removed": true,
         "inspection_result": {
           "ok": true,
           "returncode": 0,
-          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:57:28\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip\",\n    \"family\": \"llm_adapter_readme\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"install/apply.py\",\n        \"llm_adapter_readme_bundle/bundle_manifest.json\",\n        \"llm_adapter_readme_bundle/install/proposal_adapter.py\",\n        \"llm_adapter_readme_bundle/install/agent_registry.py\",\n        \"llm_adapter_readme_bundle/install/test_llm_adapter.py\",\n        \"llm_adapter_readme_bundle/install/llm_adapter.py\",\n        \"llm_adapter_readme_bundle/install/README.md\",\n        \"llm_adapter_readme_bundle/install/tool_contracts.py\",\n        \"llm_adapter_readme_bundle/install/llm_gateway.py\",\n        \"llm_adapter_readme_bundle/install/.github/workflows/llm_adapter_validation.yml\",\n        \"llm_adapter_readme_bundle/docs/README_bundle_notes.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
+          "stdout": "{\n  \"status\": \"ok\",\n  \"output\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json\",\n  \"inspection\": {\n    \"status\": \"ok\",\n    \"ts\": \"2026-03-28T03:57:29\",\n    \"target\": \"/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip\",\n    \"family\": \"master_workflow_v2\",\n    \"validation\": {\n      \"valid_zip\": true,\n      \"manifest_present\": true,\n      \"install_dir_present\": true,\n      \"files\": [\n        \"bundle_manifest.json\",\n        \"config/master_workflow_config.json\",\n        \"install/master_workflow_v2.yml.txt\",\n        \"install/apply.py\",\n        \"docs/MASTER_WORKFLOW_V2.md\"\n      ]\n    },\n    \"decision\": {\n      \"action\": \"promote_to_install\",\n      \"valid\": true\n    }\n  }\n}",
           "stderr": "",
-          "duration": 0.039,
+          "duration": 0.036,
           "parsed_stdout": {
             "status": "ok",
             "output": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/brain_reports/inspection_result.json",
             "inspection": {
               "status": "ok",
-              "ts": "2026-03-28T03:57:28",
-              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip",
-              "family": "llm_adapter_readme",
+              "ts": "2026-03-28T03:57:29",
+              "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip",
+              "family": "master_workflow_v2",
               "validation": {
                 "valid_zip": true,
                 "manifest_present": true,
                 "install_dir_present": true,
                 "files": [
                   "bundle_manifest.json",
+                  "config/master_workflow_config.json",
+                  "install/master_workflow_v2.yml.txt",
                   "install/apply.py",
-                  "llm_adapter_readme_bundle/bundle_manifest.json",
-                  "llm_adapter_readme_bundle/install/proposal_adapter.py",
-                  "llm_adapter_readme_bundle/install/agent_registry.py",
-                  "llm_adapter_readme_bundle/install/test_llm_adapter.py",
-                  "llm_adapter_readme_bundle/install/llm_adapter.py",
-                  "llm_adapter_readme_bundle/install/README.md",
-                  "llm_adapter_readme_bundle/install/tool_contracts.py",
-                  "llm_adapter_readme_bundle/install/llm_gateway.py",
-                  "llm_adapter_readme_bundle/install/.github/workflows/llm_adapter_validation.yml",
-                  "llm_adapter_readme_bundle/docs/README_bundle_notes.md"
+                  "docs/MASTER_WORKFLOW_V2.md"
                 ]
               },
               "decision": {
@@ -101,18 +94,18 @@
     }
   },
   "repair_result": {
-    "ts": "2026-03-28T03:57:28.404228Z",
+    "ts": "2026-03-28T03:57:29.150686Z",
     "status": "repaired",
-    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
-    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
+    "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip",
+    "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip",
     "changes_applied": [
-      "created_missing_manifest",
+      "fixed_manifest_fields",
       "created_missing_install_stub"
     ],
     "errors": [],
-    "family": "llm_adapter_readme",
-    "hash_before": "bb1ea1fca7d0e631a6aa6ca404de5e706a8b21bb8d9d8d5c8c0f7fcd4e07b59d",
-    "hash_after": "e6a8f36cda2bb3b5e8e79751d0cda8b51b69b2f372227824b8d64bfe520de82f"
+    "family": "master_workflow_v2",
+    "hash_before": "532905f5a35dbf7dd6d1f1a708a9df19cb66ddf696289224a9230effddb109d1",
+    "hash_after": "a0edb95a4fe36cb50be6a3e7db629780c2a55be95fc366cd921ade64efbb0a0d"
   },
   "reason": "repair_completed_and_reintegrated"
 }

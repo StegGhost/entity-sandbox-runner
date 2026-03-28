@@ -1,25 +1,18 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T03:57:28",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/llm_adapter_readme_bundle_v1.zip",
-  "family": "llm_adapter_readme",
+  "ts": "2026-03-28T03:57:29",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/master_workflow_v2_bundle.zip",
+  "family": "master_workflow_v2",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
+      "config/master_workflow_config.json",
+      "install/master_workflow_v2.yml.txt",
       "install/apply.py",
-      "llm_adapter_readme_bundle/bundle_manifest.json",
-      "llm_adapter_readme_bundle/install/proposal_adapter.py",
-      "llm_adapter_readme_bundle/install/agent_registry.py",
-      "llm_adapter_readme_bundle/install/test_llm_adapter.py",
-      "llm_adapter_readme_bundle/install/llm_adapter.py",
-      "llm_adapter_readme_bundle/install/README.md",
-      "llm_adapter_readme_bundle/install/tool_contracts.py",
-      "llm_adapter_readme_bundle/install/llm_gateway.py",
-      "llm_adapter_readme_bundle/install/.github/workflows/llm_adapter_validation.yml",
-      "llm_adapter_readme_bundle/docs/README_bundle_notes.md"
+      "docs/MASTER_WORKFLOW_V2.md"
     ]
   },
   "decision": {

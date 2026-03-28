@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T03:57:28.404228Z",
+  "ts": "2026-03-28T03:57:29.150686Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/llm_adapter_readme_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/llm_adapter_readme_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/master_workflow_v2_bundle.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/master_workflow_v2_bundle.zip",
   "changes_applied": [
-    "created_missing_manifest",
+    "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "llm_adapter_readme",
-  "hash_before": "bb1ea1fca7d0e631a6aa6ca404de5e706a8b21bb8d9d8d5c8c0f7fcd4e07b59d",
-  "hash_after": "e6a8f36cda2bb3b5e8e79751d0cda8b51b69b2f372227824b8d64bfe520de82f"
+  "family": "master_workflow_v2",
+  "hash_before": "532905f5a35dbf7dd6d1f1a708a9df19cb66ddf696289224a9230effddb109d1",
+  "hash_after": "a0edb95a4fe36cb50be6a3e7db629780c2a55be95fc366cd921ade64efbb0a0d"
 }
