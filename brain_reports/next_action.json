@@ -7,8 +7,8 @@
     "selection_mode": "deterministic_failed_scan",
     "action_class": "repair",
     "action": "propose_repair_for_bundle_family",
-    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_run_workflow_upgrade_bundle_v1.zip",
-    "family": "sandbox_run_workflow_upgrade_bundle_v1",
+    "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_v11_1_to_12_bundle.zip",
+    "family": "sandbox_v11_1_to_12_bundle",
     "priority": "high",
     "reason": "failed_bundle_present",
     "source": "next_action_engine"

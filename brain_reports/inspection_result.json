@@ -1,19 +1,23 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:45:39",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_run_workflow_upgrade_bundle_v1.zip",
-  "family": "sandbox_run_workflow",
+  "ts": "2026-03-28T04:45:40",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_v11_1_to_12_bundle.zip",
+  "family": "sandbox_v11_1",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
+      "README.md",
+      "config/policy.json",
+      "github_workflows/autonomous_v12.yml",
+      "experiments/evaluation_suite/run_eval.py",
+      "install/replay.py",
+      "install/crypto_keys.py",
       "install/apply.py",
-      "sandbox_run_workflow_upgrade_bundle_v1/bundle_readme.md",
-      "sandbox_run_workflow_upgrade_bundle_v1/bundle_manifest.json",
-      "sandbox_run_workflow_upgrade_bundle_v1/payload/.github/workflows/run_experiment.yml",
-      "sandbox_run_workflow_upgrade_bundle_v1/install/install_bundle_autoregister.py"
+      "install/bcat_engine.py",
+      "install/policy_engine.py"
     ]
   },
   "decision": {
