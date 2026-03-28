@@ -1,13 +1,14 @@
 {
-  "ts": "2026-03-28T06:07:43.017608Z",
+  "ts": "2026-03-28T06:07:43.819184Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/demo_missing_install_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/demo_missing_install_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/tc_tvc_scaffolding_v0_1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/tc_tvc_scaffolding_v0_1.zip",
   "changes_applied": [
+    "created_missing_manifest",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "demo_missing_install",
-  "hash_before": "e4707f78d2513a17b7e05e6964c2fd3ab88a8a552e15d24bcd2db3bd55e7d61d",
-  "hash_after": "b49a73a2fb9689095a81aaa0e45f59c835bb5434bb0f7763c259b75beb68905d"
+  "family": "tc_tvc_scaffolding",
+  "hash_before": "0b265ee1ecbe3d38915885b9cd91db7707a9fee4d0c0481f5edd1c614bcd3398",
+  "hash_after": "d59dcc1f889f22f0e1b969877d28372caf8a209a5165078ab83b79d86816a32f"
 }
