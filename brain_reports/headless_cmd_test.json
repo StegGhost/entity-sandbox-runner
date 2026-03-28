@@ -1,6 +1,6 @@
 {
   "mode": "steggate_live_test",
-  "ts": "2026-03-28T04:02:12.973583",
+  "ts": "2026-03-28T04:03:06.314863",
   "status": "ok",
   "steps": {
     "health": {
@@ -9,7 +9,7 @@
       "data": {
         "status": "ok",
         "service": "steggate-api",
-        "ts": 1774670533
+        "ts": 1774670586
       }
     },
     "token": {
@@ -17,7 +17,7 @@
       "status_code": 200,
       "data": {
         "status": "ok",
-        "token": "92c8ef0d90a585fe4efbed83ad33653a0fbc4790e24a99dbe0613cdeb0e0849a",
+        "token": "244808f5a9c3710c78adb450c74d991fbd0eab711108f1d1f12bddbbd73f542b",
         "expires_in": 120
       }
     },
@@ -28,14 +28,14 @@
         "status": "executed",
         "result": {
           "status_code": 200,
-          "body": "{\n  \"args\": {}, \n  \"data\": \"{\\\"t\\\": 1}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept-Encoding\": \"identity\", \n    \"Content-Length\": \"8\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"Python-urllib/3.11\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69c752c5-48d568507c52bc464e0e109e\"\n  }, \n  \"json\": {\n    \"t\": 1\n  }, \n  \"origin\": \"74.220.48.248\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
+          "body": "{\n  \"args\": {}, \n  \"data\": \"{\\\"t\\\": 1}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept-Encoding\": \"identity\", \n    \"Content-Length\": \"8\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"Python-urllib/3.11\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69c752fb-116498d133146985129a959d\"\n  }, \n  \"json\": {\n    \"t\": 1\n  }, \n  \"origin\": \"74.220.48.248\", \n  \"url\": \"https://httpbin.org/post\"\n}\n"
         },
         "receipt": {
-          "receipt_id": "660e5db7c0c638d06e2377eb5f6bf18f18cd102d245b20158f927341f4b4f9b6",
-          "timestamp": 1774670533,
+          "receipt_id": "dd0f25b2fdc7d0aa6a09fdc04ca0edc4e732e6016ddd3e5a49e0a102ff730bd9",
+          "timestamp": 1774670587,
           "target": "https://httpbin.org/post",
           "action_hash": "4834945f7bf91f82efc5cf881d902ec1cfa58f1be01cb35fe602b8ad4620c552",
-          "result_hash": "e2df89b6d380a1a5a8af5d1a5e7a27fe81ab787190eae4ae93bf56aa3a74b9fe",
+          "result_hash": "2befd0a996c3cd78078d3a9d835ce6eee1511afbe7174af47a419082cb3e3f41",
           "policy_passed": true
         }
       }
@@ -46,7 +46,7 @@
       "data": {
         "valid": true,
         "reason": "ok",
-        "receipt_id": "660e5db7c0c638d06e2377eb5f6bf18f18cd102d245b20158f927341f4b4f9b6"
+        "receipt_id": "dd0f25b2fdc7d0aa6a09fdc04ca0edc4e732e6016ddd3e5a49e0a102ff730bd9"
       }
     }
   },
