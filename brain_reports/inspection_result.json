@@ -1,17 +1,17 @@
 {
   "status": "ok",
-  "ts": "2026-03-28T04:06:24",
-  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_bootstrap_permission_unlock_bundle_v1.zip",
-  "family": "sandbox_bootstrap_permission",
+  "ts": "2026-03-28T04:06:25",
+  "target": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/incoming_bundles/sandbox_closed_loop_activation_v1.zip",
+  "family": "sandbox_closed_loop",
   "validation": {
     "valid_zip": true,
     "manifest_present": true,
     "install_dir_present": true,
     "files": [
       "bundle_manifest.json",
-      "install/apply.py",
-      "install/engine/bootstrap_permission_unlock.py",
-      "install/tests/test_bootstrap_permission_unlock.py"
+      "payload/.github/workflows/closed_loop_runner.yml",
+      "payload/autonomy_plane/closed_loop_controller.py",
+      "install/apply.py"
     ]
   },
   "decision": {

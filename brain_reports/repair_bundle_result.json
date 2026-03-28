@@ -1,14 +1,14 @@
 {
-  "ts": "2026-03-28T04:06:24.521913Z",
+  "ts": "2026-03-28T04:06:25.364749Z",
   "status": "repaired",
-  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_bootstrap_permission_unlock_bundle_v1.zip",
-  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_bootstrap_permission_unlock_bundle_v1.zip",
+  "input_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/failed_bundles/sandbox_closed_loop_activation_v1.zip",
+  "output_bundle": "/home/runner/work/entity-sandbox-runner/entity-sandbox-runner/repaired_bundles/sandbox_closed_loop_activation_v1.zip",
   "changes_applied": [
     "fixed_manifest_fields",
     "created_missing_install_stub"
   ],
   "errors": [],
-  "family": "sandbox_bootstrap_permission",
-  "hash_before": "39873702c22e623ba4118e2fcfe14028eec96e4bab0bac7104b314d0e8f137cb",
-  "hash_after": "862f2a2c0f6309bab31460ab03559cba27f4a6cdb9c98522d14cd7ef0890be1c"
+  "family": "sandbox_closed_loop",
+  "hash_before": "91e21bd0c6cb6fddd7c430314b3f8b2b4ce2f00a618674becb6d9d4c811b49a7",
+  "hash_after": "286fbf4b98d960f5806c94d9a05feacb3aa94475d9e607aefd6631edc0f28cfc"
 }
